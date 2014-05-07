@@ -18,9 +18,10 @@ categories: 兼容性
 +   Null协议返回值
 +   验证JavaScript框架对新版IE的支持
 
+
 # 数组索引处理
 
-Windows Internet Explorer 8 在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于 2147483647 的 Array 元素时，创建的新元素的索引将是一个负整数。
+Internet Explorer 8 在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于 2147483647 的 Array 元素时，创建的新元素的索引将是一个负整数。
 
 Internet Explorer 9 正确处理了使用 2E+31-1 与 2E+32-2 之间的索引的 Array 元素。Internet Explorer 8 行为不会在任何 Internet Explorer 9 文档模式中复制。
 
@@ -34,3 +35,55 @@ function test() {
 }
 test();
 {% endhighlight %}
+
+# 枚举JavaScript属性
+
+Internet Explorer 9 对JavaScript对象模型有所更改，使得JavaScript属性的枚举方式与较早版本中的枚举方式不同。
+
+使用 for…in 语句时，属性枚举的顺序在任何文档模式中都可能与Internet Explorer 8返回的顺序不同。 
+
+*示例1*
+
+Internet Explorer 9 中数字属性会优先于非数字属性之前枚举。
+{% highlight javascript %}
+var obj = {first : "prop1", second: "prop2", 3: "prop3"};
+
+var s = "";
+for (var key in obj) {
+    s += key + ": " + obj[key] + " ";
+}
+document.write (s);
+{% endhighlight %}
+
+*输出结果*
+
+All modes of Internet Explorer 8:
+
+    first: prop1 second: prop2 3: prop3 
+
+All modes of Internet Explorer 9:
+
+    3: prop3 first: prop1 second: prop2
+
+*示例2*
+
+Internet Explorer 8 不包括与原型对象内置属性同名的属性的枚举。Internet Explorer 9 中的所有文档模式在枚举中都包括这些属性。
+{% highlight javascript %}
+var obj = { first: "prop1", toString : "Hello" }
+var s = "";
+for (var key in obj) {
+    s += key + ": " + obj[key] + " ";
+}
+document.write (s);
+{% endhighlight %}
+
+*输出结果*
+
+All modes of Internet Explorer 8:
+
+    first: prop1
+
+All modes of Internet Explorer 9:
+
+    first: prop1 toString: Hello
+

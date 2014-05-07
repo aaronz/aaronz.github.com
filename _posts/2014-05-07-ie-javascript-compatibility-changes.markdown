@@ -8,14 +8,15 @@ categories: 兼容性
 随着Internet Explorer的新版本不断发布，对JavaScript语言的支持也相较之前版本有所变更，新版本中提高了对ECMAScript标准的支持，并于其他浏览器的JavaScript行为趋近一致。本文主要描述自Internet Explorer 9以来对JavaScript语言本身的主要变更。
 
 这些变更主要包括以下方面，
-+ 数组索引处理
-+ 枚举JavaScript属性
-+ 函数指针方法调用
-+ JavaScript夏令时处理
-+ 间接eval调用作用域
-+ 数字精度和SSE2差异
-+ Null协议返回值
-+ 验证JavaScript框架对新版IE的支持
+
++   数组索引处理
++   枚举JavaScript属性
++   函数指针方法调用
++   JavaScript夏令时处理
++   间接eval调用作用域
++   数字精度和SSE2差异
++   Null协议返回值
++   验证JavaScript框架对新版IE的支持
 
 # 数组索引处理
 

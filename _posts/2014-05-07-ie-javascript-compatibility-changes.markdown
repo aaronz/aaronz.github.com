@@ -18,7 +18,7 @@ categories: Compatibility
 +   [Null协议返回值](#null-return)
 +   [验证JavaScript框架对新版IE的支持](#verify-js-framework)
 
-
+<br/>
 # 数组索引处理<a name="array-index"></a>
 
 Internet Explorer 8 在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于 2147483647 的 Array 元素时，创建的新元素的索引将是一个负整数。
@@ -188,3 +188,43 @@ test();
 IE9 (系统支持SSE2): "2.4492935982947064e-16"
 
 IE8 : "2.4492127076447545e-16"
+
+# Null协议返回值 <a name="null-return"></a>
+
+Internet Explorer 9在处理返回"null"值的JavaScript时遵循以下HTML5规定。浏览器必须将URL视为已经返回HTTP 204 无内容，其中不得包含响应正文。
+
+*示例1*
+
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+<head>      
+</head>
+<body>
+   <div id="ad_content">
+      <iframe src="javascript:document.write('...'); return null;" />
+   // document.write is meant to create the contents of the iframe
+   </div>
+</body>
+</html>
+{% endhighlight %}
+
+由于作为JavaScript协议(javascript:)一部分执行返回 "null"，Internet Explorer 9会将URL视为其返回了“HTTP 204 无内容”，因此iframe为空，无论JavaScript协议中运行其他什么JavaScript。
+
+# 验证JavaScript框架对新版IE的支持<a name="verify-js-framework"></a>
+
+许多站点仍在使用与新版本的Internet Explorer不兼容的旧版JavaScript框架。许多现有JavaScript框架包含的功能取决于现有Internet Explorer特定的行为或quirks模式。因此，在Internet Explorer中所作的更改可能导致许多受欢迎的JavaScript框架部分无法正确工作。
+
+为做演示，以下为需要更新以支持Internet Explorer 9的受欢迎 JavaScript 框架的列表。
+
++   Cufon 1.09i+
++   jQuery 1.5.1+
++   jQuery UI 1.6.8+
++   MooTools 1.3+
++   Prototype 1.7+
+
+<br/>
+# 参考文档
+
++   [JavaScript compatibility changes](http://msdn.microsoft.com/en-us/library/ie/dn467851%28v=vs.85%29.aspx)
++   [ECMAScript](http://www.ecmascript.org/docs.php)

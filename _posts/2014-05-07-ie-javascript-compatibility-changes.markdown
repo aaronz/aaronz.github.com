@@ -9,7 +9,7 @@ categories: 兼容性
 
 这些变更主要包括以下方面，
 
-+   数组索引处理
++   [数组索引处理](#array-index)
 +   枚举JavaScript属性
 +   函数指针方法调用
 +   JavaScript夏令时处理
@@ -17,9 +17,9 @@ categories: 兼容性
 +   数字精度和SSE2差异
 +   Null协议返回值
 +   验证JavaScript框架对新版IE的支持
+ 
 
-
-# 数组索引处理
+# 数组索引处理<a name="array-index"></a>
 
 Internet Explorer 8 在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于 2147483647 的 Array 元素时，创建的新元素的索引将是一个负整数。
 
@@ -35,6 +35,7 @@ function test() {
 }
 test();
 {% endhighlight %}
+ 
 
 # 枚举JavaScript属性
 

@@ -16,8 +16,7 @@ categories: 兼容性
 +   间接eval调用作用域
 +   数字精度和SSE2差异
 +   Null协议返回值
-+   验证JavaScript框架对新版IE的支持  
-
++   验证JavaScript框架对新版IE的支持
   
 
 # 数组索引处理<a name="array-index"></a>
@@ -39,10 +38,8 @@ test();
 
 **输出结果**
 Internet Explorer 8
-
     "true"
 Internet Explorer 9 
-
     "false"
  
 
@@ -68,11 +65,9 @@ document.write (s);
 **输出结果**
 
 All modes of Internet Explorer 8:
-
     first: prop1 second: prop2 3: prop3 
 
 All modes of Internet Explorer 9:
-
     3: prop3 first: prop1 second: prop2
 
 **示例2**
@@ -90,10 +85,8 @@ document.write (s);
 **输出结果**
 
 All modes of Internet Explorer 8:
-
     first: prop1
 
 All modes of Internet Explorer 9:
-
     first: prop1 toString: Hello
 

@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title:  "IE HTML DOM 兼容性变更"
 date:   2014-05-08 22:49:54

@@ -100,6 +100,8 @@ IE7 或IE8 中正常运行的网页可以通过以下方法短时间内在IE9 �
 +   检测特定浏览器：使用浏览器的标识（例如 navigator.userAgent）来更改页面的行为。 
 +   假定无关的功能：对一个功能执行功能检测后又使用不同的功能。
 
+![feature detection](/assets/images/posts/feature-detection.png)
+
 [http://jsfiddle.net/aaronzhcl/VurBK/](http://jsfiddle.net/aaronzhcl/VurBK/)
 
 # 合理处理失败场景

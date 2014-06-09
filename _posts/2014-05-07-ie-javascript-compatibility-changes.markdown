@@ -4,8 +4,10 @@ title:  "IE JavaScript 兼容性变更"
 date:   2014-05-07 22:49:54
 categories: Compatibility
 ---
-# 简介
+
+
 随着IE的新版本不断发布，对JavaScript语言的支持也相较之前版本有所变更，新版本中提高了对ECMAScript标准的支持，并于其他浏览器的JavaScript行为趋近一致。本文主要描述自IE9以来对JavaScript语言本身的主要变更。
+<!--more-->
 
 这些变更主要包括以下方面，
 

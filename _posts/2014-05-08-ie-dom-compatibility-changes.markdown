@@ -5,8 +5,8 @@ date:   2014-05-08 22:49:54
 categories: Compatibility
 ---
 
-# 简介
 随着Internet Explorer版本的更新，对HTML和DOM的功能有所更改，以便更好的支持现行标准及与其他浏览器行为保持一致。
+<!--more-->
 
 IE针对HTML和DOM的主要功能更改如下，
 

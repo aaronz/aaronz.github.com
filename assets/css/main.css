@@ -1,3 +1,19 @@
+.section{
+  padding:10px 0;
+  margin-bottom:30px;
+  min-height:200px
+}
+
+.section:nth-child(2n){
+  padding:40px 0 20px;
+  background:#f7f7f7
+}
+
+.wrapper{
+  width:950px;
+  margin:0 auto
+}
+
 #header h1{
 	color: #556677;
 	font-size: 1.8em;

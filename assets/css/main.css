@@ -1,9 +1,17 @@
+#header h1{
+	color: #556677;
+	font-size: 1.8em;
+	margin-top: 0.9em;
+}
+
 #footer {
   bottom: 0px;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #ddd;
 }
 
 .container .text-muted {

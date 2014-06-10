@@ -30,10 +30,8 @@ a:active{
   margin:0 auto
 }
 
-#header h1{
-	color: #556677;
-	font-size: 1.8em;
-	margin-top: 0.9em;
+.posts li{
+  margin-bottom: 4px;
 }
 
 #footer {

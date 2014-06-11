@@ -1,0 +1,150 @@
+---
+layout: post
+title:  "IE JavaScript进阶调试"
+date:   2014-06-09 00:00:00
+categories: Debugging
+---
+
+大多数人用IE都知道IE有个F12
+开发者工具可以用来调试网页的各种问题，本文以IE10为例，尽量少谈[**基础**](http://msdn.microsoft.com/zh-cn/library/ie/gg699336%28v=vs.85%29.aspx)，只说说IE脚本调试中的进阶技巧。如果你的网页脚本在IE上运行出现问题，希望下面的技巧可以帮你省点时间。
+
+<!--more-->
+
+<div class="post-index"><ul><li><a href="#console">看控制台输出(console output) </a></li><li><a href="#element-attr">查看元素事件 </a></li><li><a href="#format-script">格式化脚本 </a></li><li><a href="#break-on-exception">启用异常断点 </a></li><li><a href="#document-mode">文档模式(document mode) </a></li><li><a href="#visual-studio">Visual Studio调试IE网页 </a></li><li>Fiddler</li><li>JSLint</li><li>JSFiddle</li><li><a href="#quirksmode">Quirks Mode </a></li><li><a href="#memoryleak">内存泄露 </a></li></ul></div>
+
+看控制台输出(console output) <a name="console"></a>
+============================
+
+如果说你发现网页有什么功能不工作，第一步要做什么？我建议先查看控制台输出。很多时候控制台已经告诉脚本执行过程中的问题，会省掉你分析代码、设断点的时间。
+
+其实我也不是故意的，随便打开个网页总遇到些脚本错误。赶紧回头开着console看看自己的网站是不是也一样。-
+\_-!!
+
+[![debug\_js\_1](http://images.cnitblog.com/blog/502305/201308/28232349-79174531f0f448638a19f3b5f8978563.png "debug_js_1")](http://images.cnitblog.com/blog/502305/201308/28232348-0fbf08c0fffb416288eceb355a3862d9.png)
+
+查看元素事件 <a name="element-attr"></a>
+============
+
+要想查看网页上元素的属性或者注册了哪些事件，按照以下步骤，
+
+1\. 点箭头(Select Element by Click)
+
+2\. 点你要查看的元素
+
+3\. 看属性窗口，元素属性和事件都在里面了(可以动态修改)。
+
+[![debug\_js2](http://images.cnitblog.com/blog/502305/201308/28232351-042498561b9b4402b44ce4d53e8a159b.png "debug_js2")](http://images.cnitblog.com/blog/502305/201308/28232350-b3a6f0785ccf4967a8e8835cbfe05f36.png)
+
+格式化脚本 <a name="format-script"></a>
+==========
+
+很多上线网站会会对脚本进行精简，格式全去掉了，简直无法直视。点下面这个按钮来格式化脚本。
+
+[![debug\_js3](http://images.cnitblog.com/blog/502305/201308/28232354-1b48adab217948728d49038dd584ce36.png "debug_js3")](http://images.cnitblog.com/blog/502305/201308/28232352-cf6d3dcbdc9e42f6aaee69a7b378957d.png)
+
+格式化之后
+
+[![debug\_js4](http://images.cnitblog.com/blog/502305/201308/28232356-fa52decfb2a4453dbf46e286a38725d2.png "debug_js4")](http://images.cnitblog.com/blog/502305/201308/28232355-ba7235a879bf4a899c406b4c84cd4795.png)
+
+启用异常断点 <a name="break-on-exception"></a>
+============
+
+看上面的图，菜单中提供了三种与异常相关的设置，
+
+1\. Break on unhandled exceptions
+
+2\. Break on all exceptions
+
+3\. Continue after exception
+
+如果你觉得问题出在异常上，不妨启用异常断点来调试下。如果你坚信问题不在异常上，那就禁用这个异常断点，免得被异常打断调试。
+
+文档模式(document mode) <a name="document-mode"></a>
+=======================
+
+很多网页在IE上显示出问题都因为文档模式，比如有些网页中大量使用脚本，在IE上总觉得运行慢，打开F12看看网页在什么文档模式下运行，文档模式决定了IE使用什么渲染引擎和JS引擎，例如IE9+中对Javascript的执行速度有显著提高，但是如果你的网页被固定在了IE8之前的文档模式，那新的JS引擎提速就被忽略了。
+
+[![debug\_js5](http://images.cnitblog.com/blog/502305/201308/28232357-425a88cec86e43368d4681adfadc6a8a.png "debug_js5")](http://images.cnitblog.com/blog/502305/201308/28232356-6fdf4e53c4854c5790836bbec2d73976.png)
+
+关于IE如何根据网页选择不同的Document Mode，可以查看[MSDN DOCTYPE
+Declaration](http://msdn.microsoft.com/en-us/library/ff955379(v=vs.85).aspx)。
+
+Visual Studio调试IE网页 <a name="visual-studio"></a>
+=======================
+
+接下来压轴的来了，不知道有多少童鞋用过这个功能，其实IE可以外接Visual
+Studio调试脚本。
+
+先到Internet Option中将调试功能启用
+
+[![debug\_js6](http://images.cnitblog.com/blog/502305/201308/28232358-7b1363eb0c614361b0e94a8668f583c0.png "debug_js6")](http://images.cnitblog.com/blog/502305/201308/28232357-7d5b03d84f944c4fa4c8f8488b62a46e.png)
+
+接下来到View – External Script Debugger - Open，选择Visual Studio
+
+[![debug\_js7](http://images.cnitblog.com/blog/502305/201308/28232359-34db9b9a6edd4519b5c6677860f32155.png "debug_js7")](http://images.cnitblog.com/blog/502305/201308/28232359-2abfde8b85474bf88180df25f68bf64a.png)
+
+Visual
+Studio就会附加到IE进程，接下来你就可以用VS的强大调试功能在调试脚本了，比如你最常用的F12
+(Go to definition)
+
+[![debug\_js8](http://images.cnitblog.com/blog/502305/201308/28232403-52b7c821e18d4f5f8bf67f1eade5f207.png "debug_js8")](http://images.cnitblog.com/blog/502305/201308/28232401-0dc9452b81c540588a2393f96b70d370.png)
+
+Fiddler
+=======
+
+[Fiddler](http://fiddler2.com)这个工具应该是众所周知的了，写如何用fiddler的文章也有很多，这里提到他是因为他是个不错的重放工具，比如问题发生在你访问不到的环境中，或者好不容易重现了一次，抓包可以通过fiddler自动重放功能反复调试。不用正真去访问网站或者重现问题。
+
+如何导入抓包，重放抓包可以参考下面文档。
+
+[Replay Captured
+Traffic](http://fiddler2.com/documentation/Generate-Traffic/Tasks/ReplayAutoresponder)
+
+JSLint
+======
+
+如果调试的是你自己的代码，将代码贴到[JSLint](http://www.jslint.com)中看看工具如何评价你的代码。JSLint可以帮你检查语法错误、提示代码风格问题和结构问题。
+
+具体可以参考[JSLint的文档](http://www.jslint.com/lint.html)。
+
+JSFiddle
+========
+
+如果你的代码还在开发阶段，[JSFiddle](http://jsfiddle.net/)是个不错的在线编辑器，你可以在线编辑、运行HTML,
+Javascript, CSS，引用各种流行的的JS
+library，还有简单的快捷键支持，在线工具做成这样算不错的了。
+
+[![js\_fiddle](http://images.cnitblog.com/blog/502305/201308/29213957-fb0e1bc0656b4edda29d0cf84003aa0f.png "js_fiddle")](http://images.cnitblog.com/blog/502305/201308/29213956-66f02a81725740018151937988217139.png)
+
+Quirks Mode <a name="quirksmode"></a>
+===========
+
+Javascript少不了要处理DOM和CSS，各种DOM方法、属性，样式表在各个版本的浏览器是否支持，直接查查[Quirks
+Mode](http://quirksmode.org/)网站，应该有你想找的内容。
+
+再上个图
+
+[![debug\_js\_1](http://images.cnitblog.com/blog/502305/201308/29214001-8f571b8b3b4c461dbcf9a54cdb9783c3.png "debug_js_1")](http://images.cnitblog.com/blog/502305/201308/29213959-8253849afce5440e9cb132aed4bc9a60.png)
+
+内存泄露 <a name="memoryleak"></a>
+========
+
+内存泄露在新版本的浏览器中已经不是很常见了，可以看看下面的文章了解下会造成IE内存泄露的模式，
+
+[Understanding and Solving Internet Explorer Leak
+Patterns](http://msdn.microsoft.com/en-us/library/bb250448(v=VS.85).aspx)
+
+[Memory Leakage in Internet
+Explorer](http://www.codeproject.com/Articles/12231/Memory-Leakage-in-Internet-Explorer-revisited)
+
+不过你真的有幸写出让浏览器也想不清楚的代码，可以尝试下下面的工具。
+
+[s-IEve](http://home.wanadoo.nl/jsrosman/sIEve-0.0.8.exe)可以追踪网页泄露元素，打开这个工具估计就可以看明白怎么回事了，简单的使用方法如下，\
+1. 下载打开s-IEve工具，通过s-IEve来打开存在内存使用问题的网页\
+2. 重复会造成内存泄露的操作\
+3. 界面右边列表中\#leaks列中表示了泄露的DOM节点数量\
+4. 点击show leaks按钮察看泄露网页节点\
+5. 选中泄露节点点击Properties按钮，察看网页节点相关的html属性\
+6. 回到网页源代码查找泄露原因
+
+[![clip\_image001](http://images.cnitblog.com/blog/502305/201308/29214003-67a87de7326f419fb685a5230e677b8c.jpg "clip_image001")](http://images.cnitblog.com/blog/502305/201308/29214003-548a22e90b0e419d97bcadb8965acac1.jpg)
+

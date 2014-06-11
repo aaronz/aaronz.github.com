@@ -13,39 +13,60 @@ categories: Performance
 
 <!--more-->
 
-目录
-====
 
--   [变量查找优化](#variable-lookup)
-    -   [变量声明带上var](#declare-with-var)
-    -   [慎用全局变量](#global-with-patient)
-    -   [缓存重复使用的全局变量](#cache-global-variable)
-    -   [避免使用with](#avoid-with)
--   [核心语法优化](#core)
-    -   [通过原型优化方法定义](#prototype)
-    -   [避开闭包陷阱](#closure)
-    -   [避免使用属性访问方法](#accessor)
-    -   [避免在循环中使用try-catch](#try-catch)
-    -   [使用for代替for…in…遍历数组](#for-in)
-    -   [使用原始操作代替方法调用](#native-operator)
-    -   [传递方法取代方法字符串](#string-function)
--   [脚本装载优化](#script-loading)
-    -   [使用工具精简脚本](#minify)
-    -   [启用Gzip压缩](#gzip)
-    -   [设置Cache-Control和Expires头](#cache-control)
-    -   [异步加载脚本](#async-load)
--   [DOM操作优化](#dom-manipulation)
-    -   [减少DOM元素数量](#reduce-dom)
-    -   [优化CSS样式转换](#css-change)
-    -   [优化节点添加](#node-adding)
-    -   [优化节点修改](#node-modification)
-    -   [减少使用元素位置操作](#position-property)
-    -   [避免遍历大量元素](#loop-dom)
--   [事件优化](#events)
-    -   [使用事件代理](#event-delegate)
--   [动画优化](#animation)
-    -   [设置动画元素为absolute或fixed](#position)
-    -   [使用一个timer完成多个元素动画](#timer)
+<div class="post-index">
+<ul>
+<li><a href="#variable-lookup">变量查找优化</a>
+<ul>
+<li><a href="#declare-with-var">变量声明带上var</a></li>
+<li><a href="#global-with-patient">慎用全局变量</a></li>
+<li><a href="#cache-global-variable">缓存重复使用的全局变量</a></li>
+<li><a href="#avoid-with">避免使用with</a></li>
+</ul>
+</li>
+<li><a href="#core">核心语法优化</a>
+<ul>
+<li><a href="#prototype">通过原型优化方法定义</a></li>
+<li><a href="#closure">避开闭包陷阱</a></li>
+<li><a href="#accessor">避免使用属性访问方法</a></li>
+<li><a href="#try-catch">避免在循环中使用try-catch</a></li>
+<li><a href="#for-in">使用for代替for&hellip;in&hellip;遍历数组</a></li>
+<li><a href="#native-operator">使用原始操作代替方法调用</a></li>
+<li><a href="#string-function">传递方法取代方法字符串</a></li>
+</ul>
+</li>
+<li><a href="#script-loading">脚本装载优化</a>
+<ul>
+<li><a href="#minify">使用工具精简脚本</a></li>
+<li><a href="#gzip">启用Gzip压缩</a></li>
+<li><a href="#cache-control">设置Cache-Control和Expires头</a></li>
+<li><a href="#async-load">异步加载脚本</a></li>
+</ul>
+</li>
+<li><a href="#dom-manipulation">DOM操作优化</a>
+<ul>
+<li><a href="#reduce-dom">减少DOM元素数量</a></li>
+<li><a href="#css-change">优化CSS样式转换</a></li>
+<li><a href="#node-adding">优化节点添加</a></li>
+<li><a href="#node-modification">优化节点修改</a></li>
+<li><a href="#position-property">减少使用元素位置操作</a></li>
+<li><a href="#loop-dom">避免遍历大量元素</a></li>
+</ul>
+</li>
+<li><a href="#events">事件优化</a>
+<ul>
+<li><a href="#event-delegate">使用事件代理</a></li>
+</ul>
+</li>
+<li><a href="#animation">动画优化</a>
+<ul>
+<li><a href="#position">设置动画元素为absolute或fixed</a></li>
+<li><a href="#timer">使用一个timer完成多个元素动画</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
 
 变量查找优化 <a name="variable-lookup"></a>
 ============

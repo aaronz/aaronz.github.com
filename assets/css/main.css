@@ -34,6 +34,18 @@ a:active{
   margin-bottom: 4px;
 }
 
+.post-index{
+  position: fixed;
+  top:10px;
+  right:10px;
+  float:right;
+  display:inline-block;
+}
+
+.post-index li{
+    list-style-type:none;
+}
+
 #footer {
   bottom: 0px;
   width: 100%;

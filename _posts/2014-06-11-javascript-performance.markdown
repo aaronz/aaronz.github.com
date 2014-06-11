@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JavaScript性能"
+title:  "JavaScript性能优化指南"
 date:   2014-06-11 00:00:00
 categories: Performance
 ---

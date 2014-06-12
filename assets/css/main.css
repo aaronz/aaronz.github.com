@@ -42,6 +42,19 @@ a{
   margin-right: auto;
   margin-left: auto;
 }
+
+.post h1 {
+    border-bottom: 1px solid #D3D3D3;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin: 0.4em 0 0.2em;
+    padding: 0 0 0.2em;
+}
+
+.post h2{
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .wrapper {
     width: 750px;
@@ -82,12 +95,20 @@ a{
   margin-bottom: 4px;
 }
 
+.more-post{
+  font-weight: 700;
+}
+
+.archive-category{
+  text-transform: uppercase;
+}
+
 .post-index{
   position: fixed;
   top:10px;
   right:10px;
   float:right;
-  display:inline-block;
+  display:none;
 }
 
 #footer {

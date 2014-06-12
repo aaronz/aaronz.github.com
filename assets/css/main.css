@@ -1,17 +1,28 @@
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, tt, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: medium none;
+    color: #111111;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+}
+
+body{
+  color:#111111;
+  font-family: Georgia,serif;
+  font-size:84.5%;
+  letter-spacing: -0.01em;
+  line-height: 1.8em;
+  padding: 0;
+  word-spacing: 0.2em;
+}
+
 a{
-  cursor:pointer
-}
-a:link{
-  text-decoration:none
-}
-a:visited{
-  text-decoration:none
-}
-a:hover{
-  text-decoration:none;
-}
-a:active{
-  text-decoration:none;
+  cursor:pointer;
+  color:#37a;
 }
 
 .section{
@@ -25,9 +36,26 @@ a:active{
   background:#f7f7f7
 }
 
-.wrapper{
-  width:950px;
-  margin:0 auto
+.wrapper {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .wrapper {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
 }
 
 .grid-12-8{
@@ -60,10 +88,6 @@ a:active{
   right:10px;
   float:right;
   display:inline-block;
-}
-
-.post-index li{
-    list-style-type:none;
 }
 
 #footer {

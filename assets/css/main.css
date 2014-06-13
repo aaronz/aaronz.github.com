@@ -36,6 +36,13 @@ a{
   background:#f7f7f7
 }
 
+.asset-footer{
+    background-color: #DEEBF7;
+    border: 1px solid #D3D3D3;
+    margin-top: 2em;
+    padding: 1.5em;
+}
+
 .wrapper {
   padding-right: 15px;
   padding-left: 15px;
@@ -109,6 +116,10 @@ a{
   right:10px;
   float:right;
   display:none;
+}
+
+#header-name a{
+  color:#111111;
 }
 
 #footer {

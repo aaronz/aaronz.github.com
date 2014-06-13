@@ -14,8 +14,8 @@ body{
   color:#111111;
   font-family: Georgia,serif;
   font-size:84.5%;
-  letter-spacing: -0.01em;
   line-height: 1.8em;
+  letter-spacing: 0.02em;
   padding: 0;
   word-spacing: 0.2em;
 }
@@ -23,6 +23,12 @@ body{
 a{
   cursor:pointer;
   color:#37a;
+}
+
+pre{
+  background:#f7f7f7;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .section{
@@ -38,8 +44,7 @@ a{
 
 .asset-footer{
     background-color: #DEEBF7;
-    border: 1px solid #D3D3D3;
-    margin-top: 2em;
+    margin-top: 1em;
     padding: 1.5em;
 }
 
@@ -96,6 +101,11 @@ a{
        -moz-border-radius: 20px;
 -webkit-border-radius: 20px;
        border-radius: 20px;
+}
+
+.pagination{
+  background-color:#DEEBF7;
+  padding: 10px;
 }
 
 .posts li{

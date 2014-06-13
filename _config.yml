@@ -4,3 +4,4 @@ pygments: true
 paginate: 1
 permalink: /:categories/:title
 excerpt_separator: <!--more-->
+production_url: http://www.browserwork.com

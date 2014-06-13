@@ -74,13 +74,12 @@ categories: Performance
 变量声明带上var <a name="declare-with-var"></a>
 ---------------
 
-1.
-如果声明变量忘记了var，那么js引擎将会遍历整个作用域查找这个变量，结果不管找到与否，都是悲剧。
+1. 如果声明变量忘记了var，那么js引擎将会遍历整个作用域查找这个变量，结果不管找到与否，都是悲剧。
 
 -   如果在上级作用域找到了这个变量，上级作用域变量的内容将被无声的改写，导致莫名奇妙的错误发生。
 -   如果在上级作用域没有找到该变量，这个变量将自动被声明为全局变量，然而却都找不到这个全局变量的定义。
 
-2\. 基于上面逻辑，性能方面不带var声明变量自然要比带var速度慢
+2. 基于上面逻辑，性能方面不带var声明变量自然要比带var速度慢
 
 具体可以参考[http://jsperf.com/withvar-withoutvar](http://jsperf.com/withvar-withoutvar/3 "http://jsperf.com/withvar-withoutvar/3")。下面是个简单的结果截图，蓝色为带var的情况，越长说明
 速度越快。
@@ -100,8 +99,7 @@ categories: Performance
 
  
 
-以上两条还可以得出一条JavaScript**常用的编程风格**，**具有相同作用域变量通过一个var声明
-。**
+以上两条还可以得出一条JavaScript**常用的编程风格**，**具有相同作用域变量通过一个var声明。**
 
 这样方便查看该作用域所有的变量，JQuery源代码中就是用了这种风格。例如下面源代码
 
@@ -172,11 +170,9 @@ function displayInfo() {
 通过原型优化方法定义 <a name="prototype"></a>
 --------------------
 
-1.
-如果一个方法类型将被频繁构造，通过方法原型从外面定义附加方法，从而避免方法的重复定义。\
-2. 可以通过外
-部原型的构造方式初始化**值类型**的变量定义。（这里强调值类型的原因是，引用类型如果在原型中定义，
-一个实例对引用类型的更改会影响到其他实例。）
+1. 如果一个方法类型将被频繁构造，通过方法原型从外面定义附加方法，从而避免方法的重复定义。
+
+2. 可以通过外部原型的构造方式初始化**值类型**的变量定义。（这里强调值类型的原因是，引用类型如果在原型中定义，一个实例对引用类型的更改会影响到其他实例。）
 
 这条规则中涉及到JavaScript中原型的概念，
 
@@ -211,15 +207,12 @@ person2.sayName(); //”Nicholas”
 避开闭包陷阱 <a name="closure"></a>
 ------------
 
-1.
-闭包是个强大的工具，但同时也是性能问题的主要诱因之一。不合理的使用闭包会导致内存泄漏。
+1. 闭包是个强大的工具，但同时也是性能问题的主要诱因之一。不合理的使用闭包会导致内存泄漏。
 
-2\. 闭包的性能不如使用内部方法，更不如重用外部方法。
+2. 闭包的性能不如使用内部方法，更不如重用外部方法。
 
-由于IE浏览器的DOM是用COM来实现的，
-COM的内存管理是通过引用计数的方式，引用计数有个难题就是循环引用，一旦DOM
-引用了闭包(例如event
-handler)，闭包的上层元素又引用了这个DOM，就会造成循环引用从而导致内存泄漏。
+由于IE浏览器的DOM是用COM来实现的，COM的内存管理是通过引用计数的方式，引用计数有个难题就是循环引用，一旦DOM
+引用了闭包(例如event handler)，闭包的上层元素又引用了这个DOM，就会造成循环引用从而导致内存泄漏。
 
 ![Figure 2 Circular References with
 Closures](http://i.msdn.microsoft.com/dynimg/IC133807.gif "Figure 2 Circular References with Closures")
@@ -235,7 +228,8 @@ Closures](http://i.msdn.microsoft.com/dynimg/IC133807.gif "Figure 2 Circular Ref
 避免使用属性访问方法 <a name="accessor"></a>
 --------------------
 
-1\. JavaScript不需要属性访问方法，因为所有的属性都是外部可见的。\
+1. JavaScript不需要属性访问方法，因为所有的属性都是外部可见的。
+
 2. 添加属性访问方法只是增加了一层重定向 ，对于访问控制没有意义。
 
 使用属性访问方法示例
@@ -277,9 +271,9 @@ perfCar.m_tireSize = iTireSize + 1;
 避免在循环中使用try-catch <a name="try-catch"></a>
 -------------------------
 
-1.
-try-catch-finally语句在catch语句被执行的过程中会动态构造变量插入到当前域中，对性能有一定影响。\
-2. 如 果需要异常处理机制，可以将其放在循环外层使用。
+1. try-catch-finally语句在catch语句被执行的过程中会动态构造变量插入到当前域中，对性能有一定影响。
+
+2. 如果需要异常处理机制，可以将其放在循环外层使用。
 
 循环中使用try-catch
 
@@ -304,8 +298,7 @@ try {
 
 for…in…内部实现是构造一个所有元素的列表，包括array继承的属性，然后再开始循环。相对for循环性能要慢。
 
-StackOverflow上对这个for和for
-in的问题有个[经典的回答](http://stackoverflow.com/questions/500504/why-is-using-for-in-with-array-iteration-such-a-bad-idea)，直接原文引用，
+StackOverflow上对这个for和for in的问题有个[经典的回答](http://stackoverflow.com/questions/500504/why-is-using-for-in-with-array-iteration-such-a-bad-idea)，直接原文引用，
 
 Q: I've been told not to use "for...in" with arrays in JavaScript. Why
 not?
@@ -498,15 +491,15 @@ DOM操作性能问题主要有以下原因，
 减少DOM元素数量 <a name="reduce-dom"></a>
 ---------------
 
-1\. 在console中执行命令查看DOM元素数量
+1. 在console中执行命令查看DOM元素数量
 
 {% highlight javascript %}
     document.getElementsByTagName('*').length 
 {% endhighlight %}
 
-2\. Yahoo首页DOM元素数量在1200左右。正常页面大小一般不应该超过 1000。\
-3.
-DOM元素过多会使DOM元素查询效率，样式表匹配效率降低，是页面性能最主要的瓶颈之一。
+2. Yahoo首页DOM元素数量在1200左右。正常页面大小一般不应该超过 1000。
+
+3. DOM元素过多会使DOM元素查询效率，样式表匹配效率降低，是页面性能最主要的瓶颈之一。
 
 优化CSS样式转换 <a name="css-change"></a>
 ---------------
@@ -598,10 +591,7 @@ orig.parentNode.replaceChild(clone, orig);
 -   clientTop/Left/Width/Height
 -   getComputedStyle()
 
-具体讨论可以参考这个链接[http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-
-performance-making-your-javascript-slow/\#comment-13157](http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/#comment-13157 "http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-
-
-performance-making-your-javascript-slow/#comment-13157")
+具体讨论可以参考这个链接[http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/\#comment-13157](http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/#comment-13157)
 
 避免遍历大量元素 <a name="loop-dom"></a>
 ----------------
@@ -637,10 +627,9 @@ for (i = 0; i < elements.length; i++) {
 使用事件代理 <a name="event-delegate"></a>
 ------------
 
-1.
-当存在多个元素需要注册事件时，在每个元素上绑定事件本身就会对性能有一定损耗。\
-2. 由于DOM Level2事件模
-型中所有事件默认会传播到上层文档对象，可以借助这个机制在上层元素注册一个统一事件对不同子元素进行相应处理。
+1.   当存在多个元素需要注册事件时，在每个元素上绑定事件本身就会对性能有一定损耗。
+
+2.   由于DOM Level2事件模型中所有事件默认会传播到上层文档对象，可以借助这个机制在上层元素注册一个统一事件对不同子元素进行相应处理。
 
 捕获型事件先发生。两种事件流会触发DOM中的所有对象，从document对象开始，也在document对象结束。
 
@@ -730,8 +719,7 @@ setInterval(function() {
 
 最后再引用一句名人名言作为结尾，
 
-Premature optimization is the root of all evil.                  --
-Donald Knuth
+Premature optimization is the root of all evil.          --Donald Knuth
 
  
 

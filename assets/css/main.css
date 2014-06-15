@@ -108,8 +108,13 @@ pre{
   padding: 10px;
 }
 
+.post li{
+  margin-left: 30px;
+  list-style-type: disc;
+}
+
 .posts li{
-  margin-bottom: 4px;
+  margin-bottom: 4px;  
 }
 
 .more-post{

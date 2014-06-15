@@ -42,10 +42,19 @@ pre{
   background:#f7f7f7
 }
 
+.excerpt img{
+  border-radius: 30px;
+  display: inline-block;
+}
+
 .asset-footer{
     background-color: #DEEBF7;
     margin-top: 1em;
     padding: 1.5em;
+}
+
+.asset-footer h3{
+  font-weight: 700;
 }
 
 .wrapper {

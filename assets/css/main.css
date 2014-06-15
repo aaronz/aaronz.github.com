@@ -45,6 +45,8 @@ pre{
 .excerpt img{
   border-radius: 30px;
   display: inline-block;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
 }
 
 .asset-footer{

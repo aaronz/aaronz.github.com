@@ -45,8 +45,15 @@ pre{
 .excerpt img{
   border-radius: 30px;
   display: inline-block;
-  opacity: 0.7;
-  filter: alpha(opacity=70);
+  opacity: 0.85;
+  filter: alpha(opacity=85);
+}
+
+.excerpt img:hover{
+    border-radius: 30px;
+    display: inline-block;
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
 
 .asset-footer{
@@ -76,6 +83,15 @@ pre{
 
 .post h2{
   font-weight: 700;
+}
+
+.post img{
+  border-radius: 30px;
+}
+
+.post li{
+  margin-left: 30px;
+  list-style-type: disc;
 }
 
 @media (min-width: 768px) {
@@ -117,11 +133,6 @@ pre{
 .pagination{
   background-color:#DEEBF7;
   padding: 10px;
-}
-
-.post li{
-  margin-left: 30px;
-  list-style-type: disc;
 }
 
 .posts li{

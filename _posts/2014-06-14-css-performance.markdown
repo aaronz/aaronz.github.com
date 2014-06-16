@@ -5,7 +5,7 @@ date:   2014-06-14 00:00:00
 categories: Performance
 ---
 
-一般研究网页性能问题多数时候结论是网络下载，或者javascript操作性能，少有机会最终定位是CSS对性能的影响。然而事实上CSS对网页性能的影响也是不可忽视。尤其是大量使用CSS的网页应用(例如[网页游戏](http://ie.microsoft.com/testdrive/Performance/MazeSolver/Default.html))体现的尤为明显。这篇文章我来总结一些常见的CSS性能相关的优化实践，不为面面俱到，希望能够从浏览器角度解释不同的做法如何造成性能的差异。
+一般研究网页性能问题多数时候结论是网络下载，或者javascript操作性能，大多数时候CSS不会成为性能瓶颈。但是本着一个程序员的内心，还是希望每行代码都有好的性能，这篇文章我来总结一些常见的CSS性能相关的优化实践，不为面面俱到，希望能够从浏览器角度解释这些不同的做法如何造成性能的差异。
 
 ![css](/assets/images/posts/wordle-css.jpg)
 

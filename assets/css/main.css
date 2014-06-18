@@ -26,9 +26,14 @@ a{
 }
 
 pre{
-  background:#f7f7f7;
+  background:#ffffd0;
   border-radius: 15px;
   padding: 10px;
+  line-height: 1.4em;
+}
+
+h3{
+  font-weight: 700;
 }
 
 .section{
@@ -130,6 +135,17 @@ pre{
        border-radius: 20px;
 }
 
+.intro{
+  display:inline-block;
+  width:60%;
+}
+
+.intro-photo{
+  display:inline-block;
+  float:right;
+  width:40%;
+}
+
 .pagination{
   background-color:#DEEBF7;
   padding: 10px;
@@ -144,7 +160,8 @@ pre{
 }
 
 .archive-category{
-  text-transform: uppercase;
+  text-transform: capitalize;
+  margin-bottom: 2em;
 }
 
 .post-index{

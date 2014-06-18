@@ -145,6 +145,60 @@ ChildEBP RetAddr
 0018f228 75367834 WebKit!WebView::WebViewWndProc+0x1fe
 {% endhighlight %}
 
+# 触发操作
+
+说完了浏览器实现，接下来我们来看一下什么操作会触发布局或重绘。
+
+## 触发布局的操作
+
++   增加、删除、修改DOM结点。
++   移动DOM的位置，使用动画效果。
++   修改CSS样式。
++   Resize窗口，或是滚动的时候。
++   修改网页的默认字体。
+
+注意：display:none会触发reflow，而visibility:hidden只会触发repaint，因为没有发现位置变化。
+
+## 触发重绘的操作
+
++   透明度更改
++   文字颜色变化
++   背景颜色变化
++   背景图片替换
+
+{% highlight javascript %}
+var s = document.body.style;
+s.padding = "20px"; // reflow, repaint
+s.border = "10px solid red"; // reflow, repaint 
+s.color = "blue"; // repaint
+s.backgroundColor = "#fad"; // repaint 
+s.fontSize = "2em"; // reflow, repaint 
+document.body.appendChild(document.createTextNode('dude!')); // new DOM element - reflow, repaint
+{% endhighlight %}
 
 
-https://delicious.com/stubbornella/reflow
+# 编程实践
+
+由于过多会导致reflow的操作会影响页面性能，我们要尽量减少reflow操作。下面使一些常用的方法。
+
++   不要一条一条地修改DOM的样式。预先定义好css的class，然后修改DOM的className。
++   把DOM离线后修改：
+    +   使用documentFragment 对象在内存里操作DOM
+    +   先把DOM给display:none(有一次reflow)，之后修改，然后再显示出来。
+    +   clone一个DOM结点到内存里，改完后，和在线元素的交换一下。
++   不要把DOM结点的属性值放在一个循环里当成循环里的变量。
++   尽可能的修改层级比较低的DOM。当然，改变层级比较低的DOM有可能会造成大面积的reflow，但是也可能影响范围很小。
++   为动画的HTML元件使用fixed或absolute的position。
++   避免使用table布局。因为可能很小的改动会造成整个table的重新布局。
+
+## 增量reflow
+浏览器不会每改一次样式，就reflow一次。浏览器会把这样的操作积攒一批，然后做一次reflow，这又叫异步reflow或增量异步reflow。
+
+有些时候，脚本会阻止增量reflow，比如请求下面的一些DOM值：
+
++   offsetTop, offsetLeft, offsetWidth, offsetHeight
++   scrollTop/Left/Width/Height
++   clientTop/Left/Width/Height
++   IE中的 getComputedStyle(), 或 currentStyle
+
+因为如果程序需要这些值，那么浏览器需要返回最新的值，而这样一样会flush出去一些样式的改变，从而造成频繁的reflow/repaint。

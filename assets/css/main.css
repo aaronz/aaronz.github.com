@@ -50,6 +50,7 @@ h3{
 .excerpt img{
   border-radius: 30px;
   display: inline-block;
+  width: 50%;
   opacity: 0.85;
   filter: alpha(opacity=85);
 }

@@ -69,7 +69,42 @@ element.somObject = null;
 这里例子在一个DOM元素(element)与一个原生的javascript对象(myObject)之间创建了循环引用。其中，变量myObject 有一个名为element的属性指向element对象；而变量element也有一个属性名叫someObject回指myObject。由于存在这个 循环引用，即使将例子中的DOM从页面中移除，它也永远不会被回收。
 将变量设置为null，意味着切断变量与它此前引用的值之间的连接。但垃圾收集器下次运行时，就会删除这些值并回收它们占用的内存。
 
-# IE的垃圾回收
+# 实现
+
+## V8实现
+
+关于V8引擎的文档比较丰富，可以参考[这篇文章](http://newhtml.net/v8-garbage-collection/)([英文原文](http://www.jayconrod.com/posts/55/a-tour-of-v8-garbage-collection))了解其主要的工作原理。
+
+## WebKit的实现
+
+WebKit的GC实现在[heap.cpp](http://trac.webkit.org/browser/trunk/Source/JavaScriptCore/heap/Heap.cpp)中，heap.cpp中有collect()方法如下，
+
+其中分成个主要步骤，
+
+1.   初始化
+2.   标记对象
+3.   扫除
+4.   压缩空间
+
+{% highlight cpp%}
+
+void Heap::collectAllGarbage()
+{
+    if (!m_isSafeToCollect)
+        return;
+
+    m_shouldDoFullCollection = true;
+    collect();
+
+    SamplingRegion samplingRegion("Garbage Collection: Sweeping");
+    DelayedReleaseScope delayedReleaseScope(m_objectSpace);
+    m_objectSpace.sweep();
+    m_objectSpace.shrink();
+}
+
+{% endhighlight %}
+
+## IE的垃圾回收
 
 IE6垃圾回收 - 根据内存分配量运行的，具体一点说就是256个变量、4096个对象（或数组）和数组元素（slot）或者64KB的字符串。达到上述任何一个临界值，垃圾收集器就会运行。问题在于如果一个脚本中包含那么多 变量，那么该脚本很可能会在其生命中起一直保持那么多的变量，垃圾收集器就可能不得不频繁的运行。
 

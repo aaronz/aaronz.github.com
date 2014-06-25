@@ -131,7 +131,7 @@ inline流的子代规则相对block流的规则更为简单，即
 
 所有inline流的自带元素必须是inline。
 
-## 匿名block
+# 匿名block
 
 为了让所有block流的子代元素都遵守子代规则，渲染树会创建匿名block。
 

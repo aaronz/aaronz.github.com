@@ -44,7 +44,7 @@ h3{
 
 .section:nth-child(2n){
   padding:40px 0 20px;
-  background:#f7f7f7
+  background:#ffeecc
 }
 
 .excerpt img{
@@ -63,9 +63,10 @@ h3{
 }
 
 .asset-footer{
-    background-color: #DEEBF7;
+    background-color: #ffeecc;
     margin-top: 1em;
     padding: 1.5em;
+    border-radius: 20px;
 }
 
 .asset-footer h3{
@@ -148,7 +149,7 @@ h3{
 }
 
 .pagination{
-  background-color:#DEEBF7;
+  background-color:#ffeecc;
   padding: 10px;
 }
 

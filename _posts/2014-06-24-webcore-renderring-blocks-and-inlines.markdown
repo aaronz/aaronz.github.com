@@ -21,14 +21,14 @@ block flow框布局 - 用来包含行元素(如 paragraph)和其他竖直排列�
 
 inline flow框布局 - 用来作为行(line)的一部分存在。常见的元素a,b,i,span都是inline流元素。
 
-在WebCore中有三种渲染器类型涵盖了block和inline flow。他们是RenderBlock，RenderInline和他们共同的父类RenderFlow(现在变味了RenderBoxModelObject)。
+在WebCore中有三种渲染器类型涵盖了block和inline flow。他们是RenderBlock，RenderInline和他们共同的父类RenderFlow(现在变成了RenderBoxModelObject)。
 
 RenderFlow.h  
 [RenderBlock.h](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderBlock.h)  
 [RenderInline.h](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderInline.h)  
 [RenderBoxModelObject](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderBoxModelObject.h)  
 
-inline flow可以通过以下修改样式表的方式更改为block flow，反之亦然。
+inline flow可以通过修改样式表的方式更改为block flow，反之亦然。
 
 {% highlight css %}
 div { display: inline }
@@ -39,12 +39,13 @@ span { display: block }
 
 replaced元素可以是block级别也可以是inline级别。当一个replaced元素作为一个block，它会像其他block元素一样竖直排列。当replaced元素作为inline时，它则作为段落的一个部分，内嵌在一行之中。
 
-Form控件是一个特例，它是replaced元素，但是它实际上继承自RenderBlock。由于replaced元素不能与一个单独的通用子类相关联，因此它通过RenderObject上面的一个位来表示。可以通过isReplaced方法查询该对象是否为replaced元素。
+Images, plugins, frame和applets都继承自一个公共子类来实现replaced元素对象。这个类是RenderReplaced。
+
+Form控件是一个特例，它是replaced元素，但是它实际上继承自RenderBlock。是否为replaced元素不是通过实现类型来判断，而取决于RenderObject上面的一个位。可以通过isReplaced方法查询该对象是否为replaced元素。
 
 {% highlight cpp %}
 bool isReplaced() const
 {% endhighlight %}
 
-Images, plugins, frame和applets都继承自一个公共子类来实现replaced元素对象。这个类是RenderReplaced。
 
 [RenderReplaced.h](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderReplaced.h)

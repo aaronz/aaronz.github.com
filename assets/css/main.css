@@ -152,6 +152,7 @@ h3{
 .pagination{
   background-color:#ffeecc;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .posts li{

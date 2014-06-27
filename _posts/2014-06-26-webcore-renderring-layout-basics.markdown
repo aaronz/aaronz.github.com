@@ -72,6 +72,67 @@ RenderView这个初始容器框永远根据当前可见窗口来设置大小。�
 
 +   根节点的渲染器永远用RenderView作为其容器块。
 +   如果渲染器设置了相对(relative)或静态(static)位置信息，那与之相对应的容器块为渲染树中最近的block级别的前驱结点。
-+   如果渲染器设置了固定(fixed)位置信息，那么容器块就是RenderView。RenderView负责调整固定位置元素的坐标，解释文档滚动时的位置信息。
++   如果渲染器设置了固定(fixed)位置信息，那么容器块就是RenderView。RenderView负责调整固定位置元素的坐标，解释文档滚动时的位置信息。RenderView用来作为界面的容器块比为界面创建一个新的渲染器更简单。
++   如果渲染器设置了绝对(absolute)位置信息，最近的block父节点将作为其容器块。如果不存在这样的父节点，RenderView将作为其容器。
 
+渲染树有两个方法判断一个对象使用了什么样的定位方式。
 
+{% highlight cpp %}
+bool isPositioned() const;   // absolute or fixed positioning
+bool isRelPositioned() const;  // relative positioning
+{% endhighlight %}
+
+WebCore代码中如果使用positioned一般代表absolute或者fixed定位方式，如果使用relPositioned则代表相对定位方式。
+
+渲染树通过下面方法来得到一个容器的渲染器。
+
+{% highlight cpp %}
+RenderBlock* containingBlock() const
+{% endhighlight %}
+
+当一个对象被标记为需要布局时，它会沿着容器链向上一路设置normalChildNeedsLayout或者posChildNeedsLayout位。具体设置哪个位根据isPositioned结果来判断。
+
+# layoutIfNeeded 和 setNeedsLayout(false)
+
+如果设置了dirty位，layoutIfNeeded方法可以用来查询渲染器是否需要布局。
+
+{% highlight cpp %}
+void layoutIfNeeded()
+{% endhighlight %}
+
+所有的layout方法都以setNeedsLayout(false)方法结尾。它会在layout方法结束之前将dirty位反转，后续的layout方法调用将不会误认为该对象仍然设置了dirty位。
+
+# layout 方法解析
+
+下面是一个layout方法要完成的主要工作步骤，
+
+{% highlight cpp %}
+void layout()
+{
+    ASSERT(needsLayout());
+
+    // Determine the width and horizontal margins of this object.
+    ...
+
+    for (RenderObject* child = firstChild(); child; child = child->nextSibling()) {
+        // Determine if the child needs to get a relayout despite the dirty bit not being set.
+        ...
+
+        // Place the child.
+        ...
+
+        // Lay out the child
+        child->layoutIfNeeded();
+
+       ...
+    }
+
+    // Now the intrinsic height of the object is known because the children are placed
+    // Determine the final height
+    ...
+
+    setNeedsLayout(false);
+}
+{% endhighlight %}
+
+我们会在后续的章节中继续介绍layout方法。

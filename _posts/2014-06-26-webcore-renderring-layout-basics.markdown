@@ -23,7 +23,7 @@ categories: Mechanism
 void layout()
 {% endhighlight %}
 
-布局是一个递归的过程。一个叫做FrameView的类代表了一个文档的的视图，它也包含一个layout方法。这个frame view负责管理整个文档渲染树的layout。
+布局是一个递归的过程。一个叫做FrameView的类代表了一个文档的的视图，它也包含一个layout方法。这个frame view负责管理整个文档渲染树的layout。  
 
 FrameView有两种layout方式。第一种也是最常见的一种是整体布局。即从树的根节点的layout方法开始调用，从而整棵树布局都被更新。第二种方式是使布局发生在子树范围之内。它用作仅需要特定子树重新布局而不会影响周围节点的情况。现在子树布局仅在一些文本域使用。
 
@@ -57,12 +57,7 @@ bool normalChildNeedsLayout() const { return m_normalChildNeedsLayout; }
 
 RenderView这个初始容器框永远根据当前可见窗口来设置大小。在桌面浏览器上，其大小相当于浏览器窗口可见区域的大小。这个容器框永远被置为文档的(0,0)坐标点上。下图描绘了文档的初始容器块所在的区域。黑框内代表RenderView，灰色的部分代表整个文档。
 
-<center><p></p>
-<div style="width:100px;height:300px; background-color:#dddddd">
-<div style="border:3px solid black;width:94px;height:94px">
-</div>
-</div>
-<p></p></center>
+![RenderView](/assets/images/posts/renderview.jpg)
 
 当文档滚动时，初始容器块会移出界面。他永远在文档的上沿并保持界面的大小。这里容易让人产生疑惑之处在于人们经常想象容器块虽然保持在界面中但是已经超出了文档区域。
 

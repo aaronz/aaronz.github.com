@@ -9,7 +9,7 @@ categories: Mechanism
 
 [https://www.webkit.org/blog/117/webcore-rendering-iv-absolutefixed-and-relative-positioning/](https://www.webkit.org/blog/117/webcore-rendering-iv-absolutefixed-and-relative-positioning/)
 
-样式表中通过position定位对象相对容器的相对位置。它有四种选择，static，absolute，fixed，relative。static是默认值，代表对象使用默认的block定位方式-对应的容器为渲染树中最近的block级别的父节点。
+样式表中通过position定位对象相对容器的相对位置。有四种值可以选择，static，absolute，fixed，relative。static是默认值，代表对象使用默认的block定位方式，即没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 属性）。
 
 ![webkit](/assets/images/posts/webkit.jpg)
 
@@ -23,14 +23,14 @@ categories: Mechanism
 bool isRelPositioned() const
 {% endhighlight %}
 
-另外通过以下方法可以查询对象应用的x,y偏移量。
+另外通过以下方法可以查询对象的x,y偏移量。
 
 {% highlight cpp %}
 int relativePositionOffsetX() const;
 int relativePositionOffsetY() const;
 {% endhighlight %}
 
-相对定位只是比静态定位多了一步绘图时的转换。对于布局来说相对定位的对象的偏移是相对其本来应该在的位置而言的。例如下面实例，span采用相对定位，可以看到定位元素的偏移是根据对象原有位置产生的。
+相对定位只是比静态定位多了一步绘图时的转换。对于布局来说，相对定位对象的偏移是相对其本来应该在的位置而言的。例如下面实例，span采用相对定位，可以看到定位元素的偏移是根据对象原有位置产生的。
 
 {% highlight html %}
 <div style="border:5px solid black; padding:20px; width:300px">
@@ -48,17 +48,17 @@ Here is a line of text.  <span style="position:relative;top:-10px; background-co
 
 # 绝对和固定定位 (absolute and fixed)
 
-固定(fixed)位置对象的位置是相对界面(viewport，如浏览器窗口)而言的。绝对定位对象的位置相对容器而言，即最近的非static定位的父节点。如果没有这样的容器存在，则使用最外层初始的容器RenderView。可以参考上一篇文章对容器的介绍。
+固定(fixed)位置对象的位置是相对界面(viewport，如浏览器窗口)而言的。绝对定位对象的位置相对容器而言，即渲染树中最近的非static定位的父节点。如果没有这样的容器存在，则使用最外层初始的容器RenderView。上一篇文章对容器有详细的介绍。
 
-通过isPositioned方法可以判断渲染器是否是绝对定位(absolute)还是固定定位(fixed)。
+isPositioned方法可以用来判断渲染器是否是绝对定位(absolute)还是固定定位(fixed)。
 
 {% highlight cpp %}
 bool isPositioned() const
 {% endhighlight %}
 
-当一个对象是绝对或者固定定位时，它会变成block级别，即使是display属性设置为inline/inline-block/table。这是isInline方法返回false。
+当一个对象是绝对或者固定定位时，它会变成block流，即使是display属性设置为inline/inline-block/table。这时isInline方法返回false。
 
-下面方法可以得到原始和当前display的属性值。布局时有些情况下需要查询原始的display属性，
+下列方法可以得到原始和当前display的属性值。布局时有些情况下需要查询原始的display属性。 
 
 {% highlight cpp %}
 EDisplay display() const;

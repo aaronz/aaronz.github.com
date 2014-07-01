@@ -149,6 +149,11 @@ h3{
   width:40%;
 }
 
+.intro-photo img{
+  width:100%;
+  max-width: 400px;
+}
+
 .pagination{
   background-color:#ffeecc;
   padding: 10px;

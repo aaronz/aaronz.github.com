@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "WebKit渲染 - 定位简介 Absolute/Fixed/Relative"
+title:  "WebKit渲染 - 定位简介"
 date:   2014-06-27 00:00:00
 categories: Mechanism
 ---

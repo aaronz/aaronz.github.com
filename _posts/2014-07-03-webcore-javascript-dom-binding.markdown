@@ -7,15 +7,17 @@ categories: Mechanism
 
 浏览器中的各种精彩的动态效果大多数都是通过JavaScript调用DOM对象来完成的，但是浏览器是如何实现JavaScript脚本对浏览器的DOM对象访问的？本文通过解析WekKit实现来揭开答案。
 
-![webkit](/assets/images/posts/webkit.jpg)
+![webkit](/assets/images/posts/webkit-arch.png)
 
 <!--more-->
 
 # Web IDL
 
-WebCore作为一个模块化的浏览器引擎，如何才能很容易的与其他组件集成？例如ObjectC，JavaScriptCore组件等。答案是通过Web IDL。Web IDL是一种标记语言，通过它可以定义对外暴露的接口。当WebKit编译时会通过脚本根据Web IDL定义生成对应的绑定源代码，从而将WebCore对象绑定到外界组件。
+WebCore作为一个模块化的浏览器引擎，如何才能很容易的与其他组件集成？例如JavaScriptCore，V8等。答案是通过Web IDL。Web IDL是一种标记语言，通过它可以定义对外暴露的接口。当WebKit编译时会通过脚本根据Web IDL定义生成对应的绑定源代码，从而将WebCore对象绑定到外界组件。
 
-**注意**: [WebCore采用的Web IDL](https://trac.webkit.org/wiki/WebKitIDL)与[标准的Web IDL](http://www.w3.org/TR/WebIDL/)存在区别。例如Web IDL标准中定义方法的关键字为operation而不是method。标准Web IDL不区分attribute与parameter。
+实际上DOM标准中也包含了对其元素的[IDL定义](http://www.w3.org/TR/1998/REC-DOM-Level-1-19981001/idl-definitions.html)。
+
+[WebCore采用的Web IDL](https://trac.webkit.org/wiki/WebKitIDL)与[标准的Web IDL](http://www.w3.org/TR/WebIDL/)存在区别。例如Web IDL标准中定义方法的关键字为operation而不是method。标准Web IDL不区分attribute与parameter。
 
 下面是一个Web IDL的简单实例。
 
@@ -155,3 +157,16 @@ JavaScriptCore.dll!JSC::call
 WebKit.dll!WebCore::JSMainThreadExecState::call
 {% endhighlight %}
 
+# 代码结构
+
+转换脚本目录  
+[http://trac.webkit.org/browser/trunk/Source/WebCore/bindings/scripts](http://trac.webkit.org/browser/trunk/Source/WebCore/bindings/scripts)
+
+WebCore HTML元素定义(.h/.cpp/.idl)目录  
+[http://trac.webkit.org/browser/trunk/Source/WebCore/html](http://trac.webkit.org/browser/trunk/Source/WebCore/html)
+
+WebCore DOM元素定义(.h/.cpp/.idl)目录  
+[http://trac.webkit.org/browser/trunk/Source/WebCore/dom](http://trac.webkit.org/browser/trunk/Source/WebCore/dom)
+
+自动生成绑定代码目录  
+webkit\WebKitBuild\Debug\obj32\WebCore\DerivedSources

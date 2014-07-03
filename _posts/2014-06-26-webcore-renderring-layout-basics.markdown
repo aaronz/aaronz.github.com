@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "WebKit渲染 - 布局简介"
+title:  "WebKit渲染 - 布局"
 date:   2014-06-26 00:00:00
 categories: Mechanism
 ---

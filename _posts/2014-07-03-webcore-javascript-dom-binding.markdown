@@ -5,7 +5,7 @@ date:   2014-07-03 00:00:00
 categories: Mechanism
 ---
 
-浏览器中的各种精彩的动态效果大多数都是通过JavaScript调用DOM对象来完成的，但是浏览器是如何实现JavaScript脚本对浏览器的DOM对象访问的？本文通过解析WekKit实现来揭开答案。
+浏览器中的各种精彩的动态效果大多数都是通过JavaScript调用DOM对象来完成的，但是浏览器是如何实现JavaScript脚本对DOM对象访问的？本文将通过剖析WekKit实现来揭开答案。
 
 ![webkit](/assets/images/posts/webkit-arch.png)
 

@@ -13,7 +13,11 @@ categories: Mechanism
 
 # Web IDL
 
-WebCore作为一个模块化的浏览器引擎，如何才能很容易的与其他组件集成？例如JavaScriptCore，V8等。答案是通过Web IDL。Web IDL是一种标记语言，通过它可以定义对外暴露的接口。当WebKit编译时会通过脚本根据Web IDL定义生成对应的绑定源代码，从而将WebCore对象绑定到外界组件。
+WebKit中支持了五种绑定对象，分别是JavaScriptCore, V8, ObjectiveC, GObject和CPP。
+
+![WebKit Binding](/assets/images/posts/webkit-binding.jpg)
+
+WebCore作为一个模块化的浏览器引擎，如何才能很容易的与这些外部组件集成？答案是通过Web IDL。Web IDL是一种标记语言，通过它可以定义对外暴露的接口。当WebKit编译时会通过脚本根据Web IDL定义生成对应的绑定源代码，从而将WebCore对象绑定到外界组件。
 
 实际上DOM标准中也包含了对其元素的[IDL定义](http://www.w3.org/TR/1998/REC-DOM-Level-1-19981001/idl-definitions.html)。
 

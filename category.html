@@ -5,18 +5,23 @@ title: 分类归档
 <div class="section">
     <div class="wrapper">
         <div id="home">
-          <h3 class="text-muted">分类归档</h3>
-          <ul class="posts">
+          <h1 class="text-muted">分类归档</h1>
+          
             {% for cat in site.categories %}
-              <li class="archive-category" id="{{ cat[0] }}">{{ cat[0] }}</li>
+              <div class="archive-category">
+              <h3 id="{{ cat[0] }}">{{ cat[0] }}</h3>
+
+              <ul class="posts">
                 {% for post in cat[1] %}
                   <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
                   <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li>
                 {% endfor %}
+
+              </ul>
+              </div>
             {% endfor %}
-          </ul>
         </div>
     </div>
 </div>

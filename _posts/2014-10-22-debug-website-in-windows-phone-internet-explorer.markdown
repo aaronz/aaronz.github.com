@@ -25,8 +25,25 @@ categories: Debugging
 # Visual Studio 动态调试模拟器
 
 Visual Studio 2013与Windows Phone SDK安装好后，在VS的Tool菜单中可以找到Windows Phone Developer Power Tools，打开之后会启动下面这样一个工具，它可以帮你启动各种型号版本的Windows Phone模拟器。
+
 ![windows phone developer power tools](/assets/images/posts/windows-phone-developer-power-tools.png)
 
+在设备菜单中选择好需要的型号之后点击Connect按钮，就会启动一个对应版本的模拟器如下。
+
+![windows phone emulator](/assets/images/posts/wp-emulator.png)
+
+在模拟器中你可进行各种各样的操作来重现问题。接下来我们就来说调试。
+通过Visual Studio的debug菜单，我们可以选择Debug other target来选择模拟器中的Internet Explorer作为调试目标。
+
+![vs choose debug target](/assets/images/posts/vs-wp-debug-ie-target.png)
+
+点击该按钮之后就会弹出下面对话框来指定要调试的页面。
+
+![choose debug page](/assets/images/posts/choose-ie-setting.png)
+
+然后就可以开始调试了，这时VS会自动attach到模拟器中的IE进程，然后通过VS就可以进行模拟器IE中的DOM inspection, 各种CSS/Events/Properties都一目了然，也可以选择页面加载的脚本设置断点，查看调用栈和变量情况。
+
+![live debug wp ie](/assets/images/posts/live-debug-wp-ie.png)
 
 
 

@@ -45,5 +45,11 @@ Visual Studio 2013与Windows Phone SDK安装好后，在VS的Tool菜单中可以
 
 ![live debug wp ie](/assets/images/posts/live-debug-wp-ie.png)
 
+# 桌面版IE模拟Windows Phone IE
+
+桌面版的IE同样也可模拟Windows Phone版的IE，目前支持WP7-IE9和WP8-IE10，后续应该会添加更多的版本支持。通过桌面IE模拟器来进行调试我们就可以使用强大的F12开发者工具，进行layout/script/network/memory等各方面的调试。
+
+![desktop IE silumator](/assets/images/posts/desktop-ie-simulate-wp-ie.png)
+
 
 

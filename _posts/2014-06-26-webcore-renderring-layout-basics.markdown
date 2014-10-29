@@ -9,7 +9,7 @@ categories: Mechanism
 
 [https://www.webkit.org/blog/116/webcore-rendering-iii-layout-basics/](https://www.webkit.org/blog/116/webcore-rendering-iii-layout-basics/)
 
-当渲染器刚开始被创建加入到渲染树中时，它们还没有坐标和大小的信息。为所有的渲染器计算坐标和大小等几何属性的过程我们称之为布局(layout)。
+当渲染器刚开始被创建加入到渲染树中时，它们还没有坐标和大小的信息。为所有的渲染器计算坐标和大小等几何属性的过程称之为布局(layout)。
 
 ![webkit](/assets/images/posts/webkit.jpg)
 
@@ -47,7 +47,7 @@ bool normalChildNeedsLayout() const { return m_normalChildNeedsLayout; }
 
 [这里有CSS 2.1 标准说明书中对这个概念的介绍](http://www.w3.org/TR/CSS21/visuren.html#containing-block)。
 
-我从渲染树角度对这个概念的解释如下，
+从渲染树角度对这个概念的解释如下，
 
 渲染器的容器框是指决定子代渲染器位置信息的父节点框。换句话说当布局发生时，容器块会负责定位所有的子节点渲染器。
 
@@ -130,4 +130,4 @@ void layout()
 }
 {% endhighlight %}
 
-我们会在后续的章节中继续介绍layout方法。
+会在后续的章节中继续介绍layout方法。

@@ -9,7 +9,7 @@ categories: Mechanism
 
 [https://www.webkit.org/blog/114/webcore-rendering-i-the-basics/](https://www.webkit.org/blog/114/webcore-rendering-i-the-basics/)
 
-这是描述WebCore渲染系统系列文章的第一篇，我将他发在博客里，同时可以通过WebKit网站的文档访问。
+这是描述WebCore渲染系统系列文章的第一篇，将他发在博客里，同时可以通过WebKit网站的文档访问。
 
 ![webkit](/assets/images/posts/webkit.jpg)
 
@@ -17,7 +17,7 @@ categories: Mechanism
 
 # DOM树
 
-一个网页被解析成的节点树我们称之为文档对象模型(Document Object Model)，简称DOM。这些节点在WebCore中的基类为Node.
+一个网页被解析成的节点树称之为文档对象模型(Document Object Model)，简称DOM。这些节点在WebCore中的基类为Node.
 
 [Node.h](http://trac.webkit.org/browser/trunk/Source/WebCore/dom/Node.h)
 

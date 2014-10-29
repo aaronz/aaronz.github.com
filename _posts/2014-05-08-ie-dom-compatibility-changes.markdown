@@ -104,7 +104,7 @@ IE9从 DOM 中删除iframe后，将立即释放与 iframe 元素关联的资源�
 
 # MIME类型和纯文本内容 <a name="mime-plaintext"></a>
 
-IE9 标准模式 “text/plain” MIME 类型的文档不会通过 MIME 探查为其他类型。文档仅以纯文本方式呈现或下载。这样可以更轻松地共享 HTML 源代码片段。防止”text/plain”类型的脚本注入攻击。 配置服务器所有文档发送适当的 Content-Type 标头。例如，如果你的服务器提供可移植文档格式 (PDF) 文件以供下载，请确保文件使用 “application/pdf” MIME 类型。
+IE9 标准模式 “text/plain” MIME 类型的文档不会通过 MIME 探查为其他类型。文档仅以纯文本方式呈现或下载。这样可以更轻松地共享 HTML 源代码片段。防止”text/plain”类型的脚本注入攻击。 配置服务器所有文档发送适当的 Content-Type 标头。例如，如果服务器提供可移植文档格式 (PDF) 文件以供下载，请确保文件使用 “application/pdf” MIME 类型。
 
 # 原生XML对象类型 <a name="native-xml"></a>
 

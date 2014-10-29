@@ -5,7 +5,7 @@ date:   2014-06-14 00:00:00
 categories: Performance
 ---
 
-一般研究网页性能问题多数时候结论是网络下载，或者javascript操作性能，大多数时候CSS不会成为性能瓶颈。但是本着一个程序员的内心，还是希望每行代码都有好的性能，这篇文章我来总结一些常见的CSS性能相关的优化实践，不为面面俱到，希望能够从浏览器角度解释这些不同的做法如何造成性能的差异。
+一般研究网页性能问题多数时候结论是网络下载，或者javascript操作性能，大多数时候CSS不会成为性能瓶颈。但是本着一个程序员的内心，还是希望每行代码都有好的性能，这篇文章来总结一些常见的CSS性能相关的优化实践，不为面面俱到，希望能够从浏览器角度解释这些不同的做法如何造成性能的差异。
 
 ![css](/assets/images/posts/wordle-css.jpg)
 
@@ -62,7 +62,7 @@ Steve Souders[这篇文章](http://www.stevesouders.com/blog/2009/04/09/dont-use
 
 CSS有[多种选择器](http://www.w3schools.com/cssref/css_selectors.asp)以使样式表可以简单明确的确定样式所要应用的元素。
 
-这里有个[CSS选择器的测试页面](http://www.w3schools.com/cssref/trysel.asp)，可以帮助你理解不同的选择器规则。
+这里有个[CSS选择器的测试页面](http://www.w3schools.com/cssref/trysel.asp)，可以帮助理解不同的选择器规则。
 
 对于CSS选择器一个常见的问题是过量使用ID选择器。由于ID选择器只能应用在对应ID的元素上，不能够被重用。例如下面的选择器，只能应用在#wrapping-element下面包含child-element class元素上。
 
@@ -110,7 +110,7 @@ div#id1 #id2 div,
 
 # 使用CSS Reset
 
-每个浏览器都定义了自己的默认样式，比如在主流桌面浏览器中的默认字体各不相同。如果你希望页面在不同的浏览器中具有相同的显示效果，常用的方法是使用CSS Reset库来将各个浏览器的CSS重置。
+每个浏览器都定义了自己的默认样式，比如在主流桌面浏览器中的默认字体各不相同。如果希望页面在不同的浏览器中具有相同的显示效果，常用的方法是使用CSS Reset库来将各个浏览器的CSS重置。
 
 但这个性能有什么相关？因为通常情况下使用CSS Reset库可以简化CSS规则，减小CSS文件大小。
 

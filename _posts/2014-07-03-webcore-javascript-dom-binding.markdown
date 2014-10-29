@@ -50,7 +50,7 @@ module core {
 
 # Proxy模式
 
-通过Web IDL生成绑定代码通过proxy设计模式来完成对原始DOM对象的包装，从而使JavaScriptCore只能够访问到我们希望暴露的接口。Proxy模式的设计原理可以通过下图来阐释。
+通过Web IDL生成绑定代码通过proxy设计模式来完成对原始DOM对象的包装，从而使JavaScriptCore只能够访问到希望暴露的接口。Proxy模式的设计原理可以通过下图来阐释。
 
 ![proxy design pattern](/assets/images/posts/Proxy_pattern_diagram.png)
 

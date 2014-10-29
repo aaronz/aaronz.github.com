@@ -6,7 +6,7 @@ categories: Debugging
 ---
 
 大多数人用IE都知道IE有个F12
-开发者工具可以用来调试网页的各种问题，本文以IE10为例，尽量少谈[**基础**](http://msdn.microsoft.com/zh-cn/library/ie/gg699336%28v=vs.85%29.aspx)，只说说IE脚本调试中的进阶技巧。如果你的网页脚本在IE上运行出现问题，希望下面的技巧可以帮你省点时间。
+开发者工具可以用来调试网页的各种问题，本文以IE10为例，尽量少谈[**基础**](http://msdn.microsoft.com/zh-cn/library/ie/gg699336%28v=vs.85%29.aspx)，只说说IE脚本调试中的进阶技巧。如果网页脚本在IE上运行出现问题，希望下面的技巧可以省点时间。
 
 <!--more-->
 
@@ -15,9 +15,9 @@ categories: Debugging
 看控制台输出(console output) <a name="console"></a>
 ============================
 
-如果说你发现网页有什么功能不工作，第一步要做什么？我建议先查看控制台输出。很多时候控制台已经告诉脚本执行过程中的问题，会省掉你分析代码、设断点的时间。
+如果发现网页有什么功能不工作，第一步要做什么？建议先查看控制台输出。很多时候控制台已经告诉脚本执行过程中的问题，会省掉分析代码、设断点的时间。
 
-其实我也不是故意的，随便打开个网页总遇到些脚本错误。赶紧回头开着console看看自己的网站是不是也一样。-
+其实也不是故意的，随便打开个网页总遇到些脚本错误。赶紧回头开着console看看自己的网站是不是也一样。-
 \_-!!
 
 [![debug\_js\_1](http://images.cnitblog.com/blog/502305/201308/28232349-79174531f0f448638a19f3b5f8978563.png "debug_js_1")](http://images.cnitblog.com/blog/502305/201308/28232348-0fbf08c0fffb416288eceb355a3862d9.png)
@@ -29,7 +29,7 @@ categories: Debugging
 
 1\. 点箭头(Select Element by Click)
 
-2\. 点你要查看的元素
+2\. 点要查看的元素
 
 3\. 看属性窗口，元素属性和事件都在里面了(可以动态修改)。
 
@@ -57,12 +57,12 @@ categories: Debugging
 
 3\. Continue after exception
 
-如果你觉得问题出在异常上，不妨启用异常断点来调试下。如果你坚信问题不在异常上，那就禁用这个异常断点，免得被异常打断调试。
+如果觉得问题出在异常上，不妨启用异常断点来调试下。如果坚信问题不在异常上，那就禁用这个异常断点，免得被异常打断调试。
 
 文档模式(document mode) <a name="document-mode"></a>
 =======================
 
-很多网页在IE上显示出问题都因为文档模式，比如有些网页中大量使用脚本，在IE上总觉得运行慢，打开F12看看网页在什么文档模式下运行，文档模式决定了IE使用什么渲染引擎和JS引擎，例如IE9+中对Javascript的执行速度有显著提高，但是如果你的网页被固定在了IE8之前的文档模式，那新的JS引擎提速就被忽略了。
+很多网页在IE上显示出问题都因为文档模式，比如有些网页中大量使用脚本，在IE上总觉得运行慢，打开F12看看网页在什么文档模式下运行，文档模式决定了IE使用什么渲染引擎和JS引擎，例如IE9+中对Javascript的执行速度有显著提高，但是如果网页被固定在了IE8之前的文档模式，那新的JS引擎提速就被忽略了。
 
 [![debug\_js5](http://images.cnitblog.com/blog/502305/201308/28232357-425a88cec86e43368d4681adfadc6a8a.png "debug_js5")](http://images.cnitblog.com/blog/502305/201308/28232356-6fdf4e53c4854c5790836bbec2d73976.png)
 
@@ -84,7 +84,7 @@ Studio调试脚本。
 [![debug\_js7](http://images.cnitblog.com/blog/502305/201308/28232359-34db9b9a6edd4519b5c6677860f32155.png "debug_js7")](http://images.cnitblog.com/blog/502305/201308/28232359-2abfde8b85474bf88180df25f68bf64a.png)
 
 Visual
-Studio就会附加到IE进程，接下来你就可以用VS的强大调试功能在调试脚本了，比如你最常用的F12
+Studio就会附加到IE进程，接下来就可以用VS的强大调试功能在调试脚本了，比如最常用的F12
 (Go to definition)
 
 [![debug\_js8](http://images.cnitblog.com/blog/502305/201308/28232403-52b7c821e18d4f5f8bf67f1eade5f207.png "debug_js8")](http://images.cnitblog.com/blog/502305/201308/28232401-0dc9452b81c540588a2393f96b70d370.png)
@@ -92,7 +92,7 @@ Studio就会附加到IE进程，接下来你就可以用VS的强大调试功能�
 Fiddler
 =======
 
-[Fiddler](http://fiddler2.com)这个工具应该是众所周知的了，写如何用fiddler的文章也有很多，这里提到他是因为他是个不错的重放工具，比如问题发生在你访问不到的环境中，或者好不容易重现了一次，抓包可以通过fiddler自动重放功能反复调试。不用正真去访问网站或者重现问题。
+[Fiddler](http://fiddler2.com)这个工具应该是众所周知的了，写如何用fiddler的文章也有很多，这里提到他是因为他是个不错的重放工具，比如问题发生在访问不到的环境中，或者好不容易重现了一次，抓包可以通过fiddler自动重放功能反复调试。不用正真去访问网站或者重现问题。
 
 如何导入抓包，重放抓包可以参考下面文档。
 
@@ -102,14 +102,14 @@ Traffic](http://fiddler2.com/documentation/Generate-Traffic/Tasks/ReplayAutoresp
 JSLint
 ======
 
-如果调试的是你自己的代码，将代码贴到[JSLint](http://www.jslint.com)中看看工具如何评价你的代码。JSLint可以帮你检查语法错误、提示代码风格问题和结构问题。
+如果调试的是自己的代码，将代码贴到[JSLint](http://www.jslint.com)中看看评价如何。JSLint可以检查语法错误、提示代码风格问题和结构问题。
 
 具体可以参考[JSLint的文档](http://www.jslint.com/lint.html)。
 
 JSFiddle
 ========
 
-如果你的代码还在开发阶段，[JSFiddle](http://jsfiddle.net/)是个不错的在线编辑器，你可以在线编辑、运行HTML,
+如果代码还在开发阶段，[JSFiddle](http://jsfiddle.net/)是个不错的在线编辑器，可以在线编辑、运行HTML,
 Javascript, CSS，引用各种流行的的JS
 library，还有简单的快捷键支持，在线工具做成这样算不错的了。
 
@@ -119,7 +119,7 @@ Quirks Mode <a name="quirksmode"></a>
 ===========
 
 Javascript少不了要处理DOM和CSS，各种DOM方法、属性，样式表在各个版本的浏览器是否支持，直接查查[Quirks
-Mode](http://quirksmode.org/)网站，应该有你想找的内容。
+Mode](http://quirksmode.org/)网站，应该有想找的内容。
 
 再上个图
 
@@ -136,7 +136,7 @@ Patterns](http://msdn.microsoft.com/en-us/library/bb250448(v=VS.85).aspx)
 [Memory Leakage in Internet
 Explorer](http://www.codeproject.com/Articles/12231/Memory-Leakage-in-Internet-Explorer-revisited)
 
-不过你真的有幸写出让浏览器也想不清楚的代码，可以尝试下下面的工具。
+不过真的有幸写出让浏览器也想不清楚的代码，可以尝试下下面的工具。
 
 [s-IEve](http://home.wanadoo.nl/jsrosman/sIEve-0.0.8.exe)可以追踪网页泄露元素，打开这个工具估计就可以看明白怎么回事了，简单的使用方法如下，\
 1. 下载打开s-IEve工具，通过s-IEve来打开存在内存使用问题的网页\

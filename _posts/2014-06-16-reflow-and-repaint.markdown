@@ -29,7 +29,7 @@ categories: Mechanism
 
 ## 布局
 
-我们可以参考WebKit的实现来解释布局的逻辑。在WebKit中页面最终会被解析成为渲染树，渲染树的节点通过[RenderObject](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderObject.h)定义。其中包含了以下常用遍历渲染树的方法，
+可以参考WebKit的实现来解释布局的逻辑。在WebKit中页面最终会被解析成为渲染树，渲染树的节点通过[RenderObject](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderObject.h)定义。其中包含了以下常用遍历渲染树的方法，
 
 {% highlight cpp %}
 RenderObject* firstChild() const;
@@ -147,7 +147,7 @@ ChildEBP RetAddr
 
 # 触发操作
 
-说完了浏览器实现，接下来我们来看一下什么操作会触发布局或重绘。
+说完了浏览器实现，接下来看一下什么操作会触发布局或重绘。
 
 ## 触发布局的操作
 
@@ -179,7 +179,7 @@ document.body.appendChild(document.createTextNode('dude!')); // new DOM element 
 
 # 编程实践
 
-由于过多会导致reflow的操作会影响页面性能，我们要尽量减少reflow操作。下面使一些常用的方法。
+由于过多会导致reflow的操作会影响页面性能，要尽量减少reflow操作。下面使一些常用的方法。
 
 +   不要一条一条地修改DOM的样式。预先定义好css的class，然后修改DOM的className。
 +   把DOM离线后修改：

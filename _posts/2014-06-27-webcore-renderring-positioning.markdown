@@ -80,7 +80,7 @@ void removePositionedObject(RenderObject*);
 bool layoutOnlyPositionedObjects
 {% endhighlight %}
 
-layoutPositionedObjects方法负责定位对象的位置布局。它接收一个布尔变量作为参数，代表是否需要对所有对象重新布局。重新布局在很多情况下需要被用到，后续文章我们会详细描述。
+layoutPositionedObjects方法负责定位对象的位置布局。它接收一个布尔变量作为参数，代表是否需要对所有对象重新布局。重新布局在很多情况下需要被用到，后续文章会详细描述。
 
 {% highlight cpp %}
 bool layoutPositionedObjects(bool relayoutChildren)

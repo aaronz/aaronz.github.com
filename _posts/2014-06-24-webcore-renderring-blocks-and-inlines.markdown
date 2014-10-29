@@ -9,7 +9,7 @@ categories: Mechanism
 
 [https://www.webkit.org/blog/115/webcore-rendering-ii-blocks-and-inlines/](https://www.webkit.org/blog/115/webcore-rendering-ii-blocks-and-inlines/)
 
-在前面一篇文章中我描述了CSS框模型的基本结构。在这篇文章中我将描述RenderBox的子类，来帮助读者了解WebCore如何实现block和inline两种布局方式。
+在前面一篇文章中描述了CSS框模型的基本结构。在这篇文章中将描述RenderBox的子类，来帮助读者了解WebCore如何实现block和inline两种布局方式。
 
 ![webkit](/assets/images/posts/webkit.jpg)
 
@@ -59,7 +59,7 @@ div { display: inline-block }
 
 # Table
 
-Table元素默认为block流。然而我们可以通过CSS属性将其变为inline。
+Table元素默认为block流。然而可以通过CSS属性将其变为inline。
 
 {% highlight css %}
 table { display: inline-table }
@@ -67,7 +67,7 @@ table { display: inline-table }
 
 从外部来看inline-table是一个inline replaced元素(isReplaced() = true)，但其内部仍然是一个正常的table。
 
-在WebCore中通过RenderTable类表示table。它继承自RenderBlock，具体原因我们在后续讲解定位的章节详述。
+在WebCore中通过RenderTable类表示table。它继承自RenderBlock，具体原因在后续讲解定位的章节详述。
 
 [RenderTable.h](http://trac.webkit.org/browser/trunk/Source/WebCore/rendering/RenderTable.h)
 

@@ -5,7 +5,7 @@ date:   2014-07-01 00:00:00
 categories: How-to
 ---
 
-如果想要了解WebKit难免要将整个项目源代码下载下来重新编译，然后亲手调试一番。WebKit在Windows平台上可以很容易的完成编译。下面是我在Windows 8.1上使用VS2013编译WebKit的步骤，想同样了解WebKit的朋友可以参考尝试一下。
+如果想要了解WebKit难免要将整个项目源代码下载下来重新编译，然后亲手调试一番。WebKit在Windows平台上可以很容易的完成编译。下面是在Windows 8.1上使用VS2013编译WebKit的步骤，想同样了解WebKit的朋友可以参考尝试一下。
 
 ![webkit](/assets/images/posts/webkit.jpg)
 
@@ -19,7 +19,7 @@ categories: How-to
     + 运行 cygwin-downloader.exe，它会开始下载各种所需的安装包。
     + 当所有的包下载完毕后，cygwin安装程序会自动启动。
     + 选择Install from local directory，选择下一步直至安装完毕。
-    + 默认情况下Cygwin会安装pythong 2.7, 但是编译webkit需要2.6.8, 你可以启动cygwin安装，选择install from internet来选择安装python 2.6.8版本。
+    + 默认情况下Cygwin会安装pythong 2.7, 但是编译webkit需要2.6.8, 可以启动cygwin安装，选择install from internet来选择安装python 2.6.8版本。
     + 另外需要通过Cygwin安装依次安装gcc->Devel->"gcc-g++: GNU Compiler Collection(C++)", gdb->Devel->"gdb: The GNU Debugger"
     + 打开c:\cygwin\etc\profile, 更改第32行为：PATH="/bin:${PATH}" ，通过在行首添加#注释掉44-50行TMP variable相关内容。
 3. 下载安装[June 2010 DirectX SDK](http://www.microsoft.com/en-us/download/details.aspx?id=6812)。

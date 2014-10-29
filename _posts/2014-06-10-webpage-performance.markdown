@@ -16,7 +16,7 @@ categories: Performance
 最佳实践
 ========
 
-最佳实践我们引用的来自yahoo前端性能团队总结的35条黄金定律。原文猛击[这里](http://developer.yahoo.com/performance/rules.html)。下面我们分门别类将每条的关键点总结一下。
+最佳实践引用的来自yahoo前端性能团队总结的35条黄金定律。原文猛击[这里](http://developer.yahoo.com/performance/rules.html)。下面分门别类将每条的关键点总结一下。
 
 
 网页内容
@@ -28,7 +28,7 @@ categories: Performance
 flash等)。**减少请求次数**是缩短响应时间的关键！可以通过简化页面设计来减少请求次数，但页面内容较多可以采用以下技巧。
 
 **1. 捆绑文件**:
-现在有很多现成的库可以帮你将多个脚本文件捆绑成一个文件，将多个样式表文件捆绑成一个文件，以此来减少文件的下载次数。例如在asp.net中可以使用[ScriptManager](http://msdn.microsoft.com/en-us/library/cc488552%28v=vs.90%29.aspx)，asp.net
+现在有很多现成的库可以将多个脚本文件捆绑成一个文件，将多个样式表文件捆绑成一个文件，以此来减少文件的下载次数。例如在asp.net中可以使用[ScriptManager](http://msdn.microsoft.com/en-us/library/cc488552%28v=vs.90%29.aspx)，asp.net
 MVC中的[Bundling](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)。
 
 2\. [**CSS
@@ -37,7 +37,7 @@ Sprites**](http://www.w3schools.com/css/css_image_sprites.asp):
 
 ![](http://img3.douban.com/pics/app/app_icons_50_5.jpg)
 
-豆瓣把他的图标集中在一起，然后我们看他如何控制只显示第一个图标的
+豆瓣把他的图标集中在一起，然后看他如何控制只显示第一个图标的
 
     .app-icon-read {
         background-position
@@ -65,7 +65,7 @@ transparent;
     }
 
 3\. [**Image Maps**](http://en.wikipedia.org/wiki/Image_map)：
-也是将多幅图拼在一起，然后通过坐标来控制显示导航。这里有个经典的例子，选中图片中的某个人就会将你带到不同的链接。
+也是将多幅图拼在一起，然后通过坐标来控制显示导航。这里有个经典的例子，选中图片中的某个人就会导向到不同的链接。
 
 ![](http://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/JoshuaReynoldsParty.jpg/350px-JoshuaReynoldsParty.jpg)
 
@@ -87,8 +87,8 @@ image的显示效果为一个勾选的checkbox。
 
 ### [减少DNS查询次数](http://developer.yahoo.com/performance/rules.html#dns_lookups) <a name="dnslookup"></a>
 
-DNS查询也消耗响应时间，如果我们的网页内容来自各个不同的domain
-(比如嵌入了开放广告，引用了外部图片或脚本)，那么客户端首次解析这些domain也需要消耗一定的时间。DNS查询结果缓存在本地系统和浏览器中一段时间，所以DNS查询一般是对首次访问响应速度有所影响。下面是我清空本地dns后访问博客园主页dns的查询请求。看少去还不少哦。
+DNS查询也消耗响应时间，如果网页内容来自各个不同的domain
+(比如嵌入了开放广告，引用了外部图片或脚本)，那么客户端首次解析这些domain也需要消耗一定的时间。DNS查询结果缓存在本地系统和浏览器中一段时间，所以DNS查询一般是对首次访问响应速度有所影响。下面是清空本地dns后访问博客园主页dns的查询请求。看少去还不少哦。
 
 [![2](http://images.cnitblog.com/blog/502305/201308/10203237-d318c1c36e264486bfa64545c993833f.png "2")](http://images.cnitblog.com/blog/502305/201308/10203233-1992fc4f7daf42a7b7b013158cc22eb2.png)
 
@@ -100,11 +100,11 @@ DNS查询也消耗响应时间，如果我们的网页内容来自各个不同�
           Location: http://example.com/newuri
           Content-Type: text/html
 
-    当客户端遇到这种回复的时候，用户只能等待客户端再次发送请求，有的网站甚至会一直跳n次，跳到他想带你去的地方…当然在这个时候用户看不到任何页面内容，只有浏览器的进度条一直在刷新。
+    当客户端遇到这种回复的时候，用户只能等待客户端再次发送请求，有的网站甚至会一直跳n次，最终（如果运气好的话）可以跳到目标网页…当然在这个时候用户看不到任何页面内容，只有浏览器的进度条一直在刷新。
 
 ### [缓存Ajax](http://developer.yahoo.com/performance/rules.html#cacheajax) <a name="cacheajax"></a>
 
-Ajax可以帮助我们异步的下载网页内容，但是有些网页内容即使是异步的，用户还是在等待它的返回结果，例如ajax的返回是用户联系人的下拉列表。所以我们还是要注意尽量应用以下规则提高ajax的响应速度。
+Ajax可以帮助异步的下载网页内容，但是有些网页内容即使是异步的，用户还是在等待它的返回结果，例如ajax的返回是用户联系人的下拉列表。所以还是要注意尽量应用以下规则提高ajax的响应速度。
 
 -   添加Expires 或 Cache-Control报文头使回复可以被客户端缓存
 -   压缩回复内容
@@ -115,7 +115,7 @@ Ajax可以帮助我们异步的下载网页内容，但是有些网页内容即�
 
 ### [延迟加载](http://developer.yahoo.com/performance/rules.html#postload) <a name="postload"></a>
 
-这里讨论延迟加载需要我们知道我们的**网页最初加载需要的最小内容集**是什么。剩下的内容就可以推到延迟加载的集合中。
+这里讨论延迟加载需要知道**网页最初加载需要的最小内容集**是什么。剩下的内容就可以推到延迟加载的集合中。
 
 Javascript是典型的可以延迟加载内容。一个比较激进的做法是开发网页时先确保网页在没有Javascript的时候也可以基本工作，然后通过延迟加载脚本来完成一些高级的功能。
 
@@ -138,11 +138,11 @@ sprite。
 
 网页中元素过多对网页的加载和脚本的执行都是沉重的负担，500个元素和5000个元素在加载速度上会有很大差别。
 
-想知道你的网页中有多少元素，通过在浏览器中的一条简单命令就可以算出，
+想知道网页中有多少元素，通过在浏览器中的一条简单命令就可以算出，
 
 `document.getElementsByTagName('*').length`
 
-多少算是多了呢？雅虎在写这篇文章的时候号称主页只有700多元素，但现在接近多了一倍。我们的网页至少别比雅虎还多吧。。。
+多少算是多了呢？雅虎在写这篇文章的时候号称主页只有700多元素，但现在接近多了一倍。你的网页至少别比雅虎还多吧。。。
 
 [![5](http://images.cnitblog.com/blog/502305/201308/10221016-30f0ac240d35470d8ad3fd5f519a2a6e.png "5")](http://images.cnitblog.com/blog/502305/201308/10221015-2e97f37f61144b29b657997ebed05b06.png)
 
@@ -150,7 +150,7 @@ sprite。
 
 浏览器一般对同一个域的下载连接数有所限制，按照域名划分下载内容可以浏览器增大并行下载连接，但是注意控制域名使用在2-4个之间，不然dns查询也是个问题。
 
-一般网站规划会将静态资源放在类似于static.example.com，动态内容放在[www.example.com](http://www.example.com)上。这样做还有一个好处是可以在静态的域名上避免使用cookie。后面我们会在cookie的规则中提到。   
+一般网站规划会将静态资源放在类似于static.example.com，动态内容放在[www.example.com](http://www.example.com)上。这样做还有一个好处是可以在静态的域名上避免使用cookie。后面会在cookie的规则中提到。   
 
 ### [减少iframe数量](http://developer.yahoo.com/performance/rules.html#iframes) <a name="iframes"></a>
 
@@ -170,16 +170,16 @@ sprite。
 
 ### [避免404](http://developer.yahoo.com/performance/rules.html#no404) <a name="no404"></a>
 
-404我们都不陌生，代表服务器没有找到资源，我们要特别要注意404的情况不要在我们提供的网页资源上，客户端发送一个请求但是服务器却返回一个无用的结果，时间浪费掉了。
+404都不陌生，代表服务器没有找到资源，要特别要注意404的情况不要在提供的网页资源上，客户端发送一个请求但是服务器却返回一个无用的结果，时间浪费掉了。
 
-更糟糕的是我们网页中需要加载一个外部脚本，结果返回一个404，不仅阻塞了其他脚本下载，下载回来的内容(404)客户端还会将其当成Javascript去解析。
+更糟糕的是网页中需要加载一个外部脚本，结果返回一个404，不仅阻塞了其他脚本下载，下载回来的内容(404)客户端还会将其当成Javascript去解析。
 
 服务器
 ------
 
 ### [使用CDN](http://developer.yahoo.com/performance/rules.html#cdn) <a name="cdn"></a>
 
-再次强调第一条黄金定律，减少网页内容的下载时间。提高下载速度还可以通过CDN(内容分发网络)来提升。CDN通过部署在不同地区的服务器来提高客户的下载速度。如果你的网站上有大量的静态内容，世界各地的用户都在访问，我说的是youtube么？那CDN是必不可少的。事实上大多数互联网中的巨头们都有自己的CDN。我们自己的网站可以先通过[免费的CDN供应商](http://en.wikipedia.org/wiki/Content_delivery_network#Free_CDNs)来分发网页资源。
+再次强调第一条黄金定律，减少网页内容的下载时间。提高下载速度还可以通过CDN(内容分发网络)来提升。CDN通过部署在不同地区的服务器来提高客户的下载速度。如果网站上有大量的静态内容，世界各地的用户都在访问，说的是youtube么？那CDN是必不可少的。事实上大多数互联网中的巨头们都有自己的CDN。自己的网站可以先通过[免费的CDN供应商](http://en.wikipedia.org/wiki/Content_delivery_network#Free_CDNs)来分发网页资源。
 
 ### [添加Expires 或Cache-Control报文头](http://developer.yahoo.com/performance/rules.html#expires) <a name="expires"></a>
 
@@ -208,12 +208,12 @@ HTTP Compression of Dynamic Content (IIS
 
 ### [配置ETags](http://developer.yahoo.com/performance/rules.html#etags) <a name="etags"></a>
 
-虽然标题叫配制ETags，但是这里你要根据具体情况进行一些判断。首先Etag简单来说是通过一个文件版本标识使得服务器可以轻松判断该请求的内容是否有所更新，如果没有就回复304
+虽然标题叫配制ETags，但是这里要根据具体情况进行一些判断。首先Etag简单来说是通过一个文件版本标识使得服务器可以轻松判断该请求的内容是否有所更新，如果没有就回复304
 (not modified)，从而避免下载整个文件。
 
-但是Etags的版本信息即使主流服务器未能很好地支持跨服务器的判断，比如你从一个服务器集群中一台得到Etags，然后发送到了另一台那么校验很有可能会失败。
+但是Etags的版本信息即使主流服务器未能很好地支持跨服务器的判断，比如从一个服务器集群中一台得到Etags，然后发送到了另一台那么校验很有可能会失败。
 
-如果你遇到这样的问题，IIS 7中可以通过如下方法将Etag去掉，使用URL
+如果遇到这样的问题，IIS 7中可以通过如下方法将Etag去掉，使用URL
 Rewrite，然后在web.config中添加如下配制
 
     <rewrite>
@@ -245,25 +245,25 @@ IIS8里提供了一个简单配制来直接关闭Etag，
 
 ### [尽早flush输出](http://developer.yahoo.com/performance/rules.html#flush) <a name="flush"></a>
 
-网页后台程序中我们知道有个方法叫[Response.Flush()](http://msdn.microsoft.com/en-us/library/system.web.httpresponse.flush.aspx)，一般我们调用它都是在程序末尾，但注意这个方法可以被调用多次。目的是可以将现有的缓存中的回复内容先发给客户端，让客户端“有活干”。
+网页后台程序中有个方法叫[Response.Flush()](http://msdn.microsoft.com/en-us/library/system.web.httpresponse.flush.aspx)，一般调用它都是在程序末尾，但注意这个方法可以被调用多次。目的是可以将现有的缓存中的回复内容先发给客户端，让客户端“有活干”。
 
-那在什么时候调用这个方法比较好呢？一般情况下我们可以在对于需要加载比较多外部脚本或者样式表时可以提前调用一次，客户端收到了关于脚本或其他外部资源的链接可以并行的先发请求去下载，服务器接下来把后续的处理结果发给客户端。
+那在什么时候调用这个方法比较好呢？一般情况下可以在对于需要加载比较多外部脚本或者样式表时可以提前调用一次，客户端收到了关于脚本或其他外部资源的链接可以并行的先发请求去下载，服务器接下来把后续的处理结果发给客户端。
 
 ### [使用GET Ajax请求](http://developer.yahoo.com/performance/rules.html#ajax_get) <a name="ajax_get"></a>
 
 浏览器在实现XMLHttpRequest
-POST的时候分成两步，先发header，然后发送数据。而GET却可以用一个TCP报文完成请求。另外GET从语义上来讲是去服务器取数据，而POST则是向服务器发送数据，所以我们使用Ajax请求数据的时候尽量通过GET来完成。
+POST的时候分成两步，先发header，然后发送数据。而GET却可以用一个TCP报文完成请求。另外GET从语义上来讲是去服务器取数据，而POST则是向服务器发送数据，所以使用Ajax请求数据的时候尽量通过GET来完成。
 
 关于GET和POST的详细对比可以查看[这里](http://www.w3schools.com/tags/ref_httpmethods.asp)。
 
 ### [避免空的图片src](http://developer.yahoo.com/performance/rules.html#emptysrc) <a name="emptysrc"></a>
 
-空的图片src仍然会使浏览器发送请求到服务器，这样完全是浪费时间，而且浪费服务器的资源。尤其是你的网站每天被很多人访问的时候，这种空请求造成的伤害不容忽略。
+空的图片src仍然会使浏览器发送请求到服务器，这样完全是浪费时间，而且浪费服务器的资源。尤其是网站每天被很多人访问的时候，这种空请求造成的伤害不容忽略。
 
 浏览器如此实现也是根据RFC 3986 - Uniform Resource
 Identifiers标准，空的src被定义为当前页面。
 
-所以注意我们的网页中是否存在这样的代码
+所以注意网页中是否存在这样的代码
 
 **straight HTML**\
 \<img src=""\>
@@ -277,7 +277,7 @@ Cookie
 
 ### [减少Cookie大小](http://developer.yahoo.com/performance/rules.html#cookie_size) <a name="cookie_size"></a>
 
-Cookie被用来做认证或个性化设置，其信息被包含在http报文头中，对于cookie我们要注意以下几点，来提高请求的响应速度，
+Cookie被用来做认证或个性化设置，其信息被包含在http报文头中，对于cookie要注意以下几点，来提高请求的响应速度，
 
 -   去除没有必要的cookie，如果网页不需要cookie就完全禁掉
 -   将cookie的大小减到最小
@@ -291,7 +291,7 @@ Use Cookies Mode for Session State (IIS
 
 ### [页面内容使用无cookie域名](http://developer.yahoo.com/performance/rules.html#cookie_free) <a name="cookie_free"></a>
 
-大多数网站的静态资源都没必要cookie，我们可以采用不同的domain来单独存放这些静态文件，这样做不仅可以减少cookie大小从而提高响应速度，还有一个好处是有些proxy拒绝缓存带有cookie的内容，如果能将这些静态资源cookie去除，那就可以得到这些proxy的缓存支持。
+大多数网站的静态资源都没必要cookie，可以采用不同的domain来单独存放这些静态文件，这样做不仅可以减少cookie大小从而提高响应速度，还有一个好处是有些proxy拒绝缓存带有cookie的内容，如果能将这些静态资源cookie去除，那就可以得到这些proxy的缓存支持。
 
 常见的划分domain的方式是将静态文件放在static.example.com，动态内容放在[www.example.com](http://www.example.com)。
 
@@ -312,9 +312,9 @@ CSS表达式可以动态的设置CSS属性，在**IE5-IE8**中支持，**其他�
 
     background-color: expression( (new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );
 
-CSS表达式的问题在于它被重新计算的次数远比我们想象的要多，不仅在网页绘制或大小改变时计算，即使我们滚动屏幕或者移动鼠标的时候也在计算，因此我们还是尽量避免使用它来防止使用不当而造成的性能损耗。
+CSS表达式的问题在于它被重新计算的次数远比想象的要多，不仅在网页绘制或大小改变时计算，即使滚动屏幕或者移动鼠标的时候也在计算，因此还是尽量避免使用它来防止使用不当而造成的性能损耗。
 
-如果想达到类似的效果我们可以通过简单的脚本做到。
+如果想达到类似的效果可以通过简单的脚本做到。
 
     <html>
     <head>
@@ -353,9 +353,9 @@ Javascript
 
 [HTTP/1.1
 specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)建议浏览器对同一个hostname不要超过两个并行下载连接，
-所以当你从多个domain下载图片的时候可以提高并行下载连接数量。但是当脚本在下载的时候，即使是来自不同的hostname浏览器也不会下载其他资源，因为浏览器要在脚本下载之后依次解析和执行。
+所以当从多个domain下载图片的时候可以提高并行下载连接数量。但是当脚本在下载的时候，即使是来自不同的hostname浏览器也不会下载其他资源，因为浏览器要在脚本下载之后依次解析和执行。
 
-因此对于脚本提速，我们可以考虑以下方式，
+因此对于脚本提速，可以考虑以下方式，
 
 -   把脚本置底，这样可以让网页渲染所需要的内容尽快加载显示给用户。
 -   现在主流浏览器都支持[defer](http://www.w3schools.com/tags/att_script_defer.asp)关键字，可以指定脚本在文档加载后执行。
@@ -367,7 +367,7 @@ specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)�
 
 同时将Javascript和CSS从inline变为external也减小了网页内容的大小。
 
-使用外部Javascript和CSS文件的决定因素在于这些外部文件的重用率，如果用户在浏览我们的页面时会访问多次相同页面或者可以重用脚本的不同页面，那么外部文件形式可以为你带来很大的好处。但对于用户通常只会访问一次的页面，例如microsoft.com首页，那inline的javascript和css相对来说可以提供更高的效率。
+使用外部Javascript和CSS文件的决定因素在于这些外部文件的重用率，如果用户在浏览页面时会访问多次相同页面或者可以重用脚本的不同页面，那么外部文件形式可以带来很大的好处。但对于用户通常只会访问一次的页面，例如microsoft.com首页，那inline的javascript和css相对来说可以提供更高的效率。
 
 ### [精简Javascript和CSS](http://developer.yahoo.com/performance/rules.html#minify) <a name="minify"></a>
 
@@ -389,7 +389,7 @@ specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)�
 
 统计表明精简后的文件大小平均减少了21%，即使在应用Gzip的文件也会减少5%。
 
-例如我的网站上有5个CSS，4个Javascirpt，下面是分别经过bundling和minify之后的结果。
+例如网站上有5个CSS，4个Javascirpt，下面是分别经过bundling和minify之后的结果。
 
   ----------------------- ----------------------- -----------------------
   没有任何处理之前        [![6](http://images.cni
@@ -421,7 +421,7 @@ specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)�
                           4e6ddfa.png)
   ----------------------- ----------------------- -----------------------
 
-用来帮助我们做精简的工具很多，主要可以参考如下，
+用来帮助做精简的工具很多，主要可以参考如下，
 
 JS compressors:
 
@@ -456,7 +456,7 @@ CSS compressors:
 
 ### [减少DOM访问](http://developer.yahoo.com/performance/rules.html#dom_access) <a name="dom_access"></a>
 
-通过Javascript访问DOM元素没有我们想象中快，元素多的网页尤其慢，对于Javascript对DOM的访问我们要注意
+通过Javascript访问DOM元素没有想象中快，元素多的网页尤其慢，对于Javascript对DOM的访问要注意
 
 -   缓存已经访问过的元素
 -   Offline更新节点然后再加回DOM Tree
@@ -466,16 +466,16 @@ CSS compressors:
 
 这里说智能的事件处理需要开发者对事件处理有更深入的了解，通过不同的方式尽量少去触发事件，如果必要就尽早的去处理事件。
 
-比如一个div中10个按钮都需要事件句柄，那么我们可以将事件放在div上，在事件冒泡过程中捕获该事件然后判断事件来源。
+比如一个div中10个按钮都需要事件句柄，那么可以将事件放在div上，在事件冒泡过程中捕获该事件然后判断事件来源。
 
 图片
 ----
 
 ### [优化图像](http://developer.yahoo.com/performance/rules.html#opt_images) <a name="opt_images"></a>
 
-当美工完成了网站的图片设计后，我们可以在上传图片之前对其做以下优化
+当美工完成了网站的图片设计后，可以在上传图片之前对其做以下优化
 
--   检查GIF图片中图像颜色的数量是否和调色板规格一致。如果你发现图片中只用到了4种颜色，而在调色板的中显示的256色的颜色槽，那么这张图片就还有压缩的空间。可以使用[imagemagick](http://www.imagemagick.org/)检查：\
+-   检查GIF图片中图像颜色的数量是否和调色板规格一致。如果发现图片中只用到了4种颜色，而在调色板的中显示的256色的颜色槽，那么这张图片就还有压缩的空间。可以使用[imagemagick](http://www.imagemagick.org/)检查：\
     identify -verbose image.gif
 -   尝试把GIF格式转换成PNG格式，看看是否节省空间。大多数情况下是可以压缩的。下面这条简单的命令可以安全地把GIF格式转换为PNG格式：\
     convert image.gif image.png
@@ -492,11 +492,11 @@ CSS compressors:
 
 ### [不要在HTML中缩放图片](http://developer.yahoo.com/performance/rules.html#no_scale) <a name="no_scale"></a>
 
-不要通过图片缩放来适应页面，如果你需要小图片，就直接使用小图片吧。
+不要通过图片缩放来适应页面，如果需要小图片，就直接使用小图片吧。
 
 ### [使用小且可缓存的favicon.ico](http://developer.yahoo.com/performance/rules.html#favicon) <a name="favicon"></a>
 
-网站图标文件favicon.ico，不管你服务器有还是没有，浏览器都会去尝试请求这个图标。所以我们要确保这个图标
+网站图标文件favicon.ico，不管服务器有还是没有，浏览器都会去尝试请求这个图标。所以要确保这个图标
 
 -   存在
 -   文件尽量小，最好小于1k
@@ -511,7 +511,7 @@ CSS compressors:
 
 ### [打包组建成符合文档](http://developer.yahoo.com/performance/rules.html#multipart) <a name="multipart"></a>
 
-把页面内容打包成复合文本就如同带有多附件的Email，它能够使你在一个HTTP请求中取得多个组建。当你使用这条规则时，首先要确定用户代理是否支持（iPhone不支持）。
+把页面内容打包成复合文本就如同带有多附件的Email，它能够在一个HTTP请求中取得多个组建。使用这条规则时，首先要确定用户代理是否支持（iPhone不支持）。
 
 
 

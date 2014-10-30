@@ -97,7 +97,7 @@ Fiddler是一个非常强悍的工具，可以极大的减少调试过程中所�
 这段代码放在页面<body>开始处，就会插入一个灰色的panel，接下来修改脚本在任何地方调用alertConsole方法，就输出到这个灰色的输出框中。
 
 {% highlight html %}
-<div id="debugconsole" style="width:400px;overflow:hidden;background-color:gray"></div>
+<div id="debugconsole" style="width:400px;height:400px;overflow:scroll;background-color:gray"></div>
 <script>
 function alertConsole(message){
     document.getElementById('debugconsole').innerHTML += message + '<br/>';

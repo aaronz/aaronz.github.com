@@ -57,11 +57,8 @@ categories: compatibility
 # Coding Standard
 
 -   [Front-end Code Standards & Best
-    Practices](http://isobar-idev.github.io/code-standards/)<span
-    style="font-size:12pt"> </span>
--   [<span
-    style="font-size:12pt">js-the-right-way</span>](http://jstherightway.org/)<span
-    style="font-size:12pt"> </span>
+    Practices](http://isobar-idev.github.io/code-standards/)
+-   [js-the-right-way](http://jstherightway.org/)
 -   [JavaScript and CSS guidelines for
     pragmatists](https://github.com/stevekwan/best-practices)
 -   [google-styleguide](https://code.google.com/p/google-styleguide/)

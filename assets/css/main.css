@@ -102,25 +102,42 @@ h3{
   list-style-type: disc;
 }
 
+@media only screen and (max-width : 320px) {
+  .post img{
+    width: 100%;
+  }
+  .excerpt img{
+    width: 100%;
+    max-width: 100%;
+  }
+  .grid-12-8{
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px) {
   .wrapper {
     width: 750px;
+  }
+  .grid-12-8{
+    width:67%;
   }
 }
 @media (min-width: 992px) {
   .wrapper {
     width: 970px;
   }
+  .grid-12-8{
+    width:67%;
+  }
 }
 @media (min-width: 1200px) {
   .wrapper {
     width: 1170px;
   }
-}
-
-.grid-12-8{
-  width:67%;
-  display: inline-block;
+  .grid-12-8{
+    width:67%;
+  }
 }
 
 .welcome{

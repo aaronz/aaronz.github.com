@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "如何在windows phone internet explorer中调试网页应用"
+title:  "如何在windows phone中调试网页应用"
 date:   2014-10-22 00:00:00
 categories: Debugging
 ---
 
-最近遇到了一个棘手的Windows Phone 8.1中IE的问题，试用了各种调试方式，从工具角度来讲Visual Studio对windows phone调试支持已经相当不错了，这篇文章来总结下如何在windows phone internet explorer中调试网页应用的。
+最近遇到了一个棘手的Windows Phone 8.1中IE的问题，试用了各种调试方式，从工具角度来讲Visual Studio对windows phone调试支持已经相当不错了，这篇文章来总结下如何在windows phone中调试网页应用的。
 
 ![wp-ie](/assets/images/posts/internetexplorer-windows.jpg)
 

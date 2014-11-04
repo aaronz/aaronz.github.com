@@ -18,12 +18,6 @@ categories: compatibility
     Modern.IE](https://www.modern.ie/en-us/category/code-with-standards)
 -   [The Principles Of Cross-Browser CSS
     Coding](http://www.smashingmagazine.com/2010/06/07/the-principles-of-cross-browser-css-coding/ "Read 'The Principles Of Cross-Browser CSS Coding'")
--   [What are the best practices for cross-browser web
-    sites?](http://stackoverflow.com/questions/1064594/what-are-the-best-practices-for-cross-browser-web-sites)
--   [HTML5: Cross-Browser Best
-    Practices](http://channel9.msdn.com/events/MIX/MIX10/CL27)
--   [Front End Dev
-    Guidelines](http://taitems.github.io/Front-End-Development-Guidelines/)
 -   [Mobile Web Best Practices 1.0](http://www.w3.org/TR/mobile-bp/)
 -   [Google Web
     Fundamentals](https://developers.google.com/web/fundamentals/)
@@ -56,6 +50,8 @@ categories: compatibility
 
 # Coding Standard
 
+-   [Front End Dev
+    Guidelines](http://taitems.github.io/Front-End-Development-Guidelines/)
 -   [Front-end Code Standards & Best
     Practices](http://isobar-idev.github.io/code-standards/)
 -   [js-the-right-way](http://jstherightway.org/)

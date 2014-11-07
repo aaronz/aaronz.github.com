@@ -48,6 +48,11 @@ h3{
   background:#ffeecc
 }
 
+.featured > h3 > a{
+  font-weight: 700;
+  color: #111111;
+}
+
 .excerpt img{
   border-radius: 30px;
   display: inline-block;
@@ -113,6 +118,9 @@ h3{
   .grid-12-8{
     width: 100%;
   }
+  .intro-photo{
+    float:left;
+  }
 }
 
 @media (min-width: 768px) {
@@ -121,6 +129,15 @@ h3{
   }
   .grid-12-8{
     width:67%;
+  }  
+  .intro{
+    display:inline-block;
+    width:60%;
+  }
+  .intro-photo{
+    display:inline-block;
+    float:right;
+    width:40%;
   }
 }
 @media (min-width: 992px) {
@@ -155,16 +172,7 @@ h3{
        border-radius: 20px;
 }
 
-.intro{
-  display:inline-block;
-  width:60%;
-}
 
-.intro-photo{
-  display:inline-block;
-  float:right;
-  width:40%;
-}
 
 .intro-photo img{
   width:100%;

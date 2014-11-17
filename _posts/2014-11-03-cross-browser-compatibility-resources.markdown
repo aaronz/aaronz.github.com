@@ -70,7 +70,6 @@ categories: compatibility
 -   [HTML5/CSS3](http://caniuse.com)
 -   [CSS Differences in Internet Explorer 6, 7 and 8](http://www.smashingmagazine.com/2009/10/14/css-differences-in-internet-explorer-6-7-and-8/)
 -   [CSS Compatibility and Internet Explorer](http://msdn.microsoft.com/en-us/library/cc351024(VS.85).aspx)
--   [The weird and wonderful world of Internet Explorer](http://www.positioniseverything.net/explorer.html)
 
 ## IE Compatibility Changes
 
@@ -90,6 +89,12 @@ categories: compatibility
     changes](http://msdn.microsoft.com/en-us/library/ie/dn467852%28v=vs.85%29.aspx "Legacy feature support changes")
 -   [Internet Explorer compatibility changes by
     version](http://msdn.microsoft.com/en-us/library/ie/dn467846%28v=vs.85%29.aspx "Internet Explorer compatibility changes by version")
+
+## Workarounds & Solutions
+
+-   [CSS3 Solutions for Internet Explorer](http://www.smashingmagazine.com/2010/04/28/css3-solutions-for-internet-explorer/)
+-   [Internet Explorer CSS Bugs](http://haslayout.net/css/)
+-   [The weird and wonderful world of Internet Explorer](http://www.positioniseverything.net/explorer.html)
 
 # Tools and resources
 

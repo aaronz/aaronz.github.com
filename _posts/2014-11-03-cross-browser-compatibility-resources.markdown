@@ -18,35 +18,8 @@ categories: compatibility
     Modern.IE](https://www.modern.ie/en-us/category/code-with-standards)
 -   [The Principles Of Cross-Browser CSS
     Coding](http://www.smashingmagazine.com/2010/06/07/the-principles-of-cross-browser-css-coding/ "Read 'The Principles Of Cross-Browser CSS Coding'")
--   [Mobile Web Best Practices 1.0](http://www.w3.org/TR/mobile-bp/)
 -   [Google Web
     Fundamentals](https://developers.google.com/web/fundamentals/)
--   [favicon-cheat-sheet](https://github.com/audreyr/favicon-cheat-sheet)
-
-## Working with Older Browsers
-
--   [An introduction to progressive
-    enhancement](https://docs.webplatform.org/wiki/concepts/progressive_enhancement "concepts/progressive enhancement")
--   [Graceful
-    degradation](https://docs.webplatform.org/wiki/concepts/graceful_degradation "concepts/graceful degradation")
--   [Polyfill](https://docs.webplatform.org/wiki/concepts/polyfill "concepts/polyfill")
--   [Proprietary Internet Explorer
-    Techniques](https://docs.webplatform.org/wiki/concepts/proprietary_internet_explorer_techniques "concepts/proprietary internet explorer techniques")
-
-## Working with New Features
-
--   [Enabling experimental
-    features](https://docs.webplatform.org/wiki/concepts/experimental_features "concepts/experimental features")
--   [Pointer Events for mouse, touch, and pen
-    input](https://docs.webplatform.org/wiki/concepts/Pointer_Events "concepts/Pointer Events")
-
-## Working without JavaScript
-
--   [Gracefully enhancing your site with
-    JavaScript](https://docs.webplatform.org/w/index.php?title=concepts/graceful_enhancement&action=edit&redlink=1 "concepts/graceful enhancement (page does not exist)")
--   [Redirect browsers running without JavaScript to a special area
-    catered to
-    them](https://docs.webplatform.org/wiki/concepts/redirect_no_javascript "concepts/redirect no javascript")
 
 # Coding Standard
 
@@ -90,7 +63,7 @@ categories: compatibility
 -   [Internet Explorer compatibility changes by
     version](http://msdn.microsoft.com/en-us/library/ie/dn467846%28v=vs.85%29.aspx "Internet Explorer compatibility changes by version")
 
-## Workarounds & Solutions
+# Workarounds & Solutions
 
 -   [CSS3 Solutions for Internet Explorer](http://www.smashingmagazine.com/2010/04/28/css3-solutions-for-internet-explorer/)
 -   [Internet Explorer CSS Bugs](http://haslayout.net/css/)
@@ -110,6 +83,36 @@ categories: compatibility
 -   [HTML5-Reset](https://github.com/murtaugh/HTML5-Reset)
 -   [HTML\_CodeSniffer](https://github.com/squizlabs/HTML_CodeSniffer)
 
+# Methodology
 
+## Working with Older Browsers
+
+-   [An introduction to progressive
+    enhancement](https://docs.webplatform.org/wiki/concepts/progressive_enhancement "concepts/progressive enhancement")
+-   [Graceful
+    degradation](https://docs.webplatform.org/wiki/concepts/graceful_degradation "concepts/graceful degradation")
+-   [Polyfill](https://docs.webplatform.org/wiki/concepts/polyfill "concepts/polyfill")
+-   [Proprietary Internet Explorer
+    Techniques](https://docs.webplatform.org/wiki/concepts/proprietary_internet_explorer_techniques "concepts/proprietary internet explorer techniques")
+
+## Working with New Features
+
+-   [Enabling experimental
+    features](https://docs.webplatform.org/wiki/concepts/experimental_features "concepts/experimental features")
+-   [Pointer Events for mouse, touch, and pen
+    input](https://docs.webplatform.org/wiki/concepts/Pointer_Events "concepts/Pointer Events")
+
+## Working without JavaScript
+
+-   [Gracefully enhancing your site with
+    JavaScript](https://docs.webplatform.org/w/index.php?title=concepts/graceful_enhancement&action=edit&redlink=1 "concepts/graceful enhancement (page does not exist)")
+-   [Redirect browsers running without JavaScript to a special area
+    catered to
+    them](https://docs.webplatform.org/wiki/concepts/redirect_no_javascript "concepts/redirect no javascript")
+
+# Misc
+
+-   [Mobile Web Best Practices 1.0](http://www.w3.org/TR/mobile-bp/)
+-   [favicon-cheat-sheet](https://github.com/audreyr/favicon-cheat-sheet)
 
 

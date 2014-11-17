@@ -68,6 +68,9 @@ categories: compatibility
 
 -   [HTML/CSS](http://www.quirksmode.org)
 -   [HTML5/CSS3](http://caniuse.com)
+-   [CSS Differences in Internet Explorer 6, 7 and 8](http://www.smashingmagazine.com/2009/10/14/css-differences-in-internet-explorer-6-7-and-8/)
+-   [CSS Compatibility and Internet Explorer](http://msdn.microsoft.com/en-us/library/cc351024(VS.85).aspx)
+-   [The weird and wonderful world of Internet Explorer](http://www.positioniseverything.net/explorer.html)
 
 ## IE Compatibility Changes
 

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Cross Browser Best Practices</title>
+
+    <meta name="description" content="Best Practices for Cross Browser Application Development">
+    <meta name="author" content="Aaron Zhang">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Cross Browser Best Practices</h1>
+                <p>
+                    <small><a href="http://browserwork.com/contact.html">Aaron Zhang</a> - <a href="http://www.browserwork.com">Browserwork.com</a>
+                    </small>
+                </p>
+            </section>
+
+            <section>
+                <h2>Sites don’t need to render the same across all browsers</h2>
+                <p>
+                    A common concern among developers is ensuring that their sites render the same across all browsers, including non-modern ones. That’s not always necessary. A better route is to consider <a href="http://www.alistapart.com/articles/understandingprogressiveenhancement">progressively enhancing</a> your site by offering a solid working baseline experience to users with non-modern browsers while providing a richer UI to those users with modern browsers.
+                </p>
+                <img src="images/progressive-enhancement.jpg" alt="progressive enhancement">
+            </section>
+
+
+            <section>
+                <h2>Start with a solid template to simplify development</h2>
+                <p>Many of these tips are already built into a project template like HTML5 Boilerplate to save you some time. Those rules work equally well for projects targeted at modern browsers and ones that need older browser support all the way back to IE6.</p>
+            </section>
+            <section>
+                <h2>Focus on stable standards</h2>
+                <p>It's easy to get excited every time a new and cool feature comes out but some of these may still be experimental with the specification still under development. It's important to remember that features that are in the early stages of specification development are very likely to change, which could impact your site's stability and your customer's experience. By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</p>
+            </section>
+            <section>
+                <h2>Use IE Compat Inspector to help migrate your site to standard-based code</h2>
+                <p>Standards are a core part of Internet Explorer 10 and helping developers migrate their code to take advantage of this is incredibly important to the IE engineering team. That's why they created the IE Compat Inspector which can analyze your site in real time, pinpoint patterns of common problems and offer solutions. By including a simple JavaScript file in your code, you'll receive visual results right on your pages. It can also be integrated into the Fiddler HTTP analysis tool.</p>
+            </section>
+            <section>
+                <h2>Use polyfills and shims sparingly</h2>
+                <p>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality. The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</p>
+            </section>
+            <section>
+                <h2>Test in multiple browsers while developing</h2>
+                <p>Although modern browsers are much closer to a single standard than ever before, differences still exist. An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute ¨C or worse yet, after it's all public.</p>
+                <p>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear. For older browsers like IE7 that don't have a built-in console, you can use Firebug Lite to provide one. Or use a cross-browser hosted testing solution like BrowserStack.</p>
+            </section>
+            <section>
+                <h2>Use a build process with tools to check for errors and minify files
+                </h2>
+                <p>A good set of build tools such as HTML validators, CSS validators, Uglify, and JSHint, or GruntJS can find latent problems, enforce project code standards, and reduce file size to improve performance. These steps don't have to be a roadblock if your IDE or code-editor supports them. Visual Studio, for example, provides the ability to run external tools and combine/compress script files during its build process.
+                </p>
+            </section>
+            <section>
+                <h2>Always use a standards-based doctype to avoid Quirks Mode</h2>
+                <p>Start with
+                    <!DOCTYPE html>. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
+            </section>
+            <section>
+                <h2>Learn when to use X-UA-Compatible</h2>
+                <p>Internet Explorer allows you to define which version's engine is used to render a page using the X-UA-Compatible META tag or HTTP header. A specific version can be designated or the latest version using the 'IE=edge' value. </p>
+                <p>  
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                </p>
+                <p>Designating 'IE=edge' is the best practice because it ensures Internet Explorer uses the latest engine. The most current Internet Explorer version includes the latest security updates as well as feature support. The current version is also the fastest version.</p>
+                <p> </p>
+            </section>
+            <section>
+                <h2>Understand the backward-compatibility limits of HTML5 tags</h2>
+                <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags. Using plain div elements and classes is often a safer course of action for those cases.</p>
+            </section>
+            <section>
+                <h2>Avoid inline JavaScript tags in HTML markup</h2>
+                <p>As with external script references, an inline script requires the browser to stop parsing HTML and can also prevent parallel downloading of other resources on the page. This can seriously slow the initial load of the page and give the user a dreaded "blank-page" experience. Script sprinkled around the markup is also more difficult to maintain.
+                </p>
+            </section>
+            <section>
+                <h2>Do not use inline JavaScript events inside HTML markup</h2>
+                <p>An example would be
+                    <button onclick="validate()">Validate</button>. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
+            </section>
+            <section>
+                <h2>Know and use the CSS cascade rules</h2>
+                <p>Simple id and class selectors are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
+            </section>
+            <section>
+                <h2>Consider a CSS Reset</h2>
+                <p>Different browsers assume different baseline CSS rules. You can help them all to act the same by explicitly ironing out the differences up front. Eric Meyer, who wrote CSS: The Definitive Guide, uses this reset. Another popular choice is YUI Reset CSS.</p>
+                <p>https://github.com/necolas/normalize.css/
+                </p>
+                <p> </p>
+            </section>
+            <section>
+                <h2>Fully prefix vendor-specific CSS properties to future-proof them</h2>
+                <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. This blog post provides a plain-JavaScript alternative.</p>
+            </section>
+            <section>
+                <h2>Solve compatibility problems with valid CSS rules, not CSS parser hacks
+                </h2>
+                <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try adding version-specific classes to the html or body tag that can be used in stylesheet rules. Conditional comments can also be used to include a browser-specific CSS file only in the versions that need it.</p>
+            </section>
+            <section>
+                <h2>Always prefer feature detection over browser detection</h2>
+                <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 1! It is more reliable to detect the feature or problem directly, and use that as the decision criteria for code branches. We recommend Modernizr as the easiest way to implement feature detection.</p>
+                <p>Don't assume unrelated features.</p>
+            </section>
+            <section>
+                <h2>Use a JavaScript library for DOM interactions</h2>
+                <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work. Trying to find and work around all these inconsistencies yourself is a waste of time and likely to create bugs.
+                </p>
+            </section>
+            <section>
+                <h2>Run as little script as possible when the document is ready</h2>
+                <p>Techniques such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
+            </section>
+            <section>
+                <h2>Start AJAX requests as early as possible if they're critical for user interaction with the page</h2>
+                <p>Since an AJAX request can take a long time, there's no need to wait for the HTML page to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.
+                </p>
+            </section>
+            <section>
+                <h2>Delay-load non-essential scripts</h2>
+                <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before requesting these scripts can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
+            </section>
+
+
+            <section>
+                <h1>THE END</h1>
+                <h3>BY Aaron Zhang / browserwork.com</h3>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>

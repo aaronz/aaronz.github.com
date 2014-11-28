@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Responsive Design</title>
+
+    <meta name="description" content="A introduction of responsive design">
+    <meta name="author" content="Aaron Zhang">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Responsive Design</h1>
+                <h3>A basic introduction to responsive design</h3>
+                <p>
+                    <small><a href="http://browserwork.com">Aaron Zhang</a> - <a href="http://www.browserwork.com">Browserwork.com</a></small>
+                </p>
+            </section>
+
+            <section>
+                <h2>Responsive vs Adaptive web design</h2>
+                <p>
+                    It might seem the same but it isn't. Both approaches complement each other, so there is no right or wrong way to do it. Let the content decide.
+                </p>
+                <img src="http://blog.froont.com/content/images/2014/11/01_Responsive-vs-Adaptive.gif" alt="Responsive vs Adaptive web design">
+            </section>
+
+            <section>
+                <h2>The flow</h2>
+                <p>
+                    As screen sizes become smaller, content starts to take up more vertical space and anything below will be pushed down, it's called the flow. That might be tricky to grasp if you are used to design with pixels and points, but makes total sense when you get used to it.
+                </p>
+                <img src="http://blog.froont.com/content/images/2014/11/04_Flow-vs-Static-2.gif" alt="Responsive vs Adaptive web design">
+            </section>
+            <section>
+                <h3 id="relativeunits">Relative units</h3>
+
+                <p>The canvas can be a desktop, mobile screen or anything in between. Pixel density can also vary, so we need units that are flexible and work everywhere. That's where relative units like percents come in handy. So making something 50% wide means it will always take half of the screen (or viewport, which is the size of the opened browser window).
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/02_Relative-Units-vs-Static-Units-1.gif" alt="Relative units in CSS" />
+                </p>
+            </section>
+            <section>
+                <h3 id="breakpoints">Breakpoints</h3>
+
+                <p>Breakpoints allow the layout to change at predefined points, i.e. having 3 columns on a desktop, but only 1 column on a mobile device. Most CSS properties can be changed from one breakpoint to another. Usually where you put one depends on the content. If a sentence breaks, you might need to add a breakpoint. But use them with caution – it can get messy quickly when it's difficult to understand what is influencing what.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/03_With-Breakpoints-vs-Without-Breakpoints-1.gif" alt="Breakpoints in the responsive web design" />
+                </p>
+            </section>
+            <section>
+                <h3 id="maxandminvalues">Max and Min values</h3>
+
+                <p>Sometimes it's great that content takes up the whole width of a screen, like on a mobile device, but having the same content stretching to the whole width of your TV screen often makes less sense. This is why Min/Max values help. For example having width of 100% and Max width of 1000px would mean that content will fill the screen, but don't go over 1000px.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/07_Max-width-vx-No-max-width-1.gif" alt="Min and max widths in CSS" />
+                </p>
+            </section>
+            <section>
+                <h3 id="nestedobjects">Nested objects</h3>
+
+                <p>Remember the relative position? Having a lot of elements depending on each other would be difficult to control, therefore wrapping elements in a container keeps it way more understandable, clean and tidy. This is where static units like pixels can help. They are useful for content that you don't want to scale, like logos and buttons.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/05_Nested-vs-Not-Nested-1.gif" alt="Nested objects" />
+                </p>
+            </section>
+            <section>
+                <h3 id="mobileordesktopfirst">Mobile or Desktop first</h3>
+
+                <p>Technically there isn't much of a difference if a project is started from a smaller screen to a bigger (mobile first) or vice versa (desktop first). Yet it adds extra limitations and helps you make decisions if you start with mobile first. Often people start from both ends at once, so really, go and see what works better for you.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/08_Desktop-first-vs-Mobile-first-3.gif" alt="Mobile or desktop first" />
+                </p>
+            </section>
+            <section>
+                <h3 id="webfontsvssystemfonts">Webfonts vs System fonts</h3>
+
+                <p>Wanna have a cool looking Futura or Didot on your website? Use webfonts! Although they will look stunning, remember that each will be downloaded and the more you'll have, the longer it will take to load the page. System fonts on the other hand are lightning fast, except when the user doesn't have it locally, it will fall back to a default font.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/06_System-fonts-vs-Webfonts-1.gif" alt="Webfonts vs System fonts" />
+                </p>
+            </section>
+            <section>
+                <h3 id="bitmapimagesvsvectors">Bitmap images vs Vectors</h3>
+
+                <p>Does your icon have lot of details and some fancy effects applied? If yes, use a bitmap. If not, consider using a vector image. For bitmaps use a jpg, png or a gif, for vectors the best choice would be a SVG or an icon font. Each has some benefits and some drawbacks. However keep in mind the size -- no pictures should go online without optimization. Vectors on the other hand often are tiny, but some older browsers won't support it. Also, if it has lots of curves, it might be heavier than a bitmap, so choose wisely.
+                    <br />
+                    <img src="http://blog.froont.com/content/images/2014/11/09_Vectors-vs-Images-1.gif" alt="Bitmap images vs vectors" />
+                </p>
+            </section>
+
+            <section>
+                <h1>THE END</h1>
+                <h3>BY Aaron Zhang / browserwork.com</h3>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>

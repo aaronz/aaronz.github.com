@@ -43,7 +43,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <h1>Cross Browser Best Practices</h1>
+                <h2>Cross Browser Best Practices</h2>
                 <p>
                     <small><a href="http://browserwork.com/contact.html">Aaron Zhang</a> - <a href="http://www.browserwork.com">Browserwork.com</a>
                     </small>
@@ -53,52 +53,67 @@
             <section>
                 <h2>Sites don’t need to render the same across all browsers</h2>
                 <p>
-                    A common concern among developers is ensuring that their sites render the same across all browsers, including non-modern ones. That’s not always necessary. A better route is to consider <a href="http://www.alistapart.com/articles/understandingprogressiveenhancement">progressively enhancing</a> your site by offering a solid working baseline experience to users with non-modern browsers while providing a richer UI to those users with modern browsers.
+                    It's not always necessary to ensuring sites render the same across all browsers.
                 </p>
                 <img src="images/progressive-enhancement.jpg" alt="progressive enhancement">
+
+                <p>Consider <a href="http://www.alistapart.com/articles/understandingprogressiveenhancement">progressively enhancing</a> your site by offering a solid working baseline experience to users with non-modern browsers while providing a richer UI to those users with modern browsers.</p>
             </section>
 
 
             <section>
                 <h2>Start with a solid template to simplify development</h2>
-                <p>Many of these tips are already built into a project template like HTML5 Boilerplate to save you some time. Those rules work equally well for projects targeted at modern browsers and ones that need older browser support all the way back to IE6.</p>
+                <p>Many of these tips are already built into a project template like <a href="http://html5boilerplate.com/" target="_blank">HTML5 Boilerplate</a> to save you some time.
+                    <br/> Those rules work equally well for projects targeted at modern browsers and ones that need older browser support all the way back to IE6.</p>
             </section>
             <section>
                 <h2>Focus on stable standards</h2>
-                <p>It's easy to get excited every time a new and cool feature comes out but some of these may still be experimental with the specification still under development. It's important to remember that features that are in the early stages of specification development are very likely to change, which could impact your site's stability and your customer's experience. By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</p>
+                <p>
+                    <ul>
+                        <li>
+                            Features that are in the early stages of specification development are very likely to change, which could impact site's stability and customer's experience. </li>
+                        <li>
+                            By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</li>
+                    </ul>
+                </p>
             </section>
             <section>
                 <h2>Use IE Compat Inspector to help migrate your site to standard-based code</h2>
-                <p>Standards are a core part of Internet Explorer 10 and helping developers migrate their code to take advantage of this is incredibly important to the IE engineering team. That's why they created the IE Compat Inspector which can analyze your site in real time, pinpoint patterns of common problems and offer solutions. By including a simple JavaScript file in your code, you'll receive visual results right on your pages. It can also be integrated into the Fiddler HTTP analysis tool.</p>
+                <p>IE Compat Inspector which can analyze your site in real time, pinpoint patterns of common problems and offer solutions. By including a simple JavaScript file in your code, you'll receive visual results right on your pages.</p>
             </section>
             <section>
                 <h2>Use polyfills and shims sparingly</h2>
-                <p>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality. The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</p>
+                <p>
+                    <ul>
+                        <li>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality.</li>
+                        <li>The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</li>
+                    </ul>
+                </p>
             </section>
             <section>
                 <h2>Test in multiple browsers while developing</h2>
-                <p>Although modern browsers are much closer to a single standard than ever before, differences still exist. An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute ¨C or worse yet, after it's all public.</p>
-                <p>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear. For older browsers like IE7 that don't have a built-in console, you can use Firebug Lite to provide one. Or use a cross-browser hosted testing solution like BrowserStack.</p>
+                <p>
+                    <ul>
+                        <li>
+                            An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute or worse yet, after it's all public.
+                        </li>
+                        <li>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear.</li>
+                    </ul>
             </section>
             <section>
                 <h2>Use a build process with tools to check for errors and minify files
                 </h2>
-                <p>A good set of build tools such as HTML validators, CSS validators, Uglify, and JSHint, or GruntJS can find latent problems, enforce project code standards, and reduce file size to improve performance. These steps don't have to be a roadblock if your IDE or code-editor supports them. Visual Studio, for example, provides the ability to run external tools and combine/compress script files during its build process.
-                </p>
+                <p>A good set of build tools such as <a href="http://validator.w3.org/" target="_blank">HTML validators</a>, <a href="http://jigsaw.w3.org/css-validator/" target="_blank">CSS validators</a>, <a href="https://github.com/mishoo/UglifyJS" target="_blank">Uglify</a>, and <a href="https://github.com/jshint/jshint/" target="_blank">JSHint</a>, or <a href="http://gruntjs.com/" target="_blank">GruntJS</a> can find latent problems, enforce project code standards, and reduce file size to improve performance.</p>
             </section>
             <section>
                 <h2>Always use a standards-based doctype to avoid Quirks Mode</h2>
-                <p>Start with
-                    <!DOCTYPE html>. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
+                <p><a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank">Start</a> with &lt;!DOCTYPE html&gt;. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
             </section>
             <section>
                 <h2>Learn when to use X-UA-Compatible</h2>
                 <p>Internet Explorer allows you to define which version's engine is used to render a page using the X-UA-Compatible META tag or HTTP header. A specific version can be designated or the latest version using the 'IE=edge' value. </p>
-                <p>  
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                </p>
+                <pre>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</pre>
                 <p>Designating 'IE=edge' is the best practice because it ensures Internet Explorer uses the latest engine. The most current Internet Explorer version includes the latest security updates as well as feature support. The current version is also the fastest version.</p>
-                <p> </p>
             </section>
             <section>
                 <h2>Understand the backward-compatibility limits of HTML5 tags</h2>
@@ -112,32 +127,29 @@
             <section>
                 <h2>Do not use inline JavaScript events inside HTML markup</h2>
                 <p>An example would be
-                    <button onclick="validate()">Validate</button>. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
+                    &lt;button onclick="validate()"&gt;Validate&lt;/button&gt;. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
             </section>
             <section>
                 <h2>Know and use the CSS cascade rules</h2>
-                <p>Simple id and class selectors are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
+                <p><a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank">Simple id and class selectors</a> are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
             </section>
             <section>
                 <h2>Consider a CSS Reset</h2>
                 <p>Different browsers assume different baseline CSS rules. You can help them all to act the same by explicitly ironing out the differences up front. Eric Meyer, who wrote CSS: The Definitive Guide, uses this reset. Another popular choice is YUI Reset CSS.</p>
-                <p>https://github.com/necolas/normalize.css/
-                </p>
-                <p> </p>
+                <a href="https://github.com/necolas/normalize.css/" target="_blank">https://github.com/necolas/normalize.css/</a>
             </section>
             <section>
                 <h2>Fully prefix vendor-specific CSS properties to future-proof them</h2>
-                <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. This blog post provides a plain-JavaScript alternative.</p>
+                <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. <a href="http://blogs.msdn.com/b/ie/archive/2011/10/28/a-best-practice-for-programming-with-vendor-prefixes.aspx" target="_blank">This blog post</a> provides a plain-JavaScript alternative.</p>
             </section>
             <section>
                 <h2>Solve compatibility problems with valid CSS rules, not CSS parser hacks
                 </h2>
-                <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try adding version-specific classes to the html or body tag that can be used in stylesheet rules. Conditional comments can also be used to include a browser-specific CSS file only in the versions that need it.</p>
+                <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank">adding version-specific classes</a> to the html or body tag that can be used in stylesheet rules. <a href="http://msdn.microsoft.com/en-us/library/ms537512(v=vs.85).aspx" target="_blank">Conditional comments</a> can also be used to include a browser-specific CSS file only in the versions that need it.</p>
             </section>
             <section>
                 <h2>Always prefer feature detection over browser detection</h2>
-                <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 1! It is more reliable to detect the feature or problem directly, and use that as the decision criteria for code branches. We recommend Modernizr as the easiest way to implement feature detection.</p>
-                <p>Don't assume unrelated features.</p>
+                <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 11 It is more reliable to <a href="http://msdn.microsoft.com/en-us/magazine/hh475813.aspx" target="_blank">detect the feature or problem directly</a>, and use that as the decision criteria for code branches. We recommend <a href="http://modernizr.com/" target="_blank">Modernizr</a> as the easiest way to implement feature detection.</p>
             </section>
             <section>
                 <h2>Use a JavaScript library for DOM interactions</h2>
@@ -146,16 +158,15 @@
             </section>
             <section>
                 <h2>Run as little script as possible when the document is ready</h2>
-                <p>Techniques such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
+                <p><a href="http://www.elijahmanor.com/2012/10/dont-initialize-all-things-in.html" target="_blank">Techniques</a> such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
             </section>
             <section>
                 <h2>Start AJAX requests as early as possible if they're critical for user interaction with the page</h2>
-                <p>Since an AJAX request can take a long time, there's no need to wait for the HTML page to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.
-                </p>
+                <p>Since an AJAX request can take a long time, there's <a href="http://alexsexton.com/blog/2010/01/dont-let-document-ready-slow-you-down/" target="_blank">no need to wait for the HTML page</a> to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.</p>
             </section>
             <section>
                 <h2>Delay-load non-essential scripts</h2>
-                <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before requesting these scripts can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
+                <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before <a href="http://www.aaronpeters.nl/blog/why-loading-third-party-scripts-async-is-not-good-enough" target="_blank">requesting these scripts</a> can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
             </section>
 
 

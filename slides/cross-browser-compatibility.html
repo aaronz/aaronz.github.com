@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Cross Browser Compatibility</title>
+
+    <meta name="description" content="A introduction of cross browser compatibility">
+    <meta name="author" content="Aaron Zhang">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>Cross Browser Compatibility</h1>
+                <h3>A basic introduction to cross browser compatibility</h3>
+                <p>
+                    <small><a href="http://browserwork.com/contact.html">Aaron Zhang</a> - <a href="http://www.browserwork.com">BrowserWork.com</a>
+                    </small>
+                </p>
+            </section>
+
+            <section>
+                <h2>Agenda</h2>
+                <p>
+                    <ul>
+                        <li class="fragment">Compatibility Overview</li>
+                        <li class="fragment">Best Practices</li>
+                        <li class="fragment">Compatibility Issues</li>
+                        <li class="fragment">Tools and Resources</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h2>Cross Browser Challenges</h2>
+                <p>
+                    <ul>
+                        <li class="fragment">Many different browsers</li>
+                        <li class="fragment">Many different versions</li>
+                        <li class="fragment">New version releases frequently</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h2>Cross Browser issue overview</h2>
+                <p>
+                    <ul>
+                        <li class="fragment">layout</li>
+                        <li class="fragment">function</li>
+                        <li class="fragment">performance</li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+
+                <section>
+                    <h2>layout</h2>
+                    <p>
+                        <ul>
+                            <li>Html/css</li>
+                            <li>Html5/css3</li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <h2>function</h2>
+                    <p>
+                        <ul>
+                            <li>DOM</li>
+                            <li>JavaScript Core</li>
+                            <li>BOM</li>
+                            <li>Addon/ActiveX</li>
+                        </ul>
+                    </p>
+                </section>
+                <section>
+                    <h2>performance</h2>
+                    <p>
+                        <ul>
+                            <li>Render Engine</li>
+                            <li>Script Engine</li>
+                            <li>Network</li>
+                        </ul>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <h2>Categorizing features in web platform</h2>
+                <ul>
+                    <li>Interoperable and stable - Supported in all the latest browsers; not likely to change in the future</li>
+                    <li>Legacy - Replaced by interoperable features; May be removed in the future</li>
+                    <li>New - Supported in some browsers; Inconsistent implementations</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Concepts</h2>
+                <ul>
+                    <li>
+                        Responsive Design</li>
+                    <li>
+                        Polyfill/shims</li>
+                    <li>
+                        Feature detection vs Browser detection</li>
+                    <li>
+                        Graceful degradation vs Progressive enhancement
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Responsive Design</h2>
+                <ul>
+                    <li>Responsive web design (RWD) is aimed at crafting sites to provide an optimal viewing experienceeasy reading and navigation with a minimum of resizing, panning, and scrollingacross a wide range of devices (from mobile phones to desktop computer monitors).</li>
+                    <li>
+                        Media Queries</li>
+                    <li>
+                        Fluid grid</li>
+                    <li>
+                        Flexible images</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Media
+Queries</h2>
+                <ul>
+                    <li>
+                        Media Queries is a CSS3 module allowing content rendering to adapt to conditions such as screen resolution.</li>
+                    <li>
+                        @media screen and (min-width:500px) { ... }</li>
+                    <li><a href="http://caniuse.com/#feat=css-mediaqueries">http://caniuse.com/#feat=css-mediaqueries</a>
+                    </li>
+                    <li><a href="http://en.wikipedia.org/wiki/Media_queries">http://en.wikipedia.org/wiki/Media_queries</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Fluid Grid</h2>
+                <ul>
+                    <li>
+                        The fluid grid concept calls for page element sizing to be in relative units like percentages, rather than absolute units like pixels or points.</li>
+                    <li><a href="http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem">http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Flexible images</h2>
+                <ul>
+                    <li>
+                        Flexible images are also sized in relative units, so as to prevent them from displaying outside their containing element.</li>
+                    <li><a href="http://alistapart.com/article/fluid-images">http://alistapart.com/article/fluid-images</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Polyfill</h2>
+                <ul>
+                    <li>
+                        In web development, a polyfill (or polyfiller) is downloadable code which provides facilities that are not built into a web browser.</li>
+                    <li><a href="http://en.wikipedia.org/wiki/Polyfill">http://en.wikipedia.org/wiki/Polyfill</a>
+                    </li>
+                    <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills</a>
+                    </li>
+                    <li><a href="http://html5please.com/">http://html5please.com/</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Browser Detection (user agent sniffing)</h2>
+                <ul>
+                    <li>Browser detection (also known as Browser sniffing) is a set of techniques used in websites and web applications in order to determine the web browser a visitor is using, and to serve browser-appropriate content to the visitor.</li>
+                    <img src="images/browser-detection.png" />
+            </section>
+            <section>
+                <h2>Feature Detection</h2>
+                <ul>
+                    <li>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </li>
+                    <img src="images/feature-detection.png" />
+            </section>
+            <section>
+                <h2>Graceful degradation</h2>
+                <ul>
+                    <li>
+                        Graceful degradation, also known as Fault tolerance is a concept of building a web site or application so it provides a good level of user experience in modern browsers. </li>
+                    <li>
+                        However, it will degrade gracefully for those using older browsers. The system may not be as pleasant or as pretty, but the basic functionality will work on older systems. </li>
+                    <li><a href="https://docs.webplatform.org/wiki/concepts/graceful_degradation">https://docs.webplatform.org/wiki/concepts/graceful_degradation</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Progressive enhancement</h2>
+                <ul>
+                    <li>In practical terms, its easiest to break the concept of PE into different layers, each one building on the previous to improve the experience of interacting with the website. </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Core CSS Concept</h2>
+            </section>
+            <section>
+                <h2>CSS
+Selectors</h2>
+                <ul>
+                    <li><a href="http://www.w3.org/TR/CSS2/selector.html">http://www.w3.org/TR/CSS2/selector.html</a>
+                    </li>
+                    <li><a href="http://www.w3schools.com/cssref/css_selectors.asp">http://www.w3schools.com/cssref/css_selectors.asp</a>
+                    </li>
+                    <li><a href="http://css-tricks.com/almanac/selectors/">http://css-tricks.com/almanac/selectors/</a>
+                    </li>
+                    <li><a href="http://www.quirksmode.org/css/selectors/">http://www.quirksmode.org/css/selectors/</a>
+                    </li>
+                    <li><a href="http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>CSS Units</h2>
+                <ul>
+                    <li><a href="http://www.w3.org/TR/css3-values/">http://www.w3.org/TR/css3-values/</a>
+                    </li>
+                    <li><a href="http://www.w3schools.com/cssref/css_units.asp">http://www.w3schools.com/cssref/css_units.asp</a>
+                    </li>
+                    <li><a href="http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx</a>
+                    </li>
+                    <li><a href="http://www.quirksmode.org/css/units-values/">http://www.quirksmode.org/css/units-values/</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>CSS box model</h2>
+                <ul>
+                    <li>CSS box model responsibility</li>
+                    <li>
+                        How much space a block-level element takes up</li>
+                    <li>
+                        Whether or not borders and/or margins overlap, or collapse</li>
+                    <li>
+                        A boxs dimensions</li>
+                    <li>
+                        To some extent, a boxs position relative to other content on the page</li>
+                </ul>
+            </section>
+            <section>
+                <h2>CSS box
+model rule</h2>
+                <ul>
+                    <li>
+                        Block-level elements are essentially rectangular
+                    </li>
+                    <li>
+                        The dimensions of a block element are calculated by width, height, padding, borders, and margins</li>
+                    <li>
+                        If no height is specified, a block element will be as high as the content it contains, plus padding (unless there are floats, for which see below)</li>
+                    <li>
+                        If no width is specified, a non-floated box will expand to fit the width of its parent minus padding</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Block vs Inline</h2>
+                <img src="images/block-inline.jpg" />
+            </section>
+            <section>
+                <h2>Blocking and inline rules</h2>
+                <ul>
+                    <li>
+                        Block elements will, by default, naturally expand horizontally to fill their parent container, so theres no need to set a width of 100%</li>
+                    <li>
+                        Block elements will, by default, begin at the leftmost edge of the parent box, below any previous block elements (unless floats or positioned elements are utilized)</li>
+                    <li> Inline elements will ignore width and height settings</li>
+                    <li>
+                        Inline elements flow with text, and are subject to typographical properties such as white-space, font-size, and letter-spacing
+                    </li>
+                    <li>
+                        Inline elements can be aligned using the vertical-align property, but block elements cannot</li>
+                    <li>
+                        Inline elements will have some natural space below them in order to accommodate text elements that drop below the line (like the letter g)</li>
+                    <li> An inline element will become a block element if it is floated
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Floating and Clearing</h2>
+                <img src="images/float-clear.png" />
+            </section>
+            <section>
+                <h2>Floating
+and clearing rules</h2>
+                <ul>
+                    <li>
+                        Floated elements are removed from the flow of other block-level, non-floated elements; so in other words, if you float a box left, a trailing paragraph (block level) thats not floated will appear behind the float in the stack, and any text inside the paragraph (inline level) will flow around the float</li>
+                    <li>
+                        To get content to flow around a floated element, it must be either inline or else floated in the same direction</li>
+                    <li>
+                        A floated element without a declared width will shrink to the width of its content, so its generally best to have a set width on a float</li>
+                    <li>
+                        If a block element contains floated children, it will collapse, requiring a fix</li>
+                    <li>
+                        An element thats cleared will avoid flowing around floated elements above them in the document</li>
+                    <li>
+                        An element thats both cleared and floated will only clear itself of elements that come before, not after</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Common problems of IE</h2>
+                <ul>
+                    <li>
+                        IE6 will become problematic if floats are overused, causing (paradoxically) disappearing content or duplicate text</li>
+                    <li>
+                        IE6 will double the margin on floated elements on the side that is the same direction as the float; setting display: inline will often fix this</li>
+                    <li>
+                        In IE6 and IE7, if an element doesnt have layout, it can cause a number of problems, including backgrounds not showing up, margins collapsing improperly, and more</li>
+                    <li>
+                        IE6 does not support min- and max-based CSS properties like min-height, or max-width</li>
+                    <li>
+                        IE6 does not support fixed positioning of background images</li>
+                    <li>
+                        IE6 and IE7 do not support many alternate values for the display property (e.g. inline-table, table-cell, table-row, etc.)</li>
+                    <li>
+                        You cannot use the :hover pseudo-class on any element in IE6 except an anchor </li>
+                    <li>
+                        Certain versions of IE have little support for certain CSS selectors (e.g. attribute selectors, child selectors, etc.)
+                    </li>
+                    <li>
+                        IE versions 6-8 have little support for CSS3, but there are some workarounds</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Forms will often look different</h2>
+                <img src="images/form-difference.png" />
+            </section>
+            <section>
+                <h2>Typography will always look different</h2>
+                <img src="images/tyliogralihy.png" />
+            </section>
+            <section>
+                <h1>THE END</h1>
+                <h3>BY Aaron Zhang / browserwork.com</h3>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>

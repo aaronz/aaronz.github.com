@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Compatibility Cookbook for IE</title>
+
+    <meta name="description" content="Compatibility cookbook for IE (Chinese edition)">
+    <meta name="author" content="Aaron Zhang">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h2>Compatibility Cookbook for IE</h2>
+                <p>
+                    <small><a href="http://browserwork.com/contact.html">Aaron Zhang</a> - <a href="http://www.browserwork.com">Browserwork.com</a>
+                    </small>
+                </p>
+            </section>
+
+            <section>
+                <h2>Internet Explorer 兼容性差异</h2>
+                <ul>
+                    <li>Microsoft – Aaron Zhang</li>
+                </ul>
+            </section>
+            <section>
+                <h2>内容概览</h2>
+                <ul>
+                    <li>跨浏览器兼容最佳实践</li>
+                    <li>浏览器功能和兼容性更改</li>
+                    <li>HTML 和DOM 兼容性更改</li>
+                    <li>JavaScript 兼容性更改</li>
+                    <li>CSS 和布局兼容性更改</li>
+                    <li>传统功能支持更改</li>
+                </ul>
+            </section>
+            <section>
+                <h2>跨浏览器兼容最佳实践</h2>
+            </section>
+            <section>
+                <h2>了解跨浏览器兼容的主要问题</h2>
+                <ul>
+                    <li>显示问题</li>
+                    <li>功能问题</li>
+                    <li>性能问题</li>
+                </ul>
+            </section>
+            <section>
+                <h2>不强求跨浏览器显示一致</h2>
+                <ul>
+                    <li>网站内容第一，形式第二。</li>
+                    <li>首先确定跨浏览器内容的一致性作为基线，然后逐步优化形式使其趋于一致。</li>
+                    <li>由于浏览器差异性确实存在，不必强求显示效果完全一致。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>使用稳定模板库简化编程</h2>
+                <ul>
+                    <li>稳定的模板库可以简化跨浏览器支持工作，很多规则都在模板库中实现。</li>
+                    <li>例如Html5Boilerplate/Bootstrap就是不错的选择，它们都提供了跨浏览器的兼容性支持。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>基于稳定的Web标准编程</h2>
+                <ul>
+                    <li>尽量避免使用浏览器的特有功能，这些功能的使用是跨浏览器实现的一大障碍。</li>
+                    <li>新的Web标准通常会包含很酷的功能，但是新标准和可能会经过一系列更改变为稳定版本，因此考虑跨浏览器网站实现注意对新标准采取保守态度，尽量基于稳定的标准编程。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>声明doctype</h2>
+                <ul>
+                    <li>
+                        &lt;!DOCTYPE&gt;是html文档开头的html版本声明，没有 &lt;!DOCTYPE&gt;声明浏览器默认选择Quirks模式显示网页。
+                    </li>
+                    <li>HTML4.01有三种类型的 &lt;!DOCTYPE&gt;
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>更新现有代码以提供跨浏览器支持</h2>
+                <ul>
+                    <li>IE7 或IE8 中正常运行的网页可以通过以下方法短时间内在IE9 中使用：</li>
+                    <li>为每个网页添加兼容性模式的 meta 元素，以强制IE9 呈现与传统IE页面类似的页面。</li>
+                    <li>
+                        &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /&gt; </li>
+                    <li>自动添加兼容性，方法是配置 Web 服务器，以向每个页面发送等同于 meta 元素的自定义 HTTP 响应标头。
+                    </li>
+                    <li>
+                        &lt;add name="X-UA-Compatible" value="IE=EmulateIE7" /&gt;
+                    </li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible.html">http://webdemos.azurewebsites.net/ua-compatible.html</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible-emulate.html">http://webdemos.azurewebsites.net/ua-compatible-emulate.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>验证html和CSS</h2>
+                <ul>
+                    <li>在开发过程中可以采用一系列的工具对页面进行标准的验证，风格的优化。如果使用了Visual Studio集成开发环境还可以将这些工具集成到build简化操作。</li>
+                    <li>HTML validators – HTML验证工具</li>
+                    <li>CSS validators – CSS验证工具</li>
+                    <li>Uglify – JavaScript优化/压缩工具</li>
+                    <li>JSHint – JavaScript优化工具</li>
+                </ul>
+            </section>
+            <section>
+                <h2>使用跨浏览器兼容脚本库</h2>
+                <ul>
+                    <li>如果需要通过JavaScript操作页面上DOM元素，可以考虑采用跨浏览器脚本库来实现操作，这些脚本库经过了大规模的跨浏览器应用测试，比起自己编写兼容性脚本会节省大量开发和测试时间。</li>
+                    <li>JQuery</li>
+                    <li>Prototype</li>
+                    <li>MooTools</li>
+                    <li><a href="http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks">http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>使用功能检测</h2>
+                <ul>
+                    <li>应做事项：</li>
+                    <li>功能检测：在使用功能之前测试浏览器是否支持该功能。 功能检测使跨浏览器的代码能够发挥作用，无需提前了解每个浏览器的功能。 例如，jQuery 框架基本上完全依赖于功能检测。常用功能检测脚本库modernizr。 </li>
+                    <li>禁止事项：</li>
+                    <li>检测特定浏览器：使用浏览器的标识（例如 navigator.userAgent）来更改页面的行为。 </li>
+                    <li>假定无关的功能：对一个功能执行功能检测后又使用不同的功能。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/VurBK/">http://jsfiddle.net/aaronzhcl/VurBK/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>跨浏览器测试</h2>
+                <ul>
+                    <li>IE F12 Developer Tool</li>
+                    <li>Firebug Lite for IE7-</li>
+                    <li>Modern.IE Site Scan</li>
+                    <li>Browserstack.com</li>
+                    <li>Quirksmode.org</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>合理处理失败场景</h2>
+                <ul>
+                    <li>我们无法预知客户通过什么浏览器在访问网站，例如客户浏览器可能不支持flash，不支持JavaScript或者特殊的CSS。网站在这种极端情况下也需要能够正常输出必要的内容。</li>
+                    <li>可以禁用了脚本和样式表测试网页，检查是否主要的内容是否仍然可用。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>浏览器功能和兼容性更改</h2>
+            </section>
+            <section>
+                <h2>User-agent 字符串更改
+– IE9+</h2>
+                <ul>
+                    <li>Windows 8.1 IE11</li>
+                    <li>Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko</li>
+                    <li>Windows 7 IE11</li>
+                    <li>Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko</li>
+
+                    <li>如果将这些值与早期版本的IE报告的值进行比较，你会发现以下更改：</li>
+                    <li>兼容（"兼容"）和浏览器 ("MSIE") 令牌已删除。
+                    </li>
+                    <li>"like Gecko" 令牌已添加（以便与其他浏览器一致）。</li>
+                    <li>浏览器版本现在由新版本 ("rv") 令牌报告。
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>兼容性视图列表
+– IE9+</h2>
+                <ul>
+                    <li><a href="http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml">http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml</a>
+                    </li>
+                    <li><a href="https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml">https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml</a>
+                    </li>
+                    <li>当一个站点属于以下情况时，我们将该站点添加到“兼容性视图列表”： </li>
+                    <li>在设计上运行于旧版 IE</li>
+                    <li>在 IE9 模式中不能正常运行</li>
+                    <li>未声明 "X-UA-Compatible" meta 标记或标头</li>
+
+                    <li>%USERPROFILE%\AppData\Local\Microsoft\Internet Explorer\IECompatData\iecompatdata.xml
+                    </li>
+                    <li>
+                        &lt;domain docMode="EmulateIE10" versionVector="10" uaString="IE 10" featureSwitch="overrideXUACompatible:false" trackingid="426146"&gt;auto.163.com&lt;/domain&gt;
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>ASP.NET无法检测IE – IE9+</h2>
+                <ul>
+                    <li>ASP.NET 无法正确识别IE时，会报错 “_doPostBack is undefined JavaScript”。 </li>
+
+                    <li>解决方案：</li>
+                    <li>.NET 2.0 </li>
+                    <li>.NET 4</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>增强保护模式(EPM) – IE10+</h2>
+                <ul>
+                    <li>增强保护模式 (EPM) 是指一系列的安全改进措施：
+                    </li>
+                    <li>64 位选项卡进程，让基于内存的安全措施更有效。</li>
+                    <li>对个人和计算机配置资源的访问限制。
+                    </li>
+                    <li>对企业和其他本地资源的访问限制。</li>
+
+                    <li>EPM有效地在不可信内容和敏感系统数据之间创建了一个沙箱，使恶意行为更加难以执行，并且降低其影响。</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>可互操作的Quirks模式 – IE10</h2>
+                <ul>
+                    <li>IE10 修改了 Quirks 模式的默认行为，以增强对行业标准（如 HTML5）的支持，并提高与其他浏览器的可互操作性。</li>
+                    <li>在页面顶部添加下面的 meta 标记，以选择启用传统的 Quirks 行为:
+                    </li>
+                    <li>
+                        &lt;meta http-equiv="X-UA-Compatible" content="IE=5"&gt;
+                    </li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/legacy-quirks.html">http://webdemos.azurewebsites.net/legacy-quirks.html</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/interoperable-quirks.html">http://webdemos.azurewebsites.net/interoperable-quirks.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>拼写检查和自动更正支持
+– IE10+</h2>
+                <ul>
+                    <li>IE10 支持拼写检查和自动更正。spellcheck 属性可用于控制拼写检查。spellcheck  属性报告是否对文档对象模型 (DOM) 子树启用拼写检查。
+                    </li>
+                    <li>在某些情况下，IE10内置的拼写检查可能与网站预先存在的拼写检查功能产生冲突。内置的拼写检查菜单优先于网站预先提供的上下文菜单。
+                    </li>
+                    <li>如果网站受到影响，检测是否存在 spellcheck 属性。如果存在，则为该实例禁用自定义拼写检查功能： </li>
+                    <li>   if (document.documentElement.spellcheck == undefined) {</li>
+                    <li><a href="http://ie.microsoft.com/testdrive/Browser/SpellChecking/">http://ie.microsoft.com/testdrive/Browser/SpellChecking/</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>弃用文档模式
+– IE11+</h2>
+                <ul>
+                    <li>IE8 中引入了文档模式，将网站从不同版本的专有功能过渡到新版本的标准功能。从IE11 开始，文档模式被视为已弃用。</li>
+
+                    <li>
+                        &lt;!DOCTYPE html&gt;
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>伪点击测试在IE11边缘模式禁用 – IE11+</h2>
+                <ul>
+                    <li>IE10及以前版本通过透明背景允许鼠标单击和触摸交互。此功能称为伪点击测试。</li>
+                    <li>因为伪点击测试根据透明层背后的内容而有所变化，其测试效果并不一致，并且没有用于方向控制操作（如平移或缩放）。
+                    </li>
+                    <li>为了更好地兼容其他浏览器以及为所有交互事件（包括触摸和缩放）提供更加一致的体验，在 IE11 边缘模式中禁用了伪装点击测试。
+                    </li>
+                    <li>其影响在于某些处于透明层背后的元素不响应点击事件。可以通过z-index调整目标层次。</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/hit-testing.html">http://webdemos.azurewebsites.net/hit-testing.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>IE11中的细微兼容性更改
+– IE11</h2>
+                <ul>
+                    <li>ActiveX 和插件细微更改</li>
+                    <li>CSS 和布局细微更改</li>
+                    <li>图形和图像处理细微更改
+                    </li>
+                    <li>表单细微更改
+                    </li>
+                    <li>HTML 和 DOM 细微更改
+                    </li>
+
+                    <li><a href="http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx</a>
+                    </li>
+
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>HTML和DOM兼容性更改</h2>
+            </section>
+            <section>
+                <h2>getElementById – IE8+</h2>
+                <ul>
+                    <li>IE7及以前版本getElementById 首先返回name=id的元素。</li>
+                    <li>IE8之后getElementById不再按name属性查找，并且对于输入参数大小写敏感。</li>
+
+                    <pre><code>var x = document.getElementById('test')</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/get-element.html">http://webdemos.azurewebsites.net/get-element.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>hasAttribute()/hasAttributes() – IE8+</h2>
+                <ul>
+                    <li>IE8开始支持hasAttribute()/hasAttributes()方法。</li>
+
+                    <pre><code>document.getElementById('test').hasAttribute('testAttribute')</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/hasattribute.html">http://webdemos.azurewebsites.net/hasattribute.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>事件对象扩展冲突
+– IE8+</h2>
+                <ul>
+                    <li>IE8对添加了新的事件属性，如果代码中存在为事件添加的同名属性，则会造成冲突导致脚本错误。</li>
+                    <li>解决方案是将现有的冲突属性重新命名。</li>
+
+                    <pre><code>// Read-only in IE8
+                    event.source = myObject;
+                    // change source to mySource
+                    event.mySource = myObject;</code></pre>
+                </ul>
+            </section>
+            <section>
+                <h2>attributes排序差异
+– IE8+</h2>
+                <ul>
+                    <li>IE8 DOM属性(attributes)排序较之前版本有所变化，改变化会影响attributes[]数组元素顺序以及innerHTML和outerHTML输出。</li>
+                    <li>解决方案是修改代码逻辑使其不要依赖于属性顺序。</li>
+
+                    <pre><code>// May differ in IE8
+                    attr = elm.attributes[1];
+                    // Use attribute name instead
+                    attr = elm.attributes["id"];</code></pre>
+                </ul>
+            </section>
+            <section>
+                <h2>跨域文档通信
+– IE8+</h2>
+                <ul>
+                    <li>跨域文档通信被禁止，如果需要可以采用XDM(Cross Document Messaging)实现。</li>
+
+                    <pre><code>var frame = document.getElementsByTagName(‘iframe’)[0];
+                    frame.contentWindow.postMessage('Hello World');</code></pre>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/qWKBR/">http://jsfiddle.net/aaronzhcl/qWKBR/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>getAttribute对取得class的变更 – IE8+</h2>
+                <ul>
+                    <li>IE7及以前版本通过getAttribute得到元素class属性需要传入className。</li>
+                    <li>IE8及后续版本中开始使用标准名称class。</li>
+
+                    <pre><code>document.getElementById('test').getAttribute('class')</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/element-classname.html">http://webdemos.azurewebsites.net/element-classname.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>JSON原生支持
+– IE8+</h2>
+                <ul>
+                    <li>IE7及以前版本中由于没有提供Json的支持，开发者通常使用json2.js来解析json。</li>
+                    <li>IE8中引入了对Json的原生支持，对于以下代码需要修改以确保IE8兼容性。</li>
+
+                    <pre><code> if (!window.JSON) JSON = myJSON;
+                            JSON.encode(obj); // Not part of the standard</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/json-parser.html">http://webdemos.azurewebsites.net/json-parser.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>未赋值style/currentStyle属性默认值变更 – IE8+</h2>
+                <ul>
+                    <li>IE7及以前版本中未赋值的style/currentStyle属性默认值为0。</li>
+                    <li>IE8及后续版本为兼容DOM Level2标准分别将默认值修改为空字符串和auto。以前页面代码对于类似属性的判断需要进行如下修改，</li>
+                    <pre><code>
+                     var zIndex = elm.currentStyle.zIndex;
+                                if (zIndex == 0 || zIndex == "auto") {
+                     }
+                     var zIndex = elm.style.zIndex;
+                                if (zIndex === 0 || zIndex === "") {
+                     }
+                    </code></pre>
+                    <li><a href="http://webdemos.azurewebsites.net/unset-style-property.html">http://webdemos.azurewebsites.net/unset-style-property.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>getElementsByClassName – IE9+</h2>
+                <ul>
+                    <li>IE8及以前版本不支持getElementsByClassName。</li>
+                    <li>IE9之后引入对该接口支持。</li>
+
+                    <pre><code>document.getElementsByClassName('test')</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/getelementsbyclassname.html">http://webdemos.azurewebsites.net/getelementsbyclassname.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>childNodes/firstChild/lastChild/nextSibling/previousSibling –
+IE9+</h2>
+                <ul>
+                    <li>IE8及以前版本childNodes不返回text为空的节点。</li>
+                    <li>IE9之后childNodes会返回text为空的节点。以下属性也有同样更改：</li>
+
+                    <li>document.getElementById('childTest').childNodes</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/childnodes.html">http://webdemos.azurewebsites.net/childnodes.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>新增DOM属性支持 – IE9+</h2>
+                <ul>
+                    <li>IE9+添加了以下新增DOM属性的支持。</li>
+
+                    <li>document.getElementById('testRoot').childElementCount</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/child-element-count.html">http://webdemos.azurewebsites.net/child-element-count.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>children[] – IE9+ </h2>
+                <ul>
+                    <li>IE8及以前的版本通过children[]属性会返回注释节点</li>
+                    <li>IE9+修改为不返回注释节点。</li>
+                    <li>注：childNodes返回所有节点，children只返回元素节点(html tag node)</li>
+
+                    <li>document.getElementById('testRoot').children</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/children.html">http://webdemos.azurewebsites.net/children.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>wholeText – IE9+</h2>
+                <ul>
+                    <li>IE9+添加了对wholeText属性的支持。</li>
+                    <li>wholeText属性返回当前text节点以及所有毗邻的text节点内容。</li>
+
+                    <li>document.getElementById('test').firstChild.wholeText</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/wholetext.html">http://webdemos.azurewebsites.net/wholetext.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>attributes[] – IE9+</h2>
+                <ul>
+                    <li>IE7及以前版本不返回style属性</li>
+                    <li>IE7及以下版本不支持大写属性名</li>
+                    <li>IE8返回style属性，对于color返回’COLOR: green;’
+                    </li>
+                    <li>IE9及以上版本style属性对于color返回’color: green;’
+                    </li>
+
+                    <li>document.getElementById('test').attributes['style'].value</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/dom-attributes.html">http://webdemos.azurewebsites.net/dom-attributes.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>内容属性和DOM属性 – IE9+</h2>
+                <ul>
+                    <li>IE9内容属性(content-attribute)将不再连接到DOM expando, 这提高了IE和其他浏览器之间的互操作性。</li>
+                    <li>DOM expando是可以从 JavaScript 中的对象检索的值。
+                    </li>
+                    <li>
+                        <div id="myElement" class="b" myattr="custom"></div>
+                    </li>
+                    <pre>
+                        var divExpando = div.myAttr; 
+/ /Not work in IE9 +        
+var divExpando2 = div.getAttribute("myAttr");
+                    </pre>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6d57u/">http://jsfiddle.net/aaronzhcl/6d57u/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/dom-expando.html">http://webdemos.azurewebsites.net/dom-expando.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>CreateElement不再支持尖括号
+– IE9+</h2>
+                <ul>
+                    <li>自IE9 开始，使用尖括号时，createElement 会触发invalid character error异常。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/s44ht/">http://jsfiddle.net/aaronzhcl/s44ht/</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>splitText – IE10+</h2>
+                <ul>
+                    <li>IE9及以前版本中splitText在normalize之后不工作。</li>
+                    <li>IE10+修复了该问题。</li>
+                    <li>注：splitText作用是将传入参数之后的字符串创建为一个新的节点。</li>
+
+                    <li>document.getElementById('test').firstChild.splitText(18);</li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/splitText.html">http://webdemos.azurewebsites.net/splitText.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>getElementsByName – IE10+</h2>
+                <ul>
+                    <li>IE9及以前的版本会忽略p和自定义tag，并且会把id为指定参数的div节点返回。</li>
+                    <li>IE10中修改了该行为。</li>
+
+                    <pre><code>document.getElementsByName('test')</code></pre>
+
+                    <li><a href="http://webdemos.azurewebsites.net/getelementbyname.html">http://webdemos.azurewebsites.net/getelementbyname.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>从DOM删除IFrame释放资源 – IE9+</h2>
+                <ul>
+                    <li>IE8-会在网页下次处理导航事件期间释放iframe资源。导航事件之前，将继续运行与 iframe 元素（或其内容）关联的代码。</li>
+                    <li>IE9从 DOM 中删除iframe后，将立即释放与 iframe 元素关联的资源。如果在 iframe 或其任何子元素上调用与 DOM 关联的 API，将触发异常并显示消息“不能执行已释放 Script 的代码”。
+                    </li>
+                    <li>如果需要 iframe 中的对象，先将它们从 iframe 中复制出来，然后从 DOM 中将其删除。 </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/fjn7z/">http://jsfiddle.net/aaronzhcl/fjn7z/</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>MIME 类型和纯文本内容
+– IE9+</h2>
+                <ul>
+                    <li> IE9 标准模式 “text/plain” MIME 类型的文档不会通过 MIME 探查为其他类型。文档仅以纯文本方式呈现或下载。</li>
+                    <li>这样可以更轻松地共享 HTML 源代码片段。防止”text/plain”类型的脚本注入攻击。 </li>
+                    <li>配置服务器所有文档发送适当的 Content-Type 标头。例如，如果你的服务器提供可移植文档格式 (PDF) 文件以供下载，请确保文件使用 “application/pdf” MIME 类型。
+                    </li>
+
+                    <li><a href="http://webdemos.azurewebsites.net/mime-content-type.aspx">http://webdemos.azurewebsites.net/mime-content-type.aspx</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>原生XML对象类型
+– IE9+</h2>
+                <ul>
+                    <li>IE9 引入了原生XML对象的概念。原生 XML 对象可以在页面中呈现，并且可以与 HTML 对象支持的相同文档对象模型 (DOM) API 一起使用。 </li>
+                    <li>IE9之前版本通过 Microsoft XML (MSXML) 对象管理 XML，IE9 中仍然包含这些对象。但是本机 XML 对象与 MSXML 对象不兼容。
+                    </li>
+                    <li>站点中的代码尝试混合这两种对象时，通常会引发 JavaScript 异常，这可能导致兼容性问题。
+                    </li>
+                    <li>例如： xhr.responseXML就是一个MSXML对象</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/9bHnG/">http://jsfiddle.net/aaronzhcl/9bHnG/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>对象元素回退适用于DOM – IE9+</h2>
+                <ul>
+                    <li>object 元素含回退内容（通常是 embed 元素）时，IE9 会解析此内容，并且将其包含在文档对象模型 (DOM) 中，之前版本的IE不会执行此操作。
+                    </li>
+                    <li>如果 object 元素与其任意一个回退元素具有相同的名称属性，则 window["myName"] 现在会返回所有具有名称 "myName" 的元素的集合。 </li>
+                    <li>在访问关于返回值的方法和属性时，假定IE会返回单个元素（通常是 object 元素）的页面可能导致出现异常。</li>
+                    <li>使用document["myName"]可以正常返回object对象。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/ad264/">http://jsfiddle.net/aaronzhcl/ad264/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>减少
+MIME 类型的安全风险 – IE9+</h2>
+                <ul>
+                    <li>如果服务器发送响应头 "X-Content-Type-Options: nosniff"，则 script 和 styleSheet 元素会拒绝包含错误的 MIME 类型的响应。这是一种安全功能，有助于防止基于 MIME 类型混淆的攻击。
+                    </li>
+                    <li>如果通过 styleSheet 参考检索到的响应中接收到 "nosniff" 指令，则 IE不会加载“stylesheet”文件，除非 MIME 类型匹配 "text/css"。 </li>
+                    <li>如果通过 script 参考检索到的响应中接收到 "nosniff" 指令，则IE不会加载“script”文件，除非 MIME 类型匹配以下值之一： </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>脚本元素和事件执行
+– IE9+</h2>
+                <ul>
+                    <li>IE9 标准模式为 script 元素引入了基于标准的 load 事件。以前版本的 IE仅支持 script 元素的不可互操作的 onreadystatechange 事件。</li>
+                    <li>通常这些事件用于页面加载以后执行，以防止阻碍页面加载。在这些情况下，同时为 onreadystatechange 和 load 注册可能导致回调执行两次。这通常导致脚本错误或页面功能损坏。 </li>
+                    <li>建议对这些情形使用基于标准的 load 事件。Web 开发人员应使用功能检测来检测支持 script 元素的 load 事件的浏览器。在传统版IE中，应回滚脚本以使用 onreadystatechange。 </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6LrdN/">http://jsfiddle.net/aaronzhcl/6LrdN/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/onreadystatechange.html">http://webdemos.azurewebsites.net/onreadystatechange.html</a>
+                    </li>
+
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>空格保存和
+DOM – IE9+</h2>
+                <ul>
+                    <li>在使用 IE9 时，添加到网页的任何空格仍会在 DOM 中存在。
+                    </li>
+                    <li>如果希望看到类似 IE8 的行为，请使用元素遍历 API（例如，firstElementChild）。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7xBz6/">http://jsfiddle.net/aaronzhcl/7xBz6/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/dom-space.html">http://webdemos.azurewebsites.net/dom-space.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>指针事件更新
+– IE11+</h2>
+                <ul>
+                    <li>指针事件是一些事件和相关接口，用于处理来自鼠标、手写笔或触摸屏等设备的硬件不可知的指针输入。自从在IE10 中首次引入以来，指针事件已成为万维网联合会 (W3C) 规范。
+                    </li>
+                    <li>为了符合 W3C 指针事件规范的“候选推荐”，与IE10 相比，IE11 实现已略有更改。</li>
+                    <li>MS 供应商前缀删除</li>
+                    <li>行为更新</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/8xpQq/">http://jsfiddle.net/aaronzhcl/8xpQq/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>自动完成事件
+– IE11+</h2>
+                <ul>
+                    <li>IE11更新了自动完成相关事件，这些事件的更改可能影响以下站点： </li>
+                    <li>依赖专有 propertychange event 的站点 </li>
+                    <li>依赖键盘导航事件的站点
+                    </li>
+                    <li>执行浏览器探查的站点
+                    </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/w98D5/11/">http://jsfiddle.net/aaronzhcl/w98D5/11/</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>Window 事件行为更改
+– IE11+</h2>
+                <ul>
+                    <li>IE11更改了window.event 行为。 对于 IE11 边缘模式：
+                    </li>
+                    <li>如果没有为事件分配处理程序，那么传递给 window.event 属性的处理程序的对象将返回 "undefined"。 （在之前的文档模式中，在此情况下它会返回 NULL。） </li>
+                    <li>传递给 window.event 的处理程序的对象类型已更改。 对于 IE11 边缘模式，这是一个 Event 对象。 （在之前的文档模式中，这是一个 MSEventObj 对象。） </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/Lz36b/">http://jsfiddle.net/aaronzhcl/Lz36b/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>利用Mutation Observer – IE11+</h2>
+                <ul>
+                    <li>IE11 中的Mutation Observer改进了对突变事件和突变属性的支持。
+                    </li>
+                    <li>DOM3的支持方式基于DOM事件，存在性能问题。DOM4的支持方式取消对DOM事件的依赖，提升性能。</li>
+                    <li>// DOM3</li>
+                    <pre><code>document.body.addEventListener("DOMNodeInserted", nodeAddedCallback, false);
+                    document.body.addEventListener("DOMNodeRemoved", nodeRemovedCallback, false);</code></pre>
+                    <li>// DOM4</li>
+                    <pre><code>
+                    new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,{ childList: true, subtree: true });
+                </code></pre>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/YSFLq/">http://jsfiddle.net/aaronzhcl/YSFLq/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>JavaScript兼容性更改</h2>
+            </section>
+            <section>
+                <h2>数组索引处理
+– IE9+</h2>
+                <ul>
+                    <li>IE8在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于2147483647的Array元素时，创建的新元素的索引将是一个负整数。</li>
+                    <li>IE9正确处理了使用 2E+31-1 与 2E+32-2 之间的索引的 Array 元素。IE8行为不会在任何 IE9文档模式中复制。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/K73Gy/">http://jsfiddle.net/aaronzhcl/K73Gy/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/array-index.html">http://webdemos.azurewebsites.net/array-index.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>枚举JavaScript属性 – IE9+</h2>
+                <ul>
+                    <li>IE9对JavaScript对象模型有所更改，使得JavaScript属性的枚举方式与较早版本中的枚举方式不同。
+                    </li>
+                    <li>使用 for…in 语句时，属性枚举的顺序在任何文档模式中都可能与IE8返回的顺序不同。 </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/LjrQz/">http://jsfiddle.net/aaronzhcl/LjrQz/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/enum-property.html">http://webdemos.azurewebsites.net/enum-property.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>函数指针方法调用
+– IE9+</h2>
+                <ul>
+                    <li>IE9以前版本支持将方法的指针进行缓存并随后使用缓存的指针来调用方法。自IE9开始，取消了这项支持以改善与其他浏览器的互操作性。 IE9需要有一个对象才能调用方法。默认情况下会作用于window对象。改进后有以下两种调用方式，
+                    </li>
+                    <li>使用call方法（所有函数的一个属性）显式提供适当的调用对象
+                    </li>
+                    <li>使用JavaScript的bind API将隐式调用对象与该方法关联</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/D789Q/">http://jsfiddle.net/aaronzhcl/D789Q/</a>
+                    </li>
+                    <li><a href="http://webdemos.azurewebsites.net/method-pointer.html">http://webdemos.azurewebsites.net/method-pointer.html</a>
+                    </li>
+
+
+                </ul>
+            </section>
+            <section>
+                <h2>间接eval调用作用域 – Ie9+</h2>
+                <ul>
+                    <li>IE9以前版本，传递给间接eval的字符串将在本地函数作用域内求值。</li>
+                    <li>从IE9标准模式开始，该字符串根据ECMAScript语言规范第5版的规定在全局作用域中求值。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/v63ZL/">http://jsfiddle.net/aaronzhcl/v63ZL/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>数字精度和SSE2差异 – IE9+</h2>
+                <ul>
+                    <li>IE9在平台支持的情况下会使用Streaming SIMD Extensions 2 (SSE2)来提高数学运算速度和精度，因此会获得和IE8及以前版本不同的精度。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/GsK8T/">http://jsfiddle.net/aaronzhcl/GsK8T/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>Null协议返回值
+– IE9+ </h2>
+                <ul>
+                    <li>IE9在处理返回"null"值的JavaScript时遵循以下HTML5规定。浏览器必须将URL视为已经返回HTTP 204 无内容，其中不得包含响应正文。</li>
+                    <li>由于作为JavaScript协议(javascript:)一部分执行返回"null"，IE9会将URL视为其返回了“HTTP 204 无内容”，因此iframe为空，无论JavaScript协议中运行其他什么JavaScript。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7j4xa/">http://jsfiddle.net/aaronzhcl/7j4xa/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>夏令时处理
+– IE10+</h2>
+                <ul>
+                    <li>IE9和以前版本中，日期通过应用ECMAScript规范中来存储夏令时调整时间。为提高准确性，尤其是过去日期（历史数据）的准确性，IE10依 据系统规则存储夏令时调整时间。如果你的代码在你的Web应用程序中计算历史日期，或具有自定义逻辑可解决浏览器日期计算不准确的问题，要确保在升级 Web应用程序使其适用于IE10时，自定义逻辑仍可正常使用。</li>
+                    <li>对于夏令时转换发生在午夜（将时钟回拨）的时区，系统时间实际在过渡边界前1毫秒(ms)进行转换。通过在过渡边界前1ms进行转换，Windows 7及以上版本将仍处于夏令时转换的当天，但会在夏令时转换完成后的状态下向后回拨时钟。
+                    </li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/57wsF/">http://jsfiddle.net/aaronzhcl/57wsF/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>验证JavaScript框架对新版IE的支持</h2>
+                <ul>
+                    <li>许多站点仍在使用与新版本的IE不兼容的旧版JavaScript框架。许多现有JavaScript框架包含的功能取决于现有IE特定的行为或quirks模式。因此，在IE中所作的更改可能导致许多受欢迎的JavaScript框架部分无法正确工作。</li>
+                    <li>为做演示，以下为需要更新以支持IE9的受欢迎 JavaScript 框架的列表。
+                    </li>
+                    <li>Cufon 1.09i+</li>
+                    <li>jQuery 1.5.1+</li>
+                    <li>jQuery UI 1.6.8+</li>
+                    <li>MooTools 1.3+</li>
+                    <li>Prototype 1.7+</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>CSS 和布局兼容性更改</h2>
+            </section>
+            <section>
+                <h2>CSS表达式
+– IE8+</h2>
+                <ul>
+                    <li>CSS表达式的支持从IE8版本移除。</li>
+
+                    <li>background-color: expression( (new Date()).getHours()%2 ? "#000" : "#fff" );</li>
+
+                    <li>可以换用脚本控制</li>
+                    <pre><code>
+                            var elm = document.getElementById("main");
+                            if ((new Date()).getHours() % 2) {
+                                elm.style.backgroundColor = "#000";
+                            } else {
+                                elm.style.backgroundColor = "#fff";
+                            }
+</code></pre>
+                    <li><a href="http://webdemos.azurewebsites.net/css-expression.html">http://webdemos.azurewebsites.net/css-expression.html</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>泰语和东亚文字的字体大小
+– IE9+</h2>
+                <ul>
+                    <li>在 IE9 中，泰语和东亚文本看起来比在 IE8 及更早版本中小一些。</li>
+                    <li>在IE8 中，呈现泰语和东亚文本所用的字体大于在以下情况下指定的字体：
+                    </li>
+                    <li>指定的字体大小为 9pt 或更小</li>
+                    <li>指定的字体系列不支持泰语或东亚字符，例如 Arial</li>
+                    <li>在这种情况下，以 8pt 的 Arial 字体表示的泰语段落会以回退字体呈现，并且稍后会放大该字体以匹配 Arial 指标。因此，如果 Web 作者要求 8pt 的这类字体，则字体的实际大小会大于其预计的大小。 </li>
+                    <li>在IE9 中，始终会考虑指定的字体大小。因此，由于不会再放大回退字体，文本看起来就会小一些。 </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>圆角和传统版渐变筛选器
+– IE9+</h2>
+                <ul>
+                    <li>使用传统版渐变筛选器填充已使用 border-radius 属性生成圆角的元素时，渐变会超出元素的边框。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7quPX/">http://jsfiddle.net/aaronzhcl/7quPX/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>文本布局和自然指标 – IE9+</h2>
+                <ul>
+                    <li>对于 IE9 标准模式（以及更高版本）中的文本布局，IE9 使用自然指标，而非其他 Windows 浏览器使用的 Windows 图形设备接口 (GDI) 指标。GDI 指标将文本与像素边界对齐，但自然指标使用像素间的间距创建更准确地呈现和可读的文本。 </li>
+                    <li>为早期文档模式编写的页面布局在IE9 中可能无法正确显示。最常见的错误是意外的文本换行，换行文本下的元素可能会被覆盖。当文本框未包括额外的水平空间或者文本框的大小连接到页面中的其他元素（如图形）时，最有可能出现此错误。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>复选框和单选按钮布局默认值
+– IE11+</h2>
+                <ul>
+                    <li>在 IE11 模式中，margin、padding 和 box-sizing 的默认值针对 checkbox 和 radio button 输入类型将进行更新。 </li>
+                    <li>padding 的默认值现在是 0px。</li>
+                    <li>margin 的默认值现在是 3px，但是 marginLeft 除外，后者的默认值是 4px。 </li>
+                    <li>box-sizing 设置为 "border-box"。</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>默认字体更改
+– IE11+</h2>
+                <ul>
+                    <li>我们为使用 JavaScript 的几种语言的 Windows 应用商店应用更新文档对象模型 (DOM) 默认字体和 UI 字体。 这意味着取决于IE的原默认字体的某些网页和 Web 应用看起来可能不同。</li>
+                    <li>尽管应该改进了它们的整体外观，但此更改会困扰某些取决于某些脚本特定外观的测试。例如，没有字体规范的阿拉伯语现在默认为“Times New Roman”而非“Simplified Arabic”。
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>弹性框(Flexbox)布局更新 – IE11+</h2>
+                <ul>
+                    <li>2012 年 9 月，CSS 弹性框（“Flexbox”）布局模块作为 W3C 候选推荐发布，其中合并了对该规范某些方面的更改。 IE11 利用这些更改更新了弹性框支持，包括重命名的属性、重命名的属性值等。 随着不断向前发展，将使用新的无前缀名称（和值），并相应地更新现有站点。 </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>传统功能支持更改</h2>
+            </section>
+            <section>
+                <h2>不再支持
+Arguments.caller –
+IE9+</h2>
+                <ul>
+                    <li>从 IE9 开始，arguments.caller 属性在 IE9 标准模式或更高版本的文档模式中不受支持。
+                    </li>
+                    <li>arguments.caller 属性在 IE5 (Quirks) 模式、IE7 标准模式和 IE8 标准模式中可以如期工作，但在 IE9 模式或更高版本的文档模式中无法正常运行。</li>
+
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6NvbK/">http://jsfiddle.net/aaronzhcl/6NvbK/</a>
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持传统
+DOM 事件 – IE9+</h2>
+                <ul>
+                    <li>某些传统的文档对象模型 (DOM) 事件功能在 IE9 标准模式中已弃用，并且计划在下一个主要版本的最新标准模式中删除。 以下是弃用的事件以及你需要改用的基于标准的替代项：</li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持条件注释
+– IE10+</h2>
+                <ul>
+                    <li>为了提高与 HTML5 的可互操作性和兼容性，IE10 标准模式和 Quirks 模式中删除了对条件注释的支持。 这意味着，与在其他浏览器中相同，条件注释将被视作一般注释。</li>
+                    <li>使用了条件注释的页面在 IE9 中可正常工作，但在IE10 中无法正常工作。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持
+DX 筛选器 – IE10+</h2>
+                <ul>
+                    <li>对于“Internet 区域”中的网页，基于 DirectX 的筛选器和过渡（DX 筛选器）在IE10 中已过时。 默认情况下，这些功能在本地 Intranet 和受信任的站点区域中是禁用的，但可以针对所选文档模式进行启用。
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持
+VML – IE10+</h2>
+                <ul>
+                    <li>对于IE10，VML 在下列文档模式中无法工作（已过时）：</li>
+                    <li>可互操作的 Quirks 模式 </li>
+                    <li>IE10 标准模式</li>
+                    <li>现在，VML 的普遍使用使得IE10 和当前版本的其他浏览器中实现了其相应的基于标准的备用项。IE的这一过时功能在IE10 提供的文档模式 5、7、8 和 9 中仍然可用，但这些模式下的性能逊色于它们在基于标准的硬件加速模式中的性能。
+                    </li>
+
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持
+XML 数据岛 – IE10+</h2>
+                <ul>
+                    <li>为了提高与 HTML5 的可互操作性和兼容性，IE10 标准模式和 Quirks 模式中删除了对“XML 数据岛”的支持。 这意味着，与在其他浏览器中相同，XML 数据岛将被分析为 HTML。</li>
+                </ul>
+            </section>
+            <section>
+                <h2>不再支持元素行为和
+HTC – IE10+</h2>
+                <ul>
+                    <li>为了提高与 HTML5 的可互操作性和兼容性，IE10 标准模式和 Quirks 模式中删除了对元素行为和 HTML (HTC) 组件的支持。 这意味着，与在其他浏览器中相同，之前与元素行为或 HTC 绑定的元素都将被视作通用元素。
+                    </li>
+                    <li>此更改还会影响以下文档对象模型 (DOM) 属性，并且在IE10 标准模式和 quirks 模式中不受支持：
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Internet 区域不再支持
+CSS 表达式 – IE11+</h2>
+                <ul>
+                    <li>从 IE11 开始，对于在 Internet 区域中加载的网页，CSS 表达式在文档模式中不再有效。</li>
+
+                    <li>
+                        <style>
+                        </li><pre><code> #fixed {
+                            position: absolute;
+                            left: 10px;
+                            top: expression(body.scrollTop + 50 + "px");
+                            background: white;
+                            border: 1px solid red;
+                        }
+                        </code></pre><li>
+                        </style>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>IE11 Internet区域边缘模式不再支持VBScript</h2>
+                <ul>
+                    <li>由于在 Internet 区域中，IE11 边缘模式不再支持 VBScript，因此网页中无法再使用以下 API 功能：
+                    </li>
+                    <li>execScript 函数。</li>
+                    <li>VBArray 对象。</li>
+                    <li>"text/vbs" 和 "text/vbscript" MIME 类型（如同支持 script 元素的 type 值）。</li>
+
+                </ul>
+            </section>
+
+
+            <section>
+                <h1>THE END</h1>
+                <h3>BY Aaron Zhang / browserwork.com</h3>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>

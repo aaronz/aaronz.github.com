@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>IE9,10,11 crash after installing KB2962872 (MS14-037)</title>
+</head>
+
+<body>
+    <h1>IE9,10,11 crash after installing KB2962872 (MS14-037)</h1>
+    <div id="div" style="display:none;">
+        <p>aaaaaaaaaaaa</p><span>aaa</span><ul><li><span>a</span></li><li><a href="#">a</a></li></ul>
+        <p>aaaaaaaaaaaa</p><span>aaa</span><ul><li><span>a</span></li><li><a href="#">a</a></li></ul>
+        <p>aaaaaaaaaaaa</p><span>aaa</span><ul><li><span>a</span></li><li><a href="#">a</a></li></ul>
+        <p>aaaaaaaaaaaa</p><span>aaa</span><ul><li><span>a</span></li><li><a href="#">a</a></li></ul>
+        <p>aaaaaaaaaaaa</p><span>aaa</span><ul><li><span>a</span></li><li><a href="#">a</a></li></ul>
+    </div>
+    <input onclick="javascript:saveHTML();" type="button" value="click me twice to crash"/>
+    <script type="text/javascript">
+        function saveHTML() {
+            var sHTML = document.getElementById('div').innerHTML;
+
+            var oIFrame = document.createElement("<IFRAME width=100% height=600 name='HTMLSubmitFrame' src='javascript:void(0);'></IFRAME>");
+            document.body.appendChild(oIFrame);
+
+            var oForm = document.createElement('<FORM NAME="frmSaveHTML" METHOD=POST TARGET="aaaa" ACTION="SaveHTMLToDatabase.asp">');
+            oForm.innerHTML = sHTML;
+            document.body.appendChild(oForm);
+            oForm.removeNode(true);
+        }
+    </script>
+</body>
+
+</html>

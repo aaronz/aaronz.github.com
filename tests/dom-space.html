@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>dom space demo</title>
+</head>
+<body>
+    <h1>DOM space</h1>
+    <div id="mydiv">
+        Hi,    
+        Hello       World
+    </div>
+    <script>
+        function test() {
+            alert(document.getElementById("mydiv").innerHTML);
+        }
+    </script>
+    <h3>Source Code</h3>
+    <pre>
+    &lt;div id=&quot;mydiv&quot;&gt;
+        Hi,    
+        Hello       World
+    &lt;/div&gt;
+        
+    alert(document.getElementById("mydiv").innerHTML);
+    </pre>
+    
+    <input type="button" onclick="test()" value="Execute Test" />
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function add() {
+            var str = '<form name=\"inner\" action=\"ie11busy.html\" method=\"post\"><input class="button" type="submit" value="take me to gc"/></form>'
+            document.getElementById("div2").innerHTML = str;
+        }
+
+        function clear() {
+            this.main.a.value = "";
+            this.main.b.value = "";
+            this.main.c.value = "";
+            this.main.d.value = "";
+            this.main.e.value = "";
+        }
+
+        function handleClick() {
+            clear();
+            add();
+        }
+    </script>
+</head>
+<body>
+    <p>input text in each text box then click the "add inner html" button, then click the "take me to gc" button, if the issue does not crash or hang, pls repeat again.</p>
+    <form id="main" name="frm" action="#" method="post" autocomplete="off">
+        <input id="a" type="text" name="a" />
+        <input id="b" type="text" name="b" />
+        <input id="c" type="text" name="c" />
+        <input id="d" type="text" name="d" />
+        <input id="e" type="text" name="e" />
+        <input class="button" type="button" value="add inner html" onclick="handleClick()"/>
+    </form>
+    <div name="div2" id="div2"></div>
+</body>
+</html>

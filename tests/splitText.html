@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>splitText demo</title>
+</head>
+<body>
+    <h1>DOM spliteText</h1>
+    <script>
+        function split() {
+            document.getElementById('test').firstChild.splitText(18);
+            alert('children length is:' + document.getElementById('test').childNodes.length);
+        }
+
+        function normal() {
+            document.getElementById('test').normalize();
+            alert('children length is:' + document.getElementById('test').childNodes.length);
+        }
+    </script>
+    <h3>Source Code</h3>
+    <pre>
+        function split() {
+            document.getElementById('test').firstChild.splitText(18);
+            alert('children length is:' + document.getElementById('test').childNodes.length);
+        }
+
+        function normal() {
+            document.getElementById('test').normalize();
+            alert('children length is:' + document.getElementById('test').childNodes.length);
+        }
+    </pre>
+
+    <input type="button" value="split" onclick="split()"/>
+    <input type="button" value="normalize" onclick="normal()"/>
+    <p id="test">The quick brown fox</p>
+</body>
+</html>

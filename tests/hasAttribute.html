@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>hasAttribute demo</title>
+</head>
+<body>
+    <h1>DOM hasAttribute</h1>
+    <p testAttribute="test" id="test"></p>
+    <script>
+        function test() {
+            if (document.getElementById('test').hasAttribute)
+                if (document.getElementById('test').hasAttribute('testAttribute'))
+                    alert('testAttribute exist');
+                else
+                    alert('testAttribute does not exist');
+            else
+                alert('hasAttribute is not supported');
+        }
+    </script>
+    <h3>Source Code</h3>
+    <pre>
+        &lt;p testAttribute=&quot;test&quot; id=&quot;test&quot;&gt;&lt;/p&gt;
+
+            if (document.getElementById('test').hasAttribute)
+                if (document.getElementById('test').hasAttribute('testAttribute'))
+                    alert('testAttribute exist');
+                else
+                    alert('testAttribute does not exist');
+            else
+                alert('hasAttribute is not supported');
+    </pre>
+    <input type="button" onclick="test()" value="Execute Test"/>
+</body>
+</html>

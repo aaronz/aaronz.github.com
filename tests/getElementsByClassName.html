@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>getElementsByClassName demo</title>
+</head>
+<body>
+    <h1>DOM getElementsByClassName</h1>
+    <script>
+    function test(){
+        if (document.getElementsByClassName)
+            alert("getElementsByClassName is supported");
+        else
+            alert("getElementsByClassName is not supported");        
+    }
+    </script>
+    <h3>Source Code</h3>
+    <pre>
+        if (document.getElementsByClassName)
+            alert("getElementsByClassName is supported");
+        else
+            alert("getElementsByClassName is not supported");
+</pre>
+<input type="button" value="Execute Test" onclick="test()"/>
+</body>
+</html>

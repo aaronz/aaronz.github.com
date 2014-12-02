@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Connection Per Server Test</title>
+</head>
+<body>
+    <h1>Connection Per Server Test</h1>
+    <input id="number" type="text" value="10" />
+    <input type="button" onclick="test()" value="Start Test" />
+    <script>
+        var firstend;
+        function test() {
+            firstend = null;
+            document.getElementById("result").innerHTML = "";
+            var i = parseInt(document.getElementById("number").value);
+            if (i > 30) {
+                alert("too many connections specified.");
+                return;
+            }
+            while (i > 0) {
+                send();
+                i--;
+            }
+        }
+
+        function send() {
+            var xmlhttp, element, start, end;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    end = new Date();
+                    if (firstend == null) {
+                        firstend = end;
+                    }
+                    element = document.createElement("p");
+                    element.innerHTML = "start:" + start.toLocaleTimeString() + start.getMilliseconds()
+                        + " end:" + end.toLocaleTimeString() + end.getMilliseconds();
+                    if ((end.getTime() - firstend.getTime()) > 100) {
+                        element.style.color = "red";
+                    }
+                    document.getElementById("result").appendChild(element);
+                }
+            }
+            xmlhttp.open("GET", "sleep.aspx?time=" + new Date().getTime(), true);
+            xmlhttp.send();
+            start = new Date();
+        }
+    </script>
+    <div id="result"></div>
+</body>
+</html>

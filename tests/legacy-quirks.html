@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Legacy Quirks Page</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=5">
+	<style>
+	#fixed {
+		position:absolute;
+		left:10px;
+		top:expression(body.scrollTop + 100 + "px");
+		background:white;
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<p id="fixed">Here is some text, which is fixed.</p>
+	<p>
+		[many times: "stuff <br/><br/><br/><br/>"]
+	</p>
+		<h3>Source Code</h3>
+	<pre>
+		#fixed {
+			position:absolute;
+			left:10px;
+			top:expression(body.scrollTop + 100 +"px");
+			background:white;
+			border:1px solid red;
+		}
+	</pre>
+</body>
+</html>

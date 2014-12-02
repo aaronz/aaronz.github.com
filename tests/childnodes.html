@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>childnodes demo</title>
+</head>
+<body>
+    <h1>DOM element childNodes</h1>
+    <h3>Description</h3>
+    <p>The childNodes nodeList consists of all child nodes of the element, including (empty) text nodes and comment nodes.<br/>
+    IE8 and lower do not count empty text nodes. Thus, childNodes really contains the nodeList that children should give.</p>
+    
+    <h3>Source Code</h3>
+    <ol id="childTest">
+        <li>This OL has id="childTest"</li>
+        <li>It&#8217;s meant for the childNodes test</li>
+        <li>because between every two LIs there&#8217;s an empty text node.</li>
+    </ol>
+    <script>
+        function test() {
+            alert('childTest childnodes length is: ' + document.getElementById('childTest').childNodes.length);
+        }
+    </script>
+    <pre>
+        alert('childTest childnodes length is: ' + document.getElementById('childTest').childNodes.length);
+    </pre>
+    <input type="button" value="Execute Test" onclick="test()"/>
+</body>
+</html>

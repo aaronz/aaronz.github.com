@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>element classname demo</title>
+</head>
+<body>
+    <input id="test" type="button" class="test-class" value="class or classname" onclick="test()"/>
+    <script>
+        function test() {
+            if (document.getElementById('test').getAttribute('className')) {
+                document.getElementById('output').innerHTML = 'successfully get by className';
+            }
+            else if (document.getElementById('test').getAttribute('class'))
+            {
+                document.getElementById('output').innerHTML = 'successfully get by class';
+            }
+            else
+            {
+                document.getElementById('output').innerHTML = 'neither className nor class works!';
+            }
+        }
+    </script>
+    <h3>Source Code</h3>
+    <pre>
+            if (document.getElementById('test').getAttribute('className')) {
+                document.getElementById('output').innerHTML = 'successfully get by className';
+            }
+            else if (document.getElementById('test').getAttribute('class'))
+            {
+                document.getElementById('output').innerHTML = 'successfully get by class';
+            }
+            else
+            {
+                document.getElementById('output').innerHTML = 'neither className nor class works!';
+            }
+</pre>
+    <h3>Result</h3>
+    <p id="output"></p>
+</body>
+</html>

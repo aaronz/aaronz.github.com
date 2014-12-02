@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/theme/serif.css" id="theme">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -45,16 +45,9 @@
             <section>
                 <h2>Compatibility Cookbook for IE</h2>
                 <p>
-                    <small><a href="http://browserwork.com/contact.html">Aaron Zhang</a> - <a href="http://www.browserwork.com">Browserwork.com</a>
-                    </small>
+                    <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
+</small>
                 </p>
-            </section>
-
-            <section>
-                <h2>Internet Explorer 兼容性差异</h2>
-                <ul>
-                    <li>Microsoft – Aaron Zhang</li>
-                </ul>
             </section>
             <section>
                 <h2>内容概览</h2>
@@ -71,7 +64,7 @@
                 <h2>跨浏览器兼容最佳实践</h2>
             </section>
             <section>
-                <h2>了解跨浏览器兼容的主要问题</h2>
+                <h2>了解跨浏览器兼容主要问题</h2>
                 <ul>
                     <li>显示问题</li>
                     <li>功能问题</li>
@@ -124,9 +117,9 @@
                         &lt;add name="X-UA-Compatible" value="IE=EmulateIE7" /&gt;
                     </li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible.html">http://webdemos.azurewebsites.net/ua-compatible.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible.html" target="_blank">http://webdemos.azurewebsites.net/ua-compatible.html</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible-emulate.html">http://webdemos.azurewebsites.net/ua-compatible-emulate.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/ua-compatible-emulate.html" target="_blank">http://webdemos.azurewebsites.net/ua-compatible-emulate.html</a>
                     </li>
 
                 </ul>
@@ -148,7 +141,7 @@
                     <li>JQuery</li>
                     <li>Prototype</li>
                     <li>MooTools</li>
-                    <li><a href="http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks">http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks</a>
+                    <li><a href="http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks" target="_blank">http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks</a>
                     </li>
 
 
@@ -163,7 +156,7 @@
                     <li>检测特定浏览器：使用浏览器的标识（例如 navigator.userAgent）来更改页面的行为。 </li>
                     <li>假定无关的功能：对一个功能执行功能检测后又使用不同的功能。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/VurBK/">http://jsfiddle.net/aaronzhcl/VurBK/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/VurBK/" target="_blank">http://jsfiddle.net/aaronzhcl/VurBK/</a>
                     </li>
 
                 </ul>
@@ -211,9 +204,9 @@
                 <h2>兼容性视图列表
 – IE9+</h2>
                 <ul>
-                    <li><a href="http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml">http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml</a>
+                    <li><a href="http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml" target="_blank">http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml</a>
                     </li>
-                    <li><a href="https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml">https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml</a>
+                    <li><a href="https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml" target="_blank">https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml</a>
                     </li>
                     <li>当一个站点属于以下情况时，我们将该站点添加到“兼容性视图列表”： </li>
                     <li>在设计上运行于旧版 IE</li>
@@ -262,9 +255,9 @@
                         &lt;meta http-equiv="X-UA-Compatible" content="IE=5"&gt;
                     </li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/legacy-quirks.html">http://webdemos.azurewebsites.net/legacy-quirks.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/legacy-quirks.html" target="_blank">http://webdemos.azurewebsites.net/legacy-quirks.html</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/interoperable-quirks.html">http://webdemos.azurewebsites.net/interoperable-quirks.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/interoperable-quirks.html" target="_blank">http://webdemos.azurewebsites.net/interoperable-quirks.html</a>
                     </li>
 
                 </ul>
@@ -278,8 +271,8 @@
                     <li>在某些情况下，IE10内置的拼写检查可能与网站预先存在的拼写检查功能产生冲突。内置的拼写检查菜单优先于网站预先提供的上下文菜单。
                     </li>
                     <li>如果网站受到影响，检测是否存在 spellcheck 属性。如果存在，则为该实例禁用自定义拼写检查功能： </li>
-                    <li>   if (document.documentElement.spellcheck == undefined) {</li>
-                    <li><a href="http://ie.microsoft.com/testdrive/Browser/SpellChecking/">http://ie.microsoft.com/testdrive/Browser/SpellChecking/</a>
+                    <pre><code> if (document.documentElement.spellcheck == undefined) </code></pre>
+                    <li><a href="http://ie.microsoft.com/testdrive/Browser/SpellChecking/" target="_blank">http://ie.microsoft.com/testdrive/Browser/SpellChecking/</a>
                     </li>
                 </ul>
             </section>
@@ -304,7 +297,7 @@
                     </li>
                     <li>其影响在于某些处于透明层背后的元素不响应点击事件。可以通过z-index调整目标层次。</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/hit-testing.html">http://webdemos.azurewebsites.net/hit-testing.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/hit-testing.html" target="_blank">http://webdemos.azurewebsites.net/hit-testing.html</a>
                     </li>
 
                 </ul>
@@ -322,7 +315,7 @@
                     <li>HTML 和 DOM 细微更改
                     </li>
 
-                    <li><a href="http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx</a>
+                    <li><a href="http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx" target="_blank">http://msdn.microsoft.com/en-us/library/ie/dn467845%28v=vs.85%29.aspx</a>
                     </li>
 
 
@@ -340,7 +333,7 @@
 
                     <pre><code>var x = document.getElementById('test')</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/get-element.html">http://webdemos.azurewebsites.net/get-element.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/get-element.html" target="_blank">http://webdemos.azurewebsites.net/get-element.html</a>
                     </li>
 
                 </ul>
@@ -352,7 +345,7 @@
 
                     <pre><code>document.getElementById('test').hasAttribute('testAttribute')</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/hasattribute.html">http://webdemos.azurewebsites.net/hasattribute.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/hasattribute.html" target="_blank">http://webdemos.azurewebsites.net/hasattribute.html</a>
                     </li>
 
 
@@ -366,9 +359,9 @@
                     <li>解决方案是将现有的冲突属性重新命名。</li>
 
                     <pre><code>// Read-only in IE8
-                    event.source = myObject;
-                    // change source to mySource
-                    event.mySource = myObject;</code></pre>
+event.source = myObject;
+// change source to mySource
+event.mySource = myObject;</code></pre>
                 </ul>
             </section>
             <section>
@@ -379,9 +372,9 @@
                     <li>解决方案是修改代码逻辑使其不要依赖于属性顺序。</li>
 
                     <pre><code>// May differ in IE8
-                    attr = elm.attributes[1];
-                    // Use attribute name instead
-                    attr = elm.attributes["id"];</code></pre>
+attr = elm.attributes[1];
+// Use attribute name instead
+attr = elm.attributes["id"];</code></pre>
                 </ul>
             </section>
             <section>
@@ -391,9 +384,9 @@
                     <li>跨域文档通信被禁止，如果需要可以采用XDM(Cross Document Messaging)实现。</li>
 
                     <pre><code>var frame = document.getElementsByTagName(‘iframe’)[0];
-                    frame.contentWindow.postMessage('Hello World');</code></pre>
+frame.contentWindow.postMessage('Hello World');</code></pre>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/qWKBR/">http://jsfiddle.net/aaronzhcl/qWKBR/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/qWKBR/" target="_blank">http://jsfiddle.net/aaronzhcl/qWKBR/</a>
                     </li>
 
                 </ul>
@@ -406,7 +399,7 @@
 
                     <pre><code>document.getElementById('test').getAttribute('class')</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/element-classname.html">http://webdemos.azurewebsites.net/element-classname.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/element-classname.html" target="_blank">http://webdemos.azurewebsites.net/element-classname.html</a>
                     </li>
 
                 </ul>
@@ -419,9 +412,9 @@
                     <li>IE8中引入了对Json的原生支持，对于以下代码需要修改以确保IE8兼容性。</li>
 
                     <pre><code> if (!window.JSON) JSON = myJSON;
-                            JSON.encode(obj); // Not part of the standard</code></pre>
+        JSON.encode(obj); // Not part of the standard</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/json-parser.html">http://webdemos.azurewebsites.net/json-parser.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/json-parser.html" target="_blank">http://webdemos.azurewebsites.net/json-parser.html</a>
                     </li>
 
                 </ul>
@@ -432,14 +425,14 @@
                     <li>IE7及以前版本中未赋值的style/currentStyle属性默认值为0。</li>
                     <li>IE8及后续版本为兼容DOM Level2标准分别将默认值修改为空字符串和auto。以前页面代码对于类似属性的判断需要进行如下修改，</li>
                     <pre><code>
-                     var zIndex = elm.currentStyle.zIndex;
-                                if (zIndex == 0 || zIndex == "auto") {
-                     }
-                     var zIndex = elm.style.zIndex;
-                                if (zIndex === 0 || zIndex === "") {
-                     }
-                    </code></pre>
-                    <li><a href="http://webdemos.azurewebsites.net/unset-style-property.html">http://webdemos.azurewebsites.net/unset-style-property.html</a>
+ var zIndex = elm.currentStyle.zIndex;
+            if (zIndex == 0 || zIndex == "auto") {
+ }
+ var zIndex = elm.style.zIndex;
+            if (zIndex === 0 || zIndex === "") {
+ }
+</code></pre>
+                    <li><a href="http://webdemos.azurewebsites.net/unset-style-property.html" target="_blank">http://webdemos.azurewebsites.net/unset-style-property.html</a>
                     </li>
 
                 </ul>
@@ -452,7 +445,7 @@
 
                     <pre><code>document.getElementsByClassName('test')</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/getelementsbyclassname.html">http://webdemos.azurewebsites.net/getelementsbyclassname.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/getelementsbyclassname.html" target="_blank">http://webdemos.azurewebsites.net/getelementsbyclassname.html</a>
                     </li>
 
                 </ul>
@@ -466,7 +459,7 @@ IE9+</h2>
 
                     <li>document.getElementById('childTest').childNodes</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/childnodes.html">http://webdemos.azurewebsites.net/childnodes.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/childnodes.html" target="_blank">http://webdemos.azurewebsites.net/childnodes.html</a>
                     </li>
 
                 </ul>
@@ -478,7 +471,7 @@ IE9+</h2>
 
                     <li>document.getElementById('testRoot').childElementCount</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/child-element-count.html">http://webdemos.azurewebsites.net/child-element-count.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/child-element-count.html" target="_blank">http://webdemos.azurewebsites.net/child-element-count.html</a>
                     </li>
 
 
@@ -493,7 +486,7 @@ IE9+</h2>
 
                     <li>document.getElementById('testRoot').children</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/children.html">http://webdemos.azurewebsites.net/children.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/children.html" target="_blank">http://webdemos.azurewebsites.net/children.html</a>
                     </li>
 
                 </ul>
@@ -506,7 +499,7 @@ IE9+</h2>
 
                     <li>document.getElementById('test').firstChild.wholeText</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/wholetext.html">http://webdemos.azurewebsites.net/wholetext.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/wholetext.html" target="_blank">http://webdemos.azurewebsites.net/wholetext.html</a>
                     </li>
 
                 </ul>
@@ -523,7 +516,7 @@ IE9+</h2>
 
                     <li>document.getElementById('test').attributes['style'].value</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/dom-attributes.html">http://webdemos.azurewebsites.net/dom-attributes.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/dom-attributes.html" target="_blank">http://webdemos.azurewebsites.net/dom-attributes.html</a>
                     </li>
 
 
@@ -538,15 +531,14 @@ IE9+</h2>
                     <li>
                         <div id="myElement" class="b" myattr="custom"></div>
                     </li>
-                    <pre>
-                        var divExpando = div.myAttr; 
-/ /Not work in IE9 +        
+                    <pre><code>var divExpando = div.myAttr; 
+//Not work in IE9 +        
 var divExpando2 = div.getAttribute("myAttr");
-                    </pre>
+</code></pre>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/6d57u/">http://jsfiddle.net/aaronzhcl/6d57u/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6d57u/" target="_blank">http://jsfiddle.net/aaronzhcl/6d57u/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/dom-expando.html">http://webdemos.azurewebsites.net/dom-expando.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/dom-expando.html" target="_blank">http://webdemos.azurewebsites.net/dom-expando.html</a>
                     </li>
 
 
@@ -558,7 +550,7 @@ var divExpando2 = div.getAttribute("myAttr");
                 <ul>
                     <li>自IE9 开始，使用尖括号时，createElement 会触发invalid character error异常。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/s44ht/">http://jsfiddle.net/aaronzhcl/s44ht/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/s44ht/" target="_blank">http://jsfiddle.net/aaronzhcl/s44ht/</a>
                     </li>
                 </ul>
             </section>
@@ -571,7 +563,7 @@ var divExpando2 = div.getAttribute("myAttr");
 
                     <li>document.getElementById('test').firstChild.splitText(18);</li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/splitText.html">http://webdemos.azurewebsites.net/splitText.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/splitText.html" target="_blank">http://webdemos.azurewebsites.net/splitText.html</a>
                     </li>
 
 
@@ -585,7 +577,7 @@ var divExpando2 = div.getAttribute("myAttr");
 
                     <pre><code>document.getElementsByName('test')</code></pre>
 
-                    <li><a href="http://webdemos.azurewebsites.net/getelementbyname.html">http://webdemos.azurewebsites.net/getelementbyname.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/getelementbyname.html" target="_blank">http://webdemos.azurewebsites.net/getelementbyname.html</a>
                     </li>
 
                 </ul>
@@ -598,7 +590,7 @@ var divExpando2 = div.getAttribute("myAttr");
                     </li>
                     <li>如果需要 iframe 中的对象，先将它们从 iframe 中复制出来，然后从 DOM 中将其删除。 </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/fjn7z/">http://jsfiddle.net/aaronzhcl/fjn7z/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/fjn7z/" target="_blank">http://jsfiddle.net/aaronzhcl/fjn7z/</a>
                     </li>
 
 
@@ -613,7 +605,7 @@ var divExpando2 = div.getAttribute("myAttr");
                     <li>配置服务器所有文档发送适当的 Content-Type 标头。例如，如果你的服务器提供可移植文档格式 (PDF) 文件以供下载，请确保文件使用 “application/pdf” MIME 类型。
                     </li>
 
-                    <li><a href="http://webdemos.azurewebsites.net/mime-content-type.aspx">http://webdemos.azurewebsites.net/mime-content-type.aspx</a>
+                    <li><a href="http://webdemos.azurewebsites.net/mime-content-type.aspx" target="_blank">http://webdemos.azurewebsites.net/mime-content-type.aspx</a>
                     </li>
 
                 </ul>
@@ -629,7 +621,7 @@ var divExpando2 = div.getAttribute("myAttr");
                     </li>
                     <li>例如： xhr.responseXML就是一个MSXML对象</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/9bHnG/">http://jsfiddle.net/aaronzhcl/9bHnG/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/9bHnG/" target="_blank">http://jsfiddle.net/aaronzhcl/9bHnG/</a>
                     </li>
 
                 </ul>
@@ -643,7 +635,7 @@ var divExpando2 = div.getAttribute("myAttr");
                     <li>在访问关于返回值的方法和属性时，假定IE会返回单个元素（通常是 object 元素）的页面可能导致出现异常。</li>
                     <li>使用document["myName"]可以正常返回object对象。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/ad264/">http://jsfiddle.net/aaronzhcl/ad264/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/ad264/" target="_blank">http://jsfiddle.net/aaronzhcl/ad264/</a>
                     </li>
 
                 </ul>
@@ -667,9 +659,9 @@ MIME 类型的安全风险 – IE9+</h2>
                     <li>通常这些事件用于页面加载以后执行，以防止阻碍页面加载。在这些情况下，同时为 onreadystatechange 和 load 注册可能导致回调执行两次。这通常导致脚本错误或页面功能损坏。 </li>
                     <li>建议对这些情形使用基于标准的 load 事件。Web 开发人员应使用功能检测来检测支持 script 元素的 load 事件的浏览器。在传统版IE中，应回滚脚本以使用 onreadystatechange。 </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/6LrdN/">http://jsfiddle.net/aaronzhcl/6LrdN/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6LrdN/" target="_blank">http://jsfiddle.net/aaronzhcl/6LrdN/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/onreadystatechange.html">http://webdemos.azurewebsites.net/onreadystatechange.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/onreadystatechange.html" target="_blank">http://webdemos.azurewebsites.net/onreadystatechange.html</a>
                     </li>
 
 
@@ -684,9 +676,9 @@ DOM – IE9+</h2>
                     </li>
                     <li>如果希望看到类似 IE8 的行为，请使用元素遍历 API（例如，firstElementChild）。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/7xBz6/">http://jsfiddle.net/aaronzhcl/7xBz6/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7xBz6/" target="_blank">http://jsfiddle.net/aaronzhcl/7xBz6/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/dom-space.html">http://webdemos.azurewebsites.net/dom-space.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/dom-space.html" target="_blank">http://webdemos.azurewebsites.net/dom-space.html</a>
                     </li>
 
 
@@ -702,7 +694,7 @@ DOM – IE9+</h2>
                     <li>MS 供应商前缀删除</li>
                     <li>行为更新</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/8xpQq/">http://jsfiddle.net/aaronzhcl/8xpQq/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/8xpQq/" target="_blank">http://jsfiddle.net/aaronzhcl/8xpQq/</a>
                     </li>
 
                 </ul>
@@ -718,7 +710,7 @@ DOM – IE9+</h2>
                     <li>执行浏览器探查的站点
                     </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/w98D5/11/">http://jsfiddle.net/aaronzhcl/w98D5/11/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/w98D5/11/" target="_blank">http://jsfiddle.net/aaronzhcl/w98D5/11/</a>
                     </li>
 
 
@@ -733,7 +725,7 @@ DOM – IE9+</h2>
                     <li>如果没有为事件分配处理程序，那么传递给 window.event 属性的处理程序的对象将返回 "undefined"。 （在之前的文档模式中，在此情况下它会返回 NULL。） </li>
                     <li>传递给 window.event 的处理程序的对象类型已更改。 对于 IE11 边缘模式，这是一个 Event 对象。 （在之前的文档模式中，这是一个 MSEventObj 对象。） </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/Lz36b/">http://jsfiddle.net/aaronzhcl/Lz36b/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/Lz36b/" target="_blank">http://jsfiddle.net/aaronzhcl/Lz36b/</a>
                     </li>
 
                 </ul>
@@ -744,14 +736,15 @@ DOM – IE9+</h2>
                     <li>IE11 中的Mutation Observer改进了对突变事件和突变属性的支持。
                     </li>
                     <li>DOM3的支持方式基于DOM事件，存在性能问题。DOM4的支持方式取消对DOM事件的依赖，提升性能。</li>
-                    <li>// DOM3</li>
-                    <pre><code>document.body.addEventListener("DOMNodeInserted", nodeAddedCallback, false);
-                    document.body.addEventListener("DOMNodeRemoved", nodeRemovedCallback, false);</code></pre>
-                    <li>// DOM4</li>
+
                     <pre><code>
-                    new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,{ childList: true, subtree: true });
+// DOM3
+document.body.addEventListener("DOMNodeInserted", nodeAddedCallback, false);
+document.body.addEventListener("DOMNodeRemoved", nodeRemovedCallback, false);
+// DOM4
+new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,{ childList: true, subtree: true });
                 </code></pre>
-                    <li><a href="http://jsfiddle.net/aaronzhcl/YSFLq/">http://jsfiddle.net/aaronzhcl/YSFLq/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/YSFLq/" target="_blank">http://jsfiddle.net/aaronzhcl/YSFLq/</a>
                     </li>
 
                 </ul>
@@ -766,9 +759,9 @@ DOM – IE9+</h2>
                     <li>IE8在数组索引处理方面不符合 ECMAScript（第三方版本）规范。在创建索引大于2147483647的Array元素时，创建的新元素的索引将是一个负整数。</li>
                     <li>IE9正确处理了使用 2E+31-1 与 2E+32-2 之间的索引的 Array 元素。IE8行为不会在任何 IE9文档模式中复制。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/K73Gy/">http://jsfiddle.net/aaronzhcl/K73Gy/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/K73Gy/" target="_blank">http://jsfiddle.net/aaronzhcl/K73Gy/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/array-index.html">http://webdemos.azurewebsites.net/array-index.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/array-index.html" target="_blank">http://webdemos.azurewebsites.net/array-index.html</a>
                     </li>
 
 
@@ -781,9 +774,9 @@ DOM – IE9+</h2>
                     </li>
                     <li>使用 for…in 语句时，属性枚举的顺序在任何文档模式中都可能与IE8返回的顺序不同。 </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/LjrQz/">http://jsfiddle.net/aaronzhcl/LjrQz/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/LjrQz/" target="_blank">http://jsfiddle.net/aaronzhcl/LjrQz/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/enum-property.html">http://webdemos.azurewebsites.net/enum-property.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/enum-property.html" target="_blank">http://webdemos.azurewebsites.net/enum-property.html</a>
                     </li>
 
                 </ul>
@@ -798,9 +791,9 @@ DOM – IE9+</h2>
                     </li>
                     <li>使用JavaScript的bind API将隐式调用对象与该方法关联</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/D789Q/">http://jsfiddle.net/aaronzhcl/D789Q/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/D789Q/" target="_blank">http://jsfiddle.net/aaronzhcl/D789Q/</a>
                     </li>
-                    <li><a href="http://webdemos.azurewebsites.net/method-pointer.html">http://webdemos.azurewebsites.net/method-pointer.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/method-pointer.html" target="_blank">http://webdemos.azurewebsites.net/method-pointer.html</a>
                     </li>
 
 
@@ -812,7 +805,7 @@ DOM – IE9+</h2>
                     <li>IE9以前版本，传递给间接eval的字符串将在本地函数作用域内求值。</li>
                     <li>从IE9标准模式开始，该字符串根据ECMAScript语言规范第5版的规定在全局作用域中求值。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/v63ZL/">http://jsfiddle.net/aaronzhcl/v63ZL/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/v63ZL/" target="_blank">http://jsfiddle.net/aaronzhcl/v63ZL/</a>
                     </li>
 
                 </ul>
@@ -822,7 +815,7 @@ DOM – IE9+</h2>
                 <ul>
                     <li>IE9在平台支持的情况下会使用Streaming SIMD Extensions 2 (SSE2)来提高数学运算速度和精度，因此会获得和IE8及以前版本不同的精度。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/GsK8T/">http://jsfiddle.net/aaronzhcl/GsK8T/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/GsK8T/" target="_blank">http://jsfiddle.net/aaronzhcl/GsK8T/</a>
                     </li>
 
                 </ul>
@@ -834,7 +827,7 @@ DOM – IE9+</h2>
                     <li>IE9在处理返回"null"值的JavaScript时遵循以下HTML5规定。浏览器必须将URL视为已经返回HTTP 204 无内容，其中不得包含响应正文。</li>
                     <li>由于作为JavaScript协议(javascript:)一部分执行返回"null"，IE9会将URL视为其返回了“HTTP 204 无内容”，因此iframe为空，无论JavaScript协议中运行其他什么JavaScript。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/7j4xa/">http://jsfiddle.net/aaronzhcl/7j4xa/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7j4xa/" target="_blank">http://jsfiddle.net/aaronzhcl/7j4xa/</a>
                     </li>
 
                 </ul>
@@ -847,7 +840,7 @@ DOM – IE9+</h2>
                     <li>对于夏令时转换发生在午夜（将时钟回拨）的时区，系统时间实际在过渡边界前1毫秒(ms)进行转换。通过在过渡边界前1ms进行转换，Windows 7及以上版本将仍处于夏令时转换的当天，但会在夏令时转换完成后的状态下向后回拨时钟。
                     </li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/57wsF/">http://jsfiddle.net/aaronzhcl/57wsF/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/57wsF/" target="_blank">http://jsfiddle.net/aaronzhcl/57wsF/</a>
                     </li>
 
                 </ul>
@@ -879,14 +872,14 @@ DOM – IE9+</h2>
 
                     <li>可以换用脚本控制</li>
                     <pre><code>
-                            var elm = document.getElementById("main");
-                            if ((new Date()).getHours() % 2) {
-                                elm.style.backgroundColor = "#000";
-                            } else {
-                                elm.style.backgroundColor = "#fff";
-                            }
+        var elm = document.getElementById("main");
+        if ((new Date()).getHours() % 2) {
+            elm.style.backgroundColor = "#000";
+        } else {
+            elm.style.backgroundColor = "#fff";
+        }
 </code></pre>
-                    <li><a href="http://webdemos.azurewebsites.net/css-expression.html">http://webdemos.azurewebsites.net/css-expression.html</a>
+                    <li><a href="http://webdemos.azurewebsites.net/css-expression.html" target="_blank">http://webdemos.azurewebsites.net/css-expression.html</a>
                     </li>
 
                 </ul>
@@ -911,7 +904,7 @@ DOM – IE9+</h2>
                 <ul>
                     <li>使用传统版渐变筛选器填充已使用 border-radius 属性生成圆角的元素时，渐变会超出元素的边框。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/7quPX/">http://jsfiddle.net/aaronzhcl/7quPX/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/7quPX/" target="_blank">http://jsfiddle.net/aaronzhcl/7quPX/</a>
                     </li>
 
                 </ul>
@@ -962,7 +955,7 @@ IE9+</h2>
                     </li>
                     <li>arguments.caller 属性在 IE5 (Quirks) 模式、IE7 标准模式和 IE8 标准模式中可以如期工作，但在 IE9 模式或更高版本的文档模式中无法正常运行。</li>
 
-                    <li><a href="http://jsfiddle.net/aaronzhcl/6NvbK/">http://jsfiddle.net/aaronzhcl/6NvbK/</a>
+                    <li><a href="http://jsfiddle.net/aaronzhcl/6NvbK/" target="_blank">http://jsfiddle.net/aaronzhcl/6NvbK/</a>
                     </li>
 
                 </ul>
@@ -1027,18 +1020,15 @@ CSS 表达式 – IE11+</h2>
                 <ul>
                     <li>从 IE11 开始，对于在 Internet 区域中加载的网页，CSS 表达式在文档模式中不再有效。</li>
 
-                    <li>
-                        <style>
-                        </li><pre><code> #fixed {
+
+                    <pre><code> #fixed {
                             position: absolute;
                             left: 10px;
                             top: expression(body.scrollTop + 50 + "px");
                             background: white;
                             border: 1px solid red;
                         }
-                        </code></pre><li>
-                        </style>
-                    </li>
+                        </code></pre>
                 </ul>
             </section>
             <section>

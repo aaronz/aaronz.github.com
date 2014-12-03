@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM getElementByName
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>getElementByName demo</title>
-</head>
-<body>
-    <h1>DOM getElementByName</h1>
+<div class="section">
     <div id="test">
         <p name="test">This is a paragraph with name="test"</p>
         <custom name="test">This is a custom tag with name="test"</custom>
@@ -16,7 +13,7 @@
 
 
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         &lt;div id=&quot;test&quot;&gt;
         &lt;p name=&quot;test&quot;&gt;This is a paragraph with name=&quot;test&quot;&lt;/p&gt;
         &lt;custom name=&quot;test&quot;&gt;This is a custom tag with name=&quot;test&quot;&lt;/custom&gt;
@@ -44,5 +41,5 @@
             document.getElementById('output').innerHTML = output.join(',');
         }
     </script>
-</body>
-</html>
+
+</div>

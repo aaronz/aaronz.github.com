@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM spliteText
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>splitText demo</title>
-</head>
-<body>
-    <h1>DOM spliteText</h1>
+<div class="section">
     <script>
         function split() {
             document.getElementById('test').firstChild.splitText(18);
@@ -19,7 +16,7 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         function split() {
             document.getElementById('test').firstChild.splitText(18);
             alert('children length is:' + document.getElementById('test').childNodes.length);
@@ -34,5 +31,5 @@
     <input type="button" value="split" onclick="split()"/>
     <input type="button" value="normalize" onclick="normal()"/>
     <p id="test">The quick brown fox</p>
-</body>
-</html>
+
+</div>

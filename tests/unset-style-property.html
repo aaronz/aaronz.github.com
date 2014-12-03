@@ -1,11 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: unset style/currentstyle property
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>unset style/currentstyle property</title>
-</head>
-<body>
+<div class="section">
     <div id="test"></div>
     <input type="button" value="test unset currentStyle" onclick="testCurrentStyle()"/>
     <input type="button" value="test unset style" onclick="testStyle()" />
@@ -30,7 +28,7 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         function testCurrentStyle() {
             var zIndex = document.getElementById('test').currentStyle.zIndex;
             if (zIndex == 0) {
@@ -50,5 +48,5 @@
             }
         }
 </pre>
-</body>
-</html>
+
+</div>

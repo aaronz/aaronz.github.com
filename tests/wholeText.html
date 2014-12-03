@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM wholeText
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>wholeText demo</title>
-</head>
-<body>
-    <h1>DOM wholeText</h1>
+<div class="section">
     <p id="test">
         The quick brown fox
         jumped over the lazy dog
@@ -20,12 +17,12 @@
     }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         if (document.getElementById('test').firstChild.wholeText)
             alert(document.getElementById('test').firstChild.wholeText);
         else
             alert('wholeText is not supported');
     </pre>
     <input type="button" value="Execute Test" onclick="test()"/>
-</body>
-</html>
+
+</div>

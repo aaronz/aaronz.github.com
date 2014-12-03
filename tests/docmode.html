@@ -1,13 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: Document Mode
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <!--<meta http-equiv="x-ua-compatible" content="IE=9">-->
-    <meta charset="utf-8" />
-    <title>document mode demo</title>
-</head>
-<body>
-	<h1>Document Mode</h1>
+<div class="section">
     <script>
     function test(){    	
         document.getElementById('output').innerHTML = 'the current document mode is: ' + document.documentMode;
@@ -16,12 +12,12 @@
     }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
     	document.getElementById('output').innerHTML = 'the current document mode is: ' + document.documentMode;
         document.getElementById('output').innerHTML += 'the current user agent string is: ' + navigator.userAgent;
     </pre>
     <input type="button" value="Execute Test" onclick="test()"/>
 	<h3>Result</h3>
 	<p id="output"></p>
-</body>
-</html>
+
+</div>

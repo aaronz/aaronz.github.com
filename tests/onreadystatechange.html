@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: JavaScript onreadyStateChange
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>onreadyStateChange demo</title>
-</head>
-<body>
-    <h1>JavaScript onreadyStateChange</h1>
+<div class="section">
     
     <script>
         function callback1() {
@@ -27,7 +24,7 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         function callback1() {
             console.log("load");
         }
@@ -48,5 +45,5 @@
     <input value="Execute Test" onclick="loadjs()" type="button"/>
     <h3>Result</h3>
     <p id="output"></p>
-</body>
-</html>
+
+</div>

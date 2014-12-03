@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM getElementsByClassName
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>getElementsByClassName demo</title>
-</head>
-<body>
-    <h1>DOM getElementsByClassName</h1>
+<div class="section">
     <script>
     function test(){
         if (document.getElementsByClassName)
@@ -16,12 +13,12 @@
     }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         if (document.getElementsByClassName)
             alert("getElementsByClassName is supported");
         else
             alert("getElementsByClassName is not supported");
 </pre>
 <input type="button" value="Execute Test" onclick="test()"/>
-</body>
-</html>
+
+</div>

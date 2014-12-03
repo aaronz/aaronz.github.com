@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM attributes array
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>dom attribute demo</title>
-</head>
-<body>
-    <h1>DOM attributes array</h1>
+<div class="section">
     <h3>Description</h3>
     <p>IE7 and lower don't return the value of a style attribute.<br/>
         IE8 and above do, but where the test would expect color: green, IE8 returns COLOR: green, and IE9 and up color: green; (with semicolon).<br/>
@@ -21,9 +18,9 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>document.getElementById('test').attributes['style'].value</pre>
+    <pre class="brush: js">document.getElementById('test').attributes['style'].value</pre>
     <input type="button" value="attribute" onclick="test()"/>
     <h3>Result</h3>
     <p id="output"></p>
-</body>
-</html>
+
+</div>

@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM element children
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>children demo</title>
-</head>
-<body>
-    <h1>DOM element children</h1>
+<div class="section">
     <script>
         function test() {
             alert('testRoot children length is: ' + document.getElementById('testRoot').children.length);
@@ -29,10 +26,10 @@
     </div>
 
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         alert('testRoot children length is: ' + document.getElementById('testRoot').children.length);
     </pre>
 
     <input type="button" id="test" value="Execute Test" onclick="test()" />
-</body>
-</html>
+
+</div>

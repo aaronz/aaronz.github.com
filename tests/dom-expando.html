@@ -1,12 +1,9 @@
-﻿<!DOCTYPE html>
+---
+layout: test
+title: DOM expando
+---
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>dom expando demo</title>
-</head>
-<body>
-    <h1>DOM expando</h1>
+<div class="section">
     <div id="myElement" class="b" myAttr="custom"></div>
     <script>
         function test() {
@@ -18,7 +15,7 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         &lt;div id=&quot;myElement&quot; class=&quot;b&quot; myattr=&quot;custom&quot;&gt;&lt;/div&gt;
 
             var div = document.getElementById(&quot;myElement&quot;);
@@ -31,5 +28,5 @@
     <input type="button" onclick="test()" value="Execute Test"/>
     <h3>Result</h3>
     <p id="output"></p>
-</body>
-</html>
+
+</div>

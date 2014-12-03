@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>json parser demo</title>
-</head>
-<body>
+---
+layout: test
+title: json parser demo
+---
+
+<div class="section">
     <p>
         First Name: <span id="fname"></span><br>
         Last Name: <span id="lname"></span><br>
@@ -22,7 +22,7 @@
         }
     </script>
     <h3>Source Code</h3>
-    <pre>
+    <pre class="brush: js">
         var txt = '{"employees":[' +
             '{"firstName":"John","lastName":"Doe" },' +
             '{"firstName":"Anna","lastName":"Smith" },' +
@@ -31,5 +31,5 @@
             document.getElementById("fname").innerHTML = obj.employees[1].firstName;
             document.getElementById("lname").innerHTML = obj.employees[1].lastName;
 </pre>
-</body>
-</html>
+
+</div>

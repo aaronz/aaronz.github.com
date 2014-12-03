@@ -39,30 +39,19 @@ Sprites**](http://www.w3schools.com/css/css_image_sprites.asp):
 
 豆瓣把他的图标集中在一起，然后看他如何控制只显示第一个图标的
 
+{% highlight css %}
     .app-icon-read {
-        background-position
-
-: 0 0;
-
+        background-position: 0 0;
     }
     .app-icon {
-        background
-
-: url("/pics/app/app\_icons\_50\_5.jpg") no-repeat scroll 0 0
-transparent;
-
+        background: url("/pics/app/app\_icons\_50\_5.jpg") no-repeat scroll 0 0 transparent;
         border-radius: 10px 10px 10px 10px;
         box-shadow: 1px 1px 2px #999999;
         display: inline-block;
-        height
-
-: 50px;
-
-        width
-
-: 50px;
-
+        height: 50px;
+        width: 50px;
     }
+{% endhighlight %}
 
 3\. [**Image Maps**](http://en.wikipedia.org/wiki/Image_map)：
 也是将多幅图拼在一起，然后通过坐标来控制显示导航。这里有个经典的例子，选中图片中的某个人就会导向到不同的链接。
@@ -75,6 +64,7 @@ transparent;
 通过编码的字符串将图片内嵌到网页文本中。例如下面的inline
 image的显示效果为一个勾选的checkbox。
 
+{% highlight css %}
     .sample-inline-png {
         padding-left: 20px;
         background: white url('data:image/png;base64,iVBORw0KGgoAA
@@ -82,6 +72,7 @@ image的显示效果为一个勾选的checkbox。
     EQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4Ug9C9zwz3gVLMDA/A6
     P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC') no-repeat scroll left top;
     }
+{% endhighlight %}
 
 图片显示效果如左图
 
@@ -216,6 +207,7 @@ HTTP Compression of Dynamic Content (IIS
 如果遇到这样的问题，IIS 7中可以通过如下方法将Etag去掉，使用URL
 Rewrite，然后在web.config中添加如下配制
 
+{% highlight xml %}
     <rewrite>
        <outboundRules>
           <rule name="Remove ETag">
@@ -224,9 +216,11 @@ Rewrite，然后在web.config中添加如下配制
           </rule>
        </outboundRules>
     </rewrite>
+{% endhighlight %}
 
 IIS8里提供了一个简单配制来直接关闭Etag，
 
+{% highlight xml %}
     <element name="clientCache">
        <attribute name="cacheControlMode" type="enum" defaultValue="NoControl">
               <enum name="NoControl" value="0" />
@@ -237,11 +231,9 @@ IIS8里提供了一个简单配制来直接关闭Etag，
       <attribute name="cacheControlMaxAge" type="timeSpan" defaultValue="1.00:00:00" />
       <attribute name="httpExpires" type="string" />
       <attribute name="cacheControlCustom" type="string" />
-      
-
-\<attribute name="setEtag" type="bool" defaultValue="false" /\>
-
+      <attribute name="setEtag" type="bool" defaultValue="false" /\>
     </element>
+{% endhighlight %}
 
 ### [尽早flush输出](http://developer.yahoo.com/performance/rules.html#flush) <a name="flush"></a>
 
@@ -316,6 +308,7 @@ CSS表达式的问题在于它被重新计算的次数远比想象的要多，�
 
 如果想达到类似的效果可以通过简单的脚本做到。
 
+{% highlight html %}
     <html>
     <head>
     </head>
@@ -335,6 +328,7 @@ CSS表达式的问题在于它被重新计算的次数远比想象的要多，�
     </script>
     </body>
     </html>
+{% endhighlight %}
 
 ### [用\<link\>代替@import](http://developer.yahoo.com/performance/rules.html#csslink) <a name="csslink"></a>
 
@@ -373,6 +367,7 @@ specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)�
 
 精简就是将Javascript或CSS中的空格和注释全去掉，
 
+{% highlight css %}
     body {
         line-height: 1;
     }
@@ -382,10 +377,12 @@ specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4)�
     blockquote, q {
         quotes: none;
     }
+{% endhighlight %}
 
 精简后版本
-
+{% highlight css %}
     body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}
+{% endhighlight %}
 
 统计表明精简后的文件大小平均减少了21%，即使在应用Gzip的文件也会减少5%。
 

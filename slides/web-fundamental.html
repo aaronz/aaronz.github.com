@@ -43,7 +43,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <h1>Web Fundamental</h1>
+                <h2>Web Fundamental</h2>
                 <h3>Modern Web App Design Best Practices</h3>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
@@ -75,9 +75,10 @@
                         <li><strong>Use CSS when you have smaller, self-contained states for UI elements.</strong> CSS transitions and animations are ideal for bringing a navigation menu in from the side, or showing a tooltip. You may end up using JavaScript to control the states, but the animations themselves will be in your CSS.</li>
                         <li><strong>Use JavaScript when you need significant control over your animations.</strong> Something that dynamically tracks a touch position, or an animation that you need to stop, pause, slow-down or reverse typically require you to use JavaScript.</li>
                     </ul>
+                    <p>If you’re already using jQuery or a JavaScript framework that includes animation functionality then you may find it more convenient overall to stick with that for your animations than switching to CSS.</p>
                 </section>
                 <section>
-                    <p>If you’re already using jQuery or a JavaScript framework that includes animation functionality then you may find it more convenient overall to stick with that for your animations than switching to CSS.</p>
+                <h3>Animate with CSS</h3>
                     <p>There’s no doubt that animating with CSS is the simplest way to get something moving on screen.</p>
                     <p>Below is some CSS that will move an element 100px in both the X &amp; Y axes. It’s done by using a CSS transitions that’s set to take 500ms. When the <code>move</code> class is added the <code>transform</code> value is changed and the transition begins.</p><pre><code data-lang="css">.box {
   -webkit-transform: translate(0, 0);
@@ -169,6 +170,9 @@ function onTransitionEnd() {
                 <section>
                     <p>With CSS animations you define the animation itself independently of the target element, and use the animation-name property to choose the required animation.</p>
                     <p>CSS Animations are still mostly vendor prefixed, with <code>-webkit-</code> being used in Chrome, Safari, Opera, Safari Mobile, and Android Browser. Internet Explorer and Firefox both ship without prefixes. Many tools will aid you in creating the prefixed versions of the CSS you need, allowing you to write the unprefixed version in your source files.</p>
+                    </section>
+                <section>
+                <h3>Animate with JavaScript</h3>
                     <p>Creating animations with JavaScript is, by comparison, more complex than writing CSS transitions or animations, but it does typically provide significantly more power to you as the developer. The general approach is to use <code>requestAnimationFrame</code> and, on each frame of the animation, manually determine the value of each property of the element that is animating.</p>
                 </section>
                 <section>

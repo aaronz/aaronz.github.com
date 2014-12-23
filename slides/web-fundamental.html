@@ -47,7 +47,9 @@
                 <h3>Modern Web App Design Best Practices</h3>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
-                    </small></p><p>
+                    </small>
+                </p>
+                <p>
                     <small>Created based on <a href="https://github.com/google/WebFundamentals">Web Fundamentals project</a></small>
                 </p>
             </section>
@@ -78,7 +80,7 @@
                     <p>If you’re already using jQuery or a JavaScript framework that includes animation functionality then you may find it more convenient overall to stick with that for your animations than switching to CSS.</p>
                 </section>
                 <section>
-                <h3>Animate with CSS</h3>
+                    <h3>Animate with CSS</h3>
                     <p>There’s no doubt that animating with CSS is the simplest way to get something moving on screen.</p>
                     <p>Below is some CSS that will move an element 100px in both the X &amp; Y axes. It’s done by using a CSS transitions that’s set to take 500ms. When the <code>move</code> class is added the <code>transform</code> value is changed and the transition begins.</p><pre><code data-lang="css">.box {
   -webkit-transform: translate(0, 0);
@@ -170,9 +172,9 @@ function onTransitionEnd() {
                 <section>
                     <p>With CSS animations you define the animation itself independently of the target element, and use the animation-name property to choose the required animation.</p>
                     <p>CSS Animations are still mostly vendor prefixed, with <code>-webkit-</code> being used in Chrome, Safari, Opera, Safari Mobile, and Android Browser. Internet Explorer and Firefox both ship without prefixes. Many tools will aid you in creating the prefixed versions of the CSS you need, allowing you to write the unprefixed version in your source files.</p>
-                    </section>
+                </section>
                 <section>
-                <h3>Animate with JavaScript</h3>
+                    <h3>Animate with JavaScript</h3>
                     <p>Creating animations with JavaScript is, by comparison, more complex than writing CSS transitions or animations, but it does typically provide significantly more power to you as the developer. The general approach is to use <code>requestAnimationFrame</code> and, on each frame of the animation, manually determine the value of each property of the element that is animating.</p>
                 </section>
                 <section>
@@ -392,10 +394,10 @@ TweenMax.to(box, animationDurationInSeconds, {
                     <p>There are a group of well-known ease-out equations beyond the one specified with the <code>ease-out</code> keyword in CSS, which range in their ‘aggressiveness’. For a super snappy ease-out effect consider a <a href="http://easings.net/#easeOutQuint">Quintic ease-out</a>.</p>
                     <p><img alt="A Quintic ease-out animation curve" src="https://developers.google.com/web/fundamentals/look-and-feel/animations/imgs/quintic-ease-out-markers.png" style="max-width: 300px" />
                     </p>
-                </section>
-                <section>
                     <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-quintic-ease-out.html">See a Quintic ease-out animation.</a>
                     </p>
+                </section>
+                <section>
                     <p>Other easing equations, particularly bounces or elastic eases, should be used sparingly, and only when it’s appropriate to your project. There’s few things that bring a user out of an experience like a jarring animation. If your project isn’t jolly and fun, then don’t have UI elements boinging around the place! Conversely, if you’re making a site that is supposed to be lighthearted and fun then by all means bring the bounce!</p>
                     <p>Play around with eases, see which ones match your project’s personality, and go from there. A full list of easing types, along with demos, can be found at <a href="http://easings.net">easings.net</a>.</p>
                 </section>
@@ -558,10 +560,10 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <p><img alt="Animating a modal view." src="https://developers.google.com/web/fundamentals/look-and-feel/animations/imgs/gifs/dont-press.gif" />
                     </p>
-                </section>
-                <section>
                     <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/modal-view-animation.html">See sample.</a>
                     </p>
+                </section>
+                <section>
                     <p>The modal overlay should be aligned to the viewport so it needs to have its <code>position</code> set to <code>fixed</code>:</p><pre><code data-lang="css">.modal {
   position: fixed;
   top: 0;
@@ -669,18 +671,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>For a full list of the work triggered by individual CSS properties can be found at <a href="http://csstriggers.com">CSS Triggers</a>, and you can find a full guide on creating <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">High Performance Animations on HTML5 Rocks</a>.</p>
                     <ul>
                         <li>
-                            <p><a href="https://developers.google.com/web/performance/critical-rendering-path/" title="Critical Rendering Path">Critical Rendering Path</a>
-                            </p>
-                            <p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html">Render Blocking CSS</a>
-                            </p>
+                            <<a href="https://developers.google.com/web/performance/critical-rendering-path/" title="Critical Rendering Path">Critical Rendering Path</a>
+                        </li>
+                        <li>
+                            <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html">Render Blocking CSS</a>
                         </li>
                     </ul>
                 </section>
                 <section>
-                    <p><a href="https://developers.google.com/web/performance/critical-rendering-path/" title="Critical Rendering Path">Critical Rendering Path</a>
-                    </p>
-                    <p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html">Render Blocking CSS</a>
-                    </p>
                     <p>It is worth using <a href="http://dev.w3.org/csswg/css-will-change/"><code>will-change</code></a> to ensure the browser knows that you intend to change an element’s property. This allows the browser to put the most appropriate optimizations in place ahead of you making the change. Care must be taken to not overuse <code>will-change</code>, however, as it can cause the browser to waste resources, which will in turn cause even more performance issues.</p>
                     <p>The general rule of thumb is that if the animation could be triggered in the next 200ms, either by a user’s interaction or because of your application’s state, then having will-change on animating elements is a good idea. For most cases, then, any element in your app’s current view that you intend to animate should have <code>will-change</code> enabled for whichever properties you plan to change. In the case of the box sample we’ve been using throughout the previous guides, adding <code>will-change</code> for transforms and opacity looks like this:</p><pre><code data-lang="css">.box {
   will-change: transform, opacity;
@@ -750,7 +748,15 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>Plugins help you stay more productive. What are the things you keep having to go back out to other tools to do?</p>
                     <p>Linting - there’s a plugin for that. Showing what changes haven’t been committed - there are plugins for that. Integration with other tools, such as GitHub, there are plugins for that.</p>
                     <p>Package managers make it very easy to find, install, and update plugins:</p>
+                    <ol>
+                        <li>In the Sublime Text editor, open your package manager (ctrl+shift+p).</li>
+                        <li>Enter ‘Install Package’.</li>
+                        <li>Enter the name of the plugin you are looking for (or else browse all plugins).</li>
+                    </ol>
                     <p>Check out these <a href="https://sublime.wbond.net/browse">trending lists of Sublime Text plugins</a>. Here are the plugins we love and recommend you install because they help you speed up your development:</p>
+                </section>
+                <section>
+                    <h3>Autoprefixer</h3>
                     <p>If you want a quick way to add vendor prefixes to your CSS, you can do so with this handy plugin.</p>
                     <p>Write CSS, ignoring vendor prefixes and when you want to add them, hit <code>ctrl+shift+p</code> and type <code>Autoprefix CSS</code>.</p>
                     <p><a href="https://developers.google.com/web/fundamentals/tools/build/setupbuildprocess.html">We cover how you can automate this in your build process</a>, that way your CSS stays lean and you don’t need to remember to hit <code>ctrl+shift+p</code>.</p>
@@ -758,27 +764,32 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </p>
                 </section>
                 <section>
+                <h3>Gutter Color</h3>
                     <p>Gutter Color shows you a small color sample next to your CSS.</p>
                     <p><img alt="Sublime Gutter Color Screenshot" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-gutter-color.png" />
                     </p>
                 </section>
                 <section>
+                <h3>Color Picker</h3>
                     <p>The plugin requires ImageMagick. If you are on Mac OS X, we recommend trying the installer from <a href="http://cactuslab.com/imagemagick/">CactusLabs</a> (you may need to restart your machine to get it working).</p>
                     <p>Pick any color from the palette and add it to your CSS with <code>ctrl+shift+c</code>.</p>
                     <p><img alt="Sublime Color Picker Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-color-picker.png" />
                     </p>
                 </section>
                 <section>
+                <h3>Emmet</h3>
                     <p>Add some useful keyboard shortcuts and snippets to your text editor. Check out the video on <a href="http://emmet.io/">Emmet.io</a> for an intro into what it can do (a personal favorite is the ‘Toggle Comment’ command).</p>
                     <p><img alt="Demo of the Emmet.io Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/emmet-io-example.gif" />
                     </p>
                 </section>
                 <section>
+                <h3>Git Gutter</h3>
                     <p>Add a marker in the gutter wherever there is a change made to a file.</p>
                     <p><img alt="Screenshot of the Sublime Git Gutter Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-git-gutter.png" />
                     </p>
                 </section>
                 <section>
+                <h3>HTML-CSS-JS Prettify</h3>
                     <p>This extension gives you a command to format your HTML, CSS and JS. You can even prettify your files whenever your save a file.</p>
                     <p><img alt="Gif of the Sublime Prettify Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-prettify.gif" />
                     </p>

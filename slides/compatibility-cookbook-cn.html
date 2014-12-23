@@ -43,7 +43,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <h2>Compatibility Cookbook for IE</h2>
+                <h2>Compatibility Cookbook for Internet Explorer</h2>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
 </small>
@@ -604,10 +604,6 @@ var divExpando2 = div.getAttribute("myAttr");
                     <li>这样可以更轻松地共享 HTML 源代码片段。防止”text/plain”类型的脚本注入攻击。 </li>
                     <li>配置服务器所有文档发送适当的 Content-Type 标头。例如，如果你的服务器提供可移植文档格式 (PDF) 文件以供下载，请确保文件使用 “application/pdf” MIME 类型。
                     </li>
-
-                    <li><a href="http://www.browserwork.com/tests/mime-content-type.aspx" target="_blank">http://www.browserwork.com/tests/mime-content-type.aspx</a>
-                    </li>
-
                 </ul>
             </section>
             <section>
@@ -800,7 +796,7 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,{ child
                 </ul>
             </section>
             <section>
-                <h2>间接eval调用作用域 – Ie9+</h2>
+                <h2>间接eval调用作用域 – IE9+</h2>
                 <ul>
                     <li>IE9以前版本，传递给间接eval的字符串将在本地函数作用域内求值。</li>
                     <li>从IE9标准模式开始，该字符串根据ECMAScript语言规范第5版的规定在全局作用域中求值。</li>

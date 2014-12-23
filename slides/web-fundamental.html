@@ -764,32 +764,32 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </p>
                 </section>
                 <section>
-                <h3>Gutter Color</h3>
+                    <h3>Gutter Color</h3>
                     <p>Gutter Color shows you a small color sample next to your CSS.</p>
                     <p><img alt="Sublime Gutter Color Screenshot" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-gutter-color.png" />
                     </p>
                 </section>
                 <section>
-                <h3>Color Picker</h3>
+                    <h3>Color Picker</h3>
                     <p>The plugin requires ImageMagick. If you are on Mac OS X, we recommend trying the installer from <a href="http://cactuslab.com/imagemagick/">CactusLabs</a> (you may need to restart your machine to get it working).</p>
                     <p>Pick any color from the palette and add it to your CSS with <code>ctrl+shift+c</code>.</p>
                     <p><img alt="Sublime Color Picker Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-color-picker.png" />
                     </p>
                 </section>
                 <section>
-                <h3>Emmet</h3>
+                    <h3>Emmet</h3>
                     <p>Add some useful keyboard shortcuts and snippets to your text editor. Check out the video on <a href="http://emmet.io/">Emmet.io</a> for an intro into what it can do (a personal favorite is the ‘Toggle Comment’ command).</p>
                     <p><img alt="Demo of the Emmet.io Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/emmet-io-example.gif" />
                     </p>
                 </section>
                 <section>
-                <h3>Git Gutter</h3>
+                    <h3>Git Gutter</h3>
                     <p>Add a marker in the gutter wherever there is a change made to a file.</p>
                     <p><img alt="Screenshot of the Sublime Git Gutter Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-git-gutter.png" />
                     </p>
                 </section>
                 <section>
-                <h3>HTML-CSS-JS Prettify</h3>
+                    <h3>HTML-CSS-JS Prettify</h3>
                     <p>This extension gives you a command to format your HTML, CSS and JS. You can even prettify your files whenever your save a file.</p>
                     <p><img alt="Gif of the Sublime Prettify Plugin" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/sublime-prettify.gif" />
                     </p>
@@ -872,13 +872,10 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2>Add a Build Process</h2>
                     <p>Every site should have a development version and a production version.
-                        <br>
+
                         <br>The development version has all the HTML, CSS, JS and image files that make up your site in a clean format that you are happy to work on.
-                        <br>
+
                         <br>A production version will take these files, minify them, concatenate / merge them and optimise files like images.</br>
-                        </br>
-                        </br>
-                        </br>
                     </p>
 
                     <ul>
@@ -916,18 +913,36 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>For those unfamiliar with the terms concatenation and minification, concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</p>
                     <p>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</p>
                     <p>For minification, use the following:</p>
+                    <table class="table-3 tc-heavyright"><colgroup><col span="1"><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Type of File">Type of File</th><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Type of File">CSS</td><td data-th="Gulp"><a href="https://github.com/ben-eb/gulp-csso">gulp-csso</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-cssmin">grunt-contrib-cssmin</a></td></tr><tr><td data-th="Type of File">JS</td><td data-th="Gulp"><a href="https://github.com/terinjokes/gulp-uglify/">gulp-uglify</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a></td></tr><tr><td data-th="Type of File">HTML</td><td data-th="Gulp"><a href="https://github.com/jonathanepollack/gulp-minify-html">gulp-minify-html</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-htmlmin">grunt-contrib-htmlmin</a></td></tr></tbody></table>
+                    </section>
+                    <section>
                     <p>For concatentation, use the following:</p>
+                    <table class="table-3 tc-heavyright"><colgroup><col span="1"><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Type of File">Type of File</th><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Type of File">CSS (Sass)</td><td data-th="Gulp"><a href="https://github.com/dlmanning/gulp-sass">gulp-sass</a> or <a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a> or <a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a></td></tr><tr><td data-th="Type of File">JS</td><td data-th="Gulp"><a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a></td><td data-th="Grunt"><a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a> or <a href="https://github.com/fatso83/grunt-codekit">grunt-codekit</a></td></tr></tbody></table>
+                </section>
+                <section>
                     <p><strong>Note</strong>
                         <br>You can use Sass by taking advantage of the ‘import’ feature (<a href="https://github.com/google/web-starter-kit/blob/master/app/styles/main.scss">See Web Starter Kit for an example</a>).</br>
                     </p>
+                </section>
+                <section>
+                    <h3>Optimise Your Images</h3>
                     <p>Image optimisation is an important step to help speed up your site; you’d be surprised how much smaller you can make an image without losing quality. Meta data is removed from the image as it’s not needed by the browser to display the image, for example, information about the camera used to take the photo.</p>
                     <p>For optimising images you can use these modules.</p>
+                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-imagemin">gulp-imagemin</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a></td></tr></tbody></table>
+                </section>
+                <section>
+                    <h3>Don’t Trip Up with Vendor Prefixes</h3>
                     <p>It can often become a bit tedious to include all the vendor prefixes for the CSS you use. Use an auto-prefixer to automatically add the prefixes you need to include:</p>
+                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-autoprefixer">gulp-autoprefixer</a></td><td data-th="Grunt"><a href="https://github.com/nDmitry/grunt-autoprefixer">grunt-autoprefixer</a></td></tr></tbody></table>
                     <p><strong>Note</strong>
                         <br>If you prefer, you can add a <a href="https://developers.google.com/web/fundamentals/tools/setup/editor.html#autoprefixer">Sublime package to do the auto-prefixing</a> for you.</br>
                     </p>
+                </section>
+                <section>
+                    <h3>Never Leave Your Text Editor with Live Reloading</h3>
                     <p>Live reloading updates your site in your browser each time your make a change. After using it once, you won’t be able to live without it.</p>
                     <p>Web Starter Kit uses browser-sync for Live Reload support.</p>
+                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="http://www.browsersync.io/docs/gulp/">browser-sync</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-connect">grunt-contrib-connect</a> &amp; <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a></td></tr></tbody></table>
                     <p><strong>Note</strong>
                         <br>If you like the idea of Live Reloading, but don’t want to have a build process, <a href="http://www.html5rocks.com/en/tutorials/tooling/synchronized-cross-device-testing/">Addy Osmani’s write up on HTML5Rocks</a> covers a range of alternatives (some free and some commercial).</br>
                     </p>

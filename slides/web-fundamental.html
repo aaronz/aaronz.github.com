@@ -31,6 +31,169 @@
     }
     </script>
 
+    <style>
+    table {
+        margin-top: 26px;
+        width: 100%;
+    }
+    table thead {
+        background: none repeat scroll 0 0 #4285f4;
+        color: #fff;
+    }
+    table th {
+        color: inherit;
+        display: none;
+        font-family: "Roboto Condensed", Helvetica, sans-serif;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: 1.625em;
+        padding-bottom: 0;
+        padding-top: 1.625em;
+        text-align: center;
+    }
+    @media only screen and (min-width: 800px) {
+        table th {
+            color: #404040;
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: -0.3px;
+            line-height: 1.3em;
+            padding-bottom: 0;
+            padding-top: 1.3em;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        table th {
+            color: inherit;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        table tr {
+            border-bottom: 1px solid #fff;
+        }
+    }
+    table tbody {
+        background: none repeat scroll 0 0 #f0f0f0;
+    }
+    table td {
+        display: block;
+        min-height: 78px;
+        padding-bottom: 13px;
+        padding-top: 13px;
+    }
+    table td:before {
+        background: none repeat scroll 0 0 #4285f4;
+        border-right: 2px solid #fff;
+        bottom: 0;
+        color: #fff;
+        content: attr(data-th) " :";
+        display: inline-block;
+        font-family: "Roboto Condensed", Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        left: 0;
+        max-height: 100%;
+        padding-left: 13px;
+        padding-top: 13px;
+        position: absolute;
+        top: 0;
+        width: 100px;
+    }
+    @media only screen and (min-width: 620px) {
+        table td:before {
+            display: none;
+        }
+    }
+    table td,
+    table th {
+        padding-left: 140px;
+        position: relative;
+    }
+    @media only screen and (max-width: 619px) {
+        table td,
+        table th {
+            padding-right: 5px;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        table td,
+        table th {
+            display: table-cell;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        table th {
+            padding: 13px 26px 12px;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        table td {
+            padding: 26px 26px 25px;
+        }
+    }
+    td:last-child:after {
+        background: none repeat scroll 0 0 #fff;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+    @media only screen and (min-width: 620px) {
+        td:last-child:after {
+            display: none;
+        }
+    }
+    .table-2 col {
+        width: 344px;
+    }
+    @media only screen and (min-width: 800px) {
+        .table-2 col {
+            width: 432px;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        .table-2 td:first-child,
+        .table-2 th:first-child {
+            border-right: 2px solid #fff;
+        }
+    }
+    .table-3 col {
+        width: 229.33px;
+    }
+    @media only screen and (min-width: 800px) {
+        .table-3 col {
+            width: 288px;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        .table-3 td:nth-child(2),
+        .table-3 th:nth-child(2) {
+            border-left: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+    }
+    .table-4 col {
+        width: 172px;
+    }
+    @media only screen and (min-width: 800px) {
+        .table-4 col {
+            width: 216px;
+        }
+    }
+    @media only screen and (min-width: 620px) {
+        .table-4 td:nth-child(2),
+        .table-4 td:nth-child(3),
+        .table-4 th:nth-child(2),
+        .table-4 th:nth-child(3) {
+            border-left: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+    }
+    </style>
+
     <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
@@ -340,6 +503,8 @@ box.startAnimation();</code></pre>
                     <p>If you’re animating with CSS, you’ll find that you can define cubic bezier curves to define the timing. In fact, the keywords <code>ease</code>, <code>ease-in</code>, <code>ease-out</code> and <code>linear</code> map to predefined bezier curves, which are detailed in the <a href="http://www.w3.org/TR/css3-transitions/">CSS transitions specification</a>.</p>
                     <p>In CSS these bezier curves take four values, or 2 pairs of numbers, with each pair describing the X and Y coordinates of a cubic bezier curve’s control points. The starting point of the bezier curve has a coordinate of (0, 0) and the end coordinate is (1, 1); you get to set the X and Y values of the two control points. The X values for the two control points must be between 0 and 1, and each control point’s Y value can exceed the [0, 1] limit, although the spec isn’t clear by how much!</p>
                     <p>Changing the X and Y value of each control point will give you vastly different curve, and therefore a vastly different feel to your animation. For example, if the first control point is in the lower right the animation will be slow to start. If it’s in the top left area it’s going to be fast to start. Conversely, if the second control point is in the bottom right of the grid it’s going to be fast at the end, whereas if it’s in the top left it will be slow to end.</p>
+                </section>
+                <section>
                     <p>For comparison, here are two curves: a typical ease-in-out curve and a custom curve:</p>
                     <p><img alt="Ease-in-out animation curve." src="https://developers.google.com/web/fundamentals/look-and-feel/animations/imgs/ease-in-out-markers.png" style="display: inline; max-width: 300px"> <img alt="Custom animation curve." src="https://developers.google.com/web/fundamentals/look-and-feel/animations/imgs/custom.png" style="display: inline; max-width: 300px" /></img>
                     </p>
@@ -830,6 +995,27 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2 id="shortcuts-we-recommend">Shortcuts We Recommend</h2>
                     <p>These are a few commands that you may find useful.</p>
+                    <table class="table-2 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                                    <thead>
+                                        <tr>
+                                            <th data-th="Command">Command
+                                                <th data-th="Alias">Alias</tr>
+                                        <tbody>
+                                            <tr>
+                                                <td data-th="Command">Open your editor
+                                                    <td data-th="Alias"><code>alias st='open -a "Sublime Text"'</code>
+                                                        <tr>
+                                                            <td data-th="Command">Launch a server
+                                                                <td data-th="Alias"><code>alias server="python -m SimpleHTTPServer"</code>
+                                                                    <tr>
+                                                                        <td data-th="Command">Go to a directory you commonly work in
+                                                                            <td data-th="Alias"><code>alias p="cd ~/projects"</code>
+                                                                    </tr>
+                                        </tbody>
+                    </table>
                 </section>
             </section>
             <section>
@@ -845,8 +1031,6 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>Out of the box, every desktop browser comes with a set of developer tools, you can extend and add to these with extensions or plugins for your browser.</p>
                     <p>Here are two Chrome Extensions that have some useful functionality to help with debugging your designs.</p>
                 </section>
-            </section>
-            <section>
                 <section>
                     <h2 id="emmet-review">Emmet Re:View</h2>
                     <p>Emmet Re:View is a tool which makes it easy to see what your site looks like at each of your media queries and syncs the scrolling of all the pages. You can see a demo of it <a href="http://re-view.emmet.io/">on their site</a>.</p>
@@ -855,9 +1039,6 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p><img alt="Screenshot of Emmet Review Extension" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/emmet-review-extension.png" />
                     </p>
                 </section>
-
-            </section>
-            <section>
                 <section>
                     <h2 id="what-font">What Font?</h2>
                     <p>The last extension we use on a regular basis is <em>What Font?</em>. This Chrome Extension will tell you the name of the font currently being used on the page. This is really handy for debugging any web font issues.</p>
@@ -866,7 +1047,6 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p><img alt="Screenshot of the What Font Chrome Extension" src="https://developers.google.com/web/fundamentals/tools/setup/imgs/what-font-extension.png" />
                     </p>
                 </section>
-
             </section>
             <section>
                 <section>
@@ -909,168 +1089,80 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                         </li>
                     </ul>
                 </section>
-                <style>
-                table {
-    margin-top: 26px;
-    width: 100%;
-}
-table thead {
-    background: none repeat scroll 0 0 #4285f4;
-    color: #fff;
-}
-table th {
-    color: inherit;
-    display: none;
-    font-family: "Roboto Condensed",Helvetica,sans-serif;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 1.625em;
-    padding-bottom: 0;
-    padding-top: 1.625em;
-    text-align: center;
-}
-@media only screen and (min-width: 800px) {
-table th {
-    color: #404040;
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: -0.3px;
-    line-height: 1.3em;
-    padding-bottom: 0;
-    padding-top: 1.3em;
-}
-}
-@media only screen and (min-width: 620px) {
-table th {
-    color: inherit;
-}
-}
-@media only screen and (min-width: 620px) {
-table tr {
-    border-bottom: 1px solid #fff;
-}
-}
-table tbody {
-    background: none repeat scroll 0 0 #f0f0f0;
-}
-table td {
-    display: block;
-    min-height: 78px;
-    padding-bottom: 13px;
-    padding-top: 13px;
-}
-table td:before {
-    background: none repeat scroll 0 0 #4285f4;
-    border-right: 2px solid #fff;
-    bottom: 0;
-    color: #fff;
-    content: attr(data-th) " :";
-    display: inline-block;
-    font-family: "Roboto Condensed",Helvetica,sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    left: 0;
-    max-height: 100%;
-    padding-left: 13px;
-    padding-top: 13px;
-    position: absolute;
-    top: 0;
-    width: 100px;
-}
-@media only screen and (min-width: 620px) {
-table td:before {
-    display: none;
-}
-}
-table td, table th {
-    padding-left: 140px;
-    position: relative;
-}
-@media only screen and (max-width: 619px) {
-table td, table th {
-    padding-right: 5px;
-}
-}
-@media only screen and (min-width: 620px) {
-table td, table th {
-    display: table-cell;
-}
-}
-@media only screen and (min-width: 620px) {
-table th {
-    padding: 13px 26px 12px;
-}
-}
-@media only screen and (min-width: 620px) {
-table td {
-    padding: 26px 26px 25px;
-}
-}
-td:last-child:after {
-    background: none repeat scroll 0 0 #fff;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-}
-@media only screen and (min-width: 620px) {
-td:last-child:after {
-    display: none;
-}
-}
-.table-2 col {
-    width: 344px;
-}
-@media only screen and (min-width: 800px) {
-.table-2 col {
-    width: 432px;
-}
-}
-@media only screen and (min-width: 620px) {
-.table-2 td:first-child, .table-2 th:first-child {
-    border-right: 2px solid #fff;
-}
-}
-.table-3 col {
-    width: 229.33px;
-}
-@media only screen and (min-width: 800px) {
-.table-3 col {
-    width: 288px;
-}
-}
-@media only screen and (min-width: 620px) {
-.table-3 td:nth-child(2), .table-3 th:nth-child(2) {
-    border-left: 2px solid #fff;
-    border-right: 2px solid #fff;
-}
-}
-.table-4 col {
-    width: 172px;
-}
-@media only screen and (min-width: 800px) {
-.table-4 col {
-    width: 216px;
-}
-}
-@media only screen and (min-width: 620px) {
-.table-4 td:nth-child(2), .table-4 td:nth-child(3), .table-4 th:nth-child(2), .table-4 th:nth-child(3) {
-    border-left: 2px solid #fff;
-    border-right: 2px solid #fff;
-}
-}</style>
                 <section>
                     <p>For those unfamiliar with the terms concatenation and minification, concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</p>
                     <p>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</p>
                     <p>For minification, use the following:</p>
-                    <table class="table-3 tc-heavyright"><colgroup><col span="1"><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Type of File">Type of File</th><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Type of File">CSS</td><td data-th="Gulp"><a href="https://github.com/ben-eb/gulp-csso">gulp-csso</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-cssmin">grunt-contrib-cssmin</a></td></tr><tr><td data-th="Type of File">JS</td><td data-th="Gulp"><a href="https://github.com/terinjokes/gulp-uglify/">gulp-uglify</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a></td></tr><tr><td data-th="Type of File">HTML</td><td data-th="Gulp"><a href="https://github.com/jonathanepollack/gulp-minify-html">gulp-minify-html</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-htmlmin">grunt-contrib-htmlmin</a></td></tr></tbody></table>
-                    </section>
-                    <section>
+                    <table class="table-3 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                                    <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-th="Type of File">Type of File</th>
+                                <th data-th="Gulp">Gulp</th>
+                                <th data-th="Grunt">Grunt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Type of File">CSS</td>
+                                <td data-th="Gulp"><a href="https://github.com/ben-eb/gulp-csso">gulp-csso</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-cssmin">grunt-contrib-cssmin</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Type of File">JS</td>
+                                <td data-th="Gulp"><a href="https://github.com/terinjokes/gulp-uglify/">gulp-uglify</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-uglify">grunt-contrib-uglify</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Type of File">HTML</td>
+                                <td data-th="Gulp"><a href="https://github.com/jonathanepollack/gulp-minify-html">gulp-minify-html</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-htmlmin">grunt-contrib-htmlmin</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
                     <p>For concatentation, use the following:</p>
-                    <table class="table-3 tc-heavyright"><colgroup><col span="1"><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Type of File">Type of File</th><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Type of File">CSS (Sass)</td><td data-th="Gulp"><a href="https://github.com/dlmanning/gulp-sass">gulp-sass</a> or <a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a> or <a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a></td></tr><tr><td data-th="Type of File">JS</td><td data-th="Gulp"><a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a></td><td data-th="Grunt"><a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a> or <a href="https://github.com/fatso83/grunt-codekit">grunt-codekit</a></td></tr></tbody></table>
+                    <table class="table-3 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                                    <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-th="Type of File">Type of File</th>
+                                <th data-th="Gulp">Gulp</th>
+                                <th data-th="Grunt">Grunt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Type of File">CSS (Sass)</td>
+                                <td data-th="Gulp"><a href="https://github.com/dlmanning/gulp-sass">gulp-sass</a> or <a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a> or <a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Type of File">JS</td>
+                                <td data-th="Gulp"><a href="https://github.com/jonkemp/gulp-useref">gulp-useref</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/yeoman/grunt-usemin">grunt-usemin</a> or <a href="https://github.com/fatso83/grunt-codekit">grunt-codekit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
                 <section>
                     <p><strong>Note</strong>
@@ -1081,12 +1173,50 @@ td:last-child:after {
                     <h3>Optimise Your Images</h3>
                     <p>Image optimisation is an important step to help speed up your site; you’d be surprised how much smaller you can make an image without losing quality. Meta data is removed from the image as it’s not needed by the browser to display the image, for example, information about the camera used to take the photo.</p>
                     <p>For optimising images you can use these modules.</p>
-                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-imagemin">gulp-imagemin</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a></td></tr></tbody></table>
+                    <table class="table-2 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-th="Gulp">Gulp</th>
+                                <th data-th="Grunt">Grunt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-imagemin">gulp-imagemin</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-imagemin">grunt-contrib-imagemin</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
                 <section>
                     <h3>Don’t Trip Up with Vendor Prefixes</h3>
                     <p>It can often become a bit tedious to include all the vendor prefixes for the CSS you use. Use an auto-prefixer to automatically add the prefixes you need to include:</p>
-                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-autoprefixer">gulp-autoprefixer</a></td><td data-th="Grunt"><a href="https://github.com/nDmitry/grunt-autoprefixer">grunt-autoprefixer</a></td></tr></tbody></table>
+                    <table class="table-2 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-th="Gulp">Gulp</th>
+                                <th data-th="Grunt">Grunt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Gulp"><a href="https://github.com/sindresorhus/gulp-autoprefixer">gulp-autoprefixer</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/nDmitry/grunt-autoprefixer">grunt-autoprefixer</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p><strong>Note</strong>
                         <br>If you prefer, you can add a <a href="https://developers.google.com/web/fundamentals/tools/setup/editor.html#autoprefixer">Sublime package to do the auto-prefixing</a> for you.</br>
                     </p>
@@ -1095,7 +1225,26 @@ td:last-child:after {
                     <h3>Never Leave Your Text Editor with Live Reloading</h3>
                     <p>Live reloading updates your site in your browser each time your make a change. After using it once, you won’t be able to live without it.</p>
                     <p>Web Starter Kit uses browser-sync for Live Reload support.</p>
-                    <table class="table-2 tc-heavyright"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Gulp">Gulp</th><th data-th="Grunt">Grunt</th></tr></thead><tbody><tr><td data-th="Gulp"><a href="http://www.browsersync.io/docs/gulp/">browser-sync</a></td><td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-connect">grunt-contrib-connect</a> &amp; <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a></td></tr></tbody></table>
+                    <table class="table-2 tc-heavyright">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th data-th="Gulp">Gulp</th>
+                                <th data-th="Grunt">Grunt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Gulp"><a href="http://www.browsersync.io/docs/gulp/">browser-sync</a>
+                                </td>
+                                <td data-th="Grunt"><a href="https://github.com/gruntjs/grunt-contrib-connect">grunt-contrib-connect</a> &amp; <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p><strong>Note</strong>
                         <br>If you like the idea of Live Reloading, but don’t want to have a build process, <a href="http://www.html5rocks.com/en/tutorials/tooling/synchronized-cross-device-testing/">Addy Osmani’s write up on HTML5Rocks</a> covers a range of alternatives (some free and some commercial).</br>
                     </p>
@@ -1364,6 +1513,8 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2>Test Against Mobile Network Conditions</h2>
                     <p>It’s easy to overlook the network conditions your users will face on mobile. Use tools to emulate different network conditions, fix up any load time issues and your users will thank you.</p>
                     <p>If you’re running Google Chrome, you can use the <a href="https://developer.chrome.com/devtools/docs/device-mode#network-conditions">Network Conditioning</a> feature offered by the DevTools.</p>
+                </section>
+                <section>
                     <p>If you’re on a Mac, try out the Network Link Conditioner tool found in the Lion Developer Tools.</p>
                     <p>This can be installed by doing the following:</p>
                     <p>After installation, the panel will open and you’ll see a drop-down listing a number of preconfigured network scenarios including 3G and EDGE. Select one, turn the tool on and your connection to the internet will be the selected speed, meaning you’ll be able to test for different network types.</p>

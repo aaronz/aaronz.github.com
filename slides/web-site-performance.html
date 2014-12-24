@@ -52,21 +52,9 @@
                     <smaill> Created base on <a href="https://developer.yahoo.com/performance/rules.html">Yahoo Web Site Performance Rules</a>
                 </p>
             </section>
-
             <section>
-                <h2 id="page-nav" style="margin-top: 17px;">Best Practices for Speeding Up Your Web Site</h2>
-            </section>
-            <section>
-                <p>The Exceptional Performance team has identified a number of best practices for making web pages fast. The list includes 35 best practices divided into 7 categories.</p>
-            </section>
-
-
-
-            <section>
-                <p>Filter by category:</p>
-            </section>
-            <section>
-                <ul onclick="YAHOO.YDNPerf.filterRules(event)">
+                <h3>The list includes 35 best practices divided into 7 categories.</h3>
+                <ul>
                     <li style="border-color: white;">Content</li>
                     <li style="border-color: white;">Server</li>
                     <li style="border-color: white;">Cookie</li>
@@ -74,11 +62,8 @@
                     <li style="border-color: white;">JavaScript</li>
                     <li style="border-color: white;">Images</li>
                     <li style="border-color: white;">Mobile</li>
-                    <li style="border-color: white;">All</li>
                 </ul>
             </section>
-
-            <ol id="rules-list"></ol>
 
 
             <section>
@@ -90,12 +75,53 @@
                     <p>80% of the end-user response time is spent on the front-end. Most of this time is tied up in downloading all the components in the page: images, stylesheets, scripts, Flash, etc. Reducing the number of components in turn reduces the number of HTTP requests required to render the page. This is the key to faster pages. </p>
                 </section>
                 <section>
-                    <p>One way to reduce the number of components in the page is to simplify the page's design. But is there a way to build pages with richer content while also achieving fast response times? Here are some techniques for reducing the number of HTTP requests, while still supporting rich page designs.</p>
+                    <p>One way to reduce the number of components in the page is to simplify the page's design. </p>
+                    <p>But is there a way to build pages with richer content while also achieving fast response times? Here are some techniques for reducing the number of HTTP requests, while still supporting rich page designs.</p>
+                    <ul>
+                        <li>Combined files</li>
+                        <li>CSS Sprites</li>
+                        <li>Image maps</li>
+                        <li>Inline images</li>
+                    </ul>
                 </section>
                 <section>
+                    <h3>Combine files</h3>
                     <p>Combined files are a way to reduce the number of HTTP requests by combining all scripts into a single script, and similarly combining all CSS into a single stylesheet. Combining files is more challenging when the scripts and stylesheets vary from page to page, but making this part of your release process improves response times.</p>
                 </section>
+                <section>
+                    <h3>CSS Sprites</h3>
+                    <p><a href="http://alistapart.com/articles/sprites" data-rapid_p="1"><strong>CSS Sprites</strong></a> are the preferred method for reducing the number of image requests. Combine your background images into a single image and use the CSS <code>background-image</code> and <code>background-position</code> properties to display the desired image segment.</p>
+                    <img src="images/css-sprites.jpg" alt="css sprites">
+                    <pre><code>
+.app-icon-read {    
+        background-position: 0 0;
+    }   
 
+.app-icon {
+        background: url("/pics/app/app_icons_50_5.jpg") no-repeat scroll 0 0 transparent;
+        border-radius: 10px 10px 10px 10px;
+        box-shadow: 1px 1px 2px #999999;
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+    }
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Image Maps</h3>
+                    <p><a href="http://www.w3.org/TR/html401/struct/objects.html#h-13.6" data-rapid_p="2"><strong>Image maps</strong></a> combine multiple images into a single image. The overall size is about the same, but reducing the number of HTTP requests speeds up the page. Image maps only work if the images are contiguous in the page, such as a navigation bar. Defining the coordinates of image maps can be tedious and error prone. Using image maps for navigation is not accessible too, so it's not recommended.</p>
+                    <a href="http://en.wikipedia.org/wiki/Image_map" target="_blank">http://en.wikipedia.org/wiki/Image_map</a>
+                </section>
+                <section>
+                    <h3>Inline Images</h3>
+                    <p><strong>Inline images</strong> use the <a href="http://tools.ietf.org/html/rfc2397" data-rapid_p="3"><code>data:</code> URL scheme</a> to embed the image data in the actual page. This can increase the size of your HTML document. Combining inline images into your (cached) stylesheets is a way to reduce HTTP requests and avoid increasing the size of your pages. Inline images are not yet supported across all major browsers.</p>
+                    <pre><code>&lt;img src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+9TXL0Y4OHwAAAABJRU5ErkJggg==&quot; alt=&quot;Red dot&quot; /&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Reducing the number of HTTP requests in your page is the place to start. This is the most important guideline for improving performance for first time visitors. As described in Tenni Theurer's blog post <a href="http://yuiblog.com/blog/2007/01/04/performance-research-part-2/" data-rapid_p="4">Browser Cache Usage - Exposed!</a>, 40-60% of daily visitors to your site come in with an empty cache. Making your page fast for these first time visitors is key to a better user experience.</p>
+                </section>
             </section>
             <section>
                 <section>
@@ -113,9 +139,12 @@
                 </section>
                 <section>
                     <p>A content delivery network (CDN) is a collection of web servers distributed across multiple locations to deliver content more efficiently to users. The server selected for delivering content to a specific user is typically based on a measure of network proximity. For example, the server with the fewest network hops or the server with the quickest response time is chosen.</p>
+                    <img src="images/azure-cdn.png" alt="Azure CDN">
                 </section>
                 <section>
-                    <p>Some large Internet companies own their own CDN, but it's cost-effective to use a CDN service provider, such as <a data-rapid_p="7" href="http://www.akamai.com/">Akamai Technologies</a>, <a data-rapid_p="8" href="http://www.edgecast.com/">EdgeCast</a>, or <a data-rapid_p="9" href="http://www.level3.com/index.cfm?pageID=36">level3</a>. For start-up companies and private web sites, the cost of a CDN service can be prohibitive, but as your target audience grows larger and becomes more global, a CDN is necessary to achieve fast response times. At Yahoo!, properties that moved static content off their application web servers to a CDN (both 3rd party as mentioned above as well as Yahoo’s own <a data-rapid_p="10" href="https://cwiki.apache.org/TS/traffic-server.html">CDN</a>) improved end-user response times by 20% or more. Switching to a CDN is a relatively easy code change that will dramatically improve the speed of your web site.</p>
+                    <p>Some large Internet companies own their own CDN, but it's cost-effective to use a CDN service provider, such as <a href="http://azure.microsoft.com/en-us/services/cdn/">Microsoft Azure CDN</a>, <a data-rapid_p="7" href="http://www.akamai.com/">Akamai Technologies</a>, <a data-rapid_p="8" href="http://www.edgecast.com/">EdgeCast</a>, or <a data-rapid_p="9" href="http://www.level3.com/index.cfm?pageID=36">level3</a>. </p>
+                    <p>For start-up companies and private web sites, the cost of a CDN service can be prohibitive, but as your target audience grows larger and becomes more global, a CDN is necessary to achieve fast response times. </p>
+                    <p>At Yahoo!, properties that moved static content off their application web servers to a CDN (both 3rd party as mentioned above as well as Yahoo’s own <a data-rapid_p="10" href="https://cwiki.apache.org/TS/traffic-server.html">CDN</a>) improved end-user response times by 20% or more. Switching to a CDN is a relatively easy code change that will dramatically improve the speed of your web site.</p>
                 </section>
 
             </section>
@@ -126,8 +155,6 @@
 
                 <section>
                     <p>There are two aspects to this rule:</p>
-                </section>
-                <section>
                     <ul>
                         <li>For static components: implement "Never expire" policy by setting far future <code>Expires</code> header</li>
                         <li>For dynamic components: use an appropriate <code>Cache-Control</code> header to help the browser with conditional requests</li>
@@ -139,21 +166,15 @@
                 </section>
                 <section>
                     <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2010. </p>
-                </section>
-                <section><pre>      Expires: Thu, 15 Apr 2010 20:00:00 GMT</pre>
+                    <pre><code>      Expires: Thu, 15 Apr 2015 20:00:00 GMT</code></pre>
                 </section>
                 <section>
                     <p>If your server is Apache, use the ExpiresDefault directive to set an expiration date relative to the current date. This example of the ExpiresDefault directive sets the Expires date 10 years out from the time of the request.</p>
-                </section>
-                <section><pre>      ExpiresDefault "access plus 10 years"</pre>
-                </section>
-                <section>
-                    <p>Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. At Yahoo! we often make this step part of the build process: a version number is embedded in the component's filename, for example, yahoo_2.0.6.js.</p>
+                    <pre><code>      ExpiresDefault "access plus 10 years"</code></pre>
                 </section>
                 <section>
-                    <p>Using a far future Expires header affects page views only after a user has already visited your site. It has no effect on the number of HTTP requests when a user visits your site for the first time and the browser's cache is empty. Therefore the impact of this performance improvement depends on how often users hit your pages with a primed cache. (A "primed cache" already contains all of the components in the page.) We <a data-rapid_p="13" href="http://yuiblog.com/blog/2007/01/04/performance-research-part-2/">measured this at Yahoo!</a> and found the number of page views with a primed cache is 75-85%. By using a far future Expires header, you increase the number of components that are cached by the browser and re-used on subsequent page views without sending a single byte over the user's Internet connection.</p>
+                    <p>Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, script_2.0.6.js.</p>
                 </section>
-
             </section>
             <section>
                 <section>
@@ -165,13 +186,11 @@
                 </section>
                 <section>
                     <p>Starting with HTTP/1.1, web clients indicate support for compression with the Accept-Encoding header in the HTTP request.</p>
-                </section>
-                <section><pre>      Accept-Encoding: gzip, deflate</pre>
-                </section>
-                <section>
+<pre><code>      Accept-Encoding: gzip, deflate</code></pre>
                     <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client. The web server notifies the web client of this via the Content-Encoding header in the response.</p>
-                </section>
-                <section><pre>      Content-Encoding: gzip</pre>
+<pre><code>      Content-Encoding: gzip</code></pre>
+<img src="images/without-gzip.jpg" alt="without gzip support">
+<img src="images/gzip.jpg" alt="with gzip support">
                 </section>
                 <section>
                     <p>Gzip is the most popular and effective compression method at this time. It was developed by the GNU project and standardized by <a data-rapid_p="16" href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a>. The only other compression format you're likely to see is deflate, but it's less effective and less popular. </p>
@@ -196,10 +215,7 @@
                 </section>
 
                 <section>
-                    <p>While researching performance at Yahoo!, we discovered that moving stylesheets to the document HEAD makes pages appear to be loading faster. This is because putting stylesheets in the HEAD allows the page to render progressively. </p>
-                </section>
-                <section>
-                    <p>Front-end engineers that care about performance want a page to load progressively; that is, we want the browser to display whatever content it has as soon as possible. This is especially important for pages with a lot of content and for users on slower Internet connections. The importance of giving users visual feedback, such as progress indicators, has been well researched and <a data-rapid_p="21" href="http://www.useit.com/papers/responsetime.html">documented</a>. In our case the HTML page is the progress indicator! When the browser loads the page progressively the header, the navigation bar, the logo at the top, etc. all serve as visual feedback for the user who is waiting for the page. This improves the overall user experience.</p>
+                    <p>Moving stylesheets to the document HEAD makes pages appear to be loading faster. This is because putting stylesheets in the HEAD allows the page to render progressively. </p>
                 </section>
                 <section>
                     <p>The problem with putting stylesheets near the bottom of the document is that it prohibits progressive rendering in many browsers, including Internet Explorer. These browsers block rendering to avoid having to redraw elements of the page if their styles change. The user is stuck viewing a blank white page.
@@ -233,10 +249,8 @@
 
                 <section>
                     <p>CSS expressions are a powerful (and dangerous) way to set CSS properties dynamically. They were supported in Internet Explorer starting with version 5, but were <a data-rapid_p="28" href="http://msdn.microsoft.com/en-us/library/ms537634%28VS.85%29.aspx">deprecated starting with IE8</a>. As an example, the background color could be set to alternate every hour using CSS expressions:</p>
-                </section>
-                <section><pre>      background-color: expression( (new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</pre>
-                </section>
-                <section>
+<pre><code>      background-color: expression( (new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
+
                     <p>As shown here, the <code>expression</code> method accepts a JavaScript expression. The CSS property is set to the result of evaluating the JavaScript expression. The <code>expression</code> method is ignored by other browsers, so it is useful for setting properties in Internet Explorer needed to create a consistent experience across browsers.</p>
                 </section>
                 <section>
@@ -250,9 +264,6 @@
             <section>
                 <section>
                     <h3 id="external">Make JavaScript and CSS External</h3>
-                </section>
-                <section>
-                    <p>tag: javascript, css</p>
                 </section>
                 <section>
                     <p>Many of these performance rules deal with how external components are managed. However, before these considerations arise you should ask a more basic question: Should JavaScript and CSS be contained in external files, or inlined in the page itself?</p>
@@ -278,6 +289,7 @@
 
                 <section>
                     <p>The Domain Name System (DNS) maps hostnames to IP addresses, just as phonebooks map people's names to their phone numbers. When you type www.yahoo.com into your browser, a DNS resolver contacted by the browser returns that server's IP address. DNS has a cost. It typically takes 20-120 milliseconds for DNS to lookup the IP address for a given hostname. The browser can't download anything from this hostname until the DNS lookup is completed. </p>
+                    <img src="images/dns-lookup.jpg" alt="DNS lookup">
                 </section>
                 <section>
                     <p>DNS lookups are cached for better performance. This caching can occur on a special caching server, maintained by the user's ISP or local area network, but there is also caching that occurs on the individual user's computer. The DNS information remains in the operating system's DNS cache (the "DNS Client service" on Microsoft Windows). Most browsers have their own caches, separate from the operating system's cache. As long as the browser keeps a DNS record in its own cache, it doesn't bother the operating system with a request for the record.</p>
@@ -319,9 +331,9 @@
                 <section>
                     <p>Redirects are accomplished using the 301 and 302 status codes. Here's an example of the HTTP headers in a 301 response:</p>
                 </section>
-                <section><pre>      HTTP/1.1 301 Moved Permanently
+                <section><pre><code>      HTTP/1.1 301 Moved Permanently
       Location: http://example.com/newuri
-      Content-Type: text/html</pre>
+      Content-Type: text/html</code></pre>
                 </section>
                 <section>
                     <p>The browser automatically takes the user to the URL specified in the <code>Location</code> field. All the information necessary for a redirect is in the headers. The body of the response is typically empty. Despite their names, neither a 301 nor a 302 response is cached in practice unless additional headers, such as <code>Expires</code> or <code>Cache-Control</code>, indicate it should be. The meta refresh tag and JavaScript are other ways to direct users to a different URL, but if you must do a redirect, the preferred technique is to use the standard 3xx HTTP status codes, primarily to ensure the back button works correctly.</p>
@@ -354,12 +366,12 @@
                 <section>
                     <p>One way to avoid accidentally including the same script twice is to implement a script management module in your templating system. The typical way to include a script is to use the SCRIPT tag in your HTML page.</p>
                 </section>
-                <section><pre>      &lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</pre>
+                <section><pre><code>      &lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</code></pre>
                 </section>
                 <section>
                     <p>An alternative in PHP would be to create a function called <code>insertScript</code>.</p>
                 </section>
-                <section><pre>      &lt;?php insertScript("menu.js") ?&gt;</pre>
+                <section><pre><code>      &lt;?php insertScript("menu.js") ?&gt;</code></pre>
                 </section>
                 <section>
                     <p>In addition to preventing the same script from being inserted multiple times, this function could handle other issues with scripts, such as dependency checking and adding version numbers to script filenames to support far future Expires headers.</p>
@@ -374,20 +386,20 @@
                 <section>
                     <p>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. (An "entity" is another word a "component": images, scripts, stylesheets, etc.) ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</p>
                 </section>
-                <section><pre>      HTTP/1.1 200 OK
+                <section><pre><code>      HTTP/1.1 200 OK
       Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT
       ETag: "10c24bc-4ab-457e1c1f"
-      Content-Length: 12195</pre>
+      Content-Length: 12195</code></pre>
                 </section>
                 <section>
                     <p>Later, if the browser has to validate a component, it uses the <code>If-None-Match</code> header to pass the ETag back to the origin server. If the ETags match, a 304 status code is returned reducing the response by 12195 bytes for this example.
                     </p>
                 </section>
-                <section><pre>      GET /i/yahoo.gif HTTP/1.1
+                <section><pre><code>      GET /i/yahoo.gif HTTP/1.1
       Host: us.yimg.com
       If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT
       If-None-Match: "10c24bc-4ab-457e1c1f"
-      HTTP/1.1 304 Not Modified</pre>
+      HTTP/1.1 304 Not Modified</code></pre>
                 </section>
                 <section>
                     <p>The problem with ETags is that they typically are constructed using attributes that make them unique to a specific server hosting a site. ETags won't match when a browser gets the original component from one server and later tries to validate that component on a different server, a situation that is all too common on Web sites that use a cluster of servers to handle requests. By default, both Apache and IIS embed data in the ETag that dramatically reduces the odds of the validity test succeeding on web sites with multiple servers.
@@ -409,7 +421,7 @@
                     <p>If you're not taking advantage of the flexible validation model that ETags provide, it's better to just remove the ETag altogether. The <code>Last-Modified</code> header validates based on the component's timestamp. And removing the ETag reduces the size of the HTTP headers in both the response and subsequent requests. This <a data-rapid_p="47" href="http://support.microsoft.com/?id=922733">Microsoft Support article</a> describes how to remove ETags. In Apache, this is done by simply adding the following line to your Apache configuration file:
                     </p>
                 </section>
-                <section><pre>      FileETag none</pre>
+                <section><pre><code>      FileETag none</code></pre>
                 </section>
 
             </section>
@@ -470,12 +482,12 @@
                 <section>
                     <p>Example:</p>
                 </section>
-                <section><pre>      ... &lt;!-- css, js --&gt;
+                <section><pre><code>      ... &lt;!-- css, js --&gt;
     &lt;/head&gt;
     &lt;?php flush(); ?&gt;
     &lt;body&gt;
       ... &lt;!-- content --&gt;
-</pre>
+</code></pre>
                 </section>
 
 

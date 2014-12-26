@@ -1,6 +1,6 @@
 name: Browser Work
 markdown: redcarpet
-highlighter: rouge
+pygments: true
 paginate: 1
 permalink: /:categories/:title
 excerpt_separator: <!--more-->

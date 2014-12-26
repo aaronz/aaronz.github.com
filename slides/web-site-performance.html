@@ -186,11 +186,11 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 </section>
                 <section>
                     <p>Starting with HTTP/1.1, web clients indicate support for compression with the Accept-Encoding header in the HTTP request.</p>
-<pre><code>      Accept-Encoding: gzip, deflate</code></pre>
+                    <pre><code>      Accept-Encoding: gzip, deflate</code></pre>
                     <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client. The web server notifies the web client of this via the Content-Encoding header in the response.</p>
-<pre><code>      Content-Encoding: gzip</code></pre>
-<img src="images/without-gzip.jpg" alt="without gzip support">
-<img src="images/gzip.jpg" alt="with gzip support">
+                    <pre><code>      Content-Encoding: gzip</code></pre>
+                    <img src="images/without-gzip.jpg" alt="without gzip support">
+                    <img src="images/gzip.jpg" alt="with gzip support">
                 </section>
                 <section>
                     <p>Gzip is the most popular and effective compression method at this time. It was developed by the GNU project and standardized by <a data-rapid_p="16" href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a>. The only other compression format you're likely to see is deflate, but it's less effective and less popular. </p>
@@ -220,6 +220,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 <section>
                     <p>The problem with putting stylesheets near the bottom of the document is that it prohibits progressive rendering in many browsers, including Internet Explorer. These browsers block rendering to avoid having to redraw elements of the page if their styles change. The user is stuck viewing a blank white page.
                     </p>
+                    <img src="images\webkitflow.png" alt="webkit flow">
                 </section>
                 <section>
                     <p>The <a data-rapid_p="22" href="http://www.w3.org/TR/html4/struct/links.html#h-12.3">HTML specification</a> clearly states that stylesheets are to be included in the HEAD of the page: "Unlike A, [LINK] may only appear in the HEAD section of a document, although it may appear any number of times." Neither of the alternatives, the blank white screen or flash of unstyled content, are worth the risk. The optimal solution is to follow the HTML specification and load your stylesheets in the document HEAD.</p>
@@ -233,6 +234,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
 
                 <section>
                     <p>The problem caused by scripts is that they block parallel downloads. The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
+                    <a href="http://browserwork.com/tests/loadscript/direct-load.html">http://browserwork.com/tests/loadscript/direct-load.html</a>
                 </section>
                 <section>
                     <p>In some situations it's not easy to move scripts to the bottom. If, for example, the script uses <code>document.write</code> to insert part of the page's content, it can't be moved lower in the page. There might also be scoping issues. In many cases, there are ways to workaround these situations.</p>
@@ -249,7 +251,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
 
                 <section>
                     <p>CSS expressions are a powerful (and dangerous) way to set CSS properties dynamically. They were supported in Internet Explorer starting with version 5, but were <a data-rapid_p="28" href="http://msdn.microsoft.com/en-us/library/ms537634%28VS.85%29.aspx">deprecated starting with IE8</a>. As an example, the background color could be set to alternate every hour using CSS expressions:</p>
-<pre><code>      background-color: expression( (new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
+                    <pre><code>      background-color: expression( (new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
 
                     <p>As shown here, the <code>expression</code> method accepts a JavaScript expression. The CSS property is set to the result of evaluating the JavaScript expression. The <code>expression</code> method is ignored by other browsers, so it is useful for setting properties in Internet Explorer needed to create a consistent experience across browsers.</p>
                 </section>

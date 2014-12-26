@@ -1,0 +1,37 @@
+--- layout: test title: Document Write Load ---
+
+<div class="section">
+    <h3>Description</h3>
+    <p>Use document.write to load script still blocks subsequent page content rendering.</p>
+    <script type="text/javascript" language="javascript">
+    function loadjs(script_filename) {
+        document.write('<' + 'script language="javascript" type="text/javascript"');
+        document.write(' src="' + script_filename + '">');
+        document.write('<' + '/script' + '>');
+        alert("loadjs() exit...");
+    }
+    var script = 'http://browserwork.com/tests/loadscript/alert.js';
+    loadjs(script);
+    alert("loadjs() finished!");
+    </script>
+    <script type="text/javascript" language="javascript">
+    alert("another block");
+    </script>
+    <h3>Source Code</h3>
+    <pre class="brush: js">
+&lt;script type="text/javascript" language="javascript"&gt;
+    function loadjs(script_filename) {
+        document.write('&lt;' + 'script language="javascript" type="text/javascript"');
+        document.write(' src="' + script_filename + '"&gt;');
+        document.write('&lt;' + '/script' + '&gt;');
+        alert("loadjs() exit...");
+    }
+    var script = 'http://browserwork.com/tests/loadscript/alert.js';
+    loadjs(script);
+    alert("loadjs() finished!");
+    &lt;/script&gt;
+    &lt;script type="text/javascript" language="javascript"&gt;
+    alert("another block");
+    &lt;/script&gt;
+    </pre>
+</div>

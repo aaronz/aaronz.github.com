@@ -247,12 +247,6 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         </li>
                     </ul>
                 </section>
-                <section>
-                    <p>In some situations it's not easy to move scripts to the bottom. If, for example, the script uses <code>document.write</code> to insert part of the page's content, it can't be moved lower in the page. There might also be scoping issues. In many cases, there are ways to workaround these situations.</p>
-                </section>
-                <section>
-                    <p>An alternative suggestion that often comes up is to use deferred scripts. The <code>DEFER</code> attribute indicates that the script does not contain document.write, and is a clue to browsers that they can continue rendering. Unfortunately, Firefox doesn't support the <code>DEFER</code> attribute. In Internet Explorer, the script may be deferred, but not as much as desired. If a script can be deferred, it can also be moved to the bottom of the page. That will make your web pages load faster.</p>
-                </section>
 
             </section>
             <section>
@@ -268,8 +262,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 </section>
                 <section>
                     <p>The problem with expressions is that they are evaluated more frequently than most people expect. Not only are they evaluated when the page is rendered and resized, but also when the page is scrolled and even when the user moves the mouse over the page. Adding a counter to the CSS expression allows us to keep track of when and how often a CSS expression is evaluated. Moving the mouse around the page can easily generate more than 10,000 evaluations.</p>
-                </section>
-                <section>
+
                     <p>One way to reduce the number of times your CSS expression is evaluated is to use one-time expressions, where the first time the expression is evaluated it sets the style property to an explicit value, which replaces the CSS expression. If the style property must be set dynamically throughout the life of the page, using event handlers instead of CSS expressions is an alternative approach. If you must use CSS expressions, remember that they may be evaluated thousands of times and could affect the performance of your page.</p>
                 </section>
 
@@ -323,10 +316,8 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <h3 id="minify">Minify JavaScript and CSS</h3>
                 </section>
                 <section>
-                    <p>tag: javascript, css</p>
-                </section>
-                <section>
                     <p>Minification is the practice of removing unnecessary characters from code to reduce its size thereby improving load times. When code is minified all comments are removed, as well as unneeded white space characters (space, newline, and tab). In the case of JavaScript, this improves response time performance because the size of the downloaded file is reduced. Two popular tools for minifying JavaScript code are <a data-rapid_p="37" href="http://crockford.com/javascript/jsmin">JSMin</a> and <a data-rapid_p="38" href="https://developer.yahoo.com/yui/compressor/">YUI Compressor</a>. The YUI compressor can also minify CSS.</p>
+                    <img src="images/minify-scripts-stylesheets.png" alt="minify scripts and stylesheets">
                 </section>
                 <section>
                     <p>Obfuscation is an alternative optimization that can be applied to source code. It's more complex than minification and thus more likely to generate bugs as a result of the obfuscation step itself. In a survey of ten top U.S. web sites, minification achieved a 21% size reduction versus 25% for obfuscation. Although obfuscation has a higher size reduction, minifying JavaScript is less risky.</p>
@@ -347,6 +338,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                 <section><pre><code>      HTTP/1.1 301 Moved Permanently
       Location: http://example.com/newuri
       Content-Type: text/html</code></pre>
+                    <img src="images/redirection.jpg" alt="redirection">
                 </section>
                 <section>
                     <p>The browser automatically takes the user to the URL specified in the <code>Location</code> field. All the information necessary for a redirect is in the headers. The body of the response is typically empty. Despite their names, neither a 301 nor a 302 response is cached in practice unless additional headers, such as <code>Expires</code> or <code>Cache-Control</code>, indicate it should be. The meta refresh tag and JavaScript are other ways to direct users to a different URL, but if you must do a redirect, the preferred technique is to use the standard 3xx HTTP status codes, primarily to ensure the back button works correctly.</p>
@@ -584,8 +576,6 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         A complex page means more bytes to download and it also means slower DOM access in JavaScript. It makes a difference if you loop through 500 or 5000 DOM elements on the page when you want to add an event handler for example.
                     </p>
-                </section>
-                <section>
                     <p>
                         A high number of DOM elements can be a symptom that there's something that should be improved with the markup of the page without necessarily removing content. Are you using nested tables for layout purposes? Are you throwing in more <code>&lt;div&gt;</code>s only to fix layout issues? Maybe there's a better and more semantically correct way to do your markup.
                     </p>
@@ -595,12 +585,11 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         A great help with layouts are the <a data-rapid_p="70" href="https://developer.yahoo.com/yui/">YUI CSS utilities</a>: grids.css can help you with the overall layout, fonts.css and reset.css can help you strip away the browser's defaults formatting. This is a chance to start fresh and think about your markup, for example use <code>&lt;div&gt;</code>s only when it makes sense semantically, and not because it renders a new line.
 
                     </p>
-                </section>
-                <section>
                     <p>
                         The number of DOM elements is easy to test, just type in Firebug's console:
                         <code>document.getElementsByTagName('*').length</code>
                     </p>
+                    <img src="images/dom-element-number.png" alt="dom element number">
                 </section>
                 <section>
                     <p>
@@ -637,25 +626,20 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         Iframes allow an HTML document to be inserted in the parent document. It's important to understand how iframes work so they can be used effectively.
                     </p>
+                    <img src="images/iframe-performance.png" alt="iframe performance">
                 </section>
                 <section>
                     <p>
                         <code>&lt;iframe&gt;</code> pros:
                     </p>
-                </section>
-                <section>
                     <ul>
                         <li>Helps with slow third-party content like badges and ads</li>
                         <li>Security sandbox</li>
                         <li>Download scripts in parallel</li>
                     </ul>
-                </section>
-                <section>
                     <p>
                         <code>&lt;iframe&gt;</code> cons:
                     </p>
-                </section>
-                <section>
                     <ul>
                         <li>Costly even if blank</li>
                         <li>Blocks page onload</li>
@@ -673,6 +657,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
                     </p>
+                    <img src="images/404-error.png" alt="404">
                 </section>
                 <section>
                     <p>
@@ -690,16 +675,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
                     </p>
-                </section>
-                <section>
-                    <p>
-                        For more information check
-                        <a data-rapid_p="77" href="http://yuiblog.com/blog/2007/03/01/performance-research-part-3/">"When the Cookie Crumbles"</a> by Tenni Theurer and Patty Chi. The take-home of this research:
-                    </p>
-                </section>
-                <section>
-                    <p>
-                    </p>
+                    <img src="images\cookies.jpg" alt="cookies">
                 </section>
                 <section>
                     <ul>
@@ -777,12 +753,6 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         <code>DOMContentLoaded</code> is the event you might consider using instead of onload, but until it's available in all browsers, you can use the <a data-rapid_p="82" href="https://developer.yahoo.com/yui/event/">YUI Event</a> utility, which has an <code><a data-rapid_p="83" href="https://developer.yahoo.com/yui/event/#onavailable">onAvailable</a></code> method.
                     </p>
                 </section>
-                <section>
-                    <p>
-                        For more information check the YUI theatre's
-                        <a data-rapid_p="84" href="http://yuiblog.com/blog/2007/12/20/video-lecomte/">"High Performance Ajax Applications"</a> by Julien Lecomte.
-                    </p>
-                </section>
 
             </section>
             <section>
@@ -828,6 +798,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         After a designer is done with creating the images for your web page, there are still some things you can try before you FTP those images to your web server.
                     </p>
+                    <img src="images\image-weight-for-top10-websites.png" alt="images weight">
                 </section>
                 <section>
                     <ul>
@@ -865,6 +836,8 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         <li>"Be mobile-friendly" and don't leave big gaps between the images in a sprite. This doesn't affect the file size as much but requires less memory for the user agent to decompress the image into a pixel map. 100x100 image is 10 thousand pixels, where 1000x1000 is 1 million pixels
                         </li>
                     </ul>
+
+                    <img src="images\css-sprites-optimization.jpg" alt="css sprites optimization">
                 </section>
 
             </section>
@@ -880,6 +853,7 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                         <code>&lt;img width="100" height="100" src="mycat.jpg" alt="My Cat" /&gt;</code> then your image (mycat.jpg) should be 100x100px rather than a scaled down 500x500px image.
 
                     </p>
+                    <img src="images\zoom.png" alt="zoom">
                 </section>
 
             </section>
@@ -892,20 +866,17 @@ AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
                     <p>
                         The favicon.ico is an image that stays in the root of your server. It's a necessary evil because even if you don't care about it the browser will still request it, so it's better not to respond with a <code>404 Not Found</code>. Also since it's on the same server, cookies are sent every time it's requested. This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.
                     </p>
+                    <img src="images\favicon.png" alt="favicon">
                 </section>
                 <section>
                     <p>
                         So to mitigate the drawbacks of having a favicon.ico make sure:
                     </p>
-                </section>
-                <section>
                     <ul>
                         <li>It's small, preferably under 1K.</li>
                         <li>Set Expires header with what you feel comfortable (since you cannot rename it if you decide to change it). You can probably safely set the Expires header a few months in the future. You can check the last modified date of your current favicon.ico to make an informed decision.
                         </li>
                     </ul>
-                </section>
-                <section>
                     <p>
                         <a data-rapid_p="93" href="http://www.imagemagick.org">Imagemagick</a> can help you create small favicons
                     </p>

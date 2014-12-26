@@ -1,0 +1,40 @@
+---
+layout: test
+title: Dynamic Script Load
+---
+
+<div class="section">
+    <h3>Description</h3>
+    <p>Dynamic script loading</p>
+    <script>
+    function loadjs(script_filename) {
+        var script = document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        script.setAttribute('src', script_filename);
+        script.setAttribute('id', 'coolshell_script_id');
+        script_id = document.getElementById('coolshell_script_id');
+        if (script_id) {
+            document.getElementsByTagName('head')[0].removeChild(script_id);
+        }
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    var script = 'http://browserwork.com/tests/loadscript/alert.js';
+    loadjs(script);
+    </script>
+    <h3>Source Code</h3>
+    <pre class="brush: js">
+    function loadjs(script_filename) {
+        var script = document.createElement('script');
+        script.setAttribute('type', 'text/javascript');
+        script.setAttribute('src', script_filename);
+        script.setAttribute('id', 'coolshell_script_id');
+        script_id = document.getElementById('coolshell_script_id');
+        if (script_id) {
+            document.getElementsByTagName('head')[0].removeChild(script_id);
+        }
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    var script = 'http://browserwork.com/tests/loadscript/alert.js';
+    loadjs(script);
+    </pre>
+</div>

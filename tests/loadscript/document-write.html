@@ -1,4 +1,7 @@
---- layout: test title: Document Write Load ---
+---
+layout: test
+title: Direct Script Load
+---
 
 <div class="section">
     <h3>Description</h3>
@@ -18,7 +21,7 @@
     alert("another block");
     </script>
     <h3>Source Code</h3>
-    <pre class="brush: js">
+    <pre class="brush: html">
 &lt;script type="text/javascript" language="javascript"&gt;
     function loadjs(script_filename) {
         document.write('&lt;' + 'script language="javascript" type="text/javascript"');

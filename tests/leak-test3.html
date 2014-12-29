@@ -1,8 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<TITLE>Leak Test 3</TITLE>        
-<BODY>
-<SCRIPT>
-            /*global onunload, setTimeout */
+---
+layout: test
+title: leak test 3
+---
+
+<div class="section">
+    <script>
+    /*global onunload, setTimeout */
             (function (limit, delay) {
                 var queue = new Array(10);
                 var n = 0;
@@ -60,5 +63,67 @@
 
                 loop();
             })(10000, 10);
-        </SCRIPT>
-     </BODY></HTML>
+    </script>
+    <h3>Source Code</h3>
+    <pre class="brush: js">
+        /*global onunload, setTimeout */
+            (function (limit, delay) {
+                var queue = new Array(10);
+                var n = 0;
+
+                function makeSpan(n) {
+                    var s = document.createElement('span');
+                    document.body.appendChild(s);
+                    var t = document.createTextNode(' ' + n);
+                    s.appendChild(t);
+                    s.onclick = function (e) {
+                        s.style.backgroundColor = 'red';
+                        alert(n);
+                    };
+                    return s;
+                }
+
+                function purge(d) {
+                    var a = d.attributes, i, l, n;
+                    if (a) {
+                        for (i = a.length - 1; i >= 0; i -= 1) {
+                            n = a[i].name;
+                            if (typeof d[n] === 'function') {
+                                d[n] = null;
+                            }
+                        }
+                    }
+                    a = d.childNodes;
+                    if (a) {
+                        l = a.length;
+                        for (i = 0; i < l; i += 1) {
+                            purge(d.childNodes[i]);
+                        }
+                    }
+                }
+
+                function process(n) {
+                    queue.push(makeSpan(n));
+                    var s = queue.shift();
+                    if (s) {
+                        purge(s);
+                        s.parentNode.removeChild(s);
+                    }
+                }
+
+                function loop() {
+                    if (n < limit) {
+                        process(n);
+                        n += 1;
+                        setTimeout(loop, delay);
+                    }
+                }
+                onunload = function (e) {
+                    purge(document.body);
+                };
+
+                loop();
+            })(10000, 10);
+</pre>
+
+</div>

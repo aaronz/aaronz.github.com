@@ -212,7 +212,150 @@ I said:&lt;/br&gt;This is html, not plain text.&lt;/p&gt;</code></pre>
             </section>
             <section>
                 <section>
-                    <h2>Parsing Basic</h2>
+                    <h2>HTML Parsing</h2>
+                </section>
+                <section>
+                    <img src="images\html-parsing.png" alt="html parsing">
+                </section>
+                <section>
+                    <h3>Token Parsing</h3>
+                    <img src="images\token-parsing.png" alt="token parsing">
+                </section>
+                <section>
+                    <h3>State Machine</h3>
+                    <img src="images\state-machine.png" alt="state machine">
+                </section>
+                <section>
+                    <h3>Tree Construction</h3>
+                    <img src="images\dom-tree-construction.png" alt="tree construction">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>CSS Parsing</h2>
+                </section>
+                <section>
+                    <img src="images\css-parsing.png" alt="css parsing">
+                </section>
+                <section>
+                    <h3>DOM + CSS = Render Tree</h3>
+                    <img src="images\dom-and-css.png" alt="dom and css">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Reflow and Repaint</h2>
+                </section>
+                <section>
+                    <ul>
+                        <li>A repaint occurs when changes are made to an elements skin that changes visibility, but do not affect its layout.
+                        </li>
+                        <li>A reflow is even more critical to performance because it involves changes that affect the layout of a portion of the page (or the whole page). Reflow of an element causes the subsequent reflow of all child and ancestor elements as well as any elements following it in the DOM.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Webkit Render Workflow</h3>
+                    <img src="images\webkit-workflow.png" alt="webkit workflow">
+                </section>
+                <section>
+                    <embed src="http://player.youku.com/player.php/sid/XMzI5MDg0OTA0/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+                </section>
+                <section>
+                    <h3>Performance Guideline</h3>
+                    <ul>
+                        <li>Reduce unnecessary DOM depth. Changes at one level in the DOM tree can cause changes at every level of the tree - all the way up to the root, and all the the way down into the children of the modified node. This leads to more time being spent performing reflow.
+                        </li>
+                        <li>Minimize CSS rules, and remove unused CSS rules.
+                        </li>
+                        <li>If you make complex rendering changes such as animations, do so out of the flow. Use position-absolute or position-fixed to accomplish this.
+                        </li>
+                        <li>Avoid unnecessary complex CSS selectors - descendant selectors in particular - which require more CPU power to do selector matching.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Demo: Internet Explorer F12 UI Responsiveness Tool</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>JavaScript</h2>
+                </section>
+                <section>
+                    <h3>Firefox JavaScript Engine</h3>
+                    <img src="images\firefox-js-engine.png" alt="firefox javascript engine">
+                </section>
+                <section>
+                    <ul>
+                        <li><b>Lexer</b> is responsible for the ​lexical analysis, i.e. breaking down the script source into a series of tokens.
+                        </li>
+                        <li><b>Parser</b> carries out the ​syntactic analysis, i.e. consuming the tokens from the lexer and building the corresponding syntax tree.
+                        </li>
+                        <li><b>LLInt</b>, short for Low Level Interpreter, executes the bytecodes produced by the parser. The bulk of the Low Level Interpreter is in ​llint/.
+                        </li>
+                        <li><b>Baseline JIT</b> kicks in for functions that are invoked at least 6 times, or take a loop at least 100 times (or some combination - like 3 invocations with 50 loop iterations total).
+                        </li>
+                        <li><b>DFG JIT</b> kicks in for functions that are invoked at least 60 times, or that took a loop at least 1000 times.
+                        </li>
+                        <li><b>FTL JIT</b> kicks in for functions that are invoked thousands of times, or loop tens of thousands of times.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="images\firefox-javascript-execution.png" alt="firefox javascript execution">
+                    <img src="images\firefox-jit-performance.png" alt="firefox jit performance">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>GC</h2>
+                </section>
+                <section>
+                    <img src="images\walley.png" alt="walley">
+                    <p>The basic principles of garbage collection are:</p>
+                    <ul>
+                        <li>Find data objects in a program that cannot be accessed in the future.</li>
+                        <li>Reclaim the resources used by those objects.</li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="images\gc-mechanism.png" alt="gc mechanism">
+                </section>
+                <section>
+                    <h3>Mark and Sweep</h3>
+                    <img src="images\mark-and-sweep.png" alt="mark and sweep">
+                    <ul>
+                        <li>When a variable comes into context, such as when a variable is declared inside a function, it is flagged as being in context.
+                        </li>
+                        <li>When a variable goes out of context, it is also flagged as being out of context.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Reference Counting</h3>
+                    <img src="images\reference-counting.png" alt="reference-counting">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Memory Leak</h2>
+                </section>
+                <section>
+                    <h3>Memory Leak Patterns</h3>
+                    <img src="images\circular-reference-basic.png" alt="circular reference basic">
+                </section>
+                <section>
+                    <img src="images\circular-reference-closure.png" alt="circular reference closure">
+                    <br>
+                    <a href="http://msdn.microsoft.com/en-us/library/bb250448(v=vs.85).aspx">http://msdn.microsoft.com/en-us/library/bb250448(v=vs.85).aspx</a>
+                </section>
+                <section>
+                	<h3>Demo: IE memory leak</h3>
+                	<ul>
+                		<li><a href="http://browserwork.com/tests/leak-test1.html">http://browserwork.com/tests/leak-test1.html</a></li>
+                		<li><a href="http://browserwork.com/tests/leak-test2.html">http://browserwork.com/tests/leak-test2.html</a></li>
+                		<li><a href="http://browserwork.com/tests/leak-test3.html">http://browserwork.com/tests/leak-test3.html</a></li>
+                	</ul>
                 </section>
             </section>
             <section>

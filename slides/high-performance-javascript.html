@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>High Performance JavaScript</title>
+
+    <meta name="description" content="JavaScript Performance Best Practices">
+    <meta name="author" content="Aaron Zhang">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>High Performance JavaScript</h1>
+                <h3>JavaScript Performance Best Practices</h3>
+                <p>
+                    <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
+                    </small>
+                </p>
+            </section>
+            <section>
+                <section>
+                    <h2>JavaScript Overview</h2>
+                </section>
+                <section>
+                    <h3>JavaScript History</h3>
+                    <ul>
+                        <li>Beginnings at Netscape</li>
+                        <li>Server-side JavaScript</li>
+                        <li>Adoption by Microsoft - IE3.0 - 1996</li>
+                        <li>Standardization - Ecma - 1997</li>
+                        <li>Later developments</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Imperative and structured</li>
+                        <li>Dynamic</li>
+                        <li>Functional</li>
+                        <li>Prototype-based</li>
+                        <li>Implicit and explicit delegation</li>
+                        <li>Miscellaneous</li>
+                        <li>Vendor-specific extensions</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Major Components</h3>
+                    <ul>
+                        <li>ECMAScript - which is defined in ECMA - 262 and provides the core functionality</li>
+                        <li>DOM (Document Object Model) - which provides methods and interfaces for working with the content of a web page</li>
+                        <li>BOM (Browser Object Model) - which provides methods and interfaces for interacting with the browser</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>ECMAScript</h3>
+                    <p>ECMAScript is the scripting language standardized by Ecma International in the ECMA-262 specification and ISO/IEC 16262. The language is widely used for client-side scripting on the web, in the form of several well-known implementations such as JavaScript, JScript and ActionScript.</p>
+                    <ul>
+                        <li>Syntax</li>
+                        <li>Types</li>
+                        <li>Statements</li>
+                        <li>Keywords</li>
+                        <li>Reserved words</li>
+                        <li>Operators</li>
+                        <li>Objects</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>DOM</h3>
+                    <p>The Document Object Model (DOM) is an application programming interface (API) for XML that was extended for use in HTML. The DOM maps out an entire page as a hierarchy of nodes. Each part of an HTML or XML page is a type of a node containing different kinds of data.</p>
+                    <a title="By Birger Eriksson (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0)], via Wikimedia Commons" href="http://commons.wikimedia.org/wiki/File%3ADOM-model.svg"><img alt="DOM-model" src="images/document-object-model.png" />
+                    </a>
+                </section>
+                <section>
+                    <h3>DOM Levels</h3>
+                    <ul>
+                        <li>DOM level 1 (DOM Core, DOM HTML)</li>
+                        <li>DOM level 2 (DOM Views, DOM Events, DOM Style, DOM Traversal and Range)</li>
+                        <li>DOM level 3 (DOM Load and Save, DOM Validation)</li>
+                    </ul>
+                    <a href="http://en.wikipedia.org/wiki/Comparison_of_web_browsers"><img src="images/browser-dom-support.png" alt="browser dom support">
+                    </a>
+
+                </section>
+                <section>
+                    <h3>BOM</h3>
+                    <p>Primarily, the BOM deals with the browser window and frames, but generally any browser - specific extension to JavaScript is considered to be a part of the BOM. The following are some such extensions:</p>
+                    <ul>
+                        <li>The capability to pop up new browser windows</li>
+                        <li>The capability to move, resize, and close browser windows</li>
+                        <li>The navigator object, which provides detailed information about the browser</li>
+                        <li>The location object, which gives detailed information about the page loaded in the browser</li>
+                        <li>The screen object, which gives detailed information about the user’s screen resolution</li>
+                        <li>Support for cookies</li>
+                        <li>Custom objects such as XMLHttpRequest and Internet Explorer’s ActiveXObject</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Core Concept</h2>
+                </section>
+                <section>
+                    
+                </section>
+            </section>
+
+
+            <section>
+                <h2>THE END</h2>
+                <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
+                </p>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>

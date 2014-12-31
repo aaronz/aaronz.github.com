@@ -43,7 +43,7 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <h1>High Performance JavaScript</h1>
+                <h2>High Performance JavaScript</h2>
                 <h3>JavaScript Performance Best Practices</h3>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
@@ -456,8 +456,7 @@ try {
                         <li>If you reference global variables from within function or another scope, scripting engine has to look through the scope to find them.</li>
                         <li>Variable in the global scope persist though the life time of the script, whereas in local scope they are destroyed when the local scope is lost.</li>
                     </ul>
-                    <p>Slow:</p><pre><code>var i,
-    str = '';
+                    <p>Slow:</p><pre><code>var i, str = '';
 function globalScope() {
     for (i=0; i &lt; 100; i++) {
         str += i; // here we reference i and str in global scope which is slow
@@ -465,8 +464,7 @@ function globalScope() {
 }
 globalScope();</code></pre>
                     <p>Faster:</p><pre><code>function localScope() {
-    var i,
-        str = '';
+    var i, str = '';
     for (i=0; i &lt; 100; i++) {
         str += i; // i and str in local scope which is faster
     }
@@ -646,9 +644,10 @@ for (var i=0; i&lt;1000; i++) {
                     </ul>
                 </section>
                 <section>
-                    <p>Slow:</p><pre><code>&lt;<a href="http://december.com/html/4/element/div.html">div</a> id="splash"/&gt;
-&lt;<a href="http://december.com/html/4/element/script.html">script</a> src="my-script-file.js" type="text/javascript"&gt;&lt;/<a href="http://december.com/html/4/element/script.html">script</a>&gt;</code></pre>
-                    <p>Faster:</p><pre><code>&lt;<a href="http://december.com/html/4/element/div.html">div</a> id="splash"/&gt;</code></pre><pre><code>// JavaScript
+                    <p>Slow:</p><pre><code>&lt;div id="splash"/&gt;
+&lt;script src="my-script-file.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
+                    <p>Faster:</p>
+                    <pre><code>&lt;div id="splash"/&gt;
 function loadScript(src, callback) {
     var head = document.getElementsByTagName('head')[0],
         script = document.createElement('script');
@@ -667,37 +666,25 @@ function loadScript(src, callback) {
     }
     head.insertBefore(script, head.firstChild);
 }
- 
+ 
 // load the my-script-file.js and display an alert dialog once the script has been loaded
-loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.'); });</code></pre>
-                </section>
-                <section>
-                    <p>Sources:</p>
-                    <ul>
-                        <li><a href="http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/" rel="nofollow">The best way to load external JavaScript</a>
-                        </li>
-                        <li><a href="http://docs.dojocampus.org/dojo/require" rel="nofollow">Dojo require</a>
-                        </li>
-                    </ul>
+loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.'); });
+</code></pre>
                 </section>
                 <section>
                     <h3> Add an Expires or a Cache-Control HTTP header </h3>
                     <p>Using Apache the Expires HTTP header and the max-age directive of the Cache-Control HTTP header in server responses can be configures in .htaccess. The syntax is as follows:</p>
-                    <p>ExpiresDefault "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*" ExpiresByType type/encoding "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*"</p>
-                    <p>Example: ExpiresActive On ExpiresByType image/png "access plus 1 year"</p>
-                    <p>Source:
-                        <a href="http://httpd.apache.org/docs/2.2/mod/mod_expires.html" rel="nofollow">Apache mod_expires</a>
-                    </p>
+                    <ul>
+                        <li>ExpiresDefault "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*" ExpiresByType type/encoding "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*"</li>
+                        <li>Example: ExpiresActive On ExpiresByType image/png "access plus 1 year"</li>
+                    </ul>
+
                 </section>
                 <section>
                     <h3> Gzip JavaScript and CSS resources </h3>
                     <p>Below is a simple configuration to gzip not only JavaScript and CSS but also HTML, XML and JSON. To accomplish this, the following must be set in the Apache .htaccess:</p>
                     <p>AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/json</p>
-                    <p>Source:</p>
-                    <ul>
-                        <li><a href="http://httpd.apache.org/docs/2.0/mod/mod_deflate.html" rel="nofollow">Apache mod_deflate</a>
-                        </li>
-                    </ul>
+
                 </section>
                 <section>
                     <h3> Use YUI Compressor or JSMin to compress the code</h3>
@@ -705,15 +692,6 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
                         <li>The Best: <a href="http://developer.yahoo.com/yui/compressor/" rel="nofollow">YUI Compressor</a> provides the best overall performance when you consider it as: Total_Speed = Time_to_Download + Time_to_Evaluate. Depends on Rhino and is not applicable for real-time compression.</li>
                         <li>Simple: <a href="http://www.crockford.com/javascript/jsmin.html" rel="nofollow">JSMin</a> has implementations in nearly all the languages and is applicable for real-time compression. After gzipping the size comes very close to that of YUI Compressor.</li>
                         <li>JSMin or YUI Compressor + gzipping is better performer than Dean Edwards' <a href="http://dean.edwards.name/packer/" rel="nofollow">Packer</a> + gzipping. Although Packer provides the smallest (byte-size) code it will evaluate much slower as the scripts are unpacked on the client-side using one pass of a RegExp? this introduces an overhead especially significant on slow mobile devices.</li>
-                    </ul>
-                </section>
-                <section>
-                    <p>Sources</p>
-                    <ul>
-                        <li><a href="http://ejohn.org/blog/library-loading-speed/" rel="nofollow">Library Loading Speed</a>
-                        </li>
-                        <li><a href="http://www.julienlecomte.net/blog/2007/08/13/" rel="nofollow">Gzip Your Minified JavaScript Files</a>
-                        </li>
                     </ul>
                 </section>
                 <section>
@@ -731,8 +709,6 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
                         <li>Multiple scripts can be loaded in parallel without blocking using techniques such as via normal script src, XHR eval, XHR injection, script in iframe, script DOM element, script defer and document.write script tag.</li>
                         <li>Depending on your specific constraints (resources in the same/different domain, need to preserve script loading order, need to show browser loading indicator) you can do an informed decision by checking the decision tree in the following presentation (slide 26).</li>
                     </ul>
-                    <p><a href="http://www.stevesouders.com/blog/2009/03/16/sxsw-slides/" rel="nofollow">Even Faster Websites - Steve Souders at SXSW ‘09</a>
-                    </p>
                 </section>
                 <section>
                     <h3> Couple asynchronous scripts </h3>
@@ -740,8 +716,6 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
                         <li>If you have inline script which depend on the script you have multiple options: hardcoded callback, window.onload, timer, degrading script tags and script onload.</li>
                         <li>See slide 35 onwards for details:</li>
                     </ul>
-                    <p><a href="http://www.stevesouders.com/blog/2009/03/16/sxsw-slides/" rel="nofollow">Even Faster Websites- Steve Souders at SXSW ‘09</a>
-                    </p>
                 </section>
                 <section>
                     <h3> Move inline scripts above stylesheets </h3>

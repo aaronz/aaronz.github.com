@@ -193,7 +193,7 @@ obj.name = “Nicholas”;
 var person = new Object();
 setName(person);
 alert(person.name); //”Nicholas”</code></pre>
-<pre><code>function setName(obj) {
+                    <pre><code>function setName(obj) {
 obj.name = “Nicholas”;
 obj = new Object();
 obj.name = “Greg”;
@@ -204,9 +204,8 @@ alert(person.name); //”Nicholas”</code></pre>
                 </section>
                 <section>
                     <h3>Determining Type</h3>
-                    <p>The typeof operator, introduced in the previous chapter, is the best way to determine if a variable is a
-primitive type.</p>
-<pre><code>var s = “Nicholas”;
+                    <p>The typeof operator, introduced in the previous chapter, is the best way to determine if a variable is a primitive type.</p>
+                    <pre><code>var s = “Nicholas”;
 var b = true;
 var i = 22;
 var u;
@@ -218,26 +217,182 @@ alert(typeof b); //boolean
 alert(typeof u); //undefined
 alert(typeof n); //object
 alert(typeof o); //object</code></pre>
-<p>The instanceof operator returns true if the variable is an instance of the given reference type
-(identified by its constructor function).</p>
-<pre><code>alert(person instanceof Object); //is the variable person an Object?
+                    <p>The instanceof operator returns true if the variable is an instance of the given reference type (identified by its constructor function).</p>
+                    <pre><code>alert(person instanceof Object); //is the variable person an Object?
 alert(colors instanceof Array); //is the variable colors an Array?
 alert(pattern instanceof RegExp); //is the variable pattern a RegExp?</code></pre>
                 </section>
                 <section>
                     <h3>Execution Context</h3>
-<p>The execution context of a variable or function defines what other data it has access to, as
-well as how it should behave. Each execution context has an associated variable object upon which all of its defined variables and functions exist. This object is not accessible by code but is used behind the
-scenes to handle data.</p>
+                    <p>The execution context of a variable or function defines what other data it has access to, as well as how it should behave. Each execution context has an associated variable object upon which all of its defined variables and functions exist. This object is not accessible by code but is used behind the scenes to handle data.</p>
+                    <img src="images/execution-context-scope-chain.png" alt="execution context scope chain">
                 </section>
                 <section>
                     <h3>Scope</h3>
+                    <p>When code is executed in a context, a scope chain of variable objects is created. The purpose of the scope chain is to provide ordered access to all variables and functions that an execution context has access to.</p>
+                    <pre><code>var color = "blue";
+function changeColor(){
+    var anotherColor = "red";
+    function swapColors(){
+        var tempColor = anotherColor;
+        anotherColor = color;
+        color = tempColor;
+        //color, anotherColor, and tempColor are all accessible here
+    }
+    //color and anotherColor are accessible here, but not tempColor
+    swapColors();
+}
+//only color is accessible here
+changeColor();</code></pre>
+                    <img src="images/scope-chain.png" alt="scope chain">
                 </section>
                 <section>
-                    <h3>Garbage Collection</h3>
+                    <h3>Scope Chain Augmentation</h3>
+                    <p>Even though there are only two types of execution contexts, global and local (function), there are other ways to augment the scope chain.</p>
+                    <ul>
+                        <li>The catch block in a try - catch statement</li>
+                        <li>A with statement</li>
+                    </ul>
+                    <pre><code>function buildUrl() {
+var qs = "?debug=true";
+with(location){
+    var url = href + qs;
+}
+return url;
+}</code></pre>
+                </section>
+
+                <section>
+                    <h3>No Block-Level Scopes</h3>
+                    <p>JavaScript ’ s lack of block - level scopes is a common source of confusion.</p>
+                    <pre><code>for (var i=0; i < 10; i++){
+    doSomething(i);
+}
+alert(i); //10
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Variable Declaration</h3>
+                    <ul>
+                        <li>When a variable is declared using var, it is automatically added to the most immediate context available.</li>
+                        <li>If a variable is initialized without first being declared, it gets added to the global context automatically</li>
+                    </ul>
+                    <pre><code>function add(num1, num2) {
+    sum = num1 + num2;
+    return sum;
+}
+var result = add(10, 20); //30
+alert(sum); //30</code></pre>
+                    <p style="color:orange">Initializing variables without declaring them is a very common mistake in JavaScript programming and can lead to errors. It’s advisable to always declare variables before initializing them to avoid such issues.</p>
+                </section>
+                <section>
+                    <h3>Identifier Lookup</h3>
+                    <pre><code>var color = "blue";
+function getColor(){
+return color;
+}
+alert(getColor()); //"blue"</code></pre>
+                    <img src="images/identifier-lookup.png" alt="identifier lookup">
+                    <p style="color:orange">Variable lookup doesn ’ t come without a price. It ’ s faster to access local variables than global variables because there ’ s no search up the scope chain.</p>
+                </section>
+                <section>
+                    <h3>Event Flow</h3>
+                    <p>Event flow describes the order in which events are received on the page, the IE and Netscape development teams came up with an almost exactly opposite concept of event flow.</p>
+                    <ul>
+                        <li> IE would support an event bubbling flow</li>
+                        <li>Netscape Communicator would support an event capturing flow</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Event Bubbling</h3>
+                    <p>The IE event flow is called event bubbling , because an event is said to start at the most specific element (the deepest possible point in the document tree) and then flow upward towards the least specific node (the document).</p>
+                    <pre><code>&lt; html &gt;
+&lt; head &gt;
+&lt; title &gt; Event Bubbling Example &lt; /title &gt;
+&lt; /head &gt;
+&lt; body &gt;
+&lt; div id=”myDiv” &gt; Click Me &lt; /div &gt;
+&lt; /body &gt;
+&lt; /html &gt;</code></pre>
+                </section>
+
+                <section>
+                    <h3>Event Capturing</h3>
+                    <p>The Netscape Communicator team came up with an alternate event flow called event capturing . The theory of event capturing is that the least specific node should receive the event first and the most specific node should receive the event last.</p>
+                    <img src="images/event-capturing.png" alt="event capturing">
+                </section>
+                <section>
+                    <h3>DOM Event Flow</h3>
+                    <p>The event flow specified by DOM Level 2 Events has three phases: the event capturing phase, at the target, and the event bubbling phase.</p>
+                    <img src="images\dom-events.png" alt="dom events">
+                </section>
+                <section>
+                    <h3>Cross-Browser Event Handler</h3>
+                    <pre><code>var EventUtil = {
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+        element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+        element.attachEvent("on" + type, handler);
+        } else {
+        element["on" + type] = handler;
+        }
+    },
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+        element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+        element.detachEvent("on" + type, handler);
+        } else {
+        element["on" + type] = null;
+        }
+    }
+};
+
+var btn = document.getElementById(“myBtn”);
+var handler = function(){
+alert(“Clicked”);
+};
+EventUtil.addHandler(btn, “click”, handler);
+//other code here
+EventUtil.removeHandler(btn, “click”, handler);</code></pre>
+                    <img src="images/add-event-listener-browser-support.png" alt="add event listener brower support">
+                </section>
+                <section>
+                    <h3>Prototypes</h3>
+                    <ul>
+                        <li>Objects in JavaScript are based on prototypes. A prototype is an object that serves as the base of another object, defining and implementing members that a new object must have.</li>
+                        <li>Prototype objects are shared amongst all instances of a given object type, and so all instances also share the prototype object’s members. </li>
+                        <li>Consequently, objects can have two types of members: instance members (also called “own” members) and prototype members. Instance members exist directly on the object instance itself, whereas prototype members are inherited from the object prototype. </li>
+                    </ul>
+                </section>
+                <section>
+                    <pre><code>var book = {    
+                title: "High Performance JavaScript",    
+                publisher: "Yahoo! Press" 
+                };
+alert(book.toString());   //"[object Object]"
+</code></pre>
+                    <img src="images/prototypes.png" alt="javascript prototypes">
+                </section>
+                <section>
+                    <h3>Prototype Chains</h3>
+                    <p>The prototype of an object determines the type or types of which it is an instance. By default, all objects are instances of Object and inherit all of the basic methods, such as toString().</p>
+                    <pre><code>function Book(title, publisher){    
+                    this.title = title;    
+                    this.publisher = publisher; }
+Book.prototype.sayTitle = function(){    
+alert(this.title); 
+};
+var book1 = new Book("High Performance JavaScript", "Yahoo! Press"); 
+var book2 = new Book("JavaScript: The Good Parts", "Yahoo! Press");
+alert(book1 instanceof Book);   //true alert(book1 instanceof Object); //true
+book1.sayTitle();         //"High Performance JavaScript" 
+alert(book1.toString());  //"[object Object]" 
+                    </code></pre>
+                    <img src="images/prototype-chain.png" alt="prototype chain">
                 </section>
             </section>
-
 
             <section>
                 <h2>THE END</h2>

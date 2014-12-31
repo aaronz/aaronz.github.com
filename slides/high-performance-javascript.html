@@ -133,7 +133,108 @@
                     <h2>Core Concept</h2>
                 </section>
                 <section>
-                    
+                    <h3>Primitive and Reference Values</h3>
+                    <ul>
+                        <li>Primitive values (ndefined, Null, Boolean, Number, and String) are simple pieces of data that are stored in memory on the stack , which is to say that the value is completely stored in one memory location.</li>
+                        <li>Reference values , on the other hand, are objects that are stored on the heap , meaning that the value stored in the variable is actually just a pointer to another memory location where the object is stored.</li>
+                    </ul>
+                    <img src="images/reference-value-type-memory.png" alt="value type and reference type memory">
+                </section>
+                <section>
+                    <h3>Dynamic Properties</h3>
+                    <p>When working with reference values, properties and methods may be added, changed, or deleted at any time.</p>
+                    <pre><code>var person = new Object();
+person.name = “Nicholas”;
+alert(person.name); //”Nicholas”
+</code></pre>
+                    <p>Primitive values can’t have properties added to them even though attempting to do so won’t cause an error.
+                    </p>
+                    <pre><code>var name = “Nicholas”;
+name.age = 27;
+alert(name.age); //undefined
+</code></pre>
+                </section>
+                <section>
+                    <h3>Copying Values</h3>
+                    <p>When a primitive value is assigned from one variable to another, the value stored on the stack is created and copied into the location for the new variable.</p>
+                    <pre><code>var num1 = 5;
+var num2 = num1;</code></pre>
+                    <img src="images/stack-copy.png" alt="stack copy">
+                </section>
+                <section>
+                    <p>When a reference value is assigned from one variable to another, the value stored on the stack is also copied into the location for the new variable. The difference is that this value is actually a pointer to an object stored on the heap. Once the operation is complete, two variables point to exactly the same object, so changes to one are reflected on the other</p>
+                    <pre><code>var obj1 = new Object();
+var obj2 = obj1;
+obj1.name = “Nicholas”;
+alert(obj2.name); //”Nicholas”</code></pre>
+                    <img src="images/reference-copy.png" alt="reference copy">
+                </section>
+                <section>
+                    <h3>Argument Passing</h3>
+                    <p>All function arguments in ECMAScript are passed by value. This means that the value outside of the function is copied into an argument on the inside of the function the same way a value is copied from one variable to another.</p>
+                    <ul>
+                        <li>If the value is primitive, then it acts just like a primitive variable copy</li>
+                        <li>if the value is a reference, it acts just like a reference variable copy</li>
+                    </ul>
+                    <pre><code>function addTen(num) {
+num += 10;
+return num;
+}
+var count = 20;
+var result = addTen(count);
+alert(count); //20 - no change
+alert(result); //30</code></pre>
+
+                </section>
+                <section>
+                    <pre><code>function setName(obj) {
+obj.name = “Nicholas”;
+}
+var person = new Object();
+setName(person);
+alert(person.name); //”Nicholas”</code></pre>
+<pre><code>function setName(obj) {
+obj.name = “Nicholas”;
+obj = new Object();
+obj.name = “Greg”;
+}
+var person = new Object();
+setName(person);
+alert(person.name); //”Nicholas”</code></pre>
+                </section>
+                <section>
+                    <h3>Determining Type</h3>
+                    <p>The typeof operator, introduced in the previous chapter, is the best way to determine if a variable is a
+primitive type.</p>
+<pre><code>var s = “Nicholas”;
+var b = true;
+var i = 22;
+var u;
+var n = null;
+var o = new Object();
+alert(typeof s); //string
+alert(typeof i); //number
+alert(typeof b); //boolean
+alert(typeof u); //undefined
+alert(typeof n); //object
+alert(typeof o); //object</code></pre>
+<p>The instanceof operator returns true if the variable is an instance of the given reference type
+(identified by its constructor function).</p>
+<pre><code>alert(person instanceof Object); //is the variable person an Object?
+alert(colors instanceof Array); //is the variable colors an Array?
+alert(pattern instanceof RegExp); //is the variable pattern a RegExp?</code></pre>
+                </section>
+                <section>
+                    <h3>Execution Context</h3>
+<p>The execution context of a variable or function defines what other data it has access to, as
+well as how it should behave. Each execution context has an associated variable object upon which all of its defined variables and functions exist. This object is not accessible by code but is used behind the
+scenes to handle data.</p>
+                </section>
+                <section>
+                    <h3>Scope</h3>
+                </section>
+                <section>
+                    <h3>Garbage Collection</h3>
                 </section>
             </section>
 

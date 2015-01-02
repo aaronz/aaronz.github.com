@@ -59,8 +59,8 @@
                     <ul>
                         <li>Beginnings at Netscape</li>
                         <li>Server-side JavaScript</li>
-                        <li>Adoption by Microsoft - IE3.0 - 1996</li>
-                        <li>Standardization - Ecma - 1997</li>
+                        <li>Adoption by Microsoft</li>
+                        <li>Standardization</li>
                         <li>Later developments</li>
                     </ul>
                 </section>
@@ -411,6 +411,7 @@ addMethod(myObj, 'methodName', 'this.localVar=foo');</code></pre>
     object[property] = func;
 }
 addMethod(myObj, 'methodName', function () { 'this.localVar=foo'; });</code></pre>
+                    <a href="http://jsperf.com/function-constructor">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Avoid using with</h3>
@@ -422,6 +423,7 @@ addMethod(myObj, 'methodName', function () { 'this.localVar=foo'; });</code></pr
                     <p>Faster:</p><pre><code>var myObj = test.object;
 myObj.foo = 'Value of foo property of object';
 myObj.bar = 'Value of bar property of object';</code></pre>
+                    <a href="http://jsperf.com/with-with/2">JsPerf Demo</a>
                 </section>
                 <section>
                     <h3> Don't use try-catch-finally inside performance-critical functions</h3>
@@ -449,6 +451,7 @@ try {
 } catch (e) {
     // handle exception
 }</code></pre>
+                    <a href="http://jsperf.com/try-catch-finally/2">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Avoid using global variables</h3>
@@ -456,6 +459,8 @@ try {
                         <li>If you reference global variables from within function or another scope, scripting engine has to look through the scope to find them.</li>
                         <li>Variable in the global scope persist though the life time of the script, whereas in local scope they are destroyed when the local scope is lost.</li>
                     </ul>
+                </section>
+                <section>
                     <p>Slow:</p><pre><code>var i, str = '';
 function globalScope() {
     for (i=0; i &lt; 100; i++) {
@@ -470,6 +475,7 @@ globalScope();</code></pre>
     }
 }
 localScope();</code></pre>
+                    <a href="http://jsperf.com/local-global-var/3">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Avoid for-in in performance-critical functions</h3>
@@ -487,17 +493,9 @@ for (var i in arr) {
 for (var i = 0, len = arr.length; i &lt; len; i++) {
    sum += arr[i];
 }</code></pre>
+                    <a href="http://jsperf.com/for-in-loop/2">Js Perf Demo</a>
                 </section>
-                <section>
-                    <h3> Use strings accumulator-style</h3>
-                    <ul>
-                        <li>Using + operator a new string is created in memory and the concatenated value is assigned to it. Only after this the result is assigned to a variable.</li>
-                        <li>To avoid the intermediate variable for concatenation result, you can directly assign the result using += operator.</li>
-                    </ul>
-                    <p>Slow:</p><pre><code>a += 'x' + 'y';</code></pre>
-                    <p>Faster:</p><pre><code>a += 'x';
-a += 'y';</code></pre>
-                </section>
+
                 <section>
                     <h3> Primitive operations can be faster than function calls </h3>
                     <ul>
@@ -507,6 +505,7 @@ a += 'y';</code></pre>
 arr.push(val);</code></pre>
                     <p>Faster:</p><pre><code>var min = a &lt; b ? a : b;
 arr[arr.length] = val;</code></pre>
+                    <a href="http://jsperf.com/primitive-operations">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Pass functions, not strings, to setTimeout() and setInterval() </h3>
@@ -518,6 +517,8 @@ arr[arr.length] = val;</code></pre>
 setTimeOut('doSomethingAfterFiveSeconds()', 5000);</code></pre>
                     <p>Faster:</p><pre><code>setInterval(doSomethingPeriodically, 1000);
 setTimeOut(doSomethingAfterFiveSeconds, 5000);</code></pre>
+                    <p>This is true for IE8-, it is not true for most recent version of browsers.</p>
+                    <a href="http://jsperf.com/settimeout">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Avoid unnecessary DOM references in objects</h3>
@@ -532,6 +533,7 @@ car.type = "sedan"</code></pre>
  color : "red";
  type : "sedan"
 }</code></pre>
+                    <a href="http://jsperf.com/object-constructor">Js Perf Demo</a>
 
                 </section>
                 <section>
@@ -543,7 +545,7 @@ car.type = "sedan"</code></pre>
                     <ul>
                         <li> Efficient one:</li>
                     </ul><pre><code>var url = window.location.href;</code></pre>
-
+                    <a href="http://jsperf.com/maximize-object-resolution">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Try to keep script comments to a minimum/ Avoid long variable names</h3>
@@ -561,6 +563,7 @@ var person_full_name="somename"; /* stores the full name*/
 {
 var name="somename";
 }</code></pre>
+                    <a href="http://jsperf.com/comments">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Store local references to out-of-scope variables</h3>
@@ -587,13 +590,18 @@ var name="somename";
         divs[i].innerHTML = text[i];
     }
 }</code></pre>
+
+                    <a href="http://jsperf.com/localvarcache/3">Js Perf Demo</a>
+                </section>
+                <section>
                     <p>If you need to access an element (e.g. the head) inside a big loop using a localized DOM access ( get in the example) is faster.</p>
-                    <p>Faster:</p><pre><code>function doSomethingElseFaster() {
+                    <pre><code>function doSomethingElseFaster() {
     var get = document.getElementsByTagName;
     for (var i = 0, i &lt; 100000; i++) {
        get('head');
     }
 }</code></pre>
+                    <a href="http://jsperf.com/cache-function-pointer">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3>  Caching values to variables </h3>
@@ -603,8 +611,9 @@ var name="somename";
                     <ul>
                         <li> Couple of examples below should clarify the caching/storing values to variable in broader sense.</li>
                     </ul>
-
-                    <p> Example 1) Caching math functions in variables before executing calculations within a loop</p>
+                </section>
+                <section>
+                    <h4>Caching math functions in variables before executing calculations within a loop</h4>
                     <p>Wrong Way:</p><pre><code>var d=35;
 for (var i=0; i&lt;1000; i++) { 
   y += Math.sin(d)*10; 
@@ -616,9 +625,10 @@ var math_sind = Math.sin(d)*10;
 for (var i=0; i&lt;1000; i++) {
   y += math_sind; 
 }</code></pre>
+                    <a href="http://jsperf.com/cache-values-to-variable">Js Perf Demo</a>
                 </section>
                 <section>
-                    <p> Example 2) Caching/Storing array length when used in loops</p>
+                    <h4>Caching/Storing array length when used in loops</h4>
                     <p>Bad Approach:</p>
                     <p>The length of the array arr is recalculated every time the loop iterates.</p><pre><code>for (var i = 0; i &lt; arr.length; i++) {
     // do something
@@ -627,9 +637,9 @@ for (var i=0; i&lt;1000; i++) {
                     <p>Better way is to to cache the length of the array:</p><pre><code>for (var i = 0, len = arr.length; i &lt; len; i++) {
     // do something
 }</code></pre>
-                    <p> In General we should avoid sending the interpreter out to do unnecessary work once it has already done it once, eg: figuring out the scope chain or the function evaulation values of an expression used more than once.<b>storing/caching values to variable only makes sense if those values are used repetatively or more than once, otherwise we are creating overhead again for declaring a variable, assigning values and then just using only once, so keep in mind</b>
-                    </p>
-
+                    <p> In General we should avoid sending the interpreter out to do unnecessary work once it has already done it once, eg: figuring out the scope chain or the function evaulation values of an expression used more than once.</p>
+                    <p style="color:orange">Storing/caching values to variable only makes sense if those values are used repetatively or more than once, otherwise we are creating overhead again for declaring a variable, assigning values and then just using only once, so keep in mind</p>
+                    <a href="http://jsperf.com/cache-array-length">Js Perf Demo</a>
                 </section>
             </section>
             <section>
@@ -796,6 +806,7 @@ for (var i = 0; i &lt; list.length; i++) {
     fragment.appendChild(content);
 }
 document.body.appendChild(fragment);</code></pre>
+                    <a href="http://jsperf.com/document-fragment/3">Js Perf Demo</a>
                 </section>
                 <section>
                     <h4> Use cloneNode() </h4>
@@ -820,7 +831,7 @@ original.parentNode.replaceChild(clone, original);</code></pre>
                 <section>
                     <h4> Use HTML templates and innerHTML </h4>
                     <ul>
-                        <li>One way to implement a templating system is to populate template content based on a light-weight JavaScript object acting as a date model. The data model may be persisted as JSON serialization into e.g. <a href="http://www.developer.nokia.com/Resources/Library/Web/" rel="nofollow">setPreferenceForKey()</a> store in S60 WRT, in a HTTP cookie or XHR'd to the server-side.</li>
+                        <li>One way to implement a templating system is to populate template content based on a light-weight JavaScript object acting as a date model. </li>
                     </ul><pre><code>&lt;nowiki&gt;
 var model = { title: 'My Test Page'; },
     template = [];
@@ -900,13 +911,9 @@ container.style.border = '1px solid red';</code></pre>
                 </section>
                 <section>
                     <p>The above method appears to be more efficient when changing a specific number of items. Sometimes a single class name change is effective however. If you need to change all elements under a given container for example, it is more efficient to change the class name of a parent container which holds the affected elements and let CSS do what it does best.</p>
-                    <p>Faster (if multiple child elements of a container need to be changed): // by changing the class name of the container, all of its child div elements will be updated #container.active div { border: 1px solid red; }</p>
+                    <p>Faster (if multiple child elements of a container need to be changed): </p>
+                    <pre><code>#container.active div { border: 1px solid red; }</code></pre>
                     <p>Depending on the specific case at hand you should use the method which gives you the best performance (without sacrificing too much of the separation of concerns benefits of externally defined CSS).</p>
-                    <p>Source:</p>
-                    <ul>
-                        <li><a href="http://www.schillmania.com/content/entries/2009/yahoo-photos-frontend-thoughts/" rel="nofollow">A Snapshot of The Yahoo! Photos Beta - Web Development Perspective</a>
-                        </li>
-                    </ul>
                 </section>
                 <section>
                     <h3> Avoid traversing large number of nodes </h3>
@@ -990,18 +997,6 @@ content = null;</code></pre>
             </section>
             <section>
                 <section>
-                    <h2> Object-Oriented JavaScript </h2>
-                </section>
-                <section>
-                    <h3> Consider alternative inheritance mechanisms </h3>
-                    <ul>
-                        <li>There exists many ways to mimic Object Orientated style inheritance in JavaScript. However, not all the mechanism to emulate inheritance perform similarly.</li>
-                        <li>Especially if your code calls overridden methods frequently you should take a look at the <a href="http://www.broofa.com/2009/02/javascript-inheritance-performance/" rel="nofollow">results of JavaScript Inheritance Performance</a> study.</li>
-                    </ul>
-                </section>
-            </section>
-            <section>
-                <section>
                     <h2> Client-server communication </h2>
                 </section>
                 <section>
@@ -1028,7 +1023,7 @@ xhr.send();</code></pre>
                 <section>
                     <h3> Consider using a custom data exchange format for large datasets, as an alternative to XML and JSON</h3>
                     <ul>
-                        <li>Depending on the browser, its version and OS, the performance difference between XML or JSON parsing and traversing may be very significant. For example, on Nokia 5800 XpressMusic with a very large dataset JSON is approx. 5x faster.</li>
+                        <li>Depending on the browser, its version and OS, the performance difference between XML or JSON parsing and traversing may be very significant. </li>
                         <li>Using a custom string-based data format (think CSV) over XML and JSON is efficient in terms of transferred bytes and parse time with large datasets.</li>
                         <li>Using JavaScript’s String and RegExp methods one can match the speed of JSON executed natively with as little overhead to the file size as possible.</li>
                     </ul>
@@ -1156,12 +1151,13 @@ function eventController(event) {
 }
  
 function doSomething() {}</code></pre>
+                    <a href="http://jsperf.com/event-delegation">Js Perf Demo</a>
                 </section>
                 <section>
                     <h3> Throttle event handlers which fire excessively </h3>
                     <ul>
                         <li>If a handler is called many times, the responsiveness of the UI degrade and tops the CPU. This is especially an issue if the event handler triggers reflow as is the case with resize.</li>
-                        <li>On S60 5.0 devices input element's blur handler is called each time the content of the input field changes, e.g. user types in a single letter.</li>
+
                         <li>You may want your function to run once after the last event has fired to prevent excessive calls to potentially expensive functions. You must implement throttling mechanism to achieve that kind of a rate limited.</li>
                     </ul>
                 </section>
@@ -1290,48 +1286,401 @@ window.onresize = someObject.resizeHandler;</code></pre>
                 <section>
 
                     <h2> jQuery-specifics </h2>
-                    <p>NB! These optimization patterns are aimed at jQuery 1.2.6. Recent versions and the Sizzle selector engine alleviate some of these bottlenecks.</p>
-                    <p>Sources
-                        <a href="http://ajaxian.com/archives/ajax-experience-talks-resig-slocum-and-heilmann" rel="nofollow">Advanced jQuery with John Resig </a>
-                        <a href="http://ejohn.org/blog/function-call-profiling/" rel="nofollow">JavaScript Function Call Profiling </a>
-                    </p>
-                </section>
-                <section>
-                    <h3> Minimize the use of slow jQuery methods </h3>
-                    <p>remove(), hmtl() and empty() have order of n2 time complexity, that is T(n) = O(n2). Minimizing the use of these methods is recommended in jQuery versions prior to 1.3.3. .</p>
-                    <p>The process behind these manipulations methods is the following: cleaning the input string, converting the string into a DOM fragment and injecting it into the DOM.</p>
-                </section>
-                <section>
-                    <h3> Optimize selectors </h3>
-                    <p>Pay attention to the selectors you use. E.g. if you want to hide paragraphs which are direct children of div elements there are multiple ways to do it.</p>
-                    <p>Using the selector below will try to find all div elements, loops thought all of them and find all p relative to the div, merge and figure out unique results. Making sure that the returned set is unique is where the most time is spent, and is very slow especially with a large DOM tree.</p>
-                    <p>Slow:</p><pre><code>$("div p").hide();</code></pre>
-                    <p>A one way to optimize the selector is to match direct children of div (this may require you to re-factor the DOM structure of your app and may not be feasible in every scenario). This alternative flatter selector will try to find all div elements, loops thought all child elements and verifies if element is p.</p>
-                    <p>Faster:</p><pre><code>$("div &gt; p").hide();</code></pre>
-                </section>
-                <section>
-                    <h3> Consider alternatives to jQuery.each() </h3>
-                    <p>Depending on the size of the array, looping through it using {{{1}}} instead of jQuery.each(myArray) may be faster.</p>
-                </section>
-                <section>
-                    <h3> Consider alternatives to .show(), .hide() and .toggle()</h3>
-                    <p>Toggling element visibility via .css({'display':'none'}) and .css({'display':'block'}); is faster than using convenience functions .show(), .hide() and toggle(), especially while working with large number of elements. Depending on the rendering engine used, .css() is also faster than using .addClass() and .removeClass().</p>
-                    <p>
 
-                        Slow:</p><pre><code>$('#elementToHide').hide();
-$('#elementToShow').show();</code></pre>
-                    <p>Faster:</p><pre><code>$('#elementToHide').css({'display':'none'});
-$('#elementToShow').css({'display':'block'});</code></pre>
                 </section>
                 <section>
-                    <p>For dealing with extremely large set of DOM elements, you may want to consider disabling stylesheets as follows:</p><pre><code>&lt;<a href="http://december.com/html/4/element/style.html">style</a> id="special_hide"&gt;.special_hide { display: none; }&lt;/<a href="http://december.com/html/4/element/style.html">style</a>&gt;
-&lt;!--  ...  --&gt;
-&lt;<a href="http://december.com/html/4/element/div.html">div</a> class="special_hide"&gt;Special hide DIV&lt;/<a href="http://december.com/html/4/element/div.html">div</a>&gt;</code></pre><pre><code>// show all elements with a class of "special_hide"
-$('#special_hide').attr('disabled', 'true');
- 
-// hide all elements with a class of "special_hide"
-$('#special_hide').attr('disabled', 'false');</code></pre>
+                    <h3>Loading jQuery</h3>
+                    <ul>
+                        <li>Always try to use a CDN to include jQuery on your page. <a href="http://www.sitepoint.com/7-reasons-to-use-a-cdn/" rel="nofollow">CDN Benefits</a>
+                        </li>
+                        <li>
+                            Implement a fallback to your locally hosted library of same version as shown above. <a href="http://css-tricks.com/snippets/jquery/fallback-for-cdn-hosted-jquery/" rel="nofollow">More Info</a>
+                        </li>
+                        <li>
+                            Use <a href="http://www.paulirish.com/2010/the-protocol-relative-url/" rel="nofollow">protocol-relative/protocol-independent</a> URL (leave <code>http:</code> or <code>https:</code> out) as shown above.
+                        </li>
+                        <li>
+                            If possible, keep all your JavaScript and jQuery includes at the bottom of your page. <a href="http://developer.yahoo.com/blogs/ydn/high-performance-sites-rule-6-move-scripts-bottom-7200.html" rel="nofollow">More Info</a> and a sample on <a href="https://github.com/h5bp/html5-boilerplate/blob/master/index.html" rel="nofollow">HTML5 Boilerplate</a>.
+                        </li>
+                        <li>
+                            If you are using other libraries like Prototype, MooTools, Zepto etc. that uses <code>$</code> sign as well, try not to use <code>$</code> for calling jQuery functions and instead use <code>jQuery</code> simply. You can return control of <code>$</code> back to the other library with a call to <code>$.noConflict()</code>.
+                        </li>
+                        <li>
+                            For advanced browser feature detection, use <a href="http://modernizr.com/" rel="nofollow">Modernizr</a>.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What version to use?</h3>
 
+                    <ul>
+                        <li>DO NOT use jQuery version 2.x if you support Internet Explorer 6/7/8.</li>
+                        <li>For new web-apps, if you do not have any plugin compatibility issue, it's highly recommended to use the latest jQuery version.</li>
+                        <li>When loading jQuery from CDN's, always specify the complete version number you want to load (Example: <em>1.11.0</em> as opposed to <em>1.11</em> or just <em>1</em>).</li>
+                        <li>DO NOT load multiple jQuery versions.</li>
+                        <li>DO NOT use <a href="http://blog.jquery.com/2014/07/03/dont-use-jquery-latest-js/" target="_blank">jquery-latest.js from jQuery CDN</a>.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>jQuery Variables</h3>
+                    <ul>
+                        <li>
+                            All variables that are used to store/cache jQuery objects should have a name prefixed with a <code>$</code>.
+                        </li>
+                        <li>
+                            Always cache your jQuery selector returned objects in variables for reuse.
+                            <pre><code>var $myDiv = $("#myDiv");
+$myDiv.click(function(){...});</code></pre>
+                        </li>
+                        <li>
+                            Use <a href="http://en.wikipedia.org/wiki/CamelCase" rel="nofollow">camel case</a> for naming variables.
+                        </li>
+                    </ul><pre><code>var $myDiv = $("#myDiv");
+$myDiv.click(function(){...});</code></pre>
+                </section>
+                <section>
+                    <h3>Selectors</h3>
+                    <ul>
+                        <li>
+                            Use ID selector whenever possible. It is faster because they are handled using <code>document.getElementById()</code>.
+                        </li>
+                        <li>
+                            When using class selectors, don't use the element type in your selector. <a href="http://jsperf.com/jqeury-selector-test" rel="nofollow">Performance Comparison</a>
+                            <pre><code>var $products = $("div.products"); // SLOW
+var $products = $(".products"); // FAST</code></pre>
+                        </li>
+                        <li>
+                            Use find for <em>Id-&gt;Child</em> nested selectors. The <code>.find()</code> approach is faster because the first selection is handled without going through the Sizzle selector engine. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
+                            <pre><code>// BAD, a nested query for Sizzle selector engine
+var $productIds = $("#products div.id");
+// GOOD, #products is already selected by document.getElementById() 
+// so only div.id needs to go through Sizzle selector engine
+var $productIds = $("#products").find("div.id");</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Be specific on the right-hand side of your selector, and less specific on the left. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
+                            <pre><code>// Unoptimized
+$("div.data .gonzalez");
+// Optimized
+$(".data td.gonzalez");</code></pre>
+                        </li>
+                        <li>
+                            Avoid Excessive Specificity. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>, <a href="http://jsperf.com/avoid-excessive-specificity" rel="nofollow">Performance Comparison</a>
+                            <pre><code>$(".data table.attendees td.gonzalez");
+ 
+// Better: Drop the middle if possible.
+$(".data td.gonzalez");</code></pre>
+                        </li>
+                        <li>
+                            Give your Selectors a Context.
+                            <pre><code>// SLOWER because it has to traverse the whole DOM for .class
+$('.class');
+// FASTER because now it only looks under class-container.
+$('.class', '#class-container');</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Avoid Universal Selectors. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
+                            <pre><code>$('div.container &gt; *'); // BAD
+$('div.container').children(); // BETTER</code></pre>
+                        </li>
+                        <li>
+                            Avoid Implied Universal Selectors. When you leave off the selector, the universal selector (*) is still implied. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
+                            <pre><code>$('div.someclass :radio'); // BAD
+$('div.someclass input:radio'); // GOOD</code></pre>
+                        </li>
+                        <li>
+                            Don’t Descend Multiple IDs or nest when selecting an ID. ID-only selections are handled using <code>document.getElementById()</code> so don't mix them with other selectors.
+                            <pre><code>$('#outer #inner'); // BAD
+$('div#inner'); // BAD
+$('.outer-container #inner'); // BAD
+$('#inner'); // GOOD, only calls document.getElementById()</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>DOM Manipulation</h3>
+                    <ul>
+                        <li>
+                            Always detach any existing element before manipulation and attach it back after manipulating it. <a href="http://learn.jquery.com/performance/detach-elements-before-work-with-them/" rel="nofollow">More Info</a>
+                            <pre><code>var $myList = $("#list-container &gt; ul").detach();
+//...a lot of complicated things on $myList
+$myList.appendTo("#list-container");</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Use string concatenation or <code>array.join()</code> over <code>.append()</code>. <a href="http://learn.jquery.com/performance/append-outside-loop/" rel="nofollow">More Info</a>
+                            <br>Performance comparison: <a href="http://jsperf.com/jquery-append-vs-string-concat" rel="nofollow">http://jsperf.com/jquery-append-vs-string-concat</a>
+                            <pre><code>// BAD
+var $myList = $("#list");
+for(var i = 0; i &lt; 10000; i++){
+    $myList.append("&lt;li&gt;"+i+"&lt;/li&gt;");
+}
+ 
+// GOOD
+var $myList = $("#list");
+var list = "";
+for(var i = 0; i &lt; 10000; i++){
+    list += "&lt;li&gt;"+i+"&lt;/li&gt;";
+}
+$myList.html(list);
+ 
+// EVEN FASTER
+var array = []; 
+for(var i = 0; i &lt; 10000; i++){
+    array[i] = "&lt;li&gt;"+i+"&lt;/li&gt;"; 
+}
+$myList.html(array.join(''));</code></pre>
+                            </br>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Don’t Act on Absent Elements. <a href="http://learn.jquery.com/performance/dont-act-on-absent-elements/" rel="nofollow">More Info</a>
+                            <pre><code>// BAD: This runs three functions before it realizes there's nothing in the selection
+$("#nosuchthing").slideUp();
+ 
+// GOOD
+var $mySelection = $("#nosuchthing");
+if ($mySelection.length) {
+    $mySelection.slideUp();
+}</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Events</h3>
+                    <ul>
+                        <li>
+                            Use only one Document Ready handler per page. It makes it easier to debug and keep track of the behavior flow.
+                        </li>
+                        <li>
+                            DO NOT use anonymous functions to attach events. Anonymous functions are difficult to debug, maintain, test, or reuse. <a href="http://learn.jquery.com/code-organization/beware-anonymous-functions/" rel="nofollow">More Info</a>
+                            <pre><code>$("#myLink").on("click", function(){...}); // BAD
+ 
+// GOOD
+function myLinkClickHandler(){...}
+$("#myLink").on("click", myLinkClickHandler);</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Document ready event handler should not be an anonymous function. Once again, anonymous functions are difficult to debug, maintain, test, or reuse.
+                            <pre><code>$(function(){ ... }); // BAD: You can never reuse or write a test for this function.
+ 
+// GOOD
+$(initPage); // or $(document).ready(initPage);
+function initPage(){
+    // Page load event where you can initialize values and call other initializers.
+}</code></pre>
+                        </li>
+                        <li>
+                            Document ready event handlers should be included from external files and inline JavaScript can be used to call the ready handle after any initial setup.
+                            <pre><code>&lt;script src="my-document-ready.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    // Any global variable set-up that might be needed.
+    $(document).ready(initPage); // or $(initPage);
+&lt;/script&gt;</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            DO NOT use behavioral markup in HTML (JavaScript inlining), these are debugging nightmares. Always bind events with jQuery to be consistent so it's easier to attach and remove events dynamically.
+                            <pre><code>&lt;a id="myLink" href="#" onclick="myEventHandler();"&gt;my link&lt;/a&gt; &lt;!-- BAD --&gt;</code></pre>
+                            <pre><code>$("#myLink").on("click", myEventHandler); // GOOD</code></pre>
+                        </li>
+                        <li>
+                            When possible, use custom <a href="http://api.jquery.com/event.namespace/" rel="nofollow">namespace</a> for events. It's easier to unbind the exact event that you attached without affecting other events bound to the DOM element.
+                            <pre><code>$("#myLink").on("click.mySpecialClick", myEventHandler); // GOOD
+// Later on, it's easier to unbind just your click event
+$("#myLink").unbind("click.mySpecialClick");</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Use <a href="http://learn.jquery.com/events/event-delegation/" rel="nofollow">event delegation</a> when you have to attach same event to multiple elements. Event delegation allows us to attach a single event listener, to a parent element, that will fire for all descendants matching a selector, whether those descendants exist now or are added in the future.
+                            <pre><code>// BAD, you are attaching an event to all the links under the list.
+$("#list a").on("click", myClickHandler); 
+// GOOD, only one event handler is attached to the parent.
+$("#list").on("click", "a", myClickHandler); </code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ajax</h3>
+                    <ul>
+                        <li>
+                            Avoid using <em>.getJson()</em> or<em> </em>.get(), simply use the $.ajax() as that's what gets called internally.
+                        </li>
+                        <li>
+                            DO NOT use <em>http</em> requests on <em>https</em> sites. Prefer schemaless URLs (leave the protocol <em>http/https</em> out of your URL)
+                        </li>
+                        <li>
+                            DO NOT put request parameters in the URL, send them using data object setting.
+                            <pre><code>// Less readable...
+$.ajax({
+    url: "something.php?param1=test1&amp;param2=test2",
+    ....
+});
+ 
+// More readable...
+$.ajax({
+    url: "something.php",
+    data: { param1: test1, param2: test2 }
+});</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Try to specify the <em>dataType</em> setting so it's easier to know what kind of data you are working with. (See Ajax Template example below)
+                        </li>
+                        <li>
+                            Use Delegated event handlers for attaching events to content loaded using Ajax. Delegated events have the advantage that they can process events from descendant elements that are added to the document at a later time (example Ajax). <a href="http://api.jquery.com/on/#direct-and-delegated-events" rel="nofollow">More Info</a>
+                            <pre><code>$("#parent-container").on("click", "a", delegatedClickHandlerForAjax);</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Use Promise interface: <a href="http://www.htmlgoodies.com/beyond/javascript/making-promises-with-jquery-deferred.html" rel="nofollow">More Examples</a>
+                            <pre><code>$.ajax({ ... }).then(successHandler, failureHandler);
+ 
+// OR
+var jqxhr = $.ajax({ ... });
+jqxhr.done(successHandler);
+jqxhr.fail(failureHandler);</code></pre>
+                        </li>
+                        <li>
+                            Sample Ajax Template: <a href="https://api.jquery.com/jQuery.ajax/" rel="nofollow">More Info</a>
+                            <pre><code>var jqxhr = $.ajax({
+    url: url,
+    type: "GET", // default is GET but you can use other verbs based on your needs.
+    cache: true, // default is true, but false for dataType 'script' and 'jsonp', so set it on need basis.
+    data: {}, // add your request parameters in the data object.
+    dataType: "json", // specify the dataType for future reference
+    jsonp: "callback", // only specify this to match the name of callback parameter your API is expecting for JSONP requests.
+    statusCode: { // if you want to handle specific error codes, use the status code mapping settings.
+        404: handler404,
+        500: handler500
+    }
+});
+jqxhr.done(successHandler);
+jqxhr.fail(failureHandler);</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Effects and Animations</h3>
+                    <ul>
+                        <li>
+                            Adopt a restrained and consistent approach to implementing animation functionality.
+                        </li>
+                        <li>
+                            DO NOT over-do the animation effects until driven by the UX requirements.
+                            <ul>
+                                <li>Try to use simeple show/hide, toggle and slideUp/slideDown functionality to toggle elements.</li>
+                                <li>Try to use predefined animations durations of "slow", "fast" or 400 (for medium).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>Try to use simeple show/hide, toggle and slideUp/slideDown functionality to toggle elements.</li>
+                        <li>Try to use predefined animations durations of "slow", "fast" or 400 (for medium).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Plugins</h3>
+                    <ul>
+                        <li>Always choose a plugin with good support, documentation, testing and community support.</li>
+                        <li>Check the compatibility of plugin with the version of jQuery that you are using.</li>
+                        <li>
+                            Any common reusable component should be implemented as a jQuery plugin.
+
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Chaining</h3>
+                    <ul>
+                        <li>
+                            Use chaining as an alternative to variable caching and multiple selector calls.
+                            <pre><code>$("#myDiv").addClass("error").show();</code></pre>
+                        </li>
+                        <li>
+                            Whenever the chain grows over 3 links or gets complicated because of event assignment, use appropriate line breaks and indentation to make the code readable.
+                            <pre><code>$("#myLink")
+    .addClass("bold")
+    .on("click", myClickHandler)
+    .on("mouseover", myMouseOverHandler)
+    .show();</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            For long chains it is acceptable to cache intermediate objects in a variable.
+                        </li>
+                    </ul><pre><code>$("#myDiv").addClass("error").show();</code></pre><pre><code>$("#myLink")
+    .addClass("bold")
+    .on("click", myClickHandler)
+    .on("mouseover", myMouseOverHandler)
+    .show();</code></pre>
+                </section>
+                <section>
+                    <h3>Miscellaneous</h3>
+                    <ul>
+                        <li>
+                            Use Object literals for parameters.
+                            <pre><code>// BAD, 3 calls to attr()
+$myLink.attr("href", "#").attr("title", "my link").attr("rel", "external"); 
+// GOOD, only 1 call to attr()
+$myLink.attr({
+    href: "#",
+    title: "my link",
+    rel: "external"
+});</code></pre>
+                        </li>
+                        <li>
+                            Do not mix CSS with jQuery.
+                            <pre><code>$("#mydiv").css({'color':red, 'font-weight':'bold'}); // BAD</code></pre>
+                            <pre><code>.error { color: red; font-weight: bold; } /* GOOD */</code></pre>
+                            <pre><code>$("#mydiv").addClass("error"); // GOOD</code></pre>
+                        </li>
+                        <li>
+                            DO NOT use Deprecated Methods. It is always important to keep an eye on deprecated methods for each new version and try avoid using them. <a href="http://api.jquery.com/category/deprecated/" rel="nofollow">Click here</a> for a list of deprecated methods.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            Combine jQuery with native JavaScript when needed. See the performance difference for the example given below: <a href="http://jsperf.com/document-getelementbyid-vs-jquery/3" rel="nofollow">http://jsperf.com/document-getelementbyid-vs-jquery/3</a>
+                            <pre><code>$("#myId"); // is still little slower than...
+document.getElementById("myId");</code></pre>
+                        </li>
+                    </ul>
                 </section>
             </section>
 

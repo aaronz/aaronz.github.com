@@ -5,7 +5,7 @@ date:   2014-12-02 00:00:00
 categories: Tools
 ---
 
-Sublime Text是一款强悍的编辑器，他插件丰富，命令强大，操作简单，界面优雅，高可配置，跨平台，亲和程序员。 这边文章主要总结下Sublime Text常用的快捷键。
+Sublime Text是一款强悍的编辑器，他插件丰富，命令强大，操作简单，界面优雅，高可配置，跨平台，亲和程序员。 这里主要总结下Sublime Text常用的快捷键。
 
 ![sublime text](/assets/images/posts/sublime-text.png)
 

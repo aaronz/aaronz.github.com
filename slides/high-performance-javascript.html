@@ -1311,7 +1311,8 @@ window.onresize = someObject.resizeHandler;</code></pre>
                     </ul>
                 </section>
                 <section>
-                    <h3>What version to use?</h3>
+                    <h3>Loading jQuery</h3>
+                    <p>What version to use?</p>
 
                     <ul>
                         <li>DO NOT use jQuery version 2.x if you support Internet Explorer 6/7/8.</li>
@@ -1360,6 +1361,7 @@ var $productIds = $("#products").find("div.id");</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Selectors</h3>
                     <ul>
                         <li>
                             Be specific on the right-hand side of your selector, and less specific on the left. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
@@ -1385,6 +1387,7 @@ $('.class', '#class-container');</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Selectors</h3>
                     <ul>
                         <li>
                             Avoid Universal Selectors. <a href="http://learn.jquery.com/performance/optimize-selectors/" rel="nofollow">More Info</a>
@@ -1417,6 +1420,7 @@ $myList.appendTo("#list-container");</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>DOM Manipulation</h3>
                     <ul>
                         <li>
                             Use string concatenation or <code>array.join()</code> over <code>.append()</code>. <a href="http://learn.jquery.com/performance/append-outside-loop/" rel="nofollow">More Info</a>
@@ -1446,6 +1450,7 @@ $myList.html(array.join(''));</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>DOM Manipulation</h3>
                     <ul>
                         <li>
                             Don’t Act on Absent Elements. <a href="http://learn.jquery.com/performance/dont-act-on-absent-elements/" rel="nofollow">More Info</a>
@@ -1477,6 +1482,7 @@ $("#myLink").on("click", myLinkClickHandler);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Events</h3>
                     <ul>
                         <li>
                             Document ready event handler should not be an anonymous function. Once again, anonymous functions are difficult to debug, maintain, test, or reuse.
@@ -1499,6 +1505,7 @@ function initPage(){
                     </ul>
                 </section>
                 <section>
+                    <h3>Events</h3>
                     <ul>
                         <li>
                             DO NOT use behavioral markup in HTML (JavaScript inlining), these are debugging nightmares. Always bind events with jQuery to be consistent so it's easier to attach and remove events dynamically.
@@ -1514,6 +1521,7 @@ $("#myLink").unbind("click.mySpecialClick");</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Events</h3>
                     <ul>
                         <li>
                             Use <a href="http://learn.jquery.com/events/event-delegation/" rel="nofollow">event delegation</a> when you have to attach same event to multiple elements. Event delegation allows us to attach a single event listener, to a parent element, that will fire for all descendants matching a selector, whether those descendants exist now or are added in the future.
@@ -1550,6 +1558,7 @@ $.ajax({
                     </ul>
                 </section>
                 <section>
+                    <h3>Ajax</h3>
                     <ul>
                         <li>
                             Try to specify the <em>dataType</em> setting so it's easier to know what kind of data you are working with. (See Ajax Template example below)
@@ -1561,6 +1570,7 @@ $.ajax({
                     </ul>
                 </section>
                 <section>
+                    <h3>Ajax</h3>
                     <ul>
                         <li>
                             Use Promise interface: <a href="http://www.htmlgoodies.com/beyond/javascript/making-promises-with-jquery-deferred.html" rel="nofollow">More Examples</a>
@@ -1638,6 +1648,7 @@ jqxhr.fail(failureHandler);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Chaining</h3>
                     <ul>
                         <li>
                             For long chains it is acceptable to cache intermediate objects in a variable.
@@ -1674,6 +1685,7 @@ $myLink.attr({
                     </ul>
                 </section>
                 <section>
+                    <h3>Miscellaneous</h3>
                     <ul>
                         <li>
                             Combine jQuery with native JavaScript when needed. See the performance difference for the example given below: <a href="http://jsperf.com/document-getelementbyid-vs-jquery/3" rel="nofollow">http://jsperf.com/document-getelementbyid-vs-jquery/3</a>

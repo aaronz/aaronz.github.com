@@ -91,7 +91,7 @@
                 </section>
                 <section>
                     <p>Verify that your site relies on standards mode so that browsers apply the latest and greatest features available to your designs. Using standards mode provides the greatest support for the latest standards, such as HTML5, Cascading Style Sheets, Level 3 (CSS3), Scalable Vector Graphics (SVG), and others, as opposed to some of the older modes such as "quirks mode" which are supported for backward compatibility. For most sites, this won't require any work because standards mode is the default. The easiest way to be sure is to include the HTML5 doctype at the top of every page:</p>
-                <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+                    <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
                 </section>
                 <section>
                     <p>If you're testing your web pages on a local network (or "localhost"), you will need to temporarily force standards mode because IE defaults into a backward-compatible mode for intranet sites. You can do this by adding the following tag to the &lt;head&gt; tag of the page, or by adding the equivalent HTTP header:</p>
@@ -180,9 +180,9 @@ background: linear-gradient(to bottom,
                 </section>
                 <section>
                     <p>Before:</p>
-                <pre><code>-webkit-box-orient: vertical; </code></pre>
-                <p>After:</p>
-                <pre><code>-webkit-box-orient: vertical;
+                    <pre><code>-webkit-box-orient: vertical; </code></pre>
+                    <p>After:</p>
+                    <pre><code>-webkit-box-orient: vertical;
 flex-direction: column;   </code></pre>
                 </section>
                 <section>
@@ -190,7 +190,7 @@ flex-direction: column;   </code></pre>
                 </section>
                 <section>
                     <p>If an image is used as a hyperlink, by default IE draws a blue highlight around the image to emphasize that this is a hyperlink; WebKit doesn't do this. An easy way to turn this off is to explicitly specify no border for hyperlinked images using the following CSS:</p>
-                <pre><code>a img {
+                    <pre><code>a img {
       border: none;
  } 
 </code></pre>
@@ -206,18 +206,12 @@ flex-direction: column;   </code></pre>
                 </section>
                 <section>
                     <p>Before:</p>
-                </section>
-                <section><pre><code>
-this.element.addEventListener("touchstart", eventHandlerName, false); 
+                    <pre><code>this.element.addEventListener("touchstart", eventHandlerName, false); 
  this.element.addEventListener("touchmove", eventHandlerName, false);
  this.element.addEventListener("touchend", eventHandlerName, false); 
 </code></pre>
-                </section>
-                <section>
                     <p>After:</p>
-                </section>
-                <section><pre><code>
-if (window.PointerEvent) {
+                    <pre><code>if (window.PointerEvent) {
    this.element.addEventListener("pointerdown", eventHandlerName, false);
    this.element.addEventListener("pointermove", eventHandlerName, false);
    this.element.addEventListener("pointerup", eventHandlerName, false);
@@ -239,26 +233,16 @@ if (window.PointerEvent) {
                 </section>
                 <section>
                     <p>Before:</p>
-                </section>
-                <section><pre><code>
-var curX = event.targetTouches[0].pageX; 
-</code></pre>
-                </section>
-                <section>
+                    <pre><code>var curX = event.targetTouches[0].pageX; </code></pre>
                     <p>After:</p>
-                </section>
-                <section><pre><code>
-var curX = event.pageX || event.targetTouches[0].pageX;  
-</code></pre>
+                    <pre><code>var curX = event.pageX || event.targetTouches[0].pageX;  </code></pre>
                 </section>
                 <section>
                     <h3>Handling mouse and other input types</h3>
                 </section>
                 <section>
                     <p>Pointer events let you handle mouse input with the same events that handle touch input. You can use the same code to handle common scenarios such as tap, click, and drag. </p>
-                </section>
-                <section><pre><code>
-switch (event.pointerType) {
+                    <pre><code>switch (event.pointerType) {
   case "touch":
     //Handle input only if from a touchscreen
     break;
@@ -281,23 +265,14 @@ switch (event.pointerType) {
                 </section>
                 <section>
                     <p>Before:</p>
-                </section>
-                <section><pre><code>
-touchEvent.prevent.default(); // Prevent panning/zooming on the element touched  
+                    <pre><code>touchEvent.prevent.default(); // Prevent panning/zooming on the element touched  
 </code></pre>
-                </section>
-                <section>
                     <p>After:</p>
-                </section>
-                <section><pre><code>
-.preventTouchBehaviors {
+                    <pre><code>.preventTouchBehaviors {
   touch-action: none; /* Prevent panning/zooming on elements with this class */
 }
   
 </code></pre>
-                </section>
-                <section>
-                    <p>The steps in this article help you adapt tailored sites so they also support industry standards. In turn, this helps your rich experiences reach and delight users regardless of their browser, device, or operating system. </p>
                 </section>
                 <section>
                     <h2>Step 5: Handle non-standard behaviors</h2>
@@ -310,56 +285,37 @@ touchEvent.prevent.default(); // Prevent panning/zooming on the element touched
                 </section>
                 <section>
                     <p>Some mobile browsers, including Safari on iOS and IE on Windows Phone, display a translucent highlight when elements with hyperlinks are tapped, to provide additional feedback to the user. However, many sites want to disable this default behavior to have greater control over the look and feel of their site. </p>
-                </section>
-                <section>
+
                     <p>Webkit solution:</p>
-                </section>
-                <section><pre><code>
- a {
+                    <pre><code> a {
  -webkit-tap-highlight-color: rgba(0,0,0,0);
  } 
 </code></pre>
-                </section>
-                <section>
                     <p>IE solution:</p>
-                </section>
-                <section><pre><code>
-&lt;meta name="msapplication-tap-highlight" content="no" /&gt; 
-</code></pre>
+                    <pre><code>&lt;meta name="msapplication-tap-highlight" content="no" /&gt; </code></pre>
                 </section>
                 <section>
                     <h3>Disabling native styling for drop-down lists</h3>
                 </section>
                 <section>
                     <p>Webkit solution:</p>
-                </section>
-                <section><pre><code>
- select {
+                <pre><code> select {
     -webkit-appearance: none;
     text-indent: -5000px;
  }  
 </code></pre>
-                </section>
-                <section>
                     <p>IE solution:</p>
-                </section>
-                <section><pre><code>
-select::-ms-expand {
+                <pre><code>select::-ms-expand {
     display: none;
  } 
 </code></pre>
-                </section>
-                <section><pre><code>
+                <pre><code>
 &lt;!-- Empty option removes text --&gt;
 &lt;select&gt;
  &lt;option&gt;&lt;/option&gt;
  ...
  &lt;/select&gt; 
 </code></pre>
-                </section>
-                <section>
-                    <p>When you adapt tailored sites to support industry standards, your rich experiences will reach to users regardless of their browser, device, or underlying operating system.
-                    </p>
                 </section>
             </section>
             <section>
@@ -368,16 +324,11 @@ select::-ms-expand {
                 </section>
                 <section>
                     <p>Build touch-first sites for both Internet Explorer in the new Windows UI and Internet Explorer for the desktop.</p>
-                </section>
-                <section>
                     <p>This article applies to Internet Explorer 10 and later and affects IE10 standards mode and later.</p>
                 </section>
-
-
                 <section>
                     <p>Use feature detection to determine if the device supports touch. The following example checks for touch capable hardware, which your app can use to present the best experience for the user.</p>
-                </section>
-                <section><pre><code>
+<pre><code>
 if (window.navigator.maxTouchPoints) {
         // user has touch hardware
     }
@@ -385,8 +336,8 @@ if (window.navigator.maxTouchPoints) {
         // user does not have touch hardware
     }
 </code></pre>
-                </section>
-                <section><pre><code>
+                <p>If your app requires a minimum number of touch points, you can test the device for a supported number of points. If your app requires three touch points, you can use the following example that detects if a device supports a minimum of three touch points. </p>
+                <pre><code>
     if (window.navigator.maxTouchPoints &gt;= 3) {
         // user has at least three touch points 
     }
@@ -397,10 +348,6 @@ if (window.navigator.maxTouchPoints) {
         // user does not have touch hardware
     }
 </code></pre>
-                </section>
-                <section>
-                    <h2>Related topics</h2>
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj583807(v=vs.85).aspx">Make your site touch-ready</a>
                 </section>
             </section>
             <section>
@@ -414,19 +361,9 @@ if (window.navigator.maxTouchPoints) {
                 <section>
                     <ul>
                         <li>
-                            <section>
-                                <p>Design pages so they don't include features that pause or cancel the prerendering process. If you need such a feature, put it as late in the loading process as possible. This reduces the number of requests remaining after the page is displayed. </p>
-                            </section>
-                        </li>
-                        <li>
-                        </li>
-                        <li>
+                            Design pages so they don't include features that pause or cancel the prerendering process. If you need such a feature, put it as late in the loading process as possible. This reduces the number of requests remaining after the page is displayed.
                         </li>
                     </ul>
-                </section>
-                <section>
-                    <h2>Related topics</h2>
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/dn265039(v=vs.85).aspx">Prerender and prefetch support</a>
                 </section>
             </section>
             <section>

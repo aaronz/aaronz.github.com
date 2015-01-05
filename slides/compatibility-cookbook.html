@@ -44,7 +44,7 @@
         <div class="slides">
             <section>
                 <h2>Compatibility Cookbook</h2>
-                <small>Compatibility Cookbook for Internet Explorer</small>
+                <h3>Compatibility Cookbook for Internet Explorer</h3>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
                     </small>
@@ -58,16 +58,14 @@
                     <h2>Adapting tailored sites to support standards</h2>
                 </section>
                 <section>
-                    <p>Many websites provide tailored experiences to devices running iOS or Android operating systems. With a few key changes, these experiences can be offered to browsers and devices that support industry standards. This allows these experiences to reach many more users with minimal effort. For example, a website viewed in Internet Explorer for Windows Phone 8.1 Update provides a similar experience when viewed on a Windows laptop, an Xbox console, a Surface tablet, and so on. </p>
                     <p>By creating sites that support industry standards (such as HTML5, CSS3, DOM4, and so on), you extend your site's reach to include browsers that support the same standards, regardless of the underlying device, operating system, or form factor. </p>
-                </section>
-                <section>
-                    <p>The following tips samples help adapt tailored sites to more broadly support industry standards. This guidance was developed through real world experience gained while helping partners adapt popular sites. In many cases, the actual code changes to your site are minimal, depending on the features used on your site and the practices you're already following. So go ahead and make your best content available on as many browsers as possible.</p>
                 </section>
                 <section>
                     <h2>Step 1: Update or replace browser detection</h2>
                 </section>
                 <section>
+                    <p>If your site uses browser detection, you should carefully review the need for browser detection as well as the underlying code. Consider reworking the code to focus on features and capabilities rather than specific browsers, devices, or operating systems. </p>
+                    <p>If, for some reason, it seems necessary to continue using browser detection, either on the client or server-side, you should review the implementation and verify that it fully supports current versions of the major browsers. For example, Internet Explorer's user agent string has changed dramatically in the last few versions. To learn more:</p>
                     <ul>
                         <li>
                             <a href="http://msdn.microsoft.com/en-us/library/ie/hh869301(v=vs.85).aspx">User-agent string changes</a>
@@ -81,6 +79,7 @@
                     </ul>
                 </section>
                 <section>
+                    <p>In the long run, it's important to adopt feature detection and other modern practices for writing cross-browser code rather than to continue to rely on user-agent detection. As an example, it's very important to ensure that Internet Explorer on Windows Phone 8 is served HTML5 video rather than Flash-based video. By changing your implementation to detect support for HTML5 video, you also ensure your site works on other devices that do not support Flash. Other examples include:</p>
                     <ul>
                         <li>If you use third-party libraries, such as jQuery Mobile, you'll need to verify that you're using the latest version available. </li>
                         <li>If you also use Typekit, you'll want to <a href="http://go.microsoft.com/fwlink/p/?LinkId=402762">republish your custom font kit</a>.</li>
@@ -91,46 +90,26 @@
                     <h2>Step 2: Ensure standards mode for all browsers</h2>
                 </section>
                 <section>
-                    <p>Next, verify that your site relies on standards mode so that browsers apply the latest and greatest features available to your designs. Using standards mode provides the greatest support for the latest standards, such as HTML5, Cascading Style Sheets, Level 3 (CSS3), Scalable Vector Graphics (SVG), and others, as opposed to some of the older modes such as "quirks mode" which are supported for backward compatibility. For most sites, this won't require any work because standards mode is the default. The easiest way to be sure is to include the HTML5 doctype at the top of every page:</p>
-                </section>
-                <section><pre><code>
-&lt;!DOCTYPE html&gt; 
-</code></pre>
-                </section>
-                <section>
-                    <p>Standards mode also is the default for webpages using HTML 4.0 or XHTML document type directives (or doctypes) that do not specify "Transitional".
-                    </p>
+                    <p>Verify that your site relies on standards mode so that browsers apply the latest and greatest features available to your designs. Using standards mode provides the greatest support for the latest standards, such as HTML5, Cascading Style Sheets, Level 3 (CSS3), Scalable Vector Graphics (SVG), and others, as opposed to some of the older modes such as "quirks mode" which are supported for backward compatibility. For most sites, this won't require any work because standards mode is the default. The easiest way to be sure is to include the HTML5 doctype at the top of every page:</p>
+                <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
                 </section>
                 <section>
                     <p>If you're testing your web pages on a local network (or "localhost"), you will need to temporarily force standards mode because IE defaults into a backward-compatible mode for intranet sites. You can do this by adding the following tag to the &lt;head&gt; tag of the page, or by adding the equivalent HTTP header:</p>
-                </section>
-                <section><pre><code>
-&lt;meta http-equiv="x-ua-compatible" content="IE=edge" /&gt;
-</code></pre>
+                    <pre><code>&lt;meta http-equiv="x-ua-compatible" content="IE=edge" /&gt;</code></pre>
+                    <p>Once the site has been deployed to an internet domain, you can remove the meta element because it will no longer be needed. </p>
                 </section>
                 <section>
                     <p>Some examples of scenarios to avoid that would push your site out of standards mode are:
                     </p>
-                </section>
-                <section>
                     <ul>
                         <li>
-                            <section>
-                                <p>Not including a doctype declaration at all. Instead, use the HTML5 doctype mentioned above.
-                                </p>
-                            </section>
+                            Not including a doctype declaration at all. Instead, use the HTML5 doctype mentioned above.
                         </li>
                         <li>
-                            <section>
-                                <p>Specifying a "transitional" doctype. Instead, remove the Transitional keyword or adopt the HTML5 doctype.
-                                </p>
-                            </section>
+                            Specifying a "transitional" doctype. Instead, remove the Transitional keyword or adopt the HTML5 doctype.
                         </li>
                         <li>
-                            <section>
-                                <p>Forcing a specific IE mode using the x-ua-compatible header with "IE=9" (or older version). Instead, specify IE=edge or remove the x-ua-compatible header completely and use the HTML5 doctype.
-                                </p>
-                            </section>
+                            Forcing a specific IE mode using the x-ua-compatible header with "IE=9" (or older version). Instead, specify IE=edge or remove the x-ua-compatible header completely and use the HTML5 doctype.
                         </li>
                     </ul>
                 </section>
@@ -155,109 +134,42 @@
                 </section>
                 <section>
                     <p>Instead of just:</p>
-                </section>
-                <section><pre><code>
--webkit-border-radius: 0;
-</code></pre>
-                </section>
-                <section>
+                    <pre><code>-webkit-border-radius: 0;</code></pre>
+
                     <p>Use:</p>
-                </section>
-                <section><pre><code>
--webkit-border-radius: 0; 
-border-radius: 0; 
-</code></pre>
+                    <pre><code>-webkit-border-radius: 0; 
+border-radius: 0;</code></pre>
                 </section>
                 <section>
                     <p>Instead of:</p>
-                </section>
-                <section><pre><code>
-a.webkitTransitionDuration = "5ms" 
-</code></pre>
-                </section>
-                <section>
+                    <pre><code>a.webkitTransitionDuration = "5ms" </code></pre>
+
                     <p>Use:</p>
-                </section>
-                <section><pre><code>
-b.webkitTransitionDuration = 
-   b.transitionDuration = "5ms"; 
-</code></pre>
+                    <pre><code>b.webkitTransitionDuration = 
+   b.transitionDuration = "5ms";</code></pre>
                 </section>
                 <section>
                     <p>Instead of just:</p>
-                </section>
-                <section><pre><code>
-this.element.addEventListener 
+                    <pre><code>this.element.addEventListener 
    ("webkitTransitionEnd", this, false); 
 </code></pre>
-                </section>
-                <section>
                     <p>Use:</p>
-                </section>
-                <section><pre><code>
-this.element.addEventListener 
+                    <pre><code>this.element.addEventListener 
    ("webkitTransitionEnd", this, false); 
 this.element.addEventListener
-   ("transitionend", this, false); 
-</code></pre>
-                </section>
-                <section>
-                    Prefixed WebKit propertyStandards-based version -webkit-animation
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772212(v=vs.85).aspx">animation</a> -webkit-animation-delay
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772215(v=vs.85).aspx">animation-delay</a> -webkit-animation-direction
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772217(v=vs.85).aspx">animation-direction</a> -webkit-animation-duration
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772219(v=vs.85).aspx">animation-duration</a> -webkit-animation-fill-mode
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772232(v=vs.85).aspx">animation-fill-mode</a> -webkit-animation-iteration-count
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772233(v=vs.85).aspx">animation-iteration-count</a> -webkit-animation-name
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772236(v=vs.85).aspx">animation-name</a> -webkit-animation-play-state
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772238(v=vs.85).aspx">animation-play-state</a> -webkit-animation-timing-function
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772240(v=vs.85).aspx">animation-timing-function</a> -webkit-background-clip
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127314(v=vs.85).aspx">background-clip</a> -webkit-background-size
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127316(v=vs.85).aspx">background-size</a> -webkit-border-radius
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> -webkit-border-bottom-left-radius
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127317(v=vs.85).aspx">border-bottom-left-radius</a> -webkit-border-bottom-right-radius
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127318(v=vs.85).aspx">border-bottom-right-radius</a> -webkit-border-top-left-radius
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127320(v=vs.85).aspx">border-top-left-radius</a> -webkit-border-top-right-radius
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127321(v=vs.85).aspx">border-top-right-radius</a> -webkit-box "flex" value for the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530751(v=vs.85).aspx">display</a> property -webkit-box-align
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127298(v=vs.85).aspx">align-items</a> -webkit-box-pack
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127304(v=vs.85).aspx">justify-content</a> -webkit-box-shadow
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127322(v=vs.85).aspx">box-shadow</a> -webkit-box-sizing
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/dd183522(v=vs.85).aspx">box-sizing</a> -webkit-background-clip
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127314(v=vs.85).aspx">background-clip</a> @-webkit-keyframes
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772747(v=vs.85).aspx">keyframes</a> -webkit-transform
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/jj127312(v=vs.85).aspx">transform</a> -webkit-backface-visibility
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772262(v=vs.85).aspx">backface-visibility</a> -webkit-transition
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772284(v=vs.85).aspx">transition</a> -webkit-transition-property
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772287(v=vs.85).aspx">transition-property</a> -webkit-transition-duration
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772286(v=vs.85).aspx">transition-duration</a> -webkit-transition-timing-function
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh772288(v=vs.85).aspx">transition-timing-function</a> webkitrequestanimationframe
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh773174(v=vs.85).aspx">requestAnimationFrame</a>
-                </section>
-                <section>
-                    <h3>    Prefixed properties</h3>
-                </section>
-                <section>
-                    Webkit versionIE version -webkit-text-size-adjust
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/dn793579(v=vs.85).aspx">-ms-text-size-adjust</a> -webkit-user-select
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/hh781492(v=vs.85).aspx">-ms-user-select</a> :-webkit-fullscreen
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/dn312073(v=vs.85).aspx">:-ms-fullscreen</a>
+   ("transitionend", this, false); </code></pre>
                 </section>
                 <section>
                     <h3>Gradients</h3>
                 </section>
                 <section>
                     <p>Before:</p>
-                </section>
-                <section><pre><code>
-background: -webkit-gradient(linear, left top, 
+                    <pre><code>background: -webkit-gradient(linear, left top, 
    left bottom, from(#ffffff), to(#000000)); 
 </code></pre>
-                </section>
-                <section>
+
                     <p>After:</p>
-                </section>
-                <section><pre><code>
-background: -webkit-gradient(linear, left top, 
+                    <pre><code>background: -webkit-gradient(linear, left top, 
    left bottom, from(#ffffff), to(#000000));
 background: linear-gradient(to bottom, 
    #ffffff, #000000); 
@@ -268,27 +180,17 @@ background: linear-gradient(to bottom,
                 </section>
                 <section>
                     <p>Before:</p>
-                </section>
-                <section><pre><code>
--webkit-box-orient: vertical; 
-</code></pre>
-                </section>
-                <section>
-                    <p>After:</p>
-                </section>
-                <section><pre><code>
--webkit-box-orient: vertical;
-flex-direction: column;   
-</code></pre>
+                <pre><code>-webkit-box-orient: vertical; </code></pre>
+                <p>After:</p>
+                <pre><code>-webkit-box-orient: vertical;
+flex-direction: column;   </code></pre>
                 </section>
                 <section>
                     <h3>Borders around hyperlinked images</h3>
                 </section>
                 <section>
                     <p>If an image is used as a hyperlink, by default IE draws a blue highlight around the image to emphasize that this is a hyperlink; WebKit doesn't do this. An easy way to turn this off is to explicitly specify no border for hyperlinked images using the following CSS:</p>
-                </section>
-                <section><pre><code>
-a img {
+                <pre><code>a img {
       border: none;
  } 
 </code></pre>
@@ -4268,7 +4170,8 @@ callingFunction(1)
 
             <section>
                 <h2>THE END</h2>
-                <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a></p>
+                <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
+                </p>
             </section>
 
         </div>

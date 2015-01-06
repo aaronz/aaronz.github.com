@@ -1414,22 +1414,25 @@ if(plugin) {
             <section>
                 <section>
                     <h3>Stylesheet titles are read-only - IE9+</h3>
-                    <p>In IE8 Standards mode and below you can change the value of a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title. In IE9 Standards mode mode the write command will be ignored and the original value will remain.</p>
-                    <p>The value of a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title is read-only IE8 mode but not in later document modes.</p>
-                    <p>If you have to change a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title, you can do so by changing the title attribute on the <a href="http://go.microsoft.com/fwlink/p/?LinkID=219782">link</a> element or <a href="http://go.microsoft.com/fwlink/p/?LinkID=190913">style</a> element that contains the <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a>.</p>
+                    <ul>
+
+                        <li>In IE8 Standards mode and below you can change the value of a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title. In IE9 Standards mode mode the write command will be ignored and the original value will remain.</li>
+                        <li>The value of a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title is read-only IE8 mode but not in later document modes.</li>
+                        <li>If you have to change a <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a> object's title, you can do so by changing the title attribute on the <a href="http://go.microsoft.com/fwlink/p/?LinkID=219782">link</a> element or <a href="http://go.microsoft.com/fwlink/p/?LinkID=190913">style</a> element that contains the <a href="http://go.microsoft.com/fwlink/p/?LinkID=239584">styleSheet</a>.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h3>Text layout and natural metrics - IE9+</h3>
-                    <p>For text layout in IE9 Standards mode (and later), Windows Internet Explorer 9 uses natural metrics instead of the Windows Graphics Device Interface (GDI) metrics that other Windows browsers use.GDI metrics align text to pixel boundaries, but natural metrics use inter-pixel spacing to create more accurately rendered and readable text.</p>
-                    <p>Other document modes for Windows Internet Explorer continue to use GDI metrics.</p>
-                    <p>Page layouts that are written for earlier document modes might display incorrectly in Internet Explorer 9. The most common error is unexpected text wrapping, which can cover elements that are below the wrapped text. This error is most likely when a text box does not include extra horizontal space or when the size of the text box is connected to another element on the page, such as a graphic.</p>
-                    <p>Do not assume that the size of a particular font renders identically across browsers or within the same browser because users can choose a larger font display (for example, 125%).</p>
+                    <ul>
+
+                        <li>For text layout in IE9 Standards mode (and later), Windows Internet Explorer 9 uses natural metrics instead of the Windows Graphics Device Interface (GDI) metrics that other Windows browsers use.GDI metrics align text to pixel boundaries, but natural metrics use inter-pixel spacing to create more accurately rendered and readable text.</li>
+                        <li>Page layouts that are written for earlier document modes might display incorrectly in Internet Explorer 9. The most common error is unexpected text wrapping, which can cover elements that are below the wrapped text. This error is most likely when a text box does not include extra horizontal space or when the size of the text box is connected to another element on the page, such as a graphic.</li>
+                    </ul>
                 </section>
                 <section>
                     <h3>Do</h3>
-                    <p>Use the following design guidelines to make sure that your webpages display text layout consistently:</p>
                     <ul>
                         <li>Set a text box's size to a specific number of pixels.</li>
                         <li>Include extra space in your text boxes and avoid tight spaces.</li>
@@ -1442,7 +1445,6 @@ if(plugin) {
                 </section>
                 <section>
                     <h3>Do  not</h3>
-                    <p>Avoid the following designs for text layout:</p>
                     <ul>
                         <li>Depend on font sizes to render the same way across browsers.</li>
                         <li>Use static-sized text boxes.</li>

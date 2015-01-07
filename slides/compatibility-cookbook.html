@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Compatibility Cookbook</title>
-    <meta name="description" content="Compatibility Cookbook for Internet Explorer">
+    <meta name="description" content="Compatibility Cookbook for IE">
     <meta name="author" content="Aaron Zhang">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -184,7 +184,7 @@ flex-direction: column;   </code></pre>
                 <section>
                     <h3>Step 4: Update touch and pointer event handlers</h3>
                     <ul>
-                        <li>Internet Explorer for Windows Phone 8.1 Update now supports the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> for handling touch. For many sites tailored for iOS or Android devices, this means it is no longer necessary to make changes to support Windows Phone devices. However, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> does not properly handle support for some other touch-enabled devices like laptops or hybrid devices. </li>
+                        <li>IE for Windows Phone 8.1 Update now supports the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> for handling touch. For many sites tailored for iOS or Android devices, this means it is no longer necessary to make changes to support Windows Phone devices. However, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> does not properly handle support for some other touch-enabled devices like laptops or hybrid devices. </li>
                         <li>To fully support devices running Windows, sites should incorporate the Pointer Events standard so that touch, mouse, and pen input are all supported through a single event model. In certain scenarios, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=278991">Pointer Events standard</a> provides better performance when compared to designs based on the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a>.</li>
                     </ul>
                 </section>
@@ -282,7 +282,7 @@ touchEvent.prevent.default();   </code></pre>
             <section>
                 <section>
                     <h3>Building a touch-first site</h3>
-                    <li>Starting with Internet Explorer 10 on Windows 8, IE lets users choose from a variety of input devices: touch, pen, and mouse. While the new Windows UI browsing experience is designed for a great touch experience, some customers might prefer the new Windows UI experience when using a mouse and keyboard, while others like the desktop experience when using touch. For more info about touch in Internet Explorer on Windows 8, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj583807(v=vs.85).aspx">Make your site touch-ready</a>.</li>
+                    <li>Starting with IE 10 on Windows 8, IE lets users choose from a variety of input devices: touch, pen, and mouse. While the new Windows UI browsing experience is designed for a great touch experience, some customers might prefer the new Windows UI experience when using a mouse and keyboard, while others like the desktop experience when using touch. For more info about touch in IE on Windows 8, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj583807(v=vs.85).aspx">Make your site touch-ready</a>.</li>
                 </section>
                 <section>
                     <li>Use feature detection to determine if the device supports touch. The following example checks for touch capable hardware, which your app can use to present the best experience for the user.</li>
@@ -327,7 +327,7 @@ touchEvent.prevent.default();   </code></pre>
                 <section>
                     <h3>Migrating mutation and property change events to mutation observers</h3>
                     <li>
-                        <a href="http://msdn.microsoft.com/en-us/library/ie/dn265034(v=vs.85).aspx">Mutation observers</a> in Internet Explorer 11 offers a fast-performing replacement for all of the same scenarios supported by mutation events, and an alternative to the scenarios supported by property change events.</li>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/dn265034(v=vs.85).aspx">Mutation observers</a> in IE 11 offers a fast-performing replacement for all of the same scenarios supported by mutation events, and an alternative to the scenarios supported by property change events.</li>
                 </section>
                 <section>
                     <h3>Legacy techniques for monitoring DOM mutations </h3>
@@ -340,7 +340,7 @@ touchEvent.prevent.default();   </code></pre>
                 <section>
                     <ul>
                         <li>Mutation events (as <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-mutationevents">defined</a> in the W3C DOM Level 3 Events) have been deprecated in favor of <a href="http://www.w3.org/TR/dom/#mutation-observers">mutation observers</a> (W3C DOM4).</li>
-                        <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx">onpropertychange</a> event is only supported with the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms536343(v=vs.85).aspx">attachEvent</a> IE-only event registration model, which has been <a href="http://msdn.microsoft.com/en-us/library/ie/ff986080(v=vs.85).aspx">deprecated</a> since Windows Internet Explorer 9 (and <a href="http://msdn.microsoft.com/en-us/library/ie/bg182625(v=vs.85).aspx#legacyAPIs">discontinued</a> in IE11) in favor of the W3C standard "<a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a>" event model.</li>
+                        <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx">onpropertychange</a> event is only supported with the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms536343(v=vs.85).aspx">attachEvent</a> IE-only event registration model, which has been <a href="http://msdn.microsoft.com/en-us/library/ie/ff986080(v=vs.85).aspx">deprecated</a> since Windows IE 9 (and <a href="http://msdn.microsoft.com/en-us/library/ie/bg182625(v=vs.85).aspx#legacyAPIs">discontinued</a> in IE11) in favor of the W3C standard "<a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a>" event model.</li>
                     </ul>
                 </section>
                 <section>
@@ -402,17 +402,17 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
                 </section>
                 <section>
                     <h3>Guidelines</h3>
-                    <li>If you maintain an existing webpage that works correctly in Windows Internet Explorer 7 or Internet Explorer 8 and you want a short-term solution to enable the page to work in Windows Internet Explorer 9, you have two options:</li>
+                    <li>If you maintain an existing webpage that works correctly in Windows IE 7 or IE 8 and you want a short-term solution to enable the page to work in Windows IE 9, you have two options:</li>
                     <ul>
-                        <li>Add a compatibility-mode <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> element to each webpage to force Internet Explorer 9 to render the page similarly to your legacy Windows Internet Explorer page. (For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=164843">How to Modify Each Page</a> in the MSDN Library.)</li>
+                        <li>Add a compatibility-mode <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> element to each webpage to force IE 9 to render the page similarly to your legacy Windows IE page. (For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=164843">How to Modify Each Page</a> in the MSDN Library.)</li>
                         <li>Add the compatibility automatically by configuring your web server to send a custom HTTP response header that's equivalent to the <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> element with each webpage. (For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=164843">How to Configure the Server to Modify Each Page Automatically</a> in the MSDN Library.)</li>
                     </ul>
                 </section>
                 <section>
                     <h3>Notes</h3>
                     <ul>
-                        <li>Use these fixes only for quick, temporary use. Eventually, you'll want to modify your website to run standards-based code in Internet Explorer 9 and later versions and run legacy code for earlier versions of Internet Explorer.</li>
-                        <li>Starting with Internet Explorer 11, document modes are considered deprecated. Update all webpages and apps that require legacy document modes.</li>
+                        <li>Use these fixes only for quick, temporary use. Eventually, you'll want to modify your website to run standards-based code in IE 9 and later versions and run legacy code for earlier versions of IE.</li>
+                        <li>Starting with IE 11, document modes are considered deprecated. Update all webpages and apps that require legacy document modes.</li>
                         <li>As a permanent solution, use <a href="http://msdn.microsoft.com/en-us/library/ie/hh273397(v=vs.85).aspx">feature detection</a> to write code that reliably adapts to cross-browser differences. Feature detection tests whether a browser supports a feature before you use it, and behavior detection tests for known issues before you apply a workaround. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/ff986088(v=vs.85).aspx">Use feature and behavior detection</a>.</li>
                     </ul>
                 </section>
@@ -447,17 +447,17 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
                 <section>
                     <h3>Binary behaviors are no longer bound automatically</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
+                        <li>Applies to IE 9 and later.</li>
                         <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
                     </ul>
-                    <li>To provide greater consistency with other popular browsers, Internet Explorer does not automatically bind binary element behaviors. (Earlier versions of the browser automatically bound binary element behaviors.)</li>
-                    <li>Automatic binding of binary behaviors works in Windows Internet Explorer 8 but it does not work as expected in Windows Internet Explorer 9. A user would see a generic element instead of the specific control.</li>
-                    <li>Binding controls must be manually instantiated when creating webpages for Internet Explorer 8.</li>
-                    <li>You must manually instantiate the binding control when you create webpages for Internet Explorer 8, as the following code example shows.</li>
+                    <li>To provide greater consistency with other popular browsers, IE does not automatically bind binary element behaviors. (Earlier versions of the browser automatically bound binary element behaviors.)</li>
+                    <li>Automatic binding of binary behaviors works in Windows IE 8 but it does not work as expected in Windows IE 9. A user would see a generic element instead of the specific control.</li>
+                    <li>Binding controls must be manually instantiated when creating webpages for IE 8.</li>
+                    <li>You must manually instantiate the binding control when you create webpages for IE 8, as the following code example shows.</li>
                     <pre><code>&lt;html xmlns:svg&gt;
  &lt;head&gt;
   &lt;title&gt;SVG embedded inline in XHTML&lt;/title&gt;
-  &lt;!-- The following is the "hookup code"  that Internet Explorer requires. –-&gt;
+  &lt;!-- The following is the "hookup code"  that IE requires. –-&gt;
   &lt;object id="AdobeSVG" classid="clsid:78156a80-c6a1-4bbf-8e6a-3cd390eeb4e2"&gt;
   &lt;/object&gt;
   &lt;?import namespace="svg" implementation="#AdobeSVG"?&gt;
@@ -474,7 +474,7 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
   &lt;/svg:svg&gt;
  &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                    <li> The following code example uses the native Scalable Vector Graphics (SVG) handling in Internet Explorer 9</li>
+                    <li> The following code example uses the native Scalable Vector Graphics (SVG) handling in IE 9</li>
                     <pre><code>&lt;html&gt;
  &lt;head&gt;
   &lt;title&gt;SVG embedded inline in XHTML&lt;/title&gt;
@@ -497,7 +497,7 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
                 <section>
                     <h3>Browsing in the new Windows UI for web developers</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
+                        <li>Applies to IE 10 and later.</li>
                         <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
                     </ul>
                 </section>
@@ -532,12 +532,12 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
                 </section>
                 <section>
                     <h3>Short-term mitigation</h3>
-                    <li>Making updates to your site might take time. If you temporarily need to suggest users view your site in Internet Explorer 10 on the desktop, you can update your site with either a "META" tag or "HTTP" header and Windows Internet Explorer will notify the user and provide an option to switch to the desktop.</li>
+                    <li>Making updates to your site might take time. If you temporarily need to suggest users view your site in IE 10 on the desktop, you can update your site with either a "META" tag or "HTTP" header and Windows IE will notify the user and provide an option to switch to the desktop.</li>
                     <pre><code>HTTP Header
 X-UA-Compatible: requiresActiveX=true
 META TAG
 &lt;meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/&gt;</code></pre>
-                    <li>Note:Keep in mind that the user might be using a device, such as a phone, that doesn't run existing ActiveX controls even in Internet Explorer for the desktop. Forcing users into the desktop experience should only be a last resort when no comparable fallback content exists.</li>
+                    <li>Note:Keep in mind that the user might be using a device, such as a phone, that doesn't run existing ActiveX controls even in IE for the desktop. Forcing users into the desktop experience should only be a last resort when no comparable fallback content exists.</li>
                 </section>
                 <section>
                     <h3>Debugging the new Windows UI browsing experience issues</h3>
@@ -602,9 +602,9 @@ if(plugin) {
                             <li>Plugins might not report information in the <a href="http://msdn.microsoft.com/en-us/library/ie/hh767310.aspx">navigator</a> properties.</li>
                             <li>To support the new properties, plugins need to update the Registry when installed:</li>
                             <ol>
-                                <li>Under <code>HKLM\SOFTWARE\Microsoft\Internet Explorer\NavigatorPluginsList</code> create a key using the name to be reported by the <a href="http://msdn.microsoft.com/en-us/library/ie/dn384065(v=vs.85).aspx">plugins</a> property.</li>
+                                <li>Under <code>HKLM\SOFTWARE\Microsoft\IE\NavigatorPluginsList</code> create a key using the name to be reported by the <a href="http://msdn.microsoft.com/en-us/library/ie/dn384065(v=vs.85).aspx">plugins</a> property.</li>
                                 <li>Create subkeys for each custom MIME type supported by the plugin, using the MIME type value as the name of the subkey. </li>
-                                <li>For 64-bit environments, add the same Registry entries to <code>HKLM\SOFTWARE\Wow6432\Microsoft\Internet Explorer\NavigatorPluginsList</code>.</li>
+                                <li>For 64-bit environments, add the same Registry entries to <code>HKLM\SOFTWARE\Wow6432\Microsoft\IE\NavigatorPluginsList</code>.</li>
                                 <li>Verify that unique MIME types are properly registered with the device loading the webpage, as well as the server hosting the webpage.</li>
                             </ol>
                         </li>
@@ -703,7 +703,7 @@ if(plugin) {
                 <section>
                     <h3>Supporting enhanced protected mode (EPM)</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
+                        <li>Applies to IE 10 and later.</li>
                         <li>Affects all document modes.</li>
                     </ul>
                 </section>
@@ -750,8 +750,8 @@ if(plugin) {
             </section>
             <section>
                 <section>
-                    <h3>ASP.NET fails to detect Internet Explorer</h3>
-                    <li>When ASP.NET does not correctly recognize Internet Explorer, it responds with a "_doPostBack is undefined JavaScript" error. </li>
+                    <h3>ASP.NET fails to detect IE</h3>
+                    <li>When ASP.NET does not correctly recognize IE, it responds with a "_doPostBack is undefined JavaScript" error. </li>
                     <ul>
                         <li>Update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.</li>
                     </ul>
@@ -761,18 +761,18 @@ if(plugin) {
                 <section>
                     <h3>Customizing the download experience</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
+                        <li>Applies to IE 10 and later.</li>
                         <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
                     </ul>
                 </section>
                 <section>
                     <h3>Content-disposition header</h3>
-                    <li>To force the browser to <a href="http://go.microsoft.com/fwlink/li/?LinkID=256551">treat a specific file as a download</a>, send a <a href="http://go.microsoft.com/fwlink/li/?LinkID=256552">content-disposition header</a> with the <code>attachment</code> token. This is useful as some applications installed on the user's machine can register themselves to handle certain MIME types and bypass Windows Internet Explorer download experience. For example, Microsoft Windows Media Player in some installations can set itself to handle mp3 files. Hence, a file link to an mp3 resource will directly open in Windows Media Player when a user navigates to it in Internet Explorer. The user doesn't get the option to save the file to disk in the browser.</li>
-                    <li>With the content-disposition header set to <code>attachment</code>, Internet Explorer download experience offers the user the choice to open or save:</li><img alt="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" src="http://i.msdn.microsoft.com/dynimg/IC600818.png" title="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" xmlns="" />
+                    <li>To force the browser to <a href="http://go.microsoft.com/fwlink/li/?LinkID=256551">treat a specific file as a download</a>, send a <a href="http://go.microsoft.com/fwlink/li/?LinkID=256552">content-disposition header</a> with the <code>attachment</code> token. This is useful as some applications installed on the user's machine can register themselves to handle certain MIME types and bypass Windows IE download experience. For example, Microsoft Windows Media Player in some installations can set itself to handle mp3 files. Hence, a file link to an mp3 resource will directly open in Windows Media Player when a user navigates to it in IE. The user doesn't get the option to save the file to disk in the browser.</li>
+                    <li>With the content-disposition header set to <code>attachment</code>, IE download experience offers the user the choice to open or save:</li><img alt="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" src="http://i.msdn.microsoft.com/dynimg/IC600818.png" title="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" xmlns="" />
                 </section>
                 <section>
                     <h3>TriggerFileDownload</h3>
-                    <li>We added a new function in Windows Internet Explorer 9 that lets browser add-ons trigger the file download experience in Internet Explorer 9. When this API is invoked, the user sees the download notification bar as shown previously</li>
+                    <li>We added a new function in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</li>
                     <pre><code>void TriggerFileDownload (string URL)</code></pre>
                     <li>For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/gg593105(v=vs.85).aspx">TriggerFileDownload</a>.</li>
                 </section>
@@ -781,14 +781,14 @@ if(plugin) {
                     <li>To prevent users from opening a file immediately (and potentially losing track of the downloaded file) developers can specify the <code>NoOpen</code> directive. This way the user won't accidentally open the file and lose it in the Temporary Internet Files folder.</li>
                     <li>You can set this directive in one of two ways:</li>
                     <ul>
-                        <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=256567">X-Download-Options</a> HTTP response header (supported by Windows Internet Explorer 8 and later).</li>
-                        <li>The download options meta tag <code>&lt;meta name="DownloadOptions" content="noopen"&gt;</code> (supported by Microsoft Internet Explorer 6 and later).</li>
+                        <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=256567">X-Download-Options</a> HTTP response header (supported by Windows IE 8 and later).</li>
+                        <li>The download options meta tag <code>&lt;meta name="DownloadOptions" content="noopen"&gt;</code> (supported by Microsoft IE 6 and later).</li>
                     </ul>
-                    <li>When this directive is set, Internet Explorer won't offer the Open option in the download acceptance bar:</li><img alt="A screen shot of the download acceptance bar that asks the user if they want to save the document" src="http://i.msdn.microsoft.com/dynimg/IC600819.png" title="A screen shot of the download acceptance bar that asks the user if they want to save the document" xmlns="" />
+                    <li>When this directive is set, IE won't offer the Open option in the download acceptance bar:</li><img alt="A screen shot of the download acceptance bar that asks the user if they want to save the document" src="http://i.msdn.microsoft.com/dynimg/IC600819.png" title="A screen shot of the download acceptance bar that asks the user if they want to save the document" xmlns="" />
                 </section>
                 <section>
                     <h3>Resuming downloads</h3>
-                    <li>Internet Explorer follows HTTP standards for resuming downloads. Resumption works both on HTTP and HTTPS. In order to ensure that downloads from your website are resumable, refer to section 14.5 of <a href="http://go.microsoft.com/fwlink/li/?LinkID=256573">RFC 2626</a>. Here are some general best practices for resuming downloads:</li>
+                    <li>IE follows HTTP standards for resuming downloads. Resumption works both on HTTP and HTTPS. In order to ensure that downloads from your website are resumable, refer to section 14.5 of <a href="http://go.microsoft.com/fwlink/li/?LinkID=256573">RFC 2626</a>. Here are some general best practices for resuming downloads:</li>
                     <ul>
                         <li>Send HTTP headers that permit caching.</li>
                         <li>Include the <code>Accept-Ranges</code> header with the token bytes.</li>
@@ -798,26 +798,26 @@ if(plugin) {
                 </section>
                 <section>
                     <h3>Signing files</h3>
-                    <li>Developers are strongly encouraged to sign their applications using <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>. Internet Explorer verifies the publisher of downloaded applications and displays the publisher name in the download manager. This increases confidence that the application comes from a trusted source.</li>
+                    <li>Developers are strongly encouraged to sign their applications using <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>. IE verifies the publisher of downloaded applications and displays the publisher name in the download manager. This increases confidence that the application comes from a trusted source.</li>
                     <li>If an application is digitally signed with <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>, <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> can take the digital certificate's reputation into account when determining the file's reputation. This is especially useful for new files that aren't yet commonly downloaded.</li>
                     <li>If an application isn't signed, and the user has <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> disabled (or the check fails for any reason), the download notification will show the following warning:</li><img alt="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " src="http://i.msdn.microsoft.com/dynimg/IC600821.png" title="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " xmlns="" />
                 </section>
                 <section>
                     <h3>Bypassing download acceptance prompt</h3>
                     <li>Some sites give users instructions on how to bypass the acceptance prompt for their downloads. A common example is a site that has custom handlers and wants users to directly open their files in their applications.</li>
-                    <li>Previously Internet Explorer 8 showed a check box on the File Download dialog box that users could clear to automatically open files:</li><img alt="The File Download dialog box from Internet Explorer 8, which provides the option to open files automatically" src="http://i.msdn.microsoft.com/dynimg/IC600822.png" title="The File Download dialog box from Internet Explorer 8, which provides the option to open files automatically" xmlns="" />
+                    <li>Previously IE 8 showed a check box on the File Download dialog box that users could clear to automatically open files:</li><img alt="The File Download dialog box from IE 8, which provides the option to open files automatically" src="http://i.msdn.microsoft.com/dynimg/IC600822.png" title="The File Download dialog box from IE 8, which provides the option to open files automatically" xmlns="" />
                 </section>
                 <section>
-                    <li>The functionality of this check box was moved in Internet Explorer 9 to the context menu in the download manager:</li><img alt="A screen shot of the context menu" src="http://i.msdn.microsoft.com/dynimg/IC600823.png" title="A screen shot of the context menu" xmlns="" />
+                    <li>The functionality of this check box was moved in IE 9 to the context menu in the download manager:</li><img alt="A screen shot of the context menu" src="http://i.msdn.microsoft.com/dynimg/IC600823.png" title="A screen shot of the context menu" xmlns="" />
                     <li>Applications that register themselves to handle certain MIME types via COM (and not shell execute) can set <a href="http://msdn.microsoft.com/en-us/library/ie/bb762506(v=vs.85).aspx">FTA_OpenIsSafe</a> appropriately to bypass the acceptance prompt.</li>
                 </section>
                 <section>
                     <h3>Handing off downloads to applications</h3>
-                    <li>With Internet Explorer 10, it's possible for applications to register to download file types that they handle. This feature is called DirectInvoke. Application registration is simple and basically requires applications to declare that they can handle HTTP(s) URLs. To trigger DirectInvoke, servers need to send the X-MS-InvokeApp: 1 HTTP response header, which directs Internet Explorer 10 to hand off the URL to the default application for download. If the application doesn't handle URLs, Internet Explorer 10 downloads the file for the application. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj215788(v=vs.85).aspx">Invoke applications directly in Internet Explorer 10</a>.</li>
+                    <li>With IE 10, it's possible for applications to register to download file types that they handle. This feature is called DirectInvoke. Application registration is simple and basically requires applications to declare that they can handle HTTP(s) URLs. To trigger DirectInvoke, servers need to send the X-MS-InvokeApp: 1 HTTP response header, which directs IE 10 to hand off the URL to the default application for download. If the application doesn't handle URLs, IE 10 downloads the file for the application. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj215788(v=vs.85).aspx">Invoke applications directly in IE 10</a>.</li>
                 </section>
                 <section>
                     <h3>Getting the URL of the downloaded file</h3>
-                    <li>With Internet Explorer 10, applications can get the URL of the downloaded file as described next.</li>
+                    <li>With IE 10, applications can get the URL of the downloaded file as described next.</li>
                     <ul>
                         <li>Win32 applications can get the URL of the downloaded file in 2 ways:
                             <ul>
@@ -862,16 +862,16 @@ if(plugin) {
                 <section>
                     <h3>Interoperable (HTML5) quirks mode</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
+                        <li>Applies to IE 10 and later.</li>
                         <li>Affects IE5 (quirks) mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
                     </ul>
-                    <li>In Internet Explorer 10, we've modified the default behavior of quirks mode to improve support for industry standards, such as HTML5, and to increase interoperability with other browsers. Quirks mode now exposes the same set of APIs and behavior as standards mode with limited exceptions as defined in HTML5 and related W3C specifications.</li>
-                    <li>These changes can impact quirks mode pages written exclusively for Windows Internet Explorer or that use browser sniffing to alter their behavior in Internet Explorer. </li>
-                    <li>A page using legacy features worked as intended in Windows Internet Explorer 9, but no longer works in Internet Explorer 10.</li>
+                    <li>In IE 10, we've modified the default behavior of quirks mode to improve support for industry standards, such as HTML5, and to increase interoperability with other browsers. Quirks mode now exposes the same set of APIs and behavior as standards mode with limited exceptions as defined in HTML5 and related W3C specifications.</li>
+                    <li>These changes can impact quirks mode pages written exclusively for Windows IE or that use browser sniffing to alter their behavior in IE. </li>
+                    <li>A page using legacy features worked as intended in Windows IE 9, but no longer works in IE 10.</li>
                     <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
                 </section>
                 <section>
-                    <li>The following example shows a webpage that uses an element behavior, a legacy feature that is <a href="http://msdn.microsoft.com/en-us/library/ie/hh801216(v=vs.85).aspx">no longer supported</a> in Internet Explorer 10 standards mode:</li>
+                    <li>The following example shows a webpage that uses an element behavior, a legacy feature that is <a href="http://msdn.microsoft.com/en-us/library/ie/hh801216(v=vs.85).aspx">no longer supported</a> in IE 10 standards mode:</li>
                     <pre><code>&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Legacy Quirks Page&lt;/title&gt;
@@ -1055,7 +1055,7 @@ if(plugin) {
                 <section>
                     <h3>Pseudo hit testing is disabled in IE11 edge mode</h3>
                     <ul>
-                        <li>In Internet Explorer 10 and earlier versions, mouse clicks and touch interactions were conditionally allowed through transparent backgrounds.</li>
+                        <li>In IE 10 and earlier versions, mouse clicks and touch interactions were conditionally allowed through transparent backgrounds.</li>
                         <li>To provide better compatibility with other browsers and a more consistent experience for all interaction events (including touch and zoom), pseudo hit testing is disabled in IE11 edge mode. </li>
                         <li>If you run into an issue because of this change, consider reworking the page to use <a href="http://msdn.microsoft.com/en-us/library/ie/dn433244(v=vs.85).aspx">pointer events</a>. Alternatively, changing the change the <a href="http://msdn.microsoft.com/en-us/library/ie/ms531188(v=vs.85).aspx">z-index</a> of the target element (or the size of the size of the transparent layer) may resolve the issue. </li>
                     </ul>
@@ -1066,8 +1066,8 @@ if(plugin) {
                 <section>
                     <h3>Spell checking and autocorrect support - IE10+</h3>
                     <ul>
-                        <li>Internet Explorer 10 now includes spell checking and autocorrect support. </li>
-                        <li>In some cases, Internet Explorer 10 built-in spell checking might conflict with a site's preexisting spell checking functionality. In such cases, the built-in spell checking corrections menu has been designed to take precedence over existing site-provided context menus.</li>
+                        <li>IE 10 now includes spell checking and autocorrect support. </li>
+                        <li>In some cases, IE 10 built-in spell checking might conflict with a site's preexisting spell checking functionality. In such cases, the built-in spell checking corrections menu has been designed to take precedence over existing site-provided context menus.</li>
                         <li>If your site is affected, detect the presence of the <a href="http://msdn.microsoft.com/en-us/library/ie/hh772928(v=vs.85).aspx">spellcheck</a> property. If present, disable the custom spell checking functionality for that instance as shown in the following example: </li>
                     </ul>
                     <pre><code>if (document.documentElement.spellcheck == undefined) {
@@ -1079,13 +1079,13 @@ if(plugin) {
             <section>
                 <section>
                     <h3>Understanding the Compatibility view list - IE9+</h3>
-                    <li>Compatibility View allows content designed for older web browsers to render well in newer versions of Internet Explorer. The Compatibility View (CV) List automatically displays the content of websites in Compatibility View without further interaction.</li>
+                    <li>Compatibility View allows content designed for older web browsers to render well in newer versions of IE. The Compatibility View (CV) List automatically displays the content of websites in Compatibility View without further interaction.</li>
                 </section>
                 <section>
                     <h3>Why is a site added to the CV List?</h3>
                     <li>We only add a site to the Compatibility View List when the site:</li>
                     <ul>
-                        <li>Is designed to run in an older version of Internet Explorer</li>
+                        <li>Is designed to run in an older version of IE</li>
                         <li>Doesn't run well in Edge mode.</li>
                         <li>Doesn't declare an "X-UA-Compatible-" meta tag or header</li>
                     </ul>
@@ -1100,21 +1100,21 @@ if(plugin) {
                 <section>
                     <h3>User-agent string changes</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
+                        <li>Applies to IE 9 and later.</li>
                         <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
                     </ul>
                     In this article
                     <ul>
                         <li><a href="#edge">User-agent string for IE Edge document mode</a>
                         </li>
-                        <li><a href="#ie11">User-agent string changes for Internet Explorer 11</a>
+                        <li><a href="#ie11">User-agent string changes for IE 11</a>
                         </li>
                         <li><a href="#legacy">User-agent changes in earlier versions</a>
                         </li>
                         <li><a href="#related_topics">Related topics</a>
                         </li>
                     </ul>
-                    <li>Each release of Internet Explorer updates the user-agent string; here's what's changed recently.</li>
+                    <li>Each release of IE updates the user-agent string; here's what's changed recently.</li>
                     <li> Sites that rely on the user-agent string should be updated to modern techniques, such as <a href="http://msdn.microsoft.com/en-us/library/ie/ff986088(v=vs.85).aspx">feature detection</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/jj583806(v=vs.85).aspx">adaptive layout</a>, and other <a href="http://msdn.microsoft.com/en-us/library/ie/gg130949(v=vs.85).aspx">modern practices</a>.</li>
                 </section>
                 <section>
@@ -1126,10 +1126,10 @@ if(plugin) {
                     <li>Developers preparing for Windows 10 should note that the Windows NT value in the UA string will change from 6.4 to 10.0 with the new release. If you have code that depends on the version number, we advise that you update to allow for the new value.</li>
                 </section>
                 <section>
-                    <h3>User-agent string changes for Internet Explorer 11</h3>
-                    <li>For many websites, some of the most visible changes to Internet Explorer 11 involve the user-agent string. Here's what's reported for IE11 on Windows 8.1:</li>
+                    <h3>User-agent string changes for IE 11</h3>
+                    <li>For many websites, some of the most visible changes to IE 11 involve the user-agent string. Here's what's reported for IE11 on Windows 8.1:</li>
                     <pre><code>Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko</code></pre>
-                    <li>If you compare the IE11 user agent string to the values reported by <a href="http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx">earlier versions</a> of Internet Explorer, you'll find the following differences:</li>
+                    <li>If you compare the IE11 user agent string to the values reported by <a href="http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx">earlier versions</a> of IE, you'll find the following differences:</li>
                     <ul>
                         <li>The compatible ("compatible") and browser ("MSIE") tokens have been removed.</li>
                         <li>The "like Gecko" token has been added (for consistency with other browsers).</li>
@@ -1139,13 +1139,13 @@ if(plugin) {
                 </section>
                 <section>
                     <h3>User-agent changes in earlier versions</h3>
-                    <li>For Internet Explorer 10, the following changes were made to the user agent string:</li>
+                    <li>For IE 10, the following changes were made to the user agent string:</li>
                     <ul>
                         <li>The value of the Version token ("MSIE") was changed to "10.0".</li>
                         <li>The value of the Trident token ("Trident") became "6.0".</li>
                         <li>For Windows 8, the value of the Platform token ("Windows NT") was changed to "6.2".</li>
                     </ul>
-                    <li>Internet Explorer 9, reflected the following changes to the user agent string:</li>
+                    <li>IE 9, reflected the following changes to the user agent string:</li>
                     <ul>
                         <li>The application token became "Mozilla/5.0".</li>
                         <li>The version token was updated to "MSIE 9.0".</li>
@@ -1188,14 +1188,14 @@ if(plugin) {
             <section>
                 <section>
                     <h3>Default font changes - IE11</h3>
-                    <li>We are updating the Document Object Model (DOM) default fonts and UI fonts for Windows Store apps using JavaScript for several languages, as defined in the table below. This means that certain webpages and web apps that depended on Internet Explorer's old default fonts may look different. Although their overall appearance should be improved, this change could confuse certain tests that depend on a specific look for certain scripts. You can mitigate the effect of this change by specifying a particular font instead of relying on old default fonts, and by updating your tests to expect the new font values.</li>
+                    <li>We are updating the Document Object Model (DOM) default fonts and UI fonts for Windows Store apps using JavaScript for several languages, as defined in the table below. This means that certain webpages and web apps that depended on IE's old default fonts may look different. Although their overall appearance should be improved, this change could confuse certain tests that depend on a specific look for certain scripts. You can mitigate the effect of this change by specifying a particular font instead of relying on old default fonts, and by updating your tests to expect the new font values.</li>
                 </section>
             </section>
             <section>
                 <section>
                     <h3>Flexible box ("Flexbox") layout updates - IE11</h3>
                     <ul>
-                        <li>When released in August 2012, Internet Explorer 10 introduced support for the W3C CSS Flexible Box ("Flexbox") Layout module. Because the specification was still in flux, flexbox support was provided through vendor prefixes. </li>
+                        <li>When released in August 2012, IE 10 introduced support for the W3C CSS Flexible Box ("Flexbox") Layout module. Because the specification was still in flux, flexbox support was provided through vendor prefixes. </li>
                         <li>In September 2012, the CSS Flexible Box ("Flexbox") Layout module was published as a W3C Candidate Recommendation, incorporating some changes in certain aspects of the specification. IE11 updates flexbox support with these changes, which include renamed properties, renamed property values, and more. Moving forward, use the new, unprefixed names (and values) and update existing sites accordingly. </li>
                     </ul>
                 </section>
@@ -1203,9 +1203,9 @@ if(plugin) {
             <section>
                 <section>
                     <h3>Font sizing for Thai and East Asian text - IE9+</h3>
-                    <li>Thai and East Asian text may look smaller in Windows Internet Explorer 9 than in Windows Internet Explorer 8 and earlier releases.</li>
+                    <li>Thai and East Asian text may look smaller in Windows IE 9 than in Windows IE 8 and earlier releases.</li>
                     <li>
-                        In Internet Explorer 8, Thai and East Asian text could be rendered at a larger font size than specified when:</li>
+                        In IE 8, Thai and East Asian text could be rendered at a larger font size than specified when:</li>
                     <ul>
                         <li>The specified font size was 9pt or smaller</li>
                         <li>The specified font family did not support Thai or East Asian characters such as Arial</li>
@@ -1220,7 +1220,7 @@ if(plugin) {
                         <li>Consider this scenario: You create a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element and apply a gradient fill to it using the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms532997(v=vs.85).aspx">Gradient Filter</a>. You then apply the <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> property to it, creating rounded corners.</li>
                         <li>You might see that the gradient ignores the rounded corners of the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element and "bleeds" outside of it to the original boundaries of the element. </li>
                     </ul>
-                    <li>This behavior can be observed starting with Windows Internet Explorer 9 when the document mode is IE9 Standards mode.</li>
+                    <li>This behavior can be observed starting with Windows IE 9 when the document mode is IE9 Standards mode.</li>
                     <li>There are two ways to work around this issue.</li>
                     <li>First, you can wrap the element (with the gradient background) in a container element, round the container element's corners using the <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> property, and set the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530824(v=vs.85).aspx">overflow</a> property to "hidden". (For an example, see the <a href="#example">Example</a> section of this topic.) While this renders the element as you would expect, it also requires that you add a wrapper element to every element that exhibits this problem. It also continues to rely on a legacy Cascading Style Sheets (CSS) filter, which doesn't offer the performance improvements of more modern solutions. Therefore, this solution might not be ideal.</li>
                     <li>The better workaround is to use a Scalable Vector Graphics (SVG) background to fill the element with a gradient. Instead of using a <a href="http://msdn.microsoft.com/en-us/library/ie/ms530752(v=vs.85).aspx">filter</a> property on the element, use the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> property and set it to a SVG <a href="http://msdn.microsoft.com/en-us/library/ie/ff972078(v=vs.85).aspx">linearGradient</a> or <a href="http://msdn.microsoft.com/en-us/library/ie/ff972115(v=vs.85).aspx">radialGradient</a> element. After this initial declaration, add background-image property declarations set to a CSS gradient, using the appropriate browser vendor prefix for each browser you want to support. For an example, see the <a href="#example">Example</a> section of this topic.</li>
@@ -1251,7 +1251,7 @@ if(plugin) {
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-                    <li>This image shows how this code is displayed in Internet Explorer 10 in IE9 Standards mode. It appears identically in Internet Explorer 9 (also in IE9 Standards mode).</li><img alt="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" src="http://i.msdn.microsoft.com/dynimg/IC629579.png" title="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" xmlns="" />
+                    <li>This image shows how this code is displayed in IE 10 in IE9 Standards mode. It appears identically in IE 9 (also in IE9 Standards mode).</li><img alt="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" src="http://i.msdn.microsoft.com/dynimg/IC629579.png" title="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" xmlns="" />
                     <li>This next example uses the <a href="#resolution">first workaround</a> for this issue. A new wrapper element has been added (mask), the sizing and <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> properties have been moved to the wrapper element, and its <a href="http://msdn.microsoft.com/en-us/library/ie/ms530824(v=vs.85).aspx">overflow</a> property has been set to "hidden".</li>
                     <pre><code>&lt;!doctype html&gt;
 &lt;html&gt;
@@ -1318,7 +1318,7 @@ if(plugin) {
   &lt;/linearGradient&gt;
   &lt;rect x="0" y="0" width="1" height="1" fill="url(#g791)" /&gt;
 &lt;/svg&gt;</code></pre>
-                    <li>Because Internet Explorer 9 doesn't support the <a href="http://msdn.microsoft.com/en-us/library/ie/hh771876(v=vs.85).aspx">gradient functions</a>, it picks up on the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> declaration set to the URL of our SVG file and ignores all the subsequent gradient declarations. Other browsers, including Internet Explorer 10, pick up on the last declaration that they support. This means the browser will pass over the first background-image declaration in favor of the one set to whichever prefixed gradient function they support. Internet Explorer 10 supports the <a href="http://msdn.microsoft.com/en-us/library/ie/jj152126(v=vs.85).aspx">linear-gradient</a> function with no vendor prefix, which is specified in the last declaration.</li>
+                    <li>Because IE 9 doesn't support the <a href="http://msdn.microsoft.com/en-us/library/ie/hh771876(v=vs.85).aspx">gradient functions</a>, it picks up on the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> declaration set to the URL of our SVG file and ignores all the subsequent gradient declarations. Other browsers, including IE 10, pick up on the last declaration that they support. This means the browser will pass over the first background-image declaration in favor of the one set to whichever prefixed gradient function they support. IE 10 supports the <a href="http://msdn.microsoft.com/en-us/library/ie/jj152126(v=vs.85).aspx">linear-gradient</a> function with no vendor prefix, which is specified in the last declaration.</li>
                     <li>Both solutions produce an identical output, shown here:</li><img alt="Screen shot of an element with a gradient applied to it that is now contained within the element's borders" src="http://i.msdn.microsoft.com/dynimg/IC629580.png" title="Screen shot of an element with a gradient applied to it that is now contained within the element's borders" xmlns="" />
                 </section>
             </section> -->
@@ -1336,8 +1336,8 @@ if(plugin) {
                 <section>
                     <h3>Text layout and natural metrics - IE9+</h3>
                     <ul>
-                        <li>For text layout in IE9 Standards mode (and later), Windows Internet Explorer 9 uses natural metrics instead of the Windows Graphics Device Interface (GDI) metrics that other Windows browsers use.GDI metrics align text to pixel boundaries, but natural metrics use inter-pixel spacing to create more accurately rendered and readable text.</li>
-                        <li>Page layouts that are written for earlier document modes might display incorrectly in Internet Explorer 9. The most common error is unexpected text wrapping, which can cover elements that are below the wrapped text. This error is most likely when a text box does not include extra horizontal space or when the size of the text box is connected to another element on the page, such as a graphic.</li>
+                        <li>For text layout in IE9 Standards mode (and later), Windows IE 9 uses natural metrics instead of the Windows Graphics Device Interface (GDI) metrics that other Windows browsers use.GDI metrics align text to pixel boundaries, but natural metrics use inter-pixel spacing to create more accurately rendered and readable text.</li>
+                        <li>Page layouts that are written for earlier document modes might display incorrectly in IE 9. The most common error is unexpected text wrapping, which can cover elements that are below the wrapped text. This error is most likely when a text box does not include extra horizontal space or when the size of the text box is connected to another element on the page, such as a graphic.</li>
                     </ul>
                 </section>
                 <section>
@@ -1349,7 +1349,7 @@ if(plugin) {
                         <li>Include extra space in bounding areas that depend on other page elements.</li>
                         <li>Make sure your page can accommodate text wrapping if you permit users to change the page font size.</li>
                         <li>Test your webpages in all common browsers. If you see a text wrapping issue, adjust the page to make sure the page appropriately renders the text.</li>
-                        <li>If you designed a webpage for a previous mode and you do not want to update it to use natural metrics, set the page to display in that mode even when users view it in Internet Explorer 9.</li>
+                        <li>If you designed a webpage for a previous mode and you do not want to update it to use natural metrics, set the page to display in that mode even when users view it in IE 9.</li>
                     </ul>
                 </section>
                 <section>
@@ -1407,7 +1407,7 @@ if(plugin) {
                 <section>
                     <h3>Binary behaviors and XML schema - IE9+</h3>
                     <ul>
-                        <li>As of Windows Internet Explorer 9, XML schemas no longer allow binary behaviors to be imported using namespaces. This affects IE9 standards mode and later document modes.</li>
+                        <li>As of Windows IE 9, XML schemas no longer allow binary behaviors to be imported using namespaces. This affects IE9 standards mode and later document modes.</li>
                         <li>Instead of using HTML markup, use Cascading Style Sheets (CSS)-based registration through the <a href="http://go.microsoft.com/fwlink/li/?LinkID=201610">behavior</a> property.</li>
                     </ul>
                     <pre><code>&lt;html xmlns:myNamespace&gt;
@@ -1428,8 +1428,8 @@ if(plugin) {
                 <section>
                     <h3>Content attributes and DOM properties - IE9+</h3>
                     <ul>
-                        <li>In earlier versions of Windows Internet Explorer, content attributes were represented on JavaScript objects as Document Object Model (DOM)] expandos. </li>
-                        <li>Starting with Windows Internet Explorer 9, content attributes are no longer connected to DOM expandos; this improves interoperability between Internet Explorer and other browsers.</li>
+                        <li>In earlier versions of Windows IE, content attributes were represented on JavaScript objects as Document Object Model (DOM)] expandos. </li>
+                        <li>Starting with Windows IE 9, content attributes are no longer connected to DOM expandos; this improves interoperability between IE and other browsers.</li>
                     </ul>
                     <pre><code>var divExpando = div.myAttr; 
 //Not work in IE9 +        
@@ -1443,7 +1443,7 @@ var divExpando2 = div.getAttribute("myAttr");
                     <h3>CreateElement no longer supports angle brackets - IE9+</h3>
                     <ul>
 
-                        <li>As of Windows Internet Explorer 9, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> triggers an "object not found" exception when you use angle brackets (&lt; &gt;). </li>
+                        <li>As of Windows IE 9, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> triggers an "object not found" exception when you use angle brackets (&lt; &gt;). </li>
                         <pre><code>var elm = document.createElement("&lt;div id='myDiv'&gt;");</code></pre>
                         <li>To fix this, update your code to call <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> without angle brackets. To assign attribute values, (such as <a href="http://msdn.microsoft.com/en-us/library/ie/ms533880(v=vs.85).aspx">id</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms534182(v=vs.85).aspx">name</a>, etc.), call <a href="http://msdn.microsoft.com/en-us/library/ie/ms536739(v=vs.85).aspx">setAttribute</a> after creating the element:</li>
                         <pre><code>var elm = document.createElement("div");
@@ -1474,7 +1474,7 @@ var elm=parent.firstChild;</code></pre>
                         <li>In IE9 Standards mode, documents delivered with a "text/plain" MIME type will not be MIME-sniffed to another type. Documents will render or download as plain text only.</li>
                         <li>As a result, we recommend the following:</li>
                         <ul>
-                            <li>Use the content type "text/plain" to ensure a plain text rendering in Internet Explorer 9</li>
+                            <li>Use the content type "text/plain" to ensure a plain text rendering in IE 9</li>
                             <li>Configure your server to send proper Content-Type headers for all documents that your server will deliver; for instance, if your server offers Portable Document Format (PDF) files for download, be sure that these files are delivered with the "application/pdf" MIME type</li>
                         </ul>
                     </ul>
@@ -1495,8 +1495,8 @@ var elm=parent.firstChild;</code></pre>
                     <h3>Native XML object types and legacy websites - IE9+</h3>
                     <ul>
 
-                        <li>Windows Internet Explorer 9 introduces the concept of native XML objects. Native XML objects can be rendered within a page and used with the same Document Object Model (DOM) APIs supported for HTML objects. </li>
-                        <li>Prior versions of Windows Internet Explorer always managed XML via Microsoft XML (MSXML) objects, which still exist in Internet Explorer 9. However, native XML objects are not compatible with MSXML objects. This means that MSXML objects cannot be used with native DOM APIs and native XML objects cannot be used with MSXML DOM APIs.</li>
+                        <li>Windows IE 9 introduces the concept of native XML objects. Native XML objects can be rendered within a page and used with the same Document Object Model (DOM) APIs supported for HTML objects. </li>
+                        <li>Prior versions of Windows IE always managed XML via Microsoft XML (MSXML) objects, which still exist in IE 9. However, native XML objects are not compatible with MSXML objects. This means that MSXML objects cannot be used with native DOM APIs and native XML objects cannot be used with MSXML DOM APIs.</li>
                         <li>When the code in a site attempts to mix the two, this generally results in a JavaScript exception being thrown, which can cause compatibility problems.</li>
                     </ul>
                 </section>
@@ -1533,9 +1533,9 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
                     <h3>Object element fallback applies to the DOM - IE9+</h3>
                     <ul>
 
-                        <li>When an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element has fallback content (typically, an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239589">embed</a> element), IE9 parses this content and includes it in the Document Object Model (DOM), whereas previous versions of Windows Internet Explorer did not.</li>
+                        <li>When an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element has fallback content (typically, an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239589">embed</a> element), IE9 parses this content and includes it in the Document Object Model (DOM), whereas previous versions of Windows IE did not.</li>
                         <li>As a result, if an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element has the same name attribute as any of its fallback elements, then <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a>["myName"] will now return a collection of all elements with the name "myName". </li>
-                        <li>If you use the same name attribute for an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element as you do for the fallback content and attempt to retrieve a reference to the instantiated plug-in using <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a>["myPlugin"], more than one element will be returned, where only the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element was returned in previous versions of Internet Explorer.</li>
+                        <li>If you use the same name attribute for an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element as you do for the fallback content and attempt to retrieve a reference to the instantiated plug-in using <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a>["myPlugin"], more than one element will be returned, where only the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239587">object</a> element was returned in previous versions of IE.</li>
                     </ul>
                     <a href="http://jsfiddle.net/aaronzhcl/ad264/">http://jsfiddle.net/aaronzhcl/ad264/</a>
                 </section>
@@ -1544,9 +1544,9 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
                 <section>
                     <h3>Overlapping elements are cloned - IE9+</h3>
                     <ul>
-                        <li>Overlapping formatting elements are cloned in Windows Internet Explorer 9 to reduce ambiguity in the Document Object Model (DOM).</li>
+                        <li>Overlapping formatting elements are cloned in Windows IE 9 to reduce ambiguity in the Document Object Model (DOM).</li>
                         <li>Typically, a site looks the same with or without this feature.</li>
-                        <li>However, if you perform DOM operations on elements that are overlapped in markup, the operations might not work the same way in Internet Explorer 9. For example, if you make DOM calls such as <a href="http://go.microsoft.com/fwlink/li/?LinkId=239551">firstChild</a> or <a href="http://go.microsoft.com/fwlink/li/?LinkId=239553">nextSibling</a> on an overlapped element, these calls might not work the same way.</li>
+                        <li>However, if you perform DOM operations on elements that are overlapped in markup, the operations might not work the same way in IE 9. For example, if you make DOM calls such as <a href="http://go.microsoft.com/fwlink/li/?LinkId=239551">firstChild</a> or <a href="http://go.microsoft.com/fwlink/li/?LinkId=239553">nextSibling</a> on an overlapped element, these calls might not work the same way.</li>
                     </ul>
                 </section>
             </section>
@@ -1557,7 +1557,7 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
 
                         <li>
                             <a href="http://msdn.microsoft.com/en-us/library/ie/dn433244(v=vs.85).aspx">Pointer events</a> are events and related interfaces that handle hardware agnostic pointer input from devices like a mouse, pen, or touchscreen. </li>
-                        <li>To comply with the Candidate Recommendation of the W3C Pointer Events specification, the Internet Explorer 11 implementation has changed slightly from that of Internet Explorer 10.</li>
+                        <li>To comply with the Candidate Recommendation of the W3C Pointer Events specification, the IE 11 implementation has changed slightly from that of IE 10.</li>
                     </ul>
                 </section>
                 <section>
@@ -1566,7 +1566,7 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
 
                         <li>MS vendor prefix versions of the APIs have been deprecated in favor of the non-prefixed signatures defined in the spec. As of IE11, the Microsoft prefixed versions of pointer events APIs are no longer supported and might be removed in a future release.</li>
 
-                        <li>If your code uses pointer events and you need to maintain compatibility with Internet Explorer 10, you can use the following fallback pattern: </li>
+                        <li>If your code uses pointer events and you need to maintain compatibility with IE 10, you can use the following fallback pattern: </li>
                         <pre><code>if(window.PointerEvent) {
     elm.addEventListener("pointerdown", foo);
 } else if (window.MSPointerEvent) {
@@ -1575,10 +1575,11 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
     elm.addEventListener("mousedown", foo);
 }</code></pre>
                     </ul>
+                    <a href="http://jsfiddle.net/aaronzhcl/8xpQq/">http://jsfiddle.net/aaronzhcl/8xpQq/</a>
                 </section>
                 <section>
                     <h3>Behavioral updates</h3>
-                    <p>The technical details of the W3C pointer events specification have changed. The IE11 implementation of pointer events has the following behavioral changes from the original implementation in Internet Explorer 10.</p>
+                    <p>The technical details of the W3C pointer events specification have changed. The IE11 implementation of pointer events has the following behavioral changes from the original implementation in IE 10.</p>
                     <a href="http://msdn.microsoft.com/en-us/library/ie/dn304886%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/dn304886%28v=vs.85%29.aspx</a>
                 </section>
             </section>
@@ -1588,13 +1589,13 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
                     <ul>
 
                         <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=190912">script</a> and <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> elements will reject responses with incorrect MIME types if the server sends the response header "X-Content-Type-Options: nosniff". This is a security feature that helps prevent attacks based on MIME-type confusion.</li>
-                        <li>If the "nosniff" directive is received on a response received by a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> reference, Windows Internet Explorer will not load the "stylesheet" file unless the MIME type matches "text/css".</li>
+                        <li>If the "nosniff" directive is received on a response received by a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> reference, Windows IE will not load the "stylesheet" file unless the MIME type matches "text/css".</li>
                     </ul>
                 </section>
                 <section>
                     <ul>
 
-                        <li>If the "nosniff" directive is received on a response retrieved by a <a href="http://go.microsoft.com/fwlink/li/?LinkID=190912">script</a> reference, Internet Explorer will not load the "script" file unless the MIME type matches one of the following values:</li>
+                        <li>If the "nosniff" directive is received on a response retrieved by a <a href="http://go.microsoft.com/fwlink/li/?LinkID=190912">script</a> reference, IE will not load the "script" file unless the MIME type matches one of the following values:</li>
                         <ul>
                             <li>"application/ecmascript"</li>
                             <li>"application/javascript"</li>
@@ -1614,8 +1615,8 @@ parser.parseFromString(xhr.responseText, "text/xml");</code></pre>
                     <h3>Script elements and event execution - IE9+</h3>
                     <ul>
 
-                        <li>IE9 Standards mode introduces the standards-based and interoperable <a href="http://go.microsoft.com/fwlink/li/?LinkId=28280">load</a> event for <a href="http://go.microsoft.com/fwlink/li/?LinkId=190912">script</a> elements. Previous versions of Windows Internet Explorer supported only the non-interoperable <a href="http://go.microsoft.com/fwlink/li/?LinkId=239532">onreadystatechange</a> event for <a href="http://go.microsoft.com/fwlink/li/?LinkId=190912">script</a> elements.</li>
-                        <li>For compatibility with existing websites, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239532">onreadystatechange</a> event is still supported in IE9 mode. However, sites that register for both of these events will now have two callbacks where in previous versions of Internet Explorer there was only one.</li>
+                        <li>IE9 Standards mode introduces the standards-based and interoperable <a href="http://go.microsoft.com/fwlink/li/?LinkId=28280">load</a> event for <a href="http://go.microsoft.com/fwlink/li/?LinkId=190912">script</a> elements. Previous versions of Windows IE supported only the non-interoperable <a href="http://go.microsoft.com/fwlink/li/?LinkId=239532">onreadystatechange</a> event for <a href="http://go.microsoft.com/fwlink/li/?LinkId=190912">script</a> elements.</li>
+                        <li>For compatibility with existing websites, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239532">onreadystatechange</a> event is still supported in IE9 mode. However, sites that register for both of these events will now have two callbacks where in previous versions of IE there was only one.</li>
 
                         <li>The standards-based <a href="http://go.microsoft.com/fwlink/li/?LinkId=28280">load</a> event is the recommended event for these scenarios and should be used whenever possible.</li>
                     </ul>
@@ -1644,84 +1645,68 @@ function callback() { console.log("loaded"); }</code></pre>
             </section>
             <section>
                 <section>
-                    <h3>Table object model consistency</h3>
-                    <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>To improve consistency between Windows Internet Explorer and other browsers, the IE9 Standards mode includes several changes to the table object model.</li>
+                    <h3>Table object model consistency - IE9+</h3>
                     <ul>
                         <li>Extra <a href="http://go.microsoft.com/fwlink/li/?LinkId=239555">thead</a> and <a href="http://go.microsoft.com/fwlink/li/?LinkId=239556">tfoot</a> elements do not appear in the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239557">tBodies</a> collection.</li>
                         <li>The rows collection has a different ordering. First, it includes any rows in the thead element, then all remaining rows that are not in the tfoot element, and then any rows in the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239556">tfoot</a> element, regardless of their order in the document.</li>
                         <li>A call for rows returns all rows at all depths within the table, including direct row children of the table.</li>
                         <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=199801">getElementsByTagName</a> and HtmlElement.children methods do not return comment nodes.</li>
                     </ul>
-                    <li>Your application might encounter script errors that are minor, that keep pages from loading, or that create content that is not intended because of changes to the table object model.</li>
-                    <li>If your code works in other browsers, it should work in Windows Internet Explorer 9.</li>
-                    <li>If you have not tested your code in other browsers, you might need to update your code to work with IE9 mode. Test your code by using the Internet Explorer Developer Tools to find and fix problems.</li>
-                    <li>Alternatively, you can force Internet Explorer to use IE8 Standards mode and use the same behavior as Windows Internet Explorer 8.</li>
+
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Whitespace preservation and the DOM</h3>
+                    <h3>Whitespace preservation and the DOM - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Any white space that you add to a webpage persists in the Document Object Model (DOM).</li>
+                        <li>Any white space that you add to a webpage persists in the DOM when using Windows IE 9.</li>
+                        <li>If you want behavior like Windows IE 8, use the <a href="http://go.microsoft.com/fwlink/li/?LinkID=190903">Element Traversal API</a> (for example, <a href="http://go.microsoft.com/fwlink/li/?LinkId=239572">firstElementChild</a>).</li>
                     </ul>
-                    <li>Any white space that you add to a webpage persists in the Document Object Model (DOM).</li>
-                    <li>Any white space that you add to a webpage persists in the DOM when using Windows Internet Explorer 9.</li>
-                    <li>If you want behavior like Windows Internet Explorer 8, use the <a href="http://go.microsoft.com/fwlink/li/?LinkID=190903">Element Traversal API</a> (for example, <a href="http://go.microsoft.com/fwlink/li/?LinkId=239572">firstElementChild</a>).</li>
-                    <li>Consider how the following code example appears in Internet Explorer 9 and Internet Explorer 8.</li>
                     <pre><code>&lt;div&gt;
    Text &lt;/div&gt;</code></pre>
-                    <li>Internet Explorer 9:</li>
+                    <li>IE 9:</li>
                     <pre><code>     div
               |-&gt;"\n   Text "</code></pre>
-                    <li>Internet Explorer 8:</li>
+                    <li>IE 8:</li>
                     <pre><code>     div
               |-&gt;"Text"</code></pre>
+                    <a href="http://www.browserwork.com/tests/dom-space.html">http://www.browserwork.com/tests/dom-space.html</a>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Window event behavior has changed</h3>
-                    <ul>
-                        <li>Applies to IE11.</li>
-                        <li>Affects IE11 edge mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>In order to provide more consistency with industry standards and other popular browsers, behavior of <a href="http://msdn.microsoft.com/en-us/library/ie/ms535863(v=vs.85).aspx">window.event</a> has changed in Internet Explorer 11. For webpages (and apps) displayed in IE11 edge mode:</li>
+                    <h3>Window event behavior has changed - IE11</h3>
                     <ul>
                         <li>
-                            <li>The object passed to the handler of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535863(v=vs.85).aspx">window.event</a> property returns "undefined" when the event does not have a handler assigned. (In earlier document modes, it returned NULL in this case.) </li>
+                            The object passed to the handler of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535863(v=vs.85).aspx">window.event</a> property returns "undefined" when the event does not have a handler assigned. (In earlier document modes, it returned NULL in this case.)
                         </li>
                         <li>The type of the object passed to the handler of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535863(v=vs.85).aspx">window.event</a> has changed. For IE11 edge mode, this is an <a href="http://msdn.microsoft.com/en-us/library/ie/ff974340(v=vs.85).aspx">Event</a> object. (In earlier documents modes, it is an <a href="http://msdn.microsoft.com/en-us/library/ie/ff974353(v=vs.85).aspx">MSEventObj</a> object.) </li>
+                        <a href="http://jsfiddle.net/aaronzhcl/Lz36b/">http://jsfiddle.net/aaronzhcl/Lz36b/</a>
                     </ul>
-                    <li>Update any webpages affected by this behavior so they don't depend on legacy functionality.</li>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Window object properties are cleared when orphaned</h3>
+                    <h3>Window object properties are cleared when orphaned - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Transient iFrame: An <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> that is parsed or temporarily created, added and then removed from the Document Object Model (DOM) tree and not reused is known as a "transient" <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a>.</li>
+                        <li>Orphaned window: When a transient <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> is removed from the DOM tree, its window is considered "orphaned" (alive, but not directly reachable) until it is closed.</li>
                     </ul>
-                    <li>Properties on the global object (<a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a>) are cleared when a window is orphaned. The properties are cleared to allow garbage collection of the orphaned window when no additional references to it are found. Additionally, timers stop firing and event propagation (inside the orphaned window) stops immediately. The following definitions will help in understanding this topic:</li>
-                    <li>Transient iFrame: An <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> that is parsed or temporarily created, added and then removed from the Document Object Model (DOM) tree and not reused is known as a "transient" <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a>.</li>
-                    <li>Orphaned window: When a transient <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> is removed from the DOM tree, its window is considered "orphaned" (alive, but not directly reachable) until it is closed.</li>
                 </section>
                 <section>
                     <h3>Changes to iFrame Behavior in IE9 Standards mode</h3>
-                    <li>When <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> elements are removed from the DOM tree, several things happen:</li>
                     <ul>
-                        <li>Their orphaned <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object is "cleaned" to allow the orphaned window to garbage collection. A cleaned <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object (that is, global object) will not have any properties visible on it. The cleaning only involves property removal on the <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object—it does not actually delete the objects formerly referenced by those properties. This provides the ability for any built-in or user-defined objects present on the orphaned window to be reachable if, and only if, there is another external reference to the object.</li>
+                        <p>When <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> elements are removed from the DOM tree, several things happen:</p>
+                        <li>Their orphaned <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object is "cleaned" to allow the orphaned window to garbage collection. A cleaned <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object (that is, global object) will not have any properties visible on it. </li>
                         <li>Existing timers (for example, <a href="http://go.microsoft.com/fwlink/li/?LinkID=233102">setTimeout</a>) are canceled and no further timers are allowed to run</li>
                         <li>Event propagation that was in progress within the window that becomes orphaned is stopped (for example, as if the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239562">stopImmediatePropagation</a> API was invoked on the related event)</li>
                     </ul>
-                    These are changes from Windows Internet Explorer 8 behavior where none of the above steps were taken when the transient <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a>'s window was orphaned. These behavior changes apply only to IE9 Standards mode. Legacy modes behave as they did in Internet Explorer 8.
-                    <li>In previous versions of Windows Internet Explorer (including legacy Windows Internet Explorer 9 document modes), when an <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a> was removed from the DOM tree, the memory for the orphaned window was reclaimed only at page navigation time. Prior to page navigation, the orphaned window's memory would persist without being garbage collected. In rare cases when sites use multiple transient <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iFrame</a>s to download and/or run content without intervening page navigations, the amount of memory per orphaned window would compound until it negatively impacted a user's experience on the page. Pre-existing references to objects within the orphaned window remain available; however, re-requesting these properties via the global object will fail. Failures will manifest as script errors where "myRequestedProperty" does not exist or is undefined.</li>
-                    <li>We recommend that:</li>
+                </section>
+                <section>
+                    <p>We recommend that:</p>
                     <ul>
                         <li>Objects required from an orphaned window have pre-existing references (from outside the orphaned window) in order to be reachable, and that functions executed in the context of the orphaned window avoid references to properties from the global object (for example, Array, Object)</li>
                         <li>Code that expects timers to fire should be made resilient to the possibility of their window becoming orphaned, resulting in the cancellation of existing timers</li>
@@ -1731,17 +1716,16 @@ function callback() { console.log("loaded"); }</code></pre>
             </section>
             <section>
                 <section>
-                    <h3>XSLT compatibility changes</h3>
+                    <h3>XSLT compatibility changes - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>In Windows Internet Explorer 9, the processing of XML and Extensible Stylesheet Language Transformations (XSLT) files has been modified for improved standards compliance and interoperability with other browsers. In particular, certain non-standard behaviors relating to the processing of XSLT files have changed.</li>
-                    <li>In Internet Explorer 9, the changes to the processing ofXML and XSLT files are as follows:</li>
-                    <ul>
-                        <li>The legacy Extensible Stylesheet Language (XSL) namespace is no longer supported.</li>
-                        <li>Processing instructions with the name <code>xml:stylesheet</code> (note the colon) no longer cause XSLT to be processed.</li>
-                        <li>The <code>xsl:output</code> element can now be used to specify XML parsing for XSLT output</li>
+
+                        <li>In Windows IE 9, the processing of XML and Extensible Stylesheet Language Transformations (XSLT) files has been modified for improved standards compliance and interoperability with other browsers. In particular, certain non-standard behaviors relating to the processing of XSLT files have changed.</li>
+                        <li>In IE 9, the changes to the processing ofXML and XSLT files are as follows:</li>
+                        <ul>
+                            <li>The legacy Extensible Stylesheet Language (XSL) namespace is no longer supported.</li>
+                            <li>Processing instructions with the name <code>xml:stylesheet</code> (note the colon) no longer cause XSLT to be processed.</li>
+                            <li>The <code>xsl:output</code> element can now be used to specify XML parsing for XSLT output</li>
+                        </ul>
                     </ul>
                 </section>
                 <section>
@@ -1776,17 +1760,13 @@ xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</code></pre>
             </section>
             <section>
                 <section>
-                    <h3>Array index handling</h3>
+                    <h3>Array index handling - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Windows IE 8 does not conform to the ECMAScript (3rd edition) specification in situations where the initial value of the array's length property is greater than 2E+31-1 (that is, 2147483647).</li>
+                        <li>IE 9 correctly handles <a href="http://go.microsoft.com/fwlink/li/?LinkId=239575">Array</a> elements that use indices between 2E+31-1 and 2E+32-2. The IE 8 behavior is not replicated in any of the IE 9 document modes.</li>
                     </ul>
-                    <li>Starting with Windows Internet Explorer 9, <a href="http://go.microsoft.com/fwlink/li/?LinkId=239575">array</a> elements with large indices are handled differently than in earlier versions.</li>
-                    <li>Windows Internet Explorer 8 does not conform to the ECMAScript (3rd edition) specification in situations where the initial value of the array's length property is greater than 2E+31-1 (that is, 2147483647). When an <a href="http://go.microsoft.com/fwlink/li/?LinkId=239575">Array</a> element is created with an index greater than 2147483647, the index of new element created will be a negative integer.</li>
-                    <li>Internet Explorer 9 correctly handles <a href="http://go.microsoft.com/fwlink/li/?LinkId=239575">Array</a> elements that use indices between 2E+31-1 and 2E+32-2. The Internet Explorer 8 behavior is not replicated in any of the Internet Explorer 9 document modes.</li>
-                    <li>This can be observed when an element is pushed to an array of length 2E+31-1.</li>
-                    <li>If your webpage uses large arrays, test your code between Internet Explorer 8 and Internet Explorer 9.</li>
-                    <li>The following example prints "true" in Internet Explorer 8, but prints "false" in Internet Explorer 9.</li>
+                    <p>The following example prints "true" in IE 8, but prints "false" in IE 9.</p>
                     <pre><code>function test() {
     var arr = new Array();      
     arr[2147483650] = 10000;
@@ -1794,171 +1774,97 @@ xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</code></pre>
     document.write(arr["-2147483645"] == 10);
 }
 test();</code></pre>
+                    <a href="http://www.browserwork.com/tests/array-index.html">http://www.browserwork.com/tests/array-index.html</a>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Enumerating JavaScript properties</h3>
+                    <h3>Enumerating JavaScript properties - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Due to the changes made in the JavaScript object model of Windows IE 9, JavaScript properties may be enumerated differently from how they are enumerated in earlier versions.</li>
+                        <li>When using the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239574">for…in</a> Statement, in any document mode, the order of property enumerations may be different from the order returned by Windows IE 8. For example, numeric properties now enumerate before non-numeric properties. </li>
                     </ul>
-                    <li>Due to the changes made in the JavaScript object model of Windows Internet Explorer 9, JavaScript properties may be enumerated differently from how they are enumerated in earlier versions.</li>
-                    <li>When using the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239574">for…in</a> Statement, in any document mode, the order of property enumerations may be different from the order returned by Windows Internet Explorer 8. For example, numeric properties now enumerate before non-numeric properties. </li>
-                    <li>Be aware of the difference in enumeration order between Internet Explorer 8 and Internet Explorer 9; see the examples below.</li>
-                    <li>The following sample illustrates the difference in enumeration order between Internet Explorer 8 and Internet Explorer 9:</li>
-                    <pre><code>var obj = {first : "prop1", second: "prop2", 3: "prop3"};
-var s = "";
-for (var key in obj) {
-    s += key + ": " + obj[key] + " ";
-}
-document.write (s);</code></pre>
-                    <li>Running this sample in Internet Explorer 8 and Internet Explorer 9 would print the following results:</li>
-                    All modes of Internet Explorer 8: first: prop1 second: prop2 3: prop3 All modes of Internet Explorer 9: 3: prop3 first: prop1 second: prop2
-                    <li>Internet Explorer 8 does not include enumerations of properties that have the same name as built-in properties of a prototype object. All document modes in Internet Explorer 9 include these properties in the enumeration. The following sample illustrates this difference:</li>
-                    <pre><code>var obj = { first: "prop1", toString : "Hello" }
-var s = "";
-for (var key in obj) {
-    s += key + ": " + obj[key] + " ";
-}
-document.write (s);</code></pre>
-                    <li>Running this sample in Internet Explorer 8and Internet Explorer 9 would print the following results:</li>
-                    All modes of Internet Explorer 8: first: prop1 All modes of Internet Explorer 9: first: prop1 toString: Hello</section>
+                    <a href="http://www.browserwork.com/tests/enum-property.html">http://www.browserwork.com/tests/enum-property.html</a>
+                </section>
             </section>
             <section>
                 <section>
-                    <h3>Function pointer method calls</h3>
+                    <h3>Function pointer method calls - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Earlier versions of Windows Internet Explorer supported caching a pointer to a method and then using the cached pointer to call the method. As of Windows Internet Explorer 9, This support was removed to improve interoperability with other browsers.</li>
-                    <li>A common practice on webpages targeting older versions of Internet Explorer was to save common methods to a variable and use that variable as a proxy for the method in order to make JavaScript code more compact:</li>
-                    <pre><code>var d = document.writeln;
+
+                        <li>Earlier versions of Windows IE supported caching a pointer to a method and then using the cached pointer to call the method. As of Windows IE 9, This support was removed to improve interoperability with other browsers.</li>
+                        <li>While this code works in Windows IE 8 and earlier:</li>
+                        <pre><code>var d = document.writeln;
 d("&lt;script language=VBScript&gt;");</code></pre>
-                    <li>As of Internet Explorer 9, an object is required in order to invoke the method. By default the <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object is provided in global scope (such as in the previous example). However, the <a href="http://go.microsoft.com/fwlink/li/?LinkID=209636">window</a> object does not have a method writeln, so the JavaScript error message "Invalid calling object" is reported.</li>
-                    <li>The JavaScript error message "Invalid calling object" is reported when using a cached pointer to call a method in Internet Explorer 9.</li>
-                    <li>Use the <a href="http://go.microsoft.com/fwlink/li/?LinkId=238794">call</a> method (a property of all functions) to explicitly provide the appropriate calling object or use JavaScript's <a href="http://go.microsoft.com/fwlink/li/?LinkId=238793">bind</a> API to associate an implicit calling object with the method.</li>
-                    <li>Now you must specify the target for the method call just as you do in all other browsers. So while this code works in Windows Internet Explorer 8 and earlier:</li>
-                    <pre><code>var d = document.writeln;
-d("&lt;script language=VBScript&gt;");</code></pre>
-                    <li>Now it fails in Internet Explorer 9 just as it fails in all other browsers. An easy fix for this issue is to use the <a href="http://go.microsoft.com/fwlink/li/?LinkId=238794">call</a> method (a property of all functions) to explicitly provide the appropriate calling object:</li>
-                    <pre><code>d.call(document, "&lt;script language="VBScript"&gt;”);</code></pre>
-                    <li>The long term fix for this is to use JavaScript's <a href="http://go.microsoft.com/fwlink/li/?LinkId=238793">bind</a> API to associate an implicit calling object with the method. This is done as follows (again, drawing on the previous example):</li>
-                    <pre><code>var d = document.writeln.bind(document);
-d("&lt;script language=VBScript&gt;"); // Now this is OK.</code></pre>
+                        <li>Now it fails in IE 9 just as it fails in all other browsers. An easy fix for this issue is to use the <a href="http://go.microsoft.com/fwlink/li/?LinkId=238794">call</a> method (a property of all functions) to explicitly provide the appropriate calling object.</li>
+                        <li>The long term fix for this is to use JavaScript's <a href="http://go.microsoft.com/fwlink/li/?LinkId=238793">bind</a> API to associate an implicit calling object with the method. </li>
+                        <a href="http://www.browserwork.com/tests/method-pointer.html">http://www.browserwork.com/tests/method-pointer.html</a>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Handling daylight saving time using JavaScript</h3>
+                    <h3>Handling daylight saving time using JavaScript - IE10+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>In Windows IE 9 and previous versions of Windows IE, dates are customized by applying the <a href="http://go.microsoft.com/fwlink/li/?LinkId=272536">ECMAScript</a> specification's rules for storing daylight saving time adjusted times internally. To improve accuracy, especially with dates in the past (historical dates), IE 10 relies on the system's rules for storing daylight saving time adjusted times. This topic contains the following sections:</li>
+                        <li>A webpage that manipulates dates in JavaScript worked as expected in IE 9, but no longer produces the same results (or functions incorrectly) in IE 10.</li>
                     </ul>
-                    <li>In Windows Internet Explorer 9 and previous versions of Windows Internet Explorer, dates are customized by applying the <a href="http://go.microsoft.com/fwlink/li/?LinkId=272536">ECMAScript</a> specification's rules for storing daylight saving time adjusted times internally. To improve accuracy, especially with dates in the past (historical dates), Internet Explorer 10 relies on the system's rules for storing daylight saving time adjusted times. This topic contains the following sections:</li>
-                    <li>A webpage that manipulates dates in JavaScript worked as expected in Internet Explorer 9, but no longer produces the same results (or functions incorrectly) in Internet Explorer 10.</li>
-                    <li>The daylight saving time-adjusted time that is produced by Internet Explorer 10 (in Standards mode) differs from that produced by Internet Explorer 9 as shown here:</li>
-                    <pre><code>// Browser is running in Pacific Standard Time zone
-// IE10 (Standards mode)
-&gt;&gt; new Date(Date.parse("3/31/2000")).toUTCString() 
-"Fri, 31 Mar 2000 07:00:00 UTC"
-// IE9 (Standards mode) and previous versions of IE
-&gt;&gt; new Date(Date.parse("3/31/2000")).toUTCString() 
-"Fri, 31 Mar 2000 08:00:00 UTC"</code></pre>
-                    <li>Though Internet Explorer 10 relies on Windows for daylight saving time adjustments, developers should be aware that some common practices might produce different results in Internet Explorer 10 in Standards mode than in other browsers or earlier versions of Internet Explorer. </li>
-                    <li>For the time zones in which the daylight saving time transition happens at midnight (the clock goes backward), the system time actually transitions 1 millisecond (ms) before the transition boundary. By transitioning 1 ms before, Windows is still within the same day when the daylight saving time transition happens, but moves the clock backward in an already daylight saving time-transitioned state. This behavior is present in Windows 7 and later.</li>
-                    <li>This sample code attempts to detect a transition from Brasilia Summer Time (BRST) to Brasilia time (BRT) on February, 25, 2012 (that is, the end of Daylight saving time) while the browser is running in the Brasilia time zone.</li>
-                    <pre><code>var milliSeconds = 0; 
-var offSet1 = new Date(2012, 01, 25, 24, 00, 00, milliSeconds).getTimezoneOffset(); 
-var offSet2 = new Date(2012, 01, 25, 24, 00, 00, milliSeconds-1).getTimezoneOffset(); // Check the offset 1 ms before
-offSet1 != offSet2 ? alert("dstBoundary") : alert("non-dstBoundary");</code></pre>
-                    <li>Because the system actually transitions 1 ms before the daylight saving time boundary, this example would produce the alert "non-dstBoundary" in Internet Explorer 10 in Standards mode. Checking the offset 2 milliseconds before would correctly produce the alert "dstBoundary".</li>
-                    <li>Internet Explorer 9 and earlier don't accurately adjust for daylight saving time. In Internet Explorer 9, the example produces the alert "non-dstBoundary" at both 1 and 2 milliseconds before the daylight saving time boundary. </li>
-                    <li>If your code calculates historical dates in your web applications, or has custom logic to work around the inaccuracies of the browser date calculation, make sure that the custom logic still works properly when upgrading web applications to work on Internet Explorer 10.</li>
+                    <a href="http://jsfiddle.net/aaronzhcl/57wsF/">http://jsfiddle.net/aaronzhcl/57wsF/</a>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Indirect eval function called are now globally scoped</h3>
+                    <h3>Indirect eval function called are now globally scoped - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <p>In earlier versions of Windows IE (and corresponding document modes), the string passed to the indirect <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> is evaluated in the local function scope. Starting with IE9 Standards mode, it is evaluated in the global scope as per the ECMAScript Language Specification, 5th edition.</p>
+                        <a href="http://jsfiddle.net/aaronzhcl/v63ZL/">http://jsfiddle.net/aaronzhcl/v63ZL/</a>
                     </ul>
-                    <li>Calling <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> methods indirectly (that is, other than by the explicit use of its name) inside a function produces different results in Windows Internet Explorer 9 and later versions that it does in earlier versions (and document modes).</li>
-                    <li>In earlier versions of Windows Internet Explorer (and corresponding document modes), the string passed to the indirect <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> is evaluated in the local function scope. Starting with IE9 Standards mode, it is evaluated in the global scope as per the ECMAScript Language Specification, 5th edition.</li>
-                    <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> function behaves as expected in IE5 (Quirks) mode, IE7 Standards mode, and IE8 Standards mode but returns "undefined" in IE9 mode.</li>
-                    <li>Call the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> method directly.</li>
-                    <li>In the following example, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a> function has been called indirectly by assigning it to a variable and calling the variable as if it were <a href="http://go.microsoft.com/fwlink/li/?LinkId=239569">eval</a>.</li>
-                    <pre><code>function test() {
-   var dateFn = "Date(1971,3,8)";
-   var myDate;
-   var indirectEval = eval;
-   indirectEval("myDate = new " + dateFn + ";");
-   document.write(myDate);
-}
-test();</code></pre>
-                    <li>This sample will return "Thu Apr 8 00:00:00 PDT 1971" in earlier versions of Internet Explorer (and related document modes). Starting with IE9 mode, this prints "undefined".</li>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Math precision and SSE2 differences</h3>
+                    <h3>Math precision and SSE2 differences - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Starting with Windows Internet Explorer 9, math precision in certain edge cases differs from earlier versions. Chakra, the JavaScript engine introduced in Internet Explorer 9 uses Streaming SIMD Extensions 2 (SSE2) if the platform supports them, which results in faster mathematical operations but also yields a difference in precision from the Microsoft JScript engine of Windows Internet Explorer 8</li>
-                    <li> Output from mathematical operations performed by Chakra in Internet Explorer 9 might differ from output from the JScript engine of Internet Explorer 8.</li>
-                    <li>Test your code to ensure that it is not negatively affected by the difference in math precision.</li>
-                    <li> The following example demonstrates the difference:</li>
-                    <pre><code>function test() {
+
+                        <li> Output from mathematical operations performed by Chakra in IE 9 might differ from output from the JScript engine of IE 8.</li>
+                        <li> The following example demonstrates the difference:</li>
+                        <pre><code>function test() {
     var x = 6.28318530717958620000;
     var val = Math.sin(x);
     document.write(Math.abs(val)) 
 }
 test();</code></pre>
-                    <li>In all modes of Internet Explorer 8, this will print "2.4492127076447545e-16". When the platform supports SSE2, in all modes of Internet Explorer 9, this will print "2.4492935982947064e-16".</li>
+                        <li>In all modes of IE 8, this will print "2.4492127076447545e-16". When the platform supports SSE2, in all modes of IE 9, this will print "2.4492935982947064e-16".</li>
+                    </ul>
+                    <a href="http://jsfiddle.net/aaronzhcl/GsK8T/">http://jsfiddle.net/aaronzhcl/GsK8T/</a>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Null protocol return values</h3>
+                    <h3>Null protocol return values - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Windows Internet Explorer 9 now follows HTML5 guidelines when handling JavaScript protocols that return "null".</li>
-                    <li>HTML5 states that if a script running within a JavaScript protocol returns "null", the browser must treat the URL as if it has returned HTTP 204 No Content, which must not contain a response body.</li>
-                    <li>Consider this example:</li>
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;      
-&lt;/head&gt;
-&lt;body&gt;
-   &lt;div id="ad_content"&gt;
+
+                        <li>HTML5 states that if a script running within a JavaScript protocol returns "null", the browser must treat the URL as if it has returned HTTP 204 No Content, which must not contain a response body.</li>
+                        <pre><code>&lt;div id="ad_content"&gt;
       &lt;iframe src="javascript:document.write('...'); return null;" /&gt;
    // document.write is meant to create the contents of the iframe
-   &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <li>Since the JavaScript executed as part of the JavaScript protocol (<code>javascript:</code>) returns "null", Internet Explorer 9 and other browsers that comply with this part of HTML5 treat the URL as if it returned HTTP 204 No Content so the <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iframe</a> is empty, regardless of what other JavaScript ran in the JavaScript protocol. </li>
+&lt;/div&gt;</code></pre>
+                        <li>Since the JavaScript executed as part of the JavaScript protocol (<code>javascript:</code>) returns "null", IE 9 and other browsers that comply with this part of HTML5 treat the URL as if it returned HTTP 204 No Content so the <a href="http://go.microsoft.com/fwlink/li/?LinkID=236434">iframe</a> is empty, regardless of what other JavaScript ran in the JavaScript protocol. </li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Verify JavaScript framework support for the latest versions of Internet Explorer</h3>
+                    <h3>Verify JavaScript framework support for the latest versions of IE</h3>
                     <ul>
-                        <li>Applies to all supported versions of Internet Explorer</li>
-                        <li>Affects all document modes, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Most of these frameworks have already been updated to work correctly in the latest version of IE. However, many sites are still using older versions of JavaScript frameworks that are not compatible with the latest version of IE.</li>
+                        <li>Many existing JavaScript frameworks contained functionality that was dependent upon existing IE-specific behavior or quirks. Consequently, the changes made in IE may cause part of many popular JavaScript frameworks to stop working correctly.</li>
+                        <li>If your site relies on a JavaScript framework and you are encountering issues with IE, try updating to the latest version of the framework. </li>
                     </ul>
-                    <li>Each version of Windows Internet Explorer improves support for modern standards and interoperability with other web browsers. </li>
-                    <li>Most of these frameworks have already been updated to work correctly in the latest version of Internet Explorer. However, many sites are still using older versions of JavaScript frameworks that are not compatible with the latest version of Internet Explorer.</li>
-                    <li>Many existing JavaScript frameworks contained functionality that was dependent upon existing Internet Explorer-specific behavior or quirks. Consequently, the changes made in Internet Explorer may cause part of many popular JavaScript frameworks to stop working correctly.</li>
-                    <li>If your site relies on a JavaScript framework and you are encountering issues with Internet Explorer, try updating to the latest version of the framework. </li>
-                    <li>To demonstrate, here is a list of popular JavaScript frameworks that needed to be updated to support Windows Internet Explorer 9:</li>
-                    FrameworkIE-Compatible VersionsGet the Latest Version From Cufon1.09i+http://cufon.shoqolate.com/generate/ jQuery1.5.1+http://jquery.com/ jQuery UI1.6.8+http://jqueryui.com/ MooTools1.3+http://mootools.net/ Prototype1.7+http://prototypejs.org/
-                    <li>NOTE: Frameworks that are not listed in the previous table might have a newer version that is compatible with Internet Explorer, so upgrading to the latest version of a framework remains the correct initial course of action to resolve compatibility issues. Share your knowledge of the compatibility status of other frameworks in the comments below.</li>
                 </section>
             </section>
             <section>
@@ -1968,266 +1874,186 @@ test();</code></pre>
             </section>
             <section>
                 <section>
-                    <h3>Arguments.caller is no longer supported</h3>
+                    <h3>Arguments.caller is no longer supported - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>As of Windows Internet Explorer 9, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property is not supported in IE9 Standards mode or later document modes.</li>
-                    <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property works as expected in IE5 (Quirks) mode, IE7 Standards mode, and IE8 Standards mode but does not work in IE9 mode or later document modes.</li>
-                    <li>Discontinue the use of the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property or force your webpages to run in a legacy mode such as IE8 mode.</li>
-                    <li>When <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a> objects are created, in all modes in Windows Internet Explorer 8 and IE5 mode, IE7 mode, and IE8 mode in Internet Explorer 9, a property with the name <a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> is created. This <a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property stores the reference to the argument object of the function that called it.</li>
-                    <li>In the following example, all document modes in Internet Explorer 8 and IE5 mode, IE7 mode, and IE8 mode in Internet Explorer 9 return "1". IE9 mode issues the script error "object is null or undefined".</li>
-                    <pre><code>function alertCallerLength() {
+
+                        <li>As of Windows IE 9, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property is not supported in IE9 Standards mode or later document modes.</li>
+                        <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=239571">arguments</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkId=215418">caller</a> property works as expected in IE5 (Quirks) mode, IE7 Standards mode, and IE8 Standards mode but does not work in IE9 mode or later document modes.</li>
+                        <li>In the following example, all document modes in IE 8 return "1". IE9 mode issues the script error "object is null or undefined".</li>
+                        <pre><code>function alertCallerLength() {
     alert(arguments.caller.length);
 }
 function callingFunction() {
     alertCallerLength();
 }
 callingFunction(1)</code></pre>
-                    <li>For best results, pass the necessary information to the function as a separate value or object. </li>
+                    </ul>
+                    <a href="http://jsfiddle.net/aaronzhcl/6NvbK/">http://jsfiddle.net/aaronzhcl/6NvbK/</a>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Conditional comments are no longer supported</h3>
+                    <h3>Conditional comments are no longer supported - IE10+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Support for conditional comments has been removed in IE 10 standards and quirks modes for improved interoperability and compliance with HTML5.</li>
+                        <li>A page using Conditional Comments worked as intended in Windows IE 9, but no longer works in IE 10.</li>
                     </ul>
-                    <li>Support for conditional comments has been removed in Internet Explorer 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that Conditional Comments are now treated as regular comments, just like in other browsers. This change can impact pages written exclusively for Windows Internet Explorer or pages that use browser sniffing to alter their behavior in Internet Explorer. </li>
-                    <li>Note:Most pages are unaffected by this change.</li>
-                    <li>A page using Conditional Comments worked as intended in Windows Internet Explorer 9, but no longer works in Internet Explorer 10.</li>
-                    <li>If the page works correctly in other browsers, consider using feature detection to treat Internet Explorer 10 like other browsers. Otherwise, add the following <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> tag near the top of the page to opt into Internet Explorer 9 behavior:</li>
-                    <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
-                    <li>The following example page uses Conditional Comments and might be impacted by this change:</li>
                     <pre><code>&lt;html&gt;
   &lt;!--[if IE]&gt;
     This content is ignored in IE10 and other browsers.
     In older versions of IE it renders as part of the page.
   &lt;![endif]--&gt;
 &lt;/html&gt;</code></pre>
-                    <li>The page can be fixed quickly by opting into Internet Explorer 9 behavior, as shown here:</li>
-                    <pre><code>&lt;html&gt;
+                </section>
+                <section>
+                    <ul>
+
+                        <li>The page can be fixed quickly by opting into IE 9 behavior:</li>
+                        <pre><code>&lt;html&gt;
   &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;
   &lt;!--[if IE]&gt;
-    This content is ignored in Internet Explorer 10 and other browsers.
-    In older versions of Internet Explorer, it renders as part of the page.
+    This content is ignored in IE 10 and other browsers.
+    In older versions of IE, it renders as part of the page.
   &lt;![endif]--&gt;
 &lt;/html&gt;</code></pre>
-                    <li>The long-term solution is to remove the dependency from the code.</li>
+                        <li>The long-term solution is to remove the dependency from the code.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>CSS expressions no longer supported for the Internet zone</h3>
+                    <h3>CSS expressions no longer supported for the Internet zone - IE11</h3>
                     <ul>
-                        <li>Applies to IE11.</li>
-                        <li>Affects IE11 edge mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Starting with IE 11, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">CSS expressions</a> are no longer enabled for webpages loaded in the <a href="http://msdn.microsoft.com/en-us/library/ie/ms537183(v=vs.85).aspx">Internet zone</a>. CSS expressions are supported for pages loaded in other zones (such as the intranet zone) when pages are rendered in IE7 standards mode or IE5 quirks mode. </li>
+                        <li>For recent versions of IE, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">CSS expressions</a> (also called dynamic properties) are deprecated and work only in IE7 standards mode or IE5 quirks mode. (CSS expressions were deprecated in IE 8.)</li>
+                        <li>Starting with IE11, CSS expressions no longer work in any document mode for webpages loaded in the Internet zone. </li>
                     </ul>
-                    <li>Starting with Internet Explorer 11, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">CSS expressions</a> are no longer enabled for webpages loaded in the <a href="http://msdn.microsoft.com/en-us/library/ie/ms537183(v=vs.85).aspx">Internet zone</a>. CSS expressions are supported for pages loaded in other zones (such as the intranet zone) when pages are rendered in IE7 standards mode or IE5 quirks mode. </li>
-                    <li>For recent versions of Internet Explorer, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">CSS expressions</a> (also called dynamic properties) are deprecated and work only in IE7 standards mode or IE5 quirks mode. (CSS expressions were deprecated in Internet Explorer 8.)</li>
-                    <li>Starting with IE11, CSS expressions no longer work in any document mode for webpages loaded in the Internet zone. </li>
-                    <li>Update affected pages to use features defined by modern standards, such as HTML5, CSS3, and others.</li>
                 </section>
             </section>
-            <section>
+            <!-- <section>
                 <section>
-                    <h3>Dynamic VML pattern changes</h3>
+                    <h3>Dynamic VML pattern changes - IE9+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode only.</li>
-                    </ul>
-                    <li>To support dynamic Vector Markup Language (VML) in IE9 mode, the VML behavior must be attached to an element before any VML properties are assigned. If the order-of-operations is reversed, the VML engine cannot obtain the value from the Document Object Model (DOM) and the VML may not render correctly or at all. In the following example, VML is loaded statically without a problem:</li>
-                    <li>Note:Starting with Internet Explorer 10, <a href="http://msdn.microsoft.com/en-us/library/ie/hh801223(v=vs.85).aspx">VML is no  longer supported</a> and should not be used.</li>
-                    <pre><code>&lt;style&gt;oval {behavior: url(#default#VML);position:absolute}&lt;/style&gt;
+
+                        <li>To support dynamic Vector Markup Language (VML) in IE9 mode, the VML behavior must be attached to an element before any VML properties are assigned. If the order-of-operations is reversed, the VML engine cannot obtain the value from the Document Object Model (DOM) and the VML may not render correctly or at all. </li>
+                        <li>Note:Starting with IE 10, <a href="http://msdn.microsoft.com/en-us/library/ie/hh801223(v=vs.85).aspx">VML is no  longer supported</a> and should not be used.</li>
+                        <pre><code>&lt;style&gt;oval {behavior: url(#default#VML);position:absolute}&lt;/style&gt;
 &lt;body&gt;
  &lt;oval style="left:0;top:0;width:100px;height:50px" fillcolor="blue" stroked="f"/&gt;
 &lt;/body&gt;</code></pre>
-                    <li>Problems can occur if, for example, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239526">oval</a> element is accessed before adding the style sheet and a <a href="http://go.microsoft.com/fwlink/li/?LinkId=239531">fillcolor</a> property is set on that object. In that case, VML will be unable to retrieve the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239531">fillcolor</a> value and may not render correctly.</li>
-                    <li>This problem is commonly encountered by older versions of the Cufon.js library that use VML for advanced font rendering (or the <a href="http://go.microsoft.com/fwlink/li/?LinkId=196916">canvas</a> tag, if available).</li>
-                    <li>Rendering of VML works as intended in IE8 Standards mode but the VML may not render correctly or at all in IE9 mode.</li>
-                    <li>You might see missing text on webpages, upside-down text, missing VML graphics in IE9 mode.</li>
-                    <li>To support dynamic VML in IE9 mode, the VML behavior must be attached to an element before any VML properties are assigned.</li>
-                    <li>If the page is using the Cufon library, update to the latest version of the library that is compatible with Windows Internet Explorer 9.</li>
+                        <li>Problems can occur if, for example, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239526">oval</a> element is accessed before adding the style sheet and a <a href="http://go.microsoft.com/fwlink/li/?LinkId=239531">fillcolor</a> property is set on that object. In that case, VML will be unable to retrieve the <a href="http://go.microsoft.com/fwlink/li/?LinkId=239531">fillcolor</a> value and may not render correctly.</li>
+                    </ul>
+
                 </section>
-            </section>
+            </section> -->
             <section>
                 <section>
-                    <h3>Element behaviors and HTCs are no longer supported</h3>
+                    <h3>Element behaviors and HTCs are no longer supported - IE10+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Support for element behaviors and HTML components (HTCs) has been removed in Internet Explorer 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means elements previously bound to Element Behaviors or HTCs will be treated as generic elements, just like in other browsers. This change can impact pages written exclusively for Windows Internet Explorer or pages that use browser sniffing to alter their behavior in Internet Explorer. </li>
-                    <li>Note:Most pages are unaffected by this change.</li>
-                    <li>The following Document Object Model (DOM) properties are also affected by this change and are not supported in Internet Explorer 10 standards and quirks modes:</li>
-                    <ul>
-                        <li>
-                            <a href="http://msdn.microsoft.com/en-us/library/ie/ms537470(v=vs.85).aspx">document.namespaces</a>
-                        </li>
-                        <li>
-                            <a href="http://msdn.microsoft.com/en-us/library/ie/ms534388(v=vs.85).aspx">element.scopeName</a>
-                        </li>
-                        <li>
-                            <a href="http://msdn.microsoft.com/en-us/library/ie/ms534658(v=vs.85).aspx">element.tagUrn</a>
-                        </li>
-                    </ul>
-                    <li>A page using Element Behaviors or HTCs worked as intended in Windows Internet Explorer 9, but no longer works in Internet Explorer 10.</li>
-                    <li>If the page works correctly in other browsers, consider using feature detection to treat Internet Explorer 10 like other browsers. Otherwise, add the following <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> tag near the top of the page to opt into Internet Explorer 9 behavior:</li>
-                    <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
-                    <li>The following example page uses Element Behaviors and might be impacted by this change:</li>
-                    <pre><code>&lt;html xmlns:my&gt;
+
+                        <li>Support for element behaviors and HTML components (HTCs) has been removed in IE 10 standards and quirks modes for improved interoperability and compliance with HTML5. </li>
+
+                        <li>The following example page uses Element Behaviors and might be impacted by this change:</li>
+                        <pre><code>&lt;html xmlns:my&gt;
   &lt;?import namespace="my" implementation="my.htc"&gt;
   &lt;my:element&gt;
-  This parses as an unknown element in Internet Explorer10 and other browsers.
-  In older versions of Internet Explorer it binds to "my.htc".
+  This parses as an unknown element in IE10 and other browsers.
+  In older versions of IE it binds to "my.htc".
   &lt;/my:element&gt;
 &lt;/html&gt;</code></pre>
-                    <li>The page can be fixed quickly by opting into Internet Explorer 9 behavior, as shown here:</li>
-                    <pre><code>&lt;html xmlns:my&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;
-  &lt;?import namespace="my" implementation="my.htc"&gt;
-  &lt;my:element&gt;
-  This parses as an unknown element in Internet Explorer 10 and other browsers.
-  In older versions of Internet Explorer, it binds to "my.htc".
-  &lt;/my:element&gt;
-&lt;/html&gt;</code></pre>
-                    <li>The long-term solution is to revise the code to remove the dependency.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>DX filters are no longer supported</h3>
+                    <h3>DX filters are no longer supported - IE10+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>DirectX-based <a href="http://go.microsoft.com/fwlink/li/?LinkID=253339">Filters and Transitions</a> (DX filters) are obsolete in IE 10 for webpages in the Internet Zone. By default, they are disabled for webpages in the Local Intranet and Trusted Sites zones, but can be enabled for selected document modes.</li>
+                        <li>It's best to update websites and applications that rely on these features to use the features defined in Cascading Style Sheets, Level 3 (CSS3), Scalable Vector Graphics (SVG), and other widely supported standards. </li>
+
                     </ul>
-                    <li>DirectX-based <a href="http://go.microsoft.com/fwlink/li/?LinkID=253339">Filters and Transitions</a> (DX filters) are obsolete in Internet Explorer 10 for webpages in the Internet Zone. By default, they are disabled for webpages in the Local Intranet and Trusted Sites zones, but can be enabled for selected document modes.</li>
-                    <li>It's best to update websites and applications that rely on these features to use the features defined in Cascading Style Sheets, Level 3 (CSS3), Scalable Vector Graphics (SVG), and other widely supported standards. </li>
-                    <li>For Internet Explorer 10, DX filters won't work (are obsolete) in the following document modes:</li>
-                    <ul>
-                        <li>Quirks mode</li>
-                        <li>IE10 standards mode</li>
-                    </ul>
-                    <li>For other document modes, DX filters are (by default) disabled for the Internet Zone and enabled for the Local Intranet and Trusted Sites zones. This affects the following document modes:</li>
-                    <ul>
-                        <li>IE9 Standards mode</li>
-                        <li>IE8 Standards mode</li>
-                        <li>IE7 Standards mode</li>
-                        <li>IE5 (Quirks) mode</li>
-                    </ul>
-                    <li>End-users can change these settings (for these document modes only) by using Internet Options to change the security settings for the zone in question. Administrators can also use Group Policy. </li>
-                    <li>Note:For security and performance reasons, this is strongly discouraged. In addition, webpages cannot modify these settings (generally for the same reasons).</li>
-                    <li>CSS3, as implemented in Internet Explorer 10 (and current versions of other browsers), provides a standards-based alternative to common DX filters. This legacy Windows Internet Explorer feature remains available in Internet Explorer 10 in document modes 5, 7, 8, and 9 though their performance is inferior to their hardware-accelerated, standards-based replacements. We encourage web developers to move their sites to standards-based technologies rather than relying on legacy document modes.</li>
-                    <li>Microsoft Internet Explorer 4.0 introduced a set of visual filters and transitions to allow web developers to apply multimedia-style effects to their webpages. The name DX filters comes from their underlying implementation, DirectX, and their long-form syntax (such as <code>filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50)</code>). DX filters are not the same as <a href="http://go.microsoft.com/fwlink/li/?LinkID=232886">SVG Filter Effects</a>, though both use the CSS property name <code>filter</code>. The most popular of the DX filter effects have since become CSS3 Working Drafts or Candidate Recommendations including opacity, gradients, and shadows. With Internet Explorer 10 supporting these CSS3 specifications, there's little need for the legacy, IE-specific filters. </li>
-                    <li>Note:<code>AlphaImageLoader</code>, and IE-specific filter, was once popular to work around bugs that had PNG transparency in Microsoft Internet Explorer 6, but those bugs were fixed in Windows Internet Explorer 7.</li>
-                    <li>
-                        The following table lists the most popular DX filters and their standards-based alternatives.</li>
-                    DX filterStandards-based alternative
-                    <code>Alpha</code><code>opacity</code>
-                    <code>AlphaImageLoader</code><code>&lt;img&gt;</code> or <code>background-image</code> and related properties
-                    <code>Gradient</code><code>background-image: linear-gradient()</code>
-                    <code>DropShadow</code><code>text-shadow or box-shadow</code>
-                    <code>Matrix</code><code>transform</code> and <code>transform-origin</code>
-                    <li>Be aware that
-                        <a href="http://go.microsoft.com/fwlink/li/?LinkID=232896">SVG Filter Effects</a> in Internet Explorer 10 can be used to simulate some of the less common, more esoteric filters.</li>
-                    <li>Note:Because Windows Internet Explorer 9 document mode supports both DX filters and some of the standards-based alternatives, avoid specifying both properties on the same element. Libraries such as <a href="http://go.microsoft.com/fwlink/li/?LinkID=220438">Modernizr</a> make it easy to use feature detection with CSS and avoid duplicate declarations.</li>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>Legacy DOM events are no longer supported</h3>
+                    <h3>Legacy DOM events are no longer supported - IE9</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>Certain legacy Document Object Model (DOM) events features are deprecated in IE9 Standards mode and are intended to be removed in the latest standards mode of the next major release. Here are the deprecated events and the standards-based alternatives you should use instead:</li>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Deprecated feature</th>
+                                    <th>W3C standards replacement</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkID=190906">attachEvent</a>
+                                    </td>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkID=201619">addEventListener</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkId=201620">detachEvent</a>
+                                    </td>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkID=201621">removeEventListener</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkID=201624">createEventObject</a>
+                                    </td>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkId=201622">createEvent</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkId=201625">fireEvent</a>
+                                    </td>
+                                    <td><a href="http://go.microsoft.com/fwlink/p/?LinkId=201623">dispatchEvent</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <li>As of IE 11, these events are considered obsolete in edge mode and are no longer supported.</li>
                     </ul>
-                    <li>Microsoft identifies features as deprecated to warn against using the features in the future so that they can be phased out.</li>
-                    <ul>
-                        <li>If new standards-based support is added in Windows Internet Explorer 9, the associated feature documentation on MSDN is marked with "deprecated" and includes a link to the standards-based alternative.</li>
-                        <li>If the feature is a web platform feature, it is supported across all document modes until the feature is shown to be used by very few websites.</li>
-                    </ul>
-                    <li>Certain legacy Document Object Model (DOM) events features are deprecated in IE9 Standards mode and are intended to be removed in the latest standards mode of the next major release. Here are the deprecated events and the standards-based alternatives you should use instead:</li>
-                    Deprecated featureW3C standards replacement
-                    <a href="http://go.microsoft.com/fwlink/li/?LinkID=190906">attachEvent</a><a href="http://go.microsoft.com/fwlink/li/?LinkID=201619">addEventListener</a>
-                    <a href="http://go.microsoft.com/fwlink/li/?LinkId=201620">detachEvent</a><a href="http://go.microsoft.com/fwlink/li/?LinkID=201621">removeEventListener</a>
-                    <a href="http://go.microsoft.com/fwlink/li/?LinkID=201624">createEventObject</a><a href="http://go.microsoft.com/fwlink/li/?LinkId=201622">createEvent</a>
-                    <a href="http://go.microsoft.com/fwlink/li/?LinkId=201625">fireEvent</a><a href="http://go.microsoft.com/fwlink/li/?LinkId=201623">dispatchEvent</a>
-                    <li>As of Internet Explorer 11, these events are considered obsolete in edge mode and are no longer supported.</li>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>VBScript is no longer supported in IE11 edge mode</h3>
+                    <h3>VBScript is no longer supported in IE11 edge mode - IE11</h3>
                     <ul>
-                        <li>Applies to IE11.</li>
-                        <li>Affects IE11 edge mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+                        <li>As of IE 11, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">VBScript</a> is considered deprecated and should no longer be used as a scripting language for IE11. Webpages displayed in IE11 edge mode won't execute VBScript code.</li>
+                        <li>Because VBScript is no longer supported for IE11 edge mode, the following API features are no longer available to webpages:</li>
+                        <ul>
+                            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536420(v=vs.85).aspx">execScript</a> function.</li>
+                            <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=320606">VBArray</a> object.</li>
+                            <li>The "text/vbs" and "text/vbscript" MIME types (as supported <a href="http://msdn.microsoft.com/en-us/library/ie/ms534701(v=vs.85).aspx">type</a> values for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535892(v=vs.85).aspx">script</a> elements).</li>
+                        </ul>
                     </ul>
-                    <li>As of Internet Explorer 11, <a href="http://msdn.microsoft.com/en-us/library/ie/ms537634(v=vs.85).aspx">VBScript</a> is considered deprecated and should no longer be used as a scripting language for IE11. Webpages displayed in IE11 edge mode won't execute VBScript code.</li>
-                    <li>Because VBScript is no longer supported for IE11 edge mode, the following API features are no longer available to webpages:</li>
-                    <ul>
-                        <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536420(v=vs.85).aspx">execScript</a> function.</li>
-                        <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=320606">VBArray</a> object.</li>
-                        <li>The "text/vbs" and "text/vbscript" MIME types (as supported <a href="http://msdn.microsoft.com/en-us/library/ie/ms534701(v=vs.85).aspx">type</a> values for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535892(v=vs.85).aspx">script</a> elements).</li>
-                    </ul>Update any pages that currently rely on VBSscript to use JavaScript. If this isn't feasible, try replacing the webpage with an app written in Visual Basic.
-                    <li>For compatibility reasons, VBScript does execute for legacy document modes (IE10 standards mode and earlier), however, this should be considered a <a href="http://msdn.microsoft.com/en-us/library/ie/dn384051(v=vs.85).aspx">temporary solution</a>.</li>
                 </section>
             </section>
             <section>
                 <section>
-                    <h3>VML is no longer supported</h3>
+                    <h3>XML data islands are no longer supported - IE10+</h3>
                     <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Vector Markup Language (VML) is obsolete in Internet Explorer 10 (quirks and 10 document modes).</li>
-                    <li>For Internet Explorer 10, VML will not work (is obsolete) in the following document modes:</li>
-                    <ul>
-                        <li>
-                            <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">Interoperable quirks mode</a>
-                        </li>
-                        <li>IE10 standards mode</li>
-                    </ul>
-                    <li>The common uses of VML now have standards-based alternatives implemented in Internet Explorer 10 and current versions of other browsers. This legacy Windows Internet Explorer features remains available in Internet Explorer 10 in document modes 5, 7, 8, and 9 though their performance is inferior to their hardware-accelerated, standards-based replacements. We encourage web developers to move their sites to standards-based technologies rather than relying on legacy document modes.</li>
-                    <li>
-                        <a href="http://msdn.microsoft.com/en-us/library/ie/ff971903(v=vs.85).aspx">SVG</a>, implemented in Windows Internet Explorer 9, provides the functionality needed to replace VML in websites and applications that use it. The <a href="http://go.microsoft.com/fwlink/li/?LinkId=236964">VML to SVG Migration Guide</a>, published on the Microsoft Download Center, provides guidance for moving from VML to SVG.</li>
-                    <li>Additionally, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=244042">Raphaël JavaScript Library</a> is a lightweight and easy-to-use graphics API that uses SVG when available and VML when not. Raphaël is a good choice for building vector graphics solutions that work in Windows Internet Explorer 8 and other newer browsers.</li>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h3>XML data islands are no longer supported</h3>
-                    <ul>
-                        <li>Applies to Internet Explorer 10 and later.</li>
-                        <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>Support for XML data islands has been removed in Internet Explorer 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that XML data islands are now parsed as HTML, just like in other browsers. This change can impact pages written exclusively for Windows Internet Explorer or pages that use browser sniffing to alter their behavior in Internet Explorer. </li>
-                    <li>Note:Most pages are unaffected by this change.</li>
-                    <li>A page using XML data islands worked as intended in Windows Internet Explorer 9, but no longer works in Internet Explorer 10.</li>
-                    <li>If the page works correctly in other browsers, consider using feature detection to treat Internet Explorer 10 like other browsers. Otherwise, add the following <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> tag near the top of the page to opt into Internet Explorer 9 behavior:</li>
-                    <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
+                        
+                    <li>Support for XML data islands has been removed in IE 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that XML data islands are now parsed as HTML, just like in other browsers. </li>
                     <li>The following example page uses XML data islands and might be impacted by this change:</li>
                     <pre><code>&lt;html&gt;
   &lt;xml&gt;
-    This parses as &lt;b&gt;HTML&lt;/b&gt; in Internet Explorer 10 and other browsers.
-    In older versions of Internet Explorer it parses as XML.
+    This parses as &lt;b&gt;HTML&lt;/b&gt; in IE 10 and other browsers.
+    In older versions of IE it parses as XML.
   &lt;/xml&gt;
 &lt;/html&gt;</code></pre>
-                    <li>The page can be quickly fixed by opting into Internet Explorer 9 behavior, as shown here:</li>
-                    <pre><code>&lt;html&gt;
-  &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;
-  &lt;xml&gt;
-    This parses as &lt;b&gt;HTML&lt;/b&gt; in Internet Explorer 10 and other browsers.
-    In older versions of Internet Explorer it parses as XML.
-  &lt;/xml&gt;
-&lt;/html&gt;</code></pre>
-                    <li>The long-term solution is to revise the code to remove the dependency.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <h3>THE END</h3>
-                <li>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
-                </li>
+                <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
+                </p>
             </section>
         </div>
     </div>

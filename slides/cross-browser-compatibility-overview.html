@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Cross Browser Compatibility</title>
+    <title>Cross Browser Compatibility Overview</title>
 
     <meta name="description" content="A introduction of cross browser compatibility">
     <meta name="author" content="Aaron Zhang">
@@ -43,27 +43,14 @@
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
-                <h1>Cross Browser Compatibility</h1>
-                <h3>A basic introduction to cross browser compatibility</h3>
+                <h2>Cross Browser Compatibility Overview</h2>
                 <p>
-                    <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">BrowserWork.com</a>
-                    </small>
+                    <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">BrowserWork.com</a>
                 </p>
             </section>
 
             <section>
-                <h2>Agenda</h2>
-                <p>
-                    <ul>
-                        <li class="fragment">Compatibility Overview</li>
-                        <li class="fragment">Best Practices</li>
-                        <li class="fragment">Compatibility Issues</li>
-                        <li class="fragment">Tools and Resources</li>
-                    </ul>
-                </p>
-            </section>
-            <section>
-                <h2>Cross Browser Challenges</h2>
+                <h3>Cross Browser Challenges</h3>
                 <p>
                     <ul>
                         <li class="fragment">Many different browsers</li>
@@ -73,7 +60,7 @@
                 </p>
             </section>
             <section>
-                <h2>Cross Browser issue overview</h2>
+                <h3>Cross Browser issue overview</h3>
                 <p>
                     <ul>
                         <li class="fragment">layout</li>
@@ -85,7 +72,7 @@
             <section>
 
                 <section>
-                    <h2>layout</h2>
+                    <h3>layout</h3>
                     <p>
                         <ul>
                             <li>Html/css</li>
@@ -94,7 +81,7 @@
                     </p>
                 </section>
                 <section>
-                    <h2>function</h2>
+                    <h3>function</h3>
                     <p>
                         <ul>
                             <li>DOM</li>
@@ -105,7 +92,7 @@
                     </p>
                 </section>
                 <section>
-                    <h2>performance</h2>
+                    <h3>performance</h3>
                     <p>
                         <ul>
                             <li>Render Engine</li>
@@ -116,7 +103,7 @@
                 </section>
             </section>
             <section>
-                <h2>Categorizing features in web platform</h2>
+                <h3>Categorizing features in web platform</h3>
                 <ul>
                     <li>Interoperable and stable - Supported in all the latest browsers; not likely to change in the future</li>
                     <li>Legacy - Replaced by interoperable features; May be removed in the future</li>
@@ -124,7 +111,7 @@
                 </ul>
             </section>
             <section>
-                <h2>Concepts</h2>
+                <h3>Concepts</h3>
                 <ul>
                     <li>
                         Responsive Design</li>
@@ -138,7 +125,7 @@
                 </ul>
             </section>
             <section>
-                <h2>Responsive Design</h2>
+                <h3>Responsive Design</h3>
                 <ul>
                     <li>Responsive web design (RWD) is aimed at crafting sites to provide an optimal viewing experienceeasy reading and navigation with a minimum of resizing, panning, and scrollingacross a wide range of devices (from mobile phones to desktop computer monitors).</li>
                     <li>
@@ -150,8 +137,8 @@
                 </ul>
             </section>
             <section>
-                <h2>Media
-Queries</h2>
+                <h3>Media
+Queries</h3>
                 <ul>
                     <li>
                         Media Queries is a CSS3 module allowing content rendering to adapt to conditions such as screen resolution.</li>
@@ -164,7 +151,7 @@ Queries</h2>
                 </ul>
             </section>
             <section>
-                <h2>Fluid Grid</h2>
+                <h3>Fluid Grid</h3>
                 <ul>
                     <li>
                         The fluid grid concept calls for page element sizing to be in relative units like percentages, rather than absolute units like pixels or points.</li>
@@ -173,7 +160,7 @@ Queries</h2>
                 </ul>
             </section>
             <section>
-                <h2>Flexible images</h2>
+                <h3>Flexible images</h3>
                 <ul>
                     <li>
                         Flexible images are also sized in relative units, so as to prevent them from displaying outside their containing element.</li>
@@ -182,7 +169,7 @@ Queries</h2>
                 </ul>
             </section>
             <section>
-                <h2>Polyfill</h2>
+                <h3>Polyfill</h3>
                 <ul>
                     <li>
                         In web development, a polyfill (or polyfiller) is downloadable code which provides facilities that are not built into a web browser.</li>
@@ -195,19 +182,19 @@ Queries</h2>
                 </ul>
             </section>
             <section>
-                <h2>Browser Detection (user agent sniffing)</h2>
-                <ul>
-                    <li>Browser detection (also known as Browser sniffing) is a set of techniques used in websites and web applications in order to determine the web browser a visitor is using, and to serve browser-appropriate content to the visitor.</li>
+                <h3>Browser Detection</h3>
+
+                    <p>Browser detection (also known as Browser sniffing) is a set of techniques used in websites and web applications in order to determine the web browser a visitor is using, and to serve browser-appropriate content to the visitor.</p>
                     <img src="images/browser-detection.png" />
             </section>
             <section>
-                <h2>Feature Detection</h2>
-                <ul>
-                    <li>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </li>
+                <h3>Feature Detection</h3>
+                
+                    <p>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </p>
                     <img src="images/feature-detection.png" />
             </section>
             <section>
-                <h2>Graceful degradation</h2>
+                <h3>Graceful degradation</h3>
                 <ul>
                     <li>
                         Graceful degradation, also known as Fault tolerance is a concept of building a web site or application so it provides a good level of user experience in modern browsers. </li>
@@ -218,17 +205,17 @@ Queries</h2>
                 </ul>
             </section>
             <section>
-                <h2>Progressive enhancement</h2>
+                <h3>Progressive enhancement</h3>
                 <ul>
                     <li>In practical terms, its easiest to break the concept of PE into different layers, each one building on the previous to improve the experience of interacting with the website. </li>
                 </ul>
             </section>
             <section>
-                <h2>Core CSS Concept</h2>
+                <h3>Core CSS Concept</h3>
             </section>
             <section>
-                <h2>CSS
-Selectors</h2>
+                <h3>CSS
+Selectors</h3>
                 <ul>
                     <li><a href="http://www.w3.org/TR/CSS2/selector.html" target="_blank">http://www.w3.org/TR/CSS2/selector.html</a>
                     </li>
@@ -243,7 +230,7 @@ Selectors</h2>
                 </ul>
             </section>
             <section>
-                <h2>CSS Units</h2>
+                <h3>CSS Units</h3>
                 <ul>
                     <li><a href="http://www.w3.org/TR/css3-values/" target="_blank">http://www.w3.org/TR/css3-values/</a>
                     </li>
@@ -256,7 +243,7 @@ Selectors</h2>
                 </ul>
             </section>
             <section>
-                <h2>CSS box model</h2>
+                <h3>CSS box model</h3>
                 <ul>
                     <li>CSS box model responsibility</li>
                     <li>
@@ -270,8 +257,8 @@ Selectors</h2>
                 </ul>
             </section>
             <section>
-                <h2>CSS box
-model rule</h2>
+                <h3>CSS box
+model rule</h3>
                 <ul>
                     <li>
                         Block-level elements are essentially rectangular
@@ -285,11 +272,11 @@ model rule</h2>
                 </ul>
             </section>
             <section>
-                <h2>Block vs Inline</h2>
+                <h3>Block vs Inline</h3>
                 <img src="images/block-inline.jpg" />
             </section>
             <section>
-                <h2>Blocking and inline rules</h2>
+                <h3>Blocking and inline rules</h3>
                 <ul>
                     <li>
                         Block elements will, by default, naturally expand horizontally to fill their parent container, so theres no need to set a width of 100%</li>
@@ -308,12 +295,12 @@ model rule</h2>
                 </ul>
             </section>
             <section>
-                <h2>Floating and Clearing</h2>
+                <h3>Floating and Clearing</h3>
                 <img src="images/float-clear.png" />
             </section>
             <section>
-                <h2>Floating
-and clearing rules</h2>
+                <h3>Floating
+and clearing rules</h3>
                 <ul>
                     <li>
                         Floated elements are removed from the flow of other block-level, non-floated elements; so in other words, if you float a box left, a trailing paragraph (block level) thats not floated will appear behind the float in the stack, and any text inside the paragraph (inline level) will flow around the float</li>
@@ -330,7 +317,7 @@ and clearing rules</h2>
                 </ul>
             </section>
             <section>
-                <h2>Common problems of IE</h2>
+                <h3>Common problems of IE</h3>
                 <ul>
                     <li>
                         IE6 will become problematic if floats are overused, causing (paradoxically) disappearing content or duplicate text</li>
@@ -354,15 +341,15 @@ and clearing rules</h2>
                 </ul>
             </section>
             <section>
-                <h2>Forms will often look different</h2>
+                <h3>Forms will often look different</h3>
                 <img src="images/form-difference.png" />
             </section>
             <section>
-                <h2>Typography will always look different</h2>
+                <h3>Typography will always look different</h3>
                 <img src="images/tyliogralihy.png" />
             </section>
             <section>
-                <h2>THE END</h2>
+                <h3>THE END</h3>
                 <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a></p>
             </section>
 

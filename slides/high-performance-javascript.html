@@ -50,8 +50,23 @@
                     </small>
                 </p>
             </section>
+            <section id="agenda">
+                <h2>agenda</h2>
+                <ul>
+                    <li><a href="#overview">JavaScript Overview</a></li>
+                    <li><a href="#concept">Core Concept</a></li>
+                    <li><a href="#pitfall">Core JavaScript Pitfalls</a></li>
+                    <li><a href="#loading">Tips for Better Loading Performance</a></li>
+                    <li><a href="#dom">Document Object Model Obscurities</a></li>
+                    <li><a href="#communication">Client Server Communication</a></li>
+                    <li><a href="#animation">Animation</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#styling">Styling</a></li>
+                    <li><a href="#jquery">JQuery Specifics</a></li>
+                </ul>
+            </section>
             <section>
-                <section>
+                <section id="overview">
                     <h2>JavaScript Overview</h2>
                 </section>
                 <section>
@@ -129,7 +144,7 @@
                 </section>
             </section>
             <section>
-                <section>
+                <section id="concept">
                     <h2>Core Concept</h2>
                 </section>
                 <section>
@@ -394,7 +409,7 @@ alert(book1.toString());  //"[object Object]"
                 </section>
             </section>
             <section>
-                <section>
+                <section id="pitfall">
                     <h2> Core JavaScript pitfalls</h2>
                 </section>
                 <section>
@@ -643,7 +658,7 @@ for (var i=0; i&lt;1000; i++) {
                 </section>
             </section>
             <section>
-                <section>
+                <section id="loading">
                     <h2> Tips for better loading performance</h2>
                 </section>
                 <section>
@@ -754,7 +769,7 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
                 </section>
             </section>
             <section>
-                <section>
+                <section id="dom">
                     <h2> Document Object Model (DOM) obscurities </h2>
                 </section>
                 <section>
@@ -996,7 +1011,7 @@ content = null;</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="communication">
                     <h2> Client-server communication </h2>
                 </section>
                 <section>
@@ -1056,7 +1071,7 @@ for (var n = 0, len = that.contacts.length, contactSplit; n &lt; len; n++) {
                 </section>
             </section>
             <section>
-                <section>
+                <section id="animation">
                     <h2> Animations </h2>
                 </section>
                 <section>
@@ -1119,7 +1134,7 @@ function animateSecond(arg) {};</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="events">
                     <h2> Events </h2>
                 </section>
                 <section>
@@ -1222,7 +1237,7 @@ window.onresize = someObject.resizeHandler;</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="styling">
                     <h2> Styling </h2>
                 </section>
                 <section>
@@ -1283,7 +1298,7 @@ window.onresize = someObject.resizeHandler;</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="jquery">
 
                     <h2> jQuery-specifics </h2>
 
@@ -1763,6 +1778,10 @@ document.getElementById("myId");</code></pre>
         }]
     });
     </script>
+    <div style="display: block; position: absolute; bottom: 14px; left: 50%; margin-left: -110px; z-index: 20;">
+        <a style="text-decoration:none" href="#agenda">index</a> | <a style="text-decoration:none" href="http://www.browserwork.com">home</a> |
+        <a style="text-decoration:none" href="https://github.com/aaronz/aaronz.github.com">fork</a>
+    </div>
 
 </body>
 

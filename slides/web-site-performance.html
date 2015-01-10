@@ -3,23 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-
     <title>Web Site Performance</title>
-
     <meta name="description" content="Web Site Performance Best Practices (from Yahoo)">
     <meta name="author" content="Aaron Zhang">
-
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/serif.css" id="theme">
-
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
-
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
     if (window.location.search.match(/print-pdf/gi)) {
@@ -30,47 +23,44 @@
         document.getElementsByTagName('head')[0].appendChild(link);
     }
     </script>
-
     <!--[if lt IE 9]>
-        <script src="lib/js/html5shiv.js"></script>
-        <![endif]-->
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
 </head>
 
 <body>
-
     <div class="reveal">
-
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section>
                 <h2>Web Site Performance Best Practices</h2>
                 <p>
                     <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
-                    </small>
+</small>
                 </p>
                 <p>
                     <smaill> Created base on <a href="https://developer.yahoo.com/performance/rules.html">Yahoo Web Site Performance Rules</a>
                 </p>
             </section>
-            <section>
+            <section id="agenda">
                 <h3>The list includes 35 best practices divided into 7 categories</h3>
                 <ul class="fragment">
-                    <li>Content</li>
-                    <li>Server</li>
-                    <li>Cookie</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Images</li>
-                    <li>Mobile</li>
+                    <li><a href="#content">Content</a></li>
+                    <li><a href="#server">Server</a></li>
+                    <li><a href="#cookie">Cookie</a></li>
+                    <li><a href="#css">CSS</a></li>
+                    <li><a href="#javascript">JavaScript</a></li>
+                    <li><a href="#images">Images</a></li>
+                    <li><a href="#mobile">Mobile</a></li>
                 </ul>
             </section>
-
-
+            <section id="content">
+                <h2>Content</h2>
+            </section>
             <section>
                 <section id="num_http">
                     <h3>Minimize HTTP Requests</h3>
                 </section>
-
                 <section>
                     <p>80% of the end-user response time is spent on the front-end. Most of this time is tied up in downloading all the components in the page: images, stylesheets, scripts, Flash, etc. <b>Reducing the number of components</b> in turn reduces the number of HTTP requests required to render the page. This is the key to faster pages. </p>
                 </section>
@@ -104,18 +94,17 @@
                     <img src="images/css-sprites.jpg" alt="css sprites">
                     <pre><code>
 .app-icon-read {    
-        background-position: 0 0;
-    }   
-
+background-position: 0 0;
+}   
 .app-icon {
-        background: url("/pics/app/app_icons_50_5.jpg") no-repeat scroll 0 0 transparent;
-        border-radius: 10px 10px 10px 10px;
-        box-shadow: 1px 1px 2px #999999;
-        display: inline-block;
-        height: 50px;
-        width: 50px;
-    }
-                    </code></pre>
+background: url("/pics/app/app_icons_50_5.jpg") no-repeat scroll 0 0 transparent;
+border-radius: 10px 10px 10px 10px;
+box-shadow: 1px 1px 2px #999999;
+display: inline-block;
+height: 50px;
+width: 50px;
+}
+</code></pre>
                 </section>
                 <section>
                     <h3>Image Maps</h3>
@@ -137,183 +126,9 @@
                 </section>
             </section>
             <section>
-                <section id="cdn">
-                    <h3>Use a Content Delivery Network</h3>
-                </section>
-
-                <section>
-                    <p>The user's proximity to your web server has an impact on response times. Deploying your content across multiple, geographically dispersed servers will make your pages load faster from the user's perspective.</p>
-                    <p>But where should you start?</p>
-                </section>
-                <section>
-                    <p>Remember that 80-90% of the end-user response time is spent downloading all the components in the page: images, stylesheets, scripts, Flash, etc. This is the Performance Golden Rule. </p>
-                    <p>Rather than starting with the difficult task of redesigning your application architecture, it's better to first <b>disperse your static content</b>. This not only achieves a bigger reduction in response times, but it's easier thanks to <b>Content Delivery Networks.</b>
-                    </p>
-                </section>
-                <section>
-                    <p>A content delivery network (CDN) is a collection of web servers distributed across multiple locations to deliver content more efficiently to users. The server selected for delivering content to a specific user is typically based on a measure of network proximity.</p>
-                    <img src="images/azure-cdn.png" alt="Azure CDN">
-                </section>
-                <section>
-                    <p>Some large Internet companies own their own CDN, but it's cost-effective to use a CDN service provider, such as <a href="http://azure.microsoft.com/en-us/services/cdn/">Microsoft Azure CDN</a>, <a data-rapid_p="7" href="http://www.akamai.com/">Akamai Technologies</a>, <a data-rapid_p="8" href="http://www.edgecast.com/">EdgeCast</a>, or <a data-rapid_p="9" href="http://www.level3.com/index.cfm?pageID=36">level3</a>. </p>
-                </section>
-
-            </section>
-            <section>
-                <section id="expires">
-                    <h3>Add an Expires or a Cache-Control Header</h3>
-                </section>
-
-                <section>
-                    <ul>
-                        <li>For static components: implement "Never expire" policy by setting far future <code>Expires</code> header</li>
-                        <li>For dynamic components: use an appropriate <code>Cache-Control</code> header to help the browser with conditional requests</li>
-                        <pre><code>Cache-Control   public, max-age=31536000
-Content-Length  9760
-Content-Type    image/png
-Date    Thu, 18 Dec 2014 23:17:07 GMT
-Expires Fri, 18 Dec 2015 23:17:07 GMT
-Last-Modified   Mon, 02 Apr 2012 00:13:23 GMT
-Server  sffe
-X-Content-Type-Options  nosniff
-X-Firefox-Spdy  3.1
-X-XSS-Protection    1; mode=block</code></pre>
-                    </ul>
-                </section>
-
-                <section>
-                    <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2015. </p>
-                    <pre><code>Expires: Thu, 15 Apr 2015 20:00:00 GMT</code></pre>
-                </section>
-                <section>
-                    <p>Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
-                </section>
-            </section>
-            <section>
-                <section id="gzip">
-                    <h3>Gzip Components</h3>
-                </section>
-
-                <section>
-                    <ul>
-                        <p>Starting with HTTP/1.1, web clients indicate support for compression with the Accept-Encoding header in the HTTP request.</p>
-                        <pre><code>Accept-Encoding: gzip, deflate</code></pre>
-                        <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client.</p>
-                        <pre><code>Content-Encoding: gzip</code></pre>
-                    </ul>
-                    <img src="images/without-gzip.jpg" alt="without gzip support">
-                    <img src="images/gzip.jpg" alt="with gzip support">
-                </section>
-                <section>
-                    <h3>Gzip efficiency</h3>
-                    <ul>
-                        <li>Gzip is the most popular and effective compression method at this time. It was developed by the GNU project and standardized by <a data-rapid_p="16" href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a>. The only other compression format you're likely to see is deflate, but it's less effective and less popular. </li>
-
-                        <li>Gzipping generally reduces the response size by about 70%. Approximately 90% of today's Internet traffic travels through browsers that claim to support gzip.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Gzip file type</h3>
-                    <ul>
-
-                        <li>Servers choose what to gzip based on file type, but are typically too limited in what they decide to compress. Most web sites gzip their HTML documents. </li>
-                        <li>It's also worthwhile to gzip your scripts and stylesheets, but many web sites miss this opportunity. In fact, it's worthwhile to compress any text response including XML and JSON. </li>
-                        <li>Image and PDF files should not be gzipped because they are already compressed. Trying to gzip them not only wastes CPU but can potentially increase file sizes. </li>
-
-                    </ul>
-                </section>
-
-            </section>
-            <section>
-                <section id="css_top">
-                    <h3>Put Stylesheets at the Top</h3>
-                </section>
-
-                <section>
-                    <p>Moving stylesheets to the document HEAD makes pages appear to be loading faster. This is because putting stylesheets in the HEAD <b>allows the page to render progressively</b>. </p>
-                </section>
-                <section>
-                    <p>The problem with putting stylesheets near the bottom of the document is that it prohibits progressive rendering in many browsers, including Internet Explorer. These browsers block rendering to avoid having to redraw elements of the page if their styles change. The user is stuck viewing a blank white page.
-                    </p>
-                    <img src="images\webkitflow.png" alt="webkit flow">
-                </section>
-                <section>
-                    <p>The <a data-rapid_p="22" href="http://www.w3.org/TR/html4/struct/links.html#h-12.3">HTML specification</a> clearly states that stylesheets are to be included in the HEAD of the page:
-                        <blockquote>"Unlike A, [LINK] may only appear in the HEAD section of a document, although it may appear any number of times."</blockquote> Neither of the alternatives, the blank white screen or flash of unstyled content, are worth the risk. The optimal solution is to follow the HTML specification and load your stylesheets in the document HEAD.</p>
-                </section>
-
-            </section>
-            <section>
-                <section id="js_bottom">
-                    <h3>Put Scripts at the Bottom</h3>
-                </section>
-
-                <section>
-                    <p>The problem caused by scripts is that they <b>block parallel downloads</b>. The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
-                </section>
-                <section>
-                    <h3>Demos</h3>
-                    <ul>
-                        <li><a href="http://browserwork.com/tests/loadscript/direct-load.html">http://browserwork.com/tests/loadscript/direct-load.html</a>
-                        </li>
-                        <li><a href="http://browserwork.com/tests/loadscript/document-write.html">http://browserwork.com/tests/loadscript/document-write.html</a>
-                        </li>
-                        <li><a href="http://browserwork.com/tests/loadscript/defer.html">http://browserwork.com/tests/loadscript/defer.html</a>
-                        </li>
-                        <li><a href="http://browserwork.com/tests/loadscript/async.html">http://browserwork.com/tests/loadscript/async.html</a>
-                        </li>
-                        <li><a href="http://browserwork.com/tests/loadscript/dynamic.html">http://browserwork.com/tests/loadscript/dynamic.html</a>
-                        </li>
-                    </ul>
-                </section>
-
-            </section>
-            <section>
-                <section id="css_expressions">
-                    <h3>Avoid CSS Expressions</h3>
-                </section>
-
-                <section>
-                    <p>CSS expressions are a powerful (and dangerous) way to set CSS properties dynamically. They were supported in Internet Explorer starting with version 5, but were <a data-rapid_p="28" href="http://msdn.microsoft.com/en-us/library/ms537634%28VS.85%29.aspx">deprecated starting with IE8</a>.</p>
-                    <pre><code>background-color: expression((new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
-                </section>
-                <section>
-                    <p>The problem with expressions is that <b>they are evaluated more frequently than most people expect</b>. Not only are they evaluated when the page is rendered and resized, but also when the page is scrolled and even when the user moves the mouse over the page. </p>
-
-                    <p>If the style property must be set dynamically throughout the life of the page, using event handlers instead of CSS expressions is an alternative approach. If you must use CSS expressions, remember that they may be evaluated thousands of times and could affect the performance of your page.</p>
-                </section>
-
-            </section>
-            <section>
-                <section id="external">
-                    <h3>Make JavaScript and CSS External</h3>
-                </section>
-                <section>
-                    <p>Many of these performance rules deal with how external components are managed. However, before these considerations arise you should ask a more basic question: </p>
-                    <blockquote> Should JavaScript and CSS be contained in external files, or inlined in the page itself?</blockquote>
-                </section>
-                <section>
-                    <ul>
-                        <li>Using external files in the real world generally produces faster pages because the JavaScript and CSS files are cached by the browser. </li>
-                        <li>On the other hand, if the JavaScript and CSS are in external files cached by the browser, the size of the HTML document is reduced without increasing the number of HTTP requests. </li>
-                    </ul>
-                </section>
-                <section>
-                    <p>The key factor, then, is <b>the frequency with which external JavaScript and CSS components are cached relative to the number of HTML documents requested </b>. </p>
-                    <p>This factor, although difficult to quantify, can be gauged using various metrics. If users on your site have multiple page views per session and many of your pages re-use the same scripts and stylesheets, there is a greater potential benefit from cached external files. </p>
-                </section>
-                <section>
-                    <ul>
-                        <li>Many web sites fall in the middle of these metrics. For these sites, the best solution generally is to deploy the JavaScript and CSS as external files.</li>
-                        <li>The only exception where inlining is preferable is with <b>home pages</b>, Home pages that have few (perhaps only one) page view per session may find that inlining JavaScript and CSS results in faster end-user response times.</li>
-                    </ul>
-                </section>
-            </section>
-            <section>
                 <section id="dns_lookups">
                     <h3>Reduce DNS Lookups</h3>
                 </section>
-
                 <section>
                     <p>The Domain Name System (DNS) maps hostnames to IP addresses. <b>DNS has a cost</b>. It typically takes <b>20-120 milliseconds</b> for DNS to lookup the IP address for a given hostname. The browser can't download anything from this hostname until the DNS lookup is completed. </p>
                     <img src="images/dns-lookup.jpg" alt="DNS lookup">
@@ -334,37 +149,20 @@ X-XSS-Protection    1; mode=block</code></pre>
                     <p>When the client's DNS cache is empty (for both the browser and the operating system), the number of DNS lookups is equal to the number of unique hostnames in the web page. This includes the hostnames used in the page's URL, images, script files, stylesheets, Flash objects, etc. Reducing the number of unique hostnames reduces the number of DNS lookups. </p>
                 </section>
                 <section>
-                    <p>Reducing the number of unique hostnames has the potential to reduce the amount of parallel downloading that takes place in the page. Avoiding DNS lookups cuts response times, but reducing parallel downloads may increase response times.</p> <p> <b>My guideline is to split these components across at least two but no more than four hostnames.</b> This results in a good compromise between reducing DNS lookups and allowing a high degree of parallel downloads.</p>
+                    <p>Reducing the number of unique hostnames has the potential to reduce the amount of parallel downloading that takes place in the page. Avoiding DNS lookups cuts response times, but reducing parallel downloads may increase response times.</p>
+                    <p> <b>My guideline is to split these components across at least two but no more than four hostnames.</b> This results in a good compromise between reducing DNS lookups and allowing a high degree of parallel downloads.</p>
                 </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="minify">Minify JavaScript and CSS</h3>
-                </section>
-                <section>
-                    <p>Minification is the practice of removing unnecessary characters from code to reduce its size thereby improving load times. When code is minified all comments are removed, as well as unneeded white space characters (space, newline, and tab). In the case of JavaScript, this improves response time performance because the size of the downloaded file is reduced. Two popular tools for minifying JavaScript code are <a data-rapid_p="37" href="http://crockford.com/javascript/jsmin">JSMin</a> and <a data-rapid_p="38" href="https://developer.yahoo.com/yui/compressor/">YUI Compressor</a>. The YUI compressor can also minify CSS.</p>
-                    <img src="images/minify-scripts-stylesheets.png" alt="minify scripts and stylesheets">
-                </section>
-                <section>
-                    <p>Obfuscation is an alternative optimization that can be applied to source code. It's more complex than minification and thus more likely to generate bugs as a result of the obfuscation step itself. In a survey of ten top U.S. web sites, minification achieved a 21% size reduction versus 25% for obfuscation. Although obfuscation has a higher size reduction, minifying JavaScript is less risky.</p>
-                </section>
-                <section>
-                    <p>In addition to minifying external scripts and styles, inlined <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> blocks can and should also be minified. Even if you gzip your scripts and styles, minifying them will still reduce the size by 5% or more. As the use and size of JavaScript and CSS increases, so will the savings gained by minifying your code.</p>
-                </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="redirects">Avoid Redirects</h3>
                 </section>
-
                 <section>
                     <p>Redirects are accomplished using the 301 and 302 status codes. Here's an example of the HTTP headers in a 301 response:</p>
                 </section>
                 <section><pre><code>      HTTP/1.1 301 Moved Permanently
-      Location: http://example.com/newuri
-      Content-Type: text/html</code></pre>
+Location: http://example.com/newuri
+Content-Type: text/html</code></pre>
                     <img src="images/redirection.jpg" alt="redirection">
                 </section>
                 <section>
@@ -379,89 +177,11 @@ X-XSS-Protection    1; mode=block</code></pre>
                 <section>
                     <p>Connecting an old web site to a new one is another common use for redirects. Others include connecting different parts of a website and directing the user based on certain conditions (type of browser, type of user account, etc.). Using a redirect to connect two web sites is simple and requires little additional coding. Although using redirects in these situations reduces the complexity for developers, it degrades the user experience. Alternatives for this use of redirects include using <code>Alias</code> and <code>mod_rewrite</code> if the two code paths are hosted on the same server. If a domain name change is the cause of using redirects, an alternative is to create a CNAME (a DNS record that creates an alias pointing from one domain name to another) in combination with <code>Alias</code> or <code>mod_rewrite</code>.</p>
                 </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="js_dupes">Remove Duplicate Scripts</h3>
-                </section>
-
-                <section>
-                    <p>It hurts performance to include the same JavaScript file twice in one page. This isn't as unusual as you might think. A review of the ten top U.S. web sites shows that two of them contain a duplicated script. Two main factors increase the odds of a script being duplicated in a single web page: team size and number of scripts. When it does happen, duplicate scripts hurt performance by creating unnecessary HTTP requests and wasted JavaScript execution.</p>
-                </section>
-                <section>
-                    <p>Unnecessary HTTP requests happen in Internet Explorer, but not in Firefox. In Internet Explorer, if an external script is included twice and is not cacheable, it generates two HTTP requests during page loading. Even if the script is cacheable, extra HTTP requests occur when the user reloads the page.</p>
-                </section>
-                <section>
-                    <p>In addition to generating wasteful HTTP requests, time is wasted evaluating the script multiple times. This redundant JavaScript execution happens in both Firefox and Internet Explorer, regardless of whether the script is cacheable.</p>
-                </section>
-                <section>
-                    <p>One way to avoid accidentally including the same script twice is to implement a script management module in your templating system. The typical way to include a script is to use the SCRIPT tag in your HTML page.</p>
-                </section>
-                <section><pre><code>      &lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</code></pre>
-                </section>
-                <section>
-                    <p>An alternative in PHP would be to create a function called <code>insertScript</code>.</p>
-                </section>
-                <section><pre><code>      &lt;?php insertScript("menu.js") ?&gt;</code></pre>
-                </section>
-                <section>
-                    <p>In addition to preventing the same script from being inserted multiple times, this function could handle other issues with scripts, such as dependency checking and adding version numbers to script filenames to support far future Expires headers.</p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="etags">Configure ETags</h3>
-                </section>
-
-                <section>
-                    <p>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. (An "entity" is another word a "component": images, scripts, stylesheets, etc.) ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</p>
-                </section>
-                <section><pre><code>      HTTP/1.1 200 OK
-      Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT
-      ETag: "10c24bc-4ab-457e1c1f"
-      Content-Length: 12195</code></pre>
-                </section>
-                <section>
-                    <p>Later, if the browser has to validate a component, it uses the <code>If-None-Match</code> header to pass the ETag back to the origin server. If the ETags match, a 304 status code is returned reducing the response by 12195 bytes for this example.
-                    </p>
-                </section>
-                <section><pre><code>      GET /i/yahoo.gif HTTP/1.1
-      Host: us.yimg.com
-      If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT
-      If-None-Match: "10c24bc-4ab-457e1c1f"
-      HTTP/1.1 304 Not Modified</code></pre>
-                </section>
-                <section>
-                    <p>The problem with ETags is that they typically are constructed using attributes that make them unique to a specific server hosting a site. ETags won't match when a browser gets the original component from one server and later tries to validate that component on a different server, a situation that is all too common on Web sites that use a cluster of servers to handle requests. By default, both Apache and IIS embed data in the ETag that dramatically reduces the odds of the validity test succeeding on web sites with multiple servers.
-                    </p>
-                </section>
-                <section>
-                    <p>The ETag format for Apache 1.3 and 2.x is <code>inode-size-timestamp</code>. Although a given file may reside in the same directory across multiple servers, and have the same file size, permissions, timestamp, etc., its inode is different from one server to the next.
-                    </p>
-                </section>
-                <section>
-                    <p>IIS 5.0 and 6.0 have a similar issue with ETags. The format for ETags on IIS is <code>Filetimestamp:ChangeNumber</code>. A <code>ChangeNumber</code> is a counter used to track configuration changes to IIS. It's unlikely that the <code>ChangeNumber</code> is the same across all IIS servers behind a web site.
-                    </p>
-                </section>
-                <section>
-                    <p>The end result is ETags generated by Apache and IIS for the exact same component won't match from one server to another. If the ETags don't match, the user doesn't receive the small, fast 304 response that ETags were designed for; instead, they'll get a normal 200 response along with all the data for the component. If you host your web site on just one server, this isn't a problem. But if you have multiple servers hosting your web site, and you're using Apache or IIS with the default ETag configuration, your users are getting slower pages, your servers have a higher load, you're consuming greater bandwidth, and proxies aren't caching your content efficiently. Even if your components have a far future <code>Expires</code> header, a conditional GET request is still made whenever the user hits Reload or Refresh.
-                    </p>
-                </section>
-                <section>
-                    <p>If you're not taking advantage of the flexible validation model that ETags provide, it's better to just remove the ETag altogether. The <code>Last-Modified</code> header validates based on the component's timestamp. And removing the ETag reduces the size of the HTTP headers in both the response and subsequent requests. This <a data-rapid_p="47" href="http://support.microsoft.com/?id=922733">Microsoft Support article</a> describes how to remove ETags. In Apache, this is done by simply adding the following line to your Apache configuration file:
-                    </p>
-                </section>
-                <section><pre><code>      FileETag none</code></pre>
-                </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="cacheajax">Make Ajax Cacheable</h3>
                 </section>
-
                 <section>
                     <p>One of the cited benefits of Ajax is that it provides instantaneous feedback to the user because it requests information asynchronously from the backend web server. However, using Ajax is no guarantee that the user won't be twiddling his thumbs waiting for those asynchronous JavaScript and XML responses to return. In many applications, whether or not the user is kept waiting depends on how Ajax is used. For example, in a web-based email client the user will be kept waiting for the results of an Ajax request to find all the email messages that match their search criteria. It's important to remember that "asynchronous" does not imply "instantaneous".</p>
                 </section>
@@ -484,70 +204,16 @@ X-XSS-Protection    1; mode=block</code></pre>
                     </ul>
                 </section>
                 <section>
-                    <p></p>
-                </section>
-
-                <section>
                     <p>Let's look at an example. A Web 2.0 email client might use Ajax to download the user's address book for autocompletion. If the user hasn't modified her address book since the last time she used the email web app, the previous address book response could be read from cache if that Ajax response was made cacheable with a future Expires or Cache-Control header. The browser must be informed when to use a previously cached address book response versus requesting a new one. This could be done by adding a timestamp to the address book Ajax URL indicating the last time the user modified her address book, for example, <code>&amp;t=1190241612</code>. If the address book hasn't been modified since the last download, the timestamp will be the same and the address book will be read from the browser's cache eliminating an extra HTTP roundtrip. If the user has modified her address book, the timestamp ensures the new URL doesn't match the cached response, and the browser will request the updated address book entries.</p>
                 </section>
                 <section>
                     <p>Even though your Ajax responses are created dynamically, and might only be applicable to a single user, they can still be cached. Doing so will make your Web 2.0 apps faster.</p>
                 </section>
-
             </section>
             <section>
-                <section>
-                    <h3 id="flush">Flush the Buffer Early</h3>
+                <section id="postload">
+                    <h3>Post-load Components</h3>
                 </section>
-
-                <section>
-                    <p>
-                        When users request a page, it can take anywhere from 200 to 500ms for the backend server to stitch together the HTML page. During this time, the browser is idle as it waits for the data to arrive. In PHP you have the function <a data-rapid_p="58" href="http://php.net/flush">flush()</a>. It allows you to send your partially ready HTML response to the browser so that the browser can start fetching components while your backend is busy with the rest of the HTML page. The benefit is mainly seen on busy backends or light frontends.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        A good place to consider flushing is right after the HEAD because the HTML for the head is usually easier to produce and it allows you to include any CSS and JavaScript files for the browser to start fetching in parallel while the backend is still processing.
-
-                    </p>
-                </section>
-                <section>
-                    <p>Example:</p>
-                </section>
-                <section><pre><code>      ... &lt;!-- css, js --&gt;
-    &lt;/head&gt;
-    &lt;?php flush(); ?&gt;
-    &lt;body&gt;
-      ... &lt;!-- content --&gt;
-</code></pre>
-                </section>
-
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="ajax_get">Use GET for AJAX Requests</h3>
-                </section>
-
-                <section>
-                    <p>
-                        The <a data-rapid_p="61" href="http://mail.yahoo.com">Yahoo! Mail</a> team found that when using <code>XMLHttpRequest</code>, POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies). The maximum URL length in IE is 2K, so if you send more than 2K data you might not be able to use GET.
-                    </p>
-                </section>
-                <section>
-                    <p>An interesting side affect is that POST without actually posting any data behaves like GET. Based on the <a data-rapid_p="62" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specs</a>, GET is meant for retrieving information, so it makes sense (semantically) to use GET when you're only requesting data, as opposed to sending data to be stored server-side.
-                    </p>
-                </section>
-                <section>
-                    <p></p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="postload">Post-load Components</h3>
-                </section>
-
                 <section>
                     <p>
                         You can take a closer look at your page and ask yourself: "What's absolutely required in order to render the page initially?". The rest of the content and components can wait.
@@ -568,13 +234,11 @@ X-XSS-Protection    1; mode=block</code></pre>
                         It's good when the performance goals are inline with other web development best practices. In this case, the idea of progressive enhancement tells us that JavaScript, when supported, can improve the user experience but you have to make sure the page works even without JavaScript. So after you've made sure the page works fine, you can enhance it with some post-loaded scripts that give you more bells and whistles such as drag and drop and animations.
                     </p>
                 </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="preload">Preload Components</h3>
                 </section>
-
                 <section>
                     <p>
                         Preload may look like the opposite of post-load, but it actually has a different goal. By preloading components you can take advantage of the time the browser is idle and request components (like images, styles and scripts) you'll need in the future. This way when the user visits the next page, you could have most of the components already in the cache and your page will load much faster for the user.
@@ -592,13 +256,11 @@ X-XSS-Protection    1; mode=block</code></pre>
                         <li>Anticipated preload - preload in advance before launching a redesign. It often happens after a redesign that you hear: "The new site is cool, but it's slower than before". Part of the problem could be that the users were visiting your old site with a full cache, but the new one is always an empty cache experience. You can mitigate this side effect by preloading some components before you even launched the redesign. Your old site can use the time the browser is idle and request images and scripts that will be used by the new site</li>
                     </ul>
                 </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="min_dom">Reduce the Number of DOM Elements</h3>
                 </section>
-
                 <section>
                     <p>
                         A complex page means more bytes to download and it also means slower DOM access in JavaScript. It makes a difference if you loop through 500 or 5000 DOM elements on the page when you want to add an event handler for example.
@@ -610,7 +272,6 @@ X-XSS-Protection    1; mode=block</code></pre>
                 <section>
                     <p>
                         A great help with layouts are the <a data-rapid_p="70" href="https://developer.yahoo.com/yui/">YUI CSS utilities</a>: grids.css can help you with the overall layout, fonts.css and reset.css can help you strip away the browser's defaults formatting. This is a chance to start fresh and think about your markup, for example use <code>&lt;div&gt;</code>s only when it makes sense semantically, and not because it renders a new line.
-
                     </p>
                     <p>
                         The number of DOM elements is easy to test, just type in Firebug's console:
@@ -623,13 +284,11 @@ X-XSS-Protection    1; mode=block</code></pre>
                         And how many DOM elements are too many? Check other similar pages that have good markup. For example the <a data-rapid_p="71" href="http://www.yahoo.com">Yahoo! Home Page</a> is a pretty busy page and still under 700 elements (HTML tags).
                     </p>
                 </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="split">Split Components Across Domains</h3>
                 </section>
-
                 <section>
                     <p>
                         Splitting components allows you to maximize parallel downloads. Make sure you're using not more than 2-4 domains because of the DNS lookup penalty. For example, you can host your HTML and dynamic content on <code>www.example.org</code> and split static components between <code>static1.example.org</code> and <code>static2.example.org</code>
@@ -639,16 +298,13 @@ X-XSS-Protection    1; mode=block</code></pre>
                     <p>
                         For more information check "
                         <a data-rapid_p="73" href="http://yuiblog.com/blog/2007/04/11/performance-research-part-4/">Maximizing Parallel Downloads in the Carpool Lane</a>" by Tenni Theurer and Patty Chi.
-
                     </p>
                 </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="iframes">Minimize the Number of iframes</h3>
                 </section>
-
                 <section>
                     <p>
                         Iframes allow an HTML document to be inserted in the parent document. It's important to understand how iframes work so they can be used effectively.
@@ -673,13 +329,11 @@ X-XSS-Protection    1; mode=block</code></pre>
                         <li>Non-semantic</li>
                     </ul>
                 </section>
-
             </section>
             <section>
                 <section>
                     <h3 id="no404">No 404s</h3>
                 </section>
-
                 <section>
                     <p>
                         HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
@@ -691,251 +345,170 @@ X-XSS-Protection    1; mode=block</code></pre>
                         Some sites have helpful 404s "Did you mean X?", which is great for the user experience but also wastes server resources (like database, etc). Particularly bad is when the link to an external JavaScript is wrong and the result is a 404. First, this download will block parallel downloads. Next the browser may try to parse the 404 response body as if it were JavaScript code, trying to find something usable in it.
                     </p>
                 </section>
-
+            </section>
+            <section id="server">
+                <h2>Server</h2>
             </section>
             <section>
-                <section>
-                    <h3 id="cookie_size">Reduce Cookie Size</h3>
+                <section id="cdn">
+                    <h3>Use a Content Delivery Network</h3>
                 </section>
-
                 <section>
-                    <p>
-                        HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
+                    <p>The user's proximity to your web server has an impact on response times. Deploying your content across multiple, geographically dispersed servers will make your pages load faster from the user's perspective.</p>
+                    <p>But where should you start?</p>
+                </section>
+                <section>
+                    <p>Remember that 80-90% of the end-user response time is spent downloading all the components in the page: images, stylesheets, scripts, Flash, etc. This is the Performance Golden Rule. </p>
+                    <p>Rather than starting with the difficult task of redesigning your application architecture, it's better to first <b>disperse your static content</b>. This not only achieves a bigger reduction in response times, but it's easier thanks to <b>Content Delivery Networks.</b>
                     </p>
-                    <img src="images\cookies.jpg" alt="cookies">
+                </section>
+                <section>
+                    <p>A content delivery network (CDN) is a collection of web servers distributed across multiple locations to deliver content more efficiently to users. The server selected for delivering content to a specific user is typically based on a measure of network proximity.</p>
+                    <img src="images/azure-cdn.png" alt="Azure CDN">
+                </section>
+                <section>
+                    <p>Some large Internet companies own their own CDN, but it's cost-effective to use a CDN service provider, such as <a href="http://azure.microsoft.com/en-us/services/cdn/">Microsoft Azure CDN</a>, <a data-rapid_p="7" href="http://www.akamai.com/">Akamai Technologies</a>, <a data-rapid_p="8" href="http://www.edgecast.com/">EdgeCast</a>, or <a data-rapid_p="9" href="http://www.level3.com/index.cfm?pageID=36">level3</a>. </p>
+                </section>
+            </section>
+            <section>
+                <section id="expires">
+                    <h3>Add an Expires or a Cache-Control Header</h3>
                 </section>
                 <section>
                     <ul>
-                        <li>Eliminate unnecessary cookies</li>
-                        <li>Keep cookie sizes as low as possible to minimize the impact on the user response time</li>
-                        <li>Be mindful of setting cookies at the appropriate domain level so other sub-domains are not affected</li>
-                        <li>Set an Expires date appropriately. An earlier Expires date or none removes the cookie sooner, improving the user response time</li>
+                        <li>For static components: implement "Never expire" policy by setting far future <code>Expires</code> header</li>
+                        <li>For dynamic components: use an appropriate <code>Cache-Control</code> header to help the browser with conditional requests</li>
+                        <pre><code>Cache-Control   public, max-age=31536000
+Content-Length  9760
+Content-Type    image/png
+Date    Thu, 18 Dec 2014 23:17:07 GMT
+Expires Fri, 18 Dec 2015 23:17:07 GMT
+Last-Modified   Mon, 02 Apr 2012 00:13:23 GMT
+Server  sffe
+X-Content-Type-Options  nosniff
+X-Firefox-Spdy  3.1
+X-XSS-Protection    1; mode=block</code></pre>
                     </ul>
                 </section>
-
+                <section>
+                    <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2015. </p>
+                    <pre><code>Expires: Thu, 15 Apr 2015 20:00:00 GMT</code></pre>
+                </section>
+                <section>
+                    <p>Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
+                </section>
             </section>
             <section>
-                <section>
-                    <h3 id="cookie_free">Use Cookie-free Domains for Components</h3>
-                </section>
-
-                <section>
-                    <p>
-                        When the browser makes a request for a static image and sends cookies together with the request, the server doesn't have any use for those cookies. So they only create network traffic for no good reason. You should make sure static components are requested with cookie-free requests. Create a subdomain and host all your static components there.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        If your domain is <code>www.example.org</code>, you can host your static components on <code>static.example.org</code>. However, if you've already set cookies on the top-level domain
-                        <code>example.org</code> as opposed to <code>www.example.org</code>, then all the requests to
-                        <code>static.example.org</code> will include those cookies. In this case, you can buy a whole new domain, host your static components there, and keep this domain cookie-free. Yahoo! uses <code>yimg.com</code>, YouTube uses <code>ytimg.com</code>, Amazon uses <code>images-amazon.com</code> and so on.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        Another benefit of hosting static components on a cookie-free domain is that some proxies might refuse to cache the components that are requested with cookies. On a related note, if you wonder if you should use example.org or www.example.org for your home page, consider the cookie impact. Omitting www leaves you no choice but to write cookies to <code>*.example.org</code>, so for performance reasons it's best to use the www subdomain and write the cookies to that subdomain.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="dom_access">Minimize DOM Access</h3>
-                </section>
-
-                <section>
-                    <p>
-                        Accessing DOM elements with JavaScript is slow so in order to have a more responsive page, you should:
-                    </p>
+                <section id="gzip">
+                    <h3>Gzip Components</h3>
                 </section>
                 <section>
                     <ul>
-                        <li>Cache references to accessed elements</li>
-                        <li>Update nodes "offline" and then add them to the tree</li>
-                        <li>Avoid fixing layout with JavaScript</li>
+                        <p>Starting with HTTP/1.1, web clients indicate support for compression with the Accept-Encoding header in the HTTP request.</p>
+                        <pre><code>Accept-Encoding: gzip, deflate</code></pre>
+                        <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client.</p>
+                        <pre><code>Content-Encoding: gzip</code></pre>
                     </ul>
+                    <img src="images/without-gzip.jpg" alt="without gzip support">
+                    <img src="images/gzip.jpg" alt="with gzip support">
                 </section>
                 <section>
-                    <p>
-                        For more information check the YUI theatre's
-                        <a data-rapid_p="80" href="http://yuiblog.com/blog/2007/12/20/video-lecomte/">"High Performance Ajax Applications"</a> by Julien Lecomte.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="events">Develop Smart Event Handlers</h3>
-                </section>
-
-                <section>
-                    <p>
-                        Sometimes pages feel less responsive because of too many event handlers attached to different elements of the DOM tree which are then executed too often. That's why using event delegation is a good approach. If you have 10 buttons inside a <code>div</code>, attach only one event handler to the div wrapper, instead of one handler for each button. Events bubble up so you'll be able to catch the event and figure out which button it originated from.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        You also don't need to wait for the onload event in order to start doing something with the DOM tree. Often all you need is the element you want to access to be available in the tree. You don't have to wait for all images to be downloaded.
-
-                        <code>DOMContentLoaded</code> is the event you might consider using instead of onload, but until it's available in all browsers, you can use the <a data-rapid_p="82" href="https://developer.yahoo.com/yui/event/">YUI Event</a> utility, which has an <code><a data-rapid_p="83" href="https://developer.yahoo.com/yui/event/#onavailable">onAvailable</a></code> method.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="csslink">Choose &lt;link&gt; over @import</h3>
-                </section>
-
-                <section>
-                    <p>
-                        One of the previous best practices states that CSS should be at the top in order to allow for progressive rendering.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        In IE <code>@import</code> behaves the same as using <code>&lt;link&gt;</code> at the bottom of the page, so it's best not to use it.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="no_filters">Avoid Filters</h3>
-                </section>
-
-                <section>
-                    <p>
-                        The IE-proprietary <code>AlphaImageLoader</code> filter aims to fix a problem with semi-transparent true color PNGs in IE versions &lt; 7. The problem with this filter is that it blocks rendering and freezes the browser while the image is being downloaded. It also increases memory consumption and is applied per element, not per image, so the problem is multiplied.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        The best approach is to avoid <code>AlphaImageLoader</code> completely and use gracefully degrading PNG8 instead, which are fine in IE. If you absolutely need <code>AlphaImageLoader</code>, use the underscore hack <code>_filter</code> as to not penalize your IE7+ users.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="opt_images">Optimize Images</h3>
-                </section>
-
-                <section>
-                    <p>
-                        After a designer is done with creating the images for your web page, there are still some things you can try before you FTP those images to your web server.
-                    </p>
-                    <img src="images\image-weight-for-top10-websites.png" alt="images weight">
-                </section>
-                <section>
+                    <h3>Gzip efficiency</h3>
                     <ul>
-                        <li>You can check the GIFs and see if they are using a palette size corresponding to the number of colors in the image. Using <a data-rapid_p="88" href="http://www.imagemagick.org">imagemagick</a> it's easy to check using
-
-                            <code>identify -verbose image.gif</code> When you see an image using 4 colors and a 256 color "slots" in the palette, there is room for improvement.
-                        </li>
-                        <li>
-                            Try converting GIFs to PNGs and see if there is a saving. More often than not, there is. Developers often hesitate to use PNGs due to the limited support in browsers, but this is now a thing of the past. The only real problem is alpha-transparency in true color PNGs, but then again, GIFs are not true color and don't support variable transparency either. So anything a GIF can do, a palette PNG (PNG8) can do too (except for animations). This simple imagemagick command results in totally safe-to-use PNGs:
-                            <code>convert image.gif image.png</code> "All we are saying is: Give PiNG a Chance!"
-                        </li>
-                        <li>
-                            Run <a data-rapid_p="89" href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a> (or any other PNG optimizer tool) on all your PNGs. Example:
-
-                            <code>pngcrush image.png -rem alla -reduce -brute result.png</code>
-                        </li>
-                        <li>
-                            Run jpegtran on all your JPEGs. This tool does lossless JPEG operations such as rotation and can also be used to optimize and remove comments and other useless information (such as EXIF information) from your images.
-
-                            <code>jpegtran -copy none -optimize -perfect src.jpg dest.jpg</code>
-                        </li>
+                        <li>Gzip is the most popular and effective compression method at this time. It was developed by the GNU project and standardized by <a data-rapid_p="16" href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a>. The only other compression format you're likely to see is deflate, but it's less effective and less popular. </li>
+                        <li>Gzipping generally reduces the response size by about 70%. Approximately 90% of today's Internet traffic travels through browsers that claim to support gzip.</li>
                     </ul>
                 </section>
-
-            </section>
-            <section>
                 <section>
-                    <h3 id="opt_sprites">Optimize CSS Sprites</h3>
-                </section>
-
-                <section>
+                    <h3>Gzip file type</h3>
                     <ul>
-                        <li>Arranging the images in the sprite horizontally as opposed to vertically usually results in a smaller file size.</li>
-                        <li>Combining similar colors in a sprite helps you keep the color count low, ideally under 256 colors so to fit in a PNG8.</li>
-                        <li>"Be mobile-friendly" and don't leave big gaps between the images in a sprite. This doesn't affect the file size as much but requires less memory for the user agent to decompress the image into a pixel map. 100x100 image is 10 thousand pixels, where 1000x1000 is 1 million pixels
-                        </li>
+                        <li>Servers choose what to gzip based on file type, but are typically too limited in what they decide to compress. Most web sites gzip their HTML documents. </li>
+                        <li>It's also worthwhile to gzip your scripts and stylesheets, but many web sites miss this opportunity. In fact, it's worthwhile to compress any text response including XML and JSON. </li>
+                        <li>Image and PDF files should not be gzipped because they are already compressed. Trying to gzip them not only wastes CPU but can potentially increase file sizes. </li>
                     </ul>
-
-                    <img src="images\css-sprites-optimization.png" alt="css sprites optimization">
                 </section>
-
             </section>
             <section>
                 <section>
-                    <h3 id="no_scale">Don't Scale Images in HTML</h3>
+                    <h3 id="etags">Configure ETags</h3>
                 </section>
-
                 <section>
-                    <p>
-
-                        Don't use a bigger image than you need just because you can set the width and height in HTML. If you need
-                        <code>&lt;img width="100" height="100" src="mycat.jpg" alt="My Cat" /&gt;</code> then your image (mycat.jpg) should be 100x100px rather than a scaled down 500x500px image.
-
-                    </p>
-                    <img src="images\zoom.png" alt="zoom">
+                    <p>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. (An "entity" is another word a "component": images, scripts, stylesheets, etc.) ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</p>
                 </section>
-
+                <section><pre><code>      HTTP/1.1 200 OK
+Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT
+ETag: "10c24bc-4ab-457e1c1f"
+Content-Length: 12195</code></pre>
+                </section>
+                <section>
+                    <p>Later, if the browser has to validate a component, it uses the <code>If-None-Match</code> header to pass the ETag back to the origin server. If the ETags match, a 304 status code is returned reducing the response by 12195 bytes for this example.
+                    </p>
+                </section>
+                <section><pre><code>      GET /i/yahoo.gif HTTP/1.1
+Host: us.yimg.com
+If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT
+If-None-Match: "10c24bc-4ab-457e1c1f"
+HTTP/1.1 304 Not Modified</code></pre>
+                </section>
+                <section>
+                    <p>The problem with ETags is that they typically are constructed using attributes that make them unique to a specific server hosting a site. ETags won't match when a browser gets the original component from one server and later tries to validate that component on a different server, a situation that is all too common on Web sites that use a cluster of servers to handle requests. By default, both Apache and IIS embed data in the ETag that dramatically reduces the odds of the validity test succeeding on web sites with multiple servers.
+                    </p>
+                </section>
+                <section>
+                    <p>The ETag format for Apache 1.3 and 2.x is <code>inode-size-timestamp</code>. Although a given file may reside in the same directory across multiple servers, and have the same file size, permissions, timestamp, etc., its inode is different from one server to the next.
+                    </p>
+                </section>
+                <section>
+                    <p>IIS 5.0 and 6.0 have a similar issue with ETags. The format for ETags on IIS is <code>Filetimestamp:ChangeNumber</code>. A <code>ChangeNumber</code> is a counter used to track configuration changes to IIS. It's unlikely that the <code>ChangeNumber</code> is the same across all IIS servers behind a web site.
+                    </p>
+                </section>
+                <section>
+                    <p>The end result is ETags generated by Apache and IIS for the exact same component won't match from one server to another. If the ETags don't match, the user doesn't receive the small, fast 304 response that ETags were designed for; instead, they'll get a normal 200 response along with all the data for the component. If you host your web site on just one server, this isn't a problem. But if you have multiple servers hosting your web site, and you're using Apache or IIS with the default ETag configuration, your users are getting slower pages, your servers have a higher load, you're consuming greater bandwidth, and proxies aren't caching your content efficiently. Even if your components have a far future <code>Expires</code> header, a conditional GET request is still made whenever the user hits Reload or Refresh.
+                    </p>
+                </section>
+                <section>
+                    <p>If you're not taking advantage of the flexible validation model that ETags provide, it's better to just remove the ETag altogether. The <code>Last-Modified</code> header validates based on the component's timestamp. And removing the ETag reduces the size of the HTTP headers in both the response and subsequent requests. This <a data-rapid_p="47" href="http://support.microsoft.com/?id=922733">Microsoft Support article</a> describes how to remove ETags. In Apache, this is done by simply adding the following line to your Apache configuration file:
+                    </p>
+                </section>
+                <section><pre><code>      FileETag none</code></pre>
+                </section>
             </section>
             <section>
                 <section>
-                    <h3 id="favicon">Make favicon.ico Small and Cacheable</h3>
-                </section>
-
-                <section>
-                    <p>
-                        The favicon.ico is an image that stays in the root of your server. It's a necessary evil because even if you don't care about it the browser will still request it, so it's better not to respond with a <code>404 Not Found</code>. Also since it's on the same server, cookies are sent every time it's requested. This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.
-                    </p>
-                    <img src="images\favicon.png" alt="favicon">
+                    <h3 id="flush">Flush the Buffer Early</h3>
                 </section>
                 <section>
                     <p>
-                        So to mitigate the drawbacks of having a favicon.ico make sure:
-                    </p>
-                    <ul>
-                        <li>It's small, preferably under 1K.</li>
-                        <li>Set Expires header with what you feel comfortable (since you cannot rename it if you decide to change it). You can probably safely set the Expires header a few months in the future. You can check the last modified date of your current favicon.ico to make an informed decision.
-                        </li>
-                    </ul>
-                    <p>
-                        <a data-rapid_p="93" href="http://www.imagemagick.org">Imagemagick</a> can help you create small favicons
+                        When users request a page, it can take anywhere from 200 to 500ms for the backend server to stitch together the HTML page. During this time, the browser is idle as it waits for the data to arrive. In PHP you have the function <a data-rapid_p="58" href="http://php.net/flush">flush()</a>. It allows you to send your partially ready HTML response to the browser so that the browser can start fetching components while your backend is busy with the rest of the HTML page. The benefit is mainly seen on busy backends or light frontends.
                     </p>
                 </section>
-
+                <section>
+                    <p>
+                        A good place to consider flushing is right after the HEAD because the HTML for the head is usually easier to produce and it allows you to include any CSS and JavaScript files for the browser to start fetching in parallel while the backend is still processing.
+                    </p>
+                </section>
+                <section>
+                    <p>Example:</p>
+                </section>
+                <section><pre><code>      ... &lt;!-- css, js --&gt;
+&lt;/head&gt;
+&lt;?php flush(); ?&gt;
+&lt;body&gt;
+... &lt;!-- content --&gt;
+</code></pre>
+                </section>
             </section>
             <section>
                 <section>
-                    <h3 id="under25">Keep Components under 25K</h3>
+                    <h3 id="ajax_get">Use GET for AJAX Requests</h3>
                 </section>
-
                 <section>
                     <p>
-                        This restriction is related to the fact that iPhone won't cache components bigger than 25K. Note that this is the uncompressed size. This is where minification is important because gzip alone may not be sufficient.
+                        The <a data-rapid_p="61" href="http://mail.yahoo.com">Yahoo! Mail</a> team found that when using <code>XMLHttpRequest</code>, POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies). The maximum URL length in IE is 2K, so if you send more than 2K data you might not be able to use GET.
                     </p>
                 </section>
                 <section>
-                    <p>
-                        For more information check "<a data-rapid_p="95" href="http://yuiblog.com/blog/2008/02/06/iphone-cacheability/">Performance Research, Part 5: iPhone Cacheability - Making it Stick</a>" by Wayne Shea and Tenni Theurer.
-                    </p>
-                </section>
-
-            </section>
-            <section>
-                <section>
-                    <h3 id="multipart">Pack Components into a Multipart Document</h3>
-                </section>
-
-                <section>
-                    <p>
-                        Packing components into a multipart document is like an email with attachments, it helps you fetch several components with one HTTP request (remember: HTTP requests are expensive). When you use this technique, first check if the user agent supports it (iPhone does not).
-
+                    <p>An interesting side affect is that POST without actually posting any data behaves like GET. Based on the <a data-rapid_p="62" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specs</a>, GET is meant for retrieving information, so it makes sense (semantically) to use GET when you're only requesting data, as opposed to sending data to be stored server-side.
                     </p>
                 </section>
             </section>
@@ -943,10 +516,8 @@ X-XSS-Protection    1; mode=block</code></pre>
                 <section>
                     <h3 id="emptysrc">Avoid Empty Image src</h3>
                 </section>
-
                 <section>
                     <p>
-
                         Image with empty string src attribute occurs more than one will expect. It appears in two form:
                     </p>
                 </section>
@@ -974,10 +545,6 @@ X-XSS-Protection    1; mode=block</code></pre>
                     </ul>
                 </section>
                 <section>
-                    <p></p>
-                </section>
-
-                <section>
                     <p>
                         Why is this behavior bad?
                     </p>
@@ -990,10 +557,6 @@ X-XSS-Protection    1; mode=block</code></pre>
                     </ol>
                 </section>
                 <section>
-                    <p></p>
-                </section>
-
-                <section>
                     <p>
                         The root cause of this behavior is the way that URI resolution is performed in browsers. This behavior is defined in RFC 3986 - Uniform Resource Identifiers. When an empty string is encountered as a URI, it is considered a relative URI and is resolved according to the algorithm defined in section 5.2. This specific example, an empty string, is listed in section 5.4. Firefox, Safari, and Chrome are all resolving an empty string correctly per the specification, while Internet Explorer is resolving it incorrectly, apparently in line with an earlier version of the specification, RFC 2396 - Uniform Resource Identifiers (this was obsoleted by RFC 3986). So technically, the browsers are doing what they are supposed to do to resolve relative URIs. The problem is that in this context, the empty string is clearly unintentional.
                     </p>
@@ -1001,7 +564,6 @@ X-XSS-Protection    1; mode=block</code></pre>
                 <section>
                     <p>
                         HTML5 adds to the description of the <img> tag's src attribute to instruct browsers not to make an additional request in section 4.8.2:
-
                         </img>
                     </p>
                 </section>
@@ -1009,28 +571,370 @@ X-XSS-Protection    1; mode=block</code></pre>
                     The src attribute must be present, and must contain a valid URL referencing a non-interactive, optionally animated, image resource that is neither paged nor scripted. If the base URI of the element is the same as the document's address, then the src attribute's value must not be the empty string. Hopefully, browsers will not have this problem in the future. Unfortunately, there is no such clause for &lt;script src=""&gt; and &lt;link href=""&gt;. Maybe there is still time to make that adjustment to ensure browsers don't accidentally implement this behavior.
                 </section>
                 <section>
-                    <p></p>
-                </section>
-                <section>
                     <p>
                         This rule was inspired by Yahoo!'s JavaScript guru Nicolas C. Zakas. For more information check out his article "<a data-rapid_p="98" href="http://www.nczonline.net/blog/2009/11/30/empty-image-src-can-destroy-your-site/">Empty image src can destroy your site</a>".
                     </p>
                 </section>
             </section>
-
+            <section id="cookies">
+                <h2>Cookies</h2>
+            </section>
+            <section>
+                <section>
+                    <h3 id="cookie_size">Reduce Cookie Size</h3>
+                </section>
+                <section>
+                    <p>
+                        HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
+                    </p>
+                    <img src="images\cookies.jpg" alt="cookies">
+                </section>
+                <section>
+                    <ul>
+                        <li>Eliminate unnecessary cookies</li>
+                        <li>Keep cookie sizes as low as possible to minimize the impact on the user response time</li>
+                        <li>Be mindful of setting cookies at the appropriate domain level so other sub-domains are not affected</li>
+                        <li>Set an Expires date appropriately. An earlier Expires date or none removes the cookie sooner, improving the user response time</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="cookie_free">Use Cookie-free Domains for Components</h3>
+                </section>
+                <section>
+                    <p>
+                        When the browser makes a request for a static image and sends cookies together with the request, the server doesn't have any use for those cookies. So they only create network traffic for no good reason. You should make sure static components are requested with cookie-free requests. Create a subdomain and host all your static components there.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        If your domain is <code>www.example.org</code>, you can host your static components on <code>static.example.org</code>. However, if you've already set cookies on the top-level domain
+                        <code>example.org</code> as opposed to <code>www.example.org</code>, then all the requests to
+                        <code>static.example.org</code> will include those cookies. In this case, you can buy a whole new domain, host your static components there, and keep this domain cookie-free. Yahoo! uses <code>yimg.com</code>, YouTube uses <code>ytimg.com</code>, Amazon uses <code>images-amazon.com</code> and so on.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        Another benefit of hosting static components on a cookie-free domain is that some proxies might refuse to cache the components that are requested with cookies. On a related note, if you wonder if you should use example.org or www.example.org for your home page, consider the cookie impact. Omitting www leaves you no choice but to write cookies to <code>*.example.org</code>, so for performance reasons it's best to use the www subdomain and write the cookies to that subdomain.
+                    </p>
+                </section>
+            </section>
+            <section id="css">
+                <h2>CSS</h2>
+            </section>
+            <section>
+                <section id="css_top">
+                    <h3>Put Stylesheets at the Top</h3>
+                </section>
+                <section>
+                    <p>Moving stylesheets to the document HEAD makes pages appear to be loading faster. This is because putting stylesheets in the HEAD <b>allows the page to render progressively</b>. </p>
+                </section>
+                <section>
+                    <p>The problem with putting stylesheets near the bottom of the document is that it prohibits progressive rendering in many browsers, including Internet Explorer. These browsers block rendering to avoid having to redraw elements of the page if their styles change. The user is stuck viewing a blank white page.
+                    </p>
+                    <img src="images\webkitflow.png" alt="webkit flow">
+                </section>
+                <section>
+                    <p>The <a data-rapid_p="22" href="http://www.w3.org/TR/html4/struct/links.html#h-12.3">HTML specification</a> clearly states that stylesheets are to be included in the HEAD of the page:
+                        <blockquote>"Unlike A, [LINK] may only appear in the HEAD section of a document, although it may appear any number of times."</blockquote> Neither of the alternatives, the blank white screen or flash of unstyled content, are worth the risk. The optimal solution is to follow the HTML specification and load your stylesheets in the document HEAD.</p>
+                </section>
+            </section>
+            <section>
+                <section id="css_expressions">
+                    <h3>Avoid CSS Expressions</h3>
+                </section>
+                <section>
+                    <p>CSS expressions are a powerful (and dangerous) way to set CSS properties dynamically. They were supported in Internet Explorer starting with version 5, but were <a data-rapid_p="28" href="http://msdn.microsoft.com/en-us/library/ms537634%28VS.85%29.aspx">deprecated starting with IE8</a>.</p>
+                    <pre><code>background-color: expression((new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
+                </section>
+                <section>
+                    <p>The problem with expressions is that <b>they are evaluated more frequently than most people expect</b>. Not only are they evaluated when the page is rendered and resized, but also when the page is scrolled and even when the user moves the mouse over the page. </p>
+                    <p>If the style property must be set dynamically throughout the life of the page, using event handlers instead of CSS expressions is an alternative approach. If you must use CSS expressions, remember that they may be evaluated thousands of times and could affect the performance of your page.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="csslink">Choose &lt;link&gt; over @import</h3>
+                </section>
+                <section>
+                    <p>
+                        One of the previous best practices states that CSS should be at the top in order to allow for progressive rendering.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        In IE <code>@import</code> behaves the same as using <code>&lt;link&gt;</code> at the bottom of the page, so it's best not to use it.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="no_filters">Avoid Filters</h3>
+                </section>
+                <section>
+                    <p>
+                        The IE-proprietary <code>AlphaImageLoader</code> filter aims to fix a problem with semi-transparent true color PNGs in IE versions &lt; 7. The problem with this filter is that it blocks rendering and freezes the browser while the image is being downloaded. It also increases memory consumption and is applied per element, not per image, so the problem is multiplied.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        The best approach is to avoid <code>AlphaImageLoader</code> completely and use gracefully degrading PNG8 instead, which are fine in IE. If you absolutely need <code>AlphaImageLoader</code>, use the underscore hack <code>_filter</code> as to not penalize your IE7+ users.
+                    </p>
+                </section>
+            </section>
+            <section id="javascript">
+                <h2>JavaScript</h2>
+            </section>
+            <section>
+                <section id="js_bottom">
+                    <h3>Put Scripts at the Bottom</h3>
+                </section>
+                <section>
+                    <p>The problem caused by scripts is that they <b>block parallel downloads</b>. The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
+                </section>
+                <section>
+                    <h3>Demos</h3>
+                    <ul>
+                        <li><a href="http://browserwork.com/tests/loadscript/direct-load.html">http://browserwork.com/tests/loadscript/direct-load.html</a>
+                        </li>
+                        <li><a href="http://browserwork.com/tests/loadscript/document-write.html">http://browserwork.com/tests/loadscript/document-write.html</a>
+                        </li>
+                        <li><a href="http://browserwork.com/tests/loadscript/defer.html">http://browserwork.com/tests/loadscript/defer.html</a>
+                        </li>
+                        <li><a href="http://browserwork.com/tests/loadscript/async.html">http://browserwork.com/tests/loadscript/async.html</a>
+                        </li>
+                        <li><a href="http://browserwork.com/tests/loadscript/dynamic.html">http://browserwork.com/tests/loadscript/dynamic.html</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section id="external">
+                    <h3>Make JavaScript and CSS External</h3>
+                </section>
+                <section>
+                    <p>Many of these performance rules deal with how external components are managed. However, before these considerations arise you should ask a more basic question: </p>
+                    <blockquote> Should JavaScript and CSS be contained in external files, or inlined in the page itself?</blockquote>
+                </section>
+                <section>
+                    <ul>
+                        <li>Using external files in the real world generally produces faster pages because the JavaScript and CSS files are cached by the browser. </li>
+                        <li>On the other hand, if the JavaScript and CSS are in external files cached by the browser, the size of the HTML document is reduced without increasing the number of HTTP requests. </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The key factor, then, is <b>the frequency with which external JavaScript and CSS components are cached relative to the number of HTML documents requested </b>. </p>
+                    <p>This factor, although difficult to quantify, can be gauged using various metrics. If users on your site have multiple page views per session and many of your pages re-use the same scripts and stylesheets, there is a greater potential benefit from cached external files. </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Many web sites fall in the middle of these metrics. For these sites, the best solution generally is to deploy the JavaScript and CSS as external files.</li>
+                        <li>The only exception where inlining is preferable is with <b>home pages</b>, Home pages that have few (perhaps only one) page view per session may find that inlining JavaScript and CSS results in faster end-user response times.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="minify">Minify JavaScript and CSS</h3>
+                </section>
+                <section>
+                    <p>Minification is the practice of removing unnecessary characters from code to reduce its size thereby improving load times. When code is minified all comments are removed, as well as unneeded white space characters (space, newline, and tab). In the case of JavaScript, this improves response time performance because the size of the downloaded file is reduced. Two popular tools for minifying JavaScript code are <a data-rapid_p="37" href="http://crockford.com/javascript/jsmin">JSMin</a> and <a data-rapid_p="38" href="https://developer.yahoo.com/yui/compressor/">YUI Compressor</a>. The YUI compressor can also minify CSS.</p>
+                    <img src="images/minify-scripts-stylesheets.png" alt="minify scripts and stylesheets">
+                </section>
+                <section>
+                    <p>Obfuscation is an alternative optimization that can be applied to source code. It's more complex than minification and thus more likely to generate bugs as a result of the obfuscation step itself. In a survey of ten top U.S. web sites, minification achieved a 21% size reduction versus 25% for obfuscation. Although obfuscation has a higher size reduction, minifying JavaScript is less risky.</p>
+                </section>
+                <section>
+                    <p>In addition to minifying external scripts and styles, inlined <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> blocks can and should also be minified. Even if you gzip your scripts and styles, minifying them will still reduce the size by 5% or more. As the use and size of JavaScript and CSS increases, so will the savings gained by minifying your code.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="js_dupes">Remove Duplicate Scripts</h3>
+                </section>
+                <section>
+                    <p>It hurts performance to include the same JavaScript file twice in one page. This isn't as unusual as you might think. A review of the ten top U.S. web sites shows that two of them contain a duplicated script. Two main factors increase the odds of a script being duplicated in a single web page: team size and number of scripts. When it does happen, duplicate scripts hurt performance by creating unnecessary HTTP requests and wasted JavaScript execution.</p>
+                </section>
+                <section>
+                    <p>Unnecessary HTTP requests happen in Internet Explorer, but not in Firefox. In Internet Explorer, if an external script is included twice and is not cacheable, it generates two HTTP requests during page loading. Even if the script is cacheable, extra HTTP requests occur when the user reloads the page.</p>
+                </section>
+                <section>
+                    <p>In addition to generating wasteful HTTP requests, time is wasted evaluating the script multiple times. This redundant JavaScript execution happens in both Firefox and Internet Explorer, regardless of whether the script is cacheable.</p>
+                </section>
+                <section>
+                    <p>One way to avoid accidentally including the same script twice is to implement a script management module in your templating system. The typical way to include a script is to use the SCRIPT tag in your HTML page.</p>
+                </section>
+                <section><pre><code>      &lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</code></pre>
+                </section>
+                <section>
+                    <p>An alternative in PHP would be to create a function called <code>insertScript</code>.</p>
+                </section>
+                <section><pre><code>      &lt;?php insertScript("menu.js") ?&gt;</code></pre>
+                </section>
+                <section>
+                    <p>In addition to preventing the same script from being inserted multiple times, this function could handle other issues with scripts, such as dependency checking and adding version numbers to script filenames to support far future Expires headers.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="dom_access">Minimize DOM Access</h3>
+                </section>
+                <section>
+                    <p>
+                        Accessing DOM elements with JavaScript is slow so in order to have a more responsive page, you should:
+                    </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Cache references to accessed elements</li>
+                        <li>Update nodes "offline" and then add them to the tree</li>
+                        <li>Avoid fixing layout with JavaScript</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>
+                        For more information check the YUI theatre's
+                        <a data-rapid_p="80" href="http://yuiblog.com/blog/2007/12/20/video-lecomte/">"High Performance Ajax Applications"</a> by Julien Lecomte.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="events">Develop Smart Event Handlers</h3>
+                </section>
+                <section>
+                    <p>
+                        Sometimes pages feel less responsive because of too many event handlers attached to different elements of the DOM tree which are then executed too often. That's why using event delegation is a good approach. If you have 10 buttons inside a <code>div</code>, attach only one event handler to the div wrapper, instead of one handler for each button. Events bubble up so you'll be able to catch the event and figure out which button it originated from.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        You also don't need to wait for the onload event in order to start doing something with the DOM tree. Often all you need is the element you want to access to be available in the tree. You don't have to wait for all images to be downloaded.
+                        <code>DOMContentLoaded</code> is the event you might consider using instead of onload, but until it's available in all browsers, you can use the <a data-rapid_p="82" href="https://developer.yahoo.com/yui/event/">YUI Event</a> utility, which has an <code><a data-rapid_p="83" href="https://developer.yahoo.com/yui/event/#onavailable">onAvailable</a></code> method.
+                    </p>
+                </section>
+            </section>
+            <section id="images">
+                <h2>Images</h2>
+            </section>
+            <section>
+                <section>
+                    <h3 id="opt_images">Optimize Images</h3>
+                </section>
+                <section>
+                    <p>
+                        After a designer is done with creating the images for your web page, there are still some things you can try before you FTP those images to your web server.
+                    </p>
+                    <img src="images\image-weight-for-top10-websites.png" alt="images weight">
+                </section>
+                <section>
+                    <ul>
+                        <li>You can check the GIFs and see if they are using a palette size corresponding to the number of colors in the image. Using <a data-rapid_p="88" href="http://www.imagemagick.org">imagemagick</a> it's easy to check using
+                            <code>identify -verbose image.gif</code> When you see an image using 4 colors and a 256 color "slots" in the palette, there is room for improvement.
+                        </li>
+                        <li>
+                            Try converting GIFs to PNGs and see if there is a saving. More often than not, there is. Developers often hesitate to use PNGs due to the limited support in browsers, but this is now a thing of the past. The only real problem is alpha-transparency in true color PNGs, but then again, GIFs are not true color and don't support variable transparency either. So anything a GIF can do, a palette PNG (PNG8) can do too (except for animations). This simple imagemagick command results in totally safe-to-use PNGs:
+                            <code>convert image.gif image.png</code> "All we are saying is: Give PiNG a Chance!"
+                        </li>
+                        <li>
+                            Run <a data-rapid_p="89" href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a> (or any other PNG optimizer tool) on all your PNGs. Example:
+                            <code>pngcrush image.png -rem alla -reduce -brute result.png</code>
+                        </li>
+                        <li>
+                            Run jpegtran on all your JPEGs. This tool does lossless JPEG operations such as rotation and can also be used to optimize and remove comments and other useless information (such as EXIF information) from your images.
+                            <code>jpegtran -copy none -optimize -perfect src.jpg dest.jpg</code>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="opt_sprites">Optimize CSS Sprites</h3>
+                </section>
+                <section>
+                    <ul>
+                        <li>Arranging the images in the sprite horizontally as opposed to vertically usually results in a smaller file size.</li>
+                        <li>Combining similar colors in a sprite helps you keep the color count low, ideally under 256 colors so to fit in a PNG8.</li>
+                        <li>"Be mobile-friendly" and don't leave big gaps between the images in a sprite. This doesn't affect the file size as much but requires less memory for the user agent to decompress the image into a pixel map. 100x100 image is 10 thousand pixels, where 1000x1000 is 1 million pixels
+                        </li>
+                    </ul>
+                    <img src="images\css-sprites-optimization.png" alt="css sprites optimization">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="no_scale">Don't Scale Images in HTML</h3>
+                </section>
+                <section>
+                    <p>
+                        Don't use a bigger image than you need just because you can set the width and height in HTML. If you need
+                        <code>&lt;img width="100" height="100" src="mycat.jpg" alt="My Cat" /&gt;</code> then your image (mycat.jpg) should be 100x100px rather than a scaled down 500x500px image.
+                    </p>
+                    <img src="images\zoom.png" alt="zoom">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="favicon">Make favicon.ico Small and Cacheable</h3>
+                </section>
+                <section>
+                    <p>
+                        The favicon.ico is an image that stays in the root of your server. It's a necessary evil because even if you don't care about it the browser will still request it, so it's better not to respond with a <code>404 Not Found</code>. Also since it's on the same server, cookies are sent every time it's requested. This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.
+                    </p>
+                    <img src="images\favicon.png" alt="favicon">
+                </section>
+                <section>
+                    <p>
+                        So to mitigate the drawbacks of having a favicon.ico make sure:
+                    </p>
+                    <ul>
+                        <li>It's small, preferably under 1K.</li>
+                        <li>Set Expires header with what you feel comfortable (since you cannot rename it if you decide to change it). You can probably safely set the Expires header a few months in the future. You can check the last modified date of your current favicon.ico to make an informed decision.
+                        </li>
+                    </ul>
+                    <p>
+                        <a data-rapid_p="93" href="http://www.imagemagick.org">Imagemagick</a> can help you create small favicons
+                    </p>
+                </section>
+            </section>
+            <section id="mobile">
+                <h2>Mobile</h2>
+            </section>
+            <section>
+                <section>
+                    <h3 id="under25">Keep Components under 25K</h3>
+                </section>
+                <section>
+                    <p>
+                        This restriction is related to the fact that iPhone won't cache components bigger than 25K. Note that this is the uncompressed size. This is where minification is important because gzip alone may not be sufficient.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        For more information check "<a data-rapid_p="95" href="http://yuiblog.com/blog/2008/02/06/iphone-cacheability/">Performance Research, Part 5: iPhone Cacheability - Making it Stick</a>" by Wayne Shea and Tenni Theurer.
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3 id="multipart">Pack Components into a Multipart Document</h3>
+                </section>
+                <section>
+                    <p>
+                        Packing components into a multipart document is like an email with attachments, it helps you fetch several components with one HTTP request (remember: HTTP requests are expensive). When you use this technique, first check if the user agent supports it (iPhone does not).
+                    </p>
+                </section>
+            </section>
             <section>
                 <h2>THE END</h2>
                 <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
                 </p>
             </section>
-
         </div>
-
     </div>
-
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
-
     <script>
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
@@ -1039,14 +943,11 @@ X-XSS-Protection    1; mode=block</code></pre>
         progress: true,
         history: true,
         center: true,
-
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
         // parallaxBackgroundSize: '2100px 900px',
-
         // Optional libraries used to extend on reveal.js
         dependencies: [{
             src: 'lib/js/classList.js',
@@ -1084,7 +985,10 @@ X-XSS-Protection    1; mode=block</code></pre>
         }]
     });
     </script>
-
+    <div style="display: block; position: absolute; bottom: 14px; left: 50%; margin-left: -110px; z-index: 20;">
+        <a style="text-decoration:none" href="#agenda">index</a> | <a style="text-decoration:none" href="http://www.browserwork.com">home</a> |
+        <a style="text-decoration:none" href="https://github.com/aaronz/aaronz.github.com">fork</a> | <a style="text-decoration:none" href="http://developer.yahoo.com/performance/rules.html">source</a>
+    </div>
 </body>
 
 </html>

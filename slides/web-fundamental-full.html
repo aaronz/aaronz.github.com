@@ -255,6 +255,9 @@
             <section>
                 <section>
                     <h2>Set Up Your Editor</h2>
+                </section>
+                <section>
+                    <p>Your code editor is your main development tool; you use it to write and save lines of code. Write better code faster by learning your editor's shortcuts and installing key plugins.</p>
                     <ul>
                         <li>Choose an editor that lets you customize shortcuts and has lots of plugins to help you write better code.</li>
                         <li>Make use of the package manager to make it easier to discover, install, and update plugins.</li>
@@ -280,6 +283,9 @@
                 </section>
                 <section>
                     <h2 id="install-plugins">Install Plugins</h2>
+                    <p>Plugins help you stay more productive. What are the things you keep having to go back out to other tools to do?</p>
+                    <p>Linting - there’s a plugin for that. Showing what changes haven’t been committed - there are plugins for that. Integration with other tools, such as GitHub, there are plugins for that.</p>
+                    <p>Package managers make it very easy to find, install, and update plugins:</p>
                     <ol>
                         <li>In the Sublime Text editor, open your package manager (ctrl+shift+p).</li>
                         <li>Enter ‘Install Package’.</li>
@@ -303,6 +309,7 @@
                 </section>
                 <section>
                     <h3>Color Picker</h3>
+                    <p>The plugin requires ImageMagick. If you are on Mac OS X, we recommend trying the installer from <a href="http://cactuslab.com/imagemagick/">CactusLabs</a> (you may need to restart your machine to get it working).</p>
                     <p>Pick any color from the palette and add it to your CSS with <code>ctrl+shift+c</code>.</p>
                     <p><img alt="Sublime Color Picker Plugin" src="images/sublime-color-picker.png" />
                     </p>
@@ -329,6 +336,9 @@
             <section>
                 <section>
                     <h2>Set Up Command Line Shortcuts</h2>
+                </section>
+                <section>
+                    <p>Set up shortcuts for the command line tasks you use over and over again. If you find yourself typing the same thing in your command line repeatedly, this will alleviate that.</p>
                     <ul>
                         <li>Make the command line work for you; create aliases that are easy to remember and fast to type.</li>
                         <li>Give Github dotfiles a try to save, share and sync up your command line shortcuts.</li>
@@ -337,9 +347,12 @@
                 <section>
                     <h2 id="how-to-set-them-up">How to Set Them Up</h2>
                     <p>The easiest way create command-line shortcuts is to add aliases for common commands to your bashrc file. On Mac or Linux:</p>
-                    <pre><code> open -a 'Sublime Text' ~/.bashrc</code></pre>
+                    <p>From the command line anywhere, type:</p><pre><code> open -a 'Sublime Text' ~/.bashrc</code></pre>
+                </section>
+                <section>
                     <p>Add a new alias, for example:</p><pre><code> alias master='git checkout master'</code></pre>
-
+                </section>
+                <section>
                     <p>Anytime you are in a directory with a git repo, you can run the command <code>master</code> and it will checkout the master branch for you.</p>
                     <p>Note: See these instructions for <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682057(v=vs.85).aspx">setting up Windows aliases</a>.</p>
                 </section>
@@ -413,20 +426,29 @@
             <section>
                 <section>
                     <h2>Add a Build Process</h2>
-                    
+                    <p>Every site should have a development version and a production version.
+                        <br>The development version has all the HTML, CSS, JS and image files that make up your site in a clean format that you are happy to work on.
+                        <br>A production version will take these files, minify them, concatenate / merge them and optimise files like images.</br>
+                    </p>
                     <ul>
                         <li>Your build process tools must optimise for performance; they should automatically minify and concatenate JavaScript, CSS, HTML, and images.</li>
                         <li>Use tools like LiveReload to make your development process smoother.</li>
                     </ul>
+                    <p>Before you start coding, you need to consider how to optimise and build the production version of your site. Setting up this workflow from the start prevents any nasty surprises at the end of the project and you can add tools into your workflow that speed up your development, doing the monotonous tasks for you.</p>
                 </section>
                 <section>
                     <h2 id="what-is-a-build-process">What Is a Build Process</h2>
                     <p>A build process is a set of tasks which run over your projects files, compiling and testing code during development and used to create the deployment version of your site. Your build process shouldn’t be a set of tasks you run at the end of your development workflow.</p>
                     <p>The most popular tools for implementing a build process are <a href="http://gulpjs.com/">Gulp</a> and <a href="http://gruntjs.com/">Grunt</a>, both of which are command line tools. If you have no experience of either, use Gulp, we use it for <a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a> and recommend you do the same.</p>
+                    <p>There are tools which have GUIs and may be a bit easier to get to grips with but will be less flexible.</p>
                 </section>
                 <section>
                     <h2 id="what-tasks-should-be-in-a-build-process">What Tasks Should be in a Build Process</h2>
-                    
+                    <p>In the following sections, we’re going to look at the most common tasks you should have in your build process and recommend tasks for Grunt and Gulp.</p>
+                    <p>This requires a lot of trial and error to get each piece set-up the way you want and can be daunting if you are new to build processes.</p>
+                    <p>For a good example of a build process, check out the <a href="https://developers.google.com/web/fundamentals/getting-started/web-starter-kit/">getting started guide for Web Starter Kit</a>, which goes through how to use Web Starter Kit and explains what each of the commands in the Gulp file do. This can be used as a quick way to get set-up and then you can make changes if needed.</p>
+                </section>
+                <section>
                     <p>If you are looking to create your own build process and you’re new to Gulp or Grunt, the quick start guides will be the best place to get into on installing and running your first build process:</p>
                     <ul>
                         <li><a href="http://gruntjs.com/getting-started">Grunt Getting Started</a>
@@ -436,14 +458,8 @@
                     </ul>
                 </section>
                 <section>
-                    <p>For those unfamiliar with the terms concatenation and minification, </p>
-                    <ul>
-                        
-                    <li>Concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</li>
-                    <li>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</li>
-                    </ul>
-                </section>
-                <section>
+                    <p>For those unfamiliar with the terms concatenation and minification, concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</p>
+                    <p>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</p>
                     <p>For minification, use the following:</p>
                     <table class="table-3 tc-heavyright">
                         <colgroup>
@@ -515,6 +531,11 @@
                             </tr>
                         </tbody>
                     </table>
+                </section>
+                <section>
+                    <p><strong>Note</strong>
+                        <br>You can use Sass by taking advantage of the ‘import’ feature (<a href="https://github.com/google/web-starter-kit/blob/master/app/styles/main.scss">See Web Starter Kit for an example</a>).</br>
+                    </p>
                 </section>
                 <section>
                     <h3>Optimise Your Images</h3>
@@ -605,6 +626,9 @@
             <section>
                 <section>
                     <h2>Use Real Devices</h2>
+                </section>
+                <section>
+                    <p>When it comes to developing on a real device, there are a few things to point out and some tips to bear in mind.</p>
                     <ul>
                         <li>There's no substitute for running your site on a real device. You must try your site on real devices.</li>
                         <li>BrowserSync allows you to synchronise user interactions across a number of devices at the same time.</li>
@@ -613,11 +637,14 @@
                 <section>
                     <h2 id="connect-to-a-local-server">Connect to a Local Server</h2>
                     <p>One of the simplest ways to test on a real device, is to simply find the IP address of your computer, run your web server and then point your mobile devices to your computer’s IP address.</p>
+                    <p>Every OS has a different way of finding out your IP address. If you spot the network panel on your computer, that will be the easiest way to find your local IP address.</p>
+                    <p>OS X and Ubuntu users can always run <code>ifconfig</code> from the terminal; Windows users can run <code>ipconfig</code> from the command prompt.</p>
                 </section>
                 <section>
                     <h2 id="use-port-forwarding-to-connect-to-your-server">Use Port Forwarding to Connect to Your Server</h2>
                     <p>It’s often easier and more flexible to test your site using Chromes Port Forwarding feature. This shares localhost sites from your computer, to your phone over USB.</p>
                     <p>The first step is to enable USB debugging on your Android device. Go to <strong>Settings &gt; About Phone</strong> and tap the <strong>Build number</strong> seven times. Then return back to the <strong>Settings</strong> screen and select <strong>Developer Options</strong>.</p>
+                    <p>In Developer Options, make sure the <strong>USB debugging</strong> is checked.</p>
                     <p><img alt="Enable USB Debugging" src="images/usb_debugging_on.png" />
                     </p>
                 </section>
@@ -641,6 +668,7 @@
                 </section>
                 <section>
                     <h2 id="using-devtools-for-mobile-browsers">Using DevTools for Mobile Browsers</h2>
+                    <p>Each browser/platform has its own way to debug sites. Use the appropriate DevTools to help debug problems.</p>
                     <p>You can use Chrome DevTools with Chrome for Android by setting up your device for development and then visiting <code>chrome://inspect</code>. <a href="https://developer.chrome.com/devtools/docs/remote-debugging">Check out our Chrome docs</a> on how to set all of this up.</p>
                     <p><img alt="Chrome Inspect Demo" src="images/chrome-inspect-devtools.png" />
                     </p>
@@ -651,14 +679,23 @@
                     </p>
                 </section>
                 <section>
+                    <p>Unfortunately there is no way to debug a site on Windows Phone, but you can
+                        <br><a href="http://msdn.microsoft.com/en-us/library/ie/dn255001%28v=vs.85%29.aspx">emulate a mobile browser on the desktop version of IE 11</a>. We’ll cover this in the <a href="https://developers.google.com/web/fundamentals/tools/devices/browseremulation.html">next article</a>.</br>
+                    </p>
+                </section>
+                <section>
                     <h2 id="sync-devices-with-browsersync">Sync Devices with BrowserSync</h2>
                     <p>If you have a large number of devices to test against, you may find it overwhelming to do a basic test across all of the devices. <a href="http://www.browsersync.io/">Browser Sync</a> can help with this by synchronising interactions across all of your devices. This includes scrolling, clicking and form entry.</p>
+                    <p>BrowserSync is enabled out of the box with <a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a>, so try it out there or check out the gulp file for how to integrate it in your own workflow.</p>
                     <p>If you aren’t using Gulp, head on over to the <a href="http://www.browsersync.io/">BrowserSync site</a> for alternative approaches to using it.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Use DevTools Emulation</h2>
+                    <p>When you don’t have a particular device, or want to do a spot check on something, the best option is to emulate the device right inside your browser.</p>
+                </section>
+                <section>
                     <p>Browser emulation is great for testing a sites responsiveness, but they don’t emulate differences in API, CSS support and certain behaviors that you’d see on a mobile browser. Test your site on browsers running on real devices to be certain everything behaves as expected.</p>
                     <ul>
                         <li>Quickly test your site’s responsiveness and support for mobile APIs using DevTools emulation.</li>
@@ -666,12 +703,14 @@
                 </section>
                 <section>
                     <h2 id="chrome-devtools-emulation">Chrome DevTools Emulation</h2>
+                    <p><a href="https://developer.chrome.com/devtools">Chrome DevTools</a> has a Device emulation tool which will create a viewport with the right width and height to match a selected device and account for the screen density.</p>
                     <p>You can activate device emulation by following these four steps:</p>
                     <p><img alt="Chrome DevTools Emulation Guide" src="images/chrome-devtools-emulation.png" />
                     </p>
                 </section>
                 <section>
                     <h2 id="firefox-responsive-view">Firefox Responsive View</h2>
+                    <p>Firefox has a <a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_View">responsive design view</a> which encourages you stop thinking in terms of specific devices and instead explore how your design changes at common screen sizes or your own size by dragging the edges.</p>
                     <p>To use the responsive view, open the developer tools in Firefox and click the icon illustrated in step 1 below and use the handles at the side of the web page to resize it, illustrated in step 2.</p>
                     <p><img alt="Firefox Responsive Design View" src="images/ff-responsive-design-mode.png" />
                     </p>
@@ -691,6 +730,8 @@
                 </section>
                 <section>
                     <h2 id="android-emulator">Android Emulator</h2>
+                    <p>There is a word of warning to be said about the Android emulator. At the moment, there is no way to install Chrome on an Android emulator. However, you can use the Android Browser, the Chromium Content Shell and Firefox for Android which we’ll cover later in this guide.</p>
+                    <p>Chromium Content Shell uses the same Chrome rendering engine, but comes without any of the browser specific features.</p>
                     <p>The Android emulator comes with the Android SDK which you need to <a href="http://developer.android.com/sdk/installing/studio.html">download from here</a>.</p>
                     <p>Start by opening Android Studio and go to <code>Tools &gt; Android &gt; AVD Manager (Android Virtual Device Manager)</code>. AVD is the place where you set up the emulators you’d like to use.</p>
                     <p><img alt="Android Virtual Device (AVD) Manager Menu" src="images/android-emulator-adv-manager.png" />
@@ -769,6 +810,8 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2 id="modernie">Modern.IE</h2>
                     <p>Modern.IE Virtual Machines let you access different versions of IE on your computer via VirtualBox (or VMWare). Choose a virtual machine on the <a href="https://modern.ie/en-us/virtualization-tools#downloads">download page here</a>.</p>
+                    <p>It’s worth mentioning that in the IE11 VM, you can test different versions of IE by changing the <code>Document Mode</code>, see <a href="https://developers.google.com/web/fundamentals/tools/devices/browseremulation.html#ie-device-emulation">this section for more info.</a>
+                    </p>
                     <p><img alt="Modern IE VM" src="images/modern-ie-simulator.png" />
                     </p>
                 </section>

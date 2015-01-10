@@ -23,6 +23,18 @@
         document.getElementsByTagName('head')[0].appendChild(link);
     }
     </script>
+
+    <style>
+    section {
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+        margin: 2px;
+    }
+    section>section {
+        border-color: orange;
+    }
+    </style>
     <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
@@ -38,19 +50,20 @@
                     <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
                 </p>
             </section>
-            <style>
-            section {
-                border-style: solid;
-                border-width: 1px;
-                border-color: black;
-                margin: 2px;
-            }
-            section>section {
-                border-color: orange;
-            }
-            </style>
+            <section id="agenda">
+                <h2>agenda</h2>
+                <ul>
+                    <li><a href="#guideline">Compatibility guidelines and best practices</a></li>
+                    <li><a href="#activex">ActiveX controls and plugin changes</a></li>
+                    <li><a href="#browser">Browser features and compatibility changes</a></li>
+                    <li><a href="#layout">CSS and layout compatibility changes</a></li>
+                    <li><a href="#dom">HTML and DOM compatibility changes</a></li>
+                    <li><a href="#javascript">JavaScript compatibility changes</a></li>
+                    <li><a href="#legacy">Legacy feature support changes</a></li>
+                </ul>
+            </section>
             <section>
-                <section>
+                <section id="guideline">
                     <h3>Compatibility guidelines and best practices</h3>
                 </section>
             </section>
@@ -439,7 +452,7 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
                 </section>
             </section>
             <section>
-                <section>
+                <section id="activex">
                     <h3>ActiveX controls and plugin changes</h3>
                 </section>
             </section>
@@ -744,7 +757,7 @@ if(plugin) {
                 </section>
             </section>
             <section>
-                <section>
+                <section id="browser">
                     <h3>Browser features and compatibility changes</h3>
                 </section>
             </section>
@@ -1156,7 +1169,7 @@ if(plugin) {
             </section>
             <section>
                 <section>
-                    <h3>CSS and layout compatibility changes</h3>
+                    <h3 id="layout">CSS and layout compatibility changes</h3>
                 </section>
             </section>
             <section>
@@ -1361,7 +1374,7 @@ if(plugin) {
                 </section>
             </section>
             <section>
-                <section>
+                <section id="dom">
                     <h3>HTML and DOM compatibility changes</h3>
                 </section>
             </section>
@@ -1754,7 +1767,7 @@ xmlns:xsl="http://www.w3.org/TR/WD-xsl"&gt;</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="javascript">
                     <h3>JavaScript compatibility changes</h3>
                 </section>
             </section>
@@ -1868,7 +1881,7 @@ test();</code></pre>
                 </section>
             </section>
             <section>
-                <section>
+                <section id="legacy">
                     <h3>Legacy feature support changes</h3>
                 </section>
             </section>
@@ -2038,10 +2051,10 @@ callingFunction(1)</code></pre>
                 <section>
                     <h3>XML data islands are no longer supported - IE10+</h3>
                     <ul>
-                        
-                    <li>Support for XML data islands has been removed in IE 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that XML data islands are now parsed as HTML, just like in other browsers. </li>
-                    <li>The following example page uses XML data islands and might be impacted by this change:</li>
-                    <pre><code>&lt;html&gt;
+
+                        <li>Support for XML data islands has been removed in IE 10 standards and quirks modes for improved interoperability and compliance with HTML5. This means that XML data islands are now parsed as HTML, just like in other browsers. </li>
+                        <li>The following example page uses XML data islands and might be impacted by this change:</li>
+                        <pre><code>&lt;html&gt;
   &lt;xml&gt;
     This parses as &lt;b&gt;HTML&lt;/b&gt; in IE 10 and other browsers.
     In older versions of IE it parses as XML.
@@ -2109,6 +2122,10 @@ callingFunction(1)</code></pre>
         }]
     });
     </script>
+    <div style="display: block; position: absolute; bottom: 14px; left: 50%; margin-left: -110px; z-index: 20;">
+        <a style="text-decoration:none" href="#agenda">index</a> | <a style="text-decoration:none" href="http://www.browserwork.com">home</a> |
+        <a style="text-decoration:none" href="https://github.com/aaronz/aaronz.github.com">fork</a> | <a style="text-decoration:none" href="http://msdn.microsoft.com/en-us/library/ie/dn384059%28vs.85%29">source</a>
+    </div>
 </body>
 
 </html>

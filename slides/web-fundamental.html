@@ -413,7 +413,7 @@
             <section>
                 <section>
                     <h2>Add a Build Process</h2>
-                    
+
                     <ul>
                         <li>Your build process tools must optimise for performance; they should automatically minify and concatenate JavaScript, CSS, HTML, and images.</li>
                         <li>Use tools like LiveReload to make your development process smoother.</li>
@@ -426,7 +426,7 @@
                 </section>
                 <section>
                     <h2 id="what-tasks-should-be-in-a-build-process">What Tasks Should be in a Build Process</h2>
-                    
+
                     <p>If you are looking to create your own build process and you’re new to Gulp or Grunt, the quick start guides will be the best place to get into on installing and running your first build process:</p>
                     <ul>
                         <li><a href="http://gruntjs.com/getting-started">Grunt Getting Started</a>
@@ -438,9 +438,9 @@
                 <section>
                     <p>For those unfamiliar with the terms concatenation and minification, </p>
                     <ul>
-                        
-                    <li>Concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</li>
-                    <li>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</li>
+
+                        <li>Concatenation means simply merging multiple files together, i.e. copying and pasting several files into one. The reason we do this is that it’s more efficient for a browser to fetch one file, rather than lots of small files.</li>
+                        <li>Minification is the process of taking a file and making the overall number of characters less, without changing how the code works. A good example of this is removing comments, or taking a long variable name and making it smaller. This makes the file size smaller, leading to faster downloads.</li>
                     </ul>
                 </section>
                 <section>
@@ -803,12 +803,10 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Test Against Mobile Network Conditions</h2>
-                    <p>It’s easy to overlook the network conditions your users will face on mobile. Use tools to emulate different network conditions, fix up any load time issues and your users will thank you.</p>
                     <p>If you’re running Google Chrome, you can use the <a href="https://developer.chrome.com/devtools/docs/device-mode#network-conditions">Network Conditioning</a> feature offered by the DevTools.</p>
                 </section>
                 <section>
                     <p>If you’re on a Mac, try out the Network Link Conditioner tool found in the Lion Developer Tools.</p>
-                    <p>This can be installed by doing the following:</p>
                     <p>After installation, the panel will open and you’ll see a drop-down listing a number of preconfigured network scenarios including 3G and EDGE. Select one, turn the tool on and your connection to the internet will be the selected speed, meaning you’ll be able to test for different network types.</p>
                     <p><img alt="OS X Network Panel" src="images/network-panel.png" />
                     </p>
@@ -822,14 +820,11 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Test Your Deployed Site</h2>
-                    <p>Once your site is deployed, check that your site is performing and acting as you'd expect.</p>
-                    <p>Running your site through these online tools gives you an overview of where your site can be improved as well as an indication as to what your users are experiencing when landing on your page.</p>
                 </section>
                 <section>
                     <h2 id="pagespeed-insights">PageSpeed Insights</h2>
                     <p>PageSpeed Insights is a tool which gives you a list of optimisations you can make to your site to improve page load time and highlights any common design problems to improve the user experience.</p>
                     <p>You should be aiming for 100/100 for the user experience score and over 85/100 for speed.</p>
-                    <p>The speed problems will generally fall into categories which can be solved at build time using Grunt or Gulp, or problems which can be fixed with server configuration changes. The server changes will often be a small amount of work for big gains for the user.</p>
                     <p><img alt="PageSpeed Insights Example" src="images/pagespeed-insights.png" />
                     </p>
                 </section>
@@ -838,7 +833,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <h2 id="webpagetestorg">WebPageTest.org</h2>
-                    <p>You might want to think of WebPageTest as being the advanced version of PageSpeed Insights.</p>
                     <p><a href="http://webpagetest.org">WebPageTest.org</a> is a fantastic tool for testing your site’s performance, testing over multiple runs where you can define the network speed, location of request and even the see the performance of a repeat view.</p>
                     <p>One of the main metrics to look for is the <code>Speed Index</code> and you want to aim for a score of less than 1000.</p>
                     <p><img alt="Web PageTest Example" src="images/webpagetest.png" />
@@ -876,7 +870,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Keep Calls To Action Front and Center</h2>
                     <p>It can be easy for mobile users to miss menu items, so always put your key calls-to-action where you know users will see them.</p>
-                    <p><a href="https://developers.google.com/web/fundamentals/principles/research-study.html">Study participants</a> had the easiest time completing tasks on sites that clearly displayed primary calls-to-action in the main body of the site, with secondary tasks available through menus or below the fold. Your mobile calls-to-action will probably be different than on desktop, put yourself in your users’ shoes when determining placement.</p>
                     <p>When users get to a site, they typically have a particular task in mind. The site on the left only offers users a Learn more button, while on the right, users are able to quickly get a quote, find a local agent, make a payment or log in.</p>
                 </section>
             </section>
@@ -884,22 +877,22 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Keep Menus Short and Sweet</h2>
                     <p>An extensive menu might work well for your desktop site, but mobile users won't have the patience to scroll through a long list of options to try and find what they want. Consider how you can present the fewest menu items possible.</p>
-                    <p>Macy’s, a major department store refined the product categories on its mobile site, presenting study participants with a shorter, more clearly-defined list than on desktop.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Make It Easy To Get To The Home Page</h2>
-                    <p>When mobile users navigate through your site, they want an easy way to get back to your initial homepage.</p>
-                    <p>For example, they may want to get back to do another search or start a new browse experience.</p>
-                    <p>Users expect tapping the logo at the top of a page to take them back to the homepage, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> became frustrated if it didn’t work.</p>
+                    <ul>
+                        <li>When mobile users navigate through your site, they want an easy way to get back to your initial homepage.</li>
+                        <li>For example, they may want to get back to do another search or start a new browse experience.</li>
+                        <li>Users expect tapping the logo at the top of a page to take them back to the homepage, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> became frustrated if it didn’t work.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Don't let promotions steal the show</h2>
                     <p>Promotions and ads can overshadow the content they're next to, and make it harder for users to accomplish tasks.</p>
-                    <p><a href="https://developers.google.com/web/fundamentals/principles/research-study.html">Participants</a> visiting one company’s mobile site were distracted by a large promotional banner and missed the navigational buttons beneath it, making it hard for them to learn more about the company’s offerings.</p>
                     <p>For app promotions, use easily dismissible banners, which were preferred by study participants; as opposed to large interstitials (also known as door slams).</p>
                 </section>
             </section>
@@ -927,13 +920,12 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2 id="ensure-site-search-results-are-relevant">Ensure site search results are relevant</h2>
                     <p>Search should be smart, providing users with the best and most relevant results so they don’t have to swipe through multiple pages of results. Make life easier for users with smart-search features like autocomplete, corrected misspellings and suggesting search terms or providing related matches.</p>
-                    <p><a href="https://developers.google.com/web/fundamentals/principles/research-study.html">Participants</a> didn’t bother to swipe through multiple pages of search results. Instead, they judged a site’s search based on the results it returned first, so make sure your first page of search results are the strongest.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h2 id="implement-filters-to-narrow-results">Implement filters to narrow results</h2>
-                    <p>Provide easy to use filters to help narrow the search results to more relevant results for users. <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">Participants</a> relied on filters to narrow down search results, and actually abandoned sites that couldn’t reduce volume. However, you also need to ensure users don’t filter themselves into a box - one car dealer site allowed participants to specify configurations that didn’t actually exist. Help users avoid problems by letting them know how many results will be returned with a particular filter applied.</p>
+                    <p>Provide easy to use filters to help narrow the search results to more relevant results for users. Help users avoid problems by letting them know how many results will be returned with a particular filter applied.</p>
                     <p>Don’t bury the filters at the bottom of the page where users have to scroll to the end of the result set before they can begin to filter what they’re looking for.</p>
                 </section>
             </section>
@@ -953,7 +945,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Let users explore before they commit</h2>
                     <p>Requiring login or account creation too early in a site experience can be detrimental to conversion.</p>
-                    <p>In a <a href="https://developers.google.com/web/fundamentals/principles/">research study</a>, participants became frustrated by sites that demanded registration in order to continue - especially if the site was an unfamiliar brand. While getting access to customer information may be integral to your business, asking for it too early may result in fewer registrations, so don’t ask for it too early.</p>
                     <p>Before offering their personal information, users want to browse content and get a sense of what a site has to offer. In the study, many of the sites that participants rated the lowest were those where they were forced to create an account upfront in order to continue.</p>
                 </section>
             </section>
@@ -974,8 +965,6 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Click to call</h2>
-                </section>
-                <section>
                     <p>On devices with phone capabilities, make it easy for users to directly connect with you by simply tapping a phone number, more commonly known as click to call.</p>
                     <ul>
                         <li>Wrap all phone numbers in hyperlinks with the <code>tel:</code> schema.</li>
@@ -993,15 +982,11 @@ chmod u+x ./chromium-android-installer/\*.sh
                     </p>
                     <p><img alt="Click to call example." src="images/click-to-call_framed.jpg" />
                     </p>
-                </section>
-                <section>
-                    <p>On most devices with telephone capabilities, the user will receive a confirmation before the number is dialed, to ensure users are not being tricked into calling expensive long distance or premium phone numbers. When the device doesn’t support phone calls, users may be presented with a menu allowing them to choose how the browser should handle the number.</p>
                     <p>Desktop browsers that don’t support voice calls will open the default telephony app on the computer, for example Google Voice or Microsoft Communicator.</p>
                 </section>
                 <section>
                     <h2 id="use-the-international-dialing-format">Use the international dialing format</h2>
                     <p>Always supply the phone number using the international dialing format: the plus sign (+), country code, area code and number. While not absolutely necessary, it’s a good idea to separate each segment of the number with a hyphen (-) for easier reading and better auto-detection.</p>
-                    <p>Using a hyphenated international dialing format ensures that no matter where the user is calling from, whether a few hundred meters away or thousands of kilometers, their call will be connected.</p>
                 </section>
                 <section>
                     <h2 id="disable-auto-detection-when-necessary">Disable auto-detection when necessary</h2>
@@ -2006,11 +1991,11 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
-<<<<<<< HEAD
-                    <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code></h2>
-                    <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
-                    <p><img alt="Art direction example" src="https://developers.google.com/web/fundamentals/media/images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
-                    </p>
+                    <<<<<<< HEAD <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code>
+                        </h2>
+                        <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
+                        <p><img alt="Art direction example" src="https://developers.google.com/web/fundamentals/media/images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
+                        </p>
                 </section>
 
                 <section>
@@ -2067,10 +2052,10 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>The <a href="http://www.html5rocks.com/en/mobile/high-dpi/#toc-tech-overview">compressive image technique</a> serves a highly compressed 2x image to all devices, no matter the actual capabilities of the device. Depending on the type of image and level of compression, image quality may not appear to change, but the file size drops significantly.</p>
                     <p><a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/compressive.html">See example</a>
                     </p>
-=======
+                    =======
                     <p>Animating properties is not free, and some properties are cheaper to animate than others. For example, animating the <code>width</code> and <code>height</code> of an element changes its geometry and may cause other elements on the page to move or change size. This process is called layout (or reflow in Gecko-based browsers like Firefox), and can be expensive if your page has a lot of elements. Whenever layout is triggered, the page or part of it will normally need to be painted, which is typically even more expensive than the layout operation itself.</p>
                     <p>Where you can, you should avoid animating properties that trigger layout or paint. For most modern browsers this means limiting animations to <code>opacity</code> or <code>transform</code>, both of which can be highly optimized by the browser; it doesn’t matter if the animation is handled by JavaScript or CSS.</p>
->>>>>>> origin/master
+                    >>>>>>> origin/master
                 </section>
                 <section>
                     <p>For a full list of the work triggered by individual CSS properties can be found at <a href="http://csstriggers.com">CSS Triggers</a>, and you can find a full guide on creating <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">High Performance Animations on HTML5 Rocks</a>.</p>
@@ -3555,12 +3540,9 @@ user-select: none;</code></pre>
                 <section>
                     <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code></h2>
                     <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
-<<<<<<< HEAD
-                    <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
-=======
-                    <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
->>>>>>> origin/master
-                    </p>
+                    <<<<<<< HEAD <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" /> =======
+                        <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" /> >>>>>>> origin/master
+                        </p>
                 </section>
                 <section>
                     <p>Important</p>
@@ -3811,12 +3793,9 @@ user-select: none;</code></pre>
                     <h2 id="use-image-sprites">Use image sprites</h2>
                     <p>CSS spriting is a technique whereby a number of images are combined in a single ‘sprite sheet’ image. Individual images can then be used by specifying the background image for an element (the sprite sheet) plus an offset to display the correct part.</p>
                     <p>
-<<<<<<< HEAD
-                        <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="https://developers.google.com/web/fundamentals/media/images/sprite-sheet.png" />
-=======
-                        <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="images/sprite-sheet.png" />
->>>>>>> origin/master
-                        </a>
+                        <<<<<<< HEAD <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="https://developers.google.com/web/fundamentals/media/images/sprite-sheet.png" /> =======
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="images/sprite-sheet.png" /> >>>>>>> origin/master
+                            </a>
                     </p><pre><code>    .sprite-sheet {
       background-image: url(sprite-sheet.png);
       width: 40px;

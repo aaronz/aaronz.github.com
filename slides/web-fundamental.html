@@ -1013,9 +1013,6 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Choose the best input type</h2>
-                </section>
-                <section>
-                    <p>Streamline information entry by using the right input type. Users appreciate websites that automatically present number pads for entering phone numbers, or automatically advance fields as they entered them. Look for opportunities to eliminate wasted taps in your forms.</p>
                     <ul>
                         <li>Choose the most appropriate input type for your data to simplify input.</li>
                         <li>Offer suggestions as the user types with the <code>datalist</code> element.</li>
@@ -1023,6 +1020,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <p>HTML5 introduced a number of new input types. These new input types give hints to the browser about what type of keyboard layout to display for on-screen keyboards. Users are more easily able to enter the required information without having to change their keyboard and only see the appropriate keys for that input type.</p>
+
+                </section>
+                <section>
                     <p>The <code>datalist</code> element isn’t an input type, but a list of suggested input values to associated with a form field. It lets the browser suggest autocomplete options as the user types. Unlike select elements where users must scan long lists to find the value they’re looking for, and limiting them only to those lists, <code>datalist</code> element provides hints as the user types.</p><pre><code>    &lt;label for="frmFavChocolate"&gt;Favorite Type of Chocolate&lt;/label&gt;
     &lt;input type="text" name="fav-choc" id="frmFavChocolate" list="chocType"&gt;
     &lt;datalist id="chocType"&gt;
@@ -1030,9 +1030,6 @@ chmod u+x ./chromium-android-installer/\*.sh
       &lt;option value="milk"&gt;
       &lt;option value="dark"&gt;
     &lt;/datalist&gt;</code></pre>
-                </section>
-                <section>
-                    <p>Remember</p>
                     <ul>
                         <li>The <code>datalist</code> values are provided as suggestions, and users are not restricted to the suggestions provided.</li>
                     </ul>
@@ -1041,9 +1038,6 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Design efficient forms</h2>
-                </section>
-                <section>
-                    <p>Design efficient forms by avoiding repeated actions, asking for only the necessary information and guide users by showing them how far along they are in multi-part forms.</p>
                     <ul>
                         <li>Use existing data to pre-populate fields and be sure to enable auto-fill.</li>
                         <li>Use clearly-labeled progress bars to help users get through multi-part forms.</li>
@@ -1068,9 +1062,6 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Label and name inputs properly</h2>
-                </section>
-                <section>
-                    <p>Forms are hard to fill out on mobile. The best forms are the ones with the fewest inputs. Good forms provide semantic input types. Keys should change to match the user's input type; users pick a date in a calendar. Keep your user informed. Validation tools should tell the user what they need to do before submitting the form.</p>
                     <ul>
                         <li>Always use <code>label</code>s on form inputs, and ensure they're visible when the field is in focus.</li>
                         <li>Use <code>placeholder</code>s to provide guidance about what you expect.</li>
@@ -1078,25 +1069,27 @@ chmod u+x ./chromium-android-installer/\*.sh
                     </ul>
                 </section>
                 <section>
-                    <p>The <code>label</code> element provides direction to the user, telling them what information is needed in a form element. Each <code>label</code> is associated with an input element by placing it inside the <code>label</code> element, or by using the "<code>for</code>" attribute. Applying labels to form elements also helps to improve the touch target size: the user can touch either the label or the input in order to place focus on the input element.</p><pre><code>    &lt;label for="frmAddressS"&gt;Address&lt;/label&gt;
+                    <ul>
+
+                        <li>The <code>label</code> element provides direction to the user, telling them what information is needed in a form element. Each <code>label</code> is associated with an input element by placing it inside the <code>label</code> element, or by using the "<code>for</code>" attribute. </li>
+                        <li>Applying labels to form elements also helps to improve the touch target size: the user can touch either the label or the input in order to place focus on the input element.</li>
+                        <li>Labels and inputs should be large enough to be easy to press.</li>
+                    </ul>
+                    <pre><code>    &lt;label for="frmAddressS"&gt;Address&lt;/label&gt;
     &lt;input type="text" name="ship-address" required id="frmAddressS"
       placeholder="123 Any Street" autocomplete="shipping street-address"&gt;</code></pre>
                 </section>
                 <section>
-                    <p>Labels and inputs should be large enough to be easy to press. In portrait viewports, field labels should be above input elements, and beside them in landscape. Ensure field labels and the corresponding input boxes are visible at the same time. Be careful with custom scroll handlers that may scroll input elements to the top of the page hiding the label, or labels placed below input elements may be covered by the virtual keyboard.</p>
                     <p>The placeholder attribute provides a hint to the user about what’s expected in the input, typically by displaying the value as light text until the the user starts typing in the element.</p>
                     <p>
                         <input placeholder="MM-YYYY" />
                     </p><pre><code>&lt;input type="text" placeholder="MM-YYYY" ...&gt;</code></pre>
-                </section>
-                <section>
-                    <p>Remember</p>
+
                     <ul>
                         <li>Placeholders disappear as soon as the user starts typing in an element, thus they are not a replacement for labels. They should be used as an aid to help guide users on the required format and content.</li>
                     </ul>
                 </section>
                 <section>
-                    <p>Users appreciate when websites save them time by automatically filling common fields like names, email addresses and other frequently used fields, plus it helps to reduce potential input errors – especially on virtual keyboards and small devices.</p>
                     <p>Browsers use many heuristics to determine which fields they can <a href="https://support.google.com/chrome/answer/142893">auto-populate</a> <a href="https://support.google.com/chrome/answer/142893">based on previously specified data by the user</a>, and you can give hints to the browser by providing both the name attribute and the autocomplete attribute on each input element.</p>
                     <p>For example, to hint to the browser that it should auto-complete the form with the users name, email address and phone number, you should use:</p><pre><code>    &lt;label for="frmNameA"&gt;Name&lt;/label&gt;
     &lt;input type="text" name="name" id="frmNameA"
@@ -1111,12 +1104,7 @@ chmod u+x ./chromium-android-installer/\*.sh
     &lt;label for="frmPhoneNumA"&gt;Phone&lt;/label&gt;
     &lt;input type="tel" name="phone" id="frmPhoneNumA"
       placeholder="+1-555-555-1212" required autocomplete="tel"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>The <code>autocomplete</code> attributes should be prefixed with either <code>shipping</code> or <code>billing</code>, depending on the context.</p>
-                </section>
-                <section>
-                    <p>Remember</p>
+
                     <ul>
                         <li>Auto-complete only works when the form method is post.</li>
                     </ul>
@@ -1129,9 +1117,6 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Provide real-time validation</h2>
-                </section>
-                <section>
-                    <p>Real-time data validation doesn't just help to keep your data clean, but it also helps improve the user experience. Modern browsers have several built-in tools to help provide real-time data validation and may prevent the user from submitting an invalid form. Visual cues should be used to indicate whether a form has been completed properly.</p>
                     <ul>
                         <li>Leverage the browser's built-in validation attributes like <code>pattern</code>, <code>required</code>, <code>min</code>, <code>max</code>, etc.</li>
                         <li>Use JavaScript and the Constraints Validation API for more complex validation requirements.</li>
@@ -1190,7 +1175,8 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <p>It’s helpful to provide a visual indication on each field that indicates whether the user has completed the form properly before they’ve submitted the form. HTML5 also introduces a number of new pseudo-classes that can be used to style inputs based on their value or attributes.</p>
-                    <p>Validation happens immediately which means that when the page is loaded, fields may be marked as invalid, even though the user hasn’t had a chance to fill them in yet. It also means that as the user types, and it’s possible they’ll see the invalid style while typing. To prevent this, you can combine the CSS with JavaScript to only show invalid styling when the user has visited the field.</p><pre><code>    input.dirty:not(:focus):invalid {
+                    <p>Validation happens immediately which means that when the page is loaded, fields may be marked as invalid, even though the user hasn’t had a chance to fill them in yet. It also means that as the user types, and it’s possible they’ll see the invalid style while typing. To prevent this, you can combine the CSS with JavaScript to only show invalid styling when the user has visited the field.</p>
+                    <pre><code>    input.dirty:not(:focus):invalid {
       background-color: #FFD9D9;
     }
     input.dirty:not(:focus):valid {
@@ -1209,8 +1195,7 @@ chmod u+x ./chromium-android-installer/\*.sh
       input.addEventListener("invalid", addDirtyClass);
       input.addEventListener("valid", addDirtyClass);
     }</code></pre>
-                </section>
-                <section>
+
                     <p>Important</p>
                     <ul>
                         <li>You should show the user all of the issues on the form at once, rather than showing them one at a time.</li>
@@ -1225,8 +1210,7 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>Responsive Web Design Basics</h2>
-                    <p>The use of mobile devices to surf the web is growing at an astronomical pace, but unfortunately much of the web isn't optimized for those mobile devices. Mobile devices are often constrained by display size and require a different approach to how content is laid out on screen.</p>
-                    <p>There is a multitude of different screen sizes across phones, "phablets", tablets, desktops, game consoles, TVs, even wearables. Screen sizes will always be changing, so it’s important that your site can adapt to any screen size, today or in the future.</p>
+                    <p>Responsive web design, originally defined by <a href="http://alistapart.com/article/responsive-web-design/">Ethan Marcotte in A List Apart</a> responds to the needs of the users and the devices they’re using. The layout changes based on the size and capabilities of the device. For example, on a phone, users would see content shown in a single column view; a tablet might show the same content in two columns.</p>
                     <p>
                         <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather.html">
                             <video autoplay="" controls="" loop="">
@@ -1236,13 +1220,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                             </video>
                         </a>
                     </p>
-                    <p>Responsive web design, originally defined by <a href="http://alistapart.com/article/responsive-web-design/">Ethan Marcotte in A List Apart</a> responds to the needs of the users and the devices they’re using. The layout changes based on the size and capabilities of the device. For example, on a phone, users would see content shown in a single column view; a tablet might show the same content in two columns.</p>
                 </section>
                 <section>
                     <h2>Size content to the viewport</h2>
-                </section>
-                <section>
-                    <p>On both desktop and mobile devices, users are used to scrolling websites vertically but not horizontally, and forcing the user to scroll horizontally or to zoom out in order to see the whole page results in a poor user experience.</p>
                     <ul>
                         <li>Do not use large fixed width elements.</li>
                         <li>Content should not rely on a particular viewport width to render well.</li>
@@ -1250,15 +1230,7 @@ chmod u+x ./chromium-android-installer/\*.sh
                     </ul>
                 </section>
                 <section>
-                    <p>When developing a mobile site with a <code>meta viewport</code> tag, it’s easy to accidentally create page content that doesn’t quite fit within the specified viewport. For example, an image that is displayed at a width wider than the viewport can cause the viewport to scroll horizontally. You should adjust this content to fit within the width of the viewport, so that the user does not need to scroll horizontally.</p>
-                    <p>Since screen dimensions and width in CSS pixels vary widely between devices (e.g. between phones and tablets, and even between different phones), content should not rely on a particular viewport width to render well.</p>
-                    <p>Setting large absolute CSS widths for page elements (such as the example below), will cause the <code>div</code> to be too wide for the viewport on a narrower device (e.g. a device with a width of 320 CSS pixels, such as an iPhone). Instead, consider using relative width values, such as <code>width: 100%</code>. Similarly, beware of using large absolute positioning values that may cause the element to fall outside the viewport on small screens.</p>
-                </section>
-                <section>
                     <h2>Images in Markup</h2>
-                </section>
-                <section>
-                    <p>The <code>img</code> element is powerful – it downloads, decodes and renders content – and modern browsers support a range of image formats. Including images that work across devices is no different than for desktop, and only requires a few minor tweaks to create a good experience.</p>
                     <ul>
                         <li>Use relative sizes for images to prevent them from accidentally overflowing the container.</li>
                         <li>Use the <code>picture</code> element when you want to specify different images depending on device characteristics (a.k.a. art direction).</li>
@@ -1280,10 +1252,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <p>The <code>srcset</code> attribute enhances the behavior of the <code>img</code> element, making it easy to provide multiple image files for different device characteristics. Similar to the <code>image-set</code> <a href="images-in-css.html#use-image-set-to-provide-high-res-images">CSS function</a> native to CSS, <code>srcset</code> allows the browser to choose the best image depending on the characteristics of the device, for example using a 2x image on a 2x display, and potentially in the future, a 1x image on a 2x device when on a limited bandwidth network.</p><pre><code>&lt;img src="photo.png" srcset="photo@2x.png 2x" ...&gt;</code></pre>
                 </section>
                 <section>
-                    <p>On browsers that don’t support <code>srcset</code>, the browser simply uses the default image file specified by the <code>src</code> attribute. This is why it is important to always include a 1x image that can be displayed on any device, regardless of capabilities. When <code>srcset</code> is supported, the comma-separated list of image/conditions is parsed prior to making any requests, and only the most appropriate image is downloaded and displayed.</p>
-                    <p>While the conditions can include everything from pixel density to width and height, only pixel density is well supported today. To balance current behavior with future features, stick with simply providing the 2x image in the attribute.</p>
-                </section>
-                <section>
                     <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code></h2>
                     <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
                     <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
@@ -1303,8 +1271,6 @@ chmod u+x ./chromium-android-installer/\*.sh
     &lt;/picture&gt;</code></pre>
                 </section>
                 <section>
-                    <p>In the above example, if the browser width is at least 800px, then either <code>head.jpg</code> or <code>head-2x.jpg</code> will be used, depending on the device resolution. If the browser is between 450px and 800px, then either <code>head-small.jpg</code> or <code>head-small-2x.jpg</code> will be used, again, depending on the device resolution. For screen widths less than 450px and backwards compatibility where the <code>picture</code> element isn’t supported, the browser will render the <code>img</code> element instead, and should always be included.</p>
-                    <p>When the final size of the image isn’t known, it can be difficult to specify a density descriptor for the image sources. This is especially true for images that span a proportional width of the browser and are fluid, depending on the size of the browser.</p>
                     <p>Instead of supplying fixed image sizes and densities, the size of each supplied image can be specified by adding a width descriptor along with the size of the image element, allowing the browser to automatically calculate the effective pixel density and choose the best image to download.</p><pre><code>    &lt;img src="lighthouse-200.jpg" sizes="50vw"
          srcset="lighthouse-100.jpg 100w, lighthouse-200.jpg 200w,
                  lighthouse-400.jpg 400w, lighthouse-800.jpg 800w,
@@ -1312,13 +1278,10 @@ chmod u+x ./chromium-android-installer/\*.sh
                  lighthouse-1800.jpg 1800w"&gt;</code></pre>
                 </section>
                 <section>
-                    <p>The above example renders an image that is half of the viewport width (<code>sizes="50vw"</code>), and depending on the width of the browser and it’s device pixel ratio, allowing the browser to choose the correct image regardless of how large the browser window is. For example, the table below shows which image the browser would choose:</p>
                     <p>In many cases, the size or image may change depending on the site’s layout breakpoints. For example, on a small screen, you might want the image to span the full width of the viewport, while on larger screens, it should only take a small proportion.</p><pre><code>    &lt;img src="400.png"
          sizes="(min-width: 600px) 25vw, (min-width: 500px) 50vw, 100vw"
          srcset="100.png 100w, 200.png 200w, 400.png 400w,
                  800.png 800w, 1600.png 1600w, 2000.png 2000w"&gt;</code></pre>
-                </section>
-                <section>
                     <p>The <code>sizes</code> attribute in the above example uses several media queries to specify the size of the image. When the browser width is greater than 600px, the image will be 25% of the viewport width, when it is between 500px and 600px, the image will be 50% of the viewport width, and below 500px, it will be full width.</p>
                 </section>
             </section>
@@ -1342,16 +1305,11 @@ chmod u+x ./chromium-android-installer/\*.sh
                         <li>Use caution with the compressive technique because of the increased memory and decoding costs it requires. Resizing large images to fit on smaller screens is expensive and can be particularly painful on low-end devices where both memory and processing is limited.</li>
                     </ul>
                 </section>
-                <section>
-                    <p>JavaScript image replacement checks the capabilities of the device and "does the right thing". You can determine device pixel ratio via <code>window.devicePixelRatio</code>, get screen width and height, and even potentially do some network connection sniffing via <code>navigator.connection</code> or issuing a fake request. Once you’ve collected all of this information, you can decide which image to load.</p>
-                    <p>One big drawback to this approach is that using JavaScript means that you will delay image loading until at least the look-ahead parser has finished. This means that images won’t even start downloading until after the <code>pageload</code> event fires. In addition, the browser will most likely download both the 1x and 2x images, resulting in increased page weight.</p>
-                </section>
             </section>
             <section>
                 <section>
                     <h2>Tell users which orientation works best</h2>
                     <p>Design for both landscape and portrait, or encourage users to switch to the optimal screen orientation - but make sure your important calls-to-action can be completed even if they ignore the suggestion to switch.</p>
-                    <p><a href="https://developers.google.com/web/fundamentals/principles/research-study.html">Study participants</a> tended to stay in the same screen orientation until something prompted them to switch, like trying to read small type or watch a video.</p>
                 </section>
             </section>
             <section>
@@ -1359,14 +1317,12 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2>Keep users in a single browser window</h2>
                     <p>Switching between windows on a smartphone can be troublesome, and raises the risk that visitors might not find their way back to your site.</p>
                     <p>Try to keep users in one place by avoiding calls-to-action that launch new windows.</p>
-                    <p>For example, if you accept coupons, consider offering these on your site to avoid users opening new windows to search elsewhere. Consider other ways that might cause a user to to look outside your site and provide easy to use features to keep them on your site.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Avoid 'full site' labels</h2>
                     <p>If you provide a link on a page to a separate desktop experience, use terms like 'desktop' instead of 'full' to avoid confusion between what's available between the sites.</p>
-                    <p>When <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> saw an option for "full site" vs "mobile site", they assumed the mobile site was condensed and chose the full site instead. One participant preferred the desktop site because it had "so much more information" - even though the mobile and desktop sites had the same content.</p>
                 </section>
             </section>
             <section>
@@ -1399,7 +1355,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <h2 id="give-clear-indication-that-an-action-will-request-their-location">Give clear indication that an action will request their location</h2>
-                    <p><a href="http://static.googleusercontent.com/media/www.google.com/en/us/intl/ALL_ALL/think/multiscreen/pdf/multi-screen-moblie-whitepaper_research-studies.pdf">In a study by the Google Ads team</a>, when a user was asked to book a hotel room in Boston for an upcoming conference on one particular hotels site, they were prompted to share their GPS location immediately after tapping the ‘Find and Book’ call-to-action on the homepage.</p>
                     <p>In some cases, the user became frustrated because they struggled to understand why they were being shown hotels in San Francisco when they wanted to book a room in Boston.</p>
                     <p>A better experience is to make sure users understands why you’re asking them for location. Add in a well known signifier that is common across devices, such as range finder.</p>
                     <p><img src="images/indication.png" />
@@ -1412,9 +1367,8 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <h2 id="gently-nudge-users-to-grant-permission-to-their-location">Gently nudge users to grant permission to their location</h2>
-                    <p>You don’t have access to any of the steps of what users are doing. You know exactly when the users disallow access to their location, but you don’t know when they grant you access; you only know you obtained access when results appear.</p>
                     <p>It is good practice to "tickle" the user into action if you need them to complete the action.</p>
-                    <p>We recommend:</p><pre><code>button.onclick = function() {
+                    <pre><code>button.onclick = function() {
   var startPos;
   var element = document.getElementById("nudge");
   var showNudgeBanner = function() {
@@ -1460,9 +1414,7 @@ chmod u+x ./chromium-android-installer/\*.sh
             <section>
                 <section>
                     <h2>CSS vs JavaScript Animations</h2>
-                </section>
-                <section>
-                    <p>There are two primary ways to create animations on the web: with <b>CSS</b> and with <b>JavaScript</b>. Which one you choose really depends on the other dependencies of your project, and what kinds of effects you're trying to achieve.</p>
+
                     <ul>
                         <li>Use CSS animations for simpler "one-shot" transitions, like toggling UI element states.</li>
                         <li>Use JavaScript animations when you want to have advanced effects like bouncing, stop, pause, rewind or slow-down.</li>
@@ -1470,7 +1422,6 @@ chmod u+x ./chromium-android-installer/\*.sh
                     </ul>
                 </section>
                 <section>
-                    <p>Most basic animations can be created with either CSS or JavaScript, but the amount of effort and time will differ (see also <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/animations-and-performance.html#css-vs-javascript-performance">CSS vs JavaScript Performance</a>). Each has their pros and cons, but these are good rules-of-thumb:</p>
                     <ul>
                         <li><strong>Use CSS when you have smaller, self-contained states for UI elements.</strong> CSS transitions and animations are ideal for bringing a navigation menu in from the side, or showing a tooltip. You may end up using JavaScript to control the states, but the animations themselves will be in your CSS.</li>
                         <li><strong>Use JavaScript when you need significant control over your animations.</strong> Something that dynamically tracks a touch position, or an animation that you need to stop, pause, slow-down or reverse typically require you to use JavaScript.</li>
@@ -4191,18 +4142,19 @@ The branch breaks, and he starts to fall.
                 <h1>Optimizing Performance</h1>
                 <p>Performance is a feature</p>
                 <ul>
-                    <li><a href="">Critical Rendering Path</a>
+                    <li><a href="#critical-rendering-path">Critical Rendering Path</a>
                     </li>
-                    <li><a href="">Optimizing Content Efficiency</a>
+                    <li><a href="#optimizing-content-efficiency">Optimizing Content Efficiency</a>
                     </li>
                 </ul>
             </section>
             <section>
-                <section>
+                <section id="critical-rendering-path">
                     <h2>Critical Rendering Path</h2>
                 </section>
             </section>
             <section>
+
                 <section>
                     <h2>Constructing the Object Model</h2>
                     <p>Before the browser can render the page it needs to construct the DOM and CSSOM trees. As a result, we need to ensure that we deliver both the HTML and CSS to the browser as quickly as possible.</p>
@@ -4270,24 +4222,15 @@ The branch breaks, and he starts to fall.
                     </p>
                 </section>
                 <section>
-                    <p>Why does the CSSOM have a tree structure? When computing the final set of styles for any object on the page, the browser starts with the most general rule applicable to that node (e.g. if it is a child of body element, then all body styles apply) and then recursively refines the computed styles by applying more specific rules - i.e. the rules "cascade down".</p>
-                    <p>To make it more concrete, consider the CSSOM tree above. Any text contained within the <em>span</em> tag that is placed within the body element will have a font size of 16 pixels and have red text - the font-size directive cascades down from body to the span. However, if a span tag is child of a paragraph (p) tag, then its contents are not displayed.</p>
-                    <p>Also, note that the above tree is not the complete CSSOM tree and only shows the styles we decided to override in our stylesheet. Every browser provides a default set of styles also known as "user agent styles" – that’s what we see when we don’t provide any of our own – and our styles simply override these defaults (e.g. <a href="http://www.iecss.com/">default IE styles</a>). If you have ever inspected your "computed styles" in Chrome DevTools and wondered where all the styles are coming from, now you know!</p>
                     <p>Curious to know how long the CSS processing took? Record a timeline in DevTools and look for "Recalculate Style" event: unlike DOM parsing, the timeline doesn’t show a separate "Parse CSS" entry, and instead captures parsing and CSSOM tree construction, plus the recursive calculation of computed styles under this one event.</p>
                     <p><img alt="Tracing CSSOM construction in DevTools" src="images/cssom-timeline.png" />
                     </p>
-                </section>
-                <section>
                     <p>Our trivial stylesheet takes ~0.6ms to process and affects 8 elements on the page – not much, but once again, not free. However, where did the 8 elements come from? The CSSOM and DOM and are independent data structures! Turns out, the browser is hiding an important step. Next, lets talk about the render tree that links the DOM and CSSOM together.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Render-tree construction, Layout, and Paint</h2>
-                    <p>The CSSOM and DOM trees are combined into a render tree, which is then used to compute the layout of each visible element and serves as an input to the paint process which renders the pixels to screen. Optimizing each of these steps is critical to achieve optimal rendering performance.</p>
-                </section>
-                <section>
-                    <p>In the previous section on constructing the object model, we built the DOM and the CSSOM trees based on the HTML and CSS input. However, both of these are independent objects which capture different aspects of the document: one describes the content and the other the style rules that need to be applied to the document. How do we merge the two and get the browser to render pixels on the screen?</p>
                     <ul>
                         <li>The DOM and CSSOM trees are combined to form the render tree.</li>
                         <li>Render tree contains only the nodes required to render the page.</li>
@@ -4333,10 +4276,10 @@ The branch breaks, and he starts to fall.
                     <p>The body of the above page contains two nested div’s: the first (parent) div sets the display size of the node to 50% of the viewport width, and the second div contained by the parent sets its width to be 50% of its parent - i.e. 25% of the viewport width!</p>
                     <p><img alt="Calculating layout information" src="images/layout-viewport.png" />
                     </p>
-                </section>
-                <section>
                     <p>The output of the layout process is a "box model" which precisely captures the exact position and size of each element within the viewport: all of the relative measures are converted to absolute pixels positions on the screen, and so on.</p>
                     <p>Finally, now that we know which nodes are visible, their computed styles, and geometry, we can finally pass this information to our final stage which will convert each node in the render tree to actual pixels on the screen - this step is often referred to as "painting" or "rasterizing."</p>
+                </section>
+                <section>
                     <p>Did you follow all of that? Each of these steps requires a non-trivial amount of work by the browser, which also means that it can often take quite a bit of time. Thankfully, Chrome DevTools can help us get some insight into all three of the stages we’ve described above. Let’s examine the layout stage for our original "hello world" example:</p>
                     <p><img alt="Measuring layout in DevTools" src="images/layout-timeline.png" />
                     </p>
@@ -4346,8 +4289,6 @@ The branch breaks, and he starts to fall.
                         <li>The render tree construction and position and size calculation are captured with the "Layout" event in the Timeline.</li>
                         <li>Once layout is complete, the browser issues a "Paint Setup" and "Paint" events which convert the render tree to actual pixels on the screen.</li>
                     </ul>
-                    <p>The time required to perform render tree construction, layout and paint will vary based on the size of the document, the applied styles, and of course, the device it is running on: the larger the document the more work the browser will have to do; the more complicated the styles are the more time will be consumed for painting also (e.g. a solid color is "cheap" to paint, and a drop shadow is much more "expensive" to compute and render).</p>
-                    <p>Once all is said and done, our page is finally visible in the viewport - woohoo!</p>
                     <p><img alt="Rendered Hello World page" src="images/device-dom-small.png" />
                     </p>
                 </section>
@@ -4360,10 +4301,6 @@ The branch breaks, and he starts to fall.
             <section>
                 <section>
                     <h2>Render Blocking CSS</h2>
-                    <p>By default CSS is treated as a render blocking resource, which means that the browser will hold rendering of any processed content until the CSSOM is constructed. Make sure to keep your CSS lean, deliver it as quickly as possible, and use media types and queries to unblock rendering.</p>
-                </section>
-                <section>
-                    <p>In the previous section we saw that the critical rendering path requires that we have both the DOM and the CSSOM to construct the render tree, which creates an important performance implication: <strong>both HTML and CSS are render blocking resources.</strong> The HTML is obvious, since without the DOM we would not have anything to render, but the CSS requirement may be less obvious. What would happen if we try to render a typical page without blocking rendering on CSS?</p>
                     <ul>
                         <li>By default, CSS is treated as a render blocking resource.</li>
                         <li>Media types and media queries allow us to mark some CSS resources as non-render blocking.</li>
@@ -4371,7 +4308,6 @@ The branch breaks, and he starts to fall.
                     </ul>
                 </section>
                 <section>
-                    <p>The above example, showing the NYTimes website with and without CSS, demonstrates why rendering is blocked until CSS is available - without CSS the page is effectively unusable. In fact, the experience on the right is often referred to as a "Flash of Unstyled Content" (FOUC). As a result, the browser will block rendering until it has both the DOM and the CSSOM.</p>
                     <p><strong><em>CSS is a render blocking resource, get it down to the client as soon and as quickly as possible to optimize the time to first render!</em></strong>
                     </p>
                     <p>However, what if we have some CSS styles that are only used under certain conditions, for example, when the page is being printed, or being projected onto a large monitor? It would be nice if we didn’t have to block rendering on these resources!</p>
@@ -4380,21 +4316,19 @@ The branch breaks, and he starts to fall.
 &lt;link href="other.css" rel="stylesheet" media="(min-width: 40em)"&gt;</code></pre>
                 </section>
                 <section>
-                    <p>A <a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries.html">media query</a> consists of a media type and zero or more expressions that check for the conditions of particular media features. For example, our first stylesheet declaration does not provide any media type or query, hence it will apply in all cases - that is to say, it is always render blocking. On the other hand, the second stylesheet will only apply when the content is being printed - perhaps you want to rearrange the layout, change the fonts, etc - and hence this stylesheet does not need to block the rendering of the page when it is first loaded. Finally, the last stylesheet declaration provides a "media query" which is executed by the browser: if the conditions match, the browser will block rendering until the stylesheet is downloaded and processed.</p>
                     <p>By using media queries, our presentation can be tailored to specific use cases such as display vs. print, and also to dynamic conditions such as changes in screen orientation, resize events, and more. <strong>When declaring your stylesheet assets, pay close attention to the media type and queries, as they will have big performance impact on the critical rendering path!</strong>
                     </p>
                     <ul>
-                        <li>
-                            <p><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
-                            </p>
-                            <p><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
-                            </p>
+
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
                         </li>
                     </ul>
-                    <p><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
-                    </p>
-                    <p><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
-                    </p>
                     <p>Let’s consider some hands-on examples:</p><pre><code>&lt;link href="style.css"    rel="stylesheet"&gt;
 &lt;link href="style.css"    rel="stylesheet" media="screen"&gt;
 &lt;link href="portrait.css" rel="stylesheet" media="orientation:portrait"&gt;
@@ -4413,9 +4347,6 @@ The branch breaks, and he starts to fall.
             <section>
                 <section>
                     <h2>Adding Interactivity with JavaScript</h2>
-                </section>
-                <section>
-                    <p>JavaScript allows us to modify just about every aspect of the page: content, styling, and its behavior to user interactions. However, JavaScript can also block DOM construction and delay when the page is rendered. Make your JavaScript async and eliminate any unnecessary JavaScript from the critical rendering path to deliver optimal performance.</p>
                     <ul>
                         <li>JavaScript can query and modify DOM and CSSOM.</li>
                         <li>JavaScript execution blocks on CSSOM.</li>
@@ -4454,26 +4385,20 @@ The branch breaks, and he starts to fall.
                             <p>JavaScript also allows us to create, style, and append and remove new elements to the DOM. In fact, technically our entire page could be just one big JavaScript file which creates and styles the elements one by one - that would work, but working with HTML and CSS is much easier in practice. In the second part of our JavaScript function we create a new div element, set its text content, style it, and append it to the body.</p>
                         </li>
                     </ul>
+                </section>
+                <section>
                     <p>JavaScript allows us to reach into the DOM and pull out the reference to the hidden span node - the node may not be visible in the render tree, but it’s still there in the DOM! Then, once we have the reference, we can change its text (via .textContent), and even override its calculated display style property from ‘none’ to ‘inline’. Once all is said and done, our page will now display "<strong>Hello interactive students!</strong>".</p>
                     <p>JavaScript also allows us to create, style, and append and remove new elements to the DOM. In fact, technically our entire page could be just one big JavaScript file which creates and styles the elements one by one - that would work, but working with HTML and CSS is much easier in practice. In the second part of our JavaScript function we create a new div element, set its text content, style it, and append it to the body.</p>
                     <p><img alt="page preview" src="images/device-js-small.png" />
                     </p>
                 </section>
                 <section>
-                    <p>With that, we’ve modified the content and the CSS style of an existing DOM node, and added an entirely new node to the document. Our page won’t win any design awards, but it illustrates the power and flexibility that JavaScript affords us.</p>
-                    <p>However, there is a big performance caveat lurking underneath. JavaScript affords us a lot of power, but it also creates a lot of additional limitations on how and when the page is rendered.</p>
-                    <p>First, notice that in the above example our inline script is near the bottom of the page. Why? Well, you should try it yourself, but if we move the script above the <em>span</em> element, you’ll notice that the script will fail and complain that it cannot find a reference to any <em>span</em> elements in the document - i.e. <em>getElementsByTagName(‘span’)</em> will return <em>null</em>. This demonstrates an important property: our script is executed at the exact point where it is inserted in the document. When the HTML parser encounters a script tag, it pauses its process of constructing the DOM and yields control over to the JavaScript engine; once the JavaScript engine has finished running, the browser then picks up from where it left off and resumes the DOM construction.</p>
-                    <p>In other words, our script block can’t find any elements later in the page because they haven’t been processed yet! Or, put slightly differently: <strong>executing our inline script blocks DOM construction, which will also delay the initial render.</strong>
-                    </p>
-                    <p>Another subtle property of introducing scripts into our page is that they can read and modify not just the DOM, but also the CSSOM properties. In fact, that’s exactly what we’re doing in our example when we change the display property of the span element from none to inline. The end result? We now have a race condition.</p>
-                    <p>What if the browser hasn’t finished downloading and building the CSSOM when we want to run our script? The answer is simple and not very good for performance: <strong>the browser will delay script execution until it has finished downloading and constructing the CSSOM, and while we’re waiting, the DOM construction is also blocked!</strong>
-                    </p>
+                    
                     <p>In short, JavaScript introduces a lot of new dependencies between the DOM, CSSOM, and JavaScript execution and can lead to significant delays in how quickly the browser can process and render our page on the screen:</p>
                     <p>When we talk about "optimizing the critical rendering path," to a large degree we’re talking about understanding and optimizing the dependency graph between HTML, CSS, and JavaScript.</p>
                 </section>
                 <section>
                     <h2 id="parser-blocking-vs-asynchronous-javascript">Parser Blocking vs. Asynchronous JavaScript</h2>
-                    <p>By default, JavaScript execution is "parser blocking": when the browser encounters a script in the document it must pause DOM construction, hand over the control to the JavaScript runtime and let the script execute before proceeding with DOM construction. We already saw this in action with an inline script in our earlier example. In fact, inline scripts are always parser blocking unless you take special care and write additional code to defer their execution.</p>
                     <p>What about scripts included via a script tag? Let’s take our previous example and extract our code into a separate file:</p><pre><code>    &lt;html&gt;
       &lt;head&gt;
         &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
@@ -4499,9 +4424,7 @@ The branch breaks, and he starts to fall.
     document.body.appendChild(loadTime);</code></pre>
                 </section>
                 <section>
-                    <p>Would you expect the execution order to be any different when we use a <code>&lt;script&gt;</code> tag instead of using an inline JavaScript snippet? Of course, the answer is "no" as they are identical and should behave in the same way. In both cases the browser will have to pause and execute the script before it can process the remainder of the document. However, <strong>in the case of an external JavaScript file the browser will also have to pause and wait for the script to be fetched from disk, cache, or a remote server, which can add tens to thousands of milliseconds of delay to the critical rendering path.</strong>
                     </p>
-                    <p>That said, good news, we do have an escape hatch! By default all JavaScript is parser blocking and the browser doesn’t know what the script is planning to do on the page, hence it has to assume the worst case scenario and block the parser. However, what if we could signal to the browser and tell it that the script does not need to be executed at the exact point where it is referenced in the document? Doing so would allow the browser to continue to construct the DOM and let the script execute once it’s ready - e.g. once the file has been fetched from cache or a remote server.</p>
                     <p>So, how do we achieve this trick? It’s pretty simple, we can mark our script as <em>async</em>:</p><pre><code>    &lt;html&gt;
       &lt;head&gt;
         &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
@@ -4522,9 +4445,6 @@ The branch breaks, and he starts to fall.
             <section>
                 <section>
                     <h2>Measuring the Critical Rendering Path with Navigation Timing</h2>
-                </section>
-                <section>
-                    <p>You can't optimize what you can't measure. Thankfully, the Navigation Timing API gives us all the necessary tools to measure each step of the critical rendering path!</p>
                     <ul>
                         <li>Navigation Timing provides high resolution timestamps for measuring CRP.</li>
                         <li>Browser emits series of consumable events which capture various stages of the CRP.</li>
@@ -4610,12 +4530,7 @@ The branch breaks, and he starts to fall.
             <section>
                 <section>
                     <h2>Analyzing Critical Rendering Path Performance</h2>
-                    <p>Identifying and resolving critical rendering path performance bottlenecks requires good knowledge of the common pitfalls. Let's take a hands-on tour and extract common performance patterns that will help you optimize your pages.</p>
-                    <p>The goal of optimizing the critical rendering path is to allow the browser to paint the page as quickly as possible: faster pages translate to higher engagement, number of pages viewed, and <a href="http://www.google.com/think/multiscreen/success.html">improved conversion</a>. As a result, we want to minimize the amount of time the visitor has to spend staring at a blank screen by optimizing which resources are loaded and in which order.</p>
-                    <p>To help illustrate this process, let’s start with the simplest possible case and incrementally build up our page to include additional resources, styles, and application logic - in the process, we’ll also see where things can go wrong, and how to optimize each of these cases.</p>
-                </section>
-                <section>
-                    <p>Finally, one more thing before we start… So far we’ve focused exclusively on what happens in the browser once the resource (CSS, JS, or HTML file) is available to process and have ignored the time to fetch it either from cache or from the network. We’ll dive into how to optimize the networking aspects of our application in great detail in the next lesson but in the meantime (to make things more realistic) we’ll assume the following:</p>
+
                     <ul>
                         <li>A network roundtrip (propagation latency) to the server will cost 100ms</li>
                         <li>Server response time will be 100ms for the HTML document and 10ms for all other files</li>
@@ -4637,9 +4552,9 @@ The branch breaks, and he starts to fall.
                     <p>We’ll start with basic HTML markup and a single image - no CSS or JavaScript - which is about as simple as it gets. Now let’s open up our Network timeline in Chrome DevTools and inspect the resulting resource waterfall:</p>
                     <p><img alt="CRP" src="images/waterfall-dom.png" />
                     </p>
+                    <p>As expected, the HTML file took ~200ms to download. Note that the transparent portion of the blue line indicates the time the browser is waiting on the network - i.e. no response bytes have yet been received - whereas the solid portion shows the time to finish the download after the first response bytes have been received. In our example above, the HTML download is tiny (&lt;4K), so all we need is a single roundtrip to fetch the full file. As a result, the HTML document takes ~200ms to fetch, with half the time spent waiting on the network and other half on the server response.</p>
                 </section>
                 <section>
-                    <p>As expected, the HTML file took ~200ms to download. Note that the transparent portion of the blue line indicates the time the browser is waiting on the network - i.e. no response bytes have yet been received - whereas the solid portion shows the time to finish the download after the first response bytes have been received. In our example above, the HTML download is tiny (&lt;4K), so all we need is a single roundtrip to fetch the full file. As a result, the HTML document takes ~200ms to fetch, with half the time spent waiting on the network and other half on the server response.</p>
                     <p>Once the HTML content becomes available, the browser has to parse the bytes, convert them into tokens, and build the DOM tree. Notice that DevTools conveniently reports the time for DOMContentLoaded event at the bottom (216ms), which also corresponds to the blue vertical line. The gap between the end of the HTML download and the blue vertical line (DOMContentLoaded) is the time it took the browser to build the DOM tree - in this case, just a few milliseconds.</p>
                     <p>Finally, notice something interesting: our "awesome photo" did not block the domContentLoaded event! Turns out, we can construct the render tree and even paint the page without waiting for each and every asset on the page: <strong>not all resources are critical to deliver the fast first paint</strong>. In fact, as we will see, when we talk about the critical rendering path we are typically talking about the HTML markup, CSS, and JavaScript. Images do not block the initial render of the page - although, of course, we should try to make sure that we get the images painted as soon as possible also!</p>
                     <p>That said, the "load" event (also commonly known as "onload"), is blocked on the image: DevTools reports the onload event at 335ms. Recall that the onload event marks the point when <strong>all resources</strong> required by the page have been downloaded and processed - this is the point when the loading spinner can stop spinning in the browser and this point is marked by the red vertical line in the waterfall.</p>
@@ -4890,9 +4805,6 @@ The branch breaks, and he starts to fall.
             <section>
                 <section>
                     <h2>Optimizing the Critical Rendering Path</h2>
-                    <p></p>
-                </section>
-                <section>
                     <p>In order to deliver the fastest possible time to first render, we need to optimize three variables:</p>
                     <ul>
                         <li><strong>Minimize the number of critical resources.</strong>
@@ -4907,9 +4819,6 @@ The branch breaks, and he starts to fall.
                     <p>A critical resource is any resource that may block initial rendering of the page. The fewer of these resources there are on the page, the less work the browser has to do to get content on the screen, and the less contention there is for CPU and other resources.</p>
                     <p>Similarly, the fewer critical bytes the browser has to download, the faster it can get to processing the content and get it visible on the screen. To reduce the number of bytes we can reduce the number of resources (eliminate them or make them non-critical), and also ensure that we minimize the transfer size by compressing and optimizing each resource.</p>
                     <p>Finally, the critical path length is a function of the dependency graph between all the critical resources required by the page and their bytesize: some resource downloads can only be initiated once a previous resource has been processed, and the larger the resource the more roundtrips it will take us to download it.</p>
-                    <p>In other words, the number of resources, their bytesize, and the critical path length are related to each other, but they are not exactly the same. For example, you may not be able to reduce the number of critical resources, or shorten the critical path length, but reducing the number of critical bytes is still an important optimization — and vice versa.</p>
-                    <p><strong>The general sequence of steps to optimize the critical rendering path is:</strong>
-                    </p>
                 </section>
             </section>
             <section>

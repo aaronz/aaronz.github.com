@@ -89,13 +89,12 @@
             <section>
                 <section id="num_http">
                     <h3>Minimize HTTP Requests</h3>
-                </section>
-                <section>
-                    <p>80% of the end-user response time is spent on the front-end. Most of this time is tied up in downloading all the components in the page: images, stylesheets, scripts, Flash, etc. <b>Reducing the number of components</b> in turn reduces the number of HTTP requests required to render the page. This is the key to faster pages. </p>
-                </section>
-                <section>
+                    <p><b>80% </b>of the end-user response time is spent on the front-end. Most of this time is tied up in downloading all the components in the page: images, stylesheets, scripts, Flash, etc. </p>
+                    <p><b>Reducing the number of components</b> in turn reduces the number of HTTP requests required to render the page. This is the key to faster pages. </p>
                     <p>One way to reduce the number of components in the page is to <b>simplify the page's design.</b> </p>
-                    <p class="fragment">Is there a way to build pages with richer content while also achieving fast response times?</p>
+                </section>
+                <section>
+                    <h3>Is there a way to build pages with richer content while also achieving fast response times?</h3>
                     <ul class="fragment">
                         <li>Combined files</li>
                         <li>CSS Sprites</li>
@@ -120,8 +119,8 @@
                 <section>
                     <h3>CSS Sprites</h3>
                     <p><a href="http://alistapart.com/articles/sprites" data-rapid_p="1"><strong>CSS Sprites</strong></a> are the preferred method for reducing the number of image requests. Combine your background images into a single image and use the CSS <code>background-image</code> and <code>background-position</code> properties to display the desired image segment.</p>
-                    <img src="images/css-sprites.jpg" alt="css sprites">
-                    <pre><code>
+                    <img class="fragment" src="images/css-sprites.jpg" alt="css sprites">
+                    <pre class="fragment"><code>
 .app-icon-read {    
 background-position: 0 0;
 }   
@@ -138,27 +137,31 @@ width: 50px;
                 <section>
                     <h3>Image Maps</h3>
                     <p><a href="http://www.w3.org/TR/html401/struct/objects.html#h-13.6" data-rapid_p="2"><strong>Image maps</strong></a> combine multiple images into a single image. Image maps only work if the images are contiguous in the page, such as a navigation bar.</p>
+                    <p>Defining the coordinates of image maps can be tedious and error prone. Using image maps for navigation is not accessible too, so it's not recommended.</p>
                     <a href="http://en.wikipedia.org/wiki/Image_map" target="_blank">http://en.wikipedia.org/wiki/Image_map</a>
                 </section>
                 <section>
                     <h3>Inline Images</h3>
-                    <p><strong>Inline images</strong> use the <a href="http://tools.ietf.org/html/rfc2397" data-rapid_p="3"><code>data:</code> URL scheme</a> to embed the image data in the actual page. This can increase the size of your HTML document. Combining inline images into your (cached) stylesheets is a way to reduce HTTP requests and avoid increasing the size of your pages.</p>
+                    <p><strong>Inline images</strong> use the <a href="http://tools.ietf.org/html/rfc2397" data-rapid_p="3">data: URL scheme</a> to embed the image data in the actual page. This can increase the size of your HTML document. Combining inline images into your (cached) stylesheets is a way to reduce HTTP requests and avoid increasing the size of your pages.</p>
                     <pre><code>data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;base64],&lt;encoded data&gt;</code></pre>
                     <pre><code>&lt;img width="16" height="16" alt="star" src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" /&gt;</code></pre>
-                    <img width="16" height="16" alt="star" src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" />
-                    <p><a href="http://css-tricks.com/data-uris/">Data Uris - CSS Tricks</a>
-                    </p>
+                    <img class="fragment" width="16" height="16" alt="star" src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" />
+                    <div class="fragment">
+                        <p>To learn more:</p>
+                        <p><a href="http://css-tricks.com/data-uris/">Data Uris - CSS Tricks</a>
+                        </p>
+                    </div>
                 </section>
                 <section>
-                    <p>Reducing the number of HTTP requests in your page is the place to start. This is the most important guideline for improving performance for first time visitors. As described in Tenni Theurer's blog post <a href="http://yuiblog.com/blog/2007/01/04/performance-research-part-2/" data-rapid_p="4">Browser Cache Usage - Exposed!</a>, 40-60% of daily visitors to your site come in with an empty cache. <b>Making your page fast for these first time visitors is key to a better user experience.</b>
+                    <h3>Summary</h3>
+                    <p>Reducing the number of HTTP requests in your page is the place to start. This is the most important guideline for improving performance for first time visitors. 40-60% of daily visitors to your site come in with an empty cache. <b>Making your page fast for these first time visitors is key to a better user experience.</b>
                     </p>
                 </section>
             </section>
             <section>
                 <section id="dns_lookups">
                     <h3>Reduce DNS Lookups</h3>
-                </section>
-                <section>
+                
                     <p>The Domain Name System (DNS) maps hostnames to IP addresses. <b>DNS has a cost</b>. It typically takes <b>20-120 milliseconds</b> for DNS to lookup the IP address for a given hostname. The browser can't download anything from this hostname until the DNS lookup is completed. </p>
                     <img src="images/dns-lookup.jpg" alt="DNS lookup">
                 </section>

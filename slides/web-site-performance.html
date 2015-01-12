@@ -45,17 +45,46 @@
             <section id="agenda">
                 <h3>The list includes 35 best practices divided into 7 categories</h3>
                 <ul class="fragment">
-                    <li><a href="#content">Content</a></li>
-                    <li><a href="#server">Server</a></li>
-                    <li><a href="#cookie">Cookie</a></li>
-                    <li><a href="#css">CSS</a></li>
-                    <li><a href="#javascript">JavaScript</a></li>
-                    <li><a href="#images">Images</a></li>
-                    <li><a href="#mobile">Mobile</a></li>
+                    <li><a href="#content">Content</a>
+                    </li>
+                    <li><a href="#server">Server</a>
+                    </li>
+                    <li><a href="#cookie">Cookie</a>
+                    </li>
+                    <li><a href="#css">CSS</a>
+                    </li>
+                    <li><a href="#javascript">JavaScript</a>
+                    </li>
+                    <li><a href="#images">Images</a>
+                    </li>
+                    <li><a href="#mobile">Mobile</a>
+                    </li>
                 </ul>
             </section>
             <section id="content">
                 <h2>Content</h2>
+                <ol id="rules-list">
+                    <li>Make Fewer HTTP Requests
+                    </li>
+                    <li>Reduce DNS Lookups
+                    </li>
+                    <li>Avoid Redirects
+                    </li>
+                    <li>Make Ajax Cacheable
+                    </li>
+                    <li>Postload Components
+                    </li>
+                    <li>Preload Components
+                    </li>
+                    <li>Reduce the Number of DOM Elements
+                    </li>
+                    <li>Split Components Across Domains
+                    </li>
+                    <li>Minimize Number of iframes
+                    </li>
+                    <li>Avoid 404s
+                    </li>
+                </ol>
             </section>
             <section>
                 <section id="num_http">
@@ -348,6 +377,22 @@ Content-Type: text/html</code></pre>
             </section>
             <section id="server">
                 <h2>Server</h2>
+                <ol id="rules-list">
+                    <li>Use a Content Delivery Network (CDN)
+                    </li>
+                    <li>Add Expires or Cache-Control Header
+                    </li>
+                    <li>Gzip Components
+                    </li>
+                    <li>Configure ETags
+                    </li>
+                    <li>Flush Buffer Early
+                    </li>
+                    <li>Use GET for Ajax Requests
+                    </li>
+                    <li>Avoid Empty Image src
+                    </li>
+                </ol>
             </section>
             <section>
                 <section id="cdn">
@@ -578,6 +623,12 @@ HTTP/1.1 304 Not Modified</code></pre>
             </section>
             <section id="cookies">
                 <h2>Cookies</h2>
+                <ol id="rules-list">
+                    <li>Reduce Cookie Size
+                    </li>
+                    <li>Use Cookie-Free Domains for Components
+                    </li>
+                </ol>
             </section>
             <section>
                 <section>
@@ -622,6 +673,16 @@ HTTP/1.1 304 Not Modified</code></pre>
             </section>
             <section id="css">
                 <h2>CSS</h2>
+                <ol id="rules-list">
+                    <li>Put Stylesheets at Top
+                    </li>
+                    <li>Avoid CSS Expressions
+                    </li>
+                    <li>Choose &lt;link&gt; Over @import
+                    </li>
+                    <li>Avoid Filters
+                    </li>
+                </ol>
             </section>
             <section>
                 <section id="css_top">
@@ -685,6 +746,20 @@ HTTP/1.1 304 Not Modified</code></pre>
             </section>
             <section id="javascript">
                 <h2>JavaScript</h2>
+                <ol id="rules-list">
+                    <li>Put Scripts at Bottom
+                    </li>
+                    <li>Make JavaScript and CSS External
+                    </li>
+                    <li>Minify JavaScript and CSS
+                    </li>
+                    <li>Remove Duplicate Scripts
+                    </li>
+                    <li>Minimize DOM Access
+                    </li>
+                    <li>Develop Smart Event Handlers
+                    </li>
+                </ol>
             </section>
             <section>
                 <section id="js_bottom">
@@ -817,6 +892,16 @@ HTTP/1.1 304 Not Modified</code></pre>
             </section>
             <section id="images">
                 <h2>Images</h2>
+                <ol id="rules-list">
+                    <li>Optimize Images
+                    </li>
+                    <li>Optimize CSS Sprites
+                    </li>
+                    <li>Do Not Scale Images in HTML
+                    </li>
+                    <li>Make favicon.ico Small and Cacheable
+                    </li>
+                </ol>
             </section>
             <section>
                 <section>
@@ -900,6 +985,12 @@ HTTP/1.1 304 Not Modified</code></pre>
             </section>
             <section id="mobile">
                 <h2>Mobile</h2>
+                <ol id="rules-list">
+                    <li>Keep Components Under 25 KB
+                    </li>
+                    <li>Pack Components Into a Multipart Document
+                    </li>
+                </ol>
             </section>
             <section>
                 <section>

@@ -2049,11 +2049,11 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
-<<<<<<< HEAD
-                    <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code></h2>
-                    <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
-                    <p><img alt="Art direction example" src="https://developers.google.com/web/fundamentals/media/images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
-                    </p>
+                    <<<<<<< HEAD <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code>
+                        </h2>
+                        <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
+                        <p><img alt="Art direction example" src="https://developers.google.com/web/fundamentals/media/images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
+                        </p>
                 </section>
 
                 <section>
@@ -2110,10 +2110,10 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>The <a href="http://www.html5rocks.com/en/mobile/high-dpi/#toc-tech-overview">compressive image technique</a> serves a highly compressed 2x image to all devices, no matter the actual capabilities of the device. Depending on the type of image and level of compression, image quality may not appear to change, but the file size drops significantly.</p>
                     <p><a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/compressive.html">See example</a>
                     </p>
-=======
+                    =======
                     <p>Animating properties is not free, and some properties are cheaper to animate than others. For example, animating the <code>width</code> and <code>height</code> of an element changes its geometry and may cause other elements on the page to move or change size. This process is called layout (or reflow in Gecko-based browsers like Firefox), and can be expensive if your page has a lot of elements. Whenever layout is triggered, the page or part of it will normally need to be painted, which is typically even more expensive than the layout operation itself.</p>
                     <p>Where you can, you should avoid animating properties that trigger layout or paint. For most modern browsers this means limiting animations to <code>opacity</code> or <code>transform</code>, both of which can be highly optimized by the browser; it doesn’t matter if the animation is handled by JavaScript or CSS.</p>
->>>>>>> origin/master
+                    >>>>>>> origin/master
                 </section>
                 <section>
                     <p>For a full list of the work triggered by individual CSS properties can be found at <a href="http://csstriggers.com">CSS Triggers</a>, and you can find a full guide on creating <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">High Performance Animations on HTML5 Rocks</a>.</p>
@@ -3598,12 +3598,9 @@ user-select: none;</code></pre>
                 <section>
                     <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code></h2>
                     <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
-<<<<<<< HEAD
-                    <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
-=======
-                    <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
->>>>>>> origin/master
-                    </p>
+                    <<<<<<< HEAD <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" /> =======
+                        <p><img alt="Art direction example" src="images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" /> >>>>>>> origin/master
+                        </p>
                 </section>
                 <section>
                     <p>Important</p>
@@ -3854,12 +3851,9 @@ user-select: none;</code></pre>
                     <h2 id="use-image-sprites">Use image sprites</h2>
                     <p>CSS spriting is a technique whereby a number of images are combined in a single ‘sprite sheet’ image. Individual images can then be used by specifying the background image for an element (the sprite sheet) plus an offset to display the correct part.</p>
                     <p>
-<<<<<<< HEAD
-                        <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="https://developers.google.com/web/fundamentals/media/images/sprite-sheet.png" />
-=======
-                        <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="images/sprite-sheet.png" />
->>>>>>> origin/master
-                        </a>
+                        <<<<<<< HEAD <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="https://developers.google.com/web/fundamentals/media/images/sprite-sheet.png" /> =======
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/image-sprite.html"><img alt="Image sprite sheet used in example" src="images/sprite-sheet.png" /> >>>>>>> origin/master
+                            </a>
                     </p><pre><code>    .sprite-sheet {
       background-image: url(sprite-sheet.png);
       width: 40px;
@@ -5733,6 +5727,15 @@ font.ready().then(function() {
                     <h2 id="optimization-checklist">Optimization checklist</h2>
                     <p>Contrary to popular belief, use of webfonts does not need to delay page rendering or have negative impact on other performance metrics. Well optimized use of fonts can deliver a much better overall user experience: great branding, improved readability, usability, and searchability, all the while delivering a scalable multi-resolution solution that adapts well to all screen formats and resolutions. Don’t be afraid to use webfonts!</p>
                     <p>That said, a naive implementation may incur large downloads and unnecessary delays. This is where we need to dust off our optimization toolkit and assist the browser by optimizing the font assets themselves and how they are fetched and used on our pages.</p>
+                </section>
+                <section>
+                    <ol>
+                        <li><strong>Audit and monitor your font use:</strong> do not use too many fonts on your pages, and for each font, minimize the number of used variants. This will assist in delivering a more consistent and a faster experience for your users.</li>
+                        <li><strong>Subset your font resources:</strong> many fonts can be subset, or split into multiple unicode-ranges to deliver just the glyphs required by a particular page - this reduces the filesize and improves download speed of the resource. However, when defining the subsets be careful to optimize for font re-use - e.g. you don’t want to download a different but overlapping set of characters on each page. A good practice is to subset based on script - e.g. Latin, Cyrillic, and so on.</li>
+                        <li><strong>Deliver optimized font formats to each browser:</strong> each font should be provided in WOFF2, WOFF, EOT, and TTF formats. Make sure to apply GZIP compression to EOT and TTF formats, as they are not compressed by default.</li>
+                        <li><strong>Specify revalidation and optimal caching policies:</strong> fonts are static resources that are infrequently updated. Make sure that your servers provide a long-lived max-age timestamp, and a revalidation token, to allow for efficient font re-use between different pages.</li>
+                        <li><strong>Use Font Loading API to optimize the Critical Rendering Path:</strong> default lazyloading behavior may result in delayed text rendering. Font Loading API allows us to override this behavior for particular fonts, and to specify custom rendering and timeout strategies for different content on the page. For older browsers that do not support the API, you can use the webfontloader JavaScript library or use the CSS inlining strategy.</li>
+                    </ol>
                 </section>
             </section>
             <section>

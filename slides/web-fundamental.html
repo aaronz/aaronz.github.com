@@ -5233,8 +5233,6 @@ date: 04/04/14
             <section>
                 <section>
                     <h2>Webfont optimization</h2>
-                    <p>Typography is fundamental to good design, branding, readability, and accessibility. Webfonts enable all of the above and more: the text is selectable, searchable, zoomable, and high-DPI friendly, providing consistent and sharp text rendering regardless of the screen size and resolution. Webfonts are critical to good design, UX, and performance.</p>
-                    <p>Webfont optimization is a critical piece of the overall performance strategy. Each font is an additional resource, and some fonts may block rendering of the text, but just because the page is using webfonts doesn’t mean that it has to render slower. To the contrary, an optimized font, combined with a judicious strategy for how they are loaded and applied on the page can help reduce the total page size, and improve page rendering times.</p>
                 </section>
                 <section>
                     <h2 id="anatomy-of-a-webfont">Anatomy of a webfont</h2>
@@ -5243,13 +5241,13 @@ date: 04/04/14
                         <li>There are four font formats: WOFF2, WOFF, EOT, TTF</li>
                         <li>Some font formats require use of GZIP compression</li>
                     </ul>
+                </section>
+                <section>
                     <p>A webfont is a collection of glyphs, and each glyph is a vector shape that describes a letter or symbol. As a result, the size of a particular font file is determined by two simple variables: the complexity of the vector paths of each glyph and the number of glyphs in a particular font. For example, Open Sans, which is one of the most popular webfonts, contains 897 glyphs, which include Latin, Greek, and Cyrillic characters.</p>
                     <p><img alt="Font glyph table" src="images/glyphs.png" />
                     </p>
                 </section>
                 <section>
-                    <p>When picking a font, it is important to consider which character sets are supported. If you need to localize your page content to multiple languages, you should use a font that can deliver a consistent look and experience to your users. For example, <a href="https://www.google.com/get/noto/">Google’s Noto font family</a> aims to support all the world’s languages. However, note that the total size of Noto, with all languages included, results in a 130MB+ ZIP download!</p>
-                    <p>Clearly, using fonts on the web requires some careful engineering to ensure that the typography does not stand in the way of performance. Thankfully, the web platform provides all the necessary primitives, and in the rest of this guide we’ll take a hands-on look at how to get the best of both worlds.</p>
                     <p>Today there are four font container formats in use on the web: <a href="http://en.wikipedia.org/wiki/Embedded_OpenType">EOT</a>, <a href="http://en.wikipedia.org/wiki/TrueType">TTF</a>, <a href="http://en.wikipedia.org/wiki/Web_Open_Font_Format">WOFF</a>, and <a href="http://www.w3.org/TR/WOFF2/">WOFF2</a>. Unfortunately, despite the wide range of choices, there isn’t a single universal format that works across all old and new browsers: EOT is <a href="http://caniuse.com/#feat=eot">IE only</a>, TTF has <a href="http://caniuse.com/#search=ttf">partial IE support</a>, WOFF enjoys widest support but is <a href="http://caniuse.com/#feat=woff">not available in some older browsers</a>, and WOFF 2.0 support is a <a href="http://caniuse.com/#feat=woff2">work in progress for many browsers</a>.</p>
                 </section>
                 <section>
@@ -5262,21 +5260,12 @@ date: 04/04/14
                     </ul>
                 </section>
                 <section>
-                    <p>Note</p>
-                    <ul>
-                        <li>Technically, there is also the <a href="http://caniuse.com/svg-fonts">SVG font container</a>, but it was never supported by IE or Firefox, and is now deprecated in Chrome. As such, it is of limited use and we are intentionally omitting it in this guide.</li>
-                    </ul>
-                </section>
-                <section>
                     <p>A font is a collection of glyphs, each of which is a set of paths describing the letter form. The individual glyphs are, of course, different, but they nonetheless contain a lot of similar information that can be compressed with GZIP, or a compatible compressor:</p>
                     <ul>
                         <li>EOT, and TTF formats are not compressed by default: ensure that your servers are configured to apply <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer#text-compression-with-gzip">GZIP compression</a> when delivering these formats.</li>
                         <li>WOFF has built-in compression - ensure that your WOFF compressor is using optimal compression settings.</li>
                         <li>WOFF2 uses custom preprocessing and compression algorithms to deliver ~30% filesize reduction over other formats - see <a href="http://www.w3.org/TR/WOFF20ER/">report</a>.</li>
                     </ul>
-                </section>
-                <section>
-                    <p>Finally, it is worth noting that some font formats contain additional metadata, such as <a href="http://en.wikipedia.org/wiki/Font_hinting">font hinting</a> and <a href="http://en.wikipedia.org/wiki/Kerning">kerning</a> information that may not be necessary on some platforms, which allows for further filesize optimization. Consult your font compressor for available optimization options, and if you take this route, ensure that you have the appropriate infrastructure to test and deliver these optimized fonts to each particular browser - e.g. Google Fonts maintains 30+ optimized variants for each font and automatically detects and delivers the optimal variant for each platform and browser.</p>
                 </section>
                 <section>
                     <p>Note</p>
@@ -5291,7 +5280,9 @@ date: 04/04/14
                         <li>Subset large unicode fonts to improve performance: use unicode-range subsetting and provide a manual subsetting fallback for older browsers</li>
                         <li>Reduce number of stylistic font variants to improve page and text rendering performance</li>
                     </ul>
-                    <p>The @font-face CSS at-rule allows us to define the location of a particular font resource, its style characteristics, and the Unicode codepoints for which it should be used. A combination of such @font-face declarations can be used to construct a "font family", which the browser will use to evaluate which font resources need to be downloaded and applied to the current page. Let’s take a closer look at how this works under the hood.</p>
+                </section>
+                <section>
+                    <h3>Format selection</h3>
                     <p>Each @font-face declaration provides the name of the font family, which acts as a logical group of multiple declarations, <a href="http://www.w3.org/TR/css3-fonts/#font-prop-desc">font properties</a> such as style, weight, and stretch, and the <a href="http://www.w3.org/TR/css3-fonts/#src-desc">src descriptor</a> that specifies a prioritized list of locations for the font resource.</p><pre><code>@font-face {
   font-family: 'Awesome Font';
   font-style: normal;
@@ -5323,9 +5314,6 @@ date: 04/04/14
                     </ul>
                 </section>
                 <section>
-                    <p><code>url()</code> directive allows us to load external fonts, and are allowed to contain an optional <code>format()</code> hint indicating the format of the font referenced by the provided URL.</p>
-                </section>
-                <section>
                     <p>Note</p>
                     <ul>
                         <li>Unless you are referencing one of the default system fonts, in practice it is rare for the user to have it locally installed, especially on mobile devices, where it is effectively impossible to 'install' additional fonts. As a result, you should always provide a list of external font locations.</li>
@@ -5339,18 +5327,13 @@ date: 04/04/14
                     </ul>
                 </section>
                 <section>
-                    <p>The combination of local and external directives with appropriate format hints allows us to specify all of the available font formats and let the browser handle the rest: the browser figures out which resources are required and will select the optimal format on our behalf.</p>
-                </section>
-                <section>
                     <p>Note</p>
                     <ul>
                         <li>The order in which the font variants are specified matters. The browser will pick the first format it supports. Hence, if you want the newer browsers to use WOFF2, then you should place WOFF2 declaration above WOFF, and so on.</li>
                     </ul>
                 </section>
                 <section>
-                    <p>In addition to font properties such as style, weight, and stretch, the @font-face rule allows us to define a set of Unicode codepoints supported by each resource. This enables us to split a large Unicode font into smaller subsets (e.g. Latin, Cyrillic, Greek subsets) and only download the glyphs required to render the text on a particular page.</p>
-                </section>
-                <section>
+                    <h3>Unicode-range subsetting</h3>
                     <p>The <a href="http://www.w3.org/TR/css3-fonts/#descdef-unicode-range">unicode-range descriptor</a> allows us to specify a comma-delimited list of range values, each of which can be in one of three different forms:</p>
                     <ul>
                         <li>Single codepoint (e.g. U+416)</li>
@@ -5389,28 +5372,22 @@ date: 04/04/14
                     </ul>
                 </section>
                 <section>
-                    <p>The use of unicode range subsets, and separate files for each stylistic variant of the font allows us to define a composite font family that is both faster and more efficient to download - the visitor will only download the variants and subsets it needs, and they are not forced to download subsets that they may never see or use on the page.</p>
-                    <p>That said, there is one small gotcha with unicode-range: <a href="http://caniuse.com/#feat=font-unicode-range">not all browser support it</a>, yet. Some browsers simply ignore the unicode-range hint and will download all variants, while others may not process the @font-face declaration at all. To address this, we need to fallback to "manual subsetting" for older browsers.</p>
-                </section>
-                <section>
                     <p>Because old browsers are not smart enough to select just the necessary subsets and cannot construct a composite font, we have to fallback to providing a single font resource that contains all necessary subsets, and hide the rest from the browser. For example, if the page is only using Latin characters, then we can strip other glyphs and serve that particular subset as a standalone resource.</p>
+                    <p>How do we determine which subsets are needed?</p>
                     <ul>
                         <li>If unicode-range subsetting is supported by the browser, then it will automatically select the right subset. The page just needs to provide the subset files and specify appropriate unicode-ranges in the @font-face rules.</li>
                         <li>If unicode-range is not supported then the page needs to hide all unnecessary subsets - i.e. the developer must specify required subsets.</li>
                     </ul>
-                </section>
-                <section>
+                    <p>How do we generate font subsets?</p>
                     <ul>
                         <li>Use the open-source <a href="https://github.com/behdad/fonttools/blob/master/Lib/fontTools/subset.py#L16">pyftsubset tool</a> to subset and optimize your fonts.</li>
                         <li>Some font services allow manual subsetting via custom query parameters, which you can use to manually specify the required subset for your page - consult the documentation of your font provider.</li>
                     </ul>
-                    <p>Each font family is composed of multiple stylistic variants (regular, bold, italic) and multiple weights for each style, each of which, in turn, may contain very different glyph shapes - e.g. different spacing, sizing, or a different shape altogether.</p>
-                    <p><img alt="Font weights" src="images/font-weights.png" />
-                    </p>
                 </section>
                 <section>
-                    <p>For example, the above diagram illustrates a font family that offers three different bold weights: 400 (regular), 700 (bold), and 900 (extra bold). All other in-between variants (indicated in gray) are automatically mapped to the closest variant by the browser.</p>
-                    <p><a href="http://www.w3.org/TR/css3-fonts/#font-matching-algorithm">CSS3 font matching algorithm</a>
+                    <h3>Font selection and synthesis</h3>
+                    <p>Each font family is composed of multiple stylistic variants (regular, bold, italic) and multiple weights for each style, each of which, in turn, may contain very different glyph shapes - e.g. different spacing, sizing, or a different shape altogether.</p>
+                    <p><img alt="Font weights" src="images/font-weights.png" />
                     </p>
                     <p>Similar logic applies to <em>italic</em> variants. The font designer controls which variants they will produce, and we control which variants we will use on the page - since each variant is a separate download, it’s a good idea to keep the number of variants small! For example, we can define two bold variants for our <em>Awesome Font</em> family:</p><pre><code>@font-face {
   font-family: 'Awesome Font';
@@ -5436,20 +5413,12 @@ date: 04/04/14
 }</code></pre>
                 </section>
                 <section>
-                    <p>The above example declares the <em>Awesome Font</em> family that is composed of two resources that cover the same set of Latin glyphs (U+000-5FF) but offer two different "weights": normal (400), and bold (700). However, what happens if one of our CSS rules specifies a different font weight, or sets the font-style property to italic?</p>
                     <ul>
                         <li>If an exact font match is not available the browser will substitute the closest match.</li>
                         <li>If no stylistic match is found (e.g. we did not declare any italic variants in example above), then the browser will synthesize its own font variant.</li>
                     </ul>
-                </section>
-                <section>
                     <p><img alt="Font synthesis" src="images/font-synthesis.png" />
                     </p>
-                </section>
-                <section>
-                    <p><a href="http://www.w3.org/TR/css3-fonts/#propdef-font-style">CSS3 font-style</a>
-                    </p>
-                    <p>The example above illustrates the difference between the actual vs. synthesized font results for Open-Sans - all synthesized variants are generated from a single 400-weight font. As you can tell, there is a noticeable difference in the results. The details of how to generate the bold and oblique variants are not specified. Hence, the results will vary from browser to browser, and will also be highly dependent on the font.</p>
                 </section>
                 <section>
                     <p>Note</p>
@@ -5464,8 +5433,9 @@ date: 04/04/14
                         <li>Font Loading API allows us to implement custom font loading and rendering strategies that override default lazyload font loading</li>
                         <li>Font inlining allows us to override default lazyload font loading in older browsers</li>
                     </ul>
-                    <p>A "full" webfont that includes all stylistic variants, which we may not need, plus all the glyphs, which may go unused, can easily result in a multi-megabyte download. To address this, the @font-face CSS rule is specifically designed to allow us to split the font family into a collection of resources: unicode subsets, distinct style variants, and so on.</p>
-                    <p>Given these declarations the browser figures out the required subsets and variants and downloads the minimal set required to render the text. This behavior is very convenient, but if we’re not careful, it can also create a performance bottleneck in the critical rendering path and delay text rendering - something that we would certainly like to avoid!</p>
+                </section>
+                <section>
+                    <h3>Webfonts and the Critical Rendering Path</h3>
                     <p>Lazy loading of fonts carries an important hidden implication that may delay text rendering: the browser must <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction">construct the render tree</a>, which is dependent on the DOM and CSSOM trees, before it will know which font resources it will need to render the text. As a result, font requests are delayed well after other critical resources, and the browser may be blocked from rendering text until the resource is fetched.</p>
                     <p><img alt="Font critical rendering path" src="images/font-crp.png" />
                     </p>
@@ -5488,7 +5458,7 @@ date: 04/04/14
                     </ul>
                 </section>
                 <section>
-                    <p>There are good arguments for and against the different rendering strategies: some people find re-rendering jarring while others prefer to see immediate results and don’t mind the page reflow once the font download has finished - we won’t get into this argument here. The important point is that lazyloading reduces the number of bytes, but also has the potential to delay text rendering. Next, let’s take a look at how we can optimize this behavior.</p>
+                    <h3>Optimizing font rendering with the Font Loading API</h3>
                     <p><a href="http://dev.w3.org/csswg/css-font-loading/">Font Loading API</a> provides a scripting interface to define and manipulate CSS font faces, track their download progress, and override their default lazyload behavior. For example, if we’re certain that a particular font variant will be required, we can define it and tell the browser to initiate an immediate fetch of the font resource:</p><pre><code>var font = new FontFace("Awesome Font", "url(/fonts/awesome.woff2)", {
   style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
 });
@@ -5522,14 +5492,12 @@ font.ready().then(function() {
                     </ul>
                 </section>
                 <section>
+                    <h3>Optimizing font rendering with inlining</h3>
                     <p>A simple alternative strategy to using the Font Loading API to eliminate the "blank text problem" is to inline the font contents into a CSS stylesheet:</p>
                     <ul>
                         <li>CSS stylesheets with matching media queries are automatically downloaded by the browser with high priority as they are required to construct the CSSOM.</li>
                         <li>Inlining the font data into CSS stylesheet forces the browser to download the font with high priority and without waiting for the render tree - i.e. this acts as a manual override to the default lazyload behavior.</li>
                     </ul>
-                </section>
-                <section>
-                    <p>The inlining strategy is not as flexible and does not allow us to define custom timeouts or rendering strategies for different content, but it is a simple and robust solution that works across all browsers. For best results, separate inlined fonts into standalone stylesheet and serve them with a long max-age - this way, when you update your CSS you are not forcing your visitors to redownload the fonts.</p>
                 </section>
                 <section>
                     <p>Note</p>
@@ -5538,32 +5506,34 @@ font.ready().then(function() {
                     </ul>
                 </section>
                 <section>
+                    <h3>Optimizing font reuse with HTTP Caching</h3>
                     <p>Font resources are, typically, static resources that don’t see frequent updates. As a result, they are ideally suited for a long max-age expiry - ensure that you specify both a <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#validating-cached-responses-with-etags">conditional ETag header</a>, and an <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#cache-control">optimal Cache-Control policy</a> for all font resources.</p>
                     <p>There is no need to store fonts in localStorage or via other mechanisms - each of those has their set of performance gotchas. The browser’s HTTP cache, in combination with Font Loading API or the webfontloader library, provides the best and most robust mechanism to deliver font resources to the browser.</p>
                 </section>
                 <section>
                     <h2 id="optimization-checklist">Optimization checklist</h2>
-                    <p>Contrary to popular belief, use of webfonts does not need to delay page rendering or have negative impact on other performance metrics. Well optimized use of fonts can deliver a much better overall user experience: great branding, improved readability, usability, and searchability, all the while delivering a scalable multi-resolution solution that adapts well to all screen formats and resolutions. Don’t be afraid to use webfonts!</p>
-                    <p>That said, a naive implementation may incur large downloads and unnecessary delays. This is where we need to dust off our optimization toolkit and assist the browser by optimizing the font assets themselves and how they are fetched and used on our pages.</p>
+                    <ol>
+                        <li>Audit and monitor your font use:
+                        </li>
+                        <li>Subset your font resources:
+                        </li>
+                        <li>Deliver optimized font formats to each browser:
+                        </li>
+                        <li>Specify revalidation and optimal caching policies:
+                        </li>
+                        <li>Use Font Loading API to optimize the Critical Rendering Path:
+                        </li>
+                    </ol>
+
                 </section>
             </section>
             <section>
                 <section>
                     <h2>HTTP caching</h2>
-                    <p>Fetching something over the network is both slow and expensive: large responses require many roundtrips between the client and server, which delays when they are available and can be processed by the browser, and also incurs data costs for the visitor. As a result, the ability to cache and reuse previously fetched resources is a critical aspect of optimizing for performance.</p>
-                    <p>Great news, every browser ships with an implementation of an HTTP cache! All we have to do is ensure that each server response provides correct HTTP header directives to instruct the browser on when and for how long the response can be cached by the browser.</p>
-                </section>
-                <section>
-                    <p></p>
-                    <ul>
-                        <li>If you are using a Webview to fetch and display web content in your application, you may need to provide additional configuration flags to ensure that the HTTP cache is enabled, its size is set to a reasonable number to match your use case, and that the cache is persisted. Check the platform documentation and confirm your settings!</li>
-                    </ul>
                 </section>
                 <section>
                     <p><img alt="HTTP request" src="images/http-request.png" />
                     </p>
-                </section>
-                <section>
                     <p>When the server returns a response it also emits a collection of HTTP headers, describing its content-type, length, caching directives, validation token, and more. For example, in above exchange the server returns a 1024 byte response, instructs the client to cache it for up to 120 seconds, and provides a validation token ("x234dff") that can be used after the response has expired to check if the resource has been modified.</p>
                 </section>
                 <section>
@@ -5572,13 +5542,14 @@ font.ready().then(function() {
                         <li>Validation token is communicated by the server via the ETag HTTP header</li>
                         <li>Validation token enables efficient resource update checks: no data transfer if the resource has not changed.</li>
                     </ul>
+                </section>
+                <section>
                     <p>Let’s assume 120 seconds have passed since our initial fetch and the browser has initiated a new request for the same resource. First, the browser checks the local cache and finds the previous response, unfortunately it cannot use it as the response has now "expired". At this point it could simply dispatch a new request and fetch the new full response, but that’s inefficient because if the resource has not changed then there is no reason to download the exact same bytes that are already in cache!</p>
                     <p>That’s the problem that validation tokens, as specified in the ETag header, are designed to solve: the server generates and returns an arbitrary token which is typically a hash or some other fingerprint of the contents of the file. The client does not need to know how the fingerprint is generated, it only needs to send it to the server on the next request: if the fingerprint is still the same then the resource has not changed and we can skip the download.</p>
                     <p><img alt="HTTP Cache-Control example" src="images/http-cache-control.png" />
                     </p>
                 </section>
                 <section>
-                    <p>In above example the client automatically provides the ETag token within the "If-None-Match" HTTP request header, the server checks the token against the current resource, and if it has not changed returns a "304 Not Modified" response which tells the browser that the response it has in cache has not changed and can be renewed for another 120 seconds. Note that we do not have to download the response once more - this saves time and bandwidth.</p>
                     <p>As a web developer, how do you take advantage of efficient revalidation? The browser does all the work on our behalf: it will automatically detect if a validation token has been previously specified, it will append it to an outgoing request, and it will update the cache timestamps as necessary based on received response from the server. <strong>The only thing that’s left for us to do is to ensure that the server is, in fact, providing the necessary ETag tokens: check your server documentation for necessary configuration flags.</strong>
                     </p>
                 </section>
@@ -5594,24 +5565,55 @@ font.ready().then(function() {
                         <li>Each resource can define its caching policy via Cache-Control HTTP header</li>
                         <li>Cache-Control directives control who can cache the response, under which conditions, and for how long</li>
                     </ul>
-                    <p>The best request is a request that does not need to communicate with the server: a local copy of the response allows us to eliminate all network latency and avoid data charges for the data transfer. To achieve this, the HTTP specification allows the server to return a <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9">number of different Cache-Control directives</a> that control how, and for how long, the individual response can be cached by the browser and other intermediate caches.</p>
-                </section>
-                <section>
-                    <p>Remember</p>
-                    <ul>
-                        <li>Cache-Control header was defined as part of the HTTP/1.1 specification and supersedes previous headers (e.g. Expires) used to define response caching policies. All modern browsers support Cache-Control, hence that is all we will need.</li>
-                    </ul>
-                </section>
-                <section>
+
                     <p><img alt="HTTP Cache-Control example" src="images/http-cache-control-highlight.png" />
                     </p>
                 </section>
                 <section>
-                    <p>"no-cache" indicates that the returned response cannot be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache will incur a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.</p>
-                    <p>By contrast, "no-store" is much simpler, as it simply disallows the browser and all intermediate caches to store any version of the returned response - e.g. one containing private personal or banking data. Everytime the user requests this asset, a request is sent to the server and a full response is downloaded each and every time.</p>
-                    <p>If the response is marked as "public" then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isn’t normally cacheable. Most of the time, "public" isn’t necessary, because explicit caching information (like "max-age") indicates that the response is cacheable anyway.</p>
-                    <p>By contrast, "private" responses can be cached by the browser but are typically intended for a single user and hence are not allowed to be cached by any intermediate cache - e.g. an HTML page with private user information can be cached by that user’s browser, but not by a CDN.</p>
-                    <p>This directive specifies the maximum time in seconds that the fetched response is allowed to be reused for from the time of the request - e.g. "max-age=60" indicates that the response can be cached and reused for the next 60 seconds.</p>
+                    <h3>“no-cache” and “no-store”</h3>
+                    <ul>
+                        <li>"no-cache" indicates that the returned response cannot be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache will incur a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.</li>
+                        <li>By contrast, "no-store" is much simpler, as it simply disallows the browser and all intermediate caches to store any version of the returned response - e.g. one containing private personal or banking data. Everytime the user requests this asset, a request is sent to the server and a full response is downloaded each and every time.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>“public” vs. “private”</h3>
+                    <ul>
+                        <li>If the response is marked as "public" then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isn’t normally cacheable. Most of the time, "public" isn’t necessary, because explicit caching information (like "max-age") indicates that the response is cacheable anyway.</li>
+                        <li>By contrast, "private" responses can be cached by the browser but are typically intended for a single user and hence are not allowed to be cached by any intermediate cache - e.g. an HTML page with private user information can be cached by that user’s browser, but not by a CDN.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>“max-age”</h3>
+                    <ul>
+                        <li>This directive specifies the maximum time in seconds that the fetched response is allowed to be reused for from the time of the request - e.g. "max-age=60" indicates that the response can be cached and reused for the next 60 seconds.</li>
+                    </ul>
+                </section>
+                <section>
+                    <table class="table-2">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th width="30%">Cache-Control directives</th>
+                                <th>Explanation</th>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">max-age=86400</td>
+                                <td data-th="explanation">Response can be cached by browser and any intermediary caches (i.e. it is "public") for up to 1 day (60 seconds x 60 minutes x 24 hours)</td>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">private, max-age=600</td>
+                                <td data-th="explanation">Response can be cached by the client’s browser only for up to 10 minutes (60 seconds x 10 minutes)</td>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">no-store</td>
+                                <td data-th="explanation">Response is not allowed to be cached and must be fetched in full on every request.</td>
+                            </tr>
+                        </thead>
+                    </table>
                 </section>
                 <section>
                     <h2 id="defining-optimal-cache-control-policy">Defining optimal Cache-Control policy</h2>
@@ -5619,7 +5621,6 @@ font.ready().then(function() {
                     </p>
                 </section>
                 <section>
-                    <p>Follow the decision tree above to determine the optimal caching policy for a particular resource, or a set of resources used by your application. Ideally, you should aim to cache as many responses as possible on the client for the longest possible period, and provide validation tokens for each response to enable efficient revalidation.</p>
                     <p>According to HTTP Archive, amongst the top 300,000 sites (by Alexa rank), <a href="http://httparchive.org/trends.php#maxage0">nearly half of all the downloaded responses can be cached</a> by the browser, which is a huge savings for repeat pageviews and visits! Of course, that doesn’t mean that your particular application will have 50% of resources that can be cached: some sites can cache 90%+ of their resources, while others may have a lot of private or time-sensitive data that can’t be cached at all.</p>
                     <p><strong>Audit your pages to identify which resources can be cached and ensure that they are returning appropriate Cache-Control and ETag headers.</strong>
                     </p>
@@ -5631,16 +5632,19 @@ font.ready().then(function() {
                         <li>Embedding a file content fingerprint in the URL enables us to force the client to update to a new version of the response</li>
                         <li>Each application needs to define its own cache hierarchy for optimal performance</li>
                     </ul>
-                    <p>All HTTP requests made by the browser are first routed to the browser cache to check if there is a valid cached response that can be used to fulfill the request. If there is a match, the response is read from the cache and we eliminate both the network latency and the data costs incurred by the transfer. <strong>However, what if we want to update or invalidate a cached response?</strong>
+                </section>
+                <section>
+                    <p><strong>However, what if we want to update or invalidate a cached response?</strong>
                     </p>
-                    <p>For example, let’s say we’ve told our visitors to cache a CSS stylesheet for up to 24 hours (max-age=86400), but our designer has just committed an update that we would like to make available to all users. How do we notify all the visitors with what is now a "stale" cached copy of our CSS to update their caches? It’s a trick question - we can’t, at least not without changing the URL of the resource.</p>
-                    <p>Once the response is cached by the browser, the cached version will be used until it is no longer fresh, as determined by max-age or expires, or until it is evicted from cache for some other reason - e.g. the user clearing their browser cache. As a result, different users might end up using different versions of the file when the page is constructed; users who just fetched the resource will use the new version, while users who cached an earlier (but still valid) copy will use an older version of its response.</p>
-                    <p><strong>So, how do we get the best of both worlds: client-side caching and quick updates?</strong> Simple, we can change the URL of the resource and force the user to download the new response whenever its content changes. Typically, this is done by embedding a fingerprint of the file, or a version number, in its filename - e.g. style.<strong>x234dff</strong>.css.</p>
+                    <p>It’s a trick question - we can’t, at least not without changing the URL of the resource.</p>
+                    <p><strong>So, how do we get the best of both worlds: client-side caching and quick updates?</strong>
+                    </p>
+                    <p>Simple, we can change the URL of the resource and force the user to download the new response whenever its content changes. Typically, this is done by embedding a fingerprint of the file, or a version number, in its filename - e.g. style.<strong>x234dff</strong>.css.</p>
                     <p><img alt="Cache hierarchy" src="images/http-cache-hierarchy.png" />
                     </p>
                 </section>
                 <section>
-                    <p>The ability to define per-resource caching policies allows us to define "cache hierarchies" that allow us to control not only how long each is cached for, but also how quickly new versions are seen by visitor. For example, let’s analyze the above example:</p>
+                    <p>Let’s analyze the above example:</p>
                     <ul>
                         <li>The HTML is marked with "no-cache", which means that the browser will always revalidate the document on each request and fetch the latest version if the contents change. Also, within the HTML markup we embed fingerprints in the URLs for CSS and JavaScript assets: if the contents of those files change, than the HTML of the page will change as well and new copy of the HTML response will be downloaded.</li>
                         <li>The CSS is allowed to be cached by browsers and intermediate caches (e.g. a CDN), and is set to expire in 1 year. Note that we can use the "far future expires" of 1 year safely because we embed the file fingerprint its filename: if the CSS is updated, the URL will change as well.</li>
@@ -5649,12 +5653,15 @@ font.ready().then(function() {
                     </ul>
                 </section>
                 <section>
-                    <p>The combination of ETag, Cache-Control, and unique URLs allows us to deliver the best of all worlds: long-lived expiry times, control over where the response can be cached, and on-demand updates.</p>
-                </section>
-                <section>
                     <h2 id="caching-checklist">Caching checklist</h2>
-                    <p>There is no one best cache policy. Depending on your traffic patterns, type of data served, and application-specific requirements for data freshness, you will have to define and configure the appropriate per-resource settings, as well as the overall "caching hierarchy".</p>
-                    <p>Some tips and techniques to keep in mind as you work on caching strategy:</p>
+                    <ol>
+                        <li>Use consistent URLs:</li>
+                        <li>Ensure the server provides a validation token (ETag):</li>
+                        <li>Identify which resources can be cached by intermediaries:</li>
+                        <li>Determine the optimal cache lifetime for each resource:</li>
+                        <li>Determine the best cache hierarchy for your site:</li>
+                        <li>Minimize churn:</li>
+                    </ol>
                 </section>
             </section>
             <section id="monetization">

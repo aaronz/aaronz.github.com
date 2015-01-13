@@ -35,11 +35,7 @@
             <section>
                 <h2>Web Site Performance Best Practices</h2>
                 <p>
-                    <small><a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
-</small>
-                </p>
-                <p>
-                    <smaill> Created base on <a href="https://developer.yahoo.com/performance/rules.html">Yahoo Web Site Performance Rules</a>
+                    <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> - <a href="http://www.browserwork.com" target="_blank">Browserwork.com</a>
                 </p>
             </section>
             <section id="agenda">
@@ -161,7 +157,7 @@ width: 50px;
             <section>
                 <section id="dns_lookups">
                     <h3>Reduce DNS Lookups</h3>
-                
+
                     <p>The Domain Name System (DNS) maps hostnames to IP addresses. <b>DNS has a cost</b>. It typically takes <b>20-120 milliseconds</b> for DNS to lookup the IP address for a given hostname. The browser can't download anything from this hostname until the DNS lookup is completed. </p>
                     <img src="images/dns-lookup.jpg" alt="DNS lookup">
                 </section>
@@ -175,136 +171,123 @@ width: 50px;
                     </ul>
                 </section>
                 <section>
-                    <p>Internet Explorer caches DNS lookups for 30 minutes by default, as specified by the <code>DnsCacheTimeout</code> registry setting. Firefox caches DNS lookups for 1 minute, controlled by the <code>network.dnsCacheExpiration</code> configuration setting. (Fasterfox changes this to 1 hour.)</p>
-                </section>
-                <section>
-                    <p>When the client's DNS cache is empty (for both the browser and the operating system), the number of DNS lookups is equal to the number of unique hostnames in the web page. This includes the hostnames used in the page's URL, images, script files, stylesheets, Flash objects, etc. Reducing the number of unique hostnames reduces the number of DNS lookups. </p>
-                </section>
-                <section>
-                    <p>Reducing the number of unique hostnames has the potential to reduce the amount of parallel downloading that takes place in the page. Avoiding DNS lookups cuts response times, but reducing parallel downloads may increase response times.</p>
-                    <p> <b>My guideline is to split these components across at least two but no more than four hostnames.</b> This results in a good compromise between reducing DNS lookups and allowing a high degree of parallel downloads.</p>
+                    <h3>Guideline</h3>
+                    <p class="fragment shrink">When the client's DNS cache is empty (for both the browser and the operating system), the number of DNS lookups is equal to the number of unique hostnames in the web page. This includes the hostnames used in the page's URL, images, script files, stylesheets, Flash objects, etc. <b>Reducing the number of unique hostnames reduces the number of DNS lookups.</b> </p>
+                    <p class="fragment shrink">Reducing the number of unique hostnames has the potential to reduce the amount of parallel downloading that takes place in the page. Avoiding DNS lookups cuts response times, but reducing parallel downloads may increase response times.</p>
+                    <p class="fragment highlight-blue"> <b>The guideline is to split these components across at least two but no more than four hostnames.</b> This results in a good compromise between reducing DNS lookups and allowing a high degree of parallel downloads.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="redirects">Avoid Redirects</h3>
-                </section>
-                <section>
-                    <p>Redirects are accomplished using the 301 and 302 status codes. Here's an example of the HTTP headers in a 301 response:</p>
-                </section>
-                <section><pre><code>      HTTP/1.1 301 Moved Permanently
+
+                    <p>Redirects are accomplished using the 301 and 302 status codes. </p>
+                    <img src="images/redirection.jpg" alt="redirection">
+                    <pre class="fragment"><code>HTTP/1.1 301 Moved Permanently
 Location: http://example.com/newuri
 Content-Type: text/html</code></pre>
-                    <img src="images/redirection.jpg" alt="redirection">
                 </section>
                 <section>
-                    <p>The browser automatically takes the user to the URL specified in the <code>Location</code> field. All the information necessary for a redirect is in the headers. The body of the response is typically empty. Despite their names, neither a 301 nor a 302 response is cached in practice unless additional headers, such as <code>Expires</code> or <code>Cache-Control</code>, indicate it should be. The meta refresh tag and JavaScript are other ways to direct users to a different URL, but if you must do a redirect, the preferred technique is to use the standard 3xx HTTP status codes, primarily to ensure the back button works correctly.</p>
+                    <p>The main thing to remember is that <b>redirects slow down the user experience.</b> </p>
+                    <p class="fragment highlight-red">Inserting a redirect between the user and the HTML document delays <b>everything</b> in the page since nothing in the page can be rendered and no components can start being downloaded until the HTML document has arrived.</p>
                 </section>
                 <section>
-                    <p>The main thing to remember is that redirects slow down the user experience. Inserting a redirect between the user and the HTML document delays everything in the page since nothing in the page can be rendered and no components can start being downloaded until the HTML document has arrived.</p>
+                    <h3>Common Reason of 302</h3>
+                    <ul>
+
+                        <li>Connecting an old web site to a new one is another common use for redirects. </li>
+                        <li>Others include connecting different parts of a website and directing the user based on certain conditions (type of browser, type of user account, etc.).</li>
+                    </ul>
                 </section>
                 <section>
-                    <p>One of the most wasteful redirects happens frequently and web developers are generally not aware of it. It occurs when a trailing slash (/) is missing from a URL that should otherwise have one. For example, going to <a data-rapid_p="41" href="http://astrology.yahoo.com/astrology">http://astrology.yahoo.com/astrology</a> results in a 301 response containing a redirect to <a data-rapid_p="42" href="http://astrology.yahoo.com/astrology/">http://astrology.yahoo.com/astrology/</a> (notice the added trailing slash). This is fixed in Apache by using <code>Alias</code> or <code>mod_rewrite</code>, or the <code>DirectorySlash</code> directive if you're using Apache handlers.</p>
-                </section>
-                <section>
-                    <p>Connecting an old web site to a new one is another common use for redirects. Others include connecting different parts of a website and directing the user based on certain conditions (type of browser, type of user account, etc.). Using a redirect to connect two web sites is simple and requires little additional coding. Although using redirects in these situations reduces the complexity for developers, it degrades the user experience. Alternatives for this use of redirects include using <code>Alias</code> and <code>mod_rewrite</code> if the two code paths are hosted on the same server. If a domain name change is the cause of using redirects, an alternative is to create a CNAME (a DNS record that creates an alias pointing from one domain name to another) in combination with <code>Alias</code> or <code>mod_rewrite</code>.</p>
+                    <h3>Guidelines</h3>
+                    <ul>
+
+                        <li>Alternatives for this use of redirects include using <code>Alias</code> and <code>URL Rewrite</code> if the two code paths are hosted on the same server. </li>
+                        <li>If a domain name change is the cause of using redirects, an alternative is to create a CNAME (a DNS record that creates an alias pointing from one domain name to another) in combination with <code>Alias</code> or <code>URL Rewrite</code>.</li>
+                    </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="cacheajax">Make Ajax Cacheable</h3>
+                    <p>Using Ajax is no guarantee that the user won't be twiddling his thumbs waiting for those asynchronous JavaScript and XML responses to return. It's important to remember that "asynchronous" does not imply "instantaneous".</p>
                 </section>
                 <section>
-                    <p>One of the cited benefits of Ajax is that it provides instantaneous feedback to the user because it requests information asynchronously from the backend web server. However, using Ajax is no guarantee that the user won't be twiddling his thumbs waiting for those asynchronous JavaScript and XML responses to return. In many applications, whether or not the user is kept waiting depends on how Ajax is used. For example, in a web-based email client the user will be kept waiting for the results of an Ajax request to find all the email messages that match their search criteria. It's important to remember that "asynchronous" does not imply "instantaneous".</p>
-                </section>
-                <section>
-                    <p>To improve performance, it's important to optimize these Ajax responses. The most important way to improve the performance of Ajax is to make the responses cacheable, as discussed in <a data-rapid_p="50" href="rawrules.txt#expires">Add an Expires or a Cache-Control Header</a>. Some of the other rules also apply to Ajax:
-                    </p>
-                </section>
-                <section>
+                    <p>The most important way to improve the performance of Ajax is to make the responses cacheable, as discussed in <a data-rapid_p="50" href="#expires">Add an Expires or a Cache-Control Header</a>. Some of the other rules also apply to Ajax:</p>
                     <ul>
-                        <li> <a data-rapid_p="51" href="rawrules.txt#gzip">Gzip Components</a>
+                        <li> <a data-rapid_p="51" href="#gzip">Gzip Components</a>
                         </li>
-                        <li> <a data-rapid_p="52" href="rawrules.txt#dns_lookups">Reduce DNS Lookups</a>
+                        <li> <a data-rapid_p="52" href="#dns_lookups">Reduce DNS Lookups</a>
                         </li>
-                        <li> <a data-rapid_p="53" href="rawrules.txt#minify">Minify JavaScript</a>
+                        <li> <a data-rapid_p="53" href="#minify">Minify JavaScript</a>
                         </li>
-                        <li> <a data-rapid_p="54" href="rawrules.txt#redirects">Avoid Redirects</a>
+                        <li> <a data-rapid_p="54" href="#redirects">Avoid Redirects</a>
                         </li>
-                        <li> <a data-rapid_p="55" href="rawrules.txt#etags">Configure ETags</a>
+                        <li> <a data-rapid_p="55" href="#etags">Configure ETags</a>
                         </li>
                     </ul>
                 </section>
                 <section>
-                    <p>Let's look at an example. A Web 2.0 email client might use Ajax to download the user's address book for autocompletion. If the user hasn't modified her address book since the last time she used the email web app, the previous address book response could be read from cache if that Ajax response was made cacheable with a future Expires or Cache-Control header. The browser must be informed when to use a previously cached address book response versus requesting a new one. This could be done by adding a timestamp to the address book Ajax URL indicating the last time the user modified her address book, for example, <code>&amp;t=1190241612</code>. If the address book hasn't been modified since the last download, the timestamp will be the same and the address book will be read from the browser's cache eliminating an extra HTTP roundtrip. If the user has modified her address book, the timestamp ensures the new URL doesn't match the cached response, and the browser will request the updated address book entries.</p>
-                </section>
-                <section>
-                    <p>Even though your Ajax responses are created dynamically, and might only be applicable to a single user, they can still be cached. Doing so will make your Web 2.0 apps faster.</p>
+                    <p>Even though your Ajax responses are created dynamically, and might only be applicable to a single user, <b>they can still be cached</b>. Doing so will make your apps faster.</p>
                 </section>
             </section>
             <section>
                 <section id="postload">
                     <h3>Post-load Components</h3>
-                </section>
-                <section>
+
                     <p>
                         You can take a closer look at your page and ask yourself: "What's absolutely required in order to render the page initially?". The rest of the content and components can wait.
                     </p>
                 </section>
                 <section>
                     <p>
-                        JavaScript is an ideal candidate for splitting before and after the onload event. For example if you have JavaScript code and libraries that do drag and drop and animations, those can wait, because dragging elements on the page comes after the initial rendering. Other places to look for candidates for post-loading include hidden content (content that appears after a user action) and images below the fold.
+                        JavaScript is an ideal candidate for splitting before and after the onload event. </p>
+
+                    <ul>
+
+                        <li class="fragment shrink">JavaScript code and libraries that do drag and drop and animations, those can wait, because dragging elements on the page comes after the initial rendering. </li>
+                        <li class="fragment shrink">Hidden content (content that appears after a user action) and images below the fold.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Tools to help you out in your effort</h3>
+                    <p>
+                        <a data-rapid_p="64" href="https://developer.yahoo.com/yui/imageloader/">YUI Image Loader</a> allows you to delay images below the fold and the <a data-rapid_p="65" href="https://developer.yahoo.com/yui/get/">YUI Get utility</a> is an easy way to include JS and CSS on the fly. For an example in the wild take a look at <a data-rapid_p="66" href="http://www.yahoo.com">Yahoo! Home Page</a> with Firebug's Net Panel turned on.
                     </p>
                 </section>
                 <section>
                     <p>
-                        Tools to help you out in your effort: <a data-rapid_p="64" href="https://developer.yahoo.com/yui/imageloader/">YUI Image Loader</a> allows you to delay images below the fold and the <a data-rapid_p="65" href="https://developer.yahoo.com/yui/get/">YUI Get utility</a> is an easy way to include JS and CSS on the fly. For an example in the wild take a look at <a data-rapid_p="66" href="http://www.yahoo.com">Yahoo! Home Page</a> with Firebug's Net Panel turned on.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        It's good when the performance goals are inline with other web development best practices. In this case, the idea of progressive enhancement tells us that JavaScript, when supported, can improve the user experience but you have to make sure the page works even without JavaScript. So after you've made sure the page works fine, you can enhance it with some post-loaded scripts that give you more bells and whistles such as drag and drop and animations.
+                        The idea of <b>progressive enhancement</b> tells us that JavaScript, when supported, can improve the user experience but <b>you have to make sure the page works even without JavaScript</b>. So after you've made sure the page works fine, you can enhance it with some post-loaded scripts that give you more bells and whistles such as drag and drop and animations.
                     </p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="preload">Preload Components</h3>
-                </section>
-                <section>
                     <p>
-                        Preload may look like the opposite of post-load, but it actually has a different goal. By preloading components you can take advantage of the time the browser is idle and request components (like images, styles and scripts) you'll need in the future. This way when the user visits the next page, you could have most of the components already in the cache and your page will load much faster for the user.
+                        Preload may look like the opposite of post-load, but it actually has a different goal. By preloading components you can <b>take advantage of the time the browser is idle and request components (like images, styles and scripts) you'll need in the future</b>.
                     </p>
                 </section>
                 <section>
-                    <p>
-                        There are actually several types of preloading:
-                    </p>
-                </section>
-                <section>
+                    <h3>Types of preloading</h3>
+
                     <ul>
-                        <li>Unconditional preload - as soon as onload fires, you go ahead and fetch some extra components. Check google.com for an example of how a sprite image is requested onload. This sprite image is not needed on the google.com homepage, but it is needed on the consecutive search result page.</li>
-                        <li>Conditional preload - based on a user action you make an educated guess where the user is headed next and preload accordingly. On <a data-rapid_p="68" href="http://search.yahoo.com">search.yahoo.com</a> you can see how some extra components are requested after you start typing in the input box.</li>
-                        <li>Anticipated preload - preload in advance before launching a redesign. It often happens after a redesign that you hear: "The new site is cool, but it's slower than before". Part of the problem could be that the users were visiting your old site with a full cache, but the new one is always an empty cache experience. You can mitigate this side effect by preloading some components before you even launched the redesign. Your old site can use the time the browser is idle and request images and scripts that will be used by the new site</li>
+                        <li>Unconditional preload - as soon as onload fires, you go ahead and fetch some extra components.</li>
+                        <li>Conditional preload - based on a user action you make an educated guess where the user is headed next and preload accordingly.</li>
+                        <li>Anticipated preload - preload in advance before launching a redesign.</li>
                     </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="min_dom">Reduce the Number of DOM Elements</h3>
-                </section>
-                <section>
+
                     <p>
                         A complex page means more bytes to download and it also means slower DOM access in JavaScript. It makes a difference if you loop through 500 or 5000 DOM elements on the page when you want to add an event handler for example.
                     </p>
-                    <p>
-                        A high number of DOM elements can be a symptom that there's something that should be improved with the markup of the page without necessarily removing content. Are you using nested tables for layout purposes? Are you throwing in more <code>&lt;div&gt;</code>s only to fix layout issues? Maybe there's a better and more semantically correct way to do your markup.
-                    </p>
                 </section>
                 <section>
-                    <p>
-                        A great help with layouts are the <a data-rapid_p="70" href="https://developer.yahoo.com/yui/">YUI CSS utilities</a>: grids.css can help you with the overall layout, fonts.css and reset.css can help you strip away the browser's defaults formatting. This is a chance to start fresh and think about your markup, for example use <code>&lt;div&gt;</code>s only when it makes sense semantically, and not because it renders a new line.
-                    </p>
                     <p>
                         The number of DOM elements is easy to test, just type in Firebug's console:
                         <code>document.getElementsByTagName('*').length</code>
@@ -320,53 +303,51 @@ Content-Type: text/html</code></pre>
             <section>
                 <section>
                     <h3 id="split">Split Components Across Domains</h3>
-                </section>
-                <section>
                     <p>
-                        Splitting components allows you to maximize parallel downloads. Make sure you're using not more than 2-4 domains because of the DNS lookup penalty. For example, you can host your HTML and dynamic content on <code>www.example.org</code> and split static components between <code>static1.example.org</code> and <code>static2.example.org</code>
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        For more information check "
-                        <a data-rapid_p="73" href="http://yuiblog.com/blog/2007/04/11/performance-research-part-4/">Maximizing Parallel Downloads in the Carpool Lane</a>" by Tenni Theurer and Patty Chi.
+                        Splitting components allows you to maximize parallel downloads. Make sure you're using not more than 2-4 domains because of the DNS lookup penalty.</p>
+                    <p class="fragment shrink">For example, you can host your HTML and dynamic content on <code>www.example.org</code> and split static components between <code>static1.example.org</code> and <code>static2.example.org</code>
                     </p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="iframes">Minimize the Number of iframes</h3>
-                </section>
-                <section>
+
                     <p>
                         Iframes allow an HTML document to be inserted in the parent document. It's important to understand how iframes work so they can be used effectively.
                     </p>
-                    <img src="images/iframe-performance.png" alt="iframe performance">
+                    <div class="fragment">
+
+                        <img src="images/iframe-performance.png" alt="iframe performance">
+                        <a href="http://stevesouders.com/efws/costofelements.php">http://stevesouders.com/efws/costofelements.php</a>
+                    </div>
                 </section>
                 <section>
-                    <p>
-                        <code>&lt;iframe&gt;</code> pros:
-                    </p>
+                    <h3>iframe Pros and Cons</h3>
                     <ul>
-                        <li>Helps with slow third-party content like badges and ads</li>
-                        <li>Security sandbox</li>
-                        <li>Download scripts in parallel</li>
-                    </ul>
-                    <p>
-                        <code>&lt;iframe&gt;</code> cons:
-                    </p>
-                    <ul>
-                        <li>Costly even if blank</li>
-                        <li>Blocks page onload</li>
-                        <li>Non-semantic</li>
+
+                        <li>
+                            Pros:
+                            <ul>
+                                <li>Helps with slow third-party content like badges and ads</li>
+                                <li>Security sandbox</li>
+                                <li>Download scripts in parallel</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Cons:
+                            <ul>
+                                <li>Costly even if blank</li>
+                                <li>Blocks page onload</li>
+                                <li>Non-semantic</li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="no404">No 404s</h3>
-                </section>
-                <section>
                     <p>
                         HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
                     </p>
@@ -374,8 +355,13 @@ Content-Type: text/html</code></pre>
                 </section>
                 <section>
                     <p>
-                        Some sites have helpful 404s "Did you mean X?", which is great for the user experience but also wastes server resources (like database, etc). Particularly bad is when the link to an external JavaScript is wrong and the result is a 404. First, this download will block parallel downloads. Next the browser may try to parse the 404 response body as if it were JavaScript code, trying to find something usable in it.
+                        Some sites have helpful 404s "Did you mean X?", which is great for the user experience but also wastes server resources (like database, etc).
                     </p>
+                    <p><strong>Check out <a href="http://huwshimi.com/?utm_source=CMblog&amp;utm_medium=link&amp;utm_campaign=funny404pages">Huwshimi</a>'s <a href="http://huwshimi.com/404/?utm_source=CMblog&amp;utm_medium=link&amp;utm_campaign=funny404pages">404 Page</a></strong>
+                    </p>
+                    <p><strong>Check out <a href="http://css-tricks.com/?utm_source=CMblog&amp;utm_medium=link&amp;utm_campaign=funny404pages">CSS Tricks</a>' <a href="http://css-tricks.com/images/404.jpg">404 Page</a></strong>
+                    </p>
+                    <p>Particularly bad is when the link to an external JavaScript is wrong and the result is a 404. First, this download will block parallel downloads. Next the browser may try to parse the 404 response body as if it were JavaScript code, trying to find something usable in it.</p>
                 </section>
             </section>
             <section id="server">
@@ -400,17 +386,7 @@ Content-Type: text/html</code></pre>
             <section>
                 <section id="cdn">
                     <h3>Use a Content Delivery Network</h3>
-                </section>
-                <section>
-                    <p>The user's proximity to your web server has an impact on response times. Deploying your content across multiple, geographically dispersed servers will make your pages load faster from the user's perspective.</p>
-                    <p>But where should you start?</p>
-                </section>
-                <section>
-                    <p>Remember that 80-90% of the end-user response time is spent downloading all the components in the page: images, stylesheets, scripts, Flash, etc. This is the Performance Golden Rule. </p>
-                    <p>Rather than starting with the difficult task of redesigning your application architecture, it's better to first <b>disperse your static content</b>. This not only achieves a bigger reduction in response times, but it's easier thanks to <b>Content Delivery Networks.</b>
-                    </p>
-                </section>
-                <section>
+
                     <p>A content delivery network (CDN) is a collection of web servers distributed across multiple locations to deliver content more efficiently to users. The server selected for delivering content to a specific user is typically based on a measure of network proximity.</p>
                     <img src="images/azure-cdn.png" alt="Azure CDN">
                 </section>
@@ -421,12 +397,10 @@ Content-Type: text/html</code></pre>
             <section>
                 <section id="expires">
                     <h3>Add an Expires or a Cache-Control Header</h3>
-                </section>
-                <section>
                     <ul>
                         <li>For static components: implement "Never expire" policy by setting far future <code>Expires</code> header</li>
                         <li>For dynamic components: use an appropriate <code>Cache-Control</code> header to help the browser with conditional requests</li>
-                        <pre><code>Cache-Control   public, max-age=31536000
+                        <pre class="fragment"><code>Cache-Control   public, max-age=31536000
 Content-Length  9760
 Content-Type    image/png
 Date    Thu, 18 Dec 2014 23:17:07 GMT
@@ -439,31 +413,29 @@ X-XSS-Protection    1; mode=block</code></pre>
                     </ul>
                 </section>
                 <section>
-                    <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2015. </p>
-                    <pre><code>Expires: Thu, 15 Apr 2015 20:00:00 GMT</code></pre>
-                </section>
-                <section>
-                    <p>Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
+                    <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2016. </p>
+                    <pre><code>Expires: Thu, 15 Apr 2016 20:00:00 GMT</code></pre>
+
+                    <p class="fragment highlight-blue">Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
                 </section>
             </section>
             <section>
                 <section id="gzip">
                     <h3>Gzip Components</h3>
-                </section>
-                <section>
+
                     <ul>
                         <p>Starting with HTTP/1.1, web clients indicate support for compression with the Accept-Encoding header in the HTTP request.</p>
                         <pre><code>Accept-Encoding: gzip, deflate</code></pre>
                         <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client.</p>
                         <pre><code>Content-Encoding: gzip</code></pre>
                     </ul>
-                    <img src="images/without-gzip.jpg" alt="without gzip support">
-                    <img src="images/gzip.jpg" alt="with gzip support">
+                    <img class="fragment" src="images/without-gzip.jpg" alt="without gzip support">
+                    <img class="fragment" src="images/gzip.jpg" alt="with gzip support">
                 </section>
                 <section>
                     <h3>Gzip efficiency</h3>
                     <ul>
-                        <li>Gzip is the most popular and effective compression method at this time. It was developed by the GNU project and standardized by <a data-rapid_p="16" href="http://www.ietf.org/rfc/rfc1952.txt">RFC 1952</a>. The only other compression format you're likely to see is deflate, but it's less effective and less popular. </li>
+                        <li>Gzip is the most popular and effective compression method at this time. </li>
                         <li>Gzipping generally reduces the response size by about 70%. Approximately 90% of today's Internet traffic travels through browsers that claim to support gzip.</li>
                     </ul>
                 </section>
@@ -471,19 +443,20 @@ X-XSS-Protection    1; mode=block</code></pre>
                     <h3>Gzip file type</h3>
                     <ul>
                         <li>Servers choose what to gzip based on file type, but are typically too limited in what they decide to compress. Most web sites gzip their HTML documents. </li>
-                        <li>It's also worthwhile to gzip your scripts and stylesheets, but many web sites miss this opportunity. In fact, it's worthwhile to compress any text response including XML and JSON. </li>
-                        <li>Image and PDF files should not be gzipped because they are already compressed. Trying to gzip them not only wastes CPU but can potentially increase file sizes. </li>
+                        <li>It's also worthwhile to <b>gzip your scripts and stylesheets</b>, but many web sites miss this opportunity. In fact, it's worthwhile to compress any text response including XML and JSON. </li>
+                        <li>Image and PDF files should not be gzipped because they are already compressed. <b>Trying to gzip them not only wastes CPU but can potentially increase file sizes.</b> </li>
                     </ul>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="etags">Configure ETags</h3>
-                </section>
-                <section>
-                    <p>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. (An "entity" is another word a "component": images, scripts, stylesheets, etc.) ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</p>
-                </section>
-                <section><pre><code>      HTTP/1.1 200 OK
+                    <ul>
+
+                        <li>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. </li>
+                        <li>An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</li>
+                    </ul>
+                    <pre class="fragment"><code>HTTP/1.1 200 OK
 Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT
 ETag: "10c24bc-4ab-457e1c1f"
 Content-Length: 12195</code></pre>
@@ -491,41 +464,16 @@ Content-Length: 12195</code></pre>
                 <section>
                     <p>Later, if the browser has to validate a component, it uses the <code>If-None-Match</code> header to pass the ETag back to the origin server. If the ETags match, a 304 status code is returned reducing the response by 12195 bytes for this example.
                     </p>
-                </section>
-                <section><pre><code>      GET /i/yahoo.gif HTTP/1.1
+                    <pre><code>GET /i/yahoo.gif HTTP/1.1
 Host: us.yimg.com
 If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT
 If-None-Match: "10c24bc-4ab-457e1c1f"
 HTTP/1.1 304 Not Modified</code></pre>
-                </section>
-                <section>
-                    <p>The problem with ETags is that they typically are constructed using attributes that make them unique to a specific server hosting a site. ETags won't match when a browser gets the original component from one server and later tries to validate that component on a different server, a situation that is all too common on Web sites that use a cluster of servers to handle requests. By default, both Apache and IIS embed data in the ETag that dramatically reduces the odds of the validity test succeeding on web sites with multiple servers.
-                    </p>
-                </section>
-                <section>
-                    <p>The ETag format for Apache 1.3 and 2.x is <code>inode-size-timestamp</code>. Although a given file may reside in the same directory across multiple servers, and have the same file size, permissions, timestamp, etc., its inode is different from one server to the next.
-                    </p>
-                </section>
-                <section>
-                    <p>IIS 5.0 and 6.0 have a similar issue with ETags. The format for ETags on IIS is <code>Filetimestamp:ChangeNumber</code>. A <code>ChangeNumber</code> is a counter used to track configuration changes to IIS. It's unlikely that the <code>ChangeNumber</code> is the same across all IIS servers behind a web site.
-                    </p>
-                </section>
-                <section>
-                    <p>The end result is ETags generated by Apache and IIS for the exact same component won't match from one server to another. If the ETags don't match, the user doesn't receive the small, fast 304 response that ETags were designed for; instead, they'll get a normal 200 response along with all the data for the component. If you host your web site on just one server, this isn't a problem. But if you have multiple servers hosting your web site, and you're using Apache or IIS with the default ETag configuration, your users are getting slower pages, your servers have a higher load, you're consuming greater bandwidth, and proxies aren't caching your content efficiently. Even if your components have a far future <code>Expires</code> header, a conditional GET request is still made whenever the user hits Reload or Refresh.
-                    </p>
-                </section>
-                <section>
-                    <p>If you're not taking advantage of the flexible validation model that ETags provide, it's better to just remove the ETag altogether. The <code>Last-Modified</code> header validates based on the component's timestamp. And removing the ETag reduces the size of the HTTP headers in both the response and subsequent requests. This <a data-rapid_p="47" href="http://support.microsoft.com/?id=922733">Microsoft Support article</a> describes how to remove ETags. In Apache, this is done by simply adding the following line to your Apache configuration file:
-                    </p>
-                </section>
-                <section><pre><code>      FileETag none</code></pre>
-                </section>
+                </section>                
             </section>
             <section>
                 <section>
                     <h3 id="flush">Flush the Buffer Early</h3>
-                </section>
-                <section>
                     <p>
                         When users request a page, it can take anywhere from 200 to 500ms for the backend server to stitch together the HTML page. During this time, the browser is idle as it waits for the data to arrive. In PHP you have the function <a data-rapid_p="58" href="http://php.net/flush">flush()</a>. It allows you to send your partially ready HTML response to the browser so that the browser can start fetching components while your backend is busy with the rest of the HTML page. The benefit is mainly seen on busy backends or light frontends.
                     </p>
@@ -538,7 +486,7 @@ HTTP/1.1 304 Not Modified</code></pre>
                 <section>
                     <p>Example:</p>
                 </section>
-                <section><pre><code>      ... &lt;!-- css, js --&gt;
+                <section><pre><code>... &lt;!-- css, js --&gt;
 &lt;/head&gt;
 &lt;?php flush(); ?&gt;
 &lt;body&gt;

@@ -40,7 +40,7 @@
             </section>
             <section id="agenda">
                 <h3>The list includes 35 best practices divided into 7 categories</h3>
-                <ul class="fragment">
+                <ul>
                     <li><a href="#content">Content</a>
                     </li>
                     <li><a href="#server">Server</a>
@@ -453,8 +453,8 @@ X-XSS-Protection    1; mode=block</code></pre>
                     <h3 id="etags">Configure ETags</h3>
                     <ul>
 
-                        <li>Entity tags (ETags) are a mechanism that web servers and browsers use to determine whether the component in the browser's cache matches the one on the origin server. ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. </li>
-                        <li>An ETag is a string that uniquely identifies a specific version of a component. The only format constraints are that the string be quoted. The origin server specifies the component's ETag using the <code>ETag</code> response header.</li>
+                        <li>ETags were added to provide a mechanism for validating entities that is more flexible than the last-modified date. </li>
+                        <li>An ETag is a string that uniquely identifies a specific version of a component. </li>
                     </ul>
                     <pre class="fragment"><code>HTTP/1.1 200 OK
 Last-Modified: Tue, 12 Dec 2006 03:03:59 GMT
@@ -500,6 +500,7 @@ HTTP/1.1 304 Not Modified</code></pre>
                 <section>
                     <p>An interesting side affect is that POST without actually posting any data behaves like GET. Based on the <a data-rapid_p="62" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specs</a>, GET is meant for retrieving information, so it makes sense (semantically) to use GET when you're only requesting data, as opposed to sending data to be stored server-side.
                     </p>
+                    <a href="http://www.w3schools.com/tags/ref_httpmethods.asp">http://www.w3schools.com/tags/ref_httpmethods.asp</a>
                 </section>
             </section>
             <section>
@@ -625,7 +626,6 @@ HTTP/1.1 304 Not Modified</code></pre>
                 </section>
                 <section>
                     <p>The problem with expressions is that <b>they are evaluated more frequently than most people expect</b>. Not only are they evaluated when the page is rendered and resized, but also when the page is scrolled and even when the user moves the mouse over the page. </p>
-                    <p>If the style property must be set dynamically throughout the life of the page, using event handlers instead of CSS expressions is an alternative approach. If you must use CSS expressions, remember that they may be evaluated thousands of times and could affect the performance of your page.</p>
                 </section>
             </section>
             <section>
@@ -651,11 +651,6 @@ HTTP/1.1 304 Not Modified</code></pre>
                         </li>
                     </ul>
                 </section>
-                <section>
-                    <p>
-                        The best approach is to avoid <code>AlphaImageLoader</code> completely and use gracefully degrading PNG8 instead, which are fine in IE. If you absolutely need <code>AlphaImageLoader</code>, use the underscore hack <code>_filter</code> as to not penalize your IE7+ users.
-                    </p>
-                </section>
             </section>
             <section id="javascript">
                 <h2>JavaScript</h2>
@@ -678,7 +673,8 @@ HTTP/1.1 304 Not Modified</code></pre>
                 <section id="js_bottom">
                     <h3>Put Scripts at the Bottom</h3>
 
-                    <p>The problem caused by scripts is that they <b>block parallel downloads</b>. The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
+                    <p>The problem caused by scripts is that they <b>block parallel downloads</b>. </p>
+                    <p>The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
                 </section>
                 <section>
                     <h3>Demos</h3>
@@ -704,16 +700,19 @@ HTTP/1.1 304 Not Modified</code></pre>
                     <blockquote> Should JavaScript and CSS be contained in external files, or inlined in the page itself?</blockquote>
                 </section>
                 <section>
+                    <h3>Benifits of external Script and CSS</h3>
                     <ul>
                         <li>Using external files in the real world generally produces faster pages because the JavaScript and CSS files are cached by the browser. </li>
                         <li>On the other hand, if the JavaScript and CSS are in external files cached by the browser, the size of the HTML document is reduced without increasing the number of HTTP requests. </li>
                     </ul>
                 </section>
                 <section>
+                    <h3>Key factor for making script and css external</h3>
                     <p>The key factor, then, is <b>the frequency with which external JavaScript and CSS components are cached relative to the number of HTML documents requested </b>. </p>
                     <p>This factor, although difficult to quantify, can be gauged using various metrics. If users on your site have multiple page views per session and many of your pages re-use the same scripts and stylesheets, there is a greater potential benefit from cached external files. </p>
                 </section>
                 <section>
+                    <h3>Exceptions</h3>
                     <ul>
                         <li>Many web sites fall in the middle of these metrics. For these sites, the best solution generally is to deploy the JavaScript and CSS as external files.</li>
                         <li>The only exception where inlining is preferable is with <b>home pages</b>, Home pages that have few (perhaps only one) page view per session may find that inlining JavaScript and CSS results in faster end-user response times.</li>
@@ -723,55 +722,44 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="minify">Minify JavaScript and CSS</h3>
+                    <p>Minification is the practice of removing unnecessary characters from code to reduce its size thereby improving load times. </p>
+                    <p>Two popular tools for minifying JavaScript code are <a data-rapid_p="37" href="http://crockford.com/javascript/jsmin">JSMin</a> and <a data-rapid_p="38" href="https://developer.yahoo.com/yui/compressor/">YUI Compressor</a>. The YUI compressor can also minify CSS.</p>
+                    <img class="fragment" src="images/minify-scripts-stylesheets.png" alt="minify scripts and stylesheets">
                 </section>
                 <section>
-                    <p>Minification is the practice of removing unnecessary characters from code to reduce its size thereby improving load times. When code is minified all comments are removed, as well as unneeded white space characters (space, newline, and tab). In the case of JavaScript, this improves response time performance because the size of the downloaded file is reduced. Two popular tools for minifying JavaScript code are <a data-rapid_p="37" href="http://crockford.com/javascript/jsmin">JSMin</a> and <a data-rapid_p="38" href="https://developer.yahoo.com/yui/compressor/">YUI Compressor</a>. The YUI compressor can also minify CSS.</p>
-                    <img src="images/minify-scripts-stylesheets.png" alt="minify scripts and stylesheets">
-                </section>
-                <section>
+                    <h3>Obfuscation</h3>
                     <p>Obfuscation is an alternative optimization that can be applied to source code. It's more complex than minification and thus more likely to generate bugs as a result of the obfuscation step itself. In a survey of ten top U.S. web sites, minification achieved a 21% size reduction versus 25% for obfuscation. Although obfuscation has a higher size reduction, minifying JavaScript is less risky.</p>
                 </section>
                 <section>
+                    <h3>Inline scripts and styles</h3>
                     <p>In addition to minifying external scripts and styles, inlined <code>&lt;script&gt;</code> and <code>&lt;style&gt;</code> blocks can and should also be minified. Even if you gzip your scripts and styles, minifying them will still reduce the size by 5% or more. As the use and size of JavaScript and CSS increases, so will the savings gained by minifying your code.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="js_dupes">Remove Duplicate Scripts</h3>
-                </section>
-                <section>
-                    <p>It hurts performance to include the same JavaScript file twice in one page. This isn't as unusual as you might think. A review of the ten top U.S. web sites shows that two of them contain a duplicated script. Two main factors increase the odds of a script being duplicated in a single web page: team size and number of scripts. When it does happen, duplicate scripts hurt performance by creating unnecessary HTTP requests and wasted JavaScript execution.</p>
-                </section>
-                <section>
-                    <p>Unnecessary HTTP requests happen in Internet Explorer, but not in Firefox. In Internet Explorer, if an external script is included twice and is not cacheable, it generates two HTTP requests during page loading. Even if the script is cacheable, extra HTTP requests occur when the user reloads the page.</p>
-                </section>
-                <section>
-                    <p>In addition to generating wasteful HTTP requests, time is wasted evaluating the script multiple times. This redundant JavaScript execution happens in both Firefox and Internet Explorer, regardless of whether the script is cacheable.</p>
+
+                    <p>It hurts performance to include the same JavaScript file twice in one page. When it does happen, duplicate scripts hurt performance by creating <b>unnecessary HTTP requests and wasted JavaScript execution.</b>
+                    </p>
+                    <p>Two main factors increase the odds of a script being duplicated in a single web page: team size and number of scripts. </p>
                 </section>
                 <section>
                     <p>One way to avoid accidentally including the same script twice is to implement a script management module in your templating system. The typical way to include a script is to use the SCRIPT tag in your HTML page.</p>
-                </section>
-                <section><pre><code>      &lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</code></pre>
-                </section>
-                <section>
-                    <p>An alternative in PHP would be to create a function called <code>insertScript</code>.</p>
-                </section>
-                <section><pre><code>      &lt;?php insertScript("menu.js") ?&gt;</code></pre>
-                </section>
-                <section>
-                    <p>In addition to preventing the same script from being inserted multiple times, this function could handle other issues with scripts, such as dependency checking and adding version numbers to script filenames to support far future Expires headers.</p>
+                    <pre><code>&lt;script type="text/javascript" src="menu_1.0.17.js"&gt;&lt;/script&gt;</code></pre>
+                    <div class="fragment">
+
+                        <p>An alternative in PHP would be to create a function called <code>insertScript</code>.</p>
+                        <pre><code>&lt;?php insertScript("menu.js") ?&gt;</code></pre>
+                    </div>
+                    <p class="fragment">In addition to preventing the same script from being inserted multiple times, this function could handle other issues with scripts, such as dependency checking and adding version numbers to script filenames to support far future Expires headers.</p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="dom_access">Minimize DOM Access</h3>
-                </section>
-                <section>
                     <p>
                         Accessing DOM elements with JavaScript is slow so in order to have a more responsive page, you should:
                     </p>
-                </section>
-                <section>
                     <ul>
                         <li>Cache references to accessed elements</li>
                         <li>Update nodes "offline" and then add them to the tree</li>
@@ -788,15 +776,14 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="events">Develop Smart Event Handlers</h3>
-                </section>
-                <section>
                     <p>
-                        Sometimes pages feel less responsive because of too many event handlers attached to different elements of the DOM tree which are then executed too often. That's why using event delegation is a good approach. If you have 10 buttons inside a <code>div</code>, attach only one event handler to the div wrapper, instead of one handler for each button. Events bubble up so you'll be able to catch the event and figure out which button it originated from.
+                        Sometimes pages feel less responsive because of too many event handlers attached to different elements of the DOM tree which are then executed too often. That's why using <b>event delegation</b> is a good approach.
                     </p>
                 </section>
                 <section>
                     <p>
-                        You also don't need to wait for the onload event in order to start doing something with the DOM tree. Often all you need is the element you want to access to be available in the tree. You don't have to wait for all images to be downloaded.
+                        You also don't need to wait for the onload event in order to start doing something with the DOM tree. Often all you need is the element you want to access to be available in the tree. You don't have to wait for all images to be downloaded.</p>
+                    <p>
                         <code>DOMContentLoaded</code> is the event you might consider using instead of onload, but until it's available in all browsers, you can use the <a data-rapid_p="82" href="https://developer.yahoo.com/yui/event/">YUI Event</a> utility, which has an <code><a data-rapid_p="83" href="https://developer.yahoo.com/yui/event/#onavailable">onAvailable</a></code> method.
                     </p>
                 </section>
@@ -817,12 +804,9 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="opt_images">Optimize Images</h3>
-                </section>
-                <section>
                     <p>
                         After a designer is done with creating the images for your web page, there are still some things you can try before you FTP those images to your web server.
                     </p>
-                    <img src="images\image-weight-for-top10-websites.png" alt="images weight">
                 </section>
                 <section>
                     <ul>
@@ -830,39 +814,38 @@ HTTP/1.1 304 Not Modified</code></pre>
                             <code>identify -verbose image.gif</code> When you see an image using 4 colors and a 256 color "slots" in the palette, there is room for improvement.
                         </li>
                         <li>
-                            Try converting GIFs to PNGs and see if there is a saving. More often than not, there is. Developers often hesitate to use PNGs due to the limited support in browsers, but this is now a thing of the past. The only real problem is alpha-transparency in true color PNGs, but then again, GIFs are not true color and don't support variable transparency either. So anything a GIF can do, a palette PNG (PNG8) can do too (except for animations). This simple imagemagick command results in totally safe-to-use PNGs:
-                            <code>convert image.gif image.png</code> "All we are saying is: Give PiNG a Chance!"
+                            Try converting GIFs to PNGs and see if there is a saving. This simple imagemagick command results in totally safe-to-use PNGs:
+                            <code>convert image.gif image.png</code>
                         </li>
                         <li>
                             Run <a data-rapid_p="89" href="http://pmt.sourceforge.net/pngcrush/">pngcrush</a> (or any other PNG optimizer tool) on all your PNGs. Example:
                             <code>pngcrush image.png -rem alla -reduce -brute result.png</code>
                         </li>
                         <li>
-                            Run jpegtran on all your JPEGs. This tool does lossless JPEG operations such as rotation and can also be used to optimize and remove comments and other useless information (such as EXIF information) from your images.
+                            Run jpegtran on all your JPEGs. This tool does lossless JPEG operations such as rotation and can also be used to optimize and remove comments and other useless information.
                             <code>jpegtran -copy none -optimize -perfect src.jpg dest.jpg</code>
                         </li>
                     </ul>
+                </section>
+                <section>
+                    <h3>Image weight for top 10 websites</h3>
+                    <img src="images\image-weight-for-top10-websites.png" alt="images weight">
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="opt_sprites">Optimize CSS Sprites</h3>
-                </section>
-                <section>
                     <ul>
                         <li>Arranging the images in the sprite horizontally as opposed to vertically usually results in a smaller file size.</li>
                         <li>Combining similar colors in a sprite helps you keep the color count low, ideally under 256 colors so to fit in a PNG8.</li>
-                        <li>"Be mobile-friendly" and don't leave big gaps between the images in a sprite. This doesn't affect the file size as much but requires less memory for the user agent to decompress the image into a pixel map. 100x100 image is 10 thousand pixels, where 1000x1000 is 1 million pixels
-                        </li>
+                        <li>"Be mobile-friendly" and don't leave big gaps between the images in a sprite.</li>
                     </ul>
-                    <img src="images\css-sprites-optimization.png" alt="css sprites optimization">
+                    <img class="fragment" src="images\css-sprites-optimization.png" alt="css sprites optimization">
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="no_scale">Don't Scale Images in HTML</h3>
-                </section>
-                <section>
                     <p>
                         Don't use a bigger image than you need just because you can set the width and height in HTML. If you need
                         <code>&lt;img width="100" height="100" src="mycat.jpg" alt="My Cat" /&gt;</code> then your image (mycat.jpg) should be 100x100px rather than a scaled down 500x500px image.
@@ -873,25 +856,20 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="favicon">Make favicon.ico Small and Cacheable</h3>
-                </section>
-                <section>
                     <p>
-                        The favicon.ico is an image that stays in the root of your server. It's a necessary evil because even if you don't care about it the browser will still request it, so it's better not to respond with a <code>404 Not Found</code>. Also since it's on the same server, cookies are sent every time it's requested. This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.
+                        Since favicon is on the same server, cookies are sent every time it's requested. This image also interferes with the download sequence, for example in IE when you request extra components in the onload, the favicon will be downloaded before these extra components.
                     </p>
                     <img src="images\favicon.png" alt="favicon">
                 </section>
                 <section>
-                    <p>
-                        So to mitigate the drawbacks of having a favicon.ico make sure:
-                    </p>
+                    <h3>Guidelines</h3>
                     <ul>
                         <li>It's small, preferably under 1K.</li>
-                        <li>Set Expires header with what you feel comfortable (since you cannot rename it if you decide to change it). You can probably safely set the Expires header a few months in the future. You can check the last modified date of your current favicon.ico to make an informed decision.
+                        <li>Set Expires header with what you feel comfortable (since you cannot rename it if you decide to change it). You can probably safely set the Expires header a few months in the future. </li>
+                        <li>
+                            <a data-rapid_p="93" href="http://www.imagemagick.org">Imagemagick</a> can help you create small favicons
                         </li>
                     </ul>
-                    <p>
-                        <a data-rapid_p="93" href="http://www.imagemagick.org">Imagemagick</a> can help you create small favicons
-                    </p>
                 </section>
             </section>
             <section id="mobile">
@@ -906,8 +884,6 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="under25">Keep Components under 25K</h3>
-                </section>
-                <section>
                     <p>
                         This restriction is related to the fact that iPhone won't cache components bigger than 25K. Note that this is the uncompressed size. This is where minification is important because gzip alone may not be sufficient.
                     </p>
@@ -921,8 +897,6 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="multipart">Pack Components into a Multipart Document</h3>
-                </section>
-                <section>
                     <p>
                         Packing components into a multipart document is like an email with attachments, it helps you fetch several components with one HTTP request (remember: HTTP requests are expensive). When you use this technique, first check if the user agent supports it (iPhone does not).
                     </p>

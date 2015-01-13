@@ -469,24 +469,20 @@ Host: us.yimg.com
 If-Modified-Since: Tue, 12 Dec 2006 03:03:59 GMT
 If-None-Match: "10c24bc-4ab-457e1c1f"
 HTTP/1.1 304 Not Modified</code></pre>
-                </section>                
+                </section>
             </section>
             <section>
                 <section>
                     <h3 id="flush">Flush the Buffer Early</h3>
                     <p>
-                        When users request a page, it can take anywhere from 200 to 500ms for the backend server to stitch together the HTML page. During this time, the browser is idle as it waits for the data to arrive. In PHP you have the function <a data-rapid_p="58" href="http://php.net/flush">flush()</a>. It allows you to send your partially ready HTML response to the browser so that the browser can start fetching components while your backend is busy with the rest of the HTML page. The benefit is mainly seen on busy backends or light frontends.
+                        When users request a page, it can take anywhere from 200 to 500ms for the backend server to stitch together the HTML page. During this time, the browser is idle as it waits for the data to arrive. In PHP you have the function <a data-rapid_p="58" href="http://php.net/flush">flush()</a>. <b>It allows you to send your partially ready HTML response to the browser so that the browser can start fetching components while your backend is busy with the rest of the HTML page.</b>
                     </p>
                 </section>
                 <section>
                     <p>
-                        A good place to consider flushing is right after the HEAD because the HTML for the head is usually easier to produce and it allows you to include any CSS and JavaScript files for the browser to start fetching in parallel while the backend is still processing.
+                        A good place to consider flushing is right <b>after the HEAD</b> because the HTML for the head is usually easier to produce and it allows you to include any CSS and JavaScript files for the browser to start fetching in parallel while the backend is still processing.
                     </p>
-                </section>
-                <section>
-                    <p>Example:</p>
-                </section>
-                <section><pre><code>... &lt;!-- css, js --&gt;
+                    <pre class="fragment"><code>... &lt;!-- css, js --&gt;
 &lt;/head&gt;
 &lt;?php flush(); ?&gt;
 &lt;body&gt;
@@ -497,10 +493,8 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="ajax_get">Use GET for AJAX Requests</h3>
-                </section>
-                <section>
                     <p>
-                        The <a data-rapid_p="61" href="http://mail.yahoo.com">Yahoo! Mail</a> team found that when using <code>XMLHttpRequest</code>, POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies). The maximum URL length in IE is 2K, so if you send more than 2K data you might not be able to use GET.
+                        When using <code>XMLHttpRequest</code>, POST is implemented in the browsers as a two-step process: sending the headers first, then sending data. So it's best to use GET, which only takes one TCP packet to send (unless you have a lot of cookies). The maximum URL length in IE is 2K, so if you send more than 2K data you might not be able to use GET.
                     </p>
                 </section>
                 <section>
@@ -511,28 +505,19 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="emptysrc">Avoid Empty Image src</h3>
-                </section>
-                <section>
+
                     <p>
-                        Image with empty string src attribute occurs more than one will expect. It appears in two form:
-                    </p>
-                </section>
-                <section>
+                        Image with empty string src attribute occurs more than one will expect. It appears in two form: Both forms cause the same effect: browser makes another request to your server.</p>
+
                     <ol>
                         <li>straight HTML &lt;img src=""&gt;</li>
                         <li>JavaScript var img = new Image(); img.src = "";
                         </li>
                     </ol>
+
                 </section>
                 <section>
-                    <p></p>
-                </section>
-                <section>
-                    <p>
-                        Both forms cause the same effect: browser makes another request to your server.
-                    </p>
-                </section>
-                <section>
+                    <h3>Browser Behaviors</h3>
                     <ul>
                         <li>Internet Explorer makes a request to the directory in which the page is located.</li>
                         <li>Safari and Chrome make a request to the actual page itself.</li>
@@ -541,35 +526,15 @@ HTTP/1.1 304 Not Modified</code></pre>
                     </ul>
                 </section>
                 <section>
-                    <p>
+                    <h3>
                         Why is this behavior bad?
-                    </p>
-                </section>
-                <section>
-                    <ol>
+                    </h3>
+
+                    <ol class="fragment">
                         <li>Cripple your servers by sending a large amount of unexpected traffic, especially for pages that get millions of page views per day.</li>
                         <li>Waste server computing cycles generating a page that will never be viewed.</li>
                         <li>Possibly corrupt user data. If you are tracking state in the request, either by cookies or in another way, you have the possibility of destroying data. Even though the image request does not return an image, all of the headers are read and accepted by the browser, including all cookies. While the rest of the response is thrown away, the damage may already be done.</li>
                     </ol>
-                </section>
-                <section>
-                    <p>
-                        The root cause of this behavior is the way that URI resolution is performed in browsers. This behavior is defined in RFC 3986 - Uniform Resource Identifiers. When an empty string is encountered as a URI, it is considered a relative URI and is resolved according to the algorithm defined in section 5.2. This specific example, an empty string, is listed in section 5.4. Firefox, Safari, and Chrome are all resolving an empty string correctly per the specification, while Internet Explorer is resolving it incorrectly, apparently in line with an earlier version of the specification, RFC 2396 - Uniform Resource Identifiers (this was obsoleted by RFC 3986). So technically, the browsers are doing what they are supposed to do to resolve relative URIs. The problem is that in this context, the empty string is clearly unintentional.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        HTML5 adds to the description of the <img> tag's src attribute to instruct browsers not to make an additional request in section 4.8.2:
-                        </img>
-                    </p>
-                </section>
-                <section>
-                    The src attribute must be present, and must contain a valid URL referencing a non-interactive, optionally animated, image resource that is neither paged nor scripted. If the base URI of the element is the same as the document's address, then the src attribute's value must not be the empty string. Hopefully, browsers will not have this problem in the future. Unfortunately, there is no such clause for &lt;script src=""&gt; and &lt;link href=""&gt;. Maybe there is still time to make that adjustment to ensure browsers don't accidentally implement this behavior.
-                </section>
-                <section>
-                    <p>
-                        This rule was inspired by Yahoo!'s JavaScript guru Nicolas C. Zakas. For more information check out his article "<a data-rapid_p="98" href="http://www.nczonline.net/blog/2009/11/30/empty-image-src-can-destroy-your-site/">Empty image src can destroy your site</a>".
-                    </p>
                 </section>
             </section>
             <section id="cookies">
@@ -584,14 +549,14 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="cookie_size">Reduce Cookie Size</h3>
-                </section>
-                <section>
+
                     <p>
                         HTTP cookies are used for a variety of reasons such as authentication and personalization. Information about cookies is exchanged in the HTTP headers between web servers and browsers. It's important to keep the size of cookies as low as possible to minimize the impact on the user's response time.
                     </p>
                     <img src="images\cookies.jpg" alt="cookies">
                 </section>
                 <section>
+                    <h3>Guidelines</h3>
                     <ul>
                         <li>Eliminate unnecessary cookies</li>
                         <li>Keep cookie sizes as low as possible to minimize the impact on the user response time</li>
@@ -603,23 +568,23 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="cookie_free">Use Cookie-free Domains for Components</h3>
-                </section>
-                <section>
+
                     <p>
                         When the browser makes a request for a static image and sends cookies together with the request, the server doesn't have any use for those cookies. So they only create network traffic for no good reason. You should make sure static components are requested with cookie-free requests. Create a subdomain and host all your static components there.
                     </p>
                 </section>
                 <section>
-                    <p>
-                        If your domain is <code>www.example.org</code>, you can host your static components on <code>static.example.org</code>. However, if you've already set cookies on the top-level domain
-                        <code>example.org</code> as opposed to <code>www.example.org</code>, then all the requests to
-                        <code>static.example.org</code> will include those cookies. In this case, you can buy a whole new domain, host your static components there, and keep this domain cookie-free. Yahoo! uses <code>yimg.com</code>, YouTube uses <code>ytimg.com</code>, Amazon uses <code>images-amazon.com</code> and so on.
-                    </p>
-                </section>
-                <section>
-                    <p>
-                        Another benefit of hosting static components on a cookie-free domain is that some proxies might refuse to cache the components that are requested with cookies. On a related note, if you wonder if you should use example.org or www.example.org for your home page, consider the cookie impact. Omitting www leaves you no choice but to write cookies to <code>*.example.org</code>, so for performance reasons it's best to use the www subdomain and write the cookies to that subdomain.
-                    </p>
+                    <ul>
+
+                        <li>
+                            If your domain is <code>www.example.org</code>, you can host your static components on <code>static.example.org</code>. However, if you've already set cookies on the top-level domain
+                            <code>example.org</code> as opposed to <code>www.example.org</code>, then all the requests to
+                            <code>static.example.org</code> will include those cookies. In this case, you can buy a whole new domain, host your static components there, and keep this domain cookie-free. Yahoo! uses <code>yimg.com</code>, YouTube uses <code>ytimg.com</code>, Amazon uses <code>images-amazon.com</code> and so on.
+                        </li>
+                        <li>
+                            Another benefit of hosting static components on a cookie-free domain is that some proxies might refuse to cache the components that are requested with cookies.
+                        </li>
+                    </ul>
                 </section>
             </section>
             <section id="css">
@@ -638,8 +603,7 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section id="css_top">
                     <h3>Put Stylesheets at the Top</h3>
-                </section>
-                <section>
+
                     <p>Moving stylesheets to the document HEAD makes pages appear to be loading faster. This is because putting stylesheets in the HEAD <b>allows the page to render progressively</b>. </p>
                 </section>
                 <section>
@@ -655,10 +619,9 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section id="css_expressions">
                     <h3>Avoid CSS Expressions</h3>
-                </section>
-                <section>
+
                     <p>CSS expressions are a powerful (and dangerous) way to set CSS properties dynamically. They were supported in Internet Explorer starting with version 5, but were <a data-rapid_p="28" href="http://msdn.microsoft.com/en-us/library/ms537634%28VS.85%29.aspx">deprecated starting with IE8</a>.</p>
-                    <pre><code>background-color: expression((new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
+                    <pre class="fragment"><code>background-color: expression((new Date()).getHours()%2 ? "#B8D4FF" : "#F08A00" );</code></pre>
                 </section>
                 <section>
                     <p>The problem with expressions is that <b>they are evaluated more frequently than most people expect</b>. Not only are they evaluated when the page is rendered and resized, but also when the page is scrolled and even when the user moves the mouse over the page. </p>
@@ -668,26 +631,25 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section>
                     <h3 id="csslink">Choose &lt;link&gt; over @import</h3>
-                </section>
-                <section>
+
                     <p>
                         One of the previous best practices states that CSS should be at the top in order to allow for progressive rendering.
                     </p>
-                </section>
-                <section>
                     <p>
-                        In IE <code>@import</code> behaves the same as using <code>&lt;link&gt;</code> at the bottom of the page, so it's best not to use it.
+                        In IE <code>@import</code> behaves the <b>same as using <code>&lt;link&gt;</code> at the bottom of the page</b>, so it's best not to use it.
                     </p>
                 </section>
             </section>
             <section>
                 <section>
                     <h3 id="no_filters">Avoid Filters</h3>
-                </section>
-                <section>
-                    <p>
-                        The IE-proprietary <code>AlphaImageLoader</code> filter aims to fix a problem with semi-transparent true color PNGs in IE versions &lt; 7. The problem with this filter is that it blocks rendering and freezes the browser while the image is being downloaded. It also increases memory consumption and is applied per element, not per image, so the problem is multiplied.
-                    </p>
+                    <p>The IE-proprietary <code>AlphaImageLoader</code> filter aims to fix a problem with semi-transparent true color PNGs in IE versions &lt; 7. </p>
+                    <ul>
+
+                        <li>It blocks rendering and freezes the browser while the image is being downloaded. </li>
+                        <li>It also increases memory consumption and is applied per element, not per image, so the problem is multiplied.
+                        </li>
+                    </ul>
                 </section>
                 <section>
                     <p>
@@ -715,8 +677,7 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section id="js_bottom">
                     <h3>Put Scripts at the Bottom</h3>
-                </section>
-                <section>
+
                     <p>The problem caused by scripts is that they <b>block parallel downloads</b>. The <a data-rapid_p="25" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.1.4">HTTP/1.1 specification</a> suggests that browsers download no more than two components in parallel per hostname. If you serve your images from multiple hostnames, you can get more than two downloads to occur in parallel. While a script is downloading, however, the browser won't start any other downloads, even on different hostnames. </p>
                 </section>
                 <section>
@@ -738,8 +699,7 @@ HTTP/1.1 304 Not Modified</code></pre>
             <section>
                 <section id="external">
                     <h3>Make JavaScript and CSS External</h3>
-                </section>
-                <section>
+
                     <p>Many of these performance rules deal with how external components are managed. However, before these considerations arise you should ask a more basic question: </p>
                     <blockquote> Should JavaScript and CSS be contained in external files, or inlined in the page itself?</blockquote>
                 </section>

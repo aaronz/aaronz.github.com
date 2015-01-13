@@ -78,8 +78,6 @@
                 <section>
                     <h3>Adapting tailored sites to support standards</h3>
                     <ul>
-
-                        <li>Many websites provide tailored experiences to devices running iOS or Android operating systems. With a few key changes, these experiences can be offered to browsers and devices that support industry standards. </li>
                         <li>By creating sites that support industry standards (such as HTML5, CSS3, DOM4, and so on), you extend your site's reach to include browsers that support the same standards, regardless of the underlying device, operating system, or form factor. </li>
                         <li>For specific advice regarding your tailored site, consider using the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506925">common coding problem scanner</a> located at <a href="http://go.microsoft.com/fwlink/li/?LinkId=301530">modern.IE</a>.</li>
                     </ul>
@@ -88,7 +86,6 @@
                     <h3>Step 1: Update or replace browser detection</h3>
                     <ul>
                         <li>If your site uses browser detection, you should carefully review the need for browser detection as well as the underlying code. Consider reworking the code to focus on <a href="http://msdn.microsoft.com/en-us/library/ie/hh273397(v=vs.85).aspx">features and capabilities</a> rather than specific browsers, devices, or operating systems. </li>
-                        <li>If, for some reason, it seems necessary to continue using browser detection, either on the client or server-side, you should review the implementation and verify that it fully supports current versions of the major browsers. </li>
                         <li>In the long run, it's important to adopt <a href="http://go.microsoft.com/fwlink/li/?LinkID=236868">feature detection</a> and other modern practices for writing cross-browser code rather than to continue to rely on user-agent detection.</li>
                     </ul>
                 </section>
@@ -121,24 +118,28 @@
                 </section>
                 <section>
                     <h3>Revising prefixed properties</h3>
-                    <li>These are CSS/Document Object Model properties that initially shipped under the WebKit prefix (for example, with "-webkit") but have since shipped in IE and other browsers in an unprefixed format. Fixing these can be as simple as copying the line and then removing the "-webkit" prefix from the copy.</li>
-                    <li>Instead of just:</li>
-                    <pre><code>-webkit-border-radius: 0;</code></pre>
-                    <li>Use:</li>
-                    <pre><code>-webkit-border-radius: 0; 
-border-radius: 0; </code></pre>
+                    <ul>
+
+                        <li>These are CSS/Document Object Model properties that initially shipped under the WebKit prefix (for example, with "-webkit") but have since shipped in IE and other browsers in an unprefixed format. Fixing these can be as simple as copying the line and then removing the "-webkit" prefix from the copy.</li>
+                    </ul>
                 </section>
                 <section>
-                    <li>Instead of:</li>
-                    <pre><code>a.webkitTransitionDuration = "5ms" </code></pre>
-                    <li>Use:</li>
-                    <pre><code>b.webkitTransitionDuration = 
+                        <li>Instead of just:</li>
+                        <pre><code>-webkit-border-radius: 0;</code></pre>
+                        <li>Use:</li>
+                        <pre><code>-webkit-border-radius: 0; 
+border-radius: 0; </code></pre>
+
+                        <li>Instead of:</li>
+                        <pre><code>a.webkitTransitionDuration = "5ms" </code></pre>
+                        <li>Use:</li>
+                        <pre><code>b.webkitTransitionDuration = 
    b.transitionDuration = "5ms"; </code></pre>
-                    <li>Instead of just:</li>
-                    <pre><code>this.element.addEventListener 
+                        <li>Instead of just:</li>
+                        <pre><code>this.element.addEventListener 
    ("webkitTransitionEnd", this, false); </code></pre>
-                    <li>Use:</li>
-                    <pre><code>this.element.addEventListener 
+                        <li>Use:</li>
+                        <pre><code>this.element.addEventListener 
    ("webkitTransitionEnd", this, false); 
 this.element.addEventListener
    ("transitionend", this, false); </code></pre>

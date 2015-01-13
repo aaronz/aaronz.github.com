@@ -141,6 +141,9 @@
     .table-2 col {
         width: 344px;
     }
+    .table-2 td {
+        vertical-align: top;
+    }
     @media only screen and (min-width: 800px) {
         .table-2 col {
             width: 432px;
@@ -182,6 +185,122 @@
         .table-4 th:nth-child(3) {
             border-left: 2px solid #fff;
             border-right: 2px solid #fff;
+        }
+    }
+    @media only screen and (min-width: 620px) and (max-width: 799px) {
+        .g-medium--1 {
+            float: left;
+            margin-right: 4.5%;
+            width: 30.3%
+        }
+        .g-medium--push-1 {
+            margin-left: 34.8%
+        }
+        .g-medium--pull-1 {
+            margin-right: 34.8%
+        }
+        .g-medium--2 {
+            float: left;
+            margin-right: 4.5%;
+            width: 65.1%
+        }
+        .g-medium--push-2 {
+            margin-left: 69.6%
+        }
+        .g-medium--pull-2 {
+            margin-right: 69.6%
+        }
+        .g-medium--3 {
+            float: left;
+            width: 99.9%;
+            margin-right: 0
+        }
+        .g-medium--full {
+            float: left;
+            margin-right: 0;
+            width: 100%
+        }
+        .g--third {
+            float: left;
+            margin-right: 4.5%;
+            width: 30.3%
+        }
+        .g--half,
+        .g-medium--half {
+            float: left;
+            margin-right: 4.5%;
+            width: 47.75%
+        }
+        .g-medium--last {
+            margin-right: 0
+        }
+        .g--pull-half {
+            margin-right: 52.25%
+        }
+    }
+    @media only screen and (min-width: 800px) {
+        .g-wide--1 {
+            float: left;
+            margin-right: 3.7%;
+            width: 22.2%
+        }
+        .g-wide--push-1 {
+            margin-left: 25.9%
+        }
+        .g-wide--pull-1 {
+            margin-right: 25.9%
+        }
+        .g-wide--2 {
+            float: left;
+            margin-right: 3.7%;
+            width: 48.1%
+        }
+        .g-wide--push-2 {
+            margin-left: 51.8%
+        }
+        .g-wide--pull-2 {
+            margin-right: 51.8%
+        }
+        .g-wide--3 {
+            float: left;
+            margin-right: 3.7%;
+            width: 74%
+        }
+        .g-wide--push-3 {
+            margin-left: 77.7%
+        }
+        .g-wide--pull-3 {
+            margin-right: 77.7%
+        }
+        .g-wide--4 {
+            float: left;
+            width: 99.9%;
+            margin-right: 0
+        }
+        .g-wide--first {
+            clear: both
+        }
+        .g-wide--last {
+            margin-right: 0
+        }
+        .g-wide--full {
+            float: left;
+            margin-right: 0;
+            width: 100%
+        }
+        .g--third {
+            float: left;
+            margin-right: 3.7%;
+            width: 30.8%
+        }
+        .g--half,
+        .g-wide--half {
+            float: left;
+            margin-right: 3.7%;
+            width: 48.15%
+        }
+        .g--pull-half {
+            margin-right: 51.85%
         }
     }
     </style>
@@ -870,14 +989,18 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Keep Calls To Action Front and Center</h2>
                     <p>It can be easy for mobile users to miss menu items, so always put your key calls-to-action where you know users will see them.</p>
-                    <figure class="fluid"><img src="images/hpnav-cta-bad.png" srcset="images/hpnav-cta-bad.png 1x, images/hpnav-cta-bad-2x.png 2x" alt="No obvious call to action">
-                        <figcaption>No obvious call to action</figcaption>
-                    </figure>
-                </section>
-                <section>
-                    <figure class="fluid"><img src="images/hpnav-cta-good.png" srcset="images/hpnav-cta-good.png 1x, images/hpnav-cta-good-2x.png 2x" alt="Call to actions are front and center.">
-                        <figcaption>Call to actions are front and center.</figcaption>
-                    </figure>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-cta-bad.png" srcset="images/hpnav-cta-bad.png 1x, images/hpnav-cta-bad-2x.png 2x" alt="No obvious call to action">
+                                <figcaption>No obvious call to action</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-cta-good.png" srcset="images/hpnav-cta-good.png 1x, images/hpnav-cta-good-2x.png 2x" alt="Call to actions are front and center.">
+                                <figcaption>Call to actions are front and center.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -905,14 +1028,18 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Don't let promotions steal the show</h2>
                     <p>Promotions and ads can overshadow the content they're next to, and make it harder for users to accomplish tasks.</p>
-                    <figure class="fluid"><img src="images/hpnav-promo-bad.png" srcset="images/hpnav-promo-bad.png 1x, images/hpnav-promo-bad-2x.png 2x" alt="Door slams often annoy users and make using the site a pain.">
-                        <figcaption>Interstitials (sometimes called door slams) often annoy users and make using the site a pain.</figcaption>
-                    </figure>
-                </section>
-                <section>
-                    <figure class="fluid"><img src="images/hpnav-promot-good.png" srcset="images/hpnav-promot-good.png 1x, images/hpnav-promot-good-2x.png 2x" alt="Easily dismissable promotions for a native app.">
-                        <figcaption>Promotions should be easily dismissable and not distract from the experience.</figcaption>
-                    </figure>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-promo-bad.png" srcset="images/hpnav-promo-bad.png 1x, images/hpnav-promo-bad-2x.png 2x" alt="Door slams often annoy users and make using the site a pain.">
+                                <figcaption>Interstitials (sometimes called door slams) often annoy users and make using the site a pain.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-promot-good.png" srcset="images/hpnav-promot-good.png 1x, images/hpnav-promot-good-2x.png 2x" alt="Easily dismissable promotions for a native app.">
+                                <figcaption>Promotions should be easily dismissable and not distract from the experience.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -933,12 +1060,27 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2 id="make-site-search-visible">Make site search visible</h2>
                     <p>Users looking for specific information usually turn to search - so search should be one of the first things mobile users see on your site, avoid hiding it behind a menu. In the <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study</a>, participants responded best to easily-visible, open text search boxes at the top of a page.</p>
+                    <figure><img src="images/ss-search.jpg" srcset="images/ss-search.jpg 1x, images/ss-search-2x.jpg 2x" alt="Sample of site with search accessible and not.">
+                        <figcaption>Ensure that search isn't hidden behind a menu or hard to find place.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
                 <section>
                     <h2 id="ensure-site-search-results-are-relevant">Ensure site search results are relevant</h2>
                     <p>Search should be smart, providing users with the best and most relevant results so they don’t have to swipe through multiple pages of results. Make life easier for users with smart-search features like autocomplete, corrected misspellings and suggesting search terms or providing related matches.</p>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/ss-relevant-bad.png" srcset="images/ss-relevant-bad.png 1x, images/ss-relevant-bad-2x.png 2x" alt="Search returning irrelevant results">
+                                <figcaption>This site includes results for anything with the word kid in it.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/ss-relevant-good.png" srcset="images/ss-relevant-good.png 1x, images/ss-relevant-good-2x.png 2x" alt="Site with relevant search results">
+                                <figcaption>Macy's returns only kids items.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -946,6 +1088,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2 id="implement-filters-to-narrow-results">Implement filters to narrow results</h2>
                     <p>Provide easy to use filters to help narrow the search results to more relevant results for users. Help users avoid problems by letting them know how many results will be returned with a particular filter applied.</p>
                     <p>Don’t bury the filters at the bottom of the page where users have to scroll to the end of the result set before they can begin to filter what they’re looking for.</p>
+                    <figure><img src="images/ss-filters.jpg" srcset="images/ss-filters.jpg 1x, images/ss-filters-2x.jpg 2x" alt="Make filters accessible.">
+                        <figcaption>Avoid placing filters in hard to find places.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
@@ -953,6 +1098,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2 id="guide-users-to-better-site-search-results">Guide users to better site search results</h2>
                     <p>For sites that serve diverse customer segments, it can be helpful to ask users a few questions before they search to ensure they get results from the most relevant content segment.</p>
                     <p>For example, a large shoe retailer began its mobile searches by having participants select the gender and size of shoe they were looking for.</p>
+                    <figure><img src="images/ss-guide-good.png" srcset="images/ss-guide-good.png 1x, images/ss-guide-good-2x.png 2x" alt="Zappos guides users by asking them what they're looking for.">
+                        <figcaption>Help users to find what they're looking for by guiding them in the right direction.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
@@ -965,6 +1113,18 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2>Let users explore before they commit</h2>
                     <p>Requiring login or account creation too early in a site experience can be detrimental to conversion.</p>
                     <p>Before offering their personal information, users want to browse content and get a sense of what a site has to offer. In the study, many of the sites that participants rated the lowest were those where they were forced to create an account upfront in order to continue.</p>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/cc-gates-bad.png" srcset="images/cc-gates-bad.png 1x, images/cc-gates-bad-2x.png 2x" alt="Site with login gates">
+                                <figcaption>Placing login or registration too early in a site can be detrimental to conversion.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/cc-gates-good.png" srcset="images/cc-gates-good.png 1x, images/cc-gates-good-2x.png 2x" alt="Allow browsing without sign in.">
+                                <figcaption>Allow users to browse the site without requiring sign in.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -972,6 +1132,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                     <h2>Let users purchase as a guest</h2>
                     <p>Offer the option to check out as a guest, and encourage registration with tangible benefits.</p>
                     <p>In a <a href="https://developers.google.com/web/fundamentals/principles/">research study</a>, participants didn’t necessarily want to commit to creating an account with the retailer. Participants described the guest checkout as <b>"convenient"</b>, <b>"simple"</b>, and <b>"easy [and] quick"</b>. They were annoyed at a site that required registration to purchase, especially since the site didn’t explain how registration would benefit them.</p>
+                    <figure><img src="images/cc-purchase-guest-good.png" srcset="images/cc-purchase-guest-good.png 1x, images/cc-purchase-guest-good-2x.png 2x" alt="Site with guest or logged in purchase.">
+                        <figcaption>Allow users to purchase with a guest account.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
@@ -1021,6 +1184,9 @@ chmod u+x ./chromium-android-installer/\*.sh
                 <section>
                     <h2>Make it easy to finish on another device</h2>
                     <p>Offer an easy way to save or share information across devices, for example provide a way for users to share items across social networks or to email a link directly within the site itself.</p>
+                    <figure><img src="images/cc-other-device-good.png" srcset="images/cc-other-device-good.png 1x, images/cc-other-device-good-2x.png 2x" alt="Site that allows users to continue on another device.">
+                        <figcaption>Provide easy ways for users to continue browsing or shopping on another device.</figcaption>
+                    </figure>
 
                 </section>
             </section>
@@ -1039,6 +1205,90 @@ chmod u+x ./chromium-android-installer/\*.sh
                 </section>
                 <section>
                     <p>HTML5 introduced a number of new input types. These new input types give hints to the browser about what type of keyboard layout to display for on-screen keyboards. Users are more easily able to enter the required information without having to change their keyboard and only see the appropriate keys for that input type.</p>
+
+                    <table class="table-2 inputtypes">
+                        <thead>
+                            <tr>
+                                <th data-th="Input type">Input <code>type</code>
+                                </th>
+                                <th data-th="Typical keyboard">Typical Keyboard</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Input type"><code>url</code>
+                                    <br>For entering a URL. It must start with a valid URI scheme, for example <code>http://</code>, <code>ftp://</code> or <code>mailto:</code>.</td>
+                                <td data-th="Typical keyboard"><img src="images/url-ios.png" srcset="images/url-ios.png 1x, images/url-ios-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>tel</code>
+                                    <br>For entering phone numbers. It does <b>not</b> enforce a particular syntax for validation, so if you want to ensure a particular format, you can use pattern.</td>
+                                <td data-th="Typical keyboard"><img src="images/tel-android.png" srcset="images/tel-android.png 1x, images/tel-android-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>email</code>
+                                    <br>For entering email addresses, and hints that the @ should be shown on the keyboard by default. You can add the multiple attribute if more than one email address will be provided.</td>
+                                <td data-th="Typical keyboard"><img src="images/email-android.png" srcset="images/email-android.png 1x, images/email-android-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>search</code>
+                                    <br>A text input field styled in a way that is consistent with the platform's search field.</td>
+                                <td data-th="Typical keyboard"><img src="images/plain-ios.png" srcset="images/plain-ios.png 1x, images/plain-ios-2x.png 2x" class="keybimg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>number</code>
+                                    <br>For numeric input, can be any rational integer or float value.</td>
+                                <td data-th="Typical keyboard"><img src="images/number-android.png" srcset="images/number-android.png 1x, images/number-android-2x.png 2x" class="keybimg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>range</code>
+                                    <br>For number input, but unlike the number input type, the value is less important. It is displayed to the user as a slider control.</td>
+                                <td data-th="Typical keyboard"><img src="images/range-ios.png">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>datetime-local</code>
+                                    <br>For entering a date and time value where the time zone provided is the local time zone.</td>
+                                <td data-th="Typical keyboard"><img src="images/datetime-local-ios.png" srcset="images/datetime-local-ios.png 1x, images/datetime-local-ios-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>date</code>
+                                    <br>For entering a date (only) with no time zone provided.</td>
+                                <td data-th="Typical keyboard"><img src="images/date-android.png" srcset="images/date-android.png 1x, images/date-android-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>time</code>
+                                    <br>For entering a time (only) with no time zone provided.</td>
+                                <td data-th="Typical keyboard"><img src="images/time-ios.png" srcset="images/time-ios.png 1x, images/time-ios-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>week</code>
+                                    <br>For entering a week (only) with no time zone provided.</td>
+                                <td data-th="Typical keyboard"><img src="images/week-android.png" srcset="images/week-android.png 1x, images/week-android-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>month</code>
+                                    <br>For entering a month (only) with no time zone provided.</td>
+                                <td data-th="Typical keyboard"><img src="images/month-ios.png" srcset="images/month-ios.png 1x, images/month-ios-2x.png 2x">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Input type"><code>color</code>
+                                    <br>For picking a color.</td>
+                                <td data-th="Typical keyboard"><img src="images/color-android.png" srcset="images/color-android.png 1x, images/color-android-2x.png 2x">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                 </section>
                 <section>
@@ -2107,14 +2357,18 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <h2>Keep Calls To Action Front and Center</h2>
                     <p>It can be easy for mobile users to miss menu items, so always put your key calls-to-action where you know users will see them.</p>
 
-                    <figure class="fluid"><img src="images/hpnav-cta-bad.png" srcset="images/hpnav-cta-bad.png 1x, images/hpnav-cta-bad-2x.png 2x" alt="No obvious call to action">
-                        <figcaption>No obvious call to action</figcaption>
-                    </figure>
-                </section>
-                <section>
-                    <figure class="fluid"><img src="images/hpnav-cta-good.png" srcset="images/hpnav-cta-good.png 1x, images/hpnav-cta-good-2x.png 2x" alt="Call to actions are front and center.">
-                        <figcaption>Call to actions are front and center.</figcaption>
-                    </figure>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-cta-bad.png" srcset="images/hpnav-cta-bad.png 1x, images/hpnav-cta-bad-2x.png 2x" alt="No obvious call to action">
+                                <figcaption>No obvious call to action</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-cta-good.png" srcset="images/hpnav-cta-good.png 1x, images/hpnav-cta-good-2x.png 2x" alt="Call to actions are front and center.">
+                                <figcaption>Call to actions are front and center.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -2140,14 +2394,18 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2>Don't let promotions steal the show</h2>
                     <p>Promotions and ads can overshadow the content they're next to, and make it harder for users to accomplish tasks.</p>
-                    <figure class="fluid"><img src="images/hpnav-promo-bad.png" srcset="images/hpnav-promo-bad.png 1x, images/hpnav-promo-bad-2x.png 2x" alt="Door slams often annoy users and make using the site a pain.">
-                        <figcaption>Interstitials (sometimes called door slams) often annoy users and make using the site a pain.</figcaption>
-                    </figure>
-                </section>
-                <section>
-                    <figure class="fluid"><img src="images/hpnav-promot-good.png" srcset="images/hpnav-promot-good.png 1x, images/hpnav-promot-good-2x.png 2x" alt="Easily dismissable promotions for a native app.">
-                        <figcaption>Promotions should be easily dismissable and not distract from the experience.</figcaption>
-                    </figure>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-promo-bad.png" srcset="images/hpnav-promo-bad.png 1x, images/hpnav-promo-bad-2x.png 2x" alt="Door slams often annoy users and make using the site a pain.">
+                                <figcaption>Interstitials (sometimes called door slams) often annoy users and make using the site a pain.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-promot-good.png" srcset="images/hpnav-promot-good.png 1x, images/hpnav-promot-good-2x.png 2x" alt="Easily dismissable promotions for a native app.">
+                                <figcaption>Promotions should be easily dismissable and not distract from the experience.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -2184,6 +2442,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <p>Using the meta viewport value <code>width=device-width</code> instructs the page to match the screen’s width in device independent pixels. This allows the page to reflow content to match different screen sizes, whether rendered on a small mobile phone or a large desktop monitor.</p>
                     <p>Some browsers will keep the page’s width constant when rotating to landscape mode, and zoom rather than reflow to fill the screen. Adding the attribute <code>initial-scale=1</code> instructs browsers to establish a 1:1 relationship between CSS pixels and device independent pixels regardless of device orientation, and allows the page to take advantage of the full landscape width.</p>
+                    <div class="clear">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-no.html"><img src="images/no-vp.png" class="smaller-img" srcset="images/no-vp.png 1x, images/no-vp-2x.png 2x" alt="Page without a viewport set"> See example</a>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp.html"><img src="images/vp.png" class="smaller-img" srcset="images/vp.png 1x, images/vp-2x.png 2x" alt="Page with a viewport set"> See example</a>
+                        </div>
+                    </div>
                 </section>
                 <section>
                     <p>Remember</p>
@@ -2225,6 +2491,16 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>When developing a mobile site with a <code>meta viewport</code> tag, it’s easy to accidentally create page content that doesn’t quite fit within the specified viewport. For example, an image that is displayed at a width wider than the viewport can cause the viewport to scroll horizontally. You should adjust this content to fit within the width of the viewport, so that the user does not need to scroll horizontally.</p>
                     <p>Since screen dimensions and width in CSS pixels vary widely between devices (e.g. between phones and tablets, and even between different phones), content should not rely on a particular viewport width to render well.</p>
                     <p>Setting large absolute CSS widths for page elements (such as the example below), will cause the <code>div</code> to be too wide for the viewport on a narrower device (e.g. a device with a width of 320 CSS pixels, such as an iPhone). Instead, consider using relative width values, such as <code>width: 100%</code>. Similarly, beware of using large absolute positioning values that may cause the element to fall outside the viewport on small screens.</p>
+                </section>
+                <section>
+                    <div class="clear">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-fixed.html"><img src="images/vp-fixed-iph.png" srcset="images/vp-fixed-iph.png 1x, images/vp-fixed-iph-2x.png 2x" alt="Page with a 344px fixed width element on an iPhone."> See example</a>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-fixed.html"><img src="images/vp-fixed-n5.png" srcset="images/vp-fixed-n5.png 1x, images/vp-fixed-n5-2x.png 2x" alt="Page with a 344px fixed width element on a Nexus 5."> See example</a>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -2326,13 +2602,30 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <h2 id="pick-major-breakpoints-by-starting-small-then-working-up">Pick major breakpoints by starting small, then working up</h2>
                     <p>Design the content to fit on a small screen size first, then expand the screen until a breakpoint becomes necessary. This will allow you to optimize breakpoints based on content and maintain the fewest number of breakpoints possible.</p>
                     <p>Let’s work through the example we saw at the beginning, the <a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/index.html">weather forecast</a>. The first step is to make the forecast look good on a small screen.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-1.html"><img src="images/weather-1.png" class="center" srcset="images/weather-1.png 1x, images/weather-1-2x.png 2x" alt="Preview of the weather forecast displayed on a small screen.">
+                        </a>
+                    </figure>
+                </section>
+                <section>
                     <p>Next, resize the browser until there is too much white space between the elements and the forecast simply doesn’t look as good. The decision is somewhat subjective, but above 600px is certainly too wide.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-1.html"><img src="images/weather-2.png" class="center" srcset="images/weather-2.png 1x, images/weather-2-2x.png 2x" alt="Preview of the weather forecast as the page gets wider.">
+                        </a>
+                    </figure>
+                </section>
+                <section>
                     <p>To insert a breakpoint at 600px, create two new stylesheets, one to use when the browser is 600px and below, and one for when it is wider than 600px.</p><pre><code>    &lt;link rel="stylesheet" href="weather.css"&gt;
     &lt;link rel="stylesheet" media="(max-width:600px)" href="weather-2-small.css"&gt;
     &lt;link rel="stylesheet" media="(min-width:601px)" href="weather-2-large.css"&gt;</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-2.html">Try full sample</a>
                 </section>
                 <section>
                     <p>Finally, refactor the CSS. In this example, we’ve placed the common styles such as fonts, icons, basic positioning, colors in <code>weather.css</code>. Specific layouts for the small screen are then placed in <code>weather-small.css</code> and large screen styles are placed in <code>weather-large.css</code>.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-2.html"><img src="images/weather-3.png" class="center" srcset="images/weather-3.png 1x, images/weather-3-2x.png 2x" alt="Preview of the weather forecast designed for a wider screen.">
+                        </a>
+                    </figure>
                 </section>
                 <section>
                     <h2 id="pick-minor-breakpoints-when-necessary">Pick minor breakpoints when necessary</h2>
@@ -2359,8 +2652,15 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         height: 64px;
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-small.css">Try full sample</a>
                 </section>
                 <section>
+                    <div class="clear">
+                        <div class="g--half"><img src="images/weather-4-l.png" srcset="images/weather-4-l.png 1x, images/weather-4-l-2x.png 2x" alt="Before adding minor breakpoints.">
+                        </div>
+                        <div class="g--half g--last"><img src="images/weather-4-r.png" srcset="images/weather-4-r.png 1x, images/weather-4-r-2x.png 2x" alt="After adding minor breakpoints.">
+                        </div>
+                    </div>
                     <p>Similarly, for the large screens, it’s best to limit to maximum width of the forecast panel so it doesn’t consume the whole screen width.</p><pre><code>    @media (min-width: 700px) {
       .weather-forecast {
         width: 700px;
@@ -2370,6 +2670,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2 id="optimize-text-for-reading">Optimize text for reading</h2>
                     <p>Classic readability theory suggests that an ideal column should contain 70 to 80 characters per line (about 8 to 10 words in English), thus each time the width of a text block grows past about 10 words, a breakpoint should be considered.</p>
+                    <div class="clear">
+                        <div class="g-wide--1 g-medium--half"><img src="images/reading-ph.png" srcset="images/reading-ph.png 1x, images/reading-ph-2x.png 2x" alt="Before adding minor breakpoints.">
+                        </div>
+                        <div class="g-wide--3 g-wide--last g-medium--half g--last"><img src="images/reading-de.png" srcset="images/reading-de.png 1x, images/reading-de-2x.png 2x" alt="After adding minor breakpoints.">
+                        </div>
+                    </div>
+                </section>
+                <section>
                     <p>Let’s take a deeper look at the above blog post example. On smaller screens, the Roboto font at 1em works perfectly giving 10 words per line, but larger screens will require a breakpoint. In this case, if the browser width is greater than 575px, the ideal content width is 550px.</p><pre><code>    @media (min-width: 575px) {
       article {
         width: 550px;
@@ -2444,6 +2752,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         margin-right: auto;
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/mostly-fluid.html">Try full sample</a>
                 </section>
             </section>
             <section>
@@ -2502,6 +2811,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         width: 20%;
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/column-drop.html">Try full sample</a>
                 </section>
             </section>
             <section>
@@ -2552,6 +2862,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         margin-right: auto;
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/layout-shifter.html">Try full sample</a>
                 </section>
             </section>
             <section>
@@ -2594,6 +2905,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         font-size: 2em;
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/tiny-tweaks.html">Try full sample</a>
                 </section>
             </section>
             <section>
@@ -2701,6 +3013,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         transform: translate(0,0);
       }
     }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/off-canvas.html">Try full sample</a>
                 </section>
             </section>
             <section>
@@ -2712,10 +3025,16 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2>App Bar</h2>
                     <p>Users have learnt to expect a header on all of the desktop sites, but on mobile you should be using the App Bar.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/appbar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                        </div>
+                    </div>
                     <p>One expectation users will make when they land on your site is that your site’s logo will be at the top of every page and clicking it will take them to your home page.</p>
+                    <p>Traditionally the web has used page headers for this. On mobile devices use the App Bar.</p>
                 </section>
                 <section>
-                    <p>Traditionally the web has used page headers for this. On mobile devices use the App Bar.</p>
                     <ul>
                         <li>Your logo should be placed at the top of each screen and take the user back to your homepage.</li>
                         <li>If you have a menu button, place it on the far left or far right of the App Bar and keep it in the same place throughout your site.</li>
@@ -2738,20 +3057,54 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <h2 id="left-vs-right-menu-button">Left vs Right Menu Button</h2>
                     <p>If you have a slide in menu, you have the choice of putting the menu on the left or right hand side.</p>
                     <p>The top left corner is perceived by the user as where the most important elements of your UI lives, however it can also one of hardest places to reach when holding the phone one handed. Putting the menu on the top right still gives it prominence and importance, but is easier to tap while holding the phone single-handedly.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/appbar-menu-left.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample2.html"><img src="images/appbar-menu-right.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample2.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section>
                     <h2 id="guidelines">Guidelines</h2>
                     <p>The App Bar is a set of principles that you should apply to give your users a predictable experience, but there is plenty of opportunity to be creative in terms of style of the bar, button and interactions.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/appbar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html"><img src="images/appbar-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Tab Bar</h2>
                     <p>A Tab Bar can be used as the main navigation for your site. It gives the user visibility of the main sections of your site as well as an easy way to identify where they are within your web app.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample1.html"><img src="images/tabbar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample1.html">Demo</a>
+                        </div>
+                    </div>
                     <p>The Tab Bar can be used to quickly switch between the sections of your site.</p>
+                    <p>It’s only appropriate for sites with a relatively small structure, but users find it easy to glance at where they are, and where they can go, within your site.</p>
                 </section>
                 <section>
-                    <p>It’s only appropriate for sites with a relatively small structure, but users find it easy to glance at where they are, and where they can go, within your site.</p>
                     <ul>
                         <li>Use only if your site has no more than five sections.</li>
                         <li>Position below or above your main content.</li>
@@ -2762,12 +3115,32 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>Limit the total number of tabs to five or less, otherwise each icon and tap target becomes too small and users will struggle to hit the right tab.</p>
                     <p>Position your tabs above or below your main content, this is a trade off between what feels best to use and best suites your design.</p>
                     <p>One advantage to using tabs is that it gives the user a consistent place to go for navigation and makes it easy to glance at where they are within the site.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample2.html"><img src="images/tabbar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample2.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample3.html"><img src="images/tabbar-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample3.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
                 <section>
                     <h2>Navigation Drawer</h2>
                     <p>For sites with a larger number of sections and subsections the Navigation Drawer is a much better fit. It can be a scrollable off-canvas element to your site as well as be a common place for global state.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/navdrawer.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                        </div>
+                    </div>
                     <p>The Navigation Drawer is a slide in panel which is primarily used for displaying a sites navigation, but can also be used for displaying global state, i.e. user login.</p>
                 </section>
                 <section>
@@ -2781,6 +3154,28 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <p>The key advantages of this approach is that the content can grow inside a scrolling element, allowing for larger site structures and it takes up a very small amount of screen real estate.</p>
                     <p>For users there is a small amount to learning to do to find the Navigation Drawer so having a clearly place menu button is extremely important.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--third">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/navdrawer-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--third">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html"><img src="images/navdrawer-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--third g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/navdrawer-sample4.html"><img src="images/navdrawer-alt-3.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/navdrawer-sample4.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
                     <p>Some developers find they get higher rates of interaction when using a tab bar instead of a Navigation Drawer.</p>
                     <p>The choice is a trade off between the flexibility of the Navigation Drawer with the visibility of a Tab Bar which you should consider what is best suited to your site.</p>
                 </section>
@@ -2789,11 +3184,17 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2>Bottom Bar</h2>
                     <p>If you are developing a web app and find that the number of actions a user can perform is more than the App Bar can handle, the best option is to overflow into a Bottom Bar.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/bottombar-sample1.html"><img src="images/bottombar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/bottombar-sample1.html">Demo</a>
+                        </div>
+                    </div>
                     <p>We’ve seen that the App Bar can be used for placing actions.</p>
                     <p>For many sites, especially content driven sites, this will be enough space since there are relatively few actions available. However, web apps may find they have more actions for sections of their UI.</p>
+                    <p>If you aren’t using a tab and you have too many actions to fit on the App Bar, place actions in a bar along the bottom.</p>
                 </section>
                 <section>
-                    <p>If you aren’t using a tab and you have too many actions to fit on the App Bar, place actions in a bar along the bottom.</p>
                     <ul>
                         <li>Only consider using this approach if you aren't using a Tab Bar.</li>
                         <li>Stick to 5 items at most.</li>
@@ -2803,6 +3204,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <p>The advantage of this is that you have more space for actions and it’s in a touch friendly area and gives you a secondary tier of actions.</p>
                     <p>Limit yourself to five actions at most, avoiding the buttons becoming too small and difficult to tap.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/bottom-bar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section id="form-user-input">
@@ -2835,16 +3244,25 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 <section>
                     <h2 id="minimize-repeated-actions-and-fields">Minimize repeated actions and fields</h2>
                     <p>Make sure your forms have no repeated actions, only as many fields as necessary, and take advantage of <a href="https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs.html#use-metadata-to-enable-auto-complete">autofill</a>, so that users can easily complete forms with pre-populated data.</p>
+                    <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+                        <figcaption>On the Progressive.com website, users are asked first for their ZIP code, which is then pre-populated into the next part of the form.</figcaption>
+                    </figure>
                     <p>Look for opportunities to pre-fill information you already know, or may anticipated to save the user from having to provide it. For example, pre-populate the shipping address with the last shipping address supplied by the user.</p>
                 </section>
                 <section>
                     <h2 id="show-users-how-far-along-they-are">Show users how far along they are</h2>
                     <p>Progress bars and menus should accurately convey overall progress through multi-step forms and processes.</p>
+                    <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+                        <figcaption>Use clearly-labeled progress bars to help users get through multi-part forms.</figcaption>
+                    </figure>
                     <p>If you place a disproportionately complex form in an earlier step, users are more likely to abandon your site before they go through the entire process.</p>
                 </section>
                 <section>
                     <h2 id="provide-visual-calendars-when-selecting-dates">Provide visual calendars when selecting dates</h2>
                     <p>Users often need more context when scheduling appointments and travel dates, to make things easier and prevent them from leaving your site to check their calendar app, provide a visual calendar with clear labeling for selecting start and end dates.</p>
+                    <figure><img src="images/forms-calendar-good.png" srcset="images/forms-calendar-good.png 1x, images/forms-calendar-good-2x.png 2x" alt="Hotel website with easy to use calendar">
+                        <figcaption>Hotel booking website with easy to use calendar widget for picking dates.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
@@ -2888,11 +3306,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>The importance of labels</h3>
                     <p>The <code>label</code> element provides direction to the user, telling them what information is needed in a form element. Each <code>label</code> is associated with an input element by placing it inside the <code>label</code> element, or by using the "<code>for</code>" attribute. Applying labels to form elements also helps to improve the touch target size: the user can touch either the label or the input in order to place focus on the input element.</p><pre><code>    &lt;label for="frmAddressS"&gt;Address&lt;/label&gt;
     &lt;input type="text" name="ship-address" required id="frmAddressS"
       placeholder="123 Any Street" autocomplete="shipping street-address"&gt;</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 </section>
                 <section>
+                    <h3>Label sizing and placement</h3>
                     <p>Labels and inputs should be large enough to be easy to press. In portrait viewports, field labels should be above input elements, and beside them in landscape. Ensure field labels and the corresponding input boxes are visible at the same time. Be careful with custom scroll handlers that may scroll input elements to the top of the page hiding the label, or labels placed below input elements may be covered by the virtual keyboard.</p>
                     <p>The placeholder attribute provides a hint to the user about what’s expected in the input, typically by displaying the value as light text until the the user starts typing in the element.</p>
                     <p>
@@ -2906,6 +3327,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Use metadata to enable auto-complete</h3>
                     <p>Users appreciate when websites save them time by automatically filling common fields like names, email addresses and other frequently used fields, plus it helps to reduce potential input errors – especially on virtual keyboards and small devices.</p>
                     <p>Browsers use many heuristics to determine which fields they can <a href="https://support.google.com/chrome/answer/142893">auto-populate</a> <a href="https://support.google.com/chrome/answer/142893">based on previously specified data by the user</a>, and you can give hints to the browser by providing both the name attribute and the autocomplete attribute on each input element.</p>
                     <p>For example, to hint to the browser that it should auto-complete the form with the users name, email address and phone number, you should use:</p><pre><code>    &lt;label for="frmNameA"&gt;Name&lt;/label&gt;
@@ -2921,8 +3343,56 @@ backButton.addEventListener('click', onViewChange);</code></pre>
     &lt;label for="frmPhoneNumA"&gt;Phone&lt;/label&gt;
     &lt;input type="tel" name="phone" id="frmPhoneNumA"
       placeholder="+1-555-555-1212" required autocomplete="tel"&gt;</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 </section>
                 <section>
+                    <h3>Recommended input name and autocomplete attribute values</h3>
+                    <table class="table-3 autocompletes">
+                        <thead>
+                            <tr>
+                                <th data-th="Content type">Content type</th>
+                                <th data-th="name attribute"><code>name</code> attribute</th>
+                                <th data-th="autocomplete attribute"><code>autocomplete</code> attribute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Content type">Name</td>
+                                <td data-th="name attribute"><code>name</code> <code>fname</code> <code>mname</code> <code>lname</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>name</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Email</td>
+                                <td data-th="name attribute"><code>email</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>email</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Address</td>
+                                <td data-th="name attribute"><code>address</code> <code>city</code> <code>region</code> <code>province</code> <code>state</code> <code>zip</code> <code>zip2</code> <code>postal</code> <code>country</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>street-address</code> <code>locality</code> <code>region</code> <code>postal-code</code> <code>country</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Phone</td>
+                                <td data-th="name attribute"><code>phone</code> <code>mobile</code> <code>country-code</code> <code>area-code</code> <code>exchange</code> <code>suffix</code> <code>ext</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>tel</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Credit Card</td>
+                                <td data-th="name attribute"><code>ccname</code> <code>cardnumber</code> <code>cvc</code> <code>ccmonth</code> <code>ccyear</code> <code>exp-date</code> <code>card-type</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>cc-name</code> <code>cc-number</code> <code>cc-csc</code> <code>cc-exp-month</code> <code>cc-exp-year</code> <code>cc-exp</code> <code>cc-type</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p>The <code>autocomplete</code> attributes should be prefixed with either <code>shipping</code> or <code>billing</code>, depending on the context.</p>
                 </section>
                 <section>
@@ -2949,18 +3419,76 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Use these attributes to validate input</h3>
                     <p>The <code>pattern</code> attribute specifies a <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expression</a> used to validate an input field. For example, to validate a US Zip code (5 digits, sometimes followed by a dash and an additional 4 digits), we would set the <code>pattern</code> like this:</p><pre><code>&lt;input type="text" pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
                 </section>
                 <section>
+                    <p>Common regular expression patterns</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="Description">Description</th>
+                                <th data-th="Regular expression">Regular expression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Description">Postal address</td>
+                                <td data-th="Regular expression"><code>[a-zA-Z\d\s\-\,\#\.\+]+</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Zip Code (US)</td>
+                                <td data-th="Regular expression"><code>^\d{5,6}(?:[-\s]\d{4})?$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (IPv4)</td>
+                                <td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (IPv6)</td>
+                                <td data-th="Regular expression"><code>^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (both)</td>
+                                <td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Credit Card Number</td>
+                                <td data-th="Regular expression"><code>^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Social Security Number</td>
+                                <td data-th="Regular expression"><code>^\d{3}-\d{2}-\d{4}$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">North American Phone Number</td>
+                                <td data-th="Regular expression"><code>^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>The required attribute</h3>
                     <p>If the <code>required</code> attribute is present, then the field must contain a value before the form can be submitted. For example, to make the zip code required, we’d simply add the required attribute:</p><pre><code>&lt;input type="text" required pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
                 </section>
                 <section>
+                    <h3>The min, max and step attributes</h3>
                     <p>For numeric input types like number or range as well as date/time inputs, you can specify the minimum and maximum values, as well as how much they should each increment/decrement when adjusted by the slider or spinners. For example, a shoe size input would set a minumum size of 1 and a maximum size 13, with a step of 0.5</p><pre><code>&lt;input type="number" min="1" max="13" step="0.5" ...&gt;</code></pre>
                 </section>
                 <section>
+                    <h3>The maxlength attribute</h3>
                     <p>The <code>maxlength</code> attribute can be used to specify the maximum length of an input or textbox and is useful when you want to limit the length of information that the user can provide. For example, if you want to limit a filename to 12 characters, you can use the following.</p><pre><code>&lt;input type="text" id="83filename" maxlength="12" ...&gt;</code></pre>
                 </section>
                 <section>
+                    <h3>The novalidate attribute</h3>
                     <p>In some cases, you may want to allow the user to submit the form even if it contains invalid input. To do this, add the <code>novalidate</code> attribute to the form element, or individual input fields. In this case, all pseudo classes and JavaScript APIs will still allow you to check if the form validates.</p><pre><code>&lt;form role="form" novalidate&gt;
   &lt;label for="inpEmail"&gt;Email address&lt;/label&gt;
   &lt;input type="email" ...&gt;
@@ -2973,7 +3501,41 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Use JavaScript for more complex real-time validation</h3>
                     <p>When the built-in validation plus regular expressions aren’t enough, you can use the <a href="http://dev.w3.org/html5/spec-preview/constraints.html#constraint-validation">Constraint Validation API</a>, a powerful tool for handling custom validation. The API allows you to do things like set a custom error, check whether an element is valid, and determine the reason that an element is invalid:</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="API">API</th>
+                                <th data-th="Description">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="API"><code>setCustomValidity()</code>
+                                </td>
+                                <td data-th="Description">Sets a custom validation message and the <code>customError</code> property of the <code>ValidityState</code> object to <code>true</code>.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>validationMessage</code>
+                                </td>
+                                <td data-th="Description">Returns a string with the reason the input failed the validation test.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>checkValidity()</code>
+                                </td>
+                                <td data-th="Description">Returns <code>true</code> if the element satisfies all of its constraints, and <code>false</code> otherwise.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>validity</code>
+                                </td>
+                                <td data-th="Description">Returns a <code>ValidityState</code> object representing the validity states of the element.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>Set custom validation messages</h3>
                     <p>If a field fails validation, use <code>setCustomValidity()</code> to mark the field invalid and explain why the field didn’t validate. For example, a sign up form might ask the user to confirm their email address by entering it twice. Use the blur event on the second input to validate the two inputs and set the appropriate response. For example:</p><pre><code>    if (input.value != primaryEmail) {
       // the provided value doesn't match the primary email address
       input.setCustomValidity('The two email addresses must match.');
@@ -2982,6 +3544,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
       // input is valid -- reset the error message
       input.setCustomValidity('');
     }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 </section>
                 <section>
                     <p>Because not all browsers will prevent the user from submitting the form if there is invalid data, you should catch the submit event, and use the <code>checkValidity()</code> on the form element to determine if the form is valid. For example:</p><pre><code>    form.addEventListener("submit", function(evt) {
@@ -2997,9 +3560,52 @@ backButton.addEventListener('click', onViewChange);</code></pre>
         return false;
       }
     });</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 </section>
+
                 <section>
+                    <h3>Show feedback in real-time</h3>
                     <p>It’s helpful to provide a visual indication on each field that indicates whether the user has completed the form properly before they’ve submitted the form. HTML5 also introduces a number of new pseudo-classes that can be used to style inputs based on their value or attributes.</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="Pseudo-class">Pseudo-class</th>
+                                <th data-th="Use">Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:valid</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input to be used when the value meets all of the validation requirements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:invalid</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input to be used when the value does not meet all of the validation requirements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:required</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input element that has the required attribute set.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:optional</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input element that does not have the required attribute set.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:in-range</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for a number input element where the value is in range.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:out-of-range</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for a number input element where the value is out of range.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <p>Validation happens immediately which means that when the page is loaded, fields may be marked as invalid, even though the user hasn’t had a chance to fill them in yet. It also means that as the user types, and it’s possible they’ll see the invalid style while typing. To prevent this, you can combine the CSS with JavaScript to only show invalid styling when the user has visited the field.</p><pre><code>    input.dirty:not(:focus):invalid {
       background-color: #FFD9D9;
     }
@@ -3007,6 +3613,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
       background-color: #D9FFD9;
     }</code></pre>
                 </section>
+                <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 <section><pre><code>    var inputs = document.getElementsByTagName("input");
     var inputs_len = inputs.length;
     var addDirtyClass = function(evt) {
@@ -3019,6 +3626,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
       input.addEventListener("invalid", addDirtyClass);
       input.addEventListener("valid", addDirtyClass);
     }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
                 </section>
                 <section>
                     <p>Important</p>
@@ -3041,6 +3649,9 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                 </section>
                 <section>
                     <p>Rather than the site relying on a particular payment provider, <code>requestAutocomplete</code> requests payment details (such as name, address and credit card information) from the browser, which are optionally stored by the browser much like other auto-complete fields.</p>
+                </section>
+                <section>
+                    <h3>requestAutocomplete flow</h3>
                     <p>The ideal experience will show the <code>requestAutocomplete</code> dialog instead of loading the page that displays the checkout form. If all goes well, the user shouldn’t see the form at all. You can easily add <code>requestAutocomplete</code> to existing forms without having to change any field names. Simply add the <code>autocomplete</code> attribute to each form element with the appropriate value and add the <code>requestAutocomplete()</code> function on the form element. The browser will handle the rest.</p>
                     <p><img alt="Request autocomplete flow" src="images/rac_flow.png" />
                     </p>
@@ -3055,6 +3666,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
     } else {
       isRACSupported(false, "Please complete the form manually.");
     }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/rac.html">Try full sample</a>
                 </section>
                 <section>
                     <p>The <code>requestAutocomplete</code> function on the <code>form</code> element indicates to the browser that it should populate the form. As a security feature, the function must be called via a user gesture like a touch or mouse click. A dialog is then displayed asking the user permission to populate the fields and which details they want to populate it with.</p><pre><code>    function requestAutocompleteCompleted(evt) {
@@ -3065,6 +3677,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
       console.log("requestAutocomplete Error", evt);
       isRACSupported(false, "An error occured attempting to autocomplete the form.");
     }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/rac.html">Try full sample</a>
                 </section>
                 <section>
                     <p>Upon completion of <code>requestAutocomplete</code>, the function will either fire the <code>autocomplete</code> event if it finished successfully, or <code>autocompleteerror</code> if it was unable to complete the form. If it completed successfully and the form validates to your needs, simply submit the form and proceed to the final confirmation.</p>
@@ -3092,6 +3705,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>Simply altering the color of elements as users touch parts of your UI gives a basic reassurance that your site is working. Not only does this alleviate frustation, but can also give a snappy and responsive feel to your site.</p>
                 </section>
                 <section>
+                    <h3>Use Pseudo Classes to Change UI for each Touch State</h3>
                     <p>The fastest way to support touch is to change the UI in response to a DOM element’s change in state.</p>
                     <ul>
                         <li>Make your site feel snappy and responsive&amp;colon; change the UI for each state :hover, :active and :focus.</li>
@@ -3126,6 +3740,9 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>On most mobile browsers <em>hover</em> and/or <em>focus</em> states will apply to an element after it’s been tapped.</p>
                     <p>Consider carefully what styles you set and how they will look to the user after they finish their touch.</p>
                     <p>Bear in mind that anchor tags and buttons may have different behaviour in different browsers, so assume in some cases <em>hover</em> will remain and in others <em>focus</em> will remain.</p>
+                </section>
+                <section>
+                    <h3>Enabling Active State Support on iOS</h3>
                     <p>Unfortunately, Safari on iOS does not apply the <em>active</em> state by default, to get it working you need to add a <code>touchstart</code> event listener to the <em>document body</em> or to each element.</p>
                     <p>You should do this behind a user agent test so it’s only run on iOS devices.</p>
                     <p>Adding a touch start to the body has the advantage of applying to all elements in the DOM, however this may have performance issues when scrolling the page.</p><pre><code>window.onload = function() {
@@ -3146,6 +3763,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
 };</code></pre>
                 </section>
                 <section>
+                    <h3>Override Default Browser Styles for Touch States</h3>
                     <p>Once you add styles for the different states, you’ll notice that most browsers implement their own styles to respond to a user’s touch, you should override these defaults when you’ve added your own styles.</p>
                 </section>
                 <section>
@@ -3155,6 +3773,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     </ul>
                 </section>
                 <section>
+                    <h3>Override Tap Highlight Styles</h3>
                     <p>When mobile devices first launched, a number of sites didn’t have styling for the active state. As a result, many browsers add a highlight color or style to elements when a user touches them.</p>
                     <p>Safari and Chrome add a tap highlight color which can be prevented with the <code>-webkit-tap-highlight-color</code> CSS property:</p><pre><code>    /* Webkit / Chrome Specific CSS to remove tap
     highlight color */
@@ -3166,6 +3785,7 @@ backButton.addEventListener('click', onViewChange);</code></pre>
                     <p>Internet Explorer on Windows Phone has a similar behavior, but is suppressed via a meta tag:</p><pre><code>&lt;meta name="msapplication-tap-highlight" content="no"&gt;</code></pre>
                 </section>
                 <section>
+                    <h3>Override FirefoxOS Button State Styles</h3>
                     <p>The Firefox <code>-moz-focus-inner</code> pseudo class includes an outline on touchable elements. You can remove this outline by setting the <code>border: 0</code>.</p>
                     <p>If you are using a <code>&lt;button&gt;</code> element, you get a gradient applied to your button which you can remove by setting <code>background-image: none</code>.</p><pre><code>    /* Firefox Specific CSS to remove button
     differences and focus ring */
@@ -3177,12 +3797,14 @@ backButton.addEventListener('click', onViewChange);</code></pre>
     }</code></pre>
                 </section>
                 <section>
+                    <h3>Override Element Outline in Focus State</h3>
                     <p>Suppress the outline color when an element is focused using <code>outline: 0</code>.</p><pre><code>.btn:focus {
   outline: 0;
   // Add replacement focus styling here (i.e. border)
 }</code></pre>
                 </section>
                 <section>
+                    <h3>Disable user-select on UI which Responds to Touch</h3>
                     <p>Some mobile browsers will select text if the user long presses on the screen. This can result in a bad user experience if the user accidentally presses down on a button for too long. You can prevent this from happening using the <code>user-select</code> CSS property.</p><pre><code>-moz-user-select: none;
 -webkit-user-select: none;
 -ms-user-select: none;
@@ -3193,6 +3815,38 @@ user-select: none;</code></pre>
                     <ul>
                         <li>You should be cautious not to disable user selection if the information on the element may be useful to the user (phone number, e-mail address, and so on).</li>
                     </ul>
+                </section>
+                <section>
+                    <h3>Pseudo Classes for Touch States</h3>
+                    <table class="table-3">
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Example</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Class">:hover</td>
+                                <td data-th="Example"><img alt="Button in Pressed State" src="images/btn-hover-state.png">
+                                </td>
+                                <td data-th="Description">This state is entered when a is cursor placed over an element. Changes in UI on hover are helpful to encourage users to interact with elements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Class">:focus</td>
+                                <td data-th="Example"><img alt="Button with Focus State" src="images/btn-focus-state.png">
+                                </td>
+                                <td data-th="Description">When you tab through elements on a page, you are moving the focus from one element to the next. The focus state allows the user to know what element they are currently interacting with; also allows users to navigate your UI easily using a keyboard.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Class">:active</td>
+                                <td data-th="Example"><img alt="Button in Pressed State" src="images/btn-pressed-state.png">
+                                </td>
+                                <td data-th="Description">This is the state an element has when it's being selected, for example a user clicking or touching an element.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
             </section>
             <section>
@@ -5730,6 +6384,18 @@ font.ready().then(function() {
                     <h2>Let users explore before they commit</h2>
                     <p>Requiring login or account creation too early in a site experience can be detrimental to conversion.</p>
                     <p>Before offering their personal information, users want to browse content and get a sense of what a site has to offer. In the study, many of the sites that participants rated the lowest were those where they were forced to create an account upfront in order to continue.</p>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/cc-gates-bad.png" srcset="images/cc-gates-bad.png 1x, images/cc-gates-bad-2x.png 2x" alt="Site with login gates">
+                                <figcaption>Placing login or registration too early in a site can be detrimental to conversion.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/cc-gates-good.png" srcset="images/cc-gates-good.png 1x, images/cc-gates-good-2x.png 2x" alt="Allow browsing without sign in.">
+                                <figcaption>Allow users to browse the site without requiring sign in.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -5737,6 +6403,9 @@ font.ready().then(function() {
                     <h2>Let users purchase as a guest</h2>
                     <p>Offer the option to check out as a guest, and encourage registration with tangible benefits.</p>
                     <p>In a <a href="https://developers.google.com/web/fundamentals/principles/">research study</a>, participants didn’t necessarily want to commit to creating an account with the retailer. Participants described the guest checkout as <b>"convenient"</b>, <b>"simple"</b>, and <b>"easy [and] quick"</b>. They were annoyed at a site that required registration to purchase, especially since the site didn’t explain how registration would benefit them.</p>
+                    <figure><img src="images/cc-purchase-guest-good.png" srcset="images/cc-purchase-guest-good.png 1x, images/cc-purchase-guest-good-2x.png 2x" alt="Site with guest or logged in purchase.">
+                        <figcaption>Allow users to purchase with a guest account.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>
@@ -5744,6 +6413,9 @@ font.ready().then(function() {
                     <h2>Make it easy to finish on another device</h2>
                     <p>Offer an easy way to save or share information across devices, for example provide a way for users to share items across social networks or to email a link directly within the site itself.</p>
                     <p>There are many reasons a user might want to finish a task on another device, perhaps to see it on a bigger screen, or they get distracted and want to pick it up later. For instance, a career site allowed participants to email themselves jobs to apply for later.</p>
+                    <figure><img src="images/cc-other-device-good.png" srcset="images/cc-other-device-good.png 1x, images/cc-other-device-good-2x.png 2x" alt="Site that allows users to continue on another device.">
+                        <figcaption>Provide easy ways for users to continue browsing or shopping on another device.</figcaption>
+                    </figure>
                 </section>
             </section>
             <section>

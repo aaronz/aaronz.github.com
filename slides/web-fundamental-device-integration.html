@@ -5,40 +5,41 @@ description:  Locate, call, and snap
 ---
 
 <link rel="stylesheet" href="css/slide.css">
+
 <section id="agenda">
     <h3>agenda</h3>
-                <ul>
-                    <li><a href="#add-to-home-screen">Add To Home Screen</a>
-                    </li>
-                    <li><a href="#user-location">User Location</a>
-                    </li>
-                    <li><a href="#click-to-call">Click to Call</a>
-                    </li>
-                    <li><a href="#device-orientation">Device Orientation</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <section id="add-to-home-screen">
-                    <h2>Add To Home Screen</h2>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Hide the Browser UI</h2>
-                    <p>Your users can add your site to the homescreen even without any special code on your end, but we recommend to have your web app display without the browser UI when launched from the homescreen (effectively going fullscreen).</p>
-                    <p>Add the following code to the <code>&lt;head&gt;</code> of your page:</p><pre><code>&lt;meta name="mobile-web-app-capable" content="yes"&gt;
+    <ul>
+        <li><a href="#add-to-home-screen">Add To Home Screen</a>
+        </li>
+        <li><a href="#user-location">User Location</a>
+        </li>
+        <li><a href="#click-to-call">Click to Call</a>
+        </li>
+        <li><a href="#device-orientation">Device Orientation</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <section id="add-to-home-screen">
+        <h2>Add To Home Screen</h2>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Hide the Browser UI</h2>
+        <p>Your users can add your site to the homescreen even without any special code on your end, but we recommend to have your web app display without the browser UI when launched from the homescreen (effectively going fullscreen).</p>
+        <p>Add the following code to the <code>&lt;head&gt;</code> of your page:</p><pre><code>&lt;meta name="mobile-web-app-capable" content="yes"&gt;
 &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>This will tell both Mobile Safari and Chrome for Android that they’re dealing with a web app. Internet Explorer doesn’t require instructions for this, as sites open fullscreen in Windows’ start screen experience from the get-go.</p>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Specify an Icon</h2>
-                    <p>To make your site stand out, be sure to provide a beautiful, full size icon, otherwise the favicon or a low quality screenshot may be used.</p>
-                    <p>Add the following code to your <code>&lt;head&gt;</code> to add a custom icon to Chrome, Safari and Internet Explorer:</p><pre><code>&lt;!-- icon in the highest resolution we need it for --&gt;
+    </section>
+    <section>
+        <p>This will tell both Mobile Safari and Chrome for Android that they’re dealing with a web app. Internet Explorer doesn’t require instructions for this, as sites open fullscreen in Windows’ start screen experience from the get-go.</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Specify an Icon</h2>
+        <p>To make your site stand out, be sure to provide a beautiful, full size icon, otherwise the favicon or a low quality screenshot may be used.</p>
+        <p>Add the following code to your <code>&lt;head&gt;</code> to add a custom icon to Chrome, Safari and Internet Explorer:</p><pre><code>&lt;!-- icon in the highest resolution we need it for --&gt;
 &lt;link rel="icon" sizes="228x228" href="icon.png"&gt;
 &lt;!-- reuse same icon for Safari --&gt;
 &lt;link rel="apple-touch-icon" href="icon.png"&gt;
@@ -47,46 +48,46 @@ description:  Locate, call, and snap
 &lt;meta name="msapplication-square150x150logo" content="icon\_mediumtile.png"&gt;
 &lt;meta name="msapplication-wide310x150logo" content="icon\_widetile.png"&gt;
 &lt;meta name="msapplication-square310x310logo" content="icon\_largetile.png"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>In this example, Chrome, Safari and Opera use the 228x228px icon, which is scaled to the necessary size by the device. Both Chrome and Safari use the <code>&lt;link&gt;</code> tag and support the <code>sizes</code> attribute, the only difference in syntax is the <code>rel</code> attribute: <code>icon</code> (Chrome) vs. <code>apple-touch-icon</code> (Safari).</p>
-                    <p>Windows 8’ new home screen experience supports four different layouts for pinned sites, and requires four icons. You can leave out the relevant meta tags if you don’t want to support a specific size.</p>
-                    <p>You can specify <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27">explicit sizes</a> by providing a separate link tag for each icon, preventing the OS from having to resize the icon:</p><pre><code>&lt;link rel="apple-touch-icon" href="touch-icon-iphone.png"&gt;
+    </section>
+    <section>
+        <p>In this example, Chrome, Safari and Opera use the 228x228px icon, which is scaled to the necessary size by the device. Both Chrome and Safari use the <code>&lt;link&gt;</code> tag and support the <code>sizes</code> attribute, the only difference in syntax is the <code>rel</code> attribute: <code>icon</code> (Chrome) vs. <code>apple-touch-icon</code> (Safari).</p>
+        <p>Windows 8’ new home screen experience supports four different layouts for pinned sites, and requires four icons. You can leave out the relevant meta tags if you don’t want to support a specific size.</p>
+        <p>You can specify <a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/IconMatrix.html#//apple_ref/doc/uid/TP40006556-CH27">explicit sizes</a> by providing a separate link tag for each icon, preventing the OS from having to resize the icon:</p><pre><code>&lt;link rel="apple-touch-icon" href="touch-icon-iphone.png"&gt;
 &lt;link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png"&gt;
 &lt;link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png"&gt;
 &lt;link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png"&gt;</code></pre>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Use a Custom Title</h2>
-                    <p>Internet Explorer and Safari allow you to specify a custom title that is used as app name next to or on top of your icon.</p>
-                    <p>Add this code to your head <code>&lt;head&gt;</code>:</p><pre><code>&lt;meta name="application-name" content="Web Fundamentals"&gt;
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Use a Custom Title</h2>
+        <p>Internet Explorer and Safari allow you to specify a custom title that is used as app name next to or on top of your icon.</p>
+        <p>Add this code to your head <code>&lt;head&gt;</code>:</p><pre><code>&lt;meta name="application-name" content="Web Fundamentals"&gt;
 &lt;meta name="apple-mobile-web-app-title" content="Web Fundamentals"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>All three browsers use the default <code>&lt;title&gt;</code> attribute if the additional tags are not around, Chrome does not have a way to specify a custom name different from the title.</p>
-                </section>
-                <section>
-                    <p>Note</p>
-                    <ul>
-                        <li>This tag is undocumented in Mobile Safari and could be changed and removed at any time.</li>
-                    </ul>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Additional Customizations</h2>
-                    <p>The following are customizations that are very useful, but work only in a subset of browsers. All of them are optional but strongly suggested, as they further enhance the app experience.</p>
-                </section>
-                <section>
-                    <h2 id="safari-startup-images-status-bar-appearance">Safari: Startup images, status bar appearance</h2>
-                    <p>Safari allows you to style the status bar and specify a startup image.</p>
-                    <p>By default, Safari shows a blank screen during load time and after multiple loads a screenshot of the previous state of the app. You can prevent this by telling Safari to show an explicit startup image, by adding a link tag, with <code>rel=apple-touch-startup-image</code>. For example:</p><pre><code>&lt;link rel="apple-touch-startup-image" href="icon.png"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>The image has to be in the specific size of the target device’s screen or it won’t be used. Refer to <a href="https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Safari Web Content Guidelines</a> for further details.</p>
-                    <p>While Apple’s documentation is sparse on this topic, the developer community has figured out a way to target all devices by using advanced media queries to select the appropriate device and then specify the correct image. Here’s a working solution, courtesy of <a href="https://gist.github.com/tfausak/2222823">tfausak’s gist</a>:</p><pre><code>&lt;!-- iOS 6 &amp; 7 iPad (retina, portrait) --&gt;
+    </section>
+    <section>
+        <p>All three browsers use the default <code>&lt;title&gt;</code> attribute if the additional tags are not around, Chrome does not have a way to specify a custom name different from the title.</p>
+    </section>
+    <section>
+        <p>Note</p>
+        <ul>
+            <li>This tag is undocumented in Mobile Safari and could be changed and removed at any time.</li>
+        </ul>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Additional Customizations</h2>
+        <p>The following are customizations that are very useful, but work only in a subset of browsers. All of them are optional but strongly suggested, as they further enhance the app experience.</p>
+    </section>
+    <section>
+        <h2 id="safari-startup-images-status-bar-appearance">Safari: Startup images, status bar appearance</h2>
+        <p>Safari allows you to style the status bar and specify a startup image.</p>
+        <p>By default, Safari shows a blank screen during load time and after multiple loads a screenshot of the previous state of the app. You can prevent this by telling Safari to show an explicit startup image, by adding a link tag, with <code>rel=apple-touch-startup-image</code>. For example:</p><pre><code>&lt;link rel="apple-touch-startup-image" href="icon.png"&gt;</code></pre>
+    </section>
+    <section>
+        <p>The image has to be in the specific size of the target device’s screen or it won’t be used. Refer to <a href="https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Safari Web Content Guidelines</a> for further details.</p>
+        <p>While Apple’s documentation is sparse on this topic, the developer community has figured out a way to target all devices by using advanced media queries to select the appropriate device and then specify the correct image. Here’s a working solution, courtesy of <a href="https://gist.github.com/tfausak/2222823">tfausak’s gist</a>:</p><pre><code>&lt;!-- iOS 6 &amp; 7 iPad (retina, portrait) --&gt;
 &lt;link href="/static/images/apple-touch-startup-image-1536x2008.png"
      media="(device-width: 768px) and (device-height: 1024px)
         and (orientation: portrait)
@@ -125,38 +126,38 @@ description:  Locate, call, and snap
      media="(device-width: 320px) and (device-height: 480px)
         and (-webkit-device-pixel-ratio: 1)"
      rel="apple-touch-startup-image"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>You can change the appearance of the default status bar to either <code>black</code> or <code>black-translucent</code>. With <code>black-translucent</code>, the status bar floats on top of the full screen content, rather than pushing it down. This gives the layout more height, but obstructs the top. Here’s the code required:</p><pre><code>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;</code></pre>
-                </section>
-                <section>
-                    <p>And here is a preview of how the different modes look:</p>
-                </section>
-                <section>
-                    <h2 id="internet-explorer-live-tiles-notifications-and-pinned-sites">Internet Explorer: Live Tiles, notifications and pinned sites</h2>
-                    <p>Microsoft’s "Pinned Sites" and their rotating "Live Tiles" go far beyond other implementations and covering them here would blow up this guide. If you’d like to learn more, <a href="https://msdn.microsoft.com/en-us/library/ie/dn455115(v=vs.85).aspx">learn how to create live tiles at MSDN</a>.</p>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Detect When Launched From The Home Screen</h2>
-                    <p>Sometimes it’s useful to know whether the app is launched from the home screen vs. the web browser.</p>
-                    <p>Sometimes it’s useful to know whether the app is launched from the home screen vs. the web browser. To demonstrate one use case, you might want to show a banner suggesting to install the app to the users’ home screen when he arrives from the browser, but hide it once installed.</p>
-                    <p>In Mobile Safari, querying <code>window.navigator.standalone</code> will tell you whether your app is running as home screen icon or simply in the browser. In Internet Explorer, you can achieve the same by querying <a href="http://msdn.microsoft.com/en-us/library/ie/gg491733(v=vs.85).aspx"><code>window.external.msIsSiteMode()</code></a>. Here’s a combined check:</p><pre><code>var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
+    </section>
+    <section>
+        <p>You can change the appearance of the default status bar to either <code>black</code> or <code>black-translucent</code>. With <code>black-translucent</code>, the status bar floats on top of the full screen content, rather than pushing it down. This gives the layout more height, but obstructs the top. Here’s the code required:</p><pre><code>&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;</code></pre>
+    </section>
+    <section>
+        <p>And here is a preview of how the different modes look:</p>
+    </section>
+    <section>
+        <h2 id="internet-explorer-live-tiles-notifications-and-pinned-sites">Internet Explorer: Live Tiles, notifications and pinned sites</h2>
+        <p>Microsoft’s "Pinned Sites" and their rotating "Live Tiles" go far beyond other implementations and covering them here would blow up this guide. If you’d like to learn more, <a href="https://msdn.microsoft.com/en-us/library/ie/dn455115(v=vs.85).aspx">learn how to create live tiles at MSDN</a>.</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Detect When Launched From The Home Screen</h2>
+        <p>Sometimes it’s useful to know whether the app is launched from the home screen vs. the web browser.</p>
+        <p>Sometimes it’s useful to know whether the app is launched from the home screen vs. the web browser. To demonstrate one use case, you might want to show a banner suggesting to install the app to the users’ home screen when he arrives from the browser, but hide it once installed.</p>
+        <p>In Mobile Safari, querying <code>window.navigator.standalone</code> will tell you whether your app is running as home screen icon or simply in the browser. In Internet Explorer, you can achieve the same by querying <a href="http://msdn.microsoft.com/en-us/library/ie/gg491733(v=vs.85).aspx"><code>window.external.msIsSiteMode()</code></a>. Here’s a combined check:</p><pre><code>var fromHomescreen = window.navigator.standalone || window.external.msIsSiteMode();
 if(!fromHomescreen) {
     // show them a guide on how to install the web app
     ...
 }</code></pre>
-                </section>
-                <section>
-                    <p>Unfortunately, it is not possible to detect the same in Chrome for Android.</p>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Putting It All Together</h2>
-                    <p>Let's take all that we discussed and bring it into one big form.</p>
-                    <p>Our own <a href="https://developers.google.com/web/starter-kit">Web Starter Kit</a> includes support for the most common options and is great as starting point, but if you are curious as to how a more complete implementation looks like, here’s the portion of the <code>&lt;head&gt;</code> of Web Starter Kit that we expanded with more <code>&lt;meta&gt;</code> tags:</p><pre><code>&lt;!-- hide the browser UI --&gt;
+    </section>
+    <section>
+        <p>Unfortunately, it is not possible to detect the same in Chrome for Android.</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Putting It All Together</h2>
+        <p>Let's take all that we discussed and bring it into one big form.</p>
+        <p>Our own <a href="https://developers.google.com/web/starter-kit">Web Starter Kit</a> includes support for the most common options and is great as starting point, but if you are curious as to how a more complete implementation looks like, here’s the portion of the <code>&lt;head&gt;</code> of Web Starter Kit that we expanded with more <code>&lt;meta&gt;</code> tags:</p><pre><code>&lt;!-- hide the browser UI --&gt;
 &lt;meta name="mobile-web-app-capable" content="yes"&gt;
 &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
 &lt;!-- set the correct name --&gt;
@@ -224,52 +225,52 @@ if(!fromHomescreen) {
   &lt;meta name="msapplication-starturl" content="./"&gt;
   &lt;!-- Color of navigation buttons (back/forward) (Desktop) --&gt;
   &lt;meta name="msapplication-navbutton-color" content="#FF3300" /&gt;</code></pre>
-                </section>
-            </section>
-            <section>
-                <section id="user-location">
-                    <h2>User Location</h2>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Obtain the user's current location</h2>
-                </section>
-                <section>
-                    <p>The Geolocation API lets you find out where the user is, always with the user's consent. This functionality could be used as part of user queries, for example, to guide someone to a destination point. It could also be used for 'geo-tagging' some content the user has created, for example, to mark where a photo was taken.</p>
-                    <ul>
-                        <li>Check for Compatibility before you use the API.</li>
-                        <li>Prefer a coarse location over a fine location.</li>
-                        <li>Always handle errors.</li>
-                        <li>Don't poll for the data too frequently to save the user's battery.</li>
-                    </ul>
-                </section>
-                <section>
-                    <p>The API is device-agnostic; it doesn’t care how the browser determines location, so long as clients can request and receive location data in a standard way. The underlying mechanism might be via GPS, wifi, or simply asking the user to enter their location manually. Since any of these lookups is going to take some time, the API is asynchronous; you pass it a callback method whenever you request a location.</p>
-                </section>
-                <section>
-                    <h2 id="when-to-use-geolocation">When to use Geolocation</h2>
-                    <ul>
-                        <li>Find where the user is closest to a physical location of yours to tailor the user experience.</li>
-                        <li>Tailor information (such as news) to the user’s location.</li>
-                        <li>Show the position of a user on a map.</li>
-                        <li>Tag data created inside your application with the user’s location (i.e, geo-tagging a picture).</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="check-for-compatibility">Check for Compatibility</h2>
-                    <p>The geolocation API is now supported in the majority of browsers, but it is good practice to always check for support before you do anything.</p>
-                    <p>You can easily check for compatibility by testing for the presence of the geolocation object:</p><pre><code>// check for Geolocation support
+    </section>
+</section>
+<section>
+    <section id="user-location">
+        <h2>User Location</h2>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Obtain the user's current location</h2>
+    </section>
+    <section>
+        <p>The Geolocation API lets you find out where the user is, always with the user's consent. This functionality could be used as part of user queries, for example, to guide someone to a destination point. It could also be used for 'geo-tagging' some content the user has created, for example, to mark where a photo was taken.</p>
+        <ul>
+            <li>Check for Compatibility before you use the API.</li>
+            <li>Prefer a coarse location over a fine location.</li>
+            <li>Always handle errors.</li>
+            <li>Don't poll for the data too frequently to save the user's battery.</li>
+        </ul>
+    </section>
+    <section>
+        <p>The API is device-agnostic; it doesn’t care how the browser determines location, so long as clients can request and receive location data in a standard way. The underlying mechanism might be via GPS, wifi, or simply asking the user to enter their location manually. Since any of these lookups is going to take some time, the API is asynchronous; you pass it a callback method whenever you request a location.</p>
+    </section>
+    <section>
+        <h2 id="when-to-use-geolocation">When to use Geolocation</h2>
+        <ul>
+            <li>Find where the user is closest to a physical location of yours to tailor the user experience.</li>
+            <li>Tailor information (such as news) to the user’s location.</li>
+            <li>Show the position of a user on a map.</li>
+            <li>Tag data created inside your application with the user’s location (i.e, geo-tagging a picture).</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="check-for-compatibility">Check for Compatibility</h2>
+        <p>The geolocation API is now supported in the majority of browsers, but it is good practice to always check for support before you do anything.</p>
+        <p>You can easily check for compatibility by testing for the presence of the geolocation object:</p><pre><code>// check for Geolocation support
 if (navigator.geolocation) {
   console.log('Geolocation is supported!');
 }
 else {
   console.log('Geolocation is not supported for this Browser/OS version yet.');
 }</code></pre>
-                </section>
-                <section>
-                    <h2 id="determine-the-users-current-location">Determine the User’s Current Location</h2>
-                    <p>The geolocation API offers a simple ‘one-shot’ method to obtain the user’s location <code>getCurrentPosition()</code>. A call to this method will asynchronously report on the user’s current location.</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <h2 id="determine-the-users-current-location">Determine the User’s Current Location</h2>
+        <p>The geolocation API offers a simple ‘one-shot’ method to obtain the user’s location <code>getCurrentPosition()</code>. A call to this method will asynchronously report on the user’s current location.</p><pre><code>window.onload = function() {
   var startPos;
   var geoSuccess = function(position) {
     startPos = position;
@@ -278,21 +279,21 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess);
 };</code></pre>
-                </section>
-                <section>
-                    <p>If this is the first time an application on this domain has requested permissions, the browser will typically check for user consent. Depending on the browser, there may also be preferences to always allow - or disallow - permission lookups, in which case the confirmation process will be bypassed.</p>
-                    <p>Depending on the location device your browser is using, the position object might actually contain a lot more than just latitude and longitude, for example, it could include an altitude or a direction. You can’t tell what extra information that location system will use until it actually returns the data.</p>
-                </section>
-                <section>
-                    <h2 id="testing-geolocation-with-your-site">Testing Geolocation with your site</h2>
-                    <p>When working with HTML5 geolocation support in an application, it can be useful to debug the output received when using different values for longitude and latitude.</p>
-                    <p>The DevTools support both overriding position values for navigator.geolocation and simulating geolocation not being available via the overrides menu.</p>
-                    <p><img src="images/emulategeolocation.png" />
-                    </p>
-                </section>
-                <section>
-                    <h2 id="always-handle-errors">Always Handle Errors</h2>
-                    <p>Unfortunately, not all location lookups are successful. Perhaps a GPS could not be located or the user has suddenly disabled location lookups. A second, optional, argument to <code>getCurrentPosition()</code> will be called in the event of an error, so you can notify the user inside the callback:</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <p>If this is the first time an application on this domain has requested permissions, the browser will typically check for user consent. Depending on the browser, there may also be preferences to always allow - or disallow - permission lookups, in which case the confirmation process will be bypassed.</p>
+        <p>Depending on the location device your browser is using, the position object might actually contain a lot more than just latitude and longitude, for example, it could include an altitude or a direction. You can’t tell what extra information that location system will use until it actually returns the data.</p>
+    </section>
+    <section>
+        <h2 id="testing-geolocation-with-your-site">Testing Geolocation with your site</h2>
+        <p>When working with HTML5 geolocation support in an application, it can be useful to debug the output received when using different values for longitude and latitude.</p>
+        <p>The DevTools support both overriding position values for navigator.geolocation and simulating geolocation not being available via the overrides menu.</p>
+        <p><img src="images/emulategeolocation.png" />
+        </p>
+    </section>
+    <section>
+        <h2 id="always-handle-errors">Always Handle Errors</h2>
+        <p>Unfortunately, not all location lookups are successful. Perhaps a GPS could not be located or the user has suddenly disabled location lookups. A second, optional, argument to <code>getCurrentPosition()</code> will be called in the event of an error, so you can notify the user inside the callback:</p><pre><code>window.onload = function() {
   var startPos;
   var geoSuccess = function(position) {
     startPos = position;
@@ -309,11 +310,11 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 };</code></pre>
-                </section>
-                <section>
-                    <h2 id="reduce-the-need-to-start-up-geo-location-hardware">Reduce the need to start-up geo location hardware</h2>
-                    <p>For many use-cases you don’t need to use the most up to date location of the user, you just need a rough estimate.</p>
-                    <p>Use the <code>maximumAge</code> optional property to tell the browser to use a recently obtained geolocation result. This not only returns quicker if the user has requested the data before it also stops the browser from having to start up its geolocation hardware interfaces such as Wifi triangulation or the GPS.</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <h2 id="reduce-the-need-to-start-up-geo-location-hardware">Reduce the need to start-up geo location hardware</h2>
+        <p>For many use-cases you don’t need to use the most up to date location of the user, you just need a rough estimate.</p>
+        <p>Use the <code>maximumAge</code> optional property to tell the browser to use a recently obtained geolocation result. This not only returns quicker if the user has requested the data before it also stops the browser from having to start up its geolocation hardware interfaces such as Wifi triangulation or the GPS.</p><pre><code>window.onload = function() {
   var startPos;
   var geoOptions = {
     maximumAge: 5 * 60 * 1000,
@@ -333,10 +334,10 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };</code></pre>
-                </section>
-                <section>
-                    <h2 id="dont-keep-the-user-waiting-set-a-timeout">Don’t keep the user waiting, set a timeout</h2>
-                    <p>Unless you set a timeout, your request to get the current position might never return.</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <h2 id="dont-keep-the-user-waiting-set-a-timeout">Don’t keep the user waiting, set a timeout</h2>
+        <p>Unless you set a timeout, your request to get the current position might never return.</p><pre><code>window.onload = function() {
   var startPos;
   var geoOptions = {
      timeout: 10 * 1000
@@ -356,11 +357,11 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };</code></pre>
-                </section>
-                <section>
-                    <h2 id="prefer-a-coarse-location-over-a-fine-grained-location">Prefer a coarse location over a fine grained location</h2>
-                    <p>If you want to find the nearest store to a user it is unlikely that you need 1 meter precision to work that out. The API is designed to give a coarse location that returns as quickly as possible.</p>
-                    <p>If you do need high-precision it is possible to override the default setting with the <code>enableHighAccuracy</code> option. Use this sparingly: it will be slower to resolve and use more battery.</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <h2 id="prefer-a-coarse-location-over-a-fine-grained-location">Prefer a coarse location over a fine grained location</h2>
+        <p>If you want to find the nearest store to a user it is unlikely that you need 1 meter precision to work that out. The API is designed to give a coarse location that returns as quickly as possible.</p>
+        <p>If you do need high-precision it is possible to override the default setting with the <code>enableHighAccuracy</code> option. Use this sparingly: it will be slower to resolve and use more battery.</p><pre><code>window.onload = function() {
   var startPos;
   var geoOptions = {
     enableHighAccuracy: true
@@ -380,45 +381,45 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 };</code></pre>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Monitor the user's location</h2>
-                    <p>The Geolocation API lets you watch where the user is and keep tabs on them as they move around, always with the user's consent.</p>
-                </section>
-                <section>
-                    <p>The API is device-agnostic; it doesn’t care how the browser determines location, so long as clients can request and receive location data in a standard way. The underlying mechanism might be via GPS, wifi. Since any of these lookups is going to take some time, the API is asynchronous; you pass it a callback method whenever you request a location.</p>
-                    <ul>
-                        <li>Check for Compatibility before you use the API.</li>
-                        <li>Minimize the use of watching the user's location to save battery.</li>
-                        <li>Always handle errors.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="when-to-use-geolocation-to-watch-the-users-location">When to use Geolocation to watch the user’s location</h2>
-                    <ul>
-                        <li>You want to obtain a more precise lock on the user location.</li>
-                        <li>Your application needs to update the user interface based on new location information.</li>
-                        <li>You applications needs to update business logic when the user enters a certain defined zone.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="watching-the-users-location">Watching the users location</h2>
-                    <p>The Geolocation API allows you to obtain the user’s location (with user consent) with a single call to <code>getCurrentPosition()</code>.</p>
-                    <p>If you want to continually monitor the location of the user, the geolocation API has a method called <code>watchPosition()</code>. It operates in a similar way to <code>getCurrentPosition()</code> yet it will fire multiple times as the positioning software:</p><pre><code>var watchId = navigator.geolocation.watchPosition(function(position) {
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Monitor the user's location</h2>
+        <p>The Geolocation API lets you watch where the user is and keep tabs on them as they move around, always with the user's consent.</p>
+    </section>
+    <section>
+        <p>The API is device-agnostic; it doesn’t care how the browser determines location, so long as clients can request and receive location data in a standard way. The underlying mechanism might be via GPS, wifi. Since any of these lookups is going to take some time, the API is asynchronous; you pass it a callback method whenever you request a location.</p>
+        <ul>
+            <li>Check for Compatibility before you use the API.</li>
+            <li>Minimize the use of watching the user's location to save battery.</li>
+            <li>Always handle errors.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="when-to-use-geolocation-to-watch-the-users-location">When to use Geolocation to watch the user’s location</h2>
+        <ul>
+            <li>You want to obtain a more precise lock on the user location.</li>
+            <li>Your application needs to update the user interface based on new location information.</li>
+            <li>You applications needs to update business logic when the user enters a certain defined zone.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="watching-the-users-location">Watching the users location</h2>
+        <p>The Geolocation API allows you to obtain the user’s location (with user consent) with a single call to <code>getCurrentPosition()</code>.</p>
+        <p>If you want to continually monitor the location of the user, the geolocation API has a method called <code>watchPosition()</code>. It operates in a similar way to <code>getCurrentPosition()</code> yet it will fire multiple times as the positioning software:</p><pre><code>var watchId = navigator.geolocation.watchPosition(function(position) {
   document.getElementById('currentLat').innerHTML = position.coords.latitude;
   document.getElementById('currentLon').innerHTML = position.coords.longitude;
 });</code></pre>
-                </section>
-                <section>
-                    <h2 id="always-clear-up-and-conserve-battery">Always clear up and conserve battery</h2>
-                    <p>Watching for changes to a geolocation is not a free operation. Whilst operating systems might be introducing platform features to let applications hook in to the geo subsystem, you as a web developer have no idea what support the user’s device has for monitoring the user’s location and whilst you are watching a position you are engaging the device in a lot of extra processing</p>
-                    <p>Once you have no need to track the user’s position call <code>clearWatch</code> to turn of the geolocation systems.</p>
-                </section>
-                <section>
-                    <h2 id="always-handle-errors">Always Handle Errors</h2>
-                    <p>Unfortunately, not all location lookups are successful. Perhaps a GPS could not be located or the user has suddenly disabled location lookups. A second, optional, argument to getCurrentPosition() will be called in the event of an error, so you can notify the user inside the callback:</p><pre><code>window.onload = function() {
+    </section>
+    <section>
+        <h2 id="always-clear-up-and-conserve-battery">Always clear up and conserve battery</h2>
+        <p>Watching for changes to a geolocation is not a free operation. Whilst operating systems might be introducing platform features to let applications hook in to the geo subsystem, you as a web developer have no idea what support the user’s device has for monitoring the user’s location and whilst you are watching a position you are engaging the device in a lot of extra processing</p>
+        <p>Once you have no need to track the user’s position call <code>clearWatch</code> to turn of the geolocation systems.</p>
+    </section>
+    <section>
+        <h2 id="always-handle-errors">Always Handle Errors</h2>
+        <p>Unfortunately, not all location lookups are successful. Perhaps a GPS could not be located or the user has suddenly disabled location lookups. A second, optional, argument to getCurrentPosition() will be called in the event of an error, so you can notify the user inside the callback:</p><pre><code>window.onload = function() {
   var startPos;
   var geoSuccess = function(position) {
     startPos = position;
@@ -435,54 +436,54 @@ else {
   };
   navigator.geolocation.watchPosition(geoSuccess, geoError);
 };</code></pre>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Getting the user to consent to location sharing</h2>
-                    <p>As a web developer, having access to the user's location opens up a huge number of possibilities such as advanced filtering, pinpointing the user on a map, and offering pro-active suggestions on things the user can do based on their current position.</p>
-                    <p>As a user, your physical location is a piece of information you want to guard and only give out to people that you trust. This is why the browser shows a prompt when a site asks for your location.</p>
-                </section>
-                <section>
-                    <p>Recent user studies <a href="http://static.googleusercontent.com/media/www.google.com/en/us/intl/ALL_ALL/think/multiscreen/pdf/multi-screen-moblie-whitepaper_research-studies.pdf">have shown</a> that users are distrustful of sites that simply prompt the user to give away their position on page load. So what are the best practices?</p>
-                    <ul>
-                        <li>Assume users will not give you their location.</li>
-                        <li>Make it clear why you need access to the user's location.</li>
-                        <li>Don't immediately prompt for access on page load.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="assume-users-will-not-give-you-their-location">Assume users will not give you their location</h2>
-                    <p>It might be a pain, but many of your users will not want to give you their location so you need to adopt a defensive development style.</p>
-                </section>
-                <section>
-                    <h2 id="use-a-fallback-if-geolocation-is-required">Use a fallback if geolocation is required</h2>
-                    <p>Our recommendation is to not tie your site or application in to requiring access to the user’s current location, but if your application or site absolutely requires it there are 3rd party solutions that allow you to obtain a best guess of where the person currently is.</p>
-                    <p>These solutions often work by looking at the user’s IP address and mapping that to the physical addresses registered with the RIPE database. These locations are often not very accurate normally giving you a position of the nearest telecommunications hub to the user, or the nearest cell phone tower. In many cases, they might not even be that accurate, especially if the user is on VPN or some other proxy service.</p>
-                </section>
-                <section>
-                    <h2 id="always-request-access-to-location-on-a-user-gesture">Always request access to location on a user gesture</h2>
-                    <p>Make sure users understand why you’re asking for their location, and what the benefit to them will be. Asking for it immediately on the homepage as the site loads results in a poor user experience.</p>
-                    <p>Instead you should give the user a clear call-to-action or an indication that an operation will require access to their location. The user will then be able to more easily associate the system prompt for access with the action just initiated.</p>
-                </section>
-                <section>
-                    <h2 id="give-clear-indication-that-an-action-will-request-their-location">Give clear indication that an action will request their location</h2>
-                    <p><a href="http://static.googleusercontent.com/media/www.google.com/en/us/intl/ALL_ALL/think/multiscreen/pdf/multi-screen-moblie-whitepaper_research-studies.pdf">In a study by the Google Ads team</a>, when a user was asked to book a hotel room in Boston for an upcoming conference on one particular hotels site, they were prompted to share their GPS location immediately after tapping the ‘Find and Book’ call-to-action on the homepage.</p>
-                    <p>In some cases, the user became frustrated because they struggled to understand why they were being shown hotels in San Francisco when they wanted to book a room in Boston.</p>
-                    <p>A better experience is to make sure users understands why you’re asking them for location. Add in a well known signifier that is common across devices, such as range finder.</p>
-                    <p><img src="images/indication.png" />
-                    </p>
-                </section>
-                <section>
-                    <p>Or consider a very explicit call to action such as "Find Near Me."</p>
-                    <p><img src="images/nearme.png" />
-                    </p>
-                </section>
-                <section>
-                    <h2 id="gently-nudge-users-to-grant-permission-to-their-location">Gently nudge users to grant permission to their location</h2>
-                    <p>You don’t have access to any of the steps of what users are doing. You know exactly when the users disallow access to their location, but you don’t know when they grant you access; you only know you obtained access when results appear.</p>
-                    <p>It is good practice to "tickle" the user into action if you need them to complete the action.</p>
-                    <p>We recommend:</p><pre><code>button.onclick = function() {
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Getting the user to consent to location sharing</h2>
+        <p>As a web developer, having access to the user's location opens up a huge number of possibilities such as advanced filtering, pinpointing the user on a map, and offering pro-active suggestions on things the user can do based on their current position.</p>
+        <p>As a user, your physical location is a piece of information you want to guard and only give out to people that you trust. This is why the browser shows a prompt when a site asks for your location.</p>
+    </section>
+    <section>
+        <p>Recent user studies <a href="http://static.googleusercontent.com/media/www.google.com/en/us/intl/ALL_ALL/think/multiscreen/pdf/multi-screen-moblie-whitepaper_research-studies.pdf">have shown</a> that users are distrustful of sites that simply prompt the user to give away their position on page load. So what are the best practices?</p>
+        <ul>
+            <li>Assume users will not give you their location.</li>
+            <li>Make it clear why you need access to the user's location.</li>
+            <li>Don't immediately prompt for access on page load.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="assume-users-will-not-give-you-their-location">Assume users will not give you their location</h2>
+        <p>It might be a pain, but many of your users will not want to give you their location so you need to adopt a defensive development style.</p>
+    </section>
+    <section>
+        <h2 id="use-a-fallback-if-geolocation-is-required">Use a fallback if geolocation is required</h2>
+        <p>Our recommendation is to not tie your site or application in to requiring access to the user’s current location, but if your application or site absolutely requires it there are 3rd party solutions that allow you to obtain a best guess of where the person currently is.</p>
+        <p>These solutions often work by looking at the user’s IP address and mapping that to the physical addresses registered with the RIPE database. These locations are often not very accurate normally giving you a position of the nearest telecommunications hub to the user, or the nearest cell phone tower. In many cases, they might not even be that accurate, especially if the user is on VPN or some other proxy service.</p>
+    </section>
+    <section>
+        <h2 id="always-request-access-to-location-on-a-user-gesture">Always request access to location on a user gesture</h2>
+        <p>Make sure users understand why you’re asking for their location, and what the benefit to them will be. Asking for it immediately on the homepage as the site loads results in a poor user experience.</p>
+        <p>Instead you should give the user a clear call-to-action or an indication that an operation will require access to their location. The user will then be able to more easily associate the system prompt for access with the action just initiated.</p>
+    </section>
+    <section>
+        <h2 id="give-clear-indication-that-an-action-will-request-their-location">Give clear indication that an action will request their location</h2>
+        <p><a href="http://static.googleusercontent.com/media/www.google.com/en/us/intl/ALL_ALL/think/multiscreen/pdf/multi-screen-moblie-whitepaper_research-studies.pdf">In a study by the Google Ads team</a>, when a user was asked to book a hotel room in Boston for an upcoming conference on one particular hotels site, they were prompted to share their GPS location immediately after tapping the ‘Find and Book’ call-to-action on the homepage.</p>
+        <p>In some cases, the user became frustrated because they struggled to understand why they were being shown hotels in San Francisco when they wanted to book a room in Boston.</p>
+        <p>A better experience is to make sure users understands why you’re asking them for location. Add in a well known signifier that is common across devices, such as range finder.</p>
+        <p><img src="images/indication.png" />
+        </p>
+    </section>
+    <section>
+        <p>Or consider a very explicit call to action such as "Find Near Me."</p>
+        <p><img src="images/nearme.png" />
+        </p>
+    </section>
+    <section>
+        <h2 id="gently-nudge-users-to-grant-permission-to-their-location">Gently nudge users to grant permission to their location</h2>
+        <p>You don’t have access to any of the steps of what users are doing. You know exactly when the users disallow access to their location, but you don’t know when they grant you access; you only know you obtained access when results appear.</p>
+        <p>It is good practice to "tickle" the user into action if you need them to complete the action.</p>
+        <p>We recommend:</p><pre><code>button.onclick = function() {
   var startPos;
   var element = document.getElementById("nudge");
   var showNudgeBanner = function() {
@@ -510,124 +511,124 @@ else {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 };</code></pre>
-                </section>
-            </section>
-            <section>
-                <section id="click-to-call">
-                    <h2>Click to call</h2>
-                </section>
-                <section>
-                    <p>On devices with phone capabilities, make it easy for users to directly connect with you by simply tapping a phone number, more commonly known as click to call.</p>
-                    <ul>
-                        <li>Wrap all phone numbers in hyperlinks with the <code>tel:</code> schema.</li>
-                        <li>Always use the international dialing format.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="link-telephone-numbers-for-click-to-call">Link telephone numbers for click to call</h2>
-                    <p>While many modern mobile browsers will automatically detect phone numbers and convert them to links, it’s a good idea to do this directly in your code. By manually tagging each phone number, you can ensure phone numbers are always enabled for click to call and that they will be styled to match your site.</p>
-                    <p>To mark a phone number as a link, use the <code>tel:</code> scheme. The syntax is simple:</p><pre><code>NIST Telephone Time-of-Day Service &lt;a href="tel:+1-303-499-7111"&gt;+1 (303) 499-7111&lt;/a&gt;</code></pre>
-                </section>
-                <section>
-                    <p>Results in:</p>
-                    <p>NIST Telephone Time-of-Day Service <a href="tel:+1-303-499-7111">+1 (303) 499-7111</a>
-                    </p>
-                    <p><img alt="Click to call example." src="images/click-to-call_framed.jpg" />
-                    </p>
-                </section>
-                <section>
-                    <p>On most devices with telephone capabilities, the user will receive a confirmation before the number is dialed, to ensure users are not being tricked into calling expensive long distance or premium phone numbers. When the device doesn’t support phone calls, users may be presented with a menu allowing them to choose how the browser should handle the number.</p>
-                    <p>Desktop browsers that don’t support voice calls will open the default telephony app on the computer, for example Google Voice or Microsoft Communicator.</p>
-                </section>
-                <section>
-                    <h2 id="use-the-international-dialing-format">Use the international dialing format</h2>
-                    <p>Always supply the phone number using the international dialing format: the plus sign (+), country code, area code and number. While not absolutely necessary, it’s a good idea to separate each segment of the number with a hyphen (-) for easier reading and better auto-detection.</p>
-                    <p>Using a hyphenated international dialing format ensures that no matter where the user is calling from, whether a few hundred meters away or thousands of kilometers, their call will be connected.</p>
-                </section>
-                <section>
-                    <h2 id="disable-auto-detection-when-necessary">Disable auto-detection when necessary</h2>
-                    <p>Modern mobile browsers will automatically detect phone numbers and enable click to call. Mobile Safari automatically converts phone numbers to links with the associated hyperlink styles. Chrome for Android will automatically detect phone numbers and will allow users to click to call, but does not wrap them in hyperlinks or apply any special styles.</p>
-                    <p>To prevent Mobile Safari from automatically detecting phone numbers, add the following meta tag to the top of the page:</p><pre><code>&lt;meta name="format-detection" content="telephone=no"&gt;</code></pre>
-                </section>
-                <section>
-                    <h2 id="other-click-to-call-features">Other click to call features</h2>
-                    <p>In addition to the <code>tel:</code> schema, some modern browsers also support the <code>sms:</code> and <code>mms:</code> schemas, though support is not as consistent, and some features like setting the message body don’t always work.</p>
-                </section>
-            </section>
-            <section>
-                <section id="device-orientation">
-                    <h2>Device orientation</h2>
-                </section>
-                <section>
-                    <p>The device orientation event returns rotation data, which includes how much the device is leaning front-to-back, side-to-side and if the phone or laptop has a compass, the direction the device is facing.</p>
-                    <ul>
-                        <li>Use sparingly.</li>
-                        <li>Test for support.</li>
-                        <li>Don't update the UI on every orientation event; instead sync to requestAnimationFrame.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="when-to-use-device-orientation-events">When to use device orientation events</h2>
-                </section>
-                <section>
-                    <p>There are several uses for device orientation events. For example:</p>
-                    <ul>
-                        <li>Update a map as the user moves.</li>
-                        <li>Subtle UI tweaks, for example adding paralax effects.</li>
-                        <li>Combined with GeoLocation, can be used for turn by turn navigation.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="check-for-support-and-listen-for-events">Check for support and listen for events</h2>
-                    <p>To listen for <code>DeviceOrientationEvent</code>, first, check to see if the events are supported in the browser. Then, attach an event listener to the <code>window</code> object listening for <code>deviceorientation</code> events.</p><pre><code>    if (window.DeviceOrientationEvent) {
+    </section>
+</section>
+<section>
+    <section id="click-to-call">
+        <h2>Click to call</h2>
+    </section>
+    <section>
+        <p>On devices with phone capabilities, make it easy for users to directly connect with you by simply tapping a phone number, more commonly known as click to call.</p>
+        <ul>
+            <li>Wrap all phone numbers in hyperlinks with the <code>tel:</code> schema.</li>
+            <li>Always use the international dialing format.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="link-telephone-numbers-for-click-to-call">Link telephone numbers for click to call</h2>
+        <p>While many modern mobile browsers will automatically detect phone numbers and convert them to links, it’s a good idea to do this directly in your code. By manually tagging each phone number, you can ensure phone numbers are always enabled for click to call and that they will be styled to match your site.</p>
+        <p>To mark a phone number as a link, use the <code>tel:</code> scheme. The syntax is simple:</p><pre><code>NIST Telephone Time-of-Day Service &lt;a href="tel:+1-303-499-7111"&gt;+1 (303) 499-7111&lt;/a&gt;</code></pre>
+    </section>
+    <section>
+        <p>Results in:</p>
+        <p>NIST Telephone Time-of-Day Service <a href="tel:+1-303-499-7111">+1 (303) 499-7111</a>
+        </p>
+        <p><img alt="Click to call example." src="images/click-to-call_framed.jpg" />
+        </p>
+    </section>
+    <section>
+        <p>On most devices with telephone capabilities, the user will receive a confirmation before the number is dialed, to ensure users are not being tricked into calling expensive long distance or premium phone numbers. When the device doesn’t support phone calls, users may be presented with a menu allowing them to choose how the browser should handle the number.</p>
+        <p>Desktop browsers that don’t support voice calls will open the default telephony app on the computer, for example Google Voice or Microsoft Communicator.</p>
+    </section>
+    <section>
+        <h2 id="use-the-international-dialing-format">Use the international dialing format</h2>
+        <p>Always supply the phone number using the international dialing format: the plus sign (+), country code, area code and number. While not absolutely necessary, it’s a good idea to separate each segment of the number with a hyphen (-) for easier reading and better auto-detection.</p>
+        <p>Using a hyphenated international dialing format ensures that no matter where the user is calling from, whether a few hundred meters away or thousands of kilometers, their call will be connected.</p>
+    </section>
+    <section>
+        <h2 id="disable-auto-detection-when-necessary">Disable auto-detection when necessary</h2>
+        <p>Modern mobile browsers will automatically detect phone numbers and enable click to call. Mobile Safari automatically converts phone numbers to links with the associated hyperlink styles. Chrome for Android will automatically detect phone numbers and will allow users to click to call, but does not wrap them in hyperlinks or apply any special styles.</p>
+        <p>To prevent Mobile Safari from automatically detecting phone numbers, add the following meta tag to the top of the page:</p><pre><code>&lt;meta name="format-detection" content="telephone=no"&gt;</code></pre>
+    </section>
+    <section>
+        <h2 id="other-click-to-call-features">Other click to call features</h2>
+        <p>In addition to the <code>tel:</code> schema, some modern browsers also support the <code>sms:</code> and <code>mms:</code> schemas, though support is not as consistent, and some features like setting the message body don’t always work.</p>
+    </section>
+</section>
+<section>
+    <section id="device-orientation">
+        <h2>Device orientation</h2>
+    </section>
+    <section>
+        <p>The device orientation event returns rotation data, which includes how much the device is leaning front-to-back, side-to-side and if the phone or laptop has a compass, the direction the device is facing.</p>
+        <ul>
+            <li>Use sparingly.</li>
+            <li>Test for support.</li>
+            <li>Don't update the UI on every orientation event; instead sync to requestAnimationFrame.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="when-to-use-device-orientation-events">When to use device orientation events</h2>
+    </section>
+    <section>
+        <p>There are several uses for device orientation events. For example:</p>
+        <ul>
+            <li>Update a map as the user moves.</li>
+            <li>Subtle UI tweaks, for example adding paralax effects.</li>
+            <li>Combined with GeoLocation, can be used for turn by turn navigation.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="check-for-support-and-listen-for-events">Check for support and listen for events</h2>
+        <p>To listen for <code>DeviceOrientationEvent</code>, first, check to see if the events are supported in the browser. Then, attach an event listener to the <code>window</code> object listening for <code>deviceorientation</code> events.</p><pre><code>    if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', deviceOrientationHandler, false);
       document.getElementById("doeSupported").innerText = "";
     }</code></pre>
-                </section>
-                <section>
-                    <h2 id="handle-the-device-orientation-events">Handle the device orientation events</h2>
-                    <p>The device orientation event fires when the device moves, or changes orientation. It returns data about the difference between the device in its current position in relation to the <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#earth-coordinate-frame">Earth coordinate frame</a>.</p>
-                    <p>The event typically returns three properties, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>alpha</code></a>, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>beta</code></a>, and <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>gamma</code></a>. On Mobile Safari, and additional parameter <a href="https://developer.apple.com/library/safari/documentation/SafariDOMAdditions/Reference/DeviceOrientationEventClassRef/DeviceOrientationEvent/DeviceOrientationEvent.html"><code>webkitCompassHeading</code></a> is returned with the compass heading.</p>
-                </section>
-            </section>
-            <section>
-                <section>
-                    <h2>Device motion</h2>
-                </section>
-                <section>
-                    <p>Device motion provides information about force of acceleration being applied to the device at a given moment, and the rate of rotation.</p>
-                    <ul>
-                        <li>Use device motion for when the current motion of the device is needed.</li>
-                        <li><code>rotationRate</code> is provided in °/sec.</li>
-                        <li><code>acceleration</code> and <code>accelerationWithGravity</code> is provided in m/sec<sup>2</sup>.</li>
-                        <li>Be aware of differences between browser implementations.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="when-to-use-device-motion-events">When to use device motion events</h2>
-                </section>
-                <section>
-                    <p>There are several uses for device motion events. For example:</p>
-                    <ul>
-                        <li>Shake gesture to refresh data.</li>
-                        <li>In games to cause characters to jump or move.</li>
-                        <li>For health and fitness apps</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2 id="check-for-support-and-listen-for-events">Check for support and listen for events</h2>
-                    <p>To listen for <code>DeviceMotionEvent</code>s, first, check to see if the events are supported in the browser. Then, attach an event listener to the <code>window</code> object listening for <code>devicemotion</code> events.</p><pre><code>    if (window.DeviceMotionEvent) {
+    </section>
+    <section>
+        <h2 id="handle-the-device-orientation-events">Handle the device orientation events</h2>
+        <p>The device orientation event fires when the device moves, or changes orientation. It returns data about the difference between the device in its current position in relation to the <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#earth-coordinate-frame">Earth coordinate frame</a>.</p>
+        <p>The event typically returns three properties, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>alpha</code></a>, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>beta</code></a>, and <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>gamma</code></a>. On Mobile Safari, and additional parameter <a href="https://developer.apple.com/library/safari/documentation/SafariDOMAdditions/Reference/DeviceOrientationEventClassRef/DeviceOrientationEvent/DeviceOrientationEvent.html"><code>webkitCompassHeading</code></a> is returned with the compass heading.</p>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>Device motion</h2>
+    </section>
+    <section>
+        <p>Device motion provides information about force of acceleration being applied to the device at a given moment, and the rate of rotation.</p>
+        <ul>
+            <li>Use device motion for when the current motion of the device is needed.</li>
+            <li><code>rotationRate</code> is provided in °/sec.</li>
+            <li><code>acceleration</code> and <code>accelerationWithGravity</code> is provided in m/sec<sup>2</sup>.</li>
+            <li>Be aware of differences between browser implementations.</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="when-to-use-device-motion-events">When to use device motion events</h2>
+    </section>
+    <section>
+        <p>There are several uses for device motion events. For example:</p>
+        <ul>
+            <li>Shake gesture to refresh data.</li>
+            <li>In games to cause characters to jump or move.</li>
+            <li>For health and fitness apps</li>
+        </ul>
+    </section>
+    <section>
+        <h2 id="check-for-support-and-listen-for-events">Check for support and listen for events</h2>
+        <p>To listen for <code>DeviceMotionEvent</code>s, first, check to see if the events are supported in the browser. Then, attach an event listener to the <code>window</code> object listening for <code>devicemotion</code> events.</p><pre><code>    if (window.DeviceMotionEvent) {
       window.addEventListener("devicemotion", deviceMotionHandler);
       setTimeout(stopJump, 3*1000);
     }</code></pre>
-                </section>
-                <section>
-                    <h2 id="handle-the-device-motion-events">Handle the device motion events</h2>
-                    <p>The device motion event fires on a regular interval and returns data about the rotation (in ° per second) and acceleration (in m per second<sup>2</sup>) of the device, at that moment in time. Some devices do not have the hardware to exclude the effect of gravity.</p>
-                    <p>The event returns four properties, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#device-frame-coordinate"><code>accelerationIncludingGravity</code></a>, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#device-frame-coordinate"><code>acceleration</code></a>, which excludes the effects of gravity, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>rotationRate</code></a> and <code>interval</code>.</p>
-                    <p>For example, let’s take a look at a phone, lying on a flat table, with its screen facing up.</p>
-                    <p>Conversely, if the phone were held so the screen was perpendicular to the ground, and was directly visible to the viewer:</p>
-                    <p>One way to use device motion events is to calculate the maximum acceleration of an object. For example, what’s the maximum acceleration of a person jumping.</p><pre><code>    if (evt.acceleration.x &gt; jumpMax.x) {
+    </section>
+    <section>
+        <h2 id="handle-the-device-motion-events">Handle the device motion events</h2>
+        <p>The device motion event fires on a regular interval and returns data about the rotation (in ° per second) and acceleration (in m per second<sup>2</sup>) of the device, at that moment in time. Some devices do not have the hardware to exclude the effect of gravity.</p>
+        <p>The event returns four properties, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#device-frame-coordinate"><code>accelerationIncludingGravity</code></a>, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#device-frame-coordinate"><code>acceleration</code></a>, which excludes the effects of gravity, <a href="https://developers.google.com/web/fundamentals/device-access/device-orientation/index.html#rotation-data"><code>rotationRate</code></a> and <code>interval</code>.</p>
+        <p>For example, let’s take a look at a phone, lying on a flat table, with its screen facing up.</p>
+        <p>Conversely, if the phone were held so the screen was perpendicular to the ground, and was directly visible to the viewer:</p>
+        <p>One way to use device motion events is to calculate the maximum acceleration of an object. For example, what’s the maximum acceleration of a person jumping.</p><pre><code>    if (evt.acceleration.x &gt; jumpMax.x) {
       jumpMax.x = evt.acceleration.x;
     }
     if (evt.acceleration.y &gt; jumpMax.y) {
@@ -636,32 +637,32 @@ else {
     if (evt.acceleration.z &gt; jumpMax.z) {
       jumpMax.z = evt.acceleration.z;
     }</code></pre>
-                </section>
-                <section>
-                    <p>After tapping the Go! button, the user is told to jump! During that time, the page stores the maximum (and minimum) acceleration values, and after the jump, tells the user their maximum acceleration.</p>hs to chart trends over time.</p>
-                    <p>Use the reports below to get started:</p>
-                    <p>In addition to performance reports, AdSense can send occasional customized help and performance report suggestions by email. To sign up, verify your email address in <a href="https://www.google.com/adsense/app#personalSettings">Personal settings</a>, and check the <em>Customized help and performance suggestions</em> checkbox under <em>Email preferences</em>.</p>
-                    <p>Learn more</p>
-                    <p>Learn more about <a href="https://support.google.com/adsense/answer/160562">performance reports</a> in AdSense help.</p>
-                </section>
-                <section>
-                    <h2 id="maximize-bidding-potential">Maximize bidding potential</h2>
-                </section>
-                <section>
-                    <p>The higher the competition, or ‘auction pressure’, the more the advertiser will pay to be viewed and clicked on your site. To maximize your bidding potential:</p>
-                    <ul>
-                        <li>Be sure to allow both <a href="https://support.google.com/adsense/answer/185665">text</a> and <a href="https://support.google.com/adsense/answer/185666">display ads</a>. Excluding one type of ads limits the number of advertisers available to you.</li>
-                        <li>Use ad sizes that are popular with advertisers, see the <a href="https://support.google.com/adsense/answer/6002621">Guide to ad sizes</a>.</li>
-                        <li>In some cases, certain ads may not blend well with your content, be careful about blocking too many categories as it will lower your potential earnings.</li>
-                    </ul>
-                </section>
-                <section>
-                    <p><b>Note:</b> this information is also included in the publisher scorecard, but it’s crucial to strong ad performance!</p>
-                </section>
-                <section>
-                    <h2 id="dont-block-the-adsense-crawler">Don’t block the AdSense crawler</h2>
-                    <p>Verify that the <a href="https://support.google.com/webmasters/answer/6062608">robots.txt</a> file on your site <a href="https://support.google.com/adsense/answer/10532">doesn’t block the AdSense crawler</a>. AdSense needs to be able to process and index the content of web pages and uses the AdSense crawler to visit your site and determine its content. This allows AdSense to provide relevant ads.</p>
-                    <p>To update the <code>robots.txt</code> file to grant the AdSense crawler access to your pages, <em>remove</em> the following two lines of text from your <code>robots.txt</code>:</p><pre><code>User-agent: Mediapartners-Google
+    </section>
+    <section>
+        <p>After tapping the Go! button, the user is told to jump! During that time, the page stores the maximum (and minimum) acceleration values, and after the jump, tells the user their maximum acceleration.</p>hs to chart trends over time.</p>
+        <p>Use the reports below to get started:</p>
+        <p>In addition to performance reports, AdSense can send occasional customized help and performance report suggestions by email. To sign up, verify your email address in <a href="https://www.google.com/adsense/app#personalSettings">Personal settings</a>, and check the <em>Customized help and performance suggestions</em> checkbox under <em>Email preferences</em>.</p>
+        <p>Learn more</p>
+        <p>Learn more about <a href="https://support.google.com/adsense/answer/160562">performance reports</a> in AdSense help.</p>
+    </section>
+    <section>
+        <h2 id="maximize-bidding-potential">Maximize bidding potential</h2>
+    </section>
+    <section>
+        <p>The higher the competition, or ‘auction pressure’, the more the advertiser will pay to be viewed and clicked on your site. To maximize your bidding potential:</p>
+        <ul>
+            <li>Be sure to allow both <a href="https://support.google.com/adsense/answer/185665">text</a> and <a href="https://support.google.com/adsense/answer/185666">display ads</a>. Excluding one type of ads limits the number of advertisers available to you.</li>
+            <li>Use ad sizes that are popular with advertisers, see the <a href="https://support.google.com/adsense/answer/6002621">Guide to ad sizes</a>.</li>
+            <li>In some cases, certain ads may not blend well with your content, be careful about blocking too many categories as it will lower your potential earnings.</li>
+        </ul>
+    </section>
+    <section>
+        <p><b>Note:</b> this information is also included in the publisher scorecard, but it’s crucial to strong ad performance!</p>
+    </section>
+    <section>
+        <h2 id="dont-block-the-adsense-crawler">Don’t block the AdSense crawler</h2>
+        <p>Verify that the <a href="https://support.google.com/webmasters/answer/6062608">robots.txt</a> file on your site <a href="https://support.google.com/adsense/answer/10532">doesn’t block the AdSense crawler</a>. AdSense needs to be able to process and index the content of web pages and uses the AdSense crawler to visit your site and determine its content. This allows AdSense to provide relevant ads.</p>
+        <p>To update the <code>robots.txt</code> file to grant the AdSense crawler access to your pages, <em>remove</em> the following two lines of text from your <code>robots.txt</code>:</p><pre><code>User-agent: Mediapartners-Google
 Disallow: /</code></pre>
-                </section>
-            </section>
+    </section>
+</section>

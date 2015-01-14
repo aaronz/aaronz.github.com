@@ -5,163 +5,1713 @@ description:  Table of DOM Events Compatibility
 ---
 
 <link rel="stylesheet" href="css/compat.css">
-<section><section><h2>DOM Events</h2></section><section><h3>Specification</h3></section><section><h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">blur</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">blur</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Firefox Mac, Safari, and Chrome sometimes don’t support these events on links and/or form fields. See detail page for
 
-        bug descriptions.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/change.html" target="_blank">change</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/change.html" target="_blank">change</a></td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>IE 5-8 has a serious bug in its handling of this event on checkboxes and radios.</li>
-<li>IE and Opera have a serious bug in their handling of this event when
-
-        the user uses the keyboard to change a select.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">click</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">click</a></td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>All browsers but Safari have issues in preventing the default on form fields.
-
-        Browsers judged Almost have two issues, the others (except Safari) one.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/contextmenu.html" target="_blank">contextmenu</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/contextmenu.html" target="_blank">contextmenu</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>Preventing the default (i.e. preventing the context menu from appearing) is the whole point of this event.</p>
-<ul>
-<li>IE8 always prevents the default when this event is handled on the document.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">copy</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">copy</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>See detail page for lazy implementation.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">cut</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">cut</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>See detail page for lazy implementation.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">dblclick</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">dblclick</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/error.html" target="_blank">error</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/error.html" target="_blank">error</a></td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>See detail page for bug descriptions.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focus</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focus</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Firefox Mac, Safari, and Chrome sometimes don’t support these events on links and/or form fields. See detail page for
-
-        bug descriptions.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusin</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusin</a></td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Safari and Chrome fire these events only with addEventListener; not with traditional registration.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusout</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusout</a></td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Safari and Chrome fire these events only with addEventListener; not with traditional registration.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/tests/hashchange.html" target="_blank">hashchange</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/tests/hashchange.html" target="_blank">hashchange</a></td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>This event is interesting for monitoring Back/Forward in Ajax interfaces.</p>
-<ul>
-<li>IE treats all hashes as case insensitive, while the other browsers treat them
-
-            case sensitive.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keydown</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keydown</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incorrect">incorrect</td><td class="comp incorrect">incorrect</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>The event should continue firing as long as the user keeps the key depressed.</p>
-<ul>
-<li>Opera makes a mess: the keydown event does not repeat, and you cannot prevent
-
-        the default.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keypress</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keypress</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incorrect">incorrect</td><td class="comp incorrect">incorrect</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incorrect">incorrect</td><td class="comp incorrect">incorrect</td><td class="comp "></td></tr></table><p><td colspan="15"><p>This event should fire <strong>only</strong> if a keystroke leads to a character actually being added
-
-    to an HTML element such as a text input. It should not fire when the user presses keys like the arrow keys
-
-    which do not result in a character.</p>
-<p>The event should continue firing as long as the user keeps the key depressed.</p>
-<ul>
-<li>Firefox and Opera fire keypress events on any key.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keyup</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keyup</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>This event fires after the keystroke has been processed; for instance after a character has been added to a
-
-    text input. It’s not possible to cancel the default action because that action has already taken place. This
-
-    event should not repeat.</p>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">load</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">load</a></td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp almost">almost</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Older IEs, Firefox, Safari, and Chrome do not fire a load event when a new style sheet is loaded.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mousedown</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mousedown</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseenter</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseenter</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p style="text-transform: uppercase">The other browsers should implement these events as soon as possible.
-
-        They are <a class="external" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseenter">in the spec</a>.
-
-        The spec is the thingy you should follow. So follow it!</p>
-<p>(Yes, I know I’m shouting, but I’ve been saying this since 2003 and <del>nobody has ever paid my message
-
-        the least attention</del> ... well, Opera has done something, but it took fucking eight years.)</p>
-<p>Mouseover and mouseout also fire when the user mouses over or out of a <em>child element</em> of the element
-
-        you registered the events on. Mouseenter and mouseleave don’t. Thus, they are the true equivalent of CSS <code>:hover</code>.</p>
-<p>Once these events are supported by all browsers, creating dropdown menus will become a walk in the park. It’s
-
-        the non-conforming browsers’ fault that we still have to waste hours and hours on carefully distinguishing between
-
-        important and unimportant mouseover and mouseout events. If we just had mouseenter and mouseleave, all
-
-        our problems would be solved.</p>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseleave</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseleave</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>See mouseenter remarks. Including all-caps.</p>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/mousemove.html" target="_blank">mousemove</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/mousemove.html" target="_blank">mousemove</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseout</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseout</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseover</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseover</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mouseup</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mouseup</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">mousewheel</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">mousewheel</a></td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>It is possible to cancel the default action so that the element does not scroll.</p>
-<ul>
-<li>If a mousewheel event handler is defined on an element in IE8, using the mouse wheel
-
-        does not scroll the element. The event fires correctly, though. In other words, IE8 always
-
-        prevents the default of the mousewheel event.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">paste</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">paste</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp yes">yes</td><td class="comp buggy">buggy</td><td class="comp buggy">buggy</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>See detail page for lazy implementation.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">reset</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">reset</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/resize.html" target="_blank">resize</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/resize.html" target="_blank">resize</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">scroll</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">scroll</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Safari probably monitors <code>scrollTop</code> access in order to
-
-        determine whether the user has scrolled an element with <code>overflow: auto</code>.
-
-        (Not applicable to iPhone.)</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/select.html" target="_blank">select</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/select.html" target="_blank">select</a></td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>This event should also fire when the user selects text in any element. Only IE9 and up do so; the other
-
-    browsers only react to selections in a text input or textarea.</p>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">submit</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">submit</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp "></td></tr></table><p><td colspan="15">
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">textinput</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">textinput</a></td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp "></td></tr></table><p><td colspan="15"><p>Only works with addEventListener.</p></td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">unload</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">unload</a></td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp untestable">untestable</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp incomplete">incomplete</td><td class="comp incomplete">incomplete</td><td class="comp "></td></tr></table><p><td colspan="15">
-<ul>
-<li>Firefox on Windows doesn’t display my iframe, so I can’t test it.</li>
-<li>Opera doesn’t fire the unload event when you navigate Back and Forward. It
-
-        does when you click on a link.</li>
-</ul>
-</td></p></section><section><h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">wheel</a></h3><table class="compatibility wide"><tr class="compheader mobile"><th>Method or Property</th></tr><tr class="compheader"><th></th><th>Test</th><th>IE 5.5</th><th>IE 6</th><th>IE 7</th><th>IE8</th><th>IE9</th><th>IE10 pr2</th><th>FF 7.0 Win</th><th>FF 6.1 Mac</th><th>Saf 5.1 Win</th><th>Saf 5.1 Mac</th><th>Chrome 14 Win</th><th>Chrome 13 Mac</th><th>Opera 11.51 Win</th><th>Opera 11.51 Mac</th></tr><tr><td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">wheel</a></td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp yes">yes</td><td class="comp yes">yes</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp no">no</td><td class="comp "></td></tr></table><p><td colspan="15">
-<p>Only works with addEventListener.</p>
-</td></p></section></section>
+<section>
+    <section>
+        <h2>DOM Events</h2>
+    </section>
+    <section>
+        <h3>Specification</h3>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">blur</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">blur</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Firefox Mac, Safari, and Chrome sometimes don’t support these events on links and/or form fields. See detail page for bug descriptions.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/change.html" target="_blank">change</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/change.html" target="_blank">change</a>
+                </td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>IE 5-8 has a serious bug in its handling of this event on checkboxes and radios.</li>
+                    <li>IE and Opera have a serious bug in their handling of this event when the user uses the keyboard to change a select.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">click</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">click</a>
+                </td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>All browsers but Safari have issues in preventing the default on form fields. Browsers judged Almost have two issues, the others (except Safari) one.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/contextmenu.html" target="_blank">contextmenu</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/contextmenu.html" target="_blank">contextmenu</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>Preventing the default (i.e. preventing the context menu from appearing) is the whole point of this event.</p>
+                <ul>
+                    <li>IE8 always prevents the default when this event is handled on the document.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">copy</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">copy</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>See detail page for lazy implementation.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">cut</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">cut</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>See detail page for lazy implementation.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">dblclick</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">dblclick</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/error.html" target="_blank">error</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/error.html" target="_blank">error</a>
+                </td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>See detail page for bug descriptions.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focus</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focus</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Firefox Mac, Safari, and Chrome sometimes don’t support these events on links and/or form fields. See detail page for bug descriptions.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusin</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusin</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Safari and Chrome fire these events only with addEventListener; not with traditional registration.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusout</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/blurfocus.html" target="_blank">focusout</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Safari and Chrome fire these events only with addEventListener; not with traditional registration.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/tests/hashchange.html" target="_blank">hashchange</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/tests/hashchange.html" target="_blank">hashchange</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>This event is interesting for monitoring Back/Forward in Ajax interfaces.</p>
+                <ul>
+                    <li>IE treats all hashes as case insensitive, while the other browsers treat them case sensitive.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keydown</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keydown</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>The event should continue firing as long as the user keeps the key depressed.</p>
+                <ul>
+                    <li>Opera makes a mess: the keydown event does not repeat, and you cannot prevent the default.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keypress</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keypress</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp incorrect">incorrect</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>This event should fire <strong>only</strong> if a keystroke leads to a character actually being added to an HTML element such as a text input. It should not fire when the user presses keys like the arrow keys which do not result in a character.</p>
+                <p>The event should continue firing as long as the user keeps the key depressed.</p>
+                <ul>
+                    <li>Firefox and Opera fire keypress events on any key.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keyup</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">keyup</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>This event fires after the keystroke has been processed; for instance after a character has been added to a text input. It’s not possible to cancel the default action because that action has already taken place. This event should not repeat.</p>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">load</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">load</a>
+                </td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp almost">almost</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Older IEs, Firefox, Safari, and Chrome do not fire a load event when a new style sheet is loaded.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mousedown</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mousedown</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseenter</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseenter</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p style="text-transform: uppercase">The other browsers should implement these events as soon as possible. They are <a class="external" href="http://www.w3.org/TR/DOM-Level-3-Events/#event-type-mouseenter">in the spec</a>. The spec is the thingy you should follow. So follow it!</p>
+                <p>(Yes, I know I’m shouting, but I’ve been saying this since 2003 and
+                    <del>nobody has ever paid my message the least attention</del> ... well, Opera has done something, but it took fucking eight years.)</p>
+                <p>Mouseover and mouseout also fire when the user mouses over or out of a <em>child element</em> of the element you registered the events on. Mouseenter and mouseleave don’t. Thus, they are the true equivalent of CSS <code>:hover</code>.</p>
+                <p>Once these events are supported by all browsers, creating dropdown menus will become a walk in the park. It’s the non-conforming browsers’ fault that we still have to waste hours and hours on carefully distinguishing between important and unimportant mouseover and mouseout events. If we just had mouseenter and mouseleave, all our problems would be solved.</p>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseleave</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseleave</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>See mouseenter remarks. Including all-caps.</p>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/mousemove.html" target="_blank">mousemove</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/mousemove.html" target="_blank">mousemove</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseout</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseout</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseover</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/mouseover.html" target="_blank">mouseover</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mouseup</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/click.html" target="_blank">mouseup</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">mousewheel</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">mousewheel</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>It is possible to cancel the default action so that the element does not scroll.</p>
+                <ul>
+                    <li>If a mousewheel event handler is defined on an element in IE8, using the mouse wheel does not scroll the element. The event fires correctly, though. In other words, IE8 always prevents the default of the mousewheel event.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">paste</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/cutcopypaste.html" target="_blank">paste</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp yes">yes</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp buggy">buggy</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>See detail page for lazy implementation.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">reset</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">reset</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/resize.html" target="_blank">resize</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/resize.html" target="_blank">resize</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">scroll</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">scroll</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Safari probably monitors <code>scrollTop</code> access in order to determine whether the user has scrolled an element with <code>overflow: auto</code>. (Not applicable to iPhone.)</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/select.html" target="_blank">select</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/select.html" target="_blank">select</a>
+                </td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>This event should also fire when the user selects text in any element. Only IE9 and up do so; the other browsers only react to selections in a text input or textarea.</p>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">submit</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/submit.html" target="_blank">submit</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">textinput</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/keys.html" target="_blank">textinput</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>Only works with addEventListener.</p>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">unload</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/load.html" target="_blank">unload</a>
+                </td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp untestable">untestable</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp incomplete">incomplete</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <ul>
+                    <li>Firefox on Windows doesn’t display my iframe, so I can’t test it.</li>
+                    <li>Opera doesn’t fire the unload event when you navigate Back and Forward. It does when you click on a link.</li>
+                </ul>
+            </td>
+        </p>
+    </section>
+    <section>
+        <h3><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">wheel</a></h3>
+        <table class="compatibility wide">
+            <tr class="compheader mobile">
+                <th>Method or Property</th>
+            </tr>
+            <tr class="compheader">
+                <th></th>
+                <th>Test</th>
+                <th>IE 5.5</th>
+                <th>IE 6</th>
+                <th>IE 7</th>
+                <th>IE8</th>
+                <th>IE9</th>
+                <th>IE10 pr2</th>
+                <th>FF 7.0 Win</th>
+                <th>FF 6.1 Mac</th>
+                <th>Saf 5.1 Win</th>
+                <th>Saf 5.1 Mac</th>
+                <th>Chrome 14 Win</th>
+                <th>Chrome 13 Mac</th>
+                <th>Opera 11.51 Win</th>
+                <th>Opera 11.51 Mac</th>
+            </tr>
+            <tr>
+                <td class="declaration"><a href="http://www.quirksmode.org/dom/events/scroll.html" target="_blank">wheel</a>
+                </td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp yes">yes</td>
+                <td class="comp yes">yes</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp no">no</td>
+                <td class="comp "></td>
+            </tr>
+        </table>
+        <p>
+            <td colspan="15">
+                <p>Only works with addEventListener.</p>
+            </td>
+        </p>
+    </section>
+</section>

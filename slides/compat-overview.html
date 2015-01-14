@@ -5,424 +5,427 @@ description: An introduction of cross browser compatibility
 ---
 
 <section id="agenda">
-                <h2>Content</h2>
-                <ul>
-                    <li><a href="#issues">Cross Browser Issues</a></li>
-                    <li><a href="#concepts">Cross Browser Concepts</a></li>
-                    <li><a href="#guideline">Cross Browser Best Practices</a></li>
-                </ul>
-            </section>
-            <section id="issues">
-                <h2>Cross Browser Issues</h2>
-            </section>
+    <h2>Content</h2>
+    <ul>
+        <li><a href="#issues">Cross Browser Issues</a>
+        </li>
+        <li><a href="#concepts">Cross Browser Concepts</a>
+        </li>
+        <li><a href="#guideline">Cross Browser Best Practices</a>
+        </li>
+    </ul>
+</section>
+<section id="issues">
+    <h2>Cross Browser Issues</h2>
+</section>
 
-            <section>
-                <h3>Cross Browser Challenges</h3>
-                <p>
-                    <ul>
-                        <li class="fragment">Many different browsers</li>
-                        <li class="fragment">Many different versions</li>
-                        <li class="fragment">New version releases frequently</li>
-                    </ul>
-                </p>
-            </section>
-            <section>
-                <h3>Cross Browser issue overview</h3>
-                <p>
-                    <ul>
-                        <li class="fragment">layout</li>
-                        <li class="fragment">function</li>
-                        <li class="fragment">performance</li>
-                    </ul>
-                </p>
-            </section>
-            <section>
+<section>
+    <h3>Cross Browser Challenges</h3>
+    <p>
+        <ul>
+            <li class="fragment">Many different browsers</li>
+            <li class="fragment">Many different versions</li>
+            <li class="fragment">New version releases frequently</li>
+        </ul>
+    </p>
+</section>
+<section>
+    <h3>Cross Browser issue overview</h3>
+    <p>
+        <ul>
+            <li class="fragment">layout</li>
+            <li class="fragment">function</li>
+            <li class="fragment">performance</li>
+        </ul>
+    </p>
+</section>
+<section>
 
-                <section>
-                    <h3>layout</h3>
-                    <p>
-                        <ul>
-                            <li>Html/css</li>
-                            <li>Html5/css3</li>
-                        </ul>
-                    </p>
-                </section>
-                <section>
-                    <h3>function</h3>
-                    <p>
-                        <ul>
-                            <li>DOM</li>
-                            <li>JavaScript Core</li>
-                            <li>BOM</li>
-                            <li>Addon/ActiveX</li>
-                        </ul>
-                    </p>
-                </section>
-                <section>
-                    <h3>performance</h3>
-                    <p>
-                        <ul>
-                            <li>Render Engine</li>
-                            <li>Script Engine</li>
-                            <li>Network</li>
-                        </ul>
-                    </p>
-                </section>
-            </section>
-            <section>
-                <h3>Categorizing features in web platform</h3>
-                <ul>
-                    <li>Interoperable and stable - Supported in all the latest browsers; not likely to change in the future</li>
-                    <li>Legacy - Replaced by interoperable features; May be removed in the future</li>
-                    <li>New - Supported in some browsers; Inconsistent implementations</li>
-                </ul>
-            </section>
-            <section id="concepts">
-                <h2>Cross Browser Concepts</h2>
-                <ul>
-                    <li>
-                        Responsive Design</li>
-                    <li>
-                        Polyfill/shims</li>
-                    <li>
-                        Feature detection vs Browser detection</li>
-                    <li>
-                        Graceful degradation vs Progressive enhancement
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Responsive Design</h3>
-                <ul>
-                    <li>Responsive web design (RWD) is aimed at crafting sites to provide an optimal viewing experienceeasy reading and navigation with a minimum of resizing, panning, and scrollingacross a wide range of devices (from mobile phones to desktop computer monitors).</li>
-                    <li>
-                        Media Queries</li>
-                    <li>
-                        Fluid grid</li>
-                    <li>
-                        Flexible images</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Media
+    <section>
+        <h3>layout</h3>
+        <p>
+            <ul>
+                <li>Html/css</li>
+                <li>Html5/css3</li>
+            </ul>
+        </p>
+    </section>
+    <section>
+        <h3>function</h3>
+        <p>
+            <ul>
+                <li>DOM</li>
+                <li>JavaScript Core</li>
+                <li>BOM</li>
+                <li>Addon/ActiveX</li>
+            </ul>
+        </p>
+    </section>
+    <section>
+        <h3>performance</h3>
+        <p>
+            <ul>
+                <li>Render Engine</li>
+                <li>Script Engine</li>
+                <li>Network</li>
+            </ul>
+        </p>
+    </section>
+</section>
+<section>
+    <h3>Categorizing features in web platform</h3>
+    <ul>
+        <li>Interoperable and stable - Supported in all the latest browsers; not likely to change in the future</li>
+        <li>Legacy - Replaced by interoperable features; May be removed in the future</li>
+        <li>New - Supported in some browsers; Inconsistent implementations</li>
+    </ul>
+</section>
+<section id="concepts">
+    <h2>Cross Browser Concepts</h2>
+    <ul>
+        <li>
+            Responsive Design</li>
+        <li>
+            Polyfill/shims</li>
+        <li>
+            Feature detection vs Browser detection</li>
+        <li>
+            Graceful degradation vs Progressive enhancement
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Responsive Design</h3>
+    <ul>
+        <li>Responsive web design (RWD) is aimed at crafting sites to provide an optimal viewing experienceeasy reading and navigation with a minimum of resizing, panning, and scrollingacross a wide range of devices (from mobile phones to desktop computer monitors).</li>
+        <li>
+            Media Queries</li>
+        <li>
+            Fluid grid</li>
+        <li>
+            Flexible images</li>
+    </ul>
+</section>
+<section>
+    <h3>Media
 Queries</h3>
-                <ul>
-                    <li>
-                        Media Queries is a CSS3 module allowing content rendering to adapt to conditions such as screen resolution.</li>
-                    <li>
-                        @media screen and (min-width:500px) { ... }</li>
-                    <li><a href="http://caniuse.com/#feat=css-mediaqueries" target="_blank">http://caniuse.com/#feat=css-mediaqueries</a>
-                    </li>
-                    <li><a href="http://en.wikipedia.org/wiki/Media_queries" target="_blank">http://en.wikipedia.org/wiki/Media_queries</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Fluid Grid</h3>
-                <ul>
-                    <li>
-                        The fluid grid concept calls for page element sizing to be in relative units like percentages, rather than absolute units like pixels or points.</li>
-                    <li><a href="http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem" target="_blank">http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Flexible images</h3>
-                <ul>
-                    <li>
-                        Flexible images are also sized in relative units, so as to prevent them from displaying outside their containing element.</li>
-                    <li><a href="http://alistapart.com/article/fluid-images" target="_blank">http://alistapart.com/article/fluid-images</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Polyfill</h3>
-                <ul>
-                    <li>
-                        In web development, a polyfill (or polyfiller) is downloadable code which provides facilities that are not built into a web browser.</li>
-                    <li><a href="http://en.wikipedia.org/wiki/Polyfill" target="_blank">http://en.wikipedia.org/wiki/Polyfill</a>
-                    </li>
-                    <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills" target="_blank">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills</a>
-                    </li>
-                    <li><a href="http://html5please.com/" target="_blank">http://html5please.com/</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Browser Detection</h3>
+    <ul>
+        <li>
+            Media Queries is a CSS3 module allowing content rendering to adapt to conditions such as screen resolution.</li>
+        <li>
+            @media screen and (min-width:500px) { ... }</li>
+        <li><a href="http://caniuse.com/#feat=css-mediaqueries" target="_blank">http://caniuse.com/#feat=css-mediaqueries</a>
+        </li>
+        <li><a href="http://en.wikipedia.org/wiki/Media_queries" target="_blank">http://en.wikipedia.org/wiki/Media_queries</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Fluid Grid</h3>
+    <ul>
+        <li>
+            The fluid grid concept calls for page element sizing to be in relative units like percentages, rather than absolute units like pixels or points.</li>
+        <li><a href="http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem" target="_blank">http://getbootstrap.com/2.3.2/scaffolding.html#fluidGridSystem</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Flexible images</h3>
+    <ul>
+        <li>
+            Flexible images are also sized in relative units, so as to prevent them from displaying outside their containing element.</li>
+        <li><a href="http://alistapart.com/article/fluid-images" target="_blank">http://alistapart.com/article/fluid-images</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Polyfill</h3>
+    <ul>
+        <li>
+            In web development, a polyfill (or polyfiller) is downloadable code which provides facilities that are not built into a web browser.</li>
+        <li><a href="http://en.wikipedia.org/wiki/Polyfill" target="_blank">http://en.wikipedia.org/wiki/Polyfill</a>
+        </li>
+        <li><a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills" target="_blank">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills</a>
+        </li>
+        <li><a href="http://html5please.com/" target="_blank">http://html5please.com/</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Browser Detection</h3>
 
-                    <p>Browser detection (also known as Browser sniffing) is a set of techniques used in websites and web applications in order to determine the web browser a visitor is using, and to serve browser-appropriate content to the visitor.</p>
-                    <img src="images/browser-detection.png" />
-            </section>
-            <section>
-                <h3>Feature Detection</h3>
-                
-                    <p>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </p>
-                    <img src="images/feature-detection.png" />
-            </section>
-            <section>
-                <h3>Graceful degradation</h3>
-                <ul>
-                    <li>
-                        Graceful degradation, also known as Fault tolerance is a concept of building a web site or application so it provides a good level of user experience in modern browsers. </li>
-                    <li>
-                        However, it will degrade gracefully for those using older browsers. The system may not be as pleasant or as pretty, but the basic functionality will work on older systems. </li>
-                    <li><a href="https://docs.webplatform.org/wiki/concepts/graceful_degradation" target="_blank">https://docs.webplatform.org/wiki/concepts/graceful_degradation</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Progressive enhancement</h3>
-                <ul>
-                    <li>In practical terms, its easiest to break the concept of PE into different layers, each one building on the previous to improve the experience of interacting with the website. </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Core CSS Concept</h3>
-            </section>
-            <section>
-                <h3>CSS
+    <p>Browser detection (also known as Browser sniffing) is a set of techniques used in websites and web applications in order to determine the web browser a visitor is using, and to serve browser-appropriate content to the visitor.</p>
+    <img src="images/browser-detection.png" />
+</section>
+<section>
+    <h3>Feature Detection</h3>
+
+    <p>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </p>
+    <img src="images/feature-detection.png" />
+</section>
+<section>
+    <h3>Graceful degradation</h3>
+    <ul>
+        <li>
+            Graceful degradation, also known as Fault tolerance is a concept of building a web site or application so it provides a good level of user experience in modern browsers. </li>
+        <li>
+            However, it will degrade gracefully for those using older browsers. The system may not be as pleasant or as pretty, but the basic functionality will work on older systems. </li>
+        <li><a href="https://docs.webplatform.org/wiki/concepts/graceful_degradation" target="_blank">https://docs.webplatform.org/wiki/concepts/graceful_degradation</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Progressive enhancement</h3>
+    <ul>
+        <li>In practical terms, its easiest to break the concept of PE into different layers, each one building on the previous to improve the experience of interacting with the website. </li>
+    </ul>
+</section>
+<section>
+    <h3>Core CSS Concept</h3>
+</section>
+<section>
+    <h3>CSS
 Selectors</h3>
-                <ul>
-                    <li><a href="http://www.w3.org/TR/CSS2/selector.html" target="_blank">http://www.w3.org/TR/CSS2/selector.html</a>
-                    </li>
-                    <li><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">http://www.w3schools.com/cssref/css_selectors.asp</a>
-                    </li>
-                    <li><a href="http://css-tricks.com/almanac/selectors/" target="_blank">http://css-tricks.com/almanac/selectors/</a>
-                    </li>
-                    <li><a href="http://www.quirksmode.org/css/selectors/" target="_blank">http://www.quirksmode.org/css/selectors/</a>
-                    </li>
-                    <li><a href="http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx" target="_blank">http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>CSS Units</h3>
-                <ul>
-                    <li><a href="http://www.w3.org/TR/css3-values/" target="_blank">http://www.w3.org/TR/css3-values/</a>
-                    </li>
-                    <li><a href="http://www.w3schools.com/cssref/css_units.asp" target="_blank">http://www.w3schools.com/cssref/css_units.asp</a>
-                    </li>
-                    <li><a href="http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx" target="_blank">http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx</a>
-                    </li>
-                    <li><a href="http://www.quirksmode.org/css/units-values/" target="_blank">http://www.quirksmode.org/css/units-values/</a>
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>CSS box model</h3>
-                <ul>
-                    <li>CSS box model responsibility</li>
-                    <li>
-                        How much space a block-level element takes up</li>
-                    <li>
-                        Whether or not borders and/or margins overlap, or collapse</li>
-                    <li>
-                        A boxs dimensions</li>
-                    <li>
-                        To some extent, a boxs position relative to other content on the page</li>
-                </ul>
-            </section>
-            <section>
-                <h3>CSS box
+    <ul>
+        <li><a href="http://www.w3.org/TR/CSS2/selector.html" target="_blank">http://www.w3.org/TR/CSS2/selector.html</a>
+        </li>
+        <li><a href="http://www.w3schools.com/cssref/css_selectors.asp" target="_blank">http://www.w3schools.com/cssref/css_selectors.asp</a>
+        </li>
+        <li><a href="http://css-tricks.com/almanac/selectors/" target="_blank">http://css-tricks.com/almanac/selectors/</a>
+        </li>
+        <li><a href="http://www.quirksmode.org/css/selectors/" target="_blank">http://www.quirksmode.org/css/selectors/</a>
+        </li>
+        <li><a href="http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx" target="_blank">http://msdn.microsoft.com/en-us/library/hh781510(v=vs.85).aspx</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>CSS Units</h3>
+    <ul>
+        <li><a href="http://www.w3.org/TR/css3-values/" target="_blank">http://www.w3.org/TR/css3-values/</a>
+        </li>
+        <li><a href="http://www.w3schools.com/cssref/css_units.asp" target="_blank">http://www.w3schools.com/cssref/css_units.asp</a>
+        </li>
+        <li><a href="http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx" target="_blank">http://msdn.microsoft.com/en-us/library/ms537660(v=vs.85).aspx</a>
+        </li>
+        <li><a href="http://www.quirksmode.org/css/units-values/" target="_blank">http://www.quirksmode.org/css/units-values/</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>CSS box model</h3>
+    <ul>
+        <li>CSS box model responsibility</li>
+        <li>
+            How much space a block-level element takes up</li>
+        <li>
+            Whether or not borders and/or margins overlap, or collapse</li>
+        <li>
+            A boxs dimensions</li>
+        <li>
+            To some extent, a boxs position relative to other content on the page</li>
+    </ul>
+</section>
+<section>
+    <h3>CSS box
 model rule</h3>
-                <ul>
-                    <li>
-                        Block-level elements are essentially rectangular
-                    </li>
-                    <li>
-                        The dimensions of a block element are calculated by width, height, padding, borders, and margins</li>
-                    <li>
-                        If no height is specified, a block element will be as high as the content it contains, plus padding (unless there are floats, for which see below)</li>
-                    <li>
-                        If no width is specified, a non-floated box will expand to fit the width of its parent minus padding</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Block vs Inline</h3>
-                <img src="images/block-inline.jpg" />
-            </section>
-            <section>
-                <h3>Blocking and inline rules</h3>
-                <ul>
-                    <li>
-                        Block elements will, by default, naturally expand horizontally to fill their parent container, so theres no need to set a width of 100%</li>
-                    <li>
-                        Block elements will, by default, begin at the leftmost edge of the parent box, below any previous block elements (unless floats or positioned elements are utilized)</li>
-                    <li> Inline elements will ignore width and height settings</li>
-                    <li>
-                        Inline elements flow with text, and are subject to typographical properties such as white-space, font-size, and letter-spacing
-                    </li>
-                    <li>
-                        Inline elements can be aligned using the vertical-align property, but block elements cannot</li>
-                    <li>
-                        Inline elements will have some natural space below them in order to accommodate text elements that drop below the line (like the letter g)</li>
-                    <li> An inline element will become a block element if it is floated
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3>Floating and Clearing</h3>
-                <img src="images/float-clear.png" />
-            </section>
-            <section>
-                <h3>Floating
+    <ul>
+        <li>
+            Block-level elements are essentially rectangular
+        </li>
+        <li>
+            The dimensions of a block element are calculated by width, height, padding, borders, and margins</li>
+        <li>
+            If no height is specified, a block element will be as high as the content it contains, plus padding (unless there are floats, for which see below)</li>
+        <li>
+            If no width is specified, a non-floated box will expand to fit the width of its parent minus padding</li>
+    </ul>
+</section>
+<section>
+    <h3>Block vs Inline</h3>
+    <img src="images/block-inline.jpg" />
+</section>
+<section>
+    <h3>Blocking and inline rules</h3>
+    <ul>
+        <li>
+            Block elements will, by default, naturally expand horizontally to fill their parent container, so theres no need to set a width of 100%</li>
+        <li>
+            Block elements will, by default, begin at the leftmost edge of the parent box, below any previous block elements (unless floats or positioned elements are utilized)</li>
+        <li> Inline elements will ignore width and height settings</li>
+        <li>
+            Inline elements flow with text, and are subject to typographical properties such as white-space, font-size, and letter-spacing
+        </li>
+        <li>
+            Inline elements can be aligned using the vertical-align property, but block elements cannot</li>
+        <li>
+            Inline elements will have some natural space below them in order to accommodate text elements that drop below the line (like the letter g)</li>
+        <li> An inline element will become a block element if it is floated
+        </li>
+    </ul>
+</section>
+<section>
+    <h3>Floating and Clearing</h3>
+    <img src="images/float-clear.png" />
+</section>
+<section>
+    <h3>Floating
 and clearing rules</h3>
-                <ul>
-                    <li>
-                        Floated elements are removed from the flow of other block-level, non-floated elements; so in other words, if you float a box left, a trailing paragraph (block level) thats not floated will appear behind the float in the stack, and any text inside the paragraph (inline level) will flow around the float</li>
-                    <li>
-                        To get content to flow around a floated element, it must be either inline or else floated in the same direction</li>
-                    <li>
-                        A floated element without a declared width will shrink to the width of its content, so its generally best to have a set width on a float</li>
-                    <li>
-                        If a block element contains floated children, it will collapse, requiring a fix</li>
-                    <li>
-                        An element thats cleared will avoid flowing around floated elements above them in the document</li>
-                    <li>
-                        An element thats both cleared and floated will only clear itself of elements that come before, not after</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Common problems of IE</h3>
-                <ul>
-                    <li>
-                        IE6 will become problematic if floats are overused, causing (paradoxically) disappearing content or duplicate text</li>
-                    <li>
-                        IE6 will double the margin on floated elements on the side that is the same direction as the float; setting display: inline will often fix this</li>
-                    <li>
-                        In IE6 and IE7, if an element doesnt have layout, it can cause a number of problems, including backgrounds not showing up, margins collapsing improperly, and more</li>
-                    <li>
-                        IE6 does not support min- and max-based CSS properties like min-height, or max-width</li>
-                    <li>
-                        IE6 does not support fixed positioning of background images</li>
-                    <li>
-                        IE6 and IE7 do not support many alternate values for the display property (e.g. inline-table, table-cell, table-row, etc.)</li>
-                    <li>
-                        You cannot use the :hover pseudo-class on any element in IE6 except an anchor </li>
-                    <li>
-                        Certain versions of IE have little support for certain CSS selectors (e.g. attribute selectors, child selectors, etc.)
-                    </li>
-                    <li>
-                        IE versions 6-8 have little support for CSS3, but there are some workarounds</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Forms will often look different</h3>
-                <img src="images/form-difference.png" />
-            </section>
-            <section>
-                <h3>Typography will always look different</h3>
-                <img src="images/tyliogralihy.png" />
-            </section>
-            <section id="guideline">
-                <h2>Cross Browser Best Practices</h2>
-            </section>
-            <section>
-                <h3>Sites don’t need to render the same across all browsers</h3>
-                <ul>
-                    <li>
-                        It's not always necessary to ensuring sites render the same across all browsers.</li>
-                    <img src="images/progressive-enhancement.jpg" alt="progressive enhancement">
-                    <li>Consider <a href="http://www.alistapart.com/articles/understandingprogressiveenhancement" target="_blank">progressively enhancing</a> your site by offering a solid working baseline experience to users with non-modern browsers while providing a richer UI to those users with modern browsers.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Start with a solid template to simplify development</h3>
-                <p>Many of these tips are already built into a project template like <a href="http://html5boilerplate.com/" target="_blank" target="_blank">HTML5 Boilerplate</a> to save you some time.</p>
-                <p> Those rules work equally well for projects targeted at modern browsers and ones that need older browser support all the way back to IE6.</p>
-            </section>
-            <section>
-                <h3>Focus on stable standards</h3>
-                <ul>
-                    <li>
-                        Features that are in the early stages of specification development are very likely to change, which could impact site's stability and customer's experience. </li>
-                    <li>
-                        By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Use IE Compat Inspector to help migrate your site to standard-based code</h3>
-                <p><a href="http://blogs.msdn.com/b/ie/archive/2012/01/20/ie10-compat-inspector.aspx">IE Compat Inspector</a> which can analyze your site in real time, pinpoint patterns of common problems and offer solutions. By including a simple JavaScript file in your code, you'll receive visual results right on your pages.</p>
-                <img src="http://ie.microsoft.com/testdrive/ieblog/2012/Jan/20_IE10CompatInspector_1.png" alt="compat inspector">
-            </section>
-            <section>
-                <h3>Use polyfills and shims sparingly</h3>
-                <ul>
-                    <li>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality.</li>
-                    <li>The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Test in multiple browsers while developing</h3>
-                <ul>
-                    <li>
-                        An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute or worse yet, after it's all public.</li>
-                    <li>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Use a build process with tools to check for errors and minify files</h3>
-                <p>A good set of build tools such as <a href="http://validator.w3.org/" target="_blank" target="_blank">HTML validators</a>, <a href="http://jigsaw.w3.org/css-validator/" target="_blank" target="_blank">CSS validators</a>, <a href="https://github.com/mishoo/UglifyJS" target="_blank" target="_blank">Uglify</a>, and <a href="https://github.com/jshint/jshint/" target="_blank" target="_blank">JSHint</a>, or <a href="http://gruntjs.com/" target="_blank" target="_blank">GruntJS</a> can find latent problems, enforce project code standards, and reduce file size to improve performance.</p>
-            </section>
-            <section>
-                <h3>Always use a standards-based doctype to avoid Quirks Mode</h3>
-                <p><a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank" target="_blank">Start</a> with &lt;!DOCTYPE html&gt;. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
-            </section>
-            <section>
-                <h3>Learn when to use X-UA-Compatible</h3>
-                <ul>
-                    <li>Internet Explorer allows you to define which version's engine is used to render a page using the X-UA-Compatible META tag or HTTP header. A specific version can be designated or the latest version using the 'IE=edge' value. </li>
-                    <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</code></pre>
-                    <li>Designating 'IE=edge' is the best practice because it ensures Internet Explorer uses the latest engine. The most current Internet Explorer version includes the latest security updates as well as feature support. The current version is also the fastest version.</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Understand the backward-compatibility limits of HTML5 tags</h3>
-                <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags. Using plain div elements and classes is often a safer course of action for those cases.</p>
-            </section>
-            <section>
-                <h3>Avoid inline JavaScript tags in HTML markup</h3>
-                <p>As with external script references, an inline script requires the browser to stop parsing HTML and can also prevent parallel downloading of other resources on the page. This can seriously slow the initial load of the page and give the user a dreaded "blank-page" experience. Script sprinkled around the markup is also more difficult to maintain.</p>
-            </section>
-            <section>
-                <h3>Do not use inline JavaScript events inside HTML markup</h3>
-                <p>An example would be &lt;button onclick="validate()"&gt;Validate&lt;/button&gt;. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
-            </section>
-            <section>
-                <h3>Know and use the CSS cascade rules</h3>
-                <p><a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank" target="_blank">Simple id and class selectors</a> are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
-            </section>
-            <section>
-                <h3>Consider a CSS Reset</h3>
-                <p>Different browsers assume different baseline CSS rules. You can help them all to act the same by explicitly ironing out the differences up front. Eric Meyer, who wrote CSS: The Definitive Guide, uses this reset. Another popular choice is YUI Reset CSS.</p>
-                <a href="https://github.com/necolas/normalize.css/" target="_blank" target="_blank">https://github.com/necolas/normalize.css/</a>
-            </section>
-            <section>
-                <h3>Fully prefix vendor-specific CSS properties to future-proof them</h3>
-                <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. <a href="http://blogs.msdn.com/b/ie/archive/2011/10/28/a-best-practice-for-programming-with-vendor-prefixes.aspx" target="_blank" target="_blank">This blog post</a> provides a plain-JavaScript alternative.</p>
-            </section>
-            <section>
-                <h3>Solve compatibility problems with valid CSS rules, not CSS parser hacks</h3>
-                <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank" target="_blank">adding version-specific classes</a> to the html or body tag that can be used in stylesheet rules. <a href="http://msdn.microsoft.com/en-us/library/ms537512(v=vs.85).aspx" target="_blank" target="_blank">Conditional comments</a> can also be used to include a browser-specific CSS file only in the versions that need it.</p>
-            </section>
-            <section>
-                <h3>Always prefer feature detection over browser detection</h3>
-                <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 11 It is more reliable to <a href="http://msdn.microsoft.com/en-us/magazine/hh475813.aspx" target="_blank" target="_blank">detect the feature or problem directly</a>, and use that as the decision criteria for code branches. We recommend <a href="http://modernizr.com/" target="_blank" target="_blank">Modernizr</a> as the easiest way to implement feature detection.</p>
-            </section>
-            <section>
-                <h3>Use a JavaScript library for DOM interactions</h3>
-                <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work. Trying to find and work around all these inconsistencies yourself is a waste of time and likely to create bugs.</p>
-            </section>
-            <section>
-                <h3>Run as little script as possible when the document is ready</h3>
-                <p><a href="http://www.elijahmanor.com/2012/10/dont-initialize-all-things-in.html" target="_blank" target="_blank">Techniques</a> such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
-            </section>
-            <section>
-                <h3>Start AJAX requests as early as possible if they're critical for user interaction with the page</h3>
-                <p>Since an AJAX request can take a long time, there's <a href="http://alexsexton.com/blog/2010/01/dont-let-document-ready-slow-you-down/" target="_blank" target="_blank">no need to wait for the HTML page</a> to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.</p>
-            </section>
-            <section>
-                <h3>Delay-load non-essential scripts</h3>
-                <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before <a href="http://www.aaronpeters.nl/blog/why-loading-third-party-scripts-async-is-not-good-enough" target="_blank" target="_blank">requesting these scripts</a> can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
-            </section>
+    <ul>
+        <li>
+            Floated elements are removed from the flow of other block-level, non-floated elements; so in other words, if you float a box left, a trailing paragraph (block level) thats not floated will appear behind the float in the stack, and any text inside the paragraph (inline level) will flow around the float</li>
+        <li>
+            To get content to flow around a floated element, it must be either inline or else floated in the same direction</li>
+        <li>
+            A floated element without a declared width will shrink to the width of its content, so its generally best to have a set width on a float</li>
+        <li>
+            If a block element contains floated children, it will collapse, requiring a fix</li>
+        <li>
+            An element thats cleared will avoid flowing around floated elements above them in the document</li>
+        <li>
+            An element thats both cleared and floated will only clear itself of elements that come before, not after</li>
+    </ul>
+</section>
+<section>
+    <h3>Common problems of IE</h3>
+    <ul>
+        <li>
+            IE6 will become problematic if floats are overused, causing (paradoxically) disappearing content or duplicate text</li>
+        <li>
+            IE6 will double the margin on floated elements on the side that is the same direction as the float; setting display: inline will often fix this</li>
+        <li>
+            In IE6 and IE7, if an element doesnt have layout, it can cause a number of problems, including backgrounds not showing up, margins collapsing improperly, and more</li>
+        <li>
+            IE6 does not support min- and max-based CSS properties like min-height, or max-width</li>
+        <li>
+            IE6 does not support fixed positioning of background images</li>
+        <li>
+            IE6 and IE7 do not support many alternate values for the display property (e.g. inline-table, table-cell, table-row, etc.)</li>
+        <li>
+            You cannot use the :hover pseudo-class on any element in IE6 except an anchor </li>
+        <li>
+            Certain versions of IE have little support for certain CSS selectors (e.g. attribute selectors, child selectors, etc.)
+        </li>
+        <li>
+            IE versions 6-8 have little support for CSS3, but there are some workarounds</li>
+    </ul>
+</section>
+<section>
+    <h3>Forms will often look different</h3>
+    <img src="images/form-difference.png" />
+</section>
+<section>
+    <h3>Typography will always look different</h3>
+    <img src="images/tyliogralihy.png" />
+</section>
+<section id="guideline">
+    <h2>Cross Browser Best Practices</h2>
+</section>
+<section>
+    <h3>Sites don’t need to render the same across all browsers</h3>
+    <ul>
+        <li>
+            It's not always necessary to ensuring sites render the same across all browsers.</li>
+        <img src="images/progressive-enhancement.jpg" alt="progressive enhancement">
+        <li>Consider <a href="http://www.alistapart.com/articles/understandingprogressiveenhancement" target="_blank">progressively enhancing</a> your site by offering a solid working baseline experience to users with non-modern browsers while providing a richer UI to those users with modern browsers.</li>
+    </ul>
+</section>
+<section>
+    <h3>Start with a solid template to simplify development</h3>
+    <p>Many of these tips are already built into a project template like <a href="http://html5boilerplate.com/" target="_blank" target="_blank">HTML5 Boilerplate</a> to save you some time.</p>
+    <p> Those rules work equally well for projects targeted at modern browsers and ones that need older browser support all the way back to IE6.</p>
+</section>
+<section>
+    <h3>Focus on stable standards</h3>
+    <ul>
+        <li>
+            Features that are in the early stages of specification development are very likely to change, which could impact site's stability and customer's experience. </li>
+        <li>
+            By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</li>
+    </ul>
+</section>
+<section>
+    <h3>Use IE Compat Inspector to help migrate your site to standard-based code</h3>
+    <p><a href="http://blogs.msdn.com/b/ie/archive/2012/01/20/ie10-compat-inspector.aspx">IE Compat Inspector</a> which can analyze your site in real time, pinpoint patterns of common problems and offer solutions. By including a simple JavaScript file in your code, you'll receive visual results right on your pages.</p>
+    <img src="http://ie.microsoft.com/testdrive/ieblog/2012/Jan/20_IE10CompatInspector_1.png" alt="compat inspector">
+</section>
+<section>
+    <h3>Use polyfills and shims sparingly</h3>
+    <ul>
+        <li>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality.</li>
+        <li>The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</li>
+    </ul>
+</section>
+<section>
+    <h3>Test in multiple browsers while developing</h3>
+    <ul>
+        <li>
+            An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute or worse yet, after it's all public.</li>
+        <li>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear.</li>
+    </ul>
+</section>
+<section>
+    <h3>Use a build process with tools to check for errors and minify files</h3>
+    <p>A good set of build tools such as <a href="http://validator.w3.org/" target="_blank" target="_blank">HTML validators</a>, <a href="http://jigsaw.w3.org/css-validator/" target="_blank" target="_blank">CSS validators</a>, <a href="https://github.com/mishoo/UglifyJS" target="_blank" target="_blank">Uglify</a>, and <a href="https://github.com/jshint/jshint/" target="_blank" target="_blank">JSHint</a>, or <a href="http://gruntjs.com/" target="_blank" target="_blank">GruntJS</a> can find latent problems, enforce project code standards, and reduce file size to improve performance.</p>
+</section>
+<section>
+    <h3>Always use a standards-based doctype to avoid Quirks Mode</h3>
+    <p><a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank" target="_blank">Start</a> with &lt;!DOCTYPE html&gt;. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
+</section>
+<section>
+    <h3>Learn when to use X-UA-Compatible</h3>
+    <ul>
+        <li>Internet Explorer allows you to define which version's engine is used to render a page using the X-UA-Compatible META tag or HTTP header. A specific version can be designated or the latest version using the 'IE=edge' value. </li>
+        <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</code></pre>
+        <li>Designating 'IE=edge' is the best practice because it ensures Internet Explorer uses the latest engine. The most current Internet Explorer version includes the latest security updates as well as feature support. The current version is also the fastest version.</li>
+    </ul>
+</section>
+<section>
+    <h3>Understand the backward-compatibility limits of HTML5 tags</h3>
+    <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags. Using plain div elements and classes is often a safer course of action for those cases.</p>
+</section>
+<section>
+    <h3>Avoid inline JavaScript tags in HTML markup</h3>
+    <p>As with external script references, an inline script requires the browser to stop parsing HTML and can also prevent parallel downloading of other resources on the page. This can seriously slow the initial load of the page and give the user a dreaded "blank-page" experience. Script sprinkled around the markup is also more difficult to maintain.</p>
+</section>
+<section>
+    <h3>Do not use inline JavaScript events inside HTML markup</h3>
+    <p>An example would be &lt;button onclick="validate()"&gt;Validate&lt;/button&gt;. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
+</section>
+<section>
+    <h3>Know and use the CSS cascade rules</h3>
+    <p><a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank" target="_blank">Simple id and class selectors</a> are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
+</section>
+<section>
+    <h3>Consider a CSS Reset</h3>
+    <p>Different browsers assume different baseline CSS rules. You can help them all to act the same by explicitly ironing out the differences up front. Eric Meyer, who wrote CSS: The Definitive Guide, uses this reset. Another popular choice is YUI Reset CSS.</p>
+    <a href="https://github.com/necolas/normalize.css/" target="_blank" target="_blank">https://github.com/necolas/normalize.css/</a>
+</section>
+<section>
+    <h3>Fully prefix vendor-specific CSS properties to future-proof them</h3>
+    <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. <a href="http://blogs.msdn.com/b/ie/archive/2011/10/28/a-best-practice-for-programming-with-vendor-prefixes.aspx" target="_blank" target="_blank">This blog post</a> provides a plain-JavaScript alternative.</p>
+</section>
+<section>
+    <h3>Solve compatibility problems with valid CSS rules, not CSS parser hacks</h3>
+    <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank" target="_blank">adding version-specific classes</a> to the html or body tag that can be used in stylesheet rules. <a href="http://msdn.microsoft.com/en-us/library/ms537512(v=vs.85).aspx" target="_blank" target="_blank">Conditional comments</a> can also be used to include a browser-specific CSS file only in the versions that need it.</p>
+</section>
+<section>
+    <h3>Always prefer feature detection over browser detection</h3>
+    <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 11 It is more reliable to <a href="http://msdn.microsoft.com/en-us/magazine/hh475813.aspx" target="_blank" target="_blank">detect the feature or problem directly</a>, and use that as the decision criteria for code branches. We recommend <a href="http://modernizr.com/" target="_blank" target="_blank">Modernizr</a> as the easiest way to implement feature detection.</p>
+</section>
+<section>
+    <h3>Use a JavaScript library for DOM interactions</h3>
+    <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work. Trying to find and work around all these inconsistencies yourself is a waste of time and likely to create bugs.</p>
+</section>
+<section>
+    <h3>Run as little script as possible when the document is ready</h3>
+    <p><a href="http://www.elijahmanor.com/2012/10/dont-initialize-all-things-in.html" target="_blank" target="_blank">Techniques</a> such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
+</section>
+<section>
+    <h3>Start AJAX requests as early as possible if they're critical for user interaction with the page</h3>
+    <p>Since an AJAX request can take a long time, there's <a href="http://alexsexton.com/blog/2010/01/dont-let-document-ready-slow-you-down/" target="_blank" target="_blank">no need to wait for the HTML page</a> to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.</p>
+</section>
+<section>
+    <h3>Delay-load non-essential scripts</h3>
+    <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before <a href="http://www.aaronpeters.nl/blog/why-loading-third-party-scripts-async-is-not-good-enough" target="_blank" target="_blank">requesting these scripts</a> can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
+</section>

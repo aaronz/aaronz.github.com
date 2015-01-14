@@ -1,0 +1,1532 @@
+---
+layout: slide 
+title: Optimizing Performance
+description: Performance is a feature
+---
+
+<link rel="stylesheet" href="css/slide.css">
+<section id="agenda">
+    <h3>agenda</h3>
+                <ul>
+                    <li><a href="#critical-rendering-path">Critical Rendering Path</a>
+                    </li>
+                    <li><a href="#optimizing-content-efficiency">Optimizing Content Efficiency</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section id="critical-rendering-path">
+                    <h2>Critical Rendering Path</h2>
+                </section>
+            </section>
+            <section>
+
+                <section>
+                    <h2>Constructing the Object Model</h2>
+                    <p>Before the browser can render the page it needs to construct the DOM and CSSOM trees. As a result, we need to ensure that we deliver both the HTML and CSS to the browser as quickly as possible.</p>
+                </section>
+                <section>
+                    <h2 id="document-object-model-dom">Document Object Model (DOM)</h2>
+                </section>
+                <section>
+                    <h2><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model.html">Learn about DOM construction @ Udacity</a></h2>
+                    <p>Get hands on with videos, quizzes, discussions and more.</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+        &lt;title&gt;Critical Path&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Let’s start, with the simplest possible case: a plain HTML page with some text and a single image. What does the browser need to do to process this simple page?</p>
+                    <p><img alt="DOM construction process" src="images/full-process.png" />
+                    </p>
+                </section>
+                <section>
+                    <p><img alt="DOM tree" src="images/dom-tree.png" />
+                    </p>
+                </section>
+                <section>
+                    <p><strong>The final output of this entire process is the Document Object Model, or the "DOM" of our simple page, which the browser uses for all further processing of the page.</strong>
+                    </p>
+                    <p>Every time the browser has to process HTML markup it has to step through all of the steps above: convert bytes to characters, identify tokens, convert tokens to nodes, and build the DOM tree. This entire process can take some time, especially if we have a large amount of HTML to process.</p>
+                    <p><img alt="Tracing DOM construction in DevTools" src="images/dom-timeline.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>We'll assume that you have basic familiarity with Chrome DevTools - i.e. you know how to capture a network waterfall, or record a timeline. If you need a quick refresher, check out the <a href="https://developer.chrome.com/devtools">Chrome DevTools documentation</a>, or if you're new to DevTools, we recommend taking the Codeschool <a href="http://discover-devtools.codeschool.com/">Discover DevTools</a> course.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>If you open up Chrome DevTools and record a timeline while the page is loaded, you can see the actual time taken to perform this step — in the example above, it took us ~5ms to convert a chunk of HTML bytes into a DOM tree. Of course, if the page was larger, as most pages are, this process might take significantly longer. You will see in our future sections on creating smooth animations that this can easily become your bottleneck if the browser has to process large amounts of HTML.</p>
+                    <p>With the DOM tree ready, do we have enough information to render the page to the screen? Not yet! The DOM tree captures the properties and relationships of the document markup, but it does not tell us anything about how the element should look when rendered. That’s the responsibility of the CSSOM, which we turn to next!</p>
+                </section>
+                <section>
+                    <h2 id="css-object-model-cssom">CSS Object Model (CSSOM)</h2>
+                    <p>While the browser was constructing the DOM of our simple page, it encountered a link tag in the head section of the document referencing an external CSS stylesheet: style.css. Anticipating that it will need this resource to render the page, it immediately dispatches a request for this resource, which comes back with the following content:</p><pre><code>    body { font-size: 16px }
+    p { font-weight: bold }
+    span { color: red }
+    p span { display: none }
+    img { float: right }</code></pre>
+                </section>
+                <section>
+                    <p>Of course, we could have declared our styles directly within the HTML markup (inline), but keeping our CSS independent of HTML allows us to treat content and design as separate concerns: the designers can work on CSS, developers can focus on HTML, and so on.</p>
+                    <p>Just as with HTML, we need to convert the received CSS rules into something that the browser can understand and work with. Hence, once again, we repeat a very similar process as we did with HTML:</p>
+                    <p><img alt="CSSOM construction steps" src="images/cssom-construction.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>The CSS bytes are converted into characters, then to tokens and nodes, and finally are linked into a tree structure known as the "CSS Object Model", or CSSOM for short:</p>
+                    <p><img alt="CSSOM tree" src="images/cssom-tree.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Curious to know how long the CSS processing took? Record a timeline in DevTools and look for "Recalculate Style" event: unlike DOM parsing, the timeline doesn’t show a separate "Parse CSS" entry, and instead captures parsing and CSSOM tree construction, plus the recursive calculation of computed styles under this one event.</p>
+                    <p><img alt="Tracing CSSOM construction in DevTools" src="images/cssom-timeline.png" />
+                    </p>
+                    <p>Our trivial stylesheet takes ~0.6ms to process and affects 8 elements on the page – not much, but once again, not free. However, where did the 8 elements come from? The CSSOM and DOM and are independent data structures! Turns out, the browser is hiding an important step. Next, lets talk about the render tree that links the DOM and CSSOM together.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Render-tree construction, Layout, and Paint</h2>
+                    <ul>
+                        <li>The DOM and CSSOM trees are combined to form the render tree.</li>
+                        <li>Render tree contains only the nodes required to render the page.</li>
+                        <li>Layout computes the exact position and size of each object.</li>
+                        <li>Paint is the last step that takes in the final render tree and renders the pixels to the screen.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The first step is for the browser to combine the DOM and CSSOM into a "render tree" that captures all the visible DOM content on the page, plus all the CSSOM style information for each node.</p>
+                    <p><img alt="DOM and CSSOM are combined to create the render tree" src="images/render-tree-construction.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>To construct the render tree, the browser roughly does the following:</p>
+                    <ul>
+                        <li>Some nodes are not visible at all (e.g. script tags, meta tags, and so on), and are omitted since they are not reflected in the rendered output.</li>
+                        <li>Some nodes are hidden via CSS and are also omitted from the render tree - e.g. the span node in example above is missing from the render tree because we have an explicit rule that sets "display: none" property on it.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>As a brief aside, note that 'visibility: hidden' is different from 'display: none'. The former makes the element invisible, but the element is still occupies space in the layout (i.e. it's rendered as an empty box), whereas the latter (display: none) removes the element entirely from the render tree such that the element is invisible and is not part of layout.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The final output is a render that contains both the content and the style information of all the visible content on the screen - we’re getting close! <strong>With the render tree in place, we can proceed to the "layout" stage.</strong>
+                    </p>
+                    <p>Up to this point we’ve calculated which nodes should be visible and their computed styles, but we have not calculated their exact position and size within the <a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/set-the-viewport.html">viewport</a> of the device - that’s the "layout" stage, also sometimes known as "reflow."</p>
+                    <p>To figure out the exact size and position of each object the browser begins at the root of the render tree and traverses it to compute the geometry of each object on the page. Let’s consider a simple hands-on example:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;title&gt;Critial Path: Hello world!&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div style="width: 50%"&gt;
+          &lt;div style="width: 50%"&gt;Hello world!&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>The body of the above page contains two nested div’s: the first (parent) div sets the display size of the node to 50% of the viewport width, and the second div contained by the parent sets its width to be 50% of its parent - i.e. 25% of the viewport width!</p>
+                    <p><img alt="Calculating layout information" src="images/layout-viewport.png" />
+                    </p>
+                    <p>The output of the layout process is a "box model" which precisely captures the exact position and size of each element within the viewport: all of the relative measures are converted to absolute pixels positions on the screen, and so on.</p>
+                    <p>Finally, now that we know which nodes are visible, their computed styles, and geometry, we can finally pass this information to our final stage which will convert each node in the render tree to actual pixels on the screen - this step is often referred to as "painting" or "rasterizing."</p>
+                </section>
+                <section>
+                    <p>Did you follow all of that? Each of these steps requires a non-trivial amount of work by the browser, which also means that it can often take quite a bit of time. Thankfully, Chrome DevTools can help us get some insight into all three of the stages we’ve described above. Let’s examine the layout stage for our original "hello world" example:</p>
+                    <p><img alt="Measuring layout in DevTools" src="images/layout-timeline.png" />
+                    </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>The render tree construction and position and size calculation are captured with the "Layout" event in the Timeline.</li>
+                        <li>Once layout is complete, the browser issues a "Paint Setup" and "Paint" events which convert the render tree to actual pixels on the screen.</li>
+                    </ul>
+                    <p><img alt="Rendered Hello World page" src="images/device-dom-small.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Let’s do a quick recap of all the steps the browser went through:</p>
+                    <p>Our demo page may look very simple, but it requires quite a bit of work! Care to guess what would happen if the DOM, or CSSOM is modified? We would have to repeat the same process over again to figure out which pixels need to be re-rendered on the screen.</p>
+                    <p><strong>Optimizing the critical rendering path is the process of minimizing the total amount of time spent in steps 1 through 5 in the above sequence.</strong> Doing so enables us to render content to the screen as soon as possible and also to reduces the amount of time between screen updates after the initial render - i.e. achieve higher refresh rate for interactive content.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Render Blocking CSS</h2>
+                    <ul>
+                        <li>By default, CSS is treated as a render blocking resource.</li>
+                        <li>Media types and media queries allow us to mark some CSS resources as non-render blocking.</li>
+                        <li>All CSS resources, regardless of blocking or non-blocking behavior, are downloaded by the browser.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p><strong><em>CSS is a render blocking resource, get it down to the client as soon and as quickly as possible to optimize the time to first render!</em></strong>
+                    </p>
+                    <p>However, what if we have some CSS styles that are only used under certain conditions, for example, when the page is being printed, or being projected onto a large monitor? It would be nice if we didn’t have to block rendering on these resources!</p>
+                    <p>CSS "media types" and "media queries" allow us to address these use-cases:</p><pre><code>&lt;link href="style.css" rel="stylesheet"&gt;
+&lt;link href="print.css" rel="stylesheet" media="print"&gt;
+&lt;link href="other.css" rel="stylesheet" media="(min-width: 40em)"&gt;</code></pre>
+                </section>
+                <section>
+                    <p>By using media queries, our presentation can be tailored to specific use cases such as display vs. print, and also to dynamic conditions such as changes in screen orientation, resize events, and more. <strong>When declaring your stylesheet assets, pay close attention to the media type and queries, as they will have big performance impact on the critical rendering path!</strong>
+                    </p>
+                    <ul>
+
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries" title="Responsive Web design">Responsive Web design</a>
+                        </li>
+                        <li><a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/use-media-queries">Use CSS media queries for responsiveness</a>
+                        </li>
+                    </ul>
+                    <p>Let’s consider some hands-on examples:</p><pre><code>&lt;link href="style.css"    rel="stylesheet"&gt;
+&lt;link href="style.css"    rel="stylesheet" media="screen"&gt;
+&lt;link href="portrait.css" rel="stylesheet" media="orientation:portrait"&gt;
+&lt;link href="print.css"    rel="stylesheet" media="print"&gt;</code></pre>
+                </section>
+                <section>
+                    <ul>
+                        <li>The first declaration is render blocking and matches in all conditions.</li>
+                        <li>The second declaration is also render blocking: "screen" is the default type and if you don’t specify any type, it’s implicitly set to "screen". Hence, the first and second declarations are actually equivalent.</li>
+                        <li>The third declaration has a dynamic media query which will be evaluated when the page is being loaded. Depending on the orientation of the device when the page is being loaded, portrait.css may or may not be render blocking.</li>
+                        <li>The last declaration is only applied when the page is being printed, hence it is not render blocking when the page is first loaded in the browser.</li>
+                    </ul>
+                    <p>Finally, note that "render blocking" only refers to whether the browser will have to hold the initial rendering of the page on that resource. In either case, the CSS asset is still downloaded by the browser, albeit with a lower priority for non-blocking resources.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Adding Interactivity with JavaScript</h2>
+                    <ul>
+                        <li>JavaScript can query and modify DOM and CSSOM.</li>
+                        <li>JavaScript execution blocks on CSSOM.</li>
+                        <li>JavaScript blocks DOM construction unless explicitly declared as async.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>JavaScript is a dynamic language that runs in the browser and allows us to alter just about every aspect of how the page behaves: we can modify content on the page by adding or removing elements from the DOM tree, we can modify the CSSOM properties of each element, we can handle user input, and much more. To illustrate this in action, let’s augment our previous "Hello World" example with a simple inline script:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+        &lt;title&gt;Critical Path: Script&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script&gt;
+          var span = document.getElementsByTagName('span')[0];
+          span.textContent = 'interactive'; // change DOM text content
+          span.style.display = 'inline';  // change CSSOM property
+          // create a new element, style it, and append it to the DOM
+          var loadTime = document.createElement('div');
+          loadTime.textContent = 'You loaded this page on: ' + new Date();
+          loadTime.style.color = 'blue';
+          document.body.appendChild(loadTime);
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <p>JavaScript allows us to reach into the DOM and pull out the reference to the hidden span node - the node may not be visible in the render tree, but it’s still there in the DOM! Then, once we have the reference, we can change its text (via .textContent), and even override its calculated display style property from ‘none’ to ‘inline’. Once all is said and done, our page will now display "<strong>Hello interactive students!</strong>".</p>
+                        </li>
+                        <li>
+                            <p>JavaScript also allows us to create, style, and append and remove new elements to the DOM. In fact, technically our entire page could be just one big JavaScript file which creates and styles the elements one by one - that would work, but working with HTML and CSS is much easier in practice. In the second part of our JavaScript function we create a new div element, set its text content, style it, and append it to the body.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>JavaScript allows us to reach into the DOM and pull out the reference to the hidden span node - the node may not be visible in the render tree, but it’s still there in the DOM! Then, once we have the reference, we can change its text (via .textContent), and even override its calculated display style property from ‘none’ to ‘inline’. Once all is said and done, our page will now display "<strong>Hello interactive students!</strong>".</p>
+                    <p>JavaScript also allows us to create, style, and append and remove new elements to the DOM. In fact, technically our entire page could be just one big JavaScript file which creates and styles the elements one by one - that would work, but working with HTML and CSS is much easier in practice. In the second part of our JavaScript function we create a new div element, set its text content, style it, and append it to the body.</p>
+                    <p><img alt="page preview" src="images/device-js-small.png" />
+                    </p>
+                </section>
+                <section>
+
+                    <p>In short, JavaScript introduces a lot of new dependencies between the DOM, CSSOM, and JavaScript execution and can lead to significant delays in how quickly the browser can process and render our page on the screen:</p>
+                    <p>When we talk about "optimizing the critical rendering path," to a large degree we’re talking about understanding and optimizing the dependency graph between HTML, CSS, and JavaScript.</p>
+                </section>
+                <section>
+                    <h2 id="parser-blocking-vs-asynchronous-javascript">Parser Blocking vs. Asynchronous JavaScript</h2>
+                    <p>What about scripts included via a script tag? Let’s take our previous example and extract our code into a separate file:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+        &lt;title&gt;Critical Path: Script External&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="app.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><strong>app.js</strong>
+                    </p><pre><code>    var span = document.getElementsByTagName('span')[0];
+    span.textContent = 'interactive'; // change DOM text content
+    span.style.display = 'inline';  // change CSSOM property
+    // create a new element, style it, and append it to the DOM
+    var loadTime = document.createElement('div');
+    loadTime.textContent = 'You loaded this page on: ' + new Date();
+    loadTime.style.color = 'blue';
+    document.body.appendChild(loadTime);</code></pre>
+                </section>
+                <section>
+                    </p>
+                    <p>So, how do we achieve this trick? It’s pretty simple, we can mark our script as <em>async</em>:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+        &lt;title&gt;Critical Path: Script Async&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="app.js" async&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Adding the async keyword to the script tag tells the browser that it should not block the DOM construction while it waits for the script to become available - this is a huge performance win!</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Measuring the Critical Rendering Path with Navigation Timing</h2>
+                    <ul>
+                        <li>Navigation Timing provides high resolution timestamps for measuring CRP.</li>
+                        <li>Browser emits series of consumable events which capture various stages of the CRP.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The foundation of every solid performance strategy is good measurement and instrumentation. Turns out, that is exactly what the Navigation Timing API provides.</p>
+                    <p><img alt="Navigation Timing" src="images/dom-navtiming.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Each of the labels in the above diagram corresponds to a high resolution timestamp that the browser tracks for each and every page it loads. In fact, in this specific case we’re only showing a fraction of all the different timestamps — for now we’re skipping all network related timestamps, but we’ll come back to them in a future lesson.</p>
+                </section>
+                <section>
+                    <p>So, what do these timestamps mean?</p>
+                    <ul>
+                        <li><strong>domLoading:</strong> this is the starting timestamp of the entire process, the browser is about to start parsing the first received bytes of the HTML document.</li>
+                        <li><strong>domInteractive:</strong> marks the point when the browser has finished parsing all of the HTML and DOM construction is complete.</li>
+                        <li><strong>domContentLoaded:</strong> marks the point when both the DOM is ready and there are no stylesheets that are blocking JavaScript execution - meaning we can now (potentially) construct the render tree.
+                        </li>
+                        <li><strong>domComplete:</strong> as the name implies, all of the processing is complete and all of the resources on the page (images, etc.) have finished downloading - i.e. the loading spinner has stopped spinning.</li>
+                        <li><strong>loadEvent:</strong> as a final step in every page load the browser fires an "onload" event which can trigger additional application logic.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The HTML specification dictates specific conditions for each and every event: when it should be fired, which conditions should be met, and so on. For our purposes, we’ll focus on a few key milestones related to the critical rendering path:</p>
+                    <ul>
+                        <li><strong>domInteractive</strong> marks when DOM is ready.</li>
+                        <li><strong>domContentLoaded</strong> typically marks when <a href="http://calendar.perfplanet.com/2012/deciphering-the-critical-rendering-path/">both the DOM and CSSOM are ready</a>.
+                        </li>
+                        <li>
+                            <p><strong>domComplete</strong> marks when the page and all of its subresources are ready.</p>
+                        </li>
+                    </ul>
+                    <p><strong>domComplete</strong> marks when the page and all of its subresources are ready.</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Critical Path: Measure&lt;/title&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+        &lt;script&gt;
+          function measureCRP() {
+            var t = window.performance.timing,
+              interactive = t.domInteractive - t.domLoading,
+              dcl = t.domContentLoadedEventStart - t.domLoading,
+              complete = t.domComplete - t.domLoading;
+            var stats = document.createElement('p');
+            stats.textContent = 'interactive: ' + interactive + 'ms, ' +
+                'dcl: ' + dcl + 'ms, complete: ' + complete + 'ms';
+            document.body.appendChild(stats);
+          }
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="measureCRP()"&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>The above example may seem a little daunting on first sight, but in reality it is actually pretty simple. The Navigation Timing API captures all the relevant timestamps and our code simply waits for the "onload" event to fire — recall that onload event fires after domInteractive, domContentLoaded and domComplete — and computes the difference between the various timestamps.
+                    </p>
+                    <img alt="NavTiming demo" src="images/device-navtiming-small.png" />
+                </section>
+                <section>
+                    <p>All said and done, we now have some specific milestones to track and a simple function to output these measurements. Note that instead of printing these metrics on the page you can also modify the code to send these metrics to an analytics server (<a href="https://support.google.com/analytics/answer/1205784?hl=en">Google Analytics does this automatically</a>), which is a great way to keep tabs on performance of your pages and identify candidate pages that can benefit from some optimization work.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Analyzing Critical Rendering Path Performance</h2>
+
+                    <ul>
+                        <li>A network roundtrip (propagation latency) to the server will cost 100ms</li>
+                        <li>Server response time will be 100ms for the HTML document and 10ms for all other files</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="the-hello-world-experience">The Hello World experience</h2><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;title&gt;Critical Path: No Style&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>We’ll start with basic HTML markup and a single image - no CSS or JavaScript - which is about as simple as it gets. Now let’s open up our Network timeline in Chrome DevTools and inspect the resulting resource waterfall:</p>
+                    <p><img alt="CRP" src="images/waterfall-dom.png" />
+                    </p>
+                </section>
+                <section>
+                    <h2 id="adding-javascript-and-css-into-the-mix">Adding JavaScript and CSS into the mix</h2>
+                    <p>Our "Hello World experience" page may seem simple on the surface, but there is a lot going on under the hood to make it all happen! That said, in practice we’ll also need more than just the HTML: chances are, we’ll have a CSS stylesheet and one or more scripts to add some interactivity to our page. Let’s add both to the mix and see what happens:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Critical Path: Measure Script&lt;/title&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+      &lt;/head&gt;
+      &lt;body onload="measureCRP()"&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="timing.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><em>Before adding JavaScript and CSS:</em>
+                    </p>
+                    <p><img alt="DOM CRP" src="images/waterfall-dom.png" />
+                    </p>
+                </section>
+                <section>
+                    <p><em>With JavaScript and CSS:</em>
+                    </p>
+                    <p><img alt="DOM, CSSOM, JS" src="images/waterfall-dom-css-js.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Adding external CSS and JavaScript files added two extra requests to our waterfall, all of which are dispatched at about the same time by the browser - so far so good. However, <strong>note that there is now a much smaller timing difference between the domContentLoaded and onload events. What happened?</strong>
+                    </p>
+                    <ul>
+                        <li>Unlike our plain HTML example, we now also need to fetch and parse the CSS file to construct the CSSOM, and we know that we need both the DOM and CSSOM to build the render tree.</li>
+                        <li>Because we also have a parser blocking JavaScript file on our page, the domContentLoaded event is blocked until the CSS file is downloaded and parsed: the JavaScript may query the CSSOM, hence we must block and wait for CSS before we can execute JavaScript.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p><strong>What if we replace our external script with an inline script?</strong> A trivial question on the surface but actually its very tricky. Turns out, even if the script is inlined directly into the page the only reliable way for the browser to know what that script is intending to do is, well, to execute it, and as we already know, we can’t do that until the CSSOM is constructed. In short, inlined JavaScript is also parser blocking.</p>
+                    <p>That said, despite blocking on CSS, will inlining the script make the page render faster? If the last scenario was tricky, then this one is even more so! Let’s try it and see what happens…</p>
+                    <p><em>External JavaScript:</em>
+                    </p>
+                    <p><img alt="DOM, CSSOM, JS" src="images/waterfall-dom-css-js.png" />
+                    </p>
+                    <p><em>Inlined JavaScript:</em>
+                    </p>
+                    <p><img alt="DOM, CSSOM, and inlined JS" src="images/waterfall-dom-css-js-inline.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Are we stuck and is there nothing that we can do to make our page render faster? Actually, we have several different strategies.</p>
+                    <p>First, recall that all inline scripts are parser blocking, but for external scripts we can add the "async" keyword to unblock the parser. Let’s undo our inlining and give that a try:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Critical Path: Measure Async&lt;/title&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+      &lt;/head&gt;
+      &lt;body onload="measureCRP()"&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script async src="timing.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><em>Parser-blocking (external) JavaScript:</em>
+                    </p>
+                    <p><img alt="DOM, CSSOM, JS" src="images/waterfall-dom-css-js.png" />
+                    </p>
+                </section>
+                <section>
+                    <p><em>Async (external) JavaScript:</em>
+                    </p>
+                    <p><img alt="DOM, CSSOM, async JS" src="images/waterfall-dom-css-js-async.png" />
+                    </p>
+                    <p>Much better! The domContentLoaded event fires shortly after the HTML is parsed: the browser knows not to block on JavaScript and since there are no other parser blocking scripts the CSSOM construction can also proceed in parallel.</p>
+                </section>
+                <section>
+                    <p>Alternatively, we could have tried a different approach and inlined both the CSS and JavaScript:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Critical Path: Measure Inlined&lt;/title&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;style&gt;
+          p { font-weight: bold }
+          span { color: red }
+          p span { display: none }
+          img { float: right }
+        &lt;/style&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script&gt;
+          var span = document.getElementsByTagName('span')[0];
+          span.textContent = 'interactive'; // change DOM text content
+          span.style.display = 'inline';  // change CSSOM property
+          // create a new element, style it, and append it to the DOM
+          var loadTime = document.createElement('div');
+          loadTime.textContent = 'You loaded this page on: ' + new Date();
+          loadTime.style.color = 'blue';
+          document.body.appendChild(loadTime);
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><img alt="DOM, inline CSS, inline JS" src="images/waterfall-dom-css-inline-js-inline.png" />
+                    </p>
+                    <p>Notice that the <em>domContentLoaded</em> time is effectively the same as in the previous example: instead of marking our JavaScript as async, we’ve inlined both the CSS and JS into the page itself. This made our HTML page much larger, but the upside is that the browser doesn’t have to wait to fetch any external resources - everything is right there in the page.</p>
+                </section>
+                <section>
+                    <h2 id="performance-patterns">Performance Patterns</h2>
+                    <p>The simplest possible page consists of just the HTML markup: no CSS, no JavaScript, or other types of resources. To render this page the browser has to initiate the request, wait for the HTML document to arrive, parse it, build the DOM, and then finally render it on the screen:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;title&gt;Critical Path: No Style&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><img alt="Hello world CRP" src="images/analysis-dom.png" />
+                    </p>
+                    <p><strong>The time between T<sub>0</sub> and T<sub>1</sub> captures the network and server processing times.</strong> In the best case (if the HTML file is small), all we will need is just one network roundtrip to fetch the entire document - due to how the TCP transports protocols work, larger files may require more roundtrips, this is a topic we’ll come back to in a future lesson. <strong>As a result, we can say that the above page, in the best case, has a one roundtrip (minimum) critical rendering path.</strong>
+                    </p>
+                </section>
+                <section>
+                    <p>Now, let’s consider the same page but with an external CSS file:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><img alt="DOM + CSSOM CRP" src="images/analysis-dom-css.png" />
+                    </p>
+                    <p>Once again, we incur a network roundtrip to fetch the HTML document and then the retrieved markup tells us that we will also need the CSS file: this means that the browser has to go back to the server and get the CSS before it can render the page on the screen. <strong>As a result, this page will incur a minimum of two roundtrips before the page can be displayed</strong> - once again, the CSS file may take multiple roundtrips, hence the emphasis on "minimum".</p>
+                </section>
+                <section>
+                    <p>Let’s define the vocabulary we’ll be using to describe the critical rendering path:</p>
+                    <ul>
+                        <li><strong>Critical Resource:</strong> resource that may block initial rendering of the page.</li>
+                        <li><strong>Critical Path Length:</strong> number of roundtrips, or the total time required to fetch all of the critical resources.</li>
+                        <li><strong>Critical Bytes:</strong> total amount of bytes required to get to first render of the page, which is the sum of the transfer filesizes of all critical resources. </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Now let’s compare that to the critical path characteristics of the HTML + CSS example above:</p>
+                    <p><img alt="DOM + CSSOM CRP" src="images/analysis-dom-css.png" />
+                    </p>
+                    <ul>
+                        <li><strong>2</strong> critical resources</li>
+                        <li><strong>2</strong> or more roundtrips for the minimum critical path length</li>
+                        <li><strong>9</strong> KB of critical bytes</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>We need both the HTML and CSS to construct the render tree, as a result both HTML and CSS are critical resources: the CSS is fetched only after the browser gets the HTML document, hence the critical path length is at minimum two roundtrips; both resources add up to a total of 9KB of critical bytes.</p>
+                    <p>Ok, now let’s add an extra JavaScript file into the mix!</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="app.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p>We added app.js, which is an external JavaScript asset on the page, and as we know by now, it is a parser blocking (i.e. critical) resource. Worse, in order to execute the JavaScript file we will also have to block and wait for CSSOM - recall that JavaScript can query the CSSOM and hence the browser will pause until "style.css" is downloaded and CSSOM is constructed.</p>
+                    <p><img alt="DOM, CSSOM, JavaScript CRP" src="images/analysis-dom-css-js.png" />
+                    </p>
+                    <ul>
+                        <li><strong>3</strong> critical resources</li>
+                        <li><strong>2</strong> or more roundtrips for the minimum critical path length</li>
+                        <li><strong>11</strong> KB of critical bytes</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>We now have three critical resources that add up to 11KB of critical bytes, but our critical path length is still two roundtrips because we can transfer the CSS and JavaScript in parallel! <strong>Figuring out the characteristics of your critical rendering path means being able to identify which are the critical resources, and also understanding how the browser will schedule their fetches.</strong> Let’s continue with our example…</p>
+                </section>
+                <section>
+                    <p>After chatting with our site developers we realized that the JavaScript we included on our page doesn’t need to be blocking: we have some analytics and other code in there that doesn’t need to block the rendering of our page. Knowing that, we can add the "async" attribute to the script tag to unblock the parser:</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="app.js" async&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><img alt="DOM, CSSOM, async JavaScript CRP" src="images/analysis-dom-css-js-async.png" />
+                    </p>
+
+                    <p>Making the script asynchronous has several advantages:</p>
+                    <ul>
+                        <li>The script is no longer parser blocking and is not part of the critical rendering path</li>
+                        <li>Because there are no other critical scripts, the CSS also does not need to block the domContentLoaded event</li>
+                        <li>The sooner the domContentLoaded event fires, the sooner other application logic can begin executing</li>
+                    </ul>
+                    <p>As a result, our optimized page is now back to two critical resources (HTML and CSS), with a minimum critical path length of two roundtrips, and a total of 9KB of critical bytes.</p>
+                </section>
+                <section>
+                    <p>Finally, let’s say the CSS stylesheet was only needed for print? How would that look?</p><pre><code>    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+        &lt;link href="style.css" rel="stylesheet" media="print"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;
+        &lt;div&gt;&lt;img src="awesome-photo.jpg"&gt;&lt;/div&gt;
+        &lt;script src="app.js" async&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                </section>
+                <section>
+                    <p><img alt="DOM, non-blocking CSS, and async JavaScript CRP" src="images/analysis-dom-css-nb-js-async.png" />
+                    </p>
+                    <p>Because the style.css resource is only used for print, the browser does not need to block on it to render the page. Hence, as soon as DOM construction is complete, the browser has enough information to render the page! As a result, this page has only a single critical resource (the HTML document), and the minimum critical rendering path length is one roundtrip.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Optimizing the Critical Rendering Path</h2>
+                    <p>In order to deliver the fastest possible time to first render, we need to optimize three variables:</p>
+                    <ul>
+                        <li><strong>Minimize the number of critical resources.</strong>
+                        </li>
+                        <li><strong>Minimize the number of critical bytes.</strong>
+                        </li>
+                        <li><strong>Minimize the critical path length.</strong>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>PageSpeed Rules and Recommendations</h2>
+                    <p>PageSpeed Insights rules in context: what to pay attention to when optimizing the Critical Rendering Path and why.</p>
+                </section>
+                <section>
+                    <h2 id="eliminate-render-blocking-javascript-and-css">Eliminate render-blocking JavaScript and CSS</h2>
+                    <p>To deliver the fastest time to first render, you want to minimize and (where possible) eliminate the number of critical resources on the page, minimize the number of downloaded critical bytes, and optimize the critical path length.</p>
+                </section>
+                <section>
+                    <h2 id="optimize-javascript-use">Optimize JavaScript Use</h2>
+                    <p>JavaScript resources are parser blocking by default unless marked as <em>async</em> or added via a special JavaScript snippet. Parser blocking JavaScript forces the browser to wait for the CSSOM and pauses construction of the DOM, which in turn can significantly delay the time to first render.</p>
+                </section>
+                <section>
+                    <h2>Prefer async JavaScript resources</h2>
+                    <p>Async resources unblock the document parser and allow the browser to avoid blocking on CSSOM prior to executing the script. Often, if the script can be made async, it also means it is not essential for the first render - consider loading async scripts after the initial render.</p>
+                </section>
+                <section>
+                    <h2>Avoid synchronous server calls</h2>
+                    <p>Use the <code>navigator.sendBeacon()</code> method to limit data sent by XMLHttpRequests in <code>unload</code> handlers. Because many browsers require such requests to be synchronous, they can slow page transitions, sometimes noticeably. The following code shows how to use <code>navigator.sendBeacon()</code> to send data to the server in the <code>pagehide</code> handler instead of in the <code>unload</code> handler.</p><pre><code>&lt;script&gt;
+  function() {
+    window.addEventListener('pagehide', logData, false);
+    function logData() {
+      navigator.sendBeacon(
+        'https://putsreq.herokuapp.com/Dt7t2QzUkG18aDTMMcop',
+        'Sent by a beacon!');
+    }
+  }();
+&lt;/script&gt;</code></pre>
+                </section>
+                <section>
+                    <h2>Defer parsing JavaScript</h2>
+                    <p>Any non-essential scripts that are not critical to constructing the visible content for the initial render should be deferred to minimize the amount of work the browser has to perform to render the page.</p>
+                </section>
+                <section>
+                    <h2>Avoid long running JavaScript</h2>
+                    <p>Long running JavaScript blocks the browser from constructing the DOM, CSSOM, and rendering the page. As a result, any initialization logic and functionality that is non-essential for the first render should be deferred until later. If a long initialization sequence needs to be run, consider splitting it into several stages to allow the browser to process other events in between.</p>
+                </section>
+                <section>
+                    <h2 id="optimize-css-use">Optimize CSS Use</h2>
+                    <p>CSS is required to construct the render tree and JavaScript will often block on CSS during initial construction of the page. You should ensure that any non-essential CSS is marked as non-critical (e.g. print and other media queries), and that the amount of critical CSS and the time to deliver it is as small as possible.</p>
+                </section>
+                <section>
+                    <h2>Put CSS in the document head</h2>
+                    <p>All CSS resources should be specified as early as possible within the HTML document such that the browser can discover the <code>&lt;link&gt;</code> tags and dispatch the request for the CSS as soon as possible.</p>
+                </section>
+                <section>
+                    <h2>Avoid CSS imports</h2>
+                    <p>CSS import (@import) directive enables one stylesheet to import rules from another stylesheet file. However, these directives should be avoided because they introduce additional roundtrips into the critical path: the imported CSS resources are discovered only after the CSS stylesheet with the @import rule itself has been received and parsed.</p>
+                </section>
+                <section>
+                    <h2>Inline render-blocking CSS</h2>
+                    <p>For best performance, you may want to consider inlining the critical CSS directly into the HTML document. This eliminates additional roundtrips in the critical path and if done correctly can be used to deliver a "one roundtrip" critical path length where only the HTML is a blocking resource.</p>
+                </section>
+            </section>
+            <section id="optimizing-content-efficiency">
+                <h2>Optimizing Content Efficiency</h2>
+            </section>
+            <section>
+                <section>
+                    <h2>Eliminating unnecessary downloads</h2>
+
+                    <ul>
+                        <li>Inventory all own and third party assets on your pages</li>
+                        <li>Measure the performance of each asset: its value and its technical performance</li>
+                        <li>Determine if the resources are providing sufficient value</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>It’s a good practice to question, and periodically revisit, the implicit and explicit assumptions with your team. A few examples:</p>
+                    <ul>
+                        <li>We’ve always included resource X on our pages, but does the cost of downloading and displaying it offset the value it delivers to the user? Can we measure and prove its value?</li>
+                        <li>Does the resource — especially if it is a third-party resource — deliver consistent performance? Is this resource in the critical path, or need to be? If the resource is in the critical path, could it be a single point of failure for our site - i.e. if the resource is unavailable, will it affect performance and the user experience of our pages?</li>
+                        <li>Does this resource need or have an SLA? Does this resource follow performance best practices: compression, caching, and so on?</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>Site A has decided to display a photo carousel on its homepage to allow the visitor to preview multiple photos with a quick click — all the photos are loaded when the page is loaded, and photos are advanced by the user.
+                            <ul>
+                                <li><strong>Question:</strong> have you measured how many users view multiple photos in the carousel? You could be incurring high overhead by downloading unnecessary resources which are never viewed by most visitors.</li>
+                            </ul>
+
+                        </li>
+                        <li>Site B has decided to install a third-party widget to display related content, improve social engagement, or provide some other service.
+                            <ul>
+                                <li><strong>Question:</strong> have you tracked how many visitors use the widget or click-through on the content provided by the widget? Is the engagement generated by this widget enough to justify its overhead?</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Optimizing encoding and transfer size of text-based assets</h2>
+                </section>
+                <section>
+                    <h2 id="data-compression-101">Data compression 101</h2>
+                    <ul>
+                        <li>Compression is the process of encoding information using fewer bits</li>
+                        <li>Eliminating unnecessary data always yields the best results</li>
+                        <li>There are many different compression techniques and algorithms</li>
+                        <li>You will need a variety of techniques to achieve the best compression</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>To illustrate the core principles of these techniques in action, let’s consider how we can go about optimizing a simple text message format that we’ll invent just for this example:</p><pre><code># Below is a secret message, which consists of a set of headers in
+# key-value format followed by a newline and the encrypted message.
+format: secret-cipher
+date: 04/04/14
+AAAZZBBBBEEEMMM EEETTTAAA</code></pre>
+                    <div class="fragment">
+
+                        <p>What could we do reduce the size of the above message, which is currently 200 characters long? E.g. "AAA" becomes "3A" - or, sequence of three A’s.</p>
+
+                        <p>Combining our techniques, we arrive at the following result:</p><pre><code>format: secret-cipher
+date: 04/04/14
+3A2Z4B3E3M 3E3T3A</code></pre>
+
+                        <p>The new message is 56 characters long, which means we managed to compress our original message by an impressive 72% - not bad, all things considered, and we’re only getting started!</p>
+                    </div>
+                </section>
+                <section>
+                    <h2 id="minification-preprocessing--context-specific-optimizations">Minification: preprocessing &amp; context-specific optimizations</h2>
+                    <ul>
+                        <li>Content-specific optimizations can significantly reduce the size of delivered resources.</li>
+                        <li>Content-specific optimizations are best applied as part of your build/release cycle.</li>
+                    </ul>
+                </section>
+                <section>
+                    <pre><code>    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+         /* awesome-container is only used on the landing page */
+         .awesome-container { font-size: 120% }
+         .awesome-container { width: 50% }
+      &lt;/style&gt;
+     &lt;/head&gt;
+    
+     &lt;body&gt;
+       &lt;!-- awesome container content: START --&gt;
+        &lt;div&gt;…&lt;/div&gt;
+       &lt;!-- awesome container content: END --&gt;
+       &lt;script&gt;
+         awesomeAnalytics(); // beacon conversion metrics
+       &lt;/script&gt;
+     &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+                    <p>Consider the simple HTML page above and the three different content types that it contains: HTML markup, CSS styles, and JavaScript. Each of these content types has different rules for what constitutes valid HTML markup, CSS rules, or JavaScript content, different rules for indicating comments, and so on. How could we reduce the size of this page?</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Code comments are a developer’s best friend, but the browser does not need to see them! Simply stripping the CSS (<code>/* … */</code>), HTML (<code>&lt;!-- … --&gt;</code>), and JavaScript (<code>// …</code>) comments can significantly reduce the total size of the page.</li>
+                        <li>A "smart" CSS compressor could notice that we’re using an inefficient way of defining rules for ‘.awesome-container’ and collapse the two declarations into one without affecting any other styles, saving yet more bytes.</li>
+                        <li>
+                            <p>Whitespace (spaces and tabs) is a developer convenience in HTML, CSS, and JavaScript. An additional compressor could strip out all the tabs and spaces.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Whitespace (spaces and tabs) is a developer convenience in HTML, CSS, and JavaScript. An additional compressor could strip out all the tabs and spaces.</p><pre><code>    &lt;html&gt;&lt;head&gt;&lt;style&gt;.awesome-container{font-size:120%;width: 50%}
+    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div&gt;…&lt;/div&gt;&lt;script&gt;awesomeAnalytics();
+    &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+                    <p>After applying the above steps our page goes from 406 to 150 characters - 63% compression savings! Granted, it’s not very readable, but it also doesn’t have to be: we can keep the original page as our "development version" and then apply the steps above whenever we are ready to release the page on our website.</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Case in point, the uncompressed development version of the JQuery library is now approaching ~300KB. The same library, but minified (removed comments, etc.) is about 3x smaller: ~100KB.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="text-compression-with-gzip">Text compression with GZIP</h2>
+                    <ul>
+                        <li>GZIP performs best on text-based assets: CSS, JavaScript, HTML</li>
+                        <li>All modern browsers support GZIP compression and will automatically request it</li>
+                        <li>Your server needs to be configured to enable GZIP compression</li>
+                        <li>Some CDNs require special care to ensure that GZIP is enabled</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>What’s the best config for your server? The HTML5 Boilerplate project contains <a href="https://github.com/h5bp/server-configs">sample configuration files</a> for all the most popular servers with detailed comments for each configuration flag and setting: find your favorite server in the list, look for the GZIP section, and confirm that your server is configured with recommended settings.</p>
+                    <p><img alt="DevTools demo of actual vs transfer size" src="images/transfer-vs-actual-size.png" />
+                    </p>
+                    <p>A quick and simple way to see GZIP in action is to open Chrome DevTools and inspect the "Size / Content" column in the Network panel: "Size" indicates the transfer size of the asset, and "Content" the uncompressed size of the asset. For the HTML asset in above example, GZIP saved 24.8 KB during transfer!</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Believe it or not, there are cases where GZIP can increase the size of the asset. Typically, this happens when the asset is very small and the overhead of the GZIP dictionary is higher than the compression savings, or if the resource is already well compressed. Some servers allow you to specify a "minimum filesize threshold" to avoid this problem.</li>
+                    </ul>
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h2>Image optimization</h2>
+                </section>
+                <section>
+                    <h2 id="eliminating-and-replacing-images">Eliminating and replacing images</h2>
+                    <ul>
+                        <li>Eliminate unnecessary image resources</li>
+                        <li>Leverage CSS3 effects where possible</li>
+                        <li>Use web fonts instead of encoding text in images</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The very first question you should ask yourself is whether an image is, in fact, required to achieve the effect you are after.</p>
+                    <p>Next, you should consider if there is an alternative technology that could deliver the desired results, but in a more efficient manner:</p>
+                    <ul>
+                        <li><strong>CSS effects</strong> (gradients, shadows, etc.) and CSS animations can be used to produce resolution-independent assets that always look sharp at every resolution and zoom level, often at a fraction of the bytes required by an image file.</li>
+                        <li><strong>Web fonts</strong> enable use of beautiful typefaces while preserving the ability to select, search, and resize text - a significant improvement in usability.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="vector-vs-raster-images">Vector vs. Raster images</h2>
+                    <ul>
+                        <li>Vector images are ideal for images that consist of geometric shapes</li>
+                        <li>Vector images are zoom and resolution-independent</li>
+                        <li>Raster images should be used for complex scenes with lots of irregular shapes and details</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Once you’ve determined that an image is, in fact, the optimal format to achieve the desired effect, the next critical choice is to select the appropriate format:</p>
+                    <ul>
+                        <li><a href="http://en.wikipedia.org/wiki/Vector_graphics">Vector graphics</a> use lines, points, and polygons to represent an image.</li>
+                        <li><a href="http://en.wikipedia.org/wiki/Raster_graphics">Raster graphics</a> represent an image by encoding the individual values of each pixel within a rectangular grid.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="implications-of-high-resolution-screens">Implications of high-resolution screens</h2>
+                    <ul>
+                        <li>High resolution screens have multiple device pixels per CSS pixel</li>
+                        <li>High resolution images require significantly higher number of pixels and bytes</li>
+                        <li>Image optimization techniques are the same regardless of resolution</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>When we talk about image pixels, we need to distinguish between different kinds of pixels: CSS pixels and device pixels. A single CSS pixel may contain multiple device pixels - e.g. a single CSS pixel may correspond directly to a single device pixel, or may be backed by multiple device pixels. What’s the point? Well, the more device pixels there are, the finer the detail of the displayed content on the screen.</p>
+                    <p><img alt="CSS vs device pixels" src="images/css-vs-device-pixels.png" />
+                    </p>
+                </section>
+                <section>
+                    <h2 id="optimizing-vector-images">Optimizing vector images</h2>
+                    <ul>
+                        <li>SVG is an XML-based image format</li>
+                        <li>SVG files should be minified to reduce their size</li>
+                        <li>SVG files should be compressed with GZIP</li>
+                    </ul>
+                </section>
+                <section>
+                    <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;
+&lt;svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+   x="0px" y="0px" viewBox="0 0 612 792" xml:space="preserve"&gt;
+&lt;g id="XMLID_1_"&gt;
+  &lt;g&gt;
+    &lt;circle fill="red" stroke="black" stroke-width="2" stroke-miterlimit="10" cx="50" cy="50" r="40"/&gt;
+  &lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+                    <p>The above example renders a simple circle shape with a black outline and red background and was exported from Adobe Illustrator. As you can tell, it contains a lot of metadata, such as layer information, comments, and XML namespaces that are often unnecessary to render the asset in the browser. As a result, it is always a good idea to minify your SVG files by running through a tool like <a href="https://github.com/svg/svgo">svgo</a>.</p>
+                    <p>Case in point, svgo reduces the size of the above SVG file generated by Illustrator by 58%, taking it from 470 to 199 bytes. Further, because SVG is an XML-based format, we can also apply GZIP compression to reduce its transfer size - make sure your server is configured to compress SVG assets!</p>
+                </section>
+                <section>
+                    <h2 id="optimizing-raster-images">Optimizing raster images</h2>
+                    <ul>
+                        <li>A raster image is a grid of pixels</li>
+                        <li>Each pixel encodes color and transparency information</li>
+                        <li>Image compressors use a variety of techniques to reduce the number of required bits per pixel to reduce file size of the image</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>A raster image is simply a 2-dimensional grid of individual "pixels" - e.g. a 100x100 pixel image is a sequence of 10,000 pixels. In turn, each pixel stores the "<a href="http://en.wikipedia.org/wiki/RGBA_color_space">RGBA</a>" values: (R) red channel, (G) green channel, (B) blue channel, and (A) alpha (transparency) channel.</p>
+                    <p>Internally, the browser allocates 256 values (shades) for each channel, which translates to 8 bits per channel (2 ^ 8 = 256), and 4 bytes per pixel (4 channels x 8 bits = 32 bits = 4 bytes). As a result, if we know the dimensions of the grid we can easily calculate the filesize:</p>
+                    <ul>
+                        <li>100 x 100px image is composed of 10,000 pixels</li>
+                        <li>10,000 pixels x 4 bytes = 40,000 bytes</li>
+                        <li>
+                            <p>40,000 bytes / 1024 = 39 KB</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>As an aside, regardless of the image format used to transfer the data from the server to the client, when the image is decoded by the browser, each pixel always occupies 4 bytes of memory. This can be an important constraint for large images and devices which do not have a lot of available memory - e.g. low-end mobile devices.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>One simple strategy is to reduce the "bit-depth" of the image from 8 bits per channel to a smaller color palette: 8 bits per channel gives us 256 values per channel and 16,777,216 (2563) colors in total. What if we reduced the palette to 256 colors? Then we would only need 8 bits in total for the RGB channels and immediately save two bytes per pixel – that’s 50% compression savings over our original 4 bytes per pixel format!</p>
+                    <p><img alt="Compression artifacts" src="images/artifacts.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Left to right (PNG): 32-bit (16M colors), 7-bit (128 colors), 5-bit (32 colors). Complex scenes with gradual color transitions (gradients, sky, etc.) require larger color palettes to avoid visual artifacts such as the pixelated sky in the 5-bit asset. On the other hand, if the image only uses a few colors, then a large palette is simply wasting precious bits!</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Next, once we’ve optimized the data stored in individual pixels we could get more clever and look at nearby pixels as well: turns out, many images, and especially photos, have many nearby pixels with similar colors - e.g. the sky, repeating textures, and so on. Using this information to our advantage the compressor can apply "<a href="http://en.wikipedia.org/wiki/Delta_encoding">delta encoding</a>" where instead of storing the individual values for each pixel, we can store the difference between nearby pixels: if the adjacent pixels are the same, then the delta is "zero" and we only need to store a single bit! But why stop there…</p>
+                    <p>The human eye has different level of sensitivity to different colors: we can optimize our color encoding to account for this by reducing or increasing the palette for those colors. "Nearby" pixels form a two dimensional grid, which means that each pixel has multiple neighbors: we can use this fact to further improve delta encoding. Instead of looking at just the immediate neighbors for each pixel, we can look at larger blocks of nearby pixels and encode different blocks with different settings. And so on…</p>
+                </section>
+                <section>
+                    <h2 id="lossless-vs-lossy-image-compression">Lossless vs lossy image compression</h2>
+                    <ul>
+                        <li>Due to how our eyes work, images are great candidates for lossy compression</li>
+                        <li>Image optimization is a function of lossy and lossless compression</li>
+                        <li>Differences in image formats are due to the difference in how and which lossy and lossless algorithms are used to optimize the image</li>
+                        <li>There is no single best format or "quality setting" for all images: each combination of particular compressor and image contents produce a unique output</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>A typical image optimization pipeline consists of two high level steps:</p>
+                    <p><strong>The first step is optional, and the exact algorithm will depend on the particular image format, but it is important to understand that any image can undergo a lossy compression step to reduce its size.</strong> In fact, the difference between various image formats, such as GIF, PNG, JPEG, and others, is in the combination of the specific algorithms they use (or omit) when applying the lossy and lossless steps.</p>
+                    <p><img alt="Save for web" src="images/save-for-web.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Note that quality levels for different image formats are not directly comparable due to differences in algorithms used to encode the image: quality 90 JPEG will produce a very different result than a quality 90 WebP. In fact, even quality levels for the same image format may produce visibly different output based on implementation of the compressor!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="selecting-the-right-image-format">Selecting the right image format</h2>
+                    <ul>
+                        <li>Start by selecting the right universal format: GIF, PNG, JPEG</li>
+                        <li>Experiment and select the best settings for each format: quality, palette size, etc.</li>
+                        <li>Consider adding WebP and JPEG XR assets for modern clients</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>There are three universally supported image formats: GIF, PNG, and JPEG. In addition to these formats, some browsers also support newer formats such as WebP and JPEG XR, which offer better overall compression and more features. So, which format should you use?</p>
+                    <p><img alt="Save for web" src="images/format-tree.png" />
+                    </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>GIF limits the color palette to at most 256 colors, which makes it a poor choice for most images. Further, PNG-8 delivers better compression for images with a small palette. As a result, GIF is the right answer only when animation is required.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>PNG does not apply any lossy compression algorithms beyond the choice of the size of the color palette. As a result, it will produce the highest quality image, but at a cost of significantly higher filesize than other formats. Use judiciously.</li>
+                        <ul>
+
+                            <li>If the image asset contains imagery composed of geometric shapes, consider converting it to a vector (SVG) format!</li>
+                            <li>If the image asset contains text, stop and reconsider. Text in images is not selectable, searchable, or "zoomable". If you need to convey a custom look (for branding or other reasons), use a web font instead.</li>
+                        </ul>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>JPEG uses a combination of lossy and lossless optimization to reduce filesize of the image asset. Try several JPEG quality levels to find the best quality vs. filesize tradeoff for your asset.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Since neither WebP and JPEG XR are universally supported, you will need to add additional logic to your application or servers to serve the appropriate resource:</p>
+                    <ul>
+                        <li>Some CDNs provide image optimization as a service, including JPEG XR and WebP delivery.</li>
+                        <li>Some open-source tools (e.g. PageSpeed for Apache or Nginx) automate the optimization, conversion, and serving of appropriate assets.</li>
+                        <li>You can add additional application logic to detect the client, check which formats they support, and serve the best available image format.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Finally, note that if you are using a Webview to render content in your native application, then you have full control of the client and can use WebP exclusively! Facebook, Google+ and many others use WebP to deliver all of their images within their applications - the savings are definitely worth it. To learn more about WebP, checkout the <a href="https://www.youtube.com/watch?v=pS8udLMOOaE">WebP: Deploying Faster, Smaller, and More Beautiful Images</a> presentation from Google I/O 2013.</p>
+                </section>
+                <section>
+                    <h2 id="tools-and-parameter-tuning">Tools and parameter tuning</h2>
+                    <p>There is no one perfect image format, tool, or a set of optimization parameters that apply to all images. For best results you will have to pick the format and its settings depending on the contents of the image, and its visual and other technical requirements.</p>
+                    <table class="table-2">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="tool"><a href="http://www.lcdf.org/gifsicle/">gifsicle</a>
+                                </td>
+                                <td data-th="description">create and optimize GIF images</td>
+                            </tr>
+                            <tr>
+                                <td data-th="tool"><a href="http://jpegclub.org/jpegtran/">jpegtran</a>
+                                </td>
+                                <td data-th="description">optimize JPEG images</td>
+                            </tr>
+                            <tr>
+                                <td data-th="tool"><a href="http://optipng.sourceforge.net/">optipng</a>
+                                </td>
+                                <td data-th="description">lossless PNG optimization</td>
+                            </tr>
+                            <tr>
+                                <td data-th="tool"><a href="http://pngquant.org/">pngquant</a>
+                                </td>
+                                <td data-th="description">lossy PNG optimization</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h2 id="delivering-scaled-image-assets">Delivering scaled image assets</h2>
+                    <ul>
+                        <li>Delivering scaled assets is one of the simplest and most effective optimizations</li>
+                        <li>Pay close attention to large assets as they result in high overhead</li>
+                        <li>Reduce the number of unnecessary pixels by scaling your images to their display size</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Image optimization boils down to two criteria: optimizing the number of bytes used to encode each image pixel, and optimizing the total number of pixels: the filesize of the image is simply the total number of pixels times the number of bytes used to encode each pixel. Nothing more, nothing less.</p>
+                    <p>As a result, one of the simplest and most effective image optimization techniques is to <b>ensure that we are not shipping any more pixels than needed to display the asset at its intended size in the browser</b>
+                    </p>
+                    <p><img alt="Resized image" src="images/resized-image.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Hovering over the image element in Chrome DevTools reveals both the "natural" and "display" sizes of the image asset. In above example the 300x260 pixel image is downloaded but is then downscaled (245x212) on the client when it is displayed.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="image-optimization-checklist">Image optimization checklist</h2>
+                    <ul>
+                        <li><strong>Prefer vector formats:</strong> vector images are resolution and scale independent, which makes them a perfect fit for the multi-device and high-resolution world.</li>
+                        <li><strong>Minify and compress SVG assets:</strong> XML markup produced by most drawing applications often contains unnecessary metadata which can be removed; ensure that your servers are configured to apply GZIP compression for SVG assets.</li>
+                        <li><strong>Pick best raster image format:</strong> determine your functional requirements and select the one that suits each particular asset.</li>
+                        <li><strong>Experiment with optimal quality settings for raster formats:</strong> don’t be afraid to dial down the "quality" settings, the results are often very good and byte savings are significant.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><strong>Remove unnecessary image metadata:</strong> many raster images contain unnecessary metadata about the asset: geo information, camera information, and so on. Use appropriate tools to strip this data.</li>
+                        <li><strong>Serve scaled images:</strong> resize images on the server and ensure that the "display" size is as close as possible to the "natural" size size of the image. Pay close to attention to large images in particular, as they account for largest overhead when resized!</li>
+                        <li><strong>Automate, automate, automate:</strong> invest into automated tools and infrastructure that will ensure that all of your image assets are always optimized.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Webfont optimization</h2>
+                </section>
+                <section>
+                    <h2 id="anatomy-of-a-webfont">Anatomy of a webfont</h2>
+                    <ul>
+                        <li>Unicode fonts can contain thousands of glyphs</li>
+                        <li>There are four font formats: WOFF2, WOFF, EOT, TTF</li>
+                        <li>Some font formats require use of GZIP compression</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>A webfont is a collection of glyphs, and each glyph is a vector shape that describes a letter or symbol. As a result, the size of a particular font file is determined by two simple variables: the complexity of the vector paths of each glyph and the number of glyphs in a particular font. For example, Open Sans, which is one of the most popular webfonts, contains 897 glyphs, which include Latin, Greek, and Cyrillic characters.</p>
+                    <p><img alt="Font glyph table" src="images/glyphs.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Today there are four font container formats in use on the web: <a href="http://en.wikipedia.org/wiki/Embedded_OpenType">EOT</a>, <a href="http://en.wikipedia.org/wiki/TrueType">TTF</a>, <a href="http://en.wikipedia.org/wiki/Web_Open_Font_Format">WOFF</a>, and <a href="http://www.w3.org/TR/WOFF2/">WOFF2</a>. Unfortunately, despite the wide range of choices, there isn’t a single universal format that works across all old and new browsers: EOT is <a href="http://caniuse.com/#feat=eot">IE only</a>, TTF has <a href="http://caniuse.com/#search=ttf">partial IE support</a>, WOFF enjoys widest support but is <a href="http://caniuse.com/#feat=woff">not available in some older browsers</a>, and WOFF 2.0 support is a <a href="http://caniuse.com/#feat=woff2">work in progress for many browsers</a>.</p>
+                </section>
+                <section>
+                    <p>So, where does that leave us? There isn’t a single format that works in all browsers, which means that we need to deliver multiple formats to provide a consistent experience:</p>
+                    <ul>
+                        <li>Serve WOFF 2.0 variant to browsers that support it</li>
+                        <li>Serve WOFF variant to majority of browsers</li>
+                        <li>Serve TTF variant to old Android (below 4.4) browsers</li>
+                        <li>Serve EOT variant to old IE (below IE9) browsers</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>A font is a collection of glyphs, each of which is a set of paths describing the letter form. The individual glyphs are, of course, different, but they nonetheless contain a lot of similar information that can be compressed with GZIP, or a compatible compressor:</p>
+                    <ul>
+                        <li>EOT, and TTF formats are not compressed by default: ensure that your servers are configured to apply <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer#text-compression-with-gzip">GZIP compression</a> when delivering these formats.</li>
+                        <li>WOFF has built-in compression - ensure that your WOFF compressor is using optimal compression settings.</li>
+                        <li>WOFF2 uses custom preprocessing and compression algorithms to deliver ~30% filesize reduction over other formats - see <a href="http://www.w3.org/TR/WOFF20ER/">report</a>.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Consider using <a href="http://en.wikipedia.org/wiki/Zopfli">Zopfli compression</a> for EOT, TTF, and WOFF formats. Zopfli is a zlib compatible compressor that delivers ~5% filesize reduction over gzip.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="defining-font-family-with-font-face">Defining font family with @font-face</h2>
+                    <ul>
+                        <li>Use format() hint to specify multiple font formats</li>
+                        <li>Subset large unicode fonts to improve performance: use unicode-range subsetting and provide a manual subsetting fallback for older browsers</li>
+                        <li>Reduce number of stylistic font variants to improve page and text rendering performance</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Format selection</h3>
+                    <p>Each @font-face declaration provides the name of the font family, which acts as a logical group of multiple declarations, <a href="http://www.w3.org/TR/css3-fonts/#font-prop-desc">font properties</a> such as style, weight, and stretch, and the <a href="http://www.w3.org/TR/css3-fonts/#src-desc">src descriptor</a> that specifies a prioritized list of locations for the font resource.</p><pre><code>@font-face {
+  font-family: 'Awesome Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Awesome Font'),
+       url('/fonts/awesome.woff2') format('woff2'), 
+       url('/fonts/awesome.woff') format('woff'),
+       url('/fonts/awesome.ttf') format('ttf'),
+       url('/fonts/awesome.eot') format('eot');
+}
+@font-face {
+  font-family: 'Awesome Font';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Awesome Font Italic'),
+       url('/fonts/awesome-i.woff2') format('woff2'), 
+       url('/fonts/awesome-i.woff') format('woff'),
+       url('/fonts/awesome-i.ttf') format('ttf'),
+       url('/fonts/awesome-i.eot') format('eot');
+}</code></pre>
+                </section>
+                <section>
+                    <p>First, note that the above examples defines a single <em>Awesome Font</em> family with two styles (normal and <em>italic</em>), each of which points to a different set of font resources. In turn, each <code>src</code> descriptor contains a prioritized, comma-separated list of resource variants:</p>
+                    <ul>
+                        <li><code>local()</code> directive allows us to reference, load, and use locally installed fonts.</li>
+                        <li>
+                            <p><code>url()</code> directive allows us to load external fonts, and are allowed to contain an optional <code>format()</code> hint indicating the format of the font referenced by the provided URL.</p>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Unless you are referencing one of the default system fonts, in practice it is rare for the user to have it locally installed, especially on mobile devices, where it is effectively impossible to 'install' additional fonts. As a result, you should always provide a list of external font locations.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>When the browser determines that the font is needed, it iterates through the provided resource list in the specified order and tries to load the appropriate resource. For example, following the example above:</p>
+                    <ul>
+                        <li>If a format hint is present the browser checks if it supports it before initiating the download, and otherwise advances to the next one.</li>
+                        <li>If no format hint is present, the browser downloads the resource.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>The order in which the font variants are specified matters. The browser will pick the first format it supports. Hence, if you want the newer browsers to use WOFF2, then you should place WOFF2 declaration above WOFF, and so on.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Unicode-range subsetting</h3>
+                    <p>The <a href="http://www.w3.org/TR/css3-fonts/#descdef-unicode-range">unicode-range descriptor</a> allows us to specify a comma-delimited list of range values, each of which can be in one of three different forms:</p>
+                    <ul>
+                        <li>Single codepoint (e.g. U+416)</li>
+                        <li>Interval range (e.g. U+400-4ff): indicates the start and end codepoints of a range</li>
+                        <li>Wildcard range (e.g. U+4??): ‘?’ characters indicate any hexadecimal digit</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>For example, we can split our <em>Awesome Font</em> family into Latin and Japanese subsets, each of which will be downloaded by the browser on as-needed basis:</p><pre><code>@font-face {
+  font-family: 'Awesome Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Awesome Font'),
+       url('/fonts/awesome-l.woff2') format('woff2'), 
+       url('/fonts/awesome-l.woff') format('woff'),
+       url('/fonts/awesome-l.ttf') format('ttf'),
+       url('/fonts/awesome-l.eot') format('eot');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+@font-face {
+  font-family: 'Awesome Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Awesome Font'),
+       url('/fonts/awesome-jp.woff2') format('woff2'), 
+       url('/fonts/awesome-jp.woff') format('woff'),
+       url('/fonts/awesome-jp.ttf') format('ttf'),
+       url('/fonts/awesome-jp.eot') format('eot');
+  unicode-range: U+3000-9FFF, U+ff??; /* Japanese glyphs */
+}</code></pre>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Unicode-range subsetting is particularly important for Asian languages, where the number of glyphs is much larger than in western languages and a typical 'full' font is often measured in megabytes, instead of tens of kilobytes!</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Because old browsers are not smart enough to select just the necessary subsets and cannot construct a composite font, we have to fallback to providing a single font resource that contains all necessary subsets, and hide the rest from the browser. For example, if the page is only using Latin characters, then we can strip other glyphs and serve that particular subset as a standalone resource.</p>
+                    <p>How do we determine which subsets are needed?</p>
+                    <ul>
+                        <li>If unicode-range subsetting is supported by the browser, then it will automatically select the right subset. The page just needs to provide the subset files and specify appropriate unicode-ranges in the @font-face rules.</li>
+                        <li>If unicode-range is not supported then the page needs to hide all unnecessary subsets - i.e. the developer must specify required subsets.</li>
+                    </ul>
+                    <p>How do we generate font subsets?</p>
+                    <ul>
+                        <li>Use the open-source <a href="https://github.com/behdad/fonttools/blob/master/Lib/fontTools/subset.py#L16">pyftsubset tool</a> to subset and optimize your fonts.</li>
+                        <li>Some font services allow manual subsetting via custom query parameters, which you can use to manually specify the required subset for your page - consult the documentation of your font provider.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Font selection and synthesis</h3>
+                    <p>Each font family is composed of multiple stylistic variants (regular, bold, italic) and multiple weights for each style, each of which, in turn, may contain very different glyph shapes - e.g. different spacing, sizing, or a different shape altogether.</p>
+                    <p><img alt="Font weights" src="images/font-weights.png" />
+                    </p>
+                    <p>Similar logic applies to <em>italic</em> variants. The font designer controls which variants they will produce, and we control which variants we will use on the page - since each variant is a separate download, it’s a good idea to keep the number of variants small! For example, we can define two bold variants for our <em>Awesome Font</em> family:</p><pre><code>@font-face {
+  font-family: 'Awesome Font';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Awesome Font'),
+       url('/fonts/awesome-l.woff2') format('woff2'), 
+       url('/fonts/awesome-l.woff') format('woff'),
+       url('/fonts/awesome-l.ttf') format('ttf'),
+       url('/fonts/awesome-l.eot') format('eot');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}
+@font-face {
+  font-family: 'Awesome Font';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Awesome Font'),
+       url('/fonts/awesome-l-700.woff2') format('woff2'), 
+       url('/fonts/awesome-l-700.woff') format('woff'),
+       url('/fonts/awesome-l-700.ttf') format('ttf'),
+       url('/fonts/awesome-l-700.eot') format('eot');
+  unicode-range: U+000-5FF; /* Latin glyphs */
+}</code></pre>
+                </section>
+                <section>
+                    <ul>
+                        <li>If an exact font match is not available the browser will substitute the closest match.</li>
+                        <li>If no stylistic match is found (e.g. we did not declare any italic variants in example above), then the browser will synthesize its own font variant.</li>
+                    </ul>
+                    <p><img alt="Font synthesis" src="images/font-synthesis.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>For best consistency and visual results you should not rely on font synthesis. Instead, minimize the number of used font variants and specify their locations, such that the browser can download them when they are used on the page. That said, in some cases a synthesized variant <a href="https://www.igvita.com/2014/09/16/optimizing-webfont-selection-and-synthesis/">may be a viable option</a> - use with caution.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="optimizing-loading-and-rendering">Optimizing loading and rendering</h2>
+                    <ul>
+                        <li>Font requests are delayed until the render tree is constructed, which can result in delayed text rendering</li>
+                        <li>Font Loading API allows us to implement custom font loading and rendering strategies that override default lazyload font loading</li>
+                        <li>Font inlining allows us to override default lazyload font loading in older browsers</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Webfonts and the Critical Rendering Path</h3>
+                    <p>Lazy loading of fonts carries an important hidden implication that may delay text rendering: the browser must <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction">construct the render tree</a>, which is dependent on the DOM and CSSOM trees, before it will know which font resources it will need to render the text. As a result, font requests are delayed well after other critical resources, and the browser may be blocked from rendering text until the resource is fetched.</p>
+                    <p><img alt="Font critical rendering path" src="images/font-crp.png" />
+                    </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Font requests are dispatched once render tree indicates which font variants are needed to render the specified text on the page</li>
+                    </ul>
+                    <ul>
+                        <li>If the font is not yet available the browser may not render any text pixels</li>
+                        <li>Once the font is available the browser paints text pixels</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The "race" between the first paint of page content, which can be done shortly after the render tree is built, and the request for the font resource is what creates the "blank text problem" where the browser may render page layout but omits any text. The actual behavior differs between various browsers:</p>
+                    <ul>
+                        <li>Safari hold text rendering until the font download is complete.</li>
+                        <li>Chrome and Firefox hold font rendering for up to 3 seconds, after which they use a fallback font, and once the font download has finished they re-render the text once more with the downloaded font.</li>
+                        <li>IE immediately renders with the fallback font if the request font is not yet available, and re-renders it once the font download is complete.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Optimizing font rendering with the Font Loading API</h3>
+                    <p><a href="http://dev.w3.org/csswg/css-font-loading/">Font Loading API</a> provides a scripting interface to define and manipulate CSS font faces, track their download progress, and override their default lazyload behavior. For example, if we’re certain that a particular font variant will be required, we can define it and tell the browser to initiate an immediate fetch of the font resource:</p><pre><code>var font = new FontFace("Awesome Font", "url(/fonts/awesome.woff2)", {
+  style: 'normal', unicodeRange: 'U+000-5FF', weight: '400'
+});
+font.load(); // don't wait for render tree, initiate immediate fetch!
+font.ready().then(function() {
+  // apply the font (which may rerender text and cause a page reflow)
+  // once the font has finished downloading
+  document.fonts.add(font);
+  document.body.style.fontFamily = "Awesome Font, serif";
+  // OR... by default content is hidden, and rendered once font is available
+  var content = document.getElementById("content");
+  content.style.visibility = "visible";
+  // OR... apply own render strategy here... 
+});</code></pre>
+                </section>
+                <section>
+                    <p>Further, because we can check font status (via <a href="http://dev.w3.org/csswg/css-font-loading/#font-face-set-check">check()</a>) method and track its download progress, we can also define a custom strategy for rendering text on our pages:</p>
+                    <ul>
+                        <li>We can hold all text rendering until the font is available.</li>
+                        <li>We can implement a custom timeout for each font.</li>
+                        <li>We can use the fallback font to unblock rendering and inject a new style that uses desired font once the font is available.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Best of all, we can also mix and match above strategies for different content on the page - e.g. hold text rendering on some sections until font is available, use a fallback and then rerender once the font download has finished, specify different timeouts, and so on.</p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Font Loading API is still <a href="http://caniuse.com/#feat=font-loading">under development in some browsers</a>. Consider using the <a href="https://github.com/bramstein/fontloader">FontLoader polyfill</a>, or the <a href="https://github.com/typekit/webfontloader">webfontloader library</a>, to deliver similar functionality, albeit with the overhead of an additional JavaScript dependency.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Optimizing font rendering with inlining</h3>
+                    <p>A simple alternative strategy to using the Font Loading API to eliminate the "blank text problem" is to inline the font contents into a CSS stylesheet:</p>
+                    <ul>
+                        <li>CSS stylesheets with matching media queries are automatically downloaded by the browser with high priority as they are required to construct the CSSOM.</li>
+                        <li>Inlining the font data into CSS stylesheet forces the browser to download the font with high priority and without waiting for the render tree - i.e. this acts as a manual override to the default lazyload behavior.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Use inlining selectively! Recall that the reason @font-face uses lazyload behavior is to avoid downloading unnecessary font variants and subsets. Also, increasing the size of your CSS via aggressive inlining will negatively impact your <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/">critical rendering path</a> - the browser must download all CSS before it can construct the CSSOM, build the render tree, and render page contents to the screen.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Optimizing font reuse with HTTP Caching</h3>
+                    <p>Font resources are, typically, static resources that don’t see frequent updates. As a result, they are ideally suited for a long max-age expiry - ensure that you specify both a <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#validating-cached-responses-with-etags">conditional ETag header</a>, and an <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching#cache-control">optimal Cache-Control policy</a> for all font resources.</p>
+                    <p>There is no need to store fonts in localStorage or via other mechanisms - each of those has their set of performance gotchas. The browser’s HTTP cache, in combination with Font Loading API or the webfontloader library, provides the best and most robust mechanism to deliver font resources to the browser.</p>
+                </section>
+                <section>
+                    <h2 id="optimization-checklist">Optimization checklist</h2>
+                    <ol>
+                        <li>Audit and monitor your font use:
+                        </li>
+                        <li>Subset your font resources:
+                        </li>
+                        <li>Deliver optimized font formats to each browser:
+                        </li>
+                        <li>Specify revalidation and optimal caching policies:
+                        </li>
+                        <li>Use Font Loading API to optimize the Critical Rendering Path:
+                        </li>
+                    </ol>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>HTTP caching</h2>
+                </section>
+                <section>
+                    <p><img alt="HTTP request" src="images/http-request.png" />
+                    </p>
+                    <p>When the server returns a response it also emits a collection of HTTP headers, describing its content-type, length, caching directives, validation token, and more. For example, in above exchange the server returns a 1024 byte response, instructs the client to cache it for up to 120 seconds, and provides a validation token ("x234dff") that can be used after the response has expired to check if the resource has been modified.</p>
+                </section>
+                <section>
+                    <h2 id="validating-cached-responses-with-etags">Validating cached responses with ETags</h2>
+                    <ul>
+                        <li>Validation token is communicated by the server via the ETag HTTP header</li>
+                        <li>Validation token enables efficient resource update checks: no data transfer if the resource has not changed.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Let’s assume 120 seconds have passed since our initial fetch and the browser has initiated a new request for the same resource. First, the browser checks the local cache and finds the previous response, unfortunately it cannot use it as the response has now "expired". At this point it could simply dispatch a new request and fetch the new full response, but that’s inefficient because if the resource has not changed then there is no reason to download the exact same bytes that are already in cache!</p>
+                    <p>That’s the problem that validation tokens, as specified in the ETag header, are designed to solve: the server generates and returns an arbitrary token which is typically a hash or some other fingerprint of the contents of the file. The client does not need to know how the fingerprint is generated, it only needs to send it to the server on the next request: if the fingerprint is still the same then the resource has not changed and we can skip the download.</p>
+                    <p><img alt="HTTP Cache-Control example" src="images/http-cache-control.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>As a web developer, how do you take advantage of efficient revalidation? The browser does all the work on our behalf: it will automatically detect if a validation token has been previously specified, it will append it to an outgoing request, and it will update the cache timestamps as necessary based on received response from the server. <strong>The only thing that’s left for us to do is to ensure that the server is, in fact, providing the necessary ETag tokens: check your server documentation for necessary configuration flags.</strong>
+                    </p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Tip: HTML5 Boilerplate project contains <a href="https://github.com/h5bp/server-configs">sample configuration files</a> for all the most popular servers with detailed comments for each configuration flag and setting: find your favorite server in the list, look for appropriate settings, and copy / confirm that your server is configured with recommended settings.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="cache-control">Cache-Control</h2>
+                    <ul>
+                        <li>Each resource can define its caching policy via Cache-Control HTTP header</li>
+                        <li>Cache-Control directives control who can cache the response, under which conditions, and for how long</li>
+                    </ul>
+
+                    <p><img alt="HTTP Cache-Control example" src="images/http-cache-control-highlight.png" />
+                    </p>
+                </section>
+                <section>
+                    <h3>“no-cache” and “no-store”</h3>
+                    <ul>
+                        <li>"no-cache" indicates that the returned response cannot be used to satisfy a subsequent request to the same URL without first checking with the server if the response has changed. As a result, if a proper validation token (ETag) is present, no-cache will incur a roundtrip to validate the cached response, but can eliminate the download if the resource has not changed.</li>
+                        <li>By contrast, "no-store" is much simpler, as it simply disallows the browser and all intermediate caches to store any version of the returned response - e.g. one containing private personal or banking data. Everytime the user requests this asset, a request is sent to the server and a full response is downloaded each and every time.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>“public” vs. “private”</h3>
+                    <ul>
+                        <li>If the response is marked as "public" then it can be cached, even if it has HTTP authentication associated with it, and even when the response status code isn’t normally cacheable. Most of the time, "public" isn’t necessary, because explicit caching information (like "max-age") indicates that the response is cacheable anyway.</li>
+                        <li>By contrast, "private" responses can be cached by the browser but are typically intended for a single user and hence are not allowed to be cached by any intermediate cache - e.g. an HTML page with private user information can be cached by that user’s browser, but not by a CDN.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>“max-age”</h3>
+                    <ul>
+                        <li>This directive specifies the maximum time in seconds that the fetched response is allowed to be reused for from the time of the request - e.g. "max-age=60" indicates that the response can be cached and reused for the next 60 seconds.</li>
+                    </ul>
+                </section>
+                <section>
+                    <table class="table-2">
+                        <colgroup>
+                            <col span="1">
+                                <col span="1">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th width="30%">Cache-Control directives</th>
+                                <th>Explanation</th>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">max-age=86400</td>
+                                <td data-th="explanation">Response can be cached by browser and any intermediary caches (i.e. it is "public") for up to 1 day (60 seconds x 60 minutes x 24 hours)</td>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">private, max-age=600</td>
+                                <td data-th="explanation">Response can be cached by the client’s browser only for up to 10 minutes (60 seconds x 10 minutes)</td>
+                            </tr>
+                            <tr>
+                                <td data-th="cache-control">no-store</td>
+                                <td data-th="explanation">Response is not allowed to be cached and must be fetched in full on every request.</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </section>
+                <section>
+                    <h2 id="defining-optimal-cache-control-policy">Defining optimal Cache-Control policy</h2>
+                    <p><img alt="Cache decision tree" src="images/http-cache-decision-tree.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>According to HTTP Archive, amongst the top 300,000 sites (by Alexa rank), <a href="http://httparchive.org/trends.php#maxage0">nearly half of all the downloaded responses can be cached</a> by the browser, which is a huge savings for repeat pageviews and visits! Of course, that doesn’t mean that your particular application will have 50% of resources that can be cached: some sites can cache 90%+ of their resources, while others may have a lot of private or time-sensitive data that can’t be cached at all.</p>
+                    <p><strong>Audit your pages to identify which resources can be cached and ensure that they are returning appropriate Cache-Control and ETag headers.</strong>
+                    </p>
+                </section>
+                <section>
+                    <h2 id="invalidating-and-updating-cached-responses">Invalidating and updating cached responses</h2>
+                    <ul>
+                        <li>Locally cached responses are used until the resource 'expires'</li>
+                        <li>Embedding a file content fingerprint in the URL enables us to force the client to update to a new version of the response</li>
+                        <li>Each application needs to define its own cache hierarchy for optimal performance</li>
+                    </ul>
+                </section>
+                <section>
+                    <p><strong>However, what if we want to update or invalidate a cached response?</strong>
+                    </p>
+                    <p>It’s a trick question - we can’t, at least not without changing the URL of the resource.</p>
+                    <p><strong>So, how do we get the best of both worlds: client-side caching and quick updates?</strong>
+                    </p>
+                    <p>Simple, we can change the URL of the resource and force the user to download the new response whenever its content changes. Typically, this is done by embedding a fingerprint of the file, or a version number, in its filename - e.g. style.<strong>x234dff</strong>.css.</p>
+                    <p><img alt="Cache hierarchy" src="images/http-cache-hierarchy.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>Let’s analyze the above example:</p>
+                    <ul>
+                        <li>The HTML is marked with "no-cache", which means that the browser will always revalidate the document on each request and fetch the latest version if the contents change. Also, within the HTML markup we embed fingerprints in the URLs for CSS and JavaScript assets: if the contents of those files change, than the HTML of the page will change as well and new copy of the HTML response will be downloaded.</li>
+                        <li>The CSS is allowed to be cached by browsers and intermediate caches (e.g. a CDN), and is set to expire in 1 year. Note that we can use the "far future expires" of 1 year safely because we embed the file fingerprint its filename: if the CSS is updated, the URL will change as well.</li>
+                        <li>The JavaScript is also set to expire in 1 year, but is marked as private, perhaps because it contains some private user data that the CDN shouldn’t cache.</li>
+                        <li>The image is cached without a version or unique fingerprint and is set to expire in 1 day.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="caching-checklist">Caching checklist</h2>
+                    <ol>
+                        <li>Use consistent URLs:</li>
+                        <li>Ensure the server provides a validation token (ETag):</li>
+                        <li>Identify which resources can be cached by intermediaries:</li>
+                        <li>Determine the optimal cache lifetime for each resource:</li>
+                        <li>Determine the best cache hierarchy for your site:</li>
+                        <li>Minimize churn:</li>
+                    </ol>
+                </section>
+            </section>

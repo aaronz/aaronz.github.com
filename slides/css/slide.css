@@ -1,0 +1,269 @@
+table {
+    margin-top: 26px;
+    width: 100%;
+}
+table thead {
+    background: none repeat scroll 0 0 #4285f4;
+    color: #fff;
+}
+table th {
+    color: inherit;
+    display: none;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.625em;
+    padding-bottom: 0;
+    padding-top: 1.625em;
+    text-align: center;
+}
+@media only screen and (min-width: 800px) {
+    table th {
+        color: #404040;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: -0.3px;
+        line-height: 1.3em;
+        padding-bottom: 0;
+        padding-top: 1.3em;
+    }
+}
+@media only screen and (min-width: 620px) {
+    table th {
+        color: inherit;
+    }
+}
+@media only screen and (min-width: 620px) {
+    table tr {
+        border-bottom: 1px solid #fff;
+    }
+}
+table tbody {
+    background: none repeat scroll 0 0 #f0f0f0;
+}
+table td {
+    display: block;
+    min-height: 78px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+}
+table td:before {
+    background: none repeat scroll 0 0 #4285f4;
+    border-right: 2px solid #fff;
+    bottom: 0;
+    color: #fff;
+    content: attr(data-th) " :";
+    display: inline-block;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    left: 0;
+    max-height: 100%;
+    padding-left: 13px;
+    padding-top: 13px;
+    position: absolute;
+    top: 0;
+    width: 100px;
+}
+@media only screen and (min-width: 620px) {
+    table td:before {
+        display: none;
+    }
+}
+table td, table th {
+    padding-left: 140px;
+    position: relative;
+}
+@media only screen and (max-width: 619px) {
+    table td, table th {
+        padding-right: 5px;
+    }
+}
+@media only screen and (min-width: 620px) {
+    table td, table th {
+        display: table-cell;
+    }
+}
+@media only screen and (min-width: 620px) {
+    table th {
+        padding: 13px 26px 12px;
+    }
+}
+@media only screen and (min-width: 620px) {
+    table td {
+        padding: 26px 26px 25px;
+    }
+}
+td:last-child:after {
+    background: none repeat scroll 0 0 #fff;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+@media only screen and (min-width: 620px) {
+    td:last-child:after {
+        display: none;
+    }
+}
+.table-2 col {
+    width: 344px;
+}
+.table-2 td {
+    vertical-align: top;
+}
+@media only screen and (min-width: 800px) {
+    .table-2 col {
+        width: 432px;
+    }
+}
+@media only screen and (min-width: 620px) {
+    .table-2 td:first-child, .table-2 th:first-child {
+        border-right: 2px solid #fff;
+    }
+}
+.table-3 col {
+    width: 229.33px;
+}
+@media only screen and (min-width: 800px) {
+    .table-3 col {
+        width: 288px;
+    }
+}
+@media only screen and (min-width: 620px) {
+    .table-3 td:nth-child(2), .table-3 th:nth-child(2) {
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+    }
+}
+.table-4 col {
+    width: 172px;
+}
+@media only screen and (min-width: 800px) {
+    .table-4 col {
+        width: 216px;
+    }
+}
+@media only screen and (min-width: 620px) {
+    .table-4 td:nth-child(2), .table-4 td:nth-child(3), .table-4 th:nth-child(2), .table-4 th:nth-child(3) {
+        border-left: 2px solid #fff;
+        border-right: 2px solid #fff;
+    }
+}
+@media only screen and (min-width: 620px) and (max-width: 799px) {
+    .g-medium--1 {
+        float: left;
+        margin-right: 4.5%;
+        width: 30.3%
+    }
+    .g-medium--push-1 {
+        margin-left: 34.8%
+    }
+    .g-medium--pull-1 {
+        margin-right: 34.8%
+    }
+    .g-medium--2 {
+        float: left;
+        margin-right: 4.5%;
+        width: 65.1%
+    }
+    .g-medium--push-2 {
+        margin-left: 69.6%
+    }
+    .g-medium--pull-2 {
+        margin-right: 69.6%
+    }
+    .g-medium--3 {
+        float: left;
+        width: 99.9%;
+        margin-right: 0
+    }
+    .g-medium--full {
+        float: left;
+        margin-right: 0;
+        width: 100%
+    }
+    .g--third {
+        float: left;
+        margin-right: 4.5%;
+        width: 30.3%
+    }
+    .g--half, .g-medium--half {
+        float: left;
+        margin-right: 4.5%;
+        width: 47.75%
+    }
+    .g-medium--last {
+        margin-right: 0
+    }
+    .g--pull-half {
+        margin-right: 52.25%
+    }
+}
+@media only screen and (min-width: 800px) {
+    .g-wide--1 {
+        float: left;
+        margin-right: 3.7%;
+        width: 22.2%
+    }
+    .g-wide--push-1 {
+        margin-left: 25.9%
+    }
+    .g-wide--pull-1 {
+        margin-right: 25.9%
+    }
+    .g-wide--2 {
+        float: left;
+        margin-right: 3.7%;
+        width: 48.1%
+    }
+    .g-wide--push-2 {
+        margin-left: 51.8%
+    }
+    .g-wide--pull-2 {
+        margin-right: 51.8%
+    }
+    .g-wide--3 {
+        float: left;
+        margin-right: 3.7%;
+        width: 74%
+    }
+    .g-wide--push-3 {
+        margin-left: 77.7%
+    }
+    .g-wide--pull-3 {
+        margin-right: 77.7%
+    }
+    .g-wide--4 {
+        float: left;
+        width: 99.9%;
+        margin-right: 0
+    }
+    .g-wide--first {
+        clear: both
+    }
+    .g-wide--last {
+        margin-right: 0
+    }
+    .g-wide--full {
+        float: left;
+        margin-right: 0;
+        width: 100%
+    }
+    .g--third {
+        float: left;
+        margin-right: 3.7%;
+        width: 30.8%
+    }
+    .g--half, .g-wide--half {
+        float: left;
+        margin-right: 3.7%;
+        width: 48.15%
+    }
+    .g--pull-half {
+        margin-right: 51.85%
+    }
+}

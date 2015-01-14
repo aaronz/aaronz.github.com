@@ -1,0 +1,936 @@
+---
+layout: slide 
+title: Forms and User Input
+description: Touch, tap, click, and submit
+---
+
+<link rel="stylesheet" href="css/slide.css">
+<section id="agenda">
+    <h3>agenda</h3>
+                <ul>
+                    <li><a href="#create-amazing-forms">Create Amazing Forms</a>
+                    </li>
+                    <li><a href="#add-touch-to-your-site">Add Touch to Your Site</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section id="create-amazing-forms">
+                    <h2>Create Amazing Forms</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Design efficient forms</h2>
+                </section>
+                <section>
+                    <p>Design efficient forms by avoiding repeated actions, asking for only the necessary information and guide users by showing them how far along they are in multi-part forms.</p>
+                    <ul>
+                        <li>Use existing data to pre-populate fields and be sure to enable auto-fill.</li>
+                        <li>Use clearly-labeled progress bars to help users get through multi-part forms.</li>
+                        <li>Provide visual calendar so users don’t have to leave your site and jump to the calendar app on their smartphones.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="minimize-repeated-actions-and-fields">Minimize repeated actions and fields</h2>
+                    <p>Make sure your forms have no repeated actions, only as many fields as necessary, and take advantage of <a href="https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs.html#use-metadata-to-enable-auto-complete">autofill</a>, so that users can easily complete forms with pre-populated data.</p>
+                    <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+                        <figcaption>On the Progressive.com website, users are asked first for their ZIP code, which is then pre-populated into the next part of the form.</figcaption>
+                    </figure>
+                    <p>Look for opportunities to pre-fill information you already know, or may anticipated to save the user from having to provide it. For example, pre-populate the shipping address with the last shipping address supplied by the user.</p>
+                </section>
+                <section>
+                    <h2 id="show-users-how-far-along-they-are">Show users how far along they are</h2>
+                    <p>Progress bars and menus should accurately convey overall progress through multi-step forms and processes.</p>
+                    <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+                        <figcaption>Use clearly-labeled progress bars to help users get through multi-part forms.</figcaption>
+                    </figure>
+                    <p>If you place a disproportionately complex form in an earlier step, users are more likely to abandon your site before they go through the entire process.</p>
+                </section>
+                <section>
+                    <h2 id="provide-visual-calendars-when-selecting-dates">Provide visual calendars when selecting dates</h2>
+                    <p>Users often need more context when scheduling appointments and travel dates, to make things easier and prevent them from leaving your site to check their calendar app, provide a visual calendar with clear labeling for selecting start and end dates.</p>
+                    <figure><img src="images/forms-calendar-good.png" srcset="images/forms-calendar-good.png 1x, images/forms-calendar-good-2x.png 2x" alt="Hotel website with easy to use calendar">
+                        <figcaption>Hotel booking website with easy to use calendar widget for picking dates.</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Choose the best input type</h2>
+                </section>
+                <section>
+                    <p>Streamline information entry by using the right input type. Users appreciate websites that automatically present number pads for entering phone numbers, or automatically advance fields as they entered them. Look for opportunities to eliminate wasted taps in your forms.</p>
+                    <ul>
+                        <li>Choose the most appropriate input type for your data to simplify input.</li>
+                        <li>Offer suggestions as the user types with the <code>datalist</code> element.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>HTML5 introduced a number of new input types. These new input types give hints to the browser about what type of keyboard layout to display for on-screen keyboards. Users are more easily able to enter the required information without having to change their keyboard and only see the appropriate keys for that input type.</p>
+                    <p>The <code>datalist</code> element isn’t an input type, but a list of suggested input values to associated with a form field. It lets the browser suggest autocomplete options as the user types. Unlike select elements where users must scan long lists to find the value they’re looking for, and limiting them only to those lists, <code>datalist</code> element provides hints as the user types.</p><pre><code>    &lt;label for="frmFavChocolate"&gt;Favorite Type of Chocolate&lt;/label&gt;
+    &lt;input type="text" name="fav-choc" id="frmFavChocolate" list="chocType"&gt;
+    &lt;datalist id="chocType"&gt;
+      &lt;option value="white"&gt;
+      &lt;option value="milk"&gt;
+      &lt;option value="dark"&gt;
+    &lt;/datalist&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>The <code>datalist</code> values are provided as suggestions, and users are not restricted to the suggestions provided.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Label and name inputs properly</h2>
+                </section>
+                <section>
+                    <p>Forms are hard to fill out on mobile. The best forms are the ones with the fewest inputs. Good forms provide semantic input types. Keys should change to match the user's input type; users pick a date in a calendar. Keep your user informed. Validation tools should tell the user what they need to do before submitting the form.</p>
+                    <ul>
+                        <li>Always use <code>label</code>s on form inputs, and ensure they're visible when the field is in focus.</li>
+                        <li>Use <code>placeholder</code>s to provide guidance about what you expect.</li>
+                        <li>To help the browser auto-complete the form, use established <code>name</code>'s for elements and include the <code>autocomplete</code> attribute.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>The importance of labels</h3>
+                    <p>The <code>label</code> element provides direction to the user, telling them what information is needed in a form element. Each <code>label</code> is associated with an input element by placing it inside the <code>label</code> element, or by using the "<code>for</code>" attribute. Applying labels to form elements also helps to improve the touch target size: the user can touch either the label or the input in order to place focus on the input element.</p><pre><code>    &lt;label for="frmAddressS"&gt;Address&lt;/label&gt;
+    &lt;input type="text" name="ship-address" required id="frmAddressS"
+      placeholder="123 Any Street" autocomplete="shipping street-address"&gt;</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                </section>
+                <section>
+                    <h3>Label sizing and placement</h3>
+                    <p>Labels and inputs should be large enough to be easy to press. In portrait viewports, field labels should be above input elements, and beside them in landscape. Ensure field labels and the corresponding input boxes are visible at the same time. Be careful with custom scroll handlers that may scroll input elements to the top of the page hiding the label, or labels placed below input elements may be covered by the virtual keyboard.</p>
+                    <p>The placeholder attribute provides a hint to the user about what’s expected in the input, typically by displaying the value as light text until the the user starts typing in the element.</p>
+                    <p>
+                        <input placeholder="MM-YYYY" />
+                    </p><pre><code>&lt;input type="text" placeholder="MM-YYYY" ...&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Placeholders disappear as soon as the user starts typing in an element, thus they are not a replacement for labels. They should be used as an aid to help guide users on the required format and content.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Use metadata to enable auto-complete</h3>
+                    <p>Users appreciate when websites save them time by automatically filling common fields like names, email addresses and other frequently used fields, plus it helps to reduce potential input errors – especially on virtual keyboards and small devices.</p>
+                    <p>Browsers use many heuristics to determine which fields they can <a href="https://support.google.com/chrome/answer/142893">auto-populate</a> <a href="https://support.google.com/chrome/answer/142893">based on previously specified data by the user</a>, and you can give hints to the browser by providing both the name attribute and the autocomplete attribute on each input element.</p>
+                    <p>For example, to hint to the browser that it should auto-complete the form with the users name, email address and phone number, you should use:</p><pre><code>    &lt;label for="frmNameA"&gt;Name&lt;/label&gt;
+    &lt;input type="text" name="name" id="frmNameA"
+    placeholder="Full name" required autocomplete="name"&gt;
+    &lt;label for="frmEmailA"&gt;Email&lt;/label&gt;
+    &lt;input type="email" name="email" id="frmEmailA"
+      placeholder="name@example.com" required autocomplete="email"&gt;
+    &lt;label for="frmEmailC"&gt;Confirm Email&lt;/label&gt;
+    &lt;input type="email" name="emailC" id="frmEmailC"
+      placeholder="name@example.com" required autocomplete="email"&gt;
+    
+    &lt;label for="frmPhoneNumA"&gt;Phone&lt;/label&gt;
+    &lt;input type="tel" name="phone" id="frmPhoneNumA"
+      placeholder="+1-555-555-1212" required autocomplete="tel"&gt;</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                </section>
+                <section>
+                    <h3>Recommended input name and autocomplete attribute values</h3>
+                    <table class="table-3 autocompletes">
+                        <thead>
+                            <tr>
+                                <th data-th="Content type">Content type</th>
+                                <th data-th="name attribute"><code>name</code> attribute</th>
+                                <th data-th="autocomplete attribute"><code>autocomplete</code> attribute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Content type">Name</td>
+                                <td data-th="name attribute"><code>name</code> <code>fname</code> <code>mname</code> <code>lname</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>name</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Email</td>
+                                <td data-th="name attribute"><code>email</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>email</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Address</td>
+                                <td data-th="name attribute"><code>address</code> <code>city</code> <code>region</code> <code>province</code> <code>state</code> <code>zip</code> <code>zip2</code> <code>postal</code> <code>country</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>street-address</code> <code>locality</code> <code>region</code> <code>postal-code</code> <code>country</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Phone</td>
+                                <td data-th="name attribute"><code>phone</code> <code>mobile</code> <code>country-code</code> <code>area-code</code> <code>exchange</code> <code>suffix</code> <code>ext</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>tel</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Content type">Credit Card</td>
+                                <td data-th="name attribute"><code>ccname</code> <code>cardnumber</code> <code>cvc</code> <code>ccmonth</code> <code>ccyear</code> <code>exp-date</code> <code>card-type</code>
+                                </td>
+                                <td data-th="autocomplete attribute"><code>cc-name</code> <code>cc-number</code> <code>cc-csc</code> <code>cc-exp-month</code> <code>cc-exp-year</code> <code>cc-exp</code> <code>cc-type</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>The <code>autocomplete</code> attributes should be prefixed with either <code>shipping</code> or <code>billing</code>, depending on the context.</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Auto-complete only works when the form method is post.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>On some forms, for example the Google home page where the only thing you want the user to do is fill out a particular field, you can add the <code>autofocus</code> attribute. When set, desktop browsers immediately move the focus to the input field, making it easy for users to quickly begin using the form. Mobile browsers ignore the <code>autofocus</code> attribute, to prevent the keyboard from randomly appearing.</p>
+                    <p>Be careful using the autofocus attribute because it will steal keyboard focus and potentially preventing the backspace character from being used for navigation.</p><pre><code>&lt;input type="text" autofocus ...&gt;</code></pre>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Provide real-time validation</h2>
+                </section>
+                <section>
+                    <p>Real-time data validation doesn't just help to keep your data clean, but it also helps improve the user experience. Modern browsers have several built-in tools to help provide real-time data validation and may prevent the user from submitting an invalid form. Visual cues should be used to indicate whether a form has been completed properly.</p>
+                    <ul>
+                        <li>Leverage the browser's built-in validation attributes like <code>pattern</code>, <code>required</code>, <code>min</code>, <code>max</code>, etc.</li>
+                        <li>Use JavaScript and the Constraints Validation API for more complex validation requirements.</li>
+                        <li>Show validation errors in real time, and if the user tries to submit an invalid form, show all fields they need to fix.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Use these attributes to validate input</h3>
+                    <p>The <code>pattern</code> attribute specifies a <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expression</a> used to validate an input field. For example, to validate a US Zip code (5 digits, sometimes followed by a dash and an additional 4 digits), we would set the <code>pattern</code> like this:</p><pre><code>&lt;input type="text" pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Common regular expression patterns</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="Description">Description</th>
+                                <th data-th="Regular expression">Regular expression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Description">Postal address</td>
+                                <td data-th="Regular expression"><code>[a-zA-Z\d\s\-\,\#\.\+]+</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Zip Code (US)</td>
+                                <td data-th="Regular expression"><code>^\d{5,6}(?:[-\s]\d{4})?$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (IPv4)</td>
+                                <td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (IPv6)</td>
+                                <td data-th="Regular expression"><code>^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">IP Address (both)</td>
+                                <td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Credit Card Number</td>
+                                <td data-th="Regular expression"><code>^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">Social Security Number</td>
+                                <td data-th="Regular expression"><code>^\d{3}-\d{2}-\d{4}$</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td data-th="Description">North American Phone Number</td>
+                                <td data-th="Regular expression"><code>^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>The required attribute</h3>
+                    <p>If the <code>required</code> attribute is present, then the field must contain a value before the form can be submitted. For example, to make the zip code required, we’d simply add the required attribute:</p><pre><code>&lt;input type="text" required pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>The min, max and step attributes</h3>
+                    <p>For numeric input types like number or range as well as date/time inputs, you can specify the minimum and maximum values, as well as how much they should each increment/decrement when adjusted by the slider or spinners. For example, a shoe size input would set a minumum size of 1 and a maximum size 13, with a step of 0.5</p><pre><code>&lt;input type="number" min="1" max="13" step="0.5" ...&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>The maxlength attribute</h3>
+                    <p>The <code>maxlength</code> attribute can be used to specify the maximum length of an input or textbox and is useful when you want to limit the length of information that the user can provide. For example, if you want to limit a filename to 12 characters, you can use the following.</p><pre><code>&lt;input type="text" id="83filename" maxlength="12" ...&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>The novalidate attribute</h3>
+                    <p>In some cases, you may want to allow the user to submit the form even if it contains invalid input. To do this, add the <code>novalidate</code> attribute to the form element, or individual input fields. In this case, all pseudo classes and JavaScript APIs will still allow you to check if the form validates.</p><pre><code>&lt;form role="form" novalidate&gt;
+  &lt;label for="inpEmail"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" ...&gt;
+&lt;/form&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Even with client-side input validation, it is always important to validate data on the server to ensure consistency and security in your data.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Use JavaScript for more complex real-time validation</h3>
+                    <p>When the built-in validation plus regular expressions aren’t enough, you can use the <a href="http://dev.w3.org/html5/spec-preview/constraints.html#constraint-validation">Constraint Validation API</a>, a powerful tool for handling custom validation. The API allows you to do things like set a custom error, check whether an element is valid, and determine the reason that an element is invalid:</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="API">API</th>
+                                <th data-th="Description">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="API"><code>setCustomValidity()</code>
+                                </td>
+                                <td data-th="Description">Sets a custom validation message and the <code>customError</code> property of the <code>ValidityState</code> object to <code>true</code>.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>validationMessage</code>
+                                </td>
+                                <td data-th="Description">Returns a string with the reason the input failed the validation test.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>checkValidity()</code>
+                                </td>
+                                <td data-th="Description">Returns <code>true</code> if the element satisfies all of its constraints, and <code>false</code> otherwise.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="API"><code>validity</code>
+                                </td>
+                                <td data-th="Description">Returns a <code>ValidityState</code> object representing the validity states of the element.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>Set custom validation messages</h3>
+                    <p>If a field fails validation, use <code>setCustomValidity()</code> to mark the field invalid and explain why the field didn’t validate. For example, a sign up form might ask the user to confirm their email address by entering it twice. Use the blur event on the second input to validate the two inputs and set the appropriate response. For example:</p><pre><code>    if (input.value != primaryEmail) {
+      // the provided value doesn't match the primary email address
+      input.setCustomValidity('The two email addresses must match.');
+      console.log("E-mail addresses do not match", primaryEmail, input.value);
+    } else {
+      // input is valid -- reset the error message
+      input.setCustomValidity('');
+    }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                </section>
+                <section>
+                    <p>Because not all browsers will prevent the user from submitting the form if there is invalid data, you should catch the submit event, and use the <code>checkValidity()</code> on the form element to determine if the form is valid. For example:</p><pre><code>    form.addEventListener("submit", function(evt) {
+      if (form.checkValidity() === false) {
+        evt.preventDefault();
+        alert("Form is invalid - submission prevented!");
+        return false;
+      } else {
+        // To prevent data from being sent, we've prevented submission
+        // here, but normally this code block would not exist.
+        evt.preventDefault();
+        alert("Form is valid - submission prevented to protect privacy.");
+        return false;
+      }
+    });</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                </section>
+
+                <section>
+                    <h3>Show feedback in real-time</h3>
+                    <p>It’s helpful to provide a visual indication on each field that indicates whether the user has completed the form properly before they’ve submitted the form. HTML5 also introduces a number of new pseudo-classes that can be used to style inputs based on their value or attributes.</p>
+                    <table class="table-2 tc-heavyright">
+                        <thead>
+                            <tr>
+                                <th data-th="Pseudo-class">Pseudo-class</th>
+                                <th data-th="Use">Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:valid</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input to be used when the value meets all of the validation requirements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:invalid</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input to be used when the value does not meet all of the validation requirements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:required</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input element that has the required attribute set.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:optional</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for an input element that does not have the required attribute set.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:in-range</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for a number input element where the value is in range.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Pseudo-class"><code>:out-of-range</code>
+                                </td>
+                                <td data-th="Use">Explicitly sets the style for a number input element where the value is out of range.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Validation happens immediately which means that when the page is loaded, fields may be marked as invalid, even though the user hasn’t had a chance to fill them in yet. It also means that as the user types, and it’s possible they’ll see the invalid style while typing. To prevent this, you can combine the CSS with JavaScript to only show invalid styling when the user has visited the field.</p><pre><code>    input.dirty:not(:focus):invalid {
+      background-color: #FFD9D9;
+    }
+    input.dirty:not(:focus):valid {
+      background-color: #D9FFD9;
+    }</code></pre>
+                </section>
+                <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                <section><pre><code>    var inputs = document.getElementsByTagName("input");
+    var inputs_len = inputs.length;
+    var addDirtyClass = function(evt) {
+      sampleCompleted("Forms-order-dirty");
+      evt.srcElement.classList.toggle("dirty", true);
+    };
+    for (var i = 0; i &lt; inputs_len; i++) {
+      var input = inputs[i];
+      input.addEventListener("blur", addDirtyClass);
+      input.addEventListener("invalid", addDirtyClass);
+      input.addEventListener("valid", addDirtyClass);
+    }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+                </section>
+                <section>
+                    <p>Important</p>
+                    <ul>
+                        <li>You should show the user all of the issues on the form at once, rather than showing them one at a time.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Simplify checkout with requestAutocomplete API</h2>
+                </section>
+                <section>
+                    <p>While <code>requestAutocomplete</code> was designed to help users fill out any form, today its most common use is in eCommerce where shopping cart abandonment on the mobile web <a href="http://seewhy.com/97-shopping-cart-abandonment-rate-mobile-devices-concern-you/">can be as high as 97%</a>. Imagine 97% of people in a supermarket, with a cart brimming full of things that they want, flipping their cart over and walking out.</p>
+                    <ul>
+                        <li><code>requestAutocomplete</code> can greatly simplify the checkout process and improve the user experience.</li>
+                        <li>If <code>requestAutocomplete</code> is available, hide the checkout form and move people directly to the confirmation page.</li>
+                        <li>Ensure input fields include the appropriate autocomplete attribute.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Rather than the site relying on a particular payment provider, <code>requestAutocomplete</code> requests payment details (such as name, address and credit card information) from the browser, which are optionally stored by the browser much like other auto-complete fields.</p>
+                </section>
+                <section>
+                    <h3>requestAutocomplete flow</h3>
+                    <p>The ideal experience will show the <code>requestAutocomplete</code> dialog instead of loading the page that displays the checkout form. If all goes well, the user shouldn’t see the form at all. You can easily add <code>requestAutocomplete</code> to existing forms without having to change any field names. Simply add the <code>autocomplete</code> attribute to each form element with the appropriate value and add the <code>requestAutocomplete()</code> function on the form element. The browser will handle the rest.</p>
+                    <p><img alt="Request autocomplete flow" src="images/rac_flow.png" />
+                    </p>
+                </section>
+                <section><pre><code>    var doRAC = document.getElementById("doRAC");
+    doRAC.addEventListener("click", doRequestAutocomplete);
+    form = document.getElementById("usrForm");
+    form.addEventListener("autocompleteerror", requestAutocompleteError);
+    form.addEventListener("autocomplete", requestAutocompleteCompleted);
+    if (form.requestAutocomplete) {
+      isRACSupported(true, "");
+    } else {
+      isRACSupported(false, "Please complete the form manually.");
+    }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/rac.html">Try full sample</a>
+                </section>
+                <section>
+                    <p>The <code>requestAutocomplete</code> function on the <code>form</code> element indicates to the browser that it should populate the form. As a security feature, the function must be called via a user gesture like a touch or mouse click. A dialog is then displayed asking the user permission to populate the fields and which details they want to populate it with.</p><pre><code>    function requestAutocompleteCompleted(evt) {
+      console.log("requestAutocomplete Completed", evt);
+      form.classList.toggle("hidden", false);
+    }
+    function requestAutocompleteError(evt) {
+      console.log("requestAutocomplete Error", evt);
+      isRACSupported(false, "An error occured attempting to autocomplete the form.");
+    }</code></pre>
+                    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/rac.html">Try full sample</a>
+                </section>
+                <section>
+                    <p>Upon completion of <code>requestAutocomplete</code>, the function will either fire the <code>autocomplete</code> event if it finished successfully, or <code>autocompleteerror</code> if it was unable to complete the form. If it completed successfully and the form validates to your needs, simply submit the form and proceed to the final confirmation.</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>If you're asking for any kind of personal information or credit card data, ensure the page is served via SSL. Otherwise the dialog will warn the user their information may not be secure.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section id="add-touch-to-your-site">
+                    <h2>Add Touch to Your Site</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Stateful Elements Respond to Touch</h2>
+                    <p>Touchscreens are available on more and more devices, ranging from phones up to desktop screens. When your users choose to interact with your UI, your app should respond to their touch in intuitive and beautiful ways.</p>
+                </section>
+                <section>
+                    <h2 id="add-touch-states">Add Touch States</h2>
+                    <p>Have you ever touched or clicked an element on a web page and questioned whether the site actually detected it?</p>
+                    <p>Simply altering the color of elements as users touch parts of your UI gives a basic reassurance that your site is working. Not only does this alleviate frustation, but can also give a snappy and responsive feel to your site.</p>
+                </section>
+                <section>
+                    <h3>Use Pseudo Classes to Change UI for each Touch State</h3>
+                    <p>The fastest way to support touch is to change the UI in response to a DOM element’s change in state.</p>
+                    <ul>
+                        <li>Make your site feel snappy and responsive&amp;colon; change the UI for each state :hover, :active and :focus.</li>
+                        <li>Don’t override a browser’s default responses to touch and focus unless you are implementing your own UI changes.</li>
+                        <li>Disable text selection on elements users will touch, unless there’s a good reason why users might need to copy / select the text.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>DOM elements can be in one of the following states, default, focus, hover, and active. To change our UI for each of these states, we need to apply styles to the following pseudo classes <code>:hover</code>, <code>:focus</code> and <code>:active</code> as shown below:</p><pre><code>    .btn {
+      background-color: #4285f4;
+    }
+    .btn:hover {
+      background-color: #296CDB;
+    }
+    .btn:focus {
+      background-color: #0F52C1;
+    
+      /* The outline parameter surpresses the border
+      color / outline when focused */
+      outline: 0;
+    }
+    .btn:active {
+      background-color: #0039A8;
+    }</code></pre>
+                </section>
+                <section>
+                    <p>See <a href="https://developers.google.com/web/fundamentals/input/touch/activestates/#pseudo-classes-for-touch-states">Pseudo classes for touch states</a>:</p>
+                    <p><img alt="Image illustrating the different colors for button states" src="images/button-states.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>On most mobile browsers <em>hover</em> and/or <em>focus</em> states will apply to an element after it’s been tapped.</p>
+                    <p>Consider carefully what styles you set and how they will look to the user after they finish their touch.</p>
+                    <p>Bear in mind that anchor tags and buttons may have different behaviour in different browsers, so assume in some cases <em>hover</em> will remain and in others <em>focus</em> will remain.</p>
+                </section>
+                <section>
+                    <h3>Enabling Active State Support on iOS</h3>
+                    <p>Unfortunately, Safari on iOS does not apply the <em>active</em> state by default, to get it working you need to add a <code>touchstart</code> event listener to the <em>document body</em> or to each element.</p>
+                    <p>You should do this behind a user agent test so it’s only run on iOS devices.</p>
+                    <p>Adding a touch start to the body has the advantage of applying to all elements in the DOM, however this may have performance issues when scrolling the page.</p><pre><code>window.onload = function() {
+  if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
+    document.body.addEventListener('touchstart', function() {}, false);
+  }
+};</code></pre>
+                </section>
+                <section>
+                    <p>The alternative is to add the touch start listeners to all the interactable elements in the page, alleviating some of the performance concerns.</p><pre><code>window.onload = function() {
+  if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
+    var elements = document.querySelectorAll('button');
+    var emptyFunction = function() {};
+    for(var i = 0; i &lt; elements.length; i++) {
+      elements[i].addEventListener('touchstart', emptyFunction, false);
+    }
+  }
+};</code></pre>
+                </section>
+                <section>
+                    <h3>Override Default Browser Styles for Touch States</h3>
+                    <p>Once you add styles for the different states, you’ll notice that most browsers implement their own styles to respond to a user’s touch, you should override these defaults when you’ve added your own styles.</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Only override browser styles if you are implementing your own!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Override Tap Highlight Styles</h3>
+                    <p>When mobile devices first launched, a number of sites didn’t have styling for the active state. As a result, many browsers add a highlight color or style to elements when a user touches them.</p>
+                    <p>Safari and Chrome add a tap highlight color which can be prevented with the <code>-webkit-tap-highlight-color</code> CSS property:</p><pre><code>    /* Webkit / Chrome Specific CSS to remove tap
+    highlight color */
+    .btn {
+      -webkit-tap-highlight-color: transparent;
+    }</code></pre>
+                </section>
+                <section>
+                    <p>Internet Explorer on Windows Phone has a similar behavior, but is suppressed via a meta tag:</p><pre><code>&lt;meta name="msapplication-tap-highlight" content="no"&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Override FirefoxOS Button State Styles</h3>
+                    <p>The Firefox <code>-moz-focus-inner</code> pseudo class includes an outline on touchable elements. You can remove this outline by setting the <code>border: 0</code>.</p>
+                    <p>If you are using a <code>&lt;button&gt;</code> element, you get a gradient applied to your button which you can remove by setting <code>background-image: none</code>.</p><pre><code>    /* Firefox Specific CSS to remove button
+    differences and focus ring */
+    .btn {
+      background-image: none;
+    }
+    .btn::-moz-focus-inner {
+      border: 0;
+    }</code></pre>
+                </section>
+                <section>
+                    <h3>Override Element Outline in Focus State</h3>
+                    <p>Suppress the outline color when an element is focused using <code>outline: 0</code>.</p><pre><code>.btn:focus {
+  outline: 0;
+  // Add replacement focus styling here (i.e. border)
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Disable user-select on UI which Responds to Touch</h3>
+                    <p>Some mobile browsers will select text if the user long presses on the screen. This can result in a bad user experience if the user accidentally presses down on a button for too long. You can prevent this from happening using the <code>user-select</code> CSS property.</p><pre><code>-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+user-select: none;</code></pre>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>You should be cautious not to disable user selection if the information on the element may be useful to the user (phone number, e-mail address, and so on).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Pseudo Classes for Touch States</h3>
+                    <table class="table-3">
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Example</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="Class">:hover</td>
+                                <td data-th="Example"><img alt="Button in Pressed State" src="images/btn-hover-state.png">
+                                </td>
+                                <td data-th="Description">This state is entered when a is cursor placed over an element. Changes in UI on hover are helpful to encourage users to interact with elements.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Class">:focus</td>
+                                <td data-th="Example"><img alt="Button with Focus State" src="images/btn-focus-state.png">
+                                </td>
+                                <td data-th="Description">When you tab through elements on a page, you are moving the focus from one element to the next. The focus state allows the user to know what element they are currently interacting with; also allows users to navigate your UI easily using a keyboard.</td>
+                            </tr>
+                            <tr>
+                                <td data-th="Class">:active</td>
+                                <td data-th="Example"><img alt="Button in Pressed State" src="images/btn-pressed-state.png">
+                                </td>
+                                <td data-th="Description">This is the state an element has when it's being selected, for example a user clicking or touching an element.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Implement Custom Gestures</h2>
+                    <p>If you have an idea for custom interactions and gestures for your site, there are two topics to keep in mind: how to support the range of mobile browsers and how to keep your frame rate high. In this article, we'll look at exactly these topics.</p>
+                </section>
+                <section>
+                    <h2 id="respond-to-touch-input-using-events">Respond to Touch Input Using Events</h2>
+                </section>
+                <section>
+                    <p>Depending on what you would like to do with touch, you’re likely to fall into one of two camps:</p>
+                    <ul>
+                        <li>I want the user to interact with one particular element.</li>
+                        <li>I want the user to interact with multiple elements at the same time.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>There are trade offs to be had with both.</p>
+                    <p>If the user will only be able to interact with one element, you might want all touch events to be given to that one element, as long as the gesture initially started on the element itself. For example, moving a finger off the swipable element can still control the element.</p>
+                    <p><img alt="Example GIF of touch on document" src="images/touch-document-level.gif" />
+                    </p>
+                </section>
+                <section>
+                    <p>If, however, you expect users to interact with multiple elements at the same time (using multi-touch), you should restrict the touch to the specific element.</p>
+                    <p><img alt="Example GIF of touch on element" src="images/touch-element-level.gif" />
+                    </p>
+                </section>
+                <section>
+                    <ul>
+                        <li>For full device support, handle touch, mouse and Pointer Events.</li>
+                        <li>Always bind start event listeners to the element itself.</li>
+                        <li>If you want the user to interact with one particular element, bind your move and end listeners to the document in the touchstart method; ensure you unbind them from the document in the end listener.</li>
+                        <li>If you want to support multi-touch, either restrict move and end touch events to the element itself or handle all the touches on an element.</li>
+                    </ul>
+                    <p>Touch events and mouse events are implemented on most mobile browsers.</p>
+                    <p>The event names you need to implement are <code>touchstart</code>, <code>touchmove</code>, <code>touchend</code> and <code>touchcancel</code>.</p>
+                    <p>For some situations, you may find that you would like to support mouse interaction as well; which you can do with the mouse events: <code>mousedown</code>, <code>mousemove</code>, and <code>mouseup</code>.</p>
+                    <p>For Windows Touch devices, you need to support Pointer Events which are a new set of events. Pointer Events merge mouse and touch events into one set of callbacks. This is currently only supported in Internet Explorer 10+ with the prefixed events <code>MSPointerDown</code>, <code>MSPointerMove</code>, and <code>MSPointerUp</code> and in IE 11+ the unprefixed events <code>pointerdown</code>, <code>pointermove</code>, and <code>pointerup</code>.</p>
+                    <p>Touch, mouse and Pointer Events are the building blocks for adding new gestures into your application (see <a href="https://developers.google.com/web/fundamentals/input/touch/touchevents/#touch-mouse-and-pointer-events">Touch, mouse and Pointer events</a>).</p>
+                    <p>Include these event names in the <code>addEventListener()</code> method, along with the event’s callback function and a boolean. The boolean determines whether you should catch the event before or after other elements have had the opportunity to catch and interpret the events (<code>true</code> means we want the event before other elements).</p><pre><code>    // Check if pointer events are supported.
+    if (window.PointerEventsSupport) {
+      // Add Pointer Event Listener
+      swipeFrontElement.addEventListener(pointerDownName, this.handleGestureStart, true);
+    } else {
+      // Add Touch Listener
+      swipeFrontElement.addEventListener('touchstart', this.handleGestureStart, true);
+      // Add Mouse Listener
+      swipeFrontElement.addEventListener('mousedown', this.handleGestureStart, true);
+    }</code></pre>
+                </section>
+                <section>
+                    <p>This code first checks to see if Pointer Events are supported by testing for <code>window.PointerEventsSupport</code>, if Pointer Events aren’t supported, we add listeners for touch and mouse events instead.</p>
+                    <p>The value <code>window.PointerEventSupport</code> is determined by looking for the existence of <code>window.PointerEvent</code> or the now deprecated <code>window.navigator.msPointerEnabled</code> objects. If they are supported we use varibles for event names, which use the prefixed or unprefixed versions depending on the existence of <code>window.PointerEvent</code>.</p><pre><code>    var pointerDownName = 'MSPointerDown';
+    var pointerUpName = 'MSPointerUp';
+    var pointerMoveName = 'MSPointerMove';
+    if(window.PointerEvent) {
+      pointerDownName = 'pointerdown';
+      pointerUpName = 'pointerup';
+      pointerMoveName = 'pointermove';
+    }
+    // Simple way to check if some form of pointerevents is enabled or not
+    window.PointerEventsSupport = false;
+    if(window.PointerEvent || window.navigator.msPointerEnabled) {
+      window.PointerEventsSupport = true;
+    }</code></pre>
+                </section>
+                <section>
+                    <p>In the short snippet of code above you may have noticed that we only add the starting event listener, this is a conscious decision.</p>
+                    <p>By adding the move and end event listeners once the gesture has started on the element itself, the browser can check if the touch occured in a region with a touch event listener and if it’s not, can handle it faster by not having to run any additional javascript.</p>
+                    <p>The steps taken to implement this are:</p>
+                    <p>Below is a snippet of our <code>handleGestureStart</code> method which adds the move and end events to the document:</p><pre><code>    // Handle the start of gestures
+    this.handleGestureStart = function(evt) {
+      evt.preventDefault();
+      if(evt.touches &amp;&amp; evt.touches.length &gt; 1) {
+        return;
+      }
+      // Add the move and end listeners
+      if (window.PointerEventsSupport) {
+        // Pointer events are supported.
+        document.addEventListener(pointerMoveName, this.handleGestureMove, true);
+        document.addEventListener(pointerUpName, this.handleGestureEnd, true);
+      } else {
+        // Add Touch Listeners
+        document.addEventListener('touchmove', this.handleGestureMove, true);
+        document.addEventListener('touchend', this.handleGestureEnd, true);
+        document.addEventListener('touchcancel', this.handleGestureEnd, true);
+        // Add Mouse Listeners
+        document.addEventListener('mousemove', this.handleGestureMove, true);
+        document.addEventListener('mouseup', this.handleGestureEnd, true);
+      }
+      initialTouchPos = getGesturePointFromEvent(evt);
+      swipeFrontElement.style.transition = 'initial';
+    }.bind(this);</code></pre>
+                </section>
+                <section>
+                    <p>The end callback we add is <code>handleGestureEnd</code> which removes the move and end events from the document when the gesture has finished:</p><pre><code>    // Handle end gestures
+    this.handleGestureEnd = function(evt) {
+      evt.preventDefault();
+      if(evt.touches &amp;&amp; evt.touches.length &gt; 0) {
+        return;
+      }
+      isAnimating = false;
+      // Remove Event Listeners
+      if (window.PointerEventsSupport) {
+        // Remove Pointer Event Listeners
+        document.removeEventListener(pointerMoveName, this.handleGestureMove, true);
+        document.removeEventListener(pointerUpName, this.handleGestureEnd, true);
+      } else {
+        // Remove Touch Listeners
+        document.removeEventListener('touchmove', this.handleGestureMove, true);
+        document.removeEventListener('touchend', this.handleGestureEnd, true);
+        document.removeEventListener('touchcancel', this.handleGestureEnd, true);
+        // Remove Mouse Listeners
+        document.removeEventListener('mousemove', this.handleGestureMove, true);
+        document.removeEventListener('mouseup', this.handleGestureEnd, true);
+      }
+      updateSwipeRestPosition();
+    }.bind(this);</code></pre>
+                </section>
+                <section>
+                    <p>Mouse events follow this same pattern since it’s easy for a user to accidentally move the mouse outside of the element, which results in the move events no longer firing. By adding the move event to the document, we’ll continue to get mouse movements regardless of where they are on the page.</p>
+                    <p>You can use the <a href="https://developer.chrome.com/devtools/docs/rendering-settings#show-potential scroll bottlenecks">Show potential scroll bottlenecks</a> feature in Chrome DevTools to show how the touch events behave:</p>
+                    <p><img alt="Enable Scroll Bottleneck in DevTools" src="images/scroll-bottleneck-devtool.png" />
+                    </p>
+                </section>
+                <section>
+                    <p>With this enabled you can see where touch events are bound and ensure your logic for adding and removing listeners is working as you’d expect.</p>
+                    <p><img alt="Illustrating Binding Touch Events to Document in touchstart" src="images/scroll-bottleneck.gif" />
+                    </p>
+                </section>
+                <section>
+                    <p>If you expect your users to use multiple elements at once, you can add the move and end events listeners directly to the elements themselves. This applies to touch only, for mouse interactions you should continue to apply the <code>mousemove</code> and <code>mouseup</code> listeners to the document.</p>
+                    <p>Since we only wish to track touches on a particular element, we can add the move and end listeners for touch and pointer events to the element straight away:</p><pre><code>    // Check if pointer events are supported.
+    if (window.PointerEventsSupport) {
+      // Add Pointer Event Listener
+      elementHold.addEventListener(pointerDownName, this.handleGestureStart, true);
+      elementHold.addEventListener(pointerMoveName, this.handleGestureMove, true);
+      elementHold.addEventListener(pointerUpName, this.handleGestureEnd, true);
+    } else {
+      // Add Touch Listeners
+      elementHold.addEventListener('touchstart', this.handleGestureStart, true);
+      elementHold.addEventListener('touchmove', this.handleGestureMove, true);
+      elementHold.addEventListener('touchend', this.handleGestureEnd, true);
+      elementHold.addEventListener('touchcancel', this.handleGestureEnd, true);
+      // Add Mouse Listeners
+      elementHold.addEventListener('mousedown', this.handleGestureStart, true);
+    }</code></pre>
+                </section>
+                <section>
+                    <p>In our <code>handleGestureStart</code> and <code>handleGestureEnd</code> function, we add and remove the mouse event listeners to the document.</p><pre><code>    // Handle the start of gestures
+    this.handleGestureStart = function(evt) {
+      evt.preventDefault();
+              var point = getGesturePointFromEvent(evt);
+      initialYPos = point.y;
+    
+      if (!window.PointerEventsSupport) {
+        // Add Mouse Listeners
+        document.addEventListener('mousemove', this.handleGestureMove, true);
+        document.addEventListener('mouseup', this.handleGestureEnd, true);
+      }
+    }.bind(this);
+    this.handleGestureEnd = function(evt) {
+      evt.preventDefault();
+    
+      if(evt.targetTouches &amp;&amp; evt.targetTouches.length &gt; 0) {
+        return;
+      }
+    
+      if (!window.PointerEventsSupport) {
+        // Remove Mouse Listeners
+        document.removeEventListener('mousemove', this.handleGestureMove, true);
+        document.removeEventListener('mouseup', this.handleGestureEnd, true);
+      }
+      isAnimating = false;
+      lastHolderPos = lastHolderPos + -(initialYPos - lastYPos);
+    }.bind(this);</code></pre>
+                </section>
+                <section>
+                    <h2 id="fps-while-using-touch">60fps while Using Touch</h2>
+                    <p>Now that we have the start and end events taken care of we can actually respond to the touch events.</p>
+                    <p>For any of the start and move events, you can easily extract <code>x</code> and <code>y</code> from an event.</p>
+                    <p>The following code snippet checks whether the event is from a touch event by looking for <code>targetTouches</code>, if it is then it extracts the <code>clientX</code> and <code>clientY</code> from the first touch. If the event is a mouse or pointer event then we extract <code>clientX</code> and <code>clientY</code> directly from the event itself.</p><pre><code>    function getGesturePointFromEvent(evt) {
+        var point = {};
+        if(evt.targetTouches) {
+          // Prefer Touch Events
+          point.x = evt.targetTouches[0].clientX;
+          point.y = evt.targetTouches[0].clientY;
+        } else {
+          // Either Mouse event or Pointer Event
+          point.x = evt.clientX;
+          point.y = evt.clientY;
+        }
+        return point;
+      }</code></pre>
+                </section>
+                <section>
+                    <p>Each touch event has three lists containing touch data (see also <a href="https://developers.google.com/web/fundamentals/input/touch/touchevents/#touch-lists">Touch lists</a>):</p>
+                    <ul>
+                        <li><code>touches</code>: list of all current touches on the screen, regardless of DOM element they are on.</li>
+                        <li><code>targetTouches</code>: list of touches currently on the DOM element the event is bound to.</li>
+                        <li><code>changedTouches</code>: list of touches which changed resulting in the event being fired.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>In most cases, <code>targetTouches</code> gives you everything you need.</p>
+                    <p>Since the event callbacks are fired on the main thread, we want to run as little code as possible in the callback to keep our frame rate high, preventing jank.</p>
+                    <p>Use <code>requestAnimationFrame</code> to change the UI in response to an event. This gives you an opportunity to update the UI when the browser is intending to draw a frame and will help you move some work out of your callback.</p>
+                    <p>A typical implementation is to save the <code>x</code> and <code>y</code> coordinates from the start and move events and request an animation frame in the move event callback.</p>
+                    <p>In our demo, we store the initial touch position in <code>handleGestureStart</code>:</p><pre><code>    // Handle the start of gestures
+    this.handleGestureStart = function(evt) {
+      evt.preventDefault();
+      if(evt.touches &amp;&amp; evt.touches.length &gt; 1) {
+        return;
+      }
+      // Add the move and end listeners
+      if (window.PointerEventsSupport) {
+        // Pointer events are supported.
+        document.addEventListener(pointerMoveName, this.handleGestureMove, true);
+        document.addEventListener(pointerUpName, this.handleGestureEnd, true);
+      } else {
+        // Add Touch Listeners
+        document.addEventListener('touchmove', this.handleGestureMove, true);
+        document.addEventListener('touchend', this.handleGestureEnd, true);
+        document.addEventListener('touchcancel', this.handleGestureEnd, true);
+        // Add Mouse Listeners
+        document.addEventListener('mousemove', this.handleGestureMove, true);
+        document.addEventListener('mouseup', this.handleGestureEnd, true);
+      }
+      initialTouchPos = getGesturePointFromEvent(evt);
+      swipeFrontElement.style.transition = 'initial';
+    }.bind(this);</code></pre>
+                </section>
+                <section>
+                    <p>The <code>handleGestureMove</code> method stores the <code>y</code> position before requesting an animation frame if we need to, passing in our <code>onAnimFrame</code> function as the callback:</p><pre><code>    var point = getGesturePointFromEvent(evt);
+    lastYPos = point.y;
+    
+      if(isAnimating) {
+        return;
+      }
+      isAnimating = true;
+      window.requestAnimFrame(onAnimFrame);</code></pre>
+                </section>
+                <section>
+                    <p>It’s in the <code>onAnimFrame</code> function that we change our UI to move the elements around. Initially we check to see if the gesture is still on-going to determine whether we should still animate or not, if so we use our initial and last y positions to calculate the new transform for our element.</p>
+                    <p>Once we’ve set the transform, we set the <code>isAnimating</code> variable to <code>false</code> so the next touch event will request a new animation frame.</p><pre><code>    function onAnimFrame() {
+        if(!isAnimating) {
+          return;
+        }
+    
+        var newYTransform = lastHolderPos + -(initialYPos - lastYPos);
+    
+        newYTransform = limitValueToSlider(newYTransform);
+    
+        var transformStyle = 'translateY('+newYTransform+'px)';
+        elementHold.style.msTransform = transformStyle;
+        elementHold.style.MozTransform = transformStyle;
+        elementHold.style.webkitTransform = transformStyle;
+        elementHold.style.transform = transformStyle;
+    
+        isAnimating = false;
+      }</code></pre>
+                </section>
+                <section>
+                    <h2 id="control-gestures-using-touch-actions">Control Gestures using Touch Actions</h2>
+                    <p>The CSS property <code>touch-action</code> allows you to control the default touch behavior of an element. In our examples, we use <code>touch-action: none</code> to prevent the browser from doing anything with a users’ touch, allowing us to intercept all of the touch events.</p><pre><code>    /* Pass all touches to javascript */
+    -ms-touch-action: none;
+    touch-action: none;</code></pre>
+                </section>
+                <section>
+                    <p><code>touch-action</code> allows you to disable gestures implemented by a browser. For example, IE10+ supports a double-tap to zoom gesture. By setting a touch-action of <code>pan-x | pan-y | manipulation</code> you prevent the default double-tap behavior.</p>
+                    <p>This allows you to implement a double-tap gesture yourself. In the case of IE10+, it also eliminates the 300ms click delay.</p>
+                    <p>Below is a list of the available parameters for <em>touch-action</em>.</p>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Using <code>touch-action&amp;colon; pan-x</code> or <code>touch-action&amp;colon; pan-y</code> are great for being explicit in your intention that a user should only ever scroll vertically or horizontally on an element.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 id="reference">Reference</h2>
+                    <p>The definitive touch events reference can be found here: <a href="http://www.w3.org/TR/touch-events/">w3 Touch Events</a>.</p>
+                    <p>These events are the building blocks for adding new gestures into your application:</p>
+                </section>
+                <section>
+                    <p>Each touch event includes three list attributes:</p>
+                    <ul>
+                        <li>For the <code><a href="http://www.w3.org/TR/touch-events/#dfn-touchstart">touchstart</a></code> event-- list of the touch points that just became active with the current event.</li>
+                        <li>For the <code><a href="http://www.w3.org/TR/touch-events/#dfn-touchmove">touchmove</a></code> event-- list of the touch points that have moved since the last event.</li>
+                        <li>For the <code><a href="http://www.w3.org/TR/touch-events/#dfn-touchend">touchend</a></code> and <code><a href="http://www.w3.org/TR/touch-events/#dfn-touchcancel">touchcancel</a></code> events-- list of the touch points that have just been removed from the surface.</li>
+                    </ul>
+                </section>
+            </section>
+

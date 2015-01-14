@@ -1,0 +1,903 @@
+---
+layout: slide 
+title: Multi-Device Layout
+description: Create flexible, not fixed, layouts
+---
+
+<link rel="stylesheet" href="css/slide.css">
+<section id="agenda">
+    <h3>agenda</h3>
+                <ul>
+                    <li><a href="#home-page">Home Page and Navigation Principles</a>
+                    </li>
+                    <li><a href="#design-basics">Responsive Web Design Basics</a>
+                    </li>
+                    <li><a href="#design-pattern">Responsive Web Design Patterns</a>
+                    </li>
+                    <li><a href="#action-pattern">Navigation and Action Patterns</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section id="home-page">
+                    <h2>Home Page and Navigation Principles</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Tell users which orientation works best</h2>
+                    <p>Design for both landscape and portrait, or encourage users to switch to the optimal screen orientation - but make sure your important calls-to-action can be completed even if they ignore the suggestion to switch.</p>
+                    <figure class="fluid"><img src="images/us-orientation.jpg" srcset="images/us-orientation.jpg 1x, images/us-orientation-2x.jpg 2x" alt="Page offering alternate orientation view.">
+                        <figcaption>Tell to users if your site works best in a certain orientation.</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Avoid 'full site' labels</h2>
+                    <p>If you provide a link on a page to a separate desktop experience, use terms like 'desktop' instead of 'full' to avoid confusion between what's available between the sites.</p>
+                    <p>When <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> saw an option for "full site" vs "mobile site", they assumed the mobile site was condensed and chose the full site instead. One participant preferred the desktop site because it had "so much more information" - even though the mobile and desktop sites had the same content.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Keep Calls To Action Front and Center</h2>
+                    <p>It can be easy for mobile users to miss menu items, so always put your key calls-to-action where you know users will see them.</p>
+
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-cta-bad.png" srcset="images/hpnav-cta-bad.png 1x, images/hpnav-cta-bad-2x.png 2x" alt="No obvious call to action">
+                                <figcaption>No obvious call to action</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-cta-good.png" srcset="images/hpnav-cta-good.png 1x, images/hpnav-cta-good-2x.png 2x" alt="Call to actions are front and center.">
+                                <figcaption>Call to actions are front and center.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Keep Menus Short and Sweet</h2>
+                    <p>An extensive menu might work well for your desktop site, but mobile users won't have the patience to scroll through a long list of options to try and find what they want. Consider how you can present the fewest menu items possible.</p>
+                    <figure><img src="images/hpnav-menus-good.png" srcset="images/hpnav-menus-good.png 1x, images/hpnav-menus-good-2x.png 2x" alt="Menus are short and sweet.">
+                        <figcaption>Menus are short and sweet.</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Make It Easy To Get To The Home Page</h2>
+                    <p>When mobile users navigate through your site, they want an easy way to get back to your initial homepage.</p>
+                    <p>Users expect tapping the logo at the top of a page to take them back to the homepage, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> became frustrated if it didn’t work.</p>
+                    <figure><img src="images/hpnav-hp-good.png" srcset="images/hpnav-hp-good.png 1x, images/hpnav-hp-good-2x.png 2x" alt="Clicking the logo returns users to the home page.">
+                        <figcaption>Clicking the logo in the upper left corner returns users to the home page.</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Don't let promotions steal the show</h2>
+                    <p>Promotions and ads can overshadow the content they're next to, and make it harder for users to accomplish tasks.</p>
+                    <div class="clear g-wide--pull-1">
+                        <div class="g--half">
+                            <figure class="fluid"><img src="images/hpnav-promo-bad.png" srcset="images/hpnav-promo-bad.png 1x, images/hpnav-promo-bad-2x.png 2x" alt="Door slams often annoy users and make using the site a pain.">
+                                <figcaption>Interstitials (sometimes called door slams) often annoy users and make using the site a pain.</figcaption>
+                            </figure>
+                        </div>
+                        <div class="g--half g--last">
+                            <figure class="fluid"><img src="images/hpnav-promot-good.png" srcset="images/hpnav-promot-good.png 1x, images/hpnav-promot-good-2x.png 2x" alt="Easily dismissable promotions for a native app.">
+                                <figcaption>Promotions should be easily dismissable and not distract from the experience.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Keep users in a single browser window</h2>
+                    <p>Switching between windows on a smartphone can be troublesome, and raises the risk that visitors might not find their way back to your site.</p>
+                    <p>Try to keep users in one place by avoiding calls-to-action that launch new windows.</p>
+                    <figure><img src="images/sw-single-browser-good.png" srcset="images/sw-single-browser-good.png 1x, images/sw-single-browser-good-2x.png 2x" alt="Macy's keeps their users on their site by providing coupons.">
+                        <figcaption>Macy's keeps their users on their site by providing coupons.</figcaption>
+                    </figure>
+                </section>
+            </section>
+            <section>
+                <section id="design-basics">
+                    <h2>Responsive Web Design Basics</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Set the viewport</h2>
+                </section>
+                <section>
+                    <p>Pages optimized for a variety of devices must include a meta viewport element in the head of the document. A meta viewport tag gives the browser instructions on how to control the page's dimensions and scaling.</p>
+                    <ul>
+                        <li>Use meta viewport tag to control the width and scaling of the browsers viewport.</li>
+                        <li>Include <code>width=device-width</code> to match the screen's width in device independent pixels.</li>
+                        <li>Include <code>initial-scale=1</code> to establish a 1:1 relationship between CSS pixels and device independent pixels.</li>
+                        <li>Ensure your page is accessible by not disabling user scaling.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>In order to attempt to provide the best experience, mobile browsers will render the page at a desktop screen width (usually about 980px, though this varies across devices), and then try to make the content look better by increasing font sizes and scaling the content to fit the screen. For users, this means that font sizes may appear inconsistently and they have to double-tap or pinch-to-zoom in order to be able to see and interact with the content.</p><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Using the meta viewport value <code>width=device-width</code> instructs the page to match the screen’s width in device independent pixels. This allows the page to reflow content to match different screen sizes, whether rendered on a small mobile phone or a large desktop monitor.</p>
+                    <p>Some browsers will keep the page’s width constant when rotating to landscape mode, and zoom rather than reflow to fill the screen. Adding the attribute <code>initial-scale=1</code> instructs browsers to establish a 1:1 relationship between CSS pixels and device independent pixels regardless of device orientation, and allows the page to take advantage of the full landscape width.</p>
+                    <div class="clear">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-no.html"><img src="images/no-vp.png" class="smaller-img" srcset="images/no-vp.png 1x, images/no-vp-2x.png 2x" alt="Page without a viewport set"> See example</a>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp.html"><img src="images/vp.png" class="smaller-img" srcset="images/vp.png 1x, images/vp-2x.png 2x" alt="Page with a viewport set"> See example</a>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p>Remember</p>
+                    <ul>
+                        <li>Use a comma to separate attributes to ensure older browsers can properly parse the attributes.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="ensure-an-accessible-viewport">Ensure an accessible viewport</h2>
+                </section>
+                <section>
+                    <p>In addition to setting an <code>initial-scale</code>, you can also set the following attributes on the viewport:</p>
+                    <ul>
+                        <li><code>minimum-scale</code>
+                        </li>
+                        <li><code>maximum-scale</code>
+                        </li>
+                        <li><code>user-scalable</code>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>When set, these can disable the user’s ability to zoom the viewport, potentially causing accessibility issues.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Size content to the viewport</h2>
+                </section>
+                <section>
+                    <p>On both desktop and mobile devices, users are used to scrolling websites vertically but not horizontally, and forcing the user to scroll horizontally or to zoom out in order to see the whole page results in a poor user experience.</p>
+                    <ul>
+                        <li>Do not use large fixed width elements.</li>
+                        <li>Content should not rely on a particular viewport width to render well.</li>
+                        <li>Use CSS media queries to apply different styling for small and large screens.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>When developing a mobile site with a <code>meta viewport</code> tag, it’s easy to accidentally create page content that doesn’t quite fit within the specified viewport. For example, an image that is displayed at a width wider than the viewport can cause the viewport to scroll horizontally. You should adjust this content to fit within the width of the viewport, so that the user does not need to scroll horizontally.</p>
+                    <p>Since screen dimensions and width in CSS pixels vary widely between devices (e.g. between phones and tablets, and even between different phones), content should not rely on a particular viewport width to render well.</p>
+                    <p>Setting large absolute CSS widths for page elements (such as the example below), will cause the <code>div</code> to be too wide for the viewport on a narrower device (e.g. a device with a width of 320 CSS pixels, such as an iPhone). Instead, consider using relative width values, such as <code>width: 100%</code>. Similarly, beware of using large absolute positioning values that may cause the element to fall outside the viewport on small screens.</p>
+                </section>
+                <section>
+                    <div class="clear">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-fixed.html"><img src="images/vp-fixed-iph.png" srcset="images/vp-fixed-iph.png 1x, images/vp-fixed-iph-2x.png 2x" alt="Page with a 344px fixed width element on an iPhone."> See example</a>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-fixed.html"><img src="images/vp-fixed-n5.png" srcset="images/vp-fixed-n5.png 1x, images/vp-fixed-n5-2x.png 2x" alt="Page with a 344px fixed width element on a Nexus 5."> See example</a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Use CSS media queries for responsiveness</h2>
+                </section>
+                <section>
+                    <p>Media queries are simple filters that can be applied to CSS styles. They make it easy to change styles based on the characteristics of the device rendering the content, including the display type, width, height, orientation and even resolution.</p>
+                    <ul>
+                        <li>Media queries can be used to apply styles based on device characteristics.</li>
+                        <li>Use <code>min-width</code> over <code>min-device-width</code> to ensure the broadest experience.</li>
+                        <li>Use relative sizes for elements to avoid breaking layout.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>For example, you could place all styles necessary for printing inside a print media query:</p><pre><code>&lt;link rel="stylesheet" href="print.css" media="print"&gt;</code></pre>
+                </section>
+                <section>
+                    <p>In addition to using the <code>media</code> attribute in the stylesheet link, there are two other ways to apply media queries that can be embedded in a CSS file: <code>@media</code> and <code>@import</code>. For performance reasons, either of the first two methods are recommended over the <code>@import</code> syntax (see <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/page-speed-rules-and-recommendations.html">Avoid CSS imports</a>).</p><pre><code>@media print {
+  /* print style sheets go here */
+}
+@import url(print.css) print;</code></pre>
+                </section>
+                <section>
+                    <p>The logic that applies to media queries is not mutually exclusive and any filter that meets that criteria the resulting CSS block will be applied using the standard rules of precedence in CSS.</p>
+                </section>
+                <section>
+                    <h2 id="apply-media-queries-based-on-viewport-size">Apply media queries based on viewport size</h2>
+                    <p>Media queries enable us to create a responsive experience, where specific styles are applied to small screens, large screens and anywhere in between. The media query syntax allows for the creation of rules that can be applied depending on device characteristics.</p><pre><code>@media (query) {
+  /* CSS Rules used when query matches */
+}</code></pre>
+                </section>
+                <section>
+                    <p>While there are several different items we can query on, the ones used most often for responsive web design are <code>min-width</code>, <code>max-width</code>, <code>min-height</code> and <code>max-height</code>.</p>
+                    <p>Let’s take a look an example:</p><pre><code>    &lt;link rel="stylesheet" media="(max-width: 640px)" href="max-640px.css"&gt;
+    &lt;link rel="stylesheet" media="(min-width: 640px)" href="min-640px.css"&gt;
+    &lt;link rel="stylesheet" media="(orientation: portrait)" href="portrait.css"&gt;
+    &lt;link rel="stylesheet" media="(orientation: landscape)" href="landscape.css"&gt;
+    &lt;style&gt;
+      @media (min-width: 500px) and (max-width: 600px) {
+        h1 {
+          color: fuchsia;
+        }
+        .desc:after {
+          content:" In fact, it's between 500px and 600px wide.";
+        }
+      }
+    &lt;/style&gt;</code></pre>
+                </section>
+                <section>
+                    <ul>
+                        <li>When the browser is between <b>0px</b> and <b>640px</b> wide, <code>max-640px.css</code> will be applied.</li>
+                        <li>When the browser is between <b>500px</b> and <b>600px</b> wide, styles within the <code>@media</code> will be applied.</li>
+                        <li>When the browser is <b>640px or wider</b>, <code>min-640px.css</code> will be applied.</li>
+                        <li>When the browser <b>width is greater than the height</b>, <code>landscape.css</code> will be applied.</li>
+                        <li>When the browser <b>height is greater than the width</b>, <code>portrait.css</code> will be applied.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="a-note-on-min-device-width">A note on <code>min-device-width</code></h2>
+                    <p>It is also possible to create queries based on <code>*-device-width</code>; though this practice is <strong>strongly discouraged</strong>.</p>
+                    <p>The difference is subtle but very important: <code>min-width</code> is based on the size of the browser window, whereas <code>min-device-width</code> is based on the size of the screen. Unfortunately some browsers, including the legacy Android browser may not report the device width properly and instead report the screen size in device pixels instead of the expected viewport width.</p>
+                    <p>In addition, using <code>*-device-width</code> can prevent content from adapting on desktops or other devices that allow windows to be resized because the query is based on the actual device size, not the size of the browser window.</p>
+                </section>
+                <section>
+                    <h2 id="use-any-pointer-and-any-hover-for-flexible-interactions">Use <code>any-pointer</code> and <code>any-hover</code> for flexible interactions</h2>
+                    <p>Starting with Chrome 39, your style sheets can write selectors that cover multiple pointer types and hover behaviors. The <code>any-pointer</code> and <code>any-hover</code> media features are similar to <code>pointer</code> and <code>hover</code> in allowing you to query the capabilities of the user’s pointer. Unlike the later, <code>any-pointer</code> and <code>any-hover</code> operate on the union of all pointer devices rather than the just the primary pointer device.</p>
+                </section>
+                <section>
+                    <h2 id="use-relative-units">Use relative units</h2>
+                    <p>A key concept behind responsive design is fluidity and proportionality as opposed to fixed width layouts. Using relative units for measurements can help simplify layouts and prevent accidentally creating components that are too big for the viewport.</p>
+                    <p>For example, setting width: 100% on a top level div, ensures that it spans the width of the viewport and is never too big or too small for the viewport. The div will fit, no matter if it’s a 320px wide iPhone, 342px wide Blackberry Z10 or a 360px wide Nexus 5.</p>
+                    <p>In addition, using relative units allows browsers to render the content based on the users zoom level without the need for adding horizontal scroll bars to the page.</p>
+                </section>
+                <section>
+                    <h2>NO</h2><pre><code>div.fullWidth {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}</code></pre>
+                    <h2>YES</h2><pre><code>div.fullWidth {
+  width: 100%;
+}</code></pre>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>How to choose breakpoints</h2>
+                </section>
+                <section>
+                    <p>While it may be helpful to think about defining breakpoints based on device classes, use caution. Defining breakpoints based on specific devices, products, brand names, or operating systems that are in use today can result in a maintenance nightmare. Instead, the content itself should determine how the layout adjusts to its container.</p>
+                    <ul>
+                        <li>Create breakpoints based on content, never on specific devices, products or brands.</li>
+                        <li>Design for the smallest mobile device first, then progressively enhance the experience as more screen real estate becomes available.</li>
+                        <li>Keep lines of text to a maximum of around 70 or 80 characters.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="pick-major-breakpoints-by-starting-small-then-working-up">Pick major breakpoints by starting small, then working up</h2>
+                    <p>Design the content to fit on a small screen size first, then expand the screen until a breakpoint becomes necessary. This will allow you to optimize breakpoints based on content and maintain the fewest number of breakpoints possible.</p>
+                    <p>Let’s work through the example we saw at the beginning, the <a href="https://developers.google.com/web/fundamentals/layouts/rwd-fundamentals/index.html">weather forecast</a>. The first step is to make the forecast look good on a small screen.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-1.html"><img src="images/weather-1.png" class="center" srcset="images/weather-1.png 1x, images/weather-1-2x.png 2x" alt="Preview of the weather forecast displayed on a small screen.">
+                        </a>
+                    </figure>
+                </section>
+                <section>
+                    <p>Next, resize the browser until there is too much white space between the elements and the forecast simply doesn’t look as good. The decision is somewhat subjective, but above 600px is certainly too wide.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-1.html"><img src="images/weather-2.png" class="center" srcset="images/weather-2.png 1x, images/weather-2-2x.png 2x" alt="Preview of the weather forecast as the page gets wider.">
+                        </a>
+                    </figure>
+                </section>
+                <section>
+                    <p>To insert a breakpoint at 600px, create two new stylesheets, one to use when the browser is 600px and below, and one for when it is wider than 600px.</p><pre><code>    &lt;link rel="stylesheet" href="weather.css"&gt;
+    &lt;link rel="stylesheet" media="(max-width:600px)" href="weather-2-small.css"&gt;
+    &lt;link rel="stylesheet" media="(min-width:601px)" href="weather-2-large.css"&gt;</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-2.html">Try full sample</a>
+                </section>
+                <section>
+                    <p>Finally, refactor the CSS. In this example, we’ve placed the common styles such as fonts, icons, basic positioning, colors in <code>weather.css</code>. Specific layouts for the small screen are then placed in <code>weather-small.css</code> and large screen styles are placed in <code>weather-large.css</code>.</p>
+                    <figure>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-2.html"><img src="images/weather-3.png" class="center" srcset="images/weather-3.png 1x, images/weather-3-2x.png 2x" alt="Preview of the weather forecast designed for a wider screen.">
+                        </a>
+                    </figure>
+                </section>
+                <section>
+                    <h2 id="pick-minor-breakpoints-when-necessary">Pick minor breakpoints when necessary</h2>
+                    <p>In addition to choosing major breakpoints when layout changes significantly, it is also helpful to adjust for minor changes. For example between major breakpoints, it may be helpful to adjust the margins or padding on an element, or increase the font size to make it feel more natural in the layout.</p>
+                    <p>Let’s start by optimizing the small screen layout. In this case, let’s boost the font when the viewport width is greater than 360px. Second, when there is enough space, we can separate the high and low temperature so they’re on the same line, instead of on top of each other. And let’s also make the weather icons a bit larger.</p><pre><code>    @media (min-width: 360px) {
+      body {
+        font-size: 1.0em;
+      }
+    }
+    
+    @media (min-width: 500px) {
+      .seven-day-fc .temp-low,
+      .seven-day-fc .temp-high {
+        display: inline-block;
+        width: 45%;
+      }
+    
+      .seven-day-fc .seven-day-temp {
+        margin-left: 5%;
+      }
+    
+      .seven-day-fc .icon {
+        width: 64px;
+        height: 64px;
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/weather-small.css">Try full sample</a>
+                </section>
+                <section>
+                    <div class="clear">
+                        <div class="g--half"><img src="images/weather-4-l.png" srcset="images/weather-4-l.png 1x, images/weather-4-l-2x.png 2x" alt="Before adding minor breakpoints.">
+                        </div>
+                        <div class="g--half g--last"><img src="images/weather-4-r.png" srcset="images/weather-4-r.png 1x, images/weather-4-r-2x.png 2x" alt="After adding minor breakpoints.">
+                        </div>
+                    </div>
+                    <p>Similarly, for the large screens, it’s best to limit to maximum width of the forecast panel so it doesn’t consume the whole screen width.</p><pre><code>    @media (min-width: 700px) {
+      .weather-forecast {
+        width: 700px;
+      }
+    }</code></pre>
+                </section>
+                <section>
+                    <h2 id="optimize-text-for-reading">Optimize text for reading</h2>
+                    <p>Classic readability theory suggests that an ideal column should contain 70 to 80 characters per line (about 8 to 10 words in English), thus each time the width of a text block grows past about 10 words, a breakpoint should be considered.</p>
+                    <div class="clear">
+                        <div class="g-wide--1 g-medium--half"><img src="images/reading-ph.png" srcset="images/reading-ph.png 1x, images/reading-ph-2x.png 2x" alt="Before adding minor breakpoints.">
+                        </div>
+                        <div class="g-wide--3 g-wide--last g-medium--half g--last"><img src="images/reading-de.png" srcset="images/reading-de.png 1x, images/reading-de-2x.png 2x" alt="After adding minor breakpoints.">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p>Let’s take a deeper look at the above blog post example. On smaller screens, the Roboto font at 1em works perfectly giving 10 words per line, but larger screens will require a breakpoint. In this case, if the browser width is greater than 575px, the ideal content width is 550px.</p><pre><code>    @media (min-width: 575px) {
+      article {
+        width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }</code></pre>
+                </section>
+                <section>
+                    <h2 id="never-completely-hide-content">Never completely hide content</h2>
+                    <p>Be careful when choosing what content to hide or show depending on screen size. Don’t simply hide content just because you can’t fit it on screen. Screen size is not a definitive indication of what a user may want. For example, eliminating the pollen count from the weather forecast could be a serious issue for spring time allergy sufferers who need the information to determine if they can go outside or not.</p>
+                </section>
+            </section>
+            <section>
+                <section id="design-pattern">
+                    <h2>Responsive Web Design Patterns</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Mostly fluid</h2>
+                    <p>The mostly fluid pattern consists primarily of a fluid grid. On large or medium screens, it usually remains the same size, simply adjusting the margins on wider screens.</p>
+                    <p>On smaller screens, the fluid grid causes the main content to reflow, while columns are stacked vertically. One major advantage of this pattern is that it usually only requires one breakpoint between small screens and large screens.</p>
+                    <p>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/mostly-fluid.html"><img src="images/mostly-fluid.svg"> Try it</img>
+                        </a>
+                    </p>
+                </section>
+                <section>
+                    <p>In the smallest view, each content <code>div</code> is stacked vertically. Once the screen width hits 600px, the primary content <code>div</code> remains at <code>width: 100%</code>, while the secondary <code>div</code>’s are shown as two columns below the primary <code>div</code>. Beyond 800px, the container <code>div</code> becomes fixed width and is centered on the screen.</p>
+                </section>
+                <section>
+                    <p>Sites using this pattern include:</p>
+                    <ul>
+                        <li><a href="http://mediaqueri.es/ala/">A List Apart</a>
+                        </li>
+                        <li><a href="http://mediaqueri.es/">Media Queries</a>
+                        </li>
+                        <li><a href="http://simplebits.com/">SimpleBits</a>
+                        </li>
+                    </ul>
+                </section>
+                <section><pre><code>    .container {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+    }
+    .c1, .c2, .c3, .c4, .c5 {
+      width: 100%;
+    }
+    @media (min-width: 600px) {
+      .c2, .c3, .c4, .c5 {
+        width: 50%;
+      }
+    }
+    @media (min-width: 800px) {
+      .c1 {
+        width: 60%;
+      }
+      .c2 {
+        width: 40%;
+      }
+      .c3, .c4, .c5 {
+        width: 33.33%;
+      }
+    }
+    @media (min-width: 800px) {
+      .container {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/mostly-fluid.html">Try full sample</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Column Drop</h2>
+                    <p>For full-width multi-column layouts, column drop simply stacks the columns vertically as the window width becomes too narrow for the content.</p>
+                    <p>Eventually this results in all of the columns being stacked vertically. Choosing breakpoints for this layout pattern is dependent on the content and will change for each design.</p>
+                    <p>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/column-drop.html"><img src="images/column-drop.svg"> Try it</img>
+                        </a>
+                    </p>
+                </section>
+                <section>
+                    <p>Like the mostly fluid sample, content is stacked vertically in the smallest view, but as the screen expands beyond 600px, the primary and secondary content <code>div</code>’s take the full width of the screen. The order of the <code>div</code>’s is set using the order CSS property. At 800px all three content <code>div</code>’s are shown, using the full screen width.</p>
+                </section>
+                <section>
+                    <p>Sites using this pattern include:</p>
+                    <ul>
+                        <li><a href="http://modernizr.com/">Modernizr</a>
+                        </li>
+                        <li><a href="http://weenudge.com/">Wee Nudge</a>
+                        </li>
+                    </ul>
+                </section>
+                <section><pre><code>    .container {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+    }
+    .c1, .c2, .c3 {
+      width: 100%;
+    }
+    @media (min-width: 600px) {
+      .c1 {
+        width: 60%;
+        -webkit-order: 2;
+        order: 2;
+      }
+      .c2 {
+        width: 40%;
+        -webkit-order: 1;
+        order: 1;
+      }
+      .c3 {
+        width: 100%;
+        -webkit-order: 3;
+        order: 3;
+      }
+    }
+    @media (min-width: 800px) {
+      .c2 {
+        width: 20%;
+      }
+      .c3 {
+        width: 20%;
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/column-drop.html">Try full sample</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Layout shifter</h2>
+                    <p>The layout shifter pattern is the most responsive pattern, with multiple breakpoints across several screen widths.</p>
+                    <p>Key to this layout is the way content moves about, instead of reflowing and dropping below other columns. Due to the significant differences between each major breakpoint, it is more complex to maintain and likely involves changes within elements, not just overall content layout.</p>
+                    <p>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/layout-shifter.html"><img src="images/layout-shifter.svg"> Try it</img>
+                        </a>
+                    </p>
+                </section>
+                <section>
+                    <p>This simplified example shows the layout shifter pattern, on smaller screens content is stacked vertically, but changes significantly as the screen becomes larger, with a left <code>div</code> and two stacked <code>div</code>’s on the right.</p>
+                </section>
+                <section>
+                    <p>Sites using this pattern include:</p>
+                    <ul>
+                        <li><a href="http://foodsense.is/">Food Sense</a>
+                        </li>
+                        <li><a href="http://alistapart.com/d/responsive-web-design/ex/ex-site-FINAL.html">Seminal Responsive Design Example</a>
+                        </li>
+                        <li><a href="http://www.anderssonwise.com/">Andersson-Wise Architects</a>
+                        </li>
+                    </ul>
+                </section>
+                <section><pre><code>    .container {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+    }
+    .c1, .c2, .c3, .c4 {
+      width: 100%;
+    }
+    @media (min-width: 600px) {
+      .c1 {
+        width: 25%;
+      }
+      .c4 {
+        width: 75%;
+      }
+    }
+    @media (min-width: 800px) {
+      .container {
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/layout-shifter.html">Try full sample</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Tiny tweaks</h2>
+                    <p>Tiny tweaks simply makes small changes to the layout, such as adjusting font size, resizing images or moving content around in very minor ways.</p>
+                    <p>It works well on single column layouts such as one page linear websites, text heavy articles.</p>
+                    <p>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/tiny-tweaks.html"><img src="images/tiny-tweaks.svg"> Try it</img>
+                        </a>
+                    </p>
+                </section>
+                <section>
+                    <p>As its name implies, little changes with this sample as the screen size changes. As the screen width gets larger, so do the font size and padding.</p>
+                </section>
+                <section>
+                    <p>Sites using this pattern include:</p>
+                    <ul>
+                        <li><a href="http://shinydemos.com/">Opera’s Shiny Demos</a>
+                        </li>
+                        <li><a href="http://gingerwhale.com/">Ginger Whale</a>
+                        </li>
+                        <li><a href="http://futurefriendlyweb.com/">Future Friendly</a>
+                        </li>
+                    </ul>
+                </section>
+                <section><pre><code>    .c1 {
+      padding: 10px;
+      width: 100%;
+    }
+    @media (min-width: 500px) {
+      .c1 {
+        padding: 20px;
+        font-size: 1.5em;
+      }
+    }
+    @media (min-width: 800px) {
+      .c1 {
+        padding: 40px;
+        font-size: 2em;
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/tiny-tweaks.html">Try full sample</a>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Off canvas</h2>
+                    <p>Rather than stacking content vertically, the off canvas pattern places less frequently used content, perhaps navigation or app menus off screen, only showing it when the screen size is large enough, and on smaller screens, content is only a click away.</p>
+                    <p>
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/off-canvas.html"><img src="images/off-canvas.svg"> Try it</img>
+                        </a>
+                    </p>
+                </section>
+                <section>
+                    <p>Rather than stacking content vertically, this sample hides two of the content <code>div</code>s off screen by using a <code>transform: translate(-250px, 0)</code>. JavaScript is used to show the divs by adding an open class to the element to make visible. As the screen gets wider, the off-screen positioning is removed from the elements and they’re shown within the visible viewport.</p>
+                    <p>Note in this sample, Safari for iOS 6 and Android Browser do not support the <code>flex-flow: row nowrap</code> feature of <code>flexbox</code>, so we’ve had to fallback to absolute positioning.</p>
+                </section>
+                <section>
+                    <p>Sites using this pattern include:</p>
+                    <ul>
+                        <li><a href="http://www.html5rocks.com/en/tutorials/developertools/async-call-stack/">HTML5Rocks Articles</a>
+                        </li>
+                        <li><a href="http://www.google.com/nexus/">Google Nexus</a>
+                        </li>
+                        <li><a href="https://m.facebook.com/">Facebook’s Mobile Site</a>
+                        </li>
+                    </ul>
+                </section>
+                <section><pre><code>    body {
+      overflow-x: hidden;
+    }
+    
+    .container {
+      display: block;
+    }
+    .c1, .c3 {
+      position: absolute;
+      width: 250px;
+      height: 100%;
+    
+      /*
+        This is a trick to improve performance on newer versions of Chrome
+        #perfmatters
+      */
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transition: -webkit-transform 0.4s ease-out;
+      transition: transform 0.4s ease-out;
+    
+      z-index: 1;
+    }
+    .c1 {
+      /*
+      Using translate3d as a trick to improve performance on older versions of Chrome
+      See: http://aerotwist.com/blog/on-translate3d-and-layer-creation-hacks/
+      #perfmatters
+      */
+      -webkit-transform: translate(-250px,0);
+      transform: translate(-250px,0);
+    }
+    .c2 {
+      width: 100%;
+      position: absolute;
+    }
+    
+    .c3 {
+      left: 100%;
+    }
+    .c1.open {
+      -webkit-transform: translate(0,0);
+      transform: translate(0,0);
+    }
+    .c3.open {
+      -webkit-transform: translate(-250px,0);
+      transform: translate(-250px,0);
+    }
+    
+    @media (min-width: 500px) {
+      /* If the screen is wider then 500px, use Flexbox */
+      .container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+      }
+      .c1 {
+        position: relative;
+        -webkit-transition: none 0s ease-out;
+        transition: none 0s ease-out;
+        -webkit-transform: translate(0,0);
+        transform: translate(0,0);
+      }
+      .c2 {
+        position: static;
+      }
+    }
+    @media (min-width: 800px) {
+      body {
+        overflow-x: auto;
+      }
+      .c3 {
+        position: relative;
+        left: auto;
+        -webkit-transition: none 0s ease-out;
+        transition: none 0s ease-out;
+        -webkit-transform: translate(0,0);
+        transform: translate(0,0);
+      }
+    }</code></pre>
+                    <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/off-canvas.html">Try full sample</a>
+                </section>
+            </section>
+            <section>
+                <section id="action-pattern">
+                    <h2>Navigation and Action Patterns</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>App Bar</h2>
+                    <p>Users have learnt to expect a header on all of the desktop sites, but on mobile you should be using the App Bar.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/appbar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                        </div>
+                    </div>
+                    <p>One expectation users will make when they land on your site is that your site’s logo will be at the top of every page and clicking it will take them to your home page.</p>
+                    <p>Traditionally the web has used page headers for this. On mobile devices use the App Bar.</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Your logo should be placed at the top of each screen and take the user back to your homepage.</li>
+                        <li>If you have a menu button, place it on the far left or far right of the App Bar and keep it in the same place throughout your site.</li>
+                        <li>Key actions for your page should be kept in the App Bar.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The App Bar consists of three elements.</p>
+                    <ul>
+                        <li>Your sites logo</li>
+                        <li>Primary actions</li>
+                        <li>(Optional) Menu button</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Nearly every site on the internet will have actions they enable their users to perform, search for example. Place buttons to perform these actions in the App Bar, giving your user a common to find out what the current actions are available on that page.</p>
+                    <p>If you have a menu, use the hamburger icon (three horizontal lines) and place it on the far left or far right. Once you have selected a side, don’t move it, always keep it in the same position meaning the user only needs to learn where it is once.</p>
+                </section>
+                <section>
+                    <h2 id="left-vs-right-menu-button">Left vs Right Menu Button</h2>
+                    <p>If you have a slide in menu, you have the choice of putting the menu on the left or right hand side.</p>
+                    <p>The top left corner is perceived by the user as where the most important elements of your UI lives, however it can also one of hardest places to reach when holding the phone one handed. Putting the menu on the top right still gives it prominence and importance, but is easier to tap while holding the phone single-handedly.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/appbar-menu-left.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample2.html"><img src="images/appbar-menu-right.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample2.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2 id="guidelines">Guidelines</h2>
+                    <p>The App Bar is a set of principles that you should apply to give your users a predictable experience, but there is plenty of opportunity to be creative in terms of style of the bar, button and interactions.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/appbar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html"><img src="images/appbar-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Tab Bar</h2>
+                    <p>A Tab Bar can be used as the main navigation for your site. It gives the user visibility of the main sections of your site as well as an easy way to identify where they are within your web app.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample1.html"><img src="images/tabbar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample1.html">Demo</a>
+                        </div>
+                    </div>
+                    <p>The Tab Bar can be used to quickly switch between the sections of your site.</p>
+                    <p>It’s only appropriate for sites with a relatively small structure, but users find it easy to glance at where they are, and where they can go, within your site.</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Use only if your site has no more than five sections.</li>
+                        <li>Position below or above your main content.</li>
+                        <li>Make it clear to the user which section is currently selected.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Limit the total number of tabs to five or less, otherwise each icon and tap target becomes too small and users will struggle to hit the right tab.</p>
+                    <p>Position your tabs above or below your main content, this is a trade off between what feels best to use and best suites your design.</p>
+                    <p>One advantage to using tabs is that it gives the user a consistent place to go for navigation and makes it easy to glance at where they are within the site.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample2.html"><img src="images/tabbar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample2.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--half g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample3.html"><img src="images/tabbar-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/tabbar-sample3.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Navigation Drawer</h2>
+                    <p>For sites with a larger number of sections and subsections the Navigation Drawer is a much better fit. It can be a scrollable off-canvas element to your site as well as be a common place for global state.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html"><img src="images/navdrawer.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample1.html">Demo</a>
+                        </div>
+                    </div>
+                    <p>The Navigation Drawer is a slide in panel which is primarily used for displaying a sites navigation, but can also be used for displaying global state, i.e. user login.</p>
+                </section>
+                <section>
+                    <p>A user accesses the drawer using a menu button at the top of the screen in the App Bar.</p>
+                    <ul>
+                        <li>Your Navigation Drawer should be easily accessible to the user.</li>
+                        <li>If the number of sections is too large, consider grouping the items and expanding / contracting the groups. Avoid overwhelming your users.</li>
+                        <li>Don't hide key actions inside the drawer. Actions like search should be prominently on the home page, not hidden in the drawer.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The key advantages of this approach is that the content can grow inside a scrolling element, allowing for larger site structures and it takes up a very small amount of screen real estate.</p>
+                    <p>For users there is a small amount to learning to do to find the Navigation Drawer so having a clearly place menu button is extremely important.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--third">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/navdrawer-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--third">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html"><img src="images/navdrawer-alt-2.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-sample.html">Demo</a>
+                            </div>
+                        </div>
+                        <div class="g--third g--last">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/navdrawer-sample4.html"><img src="images/navdrawer-alt-3.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/navdrawer-sample4.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <p>Some developers find they get higher rates of interaction when using a tab bar instead of a Navigation Drawer.</p>
+                    <p>The choice is a trade off between the flexibility of the Navigation Drawer with the visibility of a Tab Bar which you should consider what is best suited to your site.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Bottom Bar</h2>
+                    <p>If you are developing a web app and find that the number of actions a user can perform is more than the App Bar can handle, the best option is to overflow into a Bottom Bar.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/bottombar-sample1.html"><img src="images/bottombar.png">
+                        </a>
+                        <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/bottombar-sample1.html">Demo</a>
+                        </div>
+                    </div>
+                    <p>We’ve seen that the App Bar can be used for placing actions.</p>
+                    <p>For many sites, especially content driven sites, this will be enough space since there are relatively few actions available. However, web apps may find they have more actions for sections of their UI.</p>
+                    <p>If you aren’t using a tab and you have too many actions to fit on the App Bar, place actions in a bar along the bottom.</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>Only consider using this approach if you aren't using a Tab Bar.</li>
+                        <li>Stick to 5 items at most.</li>
+                        <li>Use when you need to add more actions than the App Bar can hold.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The advantage of this is that you have more space for actions and it’s in a touch friendly area and gives you a secondary tier of actions.</p>
+                    <p>Limit yourself to five actions at most, avoiding the buttons becoming too small and difficult to tap.</p>
+                    <div class="g-medium--2 g-medium--last g-wide--3">
+                        <div class="g--half">
+                            <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html"><img src="images/bottom-bar-alt-1.png">
+                            </a>
+                            <div style="text-align:center"><a class="button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/navigation-patterns/appbar-navdrawer-bottombar-sample.html">Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>

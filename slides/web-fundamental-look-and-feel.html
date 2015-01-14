@@ -1,0 +1,650 @@
+---
+layout: slide 
+title: Look and Feel
+description: Make your projects look great and interact beautifully 
+---
+
+<link rel="stylesheet" href="css/slide.css">
+<section id="agenda">
+    <h3>agenda</h3>
+                <ul>
+                    <li><a href="#animations">Animations</a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <section id="animations">
+                    <h2>Animations</h2>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>CSS vs JavaScript Animations</h2>
+
+                    <ul>
+                        <li>Use CSS animations for simpler "one-shot" transitions, like toggling UI element states.</li>
+                        <li>Use JavaScript animations when you want to have advanced effects like bouncing, stop, pause, rewind or slow-down.</li>
+                        <li>If you choose to animate with JavaScript, go with TweenMax or, if you want a lighter-weight solution, TweenLite.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><strong>Use CSS when you have smaller, self-contained states for UI elements.</strong> CSS transitions and animations are ideal for bringing a navigation menu in from the side, or showing a tooltip. You may end up using JavaScript to control the states, but the animations themselves will be in your CSS.</li>
+                        <li><strong>Use JavaScript when you need significant control over your animations.</strong> Something that dynamically tracks a touch position, or an animation that you need to stop, pause, slow-down or reverse typically require you to use JavaScript.</li>
+                    </ul>
+                    <p>If you’re already using jQuery or a JavaScript framework that includes animation functionality then you may find it more convenient overall to stick with that for your animations than switching to CSS.</p>
+                </section>
+                <section>
+                    <h3>Animate with CSS</h3>
+                    <p>There’s no doubt that animating with CSS is the simplest way to get something moving on screen.</p>
+                    <p>Below is some CSS that will move an element 100px in both the X &amp; Y axes. It’s done by using a CSS transitions that’s set to take 500ms. When the <code>move</code> class is added the <code>transform</code> value is changed and the transition begins.</p><pre><code>.box {
+  -webkit-transform: translate(0, 0);
+  -webkit-transition: -webkit-transform 500ms;
+  transform: translate(0, 0);
+  transition: transform 500ms;
+}
+.box.move {
+  -webkit-transform: translate(100px, 100px);
+  transform: translate(100px, 100px);
+}</code></pre>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-simple.html">See sample</a>
+                    </p>
+                </section>
+                <section>
+                    <p>Besides the transition’s duration there are options for the easing, which is essentially how the animation feels. You can get more on that in the <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/the-basics-of-easing.html">"The Basics of Easing"</a> guide.</p>
+                    <p>If, as in the above snippet, you create separate CSS classes to manage your animations, you can then use JavaScript to toggle each animation on and off:</p><pre><code>box.classList.add('move');</code></pre>
+                </section>
+                <section>
+                    <p>Doing this will provide a very nice balance to your apps. You can focus on managing state with JavaScript, and simply set the appropriate classes on the target elements, leaving the browser to handle the animations. If you go down this route you can listen to <code>transitionend</code> events on the element, but only if you’re able to forego support for older versions of Internet Explorer; version 10 was the first version to support these events. All other browsers have supported the event for some time.</p>
+                    <p>The JavaScript required to listen for the end of a transition looks like this:</p><pre><code>var box = document.querySelector('.box');
+box.addEventListener('transitionend', onTransitionEnd, false);
+function onTransitionEnd() {
+  // Handle the transition finishing.
+}</code></pre>
+                </section>
+                <section>
+                    <p>In addition to using CSS transitions, you can also use CSS animations, which will allow you to have much more control over individual animation keyframes, durations and iterations.</p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>If you’re new to animations, keyframes are an old term from hand-drawn animations. Animators would create specific frames for a piece of action, called key frames, which would capture things like the most extreme part of some motion, and then they would set about drawing all the individual frames in between the keyframes. We have a similar process today with CSS animations, where we instruct the browser what values CSS properties need to have at given points, and it fills in the gaps.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>You can, for example, animate the box in the same way with transitions, but have it animate without any user interactions like clicking, and with infinite repetitions. You can also change multiple properties at the same time:</p><pre><code>/**
+ * This is a simplified version without
+ * vendor prefixes. With them included
+ * (which you will need) things get far
+ * more verbose!
+ */
+.box {
+  /* Choose the animation */
+  animation-name: movingBox;
+  /* The animation’s duration */
+  animation-duration: 1300ms;
+  /* The number of times we want
+      the animation to run */
+  animation-iteration-count: infinite;
+  /* Causes the animation to reverse
+      on every odd iteration */
+  animation-direction: alternate;
+}
+@keyframes movingBox {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(100px, 100px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(30px, 30px);
+    opacity: 0.8;
+  }
+}</code></pre>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-keyframes.html">See sample</a>
+                    </p>
+                </section>
+                <section>
+                    <p>With CSS animations you define the animation itself independently of the target element, and use the animation-name property to choose the required animation.</p>
+                    <p>CSS Animations are still mostly vendor prefixed, with <code>-webkit-</code> being used in Chrome, Safari, Opera, Safari Mobile, and Android Browser. Internet Explorer and Firefox both ship without prefixes. Many tools will aid you in creating the prefixed versions of the CSS you need, allowing you to write the unprefixed version in your source files.</p>
+                </section>
+                <section>
+                    <h3>Animate with JavaScript</h3>
+                    <p>Creating animations with JavaScript is, by comparison, more complex than writing CSS transitions or animations, but it does typically provide significantly more power to you as the developer. The general approach is to use <code>requestAnimationFrame</code> and, on each frame of the animation, manually determine the value of each property of the element that is animating.</p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>You may see code around the web that uses setInterval or setTimeout for animations. This is a terrible idea, as the animation will not be synchronized to the refresh rate of the screen, and it’s highly likely to judder and skip. You should always avoid such code, and use requestAnimationFrame, which is synchronized properly, instead.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Below is the JavaScript that you would need to write to recreate the CSS transition we discussed earlier.</p><pre><code>function Box () {
+  var animationStartTime = 0;
+  var animationDuration = 500;
+  var target = document.querySelector('.box');
+  this.startAnimation = function() {
+    animationStartTime = Date.now();
+    requestAnimationFrame(update);
+  };
+  function update() {
+    var currentTime = Date.now();
+    var positionInAnimation = (currentTime - animationStartTime) / animationDuration;
+    var xPosition = positionInAnimation * 100;
+    var yPosition = positionInAnimation * 100;
+    target.style.transform = 'translate(' + xPosition + 'px, ' + yPosition + 'px)';
+    if (positionInAnimation &lt;= 1)
+      requestAnimationFrame(update);
+  }
+}
+var box = new Box();
+box.startAnimation();</code></pre>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-js.html">See sample</a>
+                    </p>
+                </section>
+                <section>
+                    <p>This code starts to become very complex and difficult to manage as you try to expand it to cover more cases, so generally speaking you will benefit from choosing one of the many JavaScript libraries available for animation. If you are using jQuery in your project already, you will likely benefit from sticking with it and using the <a href="http://api.jquery.com/animate/"><code>.animate()</code></a> functions. If, on the other hand, you’re in need of a dedicated library then look at <a href="https://github.com/greensock/GreenSock-JS/tree/master/src/minified">Greensock’s TweenMax</a>, which is very powerful. There is a lightweight form of it, called TweenLite, which is friendlier from a file size point of view.</p>
+                    <p>Since with JavaScript animations you are in total control of the elements styles at every step you can slow down the animation, pause it, stop it, reverse it and manipulate it as you see fit.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>The Basics of Easing</h2>
+                </section>
+                <section>
+                    <p>Nothing in nature moves linearly from one point to another. In reality things tend to accelerate or decelerate as they move. Our brains are wired to expect this kind of motion, so when animating you should use this to your advantage. Natural motion will make your users feel more comfortable with your apps, which in turn leads to a better overall experience.</p>
+                    <ul>
+                        <li>Easing makes your animations feel more natural.</li>
+                        <li>Choose ease-out animations for UI elements.</li>
+                        <li>Avoid ease-in or ease-in-out animations unless you can keep them short; they tend to feel sluggish to end users.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>In classic animation the terms for motion that starts slowly and accelerates is "slow in", and those that start quickly and decelerate are referred to as "slow out", but the terminology most commonly used on the web for these are "ease in" and "ease out" respectively. Sometimes the two are combined, which is called "ease in out". Easing, then, is really the process of making the animation less severe or pronounced.</p>
+                </section>
+                <section>
+                    <h2 id="easing-keywords">Easing Keywords</h2>
+                    <p>CSS transitions and animations both let you <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/choosing-the-right-easing.html">choose the kind of easing you want to use for your animations</a>. You can use keywords that affect the easing (or timing as it’s sometimes called) of the animation in question. You can also <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/custom-easing.html">go completely custom with your easing</a>, which gives you way more freedom to express your app’s personality.</p>
+                </section>
+                <section>
+                    <p>Here are some of the keywords that you can use in CSS:</p>
+                    <ul>
+                        <li><code>linear</code>
+                        </li>
+                        <li><code>ease-in</code>
+                        </li>
+                        <li><code>ease-out</code>
+                        </li>
+                        <li><code>ease-in-out</code>
+                        </li>
+                    </ul>
+                    <p>Source: <a href="http://www.w3.org/TR/css3-transitions/#transition-timing-function-property">CSS Transitions, W3C</a>
+                    </p>
+                    <p>You can also you use a <code>steps</code> keyword, which allows you to create transitions that have discrete steps, but those listed above are the most useful for creating animations that feel natural, and that’s exactly what you’ll want.</p>
+                </section>
+                <section>
+                    <h2 id="linear-animations">Linear animations</h2>
+                    <p>Animations without any kind of easing are referred to as <strong>linear</strong>. A graph of a linear transition looks like this:</p>
+                    <p><img alt="Linear ease animation curve." src="images/linear.png" style="max-width: 300px" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-linear.html">See a linear animation.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>As time moves along the value increases in equal amounts. With linear motion things tend to feel robotic and unnatural, and this is something users will find jarring. Generally speaking you should avoid linear motion.</p>
+                    <p>Whether you’re coding your animations by CSS or JavaScript you’ll find that there is always an option for linear motion. To achieve the effect above with CSS, the code would look something like this:</p><pre><code>transition: transform 500ms linear;</code></pre>
+                </section>
+                <section>
+                    <h2 id="ease-out-animations">Ease-out Animations</h2>
+                    <p>Easing out causes the animation to start more quickly than linear ones, and it also has deceleration at the end.</p>
+                    <p><img alt="Ease-out animation curve." src="images/ease-out.png" style="max-width: 300px" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-ease-out.html">See an ease-out animation.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>There are many ways to achieve an ease out effect, but the simplest is the <code>ease-out</code> keyword in CSS:</p><pre><code>transition: transform 500ms ease-out;</code></pre>
+
+                    <p>Easing out is typically the best for user interface work, because the fast start gives your animations a feeling of responsiveness, while still allowing for a little bit of natural slowdown at the end.</p>
+                </section>
+                <section>
+                    <h2 id="ease-in-animations">Ease-in Animations</h2>
+                    <p>Ease-in animations start slowly and end fast; the opposite of ease-out.</p>
+                    <p><img alt="Ease-in animation curve." src="images/ease-in.png" style="max-width: 300px" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-ease-in.html">See an ease-in animation.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>This kind of animation is like a heavy stone falling, where it starts slowly and hits the ground quickly with a deadening thump.</p>
+                    <p>To use an ease-in animation, similarly to ease-out and linear animations, you can use its keyword:</p><pre><code>transition: transform 500ms ease-in;</code></pre>
+                </section>
+                <section>
+                    <p>From an interaction point of view, however, ease-ins can feel a little unusual because of their abrupt end; things that move in the real world tend to decelerate rather than simply stopping dead. Ease-ins also have the detrimental effect of feeling sluggish to get going, which will negatively impact the perception of responsiveness in your site or app.</p>
+                </section>
+                <section>
+                    <h2 id="ease-in-out-animations">Ease-in-out Animations</h2>
+                    <p>Easing both in and out is akin to a car accelerating and decelerating and, used judiciously, can provide a more dramatic effect than just easing out.</p>
+                    <p><img alt="Ease-in-out animation curve." src="images/ease-in-out.png" style="max-width: 300px" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-ease-in-out.html">See an ease-in-out animation.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>Care must be taken here to not have an overly long animation duration, because of the sluggishness of an ease-in start to the animation. Typically something in the region of 300 - 500ms is going to be suitable, but it will depend heavily on the feel of your project as to what the exact number is. That said, because of the slow start, fast middle, and slow end, you will end up with an increased contrast to the animation, which can be quite satisfying for users.</p>
+                    <p>To get an ease-in-out animation you can use the <code>ease-in-out</code> CSS keyword:</p><pre><code>transition: transform 500ms ease-in-out;</code></pre>
+                </section>
+                <section>
+                    <h2>Custom Easing</h2>
+                </section>
+                <section>
+                    <p>Sometimes you won't want to use the easing keywords that are included with CSS, or you will be using a JavaScript-based animation library. In both cases you can typically define your own curves (or equations), and this gives you a lot of control over the feel of your project's animations.</p>
+                    <ul>
+                        <li>Custom easing will allow you to give more personality to your projects.</li>
+                        <li>You can create cubic bezier curves that resemble the default animation curves (ease-out, ease-in, etc) but with emphasis in different places.</li>
+                        <li>Use JavaScript when you need more control over the animation timing and behavior, e.g. elastic or bounce animations.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>If you’re animating with CSS, you’ll find that you can define cubic bezier curves to define the timing. In fact, the keywords <code>ease</code>, <code>ease-in</code>, <code>ease-out</code> and <code>linear</code> map to predefined bezier curves, which are detailed in the <a href="http://www.w3.org/TR/css3-transitions/">CSS transitions specification</a>.</p>
+                    <p>In CSS these bezier curves take four values, or 2 pairs of numbers, with each pair describing the X and Y coordinates of a cubic bezier curve’s control points. The starting point of the bezier curve has a coordinate of (0, 0) and the end coordinate is (1, 1); you get to set the X and Y values of the two control points. The X values for the two control points must be between 0 and 1, and each control point’s Y value can exceed the [0, 1] limit, although the spec isn’t clear by how much!</p>
+                    <p>Changing the X and Y value of each control point will give you vastly different curve, and therefore a vastly different feel to your animation. For example, if the first control point is in the lower right the animation will be slow to start. If it’s in the top left area it’s going to be fast to start. Conversely, if the second control point is in the bottom right of the grid it’s going to be fast at the end, whereas if it’s in the top left it will be slow to end.</p>
+                </section>
+                <section>
+                    <p>For comparison, here are two curves: a typical ease-in-out curve and a custom curve:</p>
+                    <p><img alt="Ease-in-out animation curve." src="images/custom.png" style="display: inline; max-width: 300px" /></img>
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-custom-curve.html">See an animation with custom easing.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>The CSS for the custom curve is:</p><pre><code>transition: transform 500ms cubic-bezier(0.465, 0.183, 0.153, 0.946);</code></pre>
+
+                    <p>The first two numbers are the X and Y coordinates of the first control point, the second two numbers are the X and Y coordinates of the second control point.</p>
+                    <p>Making a custom curve is a lot of fun, and it gives you significant control over the feel of the animation. For example, given the above curve, you can see the curve resembles a classic ease-in-out curve, but with a shortened ease-in, or ‘getting going’, portion, and an elongated slowdown at the end.</p>
+                    <p>Experiment with this <a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/curve-playground.html">animation curve tool</a> and see how the curve affects the feel of an animation.</p>
+                </section>
+                <section>
+                    <h2 id="use-javascript-for-more-control">Use JavaScript for more control</h2>
+                    <p>Sometimes you will need even more control than a cubic bezier curve can provide. Perhaps you want an elastic bounce feel, or you want to stop execution of the animation part way through, both of which are far more difficult to achieve with CSS. In such cases you should use JavaScript animation libraries. One of the best libraries is <a href="https://github.com/greensock/GreenSock-JS/tree/master/src/minified">Greensock’s TweenMax</a> (or TweenLite if you want to keep things super lightweight) as you get a lot of control from it in a small JavaScript library, and it’s a very mature codebase.</p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-elastic.html">See an elastic ease animation.</a>
+                    </p>
+                    <p>To use something like TweenMax include the script in your page:</p><pre><code>&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"&gt;&lt;/script&gt;</code></pre>
+                </section>
+                <section>
+                    <p>Once that’s in place you can call TweenMax against your element and tell it which properties you’d like, along with any easing you’d like. There are a ton of easing options that you can use; the code below uses an elastic ease-out:</p><pre><code>var box = document.getElementById('my-box');
+var animationDurationInSeconds = 1.5;
+TweenMax.to(box, animationDurationInSeconds, {
+  x: '100%',
+  ease: 'Elastic.easeOut'
+});</code></pre>
+                </section>
+                <section>
+                    <p>The <a href="http://greensock.com/docs/#/HTML5/GSAP/TweenMax/">TweenMax documentation</a> highlights all the options you have here, so it’s well worth a read.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Choosing the Right Easing</h2>
+                </section>
+                <section>
+                    <p>Having discussed the various options available for easing in animations, what kind should you use in your projects, and what kind of durations should your animations have?</p>
+                    <ul>
+                        <li>Use ease-out animations for UI elements; a Quintic ease-out is a very nice, albeit snappy, ease.</li>
+                        <li>Be sure to use the animation duration; ease-outs and ease-ins should be 200ms - 500ms, whereas bounces and elastic eases should clock in a longer duration of 800ms - 1200ms.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Generally speaking an <strong>ease-out</strong> will be the right call, and certainly a good default. It is quick to start, giving your animations a feeling of responsiveness, which is desirable, but with a nice slowdown at the end.</p>
+                    <p>There are a group of well-known ease-out equations beyond the one specified with the <code>ease-out</code> keyword in CSS, which range in their ‘aggressiveness’. For a super snappy ease-out effect consider a <a href="http://easings.net/#easeOutQuint">Quintic ease-out</a>.</p>
+                    <p><img alt="A Quintic ease-out animation curve" src="images/quintic-ease-out-markers.png" style="max-width: 300px" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/box-move-quintic-ease-out.html">See a Quintic ease-out animation.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>Other easing equations, particularly bounces or elastic eases, should be used sparingly, and only when it’s appropriate to your project. There’s few things that bring a user out of an experience like a jarring animation. If your project isn’t jolly and fun, then don’t have UI elements boinging around the place! Conversely, if you’re making a site that is supposed to be lighthearted and fun then by all means bring the bounce!</p>
+                    <p>Play around with eases, see which ones match your project’s personality, and go from there. A full list of easing types, along with demos, can be found at <a href="http://easings.net">easings.net</a>.</p>
+                </section>
+                <section>
+                    <h2 id="pick-the-right-animation-duration">Pick the right animation duration</h2>
+                </section>
+                <section>
+                    <p>It is important that any animation added to your project has the correct duration. Too short and the animation will feel aggressive and sharp; too long and it will be obstructive and annoying.</p>
+                    <ul>
+                        <li><strong>Ease-outs: around 200ms - 500ms</strong>. This gives the eye chance to see the animation, but doesn’t feel obstructive.</li>
+                        <li><strong>Ease-ins: around 200ms - 500ms</strong>. Bear in mind that it will jolt at the end and no amount of timing changes will soften that feel.</li>
+                        <li><strong>Bounce or elastic effects: around 800ms - 1200ms</strong>. You need to allow time for the elastic or bounce effect to ‘settle’. Without this extra time the elastic bouncing part of the animation will be really aggressive and unpleasant to the eye.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Of course these are just guidelines. Experiment with your own eases and choose what feels right for your projects.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Animating Between Views</h2>
+                </section>
+                <section>
+                    <p>Many times you will want to move users between views in your application, whether that's a list to a details view, or show a sidebar navigation. Animations between these views are great for keeping the user engaged and add even more life to your projects.</p>
+                    <ul>
+                        <li>Use transitions to move between views; avoid using `left`, `top` or any other property that triggers layout.</li>
+                        <li>Ensure any animations you use are snappy and the durations are kept short.</li>
+                        <li>Consider how your animations and layouts change as the screen sizes go up; what works for a smaller screen may look odd when used in a desktop context.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>What these view transitions look and behave like will depend very much on the type of views you’re dealing with, so for example animating a modal overlay on top of a view should be a different experience to transitioning between a list and details view.</p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>You should be aiming to maintain 60fps for all of your animations. That way your users will not experience stuttering animations that pull them out of their experience. Ensure that any animating element has will-change set for anything you plan to change well ahead of the animation starting. For view transitions, it’s highly likely you will want to use <code>will-change: transform</code>.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 id="use-translations-to-move-between-views">Use translations to move between views</h2>
+                    <p>To make life a bit easier let’s assume there are two views: a list view and a details view. As the user taps on a list item inside the list view the details view will slide in, and the list view will slide out.</p>
+                    <p><img alt="Translating between two views" src="images/view-translate.gif" />
+                    </p>
+                </section>
+                <section>
+                    <p>To achieve this effect you will need a container for both views which has <code>overflow: hidden</code> set on it. That way the two views can both be inside it side-by-side without showing any horizontal scrollbars, and each view can slide side-to-side inside the container as needed.</p>
+                    <p><img alt="View hierarchy." src="images/container-two-views.svg" />
+                    </p>
+                </section>
+                <section>
+                    <p>The CSS for the container is:</p><pre><code>.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}</code></pre>
+                </section>
+                <section>
+                    <p>The position of the container is set as <code>relative</code>. This will mean that each view inside it can be positioned absolutely to the top left corner and then moved around with transforms. This approach is better for performance than using the <code>left</code> property (since that triggers layout and paint), and is typically easier to rationalize.</p><pre><code>.view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* let the browser know we plan to animate
+     each view in and out */
+  will-change: transform;
+}</code></pre>
+                </section>
+                <section>
+                    <p>Adding a <code>transition</code> on the <code>transform</code> property provides a nice slide effect. To give it a nice feel it’s using a custom <code>cubic-bezier</code> curve, which we discussed in the <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/custom-easing.html">Custom Easing guide</a>.</p><pre><code>.view {
+  /* Prefixes are needed for Safari and other WebKit-based browsers */
+  transition: -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}</code></pre>
+                </section>
+                <section>
+                    <p>The view that is offscreen should be translated to the right, so in this case the details view needs to be moved:</p><pre><code>.details-view {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}</code></pre>
+                </section>
+                <section>
+                    <p>Now a small amount of JavaScript is necessary to handle the classes. This will toggle the appropriate classes on the views.</p><pre><code>var container = document.querySelector('.container');
+var backButton = document.querySelector('.back-button');
+var listItems = document.querySelectorAll('.list-item');
+/**
+ * Toggles the class on the container so that
+ * we choose the correct view.
+ */
+function onViewChange(evt) {
+  container.classList.toggle('view-change');
+}
+// When you click on a list item bring on the details view.
+for (var i = 0; i &lt; listItems.length; i++) {
+  listItems[i].addEventListener('click', onViewChange, false);
+}
+// And switch it back again when you click on the back button
+backButton.addEventListener('click', onViewChange);</code></pre>
+                </section>
+                <section>
+                    <p>Finally, we add the CSS declarations for those classes.</p><pre><code>.view-change .list-view {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.view-change .details-view {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}</code></pre>
+                </section>
+                <section>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/inter-view-animation.html">See sample.</a>
+                    </p>
+                    <p>You could expand this to cover multiple views, and the basic concept should remain the same; each non-visible view should be offscreen and brought on as needed, and the currently onscreen view should be moved off.</p>
+                </section>
+                <section>
+                    <p>Note</p>
+                    <ul>
+                        <li>Making this kind of hierarchy in a cross-browser way can be challenging. For example, iOS requires an additional CSS property, <code>-webkit-overflow-scrolling: touch</code>, to ‘reenable’ fling scrolling, but you don’t get to control which axis that’s for, as you can with the standard overflow property. Be sure to test your implementation across a range of devices!</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>In addition to transitioning between views this technique can also be applied to other slide-in elements, like sidebar navigation elements. The only real difference is that you shouldn’t need to move the other views.</p>
+                </section>
+                <section>
+                    <h2 id="ensure-your-animation-works-with-larger-screens">Ensure your animation works with larger screens</h2>
+                    <p>For a larger screen you should keep the list view around all the time rather than removing it, and slide on the details view from the right hand side. It’s pretty much the same as dealing with a navigation view.</p>
+                    <p><img alt="View hierarchy on a large screen." src="images/container-two-views-ls.svg" />
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Animating Modal Views</h2>
+                </section>
+                <section>
+                    <p>Modal views are for important messages, and for which you have very good reasons to block the user interface. Care must be taken when you use them as they are disruptive and can easily ruin the user’s experience if overused. But, in some circumstances, they’re the right views to use, and adding some animation will bring them to life.</p>
+                    <ul>
+                        <li>Modal views should be used sparingly; users will get frustrated if you interrupt their experience unnecessarily.</li>
+                        <li>Adding scale to the animation gives a nice 'drop on' effect.</li>
+                        <li>Be sure to get rid of the modal view quickly when the user dismisses it, but you should bring it on to screen a little more slowly so it doesn't surprise the user.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p><img alt="Animating a modal view." src="images/dont-press.gif" />
+                    </p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/look-and-feel/animations/modal-view-animation.html">See sample.</a>
+                    </p>
+                </section>
+                <section>
+                    <p>The modal overlay should be aligned to the viewport so it needs to have its <code>position</code> set to <code>fixed</code>:</p><pre><code>.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}</code></pre>
+                </section>
+                <section>
+                    <p>It has an initial <code>opacity</code> of 0 so it’s hidden from view, but then it will also need <code>pointer-events</code> set to <code>none</code> so that click and touches pass through. Without that it will block all interactions rendering the whole page unresponsive. Finally, since it will animate its <code>opacity</code> and <code>transform</code> those need to be marked as changing with <code>will-change</code> (see also <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/animations-and-performance.html#using-the-will-change-property">Using the will-change property</a>).</p>
+                    <p>When the view is visible it will need to accept interactions and have an <code>opacity</code> of 1:</p><pre><code>.modal.visible {
+  pointer-events: auto;
+  opacity: 1;
+}</code></pre>
+                </section>
+                <section>
+                    <p>Now whenever the modal view is required, you can use JavaScript to toggle the "visible" class:</p><pre><code>modal.classList.add('visible');</code></pre>
+                </section>
+                <section>
+                    <p>At this point the modal view will appear without any animation, so that can now be added in (see also <a href="https://developers.google.com/web/fundamentals/look-and-feel/animations/custom-easing.html">Custom Easing</a>):</p><pre><code>.modal {
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+  -webkit-transition:
+    -webkit-transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition:
+    transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}</code></pre>
+                </section>
+                <section>
+                    <p>Adding <code>scale</code> to the transform makes the view appear to drop onto the screen slightly, which is a nice effect. The default transition applies to both transform and opacity properties with a custom curve and a duration of 0.1 seconds.</p>
+                    <p>The duration is pretty short, though, but it’s ideal for when the user dismisses the view and wants to get back to your app. The downside is that it’s probably too aggressive for when the modal view appears. To fix this you should override the transition values for the <code>visible</code> class:</p><pre><code>.modal.visible {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition:
+    -webkit-transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition:
+    transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}</code></pre>
+                </section>
+                <section>
+                    <p>Now the modal view takes 0.3s seconds to come onto the screen, which is a bit less aggressive, but it is dismissed quickly, which the user will appreciate.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Asymmetric Animation Timing</h2>
+                </section>
+                <section>
+                    <p>Asymmetry to your animation durations aids your user experience by allowing you to express personality while at the same time responding quickly to user interactions. It also provides contrast to the feel, which makes the interface more visually appealing.</p>
+                    <ul>
+                        <li>Use asymmetric animation timing to add personality and contrast to your work.</li>
+                        <li>Always favor the user's interaction; use shorter durations when responding to taps or clicks, and reserve slower durations for times where you aren't.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Like most "rules" of animation, you should play around to find out what works for your application, but when it comes to the user experience aspects, users are notoriously impatient. The rule of thumb is to <strong>always respond to a user interaction quickly</strong>. That said, most of the time the user’s action is asymmetric, and therefore so can the animation be.</p>
+                    <p>For example, when a user taps to bring on a sidebar navigation, you should bring that on to screen as quickly as possible, with a duration of around 100ms. When the user dismisses the menu, however, you can afford to animate the view out a little more slowly, say around the 300ms mark.</p>
+                    <p>By contrast, when you bring on a modal view, this is normally to display an error or some other critical message. In such cases you will want to bring on the view a little more slowly, again around the 300ms mark, but dismissal, which is triggered by the user, should happen very quickly.</p>
+                </section>
+                <section>
+                    <p>The general rule of thumb, then, is:</p>
+                    <ul>
+                        <li>For UI animations triggered by a user’s interaction, such as view transitions or showing an element, have a fast intro (short duration), but a slow outro (longer duration).</li>
+                        <li>For UI animations triggered by your code, such as errors or modal views, have a slower intro (longer duration), but a fast outro (short duration).</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Animations and Performance</h2>
+                </section>
+                <section>
+                    <p>Care must be taken to maintain 60fps whenever you are animating, because any stutters or stalls will be noticeable to your users and negatively impact their experiences.</p>
+                    <ul>
+                        <li>Take care that your animations don’t cause performance issues; ensure you know the impact of animating a given CSS property.</li>
+                        <li>Animating properties that change the geometry of the page (layout) or cause painting are particularly expensive.</li>
+                        <li>Where you can, stick to changing transforms and opacity.</li>
+                        <li>Use <code>will-change</code> to ensure that the browser knows what you plan to animate.</li>
+                    </ul>
+                </section>
+                <section>
+                    <<<<<<< HEAD <h2 id="art-direction-in-responsive-images-with-picture">Art direction in responsive images with <code>picture</code>
+                        </h2>
+                        <p>Changing images based on device characteristics, also known as art direction can be accomplished using the picture element. The <code>picture</code> element defines a declarative solution for providing multiple versions of an image based on different characteristics, like device size, device resolution, orientation, and more.</p>
+                        <p><img alt="Art direction example" src="https://developers.google.com/web/fundamentals/media/images/art-direction.png" srcset="images/art-direction.png 1x, images/art-direction-2x.png 2x" />
+                        </p>
+                </section>
+
+                <section>
+                    <p>Important</p>
+                    <ul>
+                        <li>The <code>picture</code> element is beginning to land in browsers. Although it's not available in every browser yet, we recommend its use because of the strong backward compatibility and potential use of the <a href="http://picturefill.responsiveimages.org/">Picturefill polyfill</a>. See the <a href="http://responsiveimages.org/#implementation">ResponsiveImages.org</a> site for further details.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>The <code>picture</code> element should be used when an image source exists in multiple densities, or when a responsive design dictates a somewhat different image on some types of screens. Similar to the <code>video</code> element, multiple <code>source</code> elements can be included, making it possible to specify different image files depending on media queries or image format.</p><pre><code>    &lt;picture&gt;
+      &lt;source media="(min-width: 800px)" srcset="head.jpg, head-2x.jpg 2x"&gt;
+      &lt;source media="(min-width: 450px)" srcset="head-small.jpg, head-small-2x.jpg 2x"&gt;
+      &lt;img src="head-fb.jpg" srcset="head-fb-2x.jpg 2x" &gt;
+    &lt;/picture&gt;
+    
+</code></pre>
+                </section>
+                <section>
+                    <p>In the above example, if the browser width is at least 800px, then either <code>head.jpg</code> or <code>head-2x.jpg</code> will be used, depending on the device resolution. If the browser is between 450px and 800px, then either <code>head-small.jpg</code> or <code>head-small-2x.jpg</code> will be used, again, depending on the device resolution. For screen widths less than 450px and backwards compatibility where the <code>picture</code> element isn’t supported, the browser will render the <code>img</code> element instead, and should always be included.</p>
+                    <p>When the final size of the image isn’t known, it can be difficult to specify a density descriptor for the image sources. This is especially true for images that span a proportional width of the browser and are fluid, depending on the size of the browser.</p>
+                    <p>Instead of supplying fixed image sizes and densities, the size of each supplied image can be specified by adding a width descriptor along with the size of the image element, allowing the browser to automatically calculate the effective pixel density and choose the best image to download.</p><pre><code>    &lt;img src="lighthouse-200.jpg" sizes="50vw"
+         srcset="lighthouse-100.jpg 100w, lighthouse-200.jpg 200w,
+                 lighthouse-400.jpg 400w, lighthouse-800.jpg 800w,
+                 lighthouse-1000.jpg 1000w, lighthouse-1400.jpg 1400w,
+                 lighthouse-1800.jpg 1800w"&gt;
+    
+</code></pre>
+                </section>
+                <section>
+                    <p>The above example renders an image that is half of the viewport width (<code>sizes="50vw"</code>), and depending on the width of the browser and it’s device pixel ratio, allowing the browser to choose the correct image regardless of how large the browser window is. For example, the table below shows which image the browser would choose:</p>
+                    <p>In many cases, the size or image may change depending on the site’s layout breakpoints. For example, on a small screen, you might want the image to span the full width of the viewport, while on larger screens, it should only take a small proportion.</p><pre><code>    &lt;img src="400.png"
+         sizes="(min-width: 600px) 25vw, (min-width: 500px) 50vw, 100vw"
+         srcset="100.png 100w, 200.png 200w, 400.png 400w,
+                 800.png 800w, 1600.png 1600w, 2000.png 2000w"&gt;
+    
+</code></pre>
+                </section>
+                <section>
+                    <p>The <code>sizes</code> attribute in the above example uses several media queries to specify the size of the image. When the browser width is greater than 600px, the image will be 25% of the viewport width, when it is between 500px and 600px, the image will be 50% of the viewport width, and below 500px, it will be full width.</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 id="make-product-images-expandable">Make product images expandable</h2>
+                    <p>Customers want to see what they’re buying. On retail sites, users expect to be able to view high resolution closeups of products to get a better look at details, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> got frustrated if they weren’t able to.</p>
+                    <p>A good example of tappable, expandable images is provided by the J. Crew site.
+                        <br>An disappearing overlay indicates that an image is tappable, providing a zoomed in image with fine detail visible.</br>
+                    </p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 id="other-image-techniques">Other image techniques</h2>
+                    <p>The <a href="http://www.html5rocks.com/en/mobile/high-dpi/#toc-tech-overview">compressive image technique</a> serves a highly compressed 2x image to all devices, no matter the actual capabilities of the device. Depending on the type of image and level of compression, image quality may not appear to change, but the file size drops significantly.</p>
+                    <p><a href="http://googlesamples.github.io/web-fundamentals/samples/media/images/compressive.html">See example</a>
+                    </p>
+                    =======
+                    <p>Animating properties is not free, and some properties are cheaper to animate than others. For example, animating the <code>width</code> and <code>height</code> of an element changes its geometry and may cause other elements on the page to move or change size. This process is called layout (or reflow in Gecko-based browsers like Firefox), and can be expensive if your page has a lot of elements. Whenever layout is triggered, the page or part of it will normally need to be painted, which is typically even more expensive than the layout operation itself.</p>
+                    <p>Where you can, you should avoid animating properties that trigger layout or paint. For most modern browsers this means limiting animations to <code>opacity</code> or <code>transform</code>, both of which can be highly optimized by the browser; it doesn’t matter if the animation is handled by JavaScript or CSS.</p>
+                    >>>>>>> origin/master
+                </section>
+                <section>
+                    <p>For a full list of the work triggered by individual CSS properties can be found at <a href="http://csstriggers.com">CSS Triggers</a>, and you can find a full guide on creating <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">High Performance Animations on HTML5 Rocks</a>.</p>
+                    <ul>
+                        <li>
+                            <<a href="https://developers.google.com/web/performance/critical-rendering-path/" title="Critical Rendering Path">Critical Rendering Path</a>
+                        </li>
+                        <li>
+                            <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html">Render Blocking CSS</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>It is worth using <a href="http://dev.w3.org/csswg/css-will-change/"><code>will-change</code></a> to ensure the browser knows that you intend to change an element’s property. This allows the browser to put the most appropriate optimizations in place ahead of you making the change. Care must be taken to not overuse <code>will-change</code>, however, as it can cause the browser to waste resources, which will in turn cause even more performance issues.</p>
+                    <p>The general rule of thumb is that if the animation could be triggered in the next 200ms, either by a user’s interaction or because of your application’s state, then having will-change on animating elements is a good idea. For most cases, then, any element in your app’s current view that you intend to animate should have <code>will-change</code> enabled for whichever properties you plan to change. In the case of the box sample we’ve been using throughout the previous guides, adding <code>will-change</code> for transforms and opacity looks like this:</p><pre><code>.box {
+  will-change: transform, opacity;
+}</code></pre>
+                </section>
+                <section>
+                    <p>Now the browsers that support it, currently Chrome, Firefox and Opera, will make the appropriate optimizations under the hood to support changing or animating those properties.</p>
+                </section>
+                <section>
+                    <h2 id="css-vs-javascript-performance">CSS vs JavaScript Performance</h2>
+                </section>
+                <section>
+                    <p>There are many pages and comments threads around the web that discuss the relative merits of CSS and JavaScript animations from a performance perspective. Here are a couple of points to keep in mind:</p>
+                    <ul>
+                        <li>CSS-based animations are typically handled on a separate thread to the browser’s "main thread", where styling, layout, painting, and JavaScript are executed. This means that if the browser is running some expensive tasks on the main thread, CSS-based animations can potentially keep going without being interrupted. Changes to transforms and opacity can, in many cases, be handled by the same thread as the CSS-based animations, called the "compositor thread", so ideally you should stick to using these for your animations.</li>
+                        <li>If any animation triggers paint, layout, or both, the "main thread" will be required to do work. This is true for both CSS- and JavaScript-based animations, and the overhead of layout or paint will likely dwarf any work associated with CSS or JavaScript execution, rendering the question moot.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>If you want to know exactly which work is triggered by animating a given property check <a href="http://csstriggers.com">CSS Triggers</a> for more details.</p>
+                </section>
+            </section>

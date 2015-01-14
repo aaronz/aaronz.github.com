@@ -7,8 +7,6 @@ description:  Compatibility Cookbook for IE (English Edition)
 <section id="agenda">
     <h2>agenda</h2>
     <ul>
-        <li><a href="#guideline">Compatibility guidelines and best practices</a>
-        </li>
         <li><a href="#activex">ActiveX controls and plugin changes</a>
         </li>
         <li><a href="#browser">Browser features and compatibility changes</a>
@@ -23,469 +21,23 @@ description:  Compatibility Cookbook for IE (English Edition)
         </li>
     </ul>
 </section>
-<section>
-    <section id="guideline">
-        <h3>Compatibility guidelines and best practices</h3>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Adapting tailored sites to support standards</h3>
-        <ul>
-            <li>By creating sites that support industry standards (such as HTML5, CSS3, DOM4, and so on), you extend your site's reach to include browsers that support the same standards, regardless of the underlying device, operating system, or form factor. </li>
-            <li>For specific advice regarding your tailored site, consider using the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506925">common coding problem scanner</a> located at <a href="http://go.microsoft.com/fwlink/li/?LinkId=301530">modern.IE</a>.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Step 1: Update or replace browser detection</h3>
-        <ul>
-            <li>If your site uses browser detection, you should carefully review the need for browser detection as well as the underlying code. Consider reworking the code to focus on <a href="http://msdn.microsoft.com/en-us/library/ie/hh273397(v=vs.85).aspx">features and capabilities</a> rather than specific browsers, devices, or operating systems. </li>
-            <li>In the long run, it's important to adopt <a href="http://go.microsoft.com/fwlink/li/?LinkID=236868">feature detection</a> and other modern practices for writing cross-browser code rather than to continue to rely on user-agent detection.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Step 2: Ensure standards mode for all browsers</h3>
-        <ul>
-            <li>For most sites, this won't require any work because standards mode is the default. The easiest way to be sure is to include the HTML5 doctype at the top of every page:</li>
-            <pre><code>&lt;!DOCTYPE html&gt; </code></pre>
-            <li>If you're testing your web pages on a local network (or "localhost"), you will need to temporarily force standards mode because IE defaults into a backward-compatible mode for intranet sites. You can do this by adding the following tag to the &lt;head&gt; tag of the page, or by adding the equivalent HTTP header:</li>
-            <pre><code>&lt;meta http-equiv="x-ua-compatible" content="IE=edge" /&gt;</code></pre>
-        </ul>
-    </section>
-    <section>
-        <h3>Some scenarios that would push your site out of standards mode:</h3>
-        <ul>
-            <li>
-                Not including a doctype declaration at all. Instead, use the HTML5 doctype mentioned above.</li>
-            <li>
-                Specifying a "transitional" doctype. Instead, remove the Transitional keyword or adopt the HTML5 doctype.</li>
-            <li>
-                Forcing a specific IE mode using the x-ua-compatible header with "IE=9" (or older version). Instead, specify IE=edge or remove the x-ua-compatible header completely and use the HTML5 doctype.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Step 3: Update CSS and DOM prefix use.</h3>
-        <ul>
-            <li>Look for any Cascading Style Sheets (CSS) or JavaScript calls tailored to specific toolkits, like Webkit, and see if there are standards-compliant alternatives. </li>
-            <li>In rare cases, you may need to use vendor prefixes (-ms) to support specific browsers. Your site may already include a broad set of prefixes as a best practice. Beyond that, there may be a few other CSS updates or behavior differences that require minor changes.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Revising prefixed properties</h3>
-        <ul>
 
-            <li>These are CSS/Document Object Model properties that initially shipped under the WebKit prefix (for example, with "-webkit") but have since shipped in IE and other browsers in an unprefixed format. Fixing these can be as simple as copying the line and then removing the "-webkit" prefix from the copy.</li>
-        </ul>
-    </section>
-    <section>
-        <li>Instead of just:</li>
-        <pre><code>-webkit-border-radius: 0;</code></pre>
-        <li>Use:</li>
-        <pre><code>-webkit-border-radius: 0; 
-border-radius: 0; </code></pre>
-
-        <li>Instead of:</li>
-        <pre><code>a.webkitTransitionDuration = "5ms" </code></pre>
-        <li>Use:</li>
-        <pre><code>b.webkitTransitionDuration = 
-   b.transitionDuration = "5ms"; </code></pre>
-        <li>Instead of just:</li>
-        <pre><code>this.element.addEventListener 
-   ("webkitTransitionEnd", this, false); </code></pre>
-        <li>Use:</li>
-        <pre><code>this.element.addEventListener 
-   ("webkitTransitionEnd", this, false); 
-this.element.addEventListener
-   ("transitionend", this, false); </code></pre>
-    </section>
-    <section>
-        <h3>Prefixed properties</h3>
-        <ul>
-            <li>The following WebKit-prefixed properties also have the same behavior in IE but require Microsoft vendor-prefixing ("-ms") because the corresponding standards have not progressed far enough at the World Wide Web Consortium (W3C) to be considered standardized. </li>
-            <li> Note that while you are adding the "-ms" version, you can also choose to add an unprefixed version to be forward compatible. (See <a href="http://msdn.microsoft.com/en-us/library/ie/hh273396(v=vs.85).aspx">How to create effective fallback strategies</a> to learn more.)</li>
-        </ul>
-        <table>
-            <tbody>
-                <tr>
-                    <th>Webkit version</th>
-                    <th>IE version</th>
-                </tr>
-                <tr>
-                    <td>-webkit-text-size-adjust </td>
-                    <td>
-                        <a href="http://msdn.microsoft.com/en-us/library/ie/dn793579(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">-ms-text-size-adjust</strong></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>-webkit-user-select</td>
-                    <td>
-                        <a href="http://msdn.microsoft.com/en-us/library/ie/hh781492(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">-ms-user-select</strong></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>:-webkit-fullscreen</td>
-                    <td>
-                        <a href="http://msdn.microsoft.com/en-us/library/ie/dn312073(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">:-ms-fullscreen</strong></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h3>Gradients</h3>
-        <li>The CSS gradients syntax has been updated during the standardization process. Specifically, the gradient type (for example, linear or radial) has moved to the property name, and there also are differences in how you specify the gradient line and colors. For the full details on the IE supported syntax for gradients, see <a href="http://msdn.microsoft.com/en-us/library/ie/hh673532(v=vs.85).aspx">IE10 Developers Guide: Gradients</a>. For example: </li>
-        <li>Before:</li>
-        <pre><code>background: -webkit-gradient(linear, left top, 
-   left bottom, from(#ffffff), to(#000000)); </code></pre>
-        <li>After:</li>
-        <pre><code>background: -webkit-gradient(linear, left top, 
-   left bottom, from(#ffffff), to(#000000));
-background: linear-gradient(to bottom, 
-   #ffffff, #000000); </code></pre>
-    </section>
-    <section>
-        <h3>Flexbox orientation</h3>
-        <li>The syntax for setting <a href="http://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx">Flexbox orientation has changed</a> in IE:</li>
-        <li>Before:</li>
-        <pre><code>-webkit-box-orient: vertical; </code></pre>
-        <li>After:</li>
-        <pre><code>-webkit-box-orient: vertical;
-flex-direction: column;   </code></pre>
-    </section>
-    <section>
-        <h3>Borders around hyperlinked images</h3>
-        <li>If an image is used as a hyperlink, by default IE draws a blue highlight around the image to emphasize that this is a hyperlink; WebKit doesn't do this. An easy way to turn this off is to explicitly specify no border for hyperlinked images using the following CSS:</li>
-        <pre><code>a img {
-      border: none;
- } </code></pre>
-    </section>
-    <section>
-        <h3>Step 4: Update touch and pointer event handlers</h3>
-        <ul>
-            <li>IE for Windows Phone 8.1 Update now supports the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> for handling touch. For many sites tailored for iOS or Android devices, this means it is no longer necessary to make changes to support Windows Phone devices. However, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a> does not properly handle support for some other touch-enabled devices like laptops or hybrid devices. </li>
-            <li>To fully support devices running Windows, sites should incorporate the Pointer Events standard so that touch, mouse, and pen input are all supported through a single event model. In certain scenarios, the <a href="http://go.microsoft.com/fwlink/li/?LinkId=278991">Pointer Events standard</a> provides better performance when compared to designs based on the <a href="http://go.microsoft.com/fwlink/li/?LinkId=506849">Touch events API</a>.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Adding pointer event listeners</h3>
-        <li>The pointer API uses a standard "down, move, up" event model. Therefore, it's simple to hook up listeners for existing event handlers to pointer events. </li>
-        <li>Before:</li>
-        <pre><code>this.element.addEventListener("touchstart", eventHandlerName, false); 
- this.element.addEventListener("touchmove", eventHandlerName, false);
- this.element.addEventListener("touchend", eventHandlerName, false); </code></pre>
-        <li>After:</li>
-        <pre><code>if (window.PointerEvent) {
-   this.element.addEventListener("pointerdown", eventHandlerName, false);
-   this.element.addEventListener("pointermove", eventHandlerName, false);
-   this.element.addEventListener("pointerup", eventHandlerName, false);
-   this.element.addEventListener("pointercancel", eventHandlerName, false);
-} else {
-   this.element.addEventListener("touchstart", eventHandlerName, false);
-   this.element.addEventListener("touchmove", eventHandlerName, false);
-   this.element.addEventListener("touchend", eventHandlerName, false);  
-   this.element.addEventListener("touchend", eventHandlerName, false);  
-   //Consider also, support mouse on multi-modal devices
-   this.element.addEventListener("mousedown", eventHandlerName, false);
-   this.element.addEventListener("mousemove", eventHandlerName, false);
-   this.element.addEventListener("mouseup", eventHandlerName, false);
-}</code></pre>
-    </section>
-    <section>
-        <h3>Retrieving coordinates</h3>
-        <li>The pointer event model fires separate events for each touch point, so there is no need to retrieve a specific index from the touches collection. The coordinates are exposed directly from the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535863(v=vs.85).aspx">event</a> object using the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974655(v=vs.85).aspx">pageX</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ff974656(v=vs.85).aspx">pageY</a> properties. This can easily be incorporated into existing code as follows: </li>
-        <li>Before:</li>
-        <pre><code>var curX = event.targetTouches[0].pageX; </code></pre>
-        <li>After:</li>
-        <pre><code>var curX = event.pageX || event.targetTouches[0].pageX;  </code></pre>
-    </section>
-    <section>
-        <h3>Handling mouse and other input types</h3>
-        <li>Pointer events let you handle mouse input with the same events that handle touch input. You can use the same code to handle common scenarios such as tap, click, and drag. </li>
-        <li>To differentiate between different input types, use the <a href="http://msdn.microsoft.com/en-us/library/ie/hh772359(v=vs.85).aspx">pointerType</a> property:</li>
-        <pre><code>switch (event.pointerType) {
-  case "touch":
-    //Handle input only if from a touchscreen
-    break;  
-  case "mouse":
-    //Handle input only if from a mouse
-    break;  
-  case "pen":
-    //Handle input only if from a pen stylus
-    break;  
-  default:
-    //Handle all other input types
-}</code></pre>
-    </section>
-    <section>
-        <h3>Turning off default touch behavior</h3>
-        <li>With Touch Events, disabling default touch behavior (like panning or zooming) is done by cancelling the event. With Pointer Events, disabling the default touch behavior is done declaratively via the <a href="http://msdn.microsoft.com/en-us/library/ie/hh772044(v=vs.85).aspx">touch-action</a> CSS property.</li>
-        <li>Before:</li>
-        <pre><code>// Prevent panning/zooming on the element touched
-touchEvent.prevent.default();   </code></pre>
-        <li>After:</li>
-        <pre><code>.preventTouchBehaviors {
-  touch-action: none; 
-  /* Prevent panning/zooming on elements with this class */
-}</code></pre>
-    </section>
-    <section>
-        <h3>Step 5: Handle non-standard behaviors</h3>
-        <li>A final category of updates is related to scenarios that don't have an associated W3C standard. In most cases you can combine solutions safely. For example, you can specify the standards-based approach first and then fallback to a non-standard approach when needed. </li>
-    </section>
-    <section>
-        <h3>Disabling link highlighting</h3>
-        <li>Some mobile browsers, including Safari on iOS and IE on Windows Phone, display a translucent highlight when elements with hyperlinks are tapped, to provide additional feedback to the user. However, many sites want to disable this default behavior to have greater control over the look and feel of their site. </li>
-        <li>Webkit solution:</li>
-        <pre><code> a {
- -webkit-tap-highlight-color: rgba(0,0,0,0);
- } </code></pre>
-        <li>IE solution:</li>
-        <pre><code>&lt;meta name="msapplication-tap-highlight" content="no" /&gt; </code></pre>
-        <li>Note that msapplication-tap-highlight should appear in the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535252(v=vs.85).aspx">head</a> section of the page (it applies to the entire page). </li>
-    </section>
-    <section>
-        <h3>Disabling native styling for drop-down lists</h3>
-        <li>One specific, commonly used scenario for "-webkit-appearance" is to disable the drop-down arrow that appears on <a href="http://msdn.microsoft.com/en-us/library/ie/ms535893(v=vs.85).aspx">select</a> elements in order to apply a custom style (generally a background image). When the arrow is removed, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms531171(v=vs.85).aspx">textIndent</a> value usually is set to ensure that the text of the drop-down list items doesn't show up on the page. Here's how to achieve the same effect in IE:</li>
-        <li>Webkit solution:</li>
-        <pre><code> select {
-    -webkit-appearance: none;
-    text-indent: -5000px;
- }  </code></pre>
-        <li>IE solution:</li>
-        <pre><code>select::-ms-expand {
-    display: none;
- } </code></pre>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Building a touch-first site</h3>
-        <li>Starting with IE 10 on Windows 8, IE lets users choose from a variety of input devices: touch, pen, and mouse. While the new Windows UI browsing experience is designed for a great touch experience, some customers might prefer the new Windows UI experience when using a mouse and keyboard, while others like the desktop experience when using touch. For more info about touch in IE on Windows 8, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj583807(v=vs.85).aspx">Make your site touch-ready</a>.</li>
-    </section>
-    <section>
-        <li>Use feature detection to determine if the device supports touch. The following example checks for touch capable hardware, which your app can use to present the best experience for the user.</li>
-        <pre><code>if (window.navigator.maxTouchPoints) {
-        // user has touch hardware
-    }
-    else {
-        // user does not have touch hardware
-    }</code></pre>
-    </section>
-    <section>
-        <li>If your app requires a minimum number of touch points, you can test the device for a supported number of points. If your app requires three touch points, you can use the following example that detects if a device supports a minimum of three touch points. For more info on multi-touch across browsers, see <a href="http://go.microsoft.com/fwlink/li/?linkid=246106">Handling Multi-touch and Mouse Input in All Browsers</a>.</li>
-        <pre><code>    if (window.navigator.maxTouchPoints &gt;= 3) {
-        // user has at least three touch points 
-    }
-    else if (window.navigator.maxTouchPoints) {
-        // user has only one or two touch points
-    }
-    else {
-        // user does not have touch hardware
-    }</code></pre>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Effective use of prerender and prefetch</h3>
-        <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/dn265039(v=vs.85).aspx">Prerender and prefetch support</a>, you saw how (and when) to use prerender and prefetch. There are a few more things you can do to keep things moving smoothly:</li>
-        <ul>
-            <li>
-                <li>Design pages so they don't include features that pause or cancel the prerendering process. If you need such a feature, put it as late in the loading process as possible. This reduces the number of requests remaining after the page is displayed. </li>
-            </li>
-            <li>
-                <li> Due to <a href="http://msdn.microsoft.com/en-us/library/ie/dn265036(v=vs.85).aspx">network prioritization</a>, background operations are given a lower priority than foreground operations. Add code to verify that certain operations have finished.</li>
-            </li>
-            <li>
-                <li>Make sure you're following effective practices for <a href="http://go.microsoft.com/fwlink/li/?LinkId=306034">conditional requests</a> and cache header control.</li>
-            </li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Migrating mutation and property change events to mutation observers</h3>
-        <li>
-            <a href="http://msdn.microsoft.com/en-us/library/ie/dn265034(v=vs.85).aspx">Mutation observers</a> in IE 11 offers a fast-performing replacement for all of the same scenarios supported by mutation events, and an alternative to the scenarios supported by property change events.</li>
-    </section>
-    <section>
-        <h3>Legacy techniques for monitoring DOM mutations </h3>
-        <ul>
-            <li>
-                <a href="http://msdn.microsoft.com/en-us/library/ie/ff974346(v=vs.85).aspx">Mutation events</a> play a key role in the web platform. They allow web apps to synchronously monitor dynamic changes to elements in the Document Object Model (DOM) of a webpage. While useful, mutation events are also known to cause app performance regressions mainly because of their synchronous nature and the event architecture the work on. </li>
-            <li>Property change events provide similar behavior as mutation events. They also carry a performance penalty because of the legacy browser event system they need to function correctly. </li>
-        </ul>
-    </section>
-    <section>
-        <ul>
-            <li>Mutation events (as <a href="http://www.w3.org/TR/DOM-Level-3-Events/#events-mutationevents">defined</a> in the W3C DOM Level 3 Events) have been deprecated in favor of <a href="http://www.w3.org/TR/dom/#mutation-observers">mutation observers</a> (W3C DOM4).</li>
-            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx">onpropertychange</a> event is only supported with the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms536343(v=vs.85).aspx">attachEvent</a> IE-only event registration model, which has been <a href="http://msdn.microsoft.com/en-us/library/ie/ff986080(v=vs.85).aspx">deprecated</a> since Windows IE 9 (and <a href="http://msdn.microsoft.com/en-us/library/ie/bg182625(v=vs.85).aspx#legacyAPIs">discontinued</a> in IE11) in favor of the W3C standard "<a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a>" event model.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Identifying mutation events</h3>
-        <li>The mutation events can be easily identified by their name, which is a string parameter passed to either the <a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a> or <a href="http://msdn.microsoft.com/en-us/library/ie/ff975250(v=vs.85).aspx">removeEventListener</a> platform APIs:</li>
-        <ul>
-            <li>DOMNodeInserted</li>
-            <li>DOMNodeRemoved</li>
-            <li>DOMSubtreeModified</li>
-            <li>DOMAttrModified</li>
-            <li>DOMCharacterDataModified</li>
-        </ul>
-        <pre><code>someElement.addEventListener("DOMAttrModified", function() {
-  //...
-}, false);</code></pre>
-    </section>
-    <section>
-        <h3>Identifying property change events</h3>
-        <li>Property change events can be identified by the <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx">onpropertychange</a> event name used along with the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms536343(v=vs.85).aspx">attachEvent</a> or <a href="http://msdn.microsoft.com/en-us/library/ie/ms536411(v=vs.85).aspx">detachEvent</a> IE-only event registration APIs. </li>
-        <li>
-    </section>
-    <section>
-        <h3>How mutation observers differ</h3>
-        <ul>
-            <li>Mutation observers aren't based on the web platform's event model. This is an important difference that enables them to dispatch much faster and without needing to bubble an event through the DOM element hierarchy. </li>
-            <li>Additionally, mutation observers are designed to record multiple changes before notifying your observer. They batch mutation records to avoid spamming your app with events. By contrast, mutation events are synchronous and interrupt normal code execution to notify your app of mutations. </li>
-        </ul>
-    </section>
-    <section>
-        <h3>Mutation observer registration</h3>
-        <li>Mutation observers must first be created before they can be registered on a given element. To create a mutation observer, use the JavaScript new operator and specify a callback method:</li>
-        <pre><code>var mutationObserver = new MutationObserver(callback);</code></pre>
-        <li>Having created the observer, you now instruct it to observe a particular element. Generally, this will be the same element on which you were previously registering the mutation event:</li>
-        <pre><code>mutationObserver.observe(someElement, options);</code></pre>
-    </section>
-    <section>
-        <li>With this information, any code that previously registered for a mutation event can be replaced with code that registers for a mutation observer:</li>
-        <pre><code>// Watch for all changes to the body element's children
-document.body.addEventListener("DOMNodeInserted", nodeAddedCallback, false);
-document.body.addEventListener("DOMNodeRemoved", nodeRemovedCallback, false);</code></pre>
-        <li>Now becomes:</li>
-        <pre><code>// Watch for all changes to the body element's children
-new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body, 
-  { childList: true, subtree: true });</code></pre>
-    </section>
-    <section>
-        <h3>Mutation observer callbacks</h3>
-        <li>The mutation observer callback function is invoked with two parameters:</li>
-        <ul>
-            <li>A list of records</li>
-            <li>A reference to the mutation observer object that's invoking the callback</li>
-        </ul>
-        <li>The records parameter is a JavaScript array consisting of <a href="http://msdn.microsoft.com/en-us/library/ie/dn254989(v=vs.85).aspx">MutationRecord</a> objects. Each object in the array is representative of one mutation that occurred on the element (or elements) being observed.</li>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Update existing code to work across browsers</h3>
-    </section>
-    <section>
-        <h3>Guidelines</h3>
-        <li>If you maintain an existing webpage that works correctly in Windows IE 7 or IE 8 and you want a short-term solution to enable the page to work in Windows IE 9, you have two options:</li>
-        <ul>
-            <li>Add a compatibility-mode <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> element to each webpage to force IE 9 to render the page similarly to your legacy Windows IE page. (For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=164843">How to Modify Each Page</a> in the MSDN Library.)</li>
-            <li>Add the compatibility automatically by configuring your web server to send a custom HTTP response header that's equivalent to the <a href="http://go.microsoft.com/fwlink/li/?LinkID=206768">meta</a> element with each webpage. (For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=164843">How to Configure the Server to Modify Each Page Automatically</a> in the MSDN Library.)</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Notes</h3>
-        <ul>
-            <li>Use these fixes only for quick, temporary use. Eventually, you'll want to modify your website to run standards-based code in IE 9 and later versions and run legacy code for earlier versions of IE.</li>
-            <li>Starting with IE 11, document modes are considered deprecated. Update all webpages and apps that require legacy document modes.</li>
-            <li>As a permanent solution, use <a href="http://msdn.microsoft.com/en-us/library/ie/hh273397(v=vs.85).aspx">feature detection</a> to write code that reliably adapts to cross-browser differences. Feature detection tests whether a browser supports a feature before you use it, and behavior detection tests for known issues before you apply a workaround. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/ff986088(v=vs.85).aspx">Use feature and behavior detection</a>.</li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Use feature and behavior detection</h3>
-        <li>Here's a list of "dos" and "don'ts" for ensuring your webpages are compatible across browsers. </li>
-    </section>
-    <section>
-        <h3>Do:</h3>
-        <li>Use the following detection methods to detect the source of errors more reliably and to make sure that your webpages are compatible across browsers:</li>
-        <ul>
-            <li>Feature detection: Test whether a browser supports a feature before you use it. Feature detection enables cross-browser code to "just work" without requiring you to know the capabilities of every browser ahead of time. For example, the jQuery framework relies almost entirely on feature detection. For more info about how you can use jQuery's feature detection in your own site, see the <a href="http://go.microsoft.com/fwlink/li/?LinkID=201635">jQuery.support</a> documentation.</li>
-            <li>Behavior detection: Test for known issues before you apply a workaround. jQuery also uses behavior detection by running tests for known issues to determine if certain workarounds are needed.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Don't:</h3>
-        <ul>
-            <li>Detect specific browsers: Don't use the identity of a browser (for example, <a href="http://go.microsoft.com/fwlink/li/?LinkId=239579">navigator</a>.<a href="http://go.microsoft.com/fwlink/li/?LinkID=201628">userAgent</a>) to change a page's behavior. If you change code based on a specific browser, the page cannot easily adapt to changes and it might break when a new browser is released. In other situations, pages use a legacy workaround even when that workaround is no longer needed.</li>
-            <li>Assume unrelated features: Don't perform feature detection for one feature and then use a different feature. Sites that have this problem perform feature detection for one feature and then use other features without testing whether they are supported.</li>
-        </ul>
-    </section>
-</section>
 <section>
     <section id="activex">
         <h3>ActiveX controls and plugin changes</h3>
     </section>
 </section>
-<!-- <section>
-                <section>
-                    <h3>Binary behaviors are no longer bound automatically</h3>
-                    <ul>
-                        <li>Applies to IE 9 and later.</li>
-                        <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-                    </ul>
-                    <li>To provide greater consistency with other popular browsers, IE does not automatically bind binary element behaviors. (Earlier versions of the browser automatically bound binary element behaviors.)</li>
-                    <li>Automatic binding of binary behaviors works in Windows IE 8 but it does not work as expected in Windows IE 9. A user would see a generic element instead of the specific control.</li>
-                    <li>Binding controls must be manually instantiated when creating webpages for IE 8.</li>
-                    <li>You must manually instantiate the binding control when you create webpages for IE 8, as the following code example shows.</li>
-                    <pre><code>&lt;html xmlns:svg&gt;
- &lt;head&gt;
-  &lt;title&gt;SVG embedded inline in XHTML&lt;/title&gt;
-  &lt;!-- The following is the "hookup code"  that IE requires. –-&gt;
-  &lt;object id="AdobeSVG" classid="clsid:78156a80-c6a1-4bbf-8e6a-3cd390eeb4e2"&gt;
-  &lt;/object&gt;
-  &lt;?import namespace="svg" implementation="#AdobeSVG"?&gt;
- &lt;/head&gt;
- &lt;body&gt;
-  &lt;svg:svg width="600" height="300"&gt;
-   &lt;svg:linearGradient id="gradient"&gt;
-    &lt;svg:stop style="stop-color:yellow" offset="0%" /&gt;
-    &lt;svg:stop style="stop-color:green" offset="100%" /&gt;
-   &lt;/svg:linearGradient&gt;
-   &lt;svg:rect x="0" y="0" width="100" height="100" style="fill:url(#gradient)" /&gt;
-   &lt;svg:circle cx="50" cy="50" r="30" style="fill:url(#gradient)" /&gt;
-   &lt;svg:circle cx="150" cy="100" r="50" /&gt;
-  &lt;/svg:svg&gt;
- &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <li> The following code example uses the native Scalable Vector Graphics (SVG) handling in IE 9</li>
-                    <pre><code>&lt;html&gt;
- &lt;head&gt;
-  &lt;title&gt;SVG embedded inline in XHTML&lt;/title&gt;
- &lt;/head&gt;
- &lt;body&gt;
-  &lt;svg width="600" height="300" xmlns="http://www.w3.org/2000/svg"&gt;
-   &lt;linearGradient id="gradient"&gt;
-    &lt;stop style="stop-color:yellow" offset="0%" /&gt;
-    &lt;stop style="stop-color:green" offset="100%" /&gt;
-   &lt;/linearGradient&gt;
-   &lt;rect x="0" y="0" width="100" height="100" style="fill:url(#gradient)" /&gt;
-   &lt;circle cx="50" cy="50" r="30" style="fill:url(#gradient)" /&gt;
-   &lt;circle cx="150" cy="100" r="50" /&gt;
-  &lt;/svg&gt;
- &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </section>
-            </section> -->
 <section>
     <section>
-        <h3>Browsing in the new Windows UI for web developers</h3>
-        <ul>
-            <li>Applies to IE 10 and later.</li>
-            <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-        </ul>
+        <h3>Browsing in the new Windows UI for web developers - IE10+</h3>
     </section>
     <section>
         <h3>ActiveX and other binary extensibility</h3>
-        <li>The Windows 8 browsing experience doesn't support Microsoft ActiveX or any other binary extensibility. To ensure your site works for all customers, provide an experience that doesn't depend on plug-ins. </li>
+        <p>The Windows 8 browsing experience doesn't support Microsoft ActiveX or any other binary extensibility. To ensure your site works for all customers, provide an experience that doesn't depend on plug-ins. </p>
     </section>
     <section>
         <h3>Patterns for proper fallback</h3>
-        <li>Your site will provide a better customer experience by following best practices to test for the standards-based feature first, and fall back to plug-ins only if necessary.</li>
+        <p>Your site will provide a better customer experience by following best practices to test for the standards-based feature first, and fall back to plug-ins only if necessary.</p>
         <pre><code>&lt;video id="video1" width="640" height="360" controls&gt;
     &lt;source src="video.mp4" type="video/mp4"&gt;
     &lt;source src="video.webm" type="video/webm"&gt;
@@ -496,8 +48,8 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
 &lt;/video&gt;</code></pre>
     </section>
     <section>
-        <li>
-            If your site delivers a premium experience with a plug-in, use the following fallback:</li>
+        <p>
+            If your site depvers a premium experience with a plug-in, use the following fallback:</p>
         <pre><code>&lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
     &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
     &lt;video id="video1" width="640" height="360" controls&gt;
@@ -506,36 +58,32 @@ new MutationObserver(nodesAddedAndRemovedCallback).observe(document.body,
         &lt;li&gt;Please update your browser or install Flash&lt;/li&gt;
     &lt;/video&gt;
 &lt;/object&gt;</code></pre>
-        <li>This pattern guarantees that anyone with the plug-in will use it and those without it will get the native platform experience. If the customer is on a browser without the plug-in or the native support, the customer can attempt to install the plug-in.</li>
     </section>
     <section>
         <h3>Short-term mitigation</h3>
-        <li>Making updates to your site might take time. If you temporarily need to suggest users view your site in IE 10 on the desktop, you can update your site with either a "META" tag or "HTTP" header and Windows IE will notify the user and provide an option to switch to the desktop.</li>
+        <p>If you temporarily need to suggest users view your site in IE 10 on the desktop, you can update your site with either a "META" tag or "HTTP" header and Windows IE will notify the user and provide an option to switch to the desktop.</p>
         <pre><code>HTTP Header
 X-UA-Compatible: requiresActiveX=true
 META TAG
 &lt;meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/&gt;</code></pre>
-        <li>Note:Keep in mind that the user might be using a device, such as a phone, that doesn't run existing ActiveX controls even in IE for the desktop. Forcing users into the desktop experience should only be a last resort when no comparable fallback content exists.</li>
     </section>
     <section>
         <h3>Debugging the new Windows UI browsing experience issues</h3>
-        <li>The only difference between how sites behave in the two browsing experiences is plug-in support. If you want to emulate the plug-in free experience in the desktop to debug site issues with the F12 developer tools, enable <a href="http://go.microsoft.com/fwlink/li/?LinkID=237087">ActiveX Filtering</a>: "Tools-&gt;Safety-&gt;ActiveX Filtering".</li>
-    </section>
-    <section>
-        <h3>Building a touch-first site</h3>
-        <li>It's important to not make assumptions about the user's input method. Instead, use feature detection to see what the device is capable of.</li>
+        <p>If you want to emulate the plug-in free experience in the desktop to debug site issues with the F12 developer tools, enable <a href="http://go.microsoft.com/fwlink/p/?LinkID=237087">ActiveX Filtering</a>: "Tools-&gt;Safety-&gt;ActiveX Filtering".</p>
     </section>
     <section>
         <h3>Detecting touch input</h3>
-        <li>The following example can help your app decide whether it can provide a touch-first experience or not:</li>
+        <p>The following example can help your app decide whether it can provide a touch-first experience or not:</p>
         <pre><code>if (window.navigator.maxTouchPoints) {
         // user has touch hardware
     }
     else {
         // user does not have touch hardware
     }</code></pre>
-        <li>If you're interested in the number of touch points available, such as if your game requires a minimum of three touch points, change the detection code to this: </li>
-        <pre><code>    if (window.navigator.maxTouchPoints &gt;= 3) {
+        <div class="fragment">
+
+            <p>If you're interested in the number of touch points available, such as if your game requires a minimum of three touch points, change the detection code to this: </p>
+            <pre><code>    if (window.navigator.maxTouchPoints &gt;= 3) {
         // user has at least three touch points 
     }
     else if (window.navigator.maxTouchPoints) {
@@ -544,23 +92,20 @@ META TAG
     else {
         // user does not have touch hardware
     }</code></pre>
+        </div>
     </section>
 </section>
 <section>
     <section>
-        <h3>Cross-browser plugin detection</h3>
-        <ul>
-            <li>Applies to IE11.</li>
-            <li>Affects IE11 edge mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-        </ul>
+        <h3>Cross-browser plugin detection - IE11</h3>
+        <p>Starting with IE11, the navigator object supports plugins and mimeTypes properties. In addition, the window.ActiveXObject property is hidden from the DOM. </p>
     </section>
     <section>
         <h3>Detecting plugins effectively</h3>
         <ul>
-            <li>
-                <li>Plugins might not be detected, even though they're installed.</li>
-                <li>If your site uses the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974676(v=vs.85).aspx">window.ActiveXObject</a> property to determine if a plugin is present, you'll need to update your code to use the new properties instead. </li>
-                <pre><code>var plugin = navigator.plugins["Contoso.Control"];
+            <li>Plugins might not be detected, even though they're installed.</li>
+            <li>If your site uses the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974676(v=vs.85).aspx">window.ActiveXObject</a> property to determine if a plugin is present, you'll need to update your code to use the new properties instead. </li>
+            <pre><code>var plugin = navigator.plugins["Contoso.Control"];
 if(plugin) {
     // Contoso control is installed and enabled
 } else {
@@ -570,26 +115,23 @@ if(plugin) {
     // Contoso control is not installed or disabled
   }
 }</code></pre>
-                <li>Note:As this example shows, IE11 still supports the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974676(v=vs.85).aspx">ActiveXObject</a> object type and you can use it to instantiate ActiveX controls. However, it isno longer supported as a property of the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535873(v=vs.85).aspx">window</a> object.</li>
-            </li>
+            <li>Note:As this example shows, IE11 still supports the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974676(v=vs.85).aspx">ActiveXObject</a> object type and you can use it to instantiate ActiveX controls. However, it isno longer supported as a property of the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535873(v=vs.85).aspx">window</a> object.</li>
         </ul>
     </section>
     <section>
         <ul>
-            <li>
-                <li>Plugins might not report information in the <a href="http://msdn.microsoft.com/en-us/library/ie/hh767310.aspx">navigator</a> properties.</li>
-                <li>To support the new properties, plugins need to update the Registry when installed:</li>
-                <ol>
-                    <li>Under <code>HKLM\SOFTWARE\Microsoft\IE\NavigatorPluginsList</code> create a key using the name to be reported by the <a href="http://msdn.microsoft.com/en-us/library/ie/dn384065(v=vs.85).aspx">plugins</a> property.</li>
-                    <li>Create subkeys for each custom MIME type supported by the plugin, using the MIME type value as the name of the subkey. </li>
-                    <li>For 64-bit environments, add the same Registry entries to <code>HKLM\SOFTWARE\Wow6432\Microsoft\IE\NavigatorPluginsList</code>.</li>
-                    <li>Verify that unique MIME types are properly registered with the device loading the webpage, as well as the server hosting the webpage.</li>
-                </ol>
-            </li>
+            <li>Plugins might not report information in the <a href="http://msdn.microsoft.com/en-us/library/ie/hh767310.aspx">navigator</a> properties.</li>
+            <li>To support the new properties, plugins need to update the Registry when installed:</li>
+            <ol>
+                <li>Under <code>HKLM\SOFTWARE\Microsoft\IE\NavigatorPluginsList</code> create a key using the name to be reported by the <a href="http://msdn.microsoft.com/en-us/library/ie/dn384065(v=vs.85).aspx">plugins</a> property.</li>
+                <li>Create subkeys for each custom MIME type supported by the plugin, using the MIME type value as the name of the subkey. </li>
+                <li>For 64-bit environments, add the same Registry entries to <code>HKLM\SOFTWARE\Wow6432\Microsoft\IE\NavigatorPluginsList</code>.</li>
+                <li>Verify that unique MIME types are properly registered with the device loading the webpage, as well as the server hosting the webpage.</li>
+            </ol>
     </section>
     <section>
         <h3>Detecting plugin versions effectively</h3>
-        <li>Many plugins are maintained over time and there's no guarantee that the user has installed the latest version. The following example shows one way to use the <a href="http://msdn.microsoft.com/en-us/library/ie/dn268316(v=vs.85).aspx">plugin.version</a> property to handle this.</li>
+        <p>Many plugins are maintained over time and there's no guarantee that the user has installed the latest version. The following example shows one way to use the <a href="http://msdn.microsoft.com/en-us/library/ie/dn268316(v=vs.85).aspx">plugin.version</a> property to handle this.</p>
         <pre><code>Silverlight.isInstalled = function (version) {
     if (version == undefined)
     {
@@ -679,35 +221,68 @@ if(plugin) {
 </section>
 <section>
     <section>
-        <h3>Supporting enhanced protected mode (EPM)</h3>
-        <ul>
-            <li>Applies to IE 10 and later.</li>
-            <li>Affects all document modes.</li>
-        </ul>
+        <h3>Plugin and ActiveX support in Windows 8 and Windows 8.1</h3>
+        <p>Windows 8 provides two browsing experiences with Internet Explorer 10, the familiar desktop browsing experience and the new Windows 8 browsing experience. The only difference between how sites behave in the two browsing experiences is plug-in support.</p>
+    </section>
+    <section>
+        <p>The new Windows UI browsing experience doesn't support Microsoft ActiveX or any other binary extensibility. To ensure your site works for all customers, provide content that doesn't rely on plug-ins. </p>
+        <pre><code>&lt;video id="video1" width="640" height="360" controls&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+
+    &lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
+        &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
+
+        &lt;p&gt;Please update your browser or install Flash&lt;/p&gt;
+
+    &lt;/object&gt;
+&lt;/video&gt;</code></pre>
+    </section>
+    <section>
+        <p>If your site delivers a premium experience with a plug-in, use the following fallback:</p>
+        <pre><code>&lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
+    &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
+
+    &lt;video id="video1" width="640" height="360" controls&gt;
+        &lt;source src="video.mp4" type="video/mp4"&gt;
+        &lt;source src="video.webm" type="video/webm"&gt;
+
+        &lt;p&gt;Please update your browser or install Flash&lt;/p&gt;
+
+    &lt;/video&gt;
+&lt;/object&gt;
+                    </code></pre>
+    </section>
+    <section>
+        <p>
+            You can temporarily suggest that your users view your site with Internet Explorer 10 on the desktop. Update your site with either a "META" tag or "HTTP" header and Windows Internet Explorer will notify the user and provide an option to switch to the desktop.
+        </p>
+        <pre><code>HTTP Header
+X-UA-Compatible: requiresActiveX=true
+META TAG
+&lt;meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/&gt;</code></pre>
+    </section>
+</section>
+<section>
+    <section>
+        <h3>Supporting enhanced protected mode (EPM) - IE10+</h3>
     </section>
     <section>
         <h3>A brief introduction to enhanced protected mode</h3>
-        <li>Enhanced protected mode (EPM) leverages three key features from the Windows security model:</li>
+        <p>Enhanced protected mode (EPM) leverages three key features from the Windows security model:</p>
         <ul>
-            <li>
-                <li>64-bit processes enable <a href="http://go.microsoft.com/fwlink/li/?LinkID=257810">advanced memory protections</a> and <a href="http://go.microsoft.com/fwlink/li/?LinkID=257809">other security improvements</a>.</li>
-            </li>
-            <li>
-                <li><a href="Http://go.microsoft.com/fwlink/li/?LinkID=389162">Integrity levels</a> prevent untrusted applications from modifying sensitive system objects. Untrusted apps, like IE, are considered low-integrity objects and can only modify low-integrity objects. (Low integrity apps can read higher integrity objects, though.) </li>
-            </li>
-            <li>
-                <li>AppContainers create a sandbox between an app and the rest of the system. </li>
-                <li>For a more detailed introduction to enhanced protected mode, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=257817">IEInternals: Understanding Protected Mode</a>.</li>
-            </li>
+            <li>64-bit processes enable <a href="http://go.microsoft.com/fwlink/li/?LinkID=257810">advanced memory protections</a> and <a href="http://go.microsoft.com/fwlink/li/?LinkID=257809">other security improvements</a>.</li>
+            <li><a href="Http://go.microsoft.com/fwlink/li/?LinkID=389162">Integrity levels</a> prevent untrusted applications from modifying sensitive system objects. Untrusted apps, like IE, are considered low-integrity objects and can only modify low-integrity objects. (Low integrity apps can read higher integrity objects, though.) </li>
+            <li>AppContainers create a sandbox between an app and the rest of the system. </li>
+            <li>For a more detailed introduction to enhanced protected mode, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=257817">IEInternals: Understanding Protected Mode</a>.</li>
         </ul>
     </section>
     <section>
         <h3>Loading ActiveX controls when EPM is active</h3>
-        <li>When you install your ActiveX control (including toolbars and browser helper objects), follow these steps to ensure your control supports enhanced protected mode:</li>
+        <p>When you install your ActiveX control (including toolbars and browser helper objects), follow these steps to ensure your control supports enhanced protected mode:</p>
         <ol>
             <li>Install 32-bit and 64-bit binaries.</li>
             <li>Register the ActiveX control as one that is compatible with AppContainers. To do this, you register your control with the CAT_ID AppContainerCompatible ({59fb2056-d625-48d0-a944-1a85b5ab2640}) <a href="http://go.microsoft.com/fwlink/li/?LinkId=389164">COM component category</a>. Here's one way to do this from C++:
-                <a>C++</a>
                 <pre><code>DEFINE_GUID(CATID_AppContainerCompatible, 0x59fb2056,0xd625,0x48d0,0xa9,0x44,0x1a,0x85,0xb5,0xab,0x26,0x40);</code></pre>
             </li>
         </ol>
@@ -728,45 +303,42 @@ if(plugin) {
 </section>
 <section>
     <section>
-        <h3>ASP.NET fails to detect IE</h3>
-        <li>When ASP.NET does not correctly recognize IE, it responds with a "_doPostBack is undefined JavaScript" error. </li>
-        <ul>
-            <li>Update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.</li>
-        </ul>
+        <h3>ASP.NET fails to detect IE - IE9+</h3>
+        <p>When ASP.NET does not correctly recognize IE, it responds with a "_doPostBack is undefined JavaScript" error. </p>
+        <p>
+            The fix is to update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.
+        </p>
     </section>
 </section>
 <section>
     <section>
-        <h3>Customizing the download experience</h3>
-        <ul>
-            <li>Applies to IE 10 and later.</li>
-            <li>Affects IE10 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-        </ul>
+        <h3>Customizing the download experience - IE10+</h3>
+        <p>Downloading files is a very common activity, and in Internet Explorer 10 we made several improvements in the file download experience and integrated the SmartScreen Application reputation check to help users make better trust decisions.</p>
     </section>
     <section>
         <h3>Content-disposition header</h3>
-        <li>To force the browser to <a href="http://go.microsoft.com/fwlink/li/?LinkID=256551">treat a specific file as a download</a>, send a <a href="http://go.microsoft.com/fwlink/li/?LinkID=256552">content-disposition header</a> with the <code>attachment</code> token. This is useful as some applications installed on the user's machine can register themselves to handle certain MIME types and bypass Windows IE download experience. For example, Microsoft Windows Media Player in some installations can set itself to handle mp3 files. Hence, a file link to an mp3 resource will directly open in Windows Media Player when a user navigates to it in IE. The user doesn't get the option to save the file to disk in the browser.</li>
-        <li>With the content-disposition header set to <code>attachment</code>, IE download experience offers the user the choice to open or save:</li><img alt="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" src="http://i.msdn.microsoft.com/dynimg/IC600818.png" title="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" xmlns="" />
+        <ul>
+            <li>To force the browser to <a href="http://go.microsoft.com/fwlink/li/?LinkID=256551">treat a specific file as a download</a>, send a <a href="http://go.microsoft.com/fwlink/li/?LinkID=256552">content-disposition header</a> with the <code>attachment</code> token. This is useful as some applications installed on the user's machine can register themselves to handle certain MIME types and bypass Windows IE download experience.</li>
+            <li>With the content-disposition header set to <code>attachment</code>, IE download experience offers the user the choice to open or save:</li><img alt="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" src="http://i.msdn.microsoft.com/dynimg/IC600818.png" title="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" xmlns="" />
+        </ul>
     </section>
     <section>
         <h3>TriggerFileDownload</h3>
-        <li>We added a new function in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</li>
+        <p>We added a new function in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</p>
         <pre><code>void TriggerFileDownload (string URL)</code></pre>
-        <li>For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/gg593105(v=vs.85).aspx">TriggerFileDownload</a>.</li>
     </section>
     <section>
         <h3>The <code>NoOpen</code> Directive</h3>
-        <li>To prevent users from opening a file immediately (and potentially losing track of the downloaded file) developers can specify the <code>NoOpen</code> directive. This way the user won't accidentally open the file and lose it in the Temporary Internet Files folder.</li>
-        <li>You can set this directive in one of two ways:</li>
+        <p>To prevent users from opening a file immediately (and potentially losing track of the downloaded file) developers can specify the <code>NoOpen</code> directive. This way the user won't accidentally open the file and lose it in the Temporary Internet Files folder.</p>
         <ul>
             <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=256567">X-Download-Options</a> HTTP response header (supported by Windows IE 8 and later).</li>
             <li>The download options meta tag <code>&lt;meta name="DownloadOptions" content="noopen"&gt;</code> (supported by Microsoft IE 6 and later).</li>
         </ul>
-        <li>When this directive is set, IE won't offer the Open option in the download acceptance bar:</li><img alt="A screen shot of the download acceptance bar that asks the user if they want to save the document" src="http://i.msdn.microsoft.com/dynimg/IC600819.png" title="A screen shot of the download acceptance bar that asks the user if they want to save the document" xmlns="" />
+        <img alt="A screen shot of the download acceptance bar that asks the user if they want to save the document" src="http://i.msdn.microsoft.com/dynimg/IC600819.png" title="A screen shot of the download acceptance bar that asks the user if they want to save the document" xmlns="" />
     </section>
     <section>
         <h3>Resuming downloads</h3>
-        <li>IE follows HTTP standards for resuming downloads. Resumption works both on HTTP and HTTPS. In order to ensure that downloads from your website are resumable, refer to section 14.5 of <a href="http://go.microsoft.com/fwlink/li/?LinkID=256573">RFC 2626</a>. Here are some general best practices for resuming downloads:</li>
+        <p>IE follows HTTP standards for resuming downloads. Resumption works both on HTTP and HTTPS. Here are some general best practices for resuming downloads:</p>
         <ul>
             <li>Send HTTP headers that permit caching.</li>
             <li>Include the <code>Accept-Ranges</code> header with the token bytes.</li>
@@ -776,52 +348,45 @@ if(plugin) {
     </section>
     <section>
         <h3>Signing files</h3>
-        <li>Developers are strongly encouraged to sign their applications using <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>. IE verifies the publisher of downloaded applications and displays the publisher name in the download manager. This increases confidence that the application comes from a trusted source.</li>
-        <li>If an application is digitally signed with <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>, <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> can take the digital certificate's reputation into account when determining the file's reputation. This is especially useful for new files that aren't yet commonly downloaded.</li>
-        <li>If an application isn't signed, and the user has <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> disabled (or the check fails for any reason), the download notification will show the following warning:</li><img alt="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " src="http://i.msdn.microsoft.com/dynimg/IC600821.png" title="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " xmlns="" />
+        <ul>
+
+            <li>Developers are strongly encouraged to sign their applications using <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>. </li>
+            <li>If an application is digitally signed with <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>, <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> can take the digital certificate's reputation into account when determining the file's reputation. This is especially useful for new files that aren't yet commonly downloaded.</li>
+            <li>If an application isn't signed, and the user has <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> disabled (or the check fails for any reason), the download notification will show the following warning:</li><img alt="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " src="http://i.msdn.microsoft.com/dynimg/IC600821.png" title="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " xmlns="" />
+        </ul>
     </section>
     <section>
         <h3>Bypassing download acceptance prompt</h3>
-        <li>Some sites give users instructions on how to bypass the acceptance prompt for their downloads. A common example is a site that has custom handlers and wants users to directly open their files in their applications.</li>
-        <li>Previously IE 8 showed a check box on the File Download dialog box that users could clear to automatically open files:</li><img alt="The File Download dialog box from IE 8, which provides the option to open files automatically" src="http://i.msdn.microsoft.com/dynimg/IC600822.png" title="The File Download dialog box from IE 8, which provides the option to open files automatically" xmlns="" />
+        <p>Previously IE 8 showed a check box on the File Download dialog box that users could clear to automatically open files:</p><img alt="The File Download dialog box from IE 8, which provides the option to open files automatically" src="http://i.msdn.microsoft.com/dynimg/IC600822.png" title="The File Download dialog box from IE 8, which provides the option to open files automatically" xmlns="" />
     </section>
     <section>
-        <li>The functionality of this check box was moved in IE 9 to the context menu in the download manager:</li><img alt="A screen shot of the context menu" src="http://i.msdn.microsoft.com/dynimg/IC600823.png" title="A screen shot of the context menu" xmlns="" />
-        <li>Applications that register themselves to handle certain MIME types via COM (and not shell execute) can set <a href="http://msdn.microsoft.com/en-us/library/ie/bb762506(v=vs.85).aspx">FTA_OpenIsSafe</a> appropriately to bypass the acceptance prompt.</li>
+        <p>The functionality of this check box was moved in IE 9 to the context menu in the download manager:</p><img alt="A screen shot of the context menu" src="http://i.msdn.microsoft.com/dynimg/IC600823.png" title="A screen shot of the context menu" xmlns="" />
+        <p>Applications that register themselves to handle certain MIME types via COM (and not shell execute) can set <a href="http://msdn.microsoft.com/en-us/library/ie/bb762506(v=vs.85).aspx">FTA_OpenIsSafe</a> appropriately to bypass the acceptance prompt.</p>
     </section>
     <section>
         <h3>Handing off downloads to applications</h3>
-        <li>With IE 10, it's possible for applications to register to download file types that they handle. This feature is called DirectInvoke. Application registration is simple and basically requires applications to declare that they can handle HTTP(s) URLs. To trigger DirectInvoke, servers need to send the X-MS-InvokeApp: 1 HTTP response header, which directs IE 10 to hand off the URL to the default application for download. If the application doesn't handle URLs, IE 10 downloads the file for the application. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj215788(v=vs.85).aspx">Invoke applications directly in IE 10</a>.</li>
+        <p>With IE 10, it's possible for applications to register to download file types that they handle. This feature is called DirectInvoke. Application registration is simple and basically requires applications to declare that they can handle HTTP(s) URLs. To trigger DirectInvoke, servers need to send the <b>X-MS-InvokeApp: 1</b> HTTP response header, which directs IE 10 to hand off the URL to the default application for download. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj215788(v=vs.85).aspx">Invoke applications directly in IE 10</a>.</p>
     </section>
     <section>
-        <h3>Getting the URL of the downloaded file</h3>
-        <li>With IE 10, applications can get the URL of the downloaded file as described next.</li>
+        <h3>Getting the URL of the downloaded file</h3> Win32 applications can get the URL of the downloaded file in 2 ways:
         <ul>
-            <li>Win32 applications can get the URL of the downloaded file in 2 ways:
-                <ul>
-                    <li>Applications can include %U in their shell command as in HKEY_CLASSES_ROOT\Applications\&lt;application&gt;.exe: &lt;application command path&gt; /n "%1 %U"</li>
-                    <li>If the application has <a href="http://go.microsoft.com/fwlink/li/?LinkId=391015">SupportedProtocols</a> and is set, the URL is part of command line parameter %1</li>
-                </ul>
-            </li>
+            <li>Applications can include %U in their shell command as in HKEY_CLASSES_ROOT\Applications\&lt;application&gt;.exe: &lt;application command path&gt; /n "%1 %U"</li>
+            <li>If the application has <a href="http://go.microsoft.com/fwlink/li/?LinkId=391015">SupportedProtocols</a> and is set, the URL is part of command line parameter %1</li>
         </ul>
-        <li>Note:The URL is not handed off in the case when the server sends the content-disposition header.</li>
     </section>
 </section>
 <section>
     <section>
-        <h3>Document modes are deprecated</h3>
-        <ul>
-            <li>Applies to IE11 and later.</li>
-            <li>Affects all document modes, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-        </ul>
+        <h3>Document modes are deprecated - IE11</h3>
+        <p>Internet Explorer 8 introduced the idea of document modes as a way to transition websites from proprietary features to features based on standards and supported by multiple browsers and devices. Starting with Internet Explorer 11, document modes are considered deprecated and should not be used. </p>
     </section>
     <section>
         <h3>Document mode changes</h3>
         <ul>
             <li>Starting with IE11, edge mode is the preferred document mode; it represents the highest support for modern standards available to the browser.</li>
-            <li>Starting with IE11, document modes are deprecated and should no longer be used, except on a temporary basis. Make sure to update sites that rely on legacy features and document modes to reflect modern standards. </li>
+            <li>Starting with IE11, document modes are deprecated and should no longer be used, except on a temporary basis.</li>
             <li>If you must target a specific document mode so that your site functions while you rework it to support modern standards and features, be aware that you're using a transitional feature, one that might not be available in future versions.</li>
-            <li>If you currently use the x-ua-compatible header to target a <a href="http://msdn.microsoft.com/en-us/library/ie/jj676915(v=vs.85).aspx">legacy document mode</a>, it's possible your site won't reflect the best experience available with IE11. For more info, see <a href="http://go.microsoft.com/fwlink/li/?LinkID=301530">modern.ie</a>.</li>
+            <li>If you currently use the x-ua-compatible header to target a <a href="http://msdn.microsoft.com/en-us/library/ie/jj676915(v=vs.85).aspx">legacy document mode</a>, it's possible your site won't reflect the best experience available with IE11.</li>
         </ul>
     </section>
 </section>

@@ -51,6 +51,15 @@
             </section>
             {{ content }}
 
+            <section id="ref">
+                <h3>Reference</h3> 
+                <ul>                    
+                {% for link in page.links %}
+                    <li><a href="{{ link }}}">{{ link }}</a></li>
+                {% endfor %}
+                </ul>
+            </section>
+
             <section>
                 <h2>THE END</h2>
                 <p>BY <a href="http://browserwork.com/contact.html" target="_blank">Aaron Zhang</a> / <a href="http://browserwork.com">browserwork.com</a>
@@ -119,7 +128,7 @@
     </script>
     <div style="display: block; position: absolute; bottom: 14px; left: 50%; margin-left: -90px; z-index: 20;">
         <a style="text-decoration:none" href="#agenda">index</a> | <a style="text-decoration:none" href="http://www.browserwork.com">home</a> |
-        <a style="text-decoration:none" href="https://github.com/aaronz/aaronz.github.com">fork</a>
+        <a style="text-decoration:none" href="https://github.com/aaronz/aaronz.github.com">fork</a> | <a style="text-decoration:none" href="#ref">credits</a>
     </div>
 </body>
 

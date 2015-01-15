@@ -129,147 +129,15 @@ if(plugin) {
                 <li>Verify that unique MIME types are properly registered with the device loading the webpage, as well as the server hosting the webpage.</li>
             </ol>
     </section>
-    <section>
-        <h3>Detecting plugin versions effectively</h3>
-        <p>Many plugins are maintained over time and there's no guarantee that the user has installed the latest version. The following example shows one way to use the <a href="http://msdn.microsoft.com/en-us/library/ie/dn268316(v=vs.85).aspx">plugin.version</a> property to handle this.</p>
-        <pre><code>Silverlight.isInstalled = function (version) {
-    if (version == undefined)
-    {
-        version = null;
-    }
-    var isVersionSupported = false;
-    try
-    {
-        var tryOlderIE = false;
-        // Detect installation on IE11 and non-IE browsers
-        try 
-        {
-            var plugin = navigHgins["Siit islverlight Plug-In"];
-            if (plugin)
-                // Plugin object exists - check for version argument
-                if (version === null)
-                {
-                    // no string to parse - plugin is installed
-                    isVersionSupported = true;
-                }
-                else
-                {
-                    // there is a string to parse - check if requested version is installed
-                    var actualVerArray = actualVer.split(".");
-                    while (actualVerArray.length &gt; 3)
-                    {
-                        actualVerArray.pop();
-                    }
-                    while (actualVerArray.length &lt; 4)
-                    {
-                        actualVerArray.push(0);
-                    }
-                    var reqVerArray = version.split(".");
-                    while (reqVerArray.length &gt; 4)
-                    {
-                        reqVerArray.pop();
-                    }
-                    var requiredVersionPart;
-                    var actualVersionPart;
-                    var index = 0;
-                    do
-                    {
-                        requiredVersionPart = parseInt(reqVerArray[index]);
-                        actualVersionPart = parseInt(actualVerArray[index]);
-                        index++;
-                    }
-                    while (index &lt; reqVerArray.length &amp;&amp; requiredVersionPart === actualVersionPart);
-                    if (requiredVersionPart &lt;= actualVersionPart &amp;&amp; !isNaN(requiredVersionPart))
-                    {
-                        isVersionSupported = true;
-                    }
-                }
-            }
-            else
-            {
-                // Plugin object does not exist - get ready to try the IE detection approach.
-                tryOlderIE = true;
-            }
-        }
-        catch (e)
-        {
-            // Exception was thrown while checking for plugin object and version - get ready to try the IE detection approach.
-            tryOlderIE = true;
-        }
-        if (tryOlderIE)
-        {
-            // Detect installation on IE10 and earlier IE browsers via ActiveXObject
-            var control = new ActiveXObject('AgControl.AgControl');
-            if (version === null)
-            {
-                isVersionSupported = true;
-            }
-            else if (control.IsVersionSupported(version))
-            {
-                isVersionSupported = true;
-            }
-            control = null;
-        }
-    }
-    catch (e)
-    {
-        isVersionSupported = false;
-    }
-    return isVersionSupported;
-};</code></pre>
-    </section>
+
 </section>
-<section>
-    <section>
-        <h3>Plugin and ActiveX support in Windows 8 and Windows 8.1</h3>
-        <p>Windows 8 provides two browsing experiences with Internet Explorer 10, the familiar desktop browsing experience and the new Windows 8 browsing experience. The only difference between how sites behave in the two browsing experiences is plug-in support.</p>
-    </section>
-    <section>
-        <p>The new Windows UI browsing experience doesn't support Microsoft ActiveX or any other binary extensibility. To ensure your site works for all customers, provide content that doesn't rely on plug-ins. </p>
-        <pre><code>&lt;video id="video1" width="640" height="360" controls&gt;
-    &lt;source src="video.mp4" type="video/mp4"&gt;
-    &lt;source src="video.webm" type="video/webm"&gt;
 
-    &lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
-        &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
-
-        &lt;p&gt;Please update your browser or install Flash&lt;/p&gt;
-
-    &lt;/object&gt;
-&lt;/video&gt;</code></pre>
-    </section>
-    <section>
-        <p>If your site delivers a premium experience with a plug-in, use the following fallback:</p>
-        <pre><code>&lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
-    &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
-
-    &lt;video id="video1" width="640" height="360" controls&gt;
-        &lt;source src="video.mp4" type="video/mp4"&gt;
-        &lt;source src="video.webm" type="video/webm"&gt;
-
-        &lt;p&gt;Please update your browser or install Flash&lt;/p&gt;
-
-    &lt;/video&gt;
-&lt;/object&gt;
-                    </code></pre>
-    </section>
-    <section>
-        <p>
-            You can temporarily suggest that your users view your site with Internet Explorer 10 on the desktop. Update your site with either a "META" tag or "HTTP" header and Windows Internet Explorer will notify the user and provide an option to switch to the desktop.
-        </p>
-        <pre><code>HTTP Header
-X-UA-Compatible: requiresActiveX=true
-META TAG
-&lt;meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/&gt;</code></pre>
-    </section>
-</section>
 <section>
     <section>
         <h3>Supporting enhanced protected mode (EPM) - IE10+</h3>
     </section>
     <section>
         <h3>A brief introduction to enhanced protected mode</h3>
-        <p>Enhanced protected mode (EPM) leverages three key features from the Windows security model:</p>
         <ul>
             <li>64-bit processes enable <a href="http://go.microsoft.com/fwlink/li/?LinkID=257810">advanced memory protections</a> and <a href="http://go.microsoft.com/fwlink/li/?LinkID=257809">other security improvements</a>.</li>
             <li><a href="Http://go.microsoft.com/fwlink/li/?LinkID=389162">Integrity levels</a> prevent untrusted applications from modifying sensitive system objects. Untrusted apps, like IE, are considered low-integrity objects and can only modify low-integrity objects. (Low integrity apps can read higher integrity objects, though.) </li>
@@ -283,8 +151,9 @@ META TAG
         <ol>
             <li>Install 32-bit and 64-bit binaries.</li>
             <li>Register the ActiveX control as one that is compatible with AppContainers. To do this, you register your control with the CAT_ID AppContainerCompatible ({59fb2056-d625-48d0-a944-1a85b5ab2640}) <a href="http://go.microsoft.com/fwlink/li/?LinkId=389164">COM component category</a>. Here's one way to do this from C++:
-                <pre><code>DEFINE_GUID(CATID_AppContainerCompatible, 0x59fb2056,0xd625,0x48d0,0xa9,0x44,0x1a,0x85,0xb5,0xab,0x26,0x40);</code></pre>
             </li>
+            <pre><code>DEFINE_GUID(CATID_AppContainerCompatible, 
+0x59fb2056,0xd625,0x48d0,0xa9,0x44,0x1a,0x85,0xb5,0xab,0x26,0x40);</code></pre>
         </ol>
     </section>
     <section>
@@ -306,7 +175,7 @@ META TAG
         <h3>ASP.NET fails to detect IE - IE9+</h3>
         <p>When ASP.NET does not correctly recognize IE, it responds with a "_doPostBack is undefined JavaScript" error. </p>
         <p>
-            The fix is to update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.
+            Hotfix is provided to update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.
         </p>
     </section>
 </section>
@@ -324,7 +193,7 @@ META TAG
     </section>
     <section>
         <h3>TriggerFileDownload</h3>
-        <p>We added a new function in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</p>
+        <p>We added a <a href="http://msdn.microsoft.com/en-us/library/gg593105(v=vs.85).aspx">new function</a> in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</p>
         <pre><code>void TriggerFileDownload (string URL)</code></pre>
     </section>
     <section>
@@ -355,25 +224,7 @@ META TAG
             <li>If an application isn't signed, and the user has <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> disabled (or the check fails for any reason), the download notification will show the following warning:</li><img alt="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " src="http://i.msdn.microsoft.com/dynimg/IC600821.png" title="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " xmlns="" />
         </ul>
     </section>
-    <section>
-        <h3>Bypassing download acceptance prompt</h3>
-        <p>Previously IE 8 showed a check box on the File Download dialog box that users could clear to automatically open files:</p><img alt="The File Download dialog box from IE 8, which provides the option to open files automatically" src="http://i.msdn.microsoft.com/dynimg/IC600822.png" title="The File Download dialog box from IE 8, which provides the option to open files automatically" xmlns="" />
-    </section>
-    <section>
-        <p>The functionality of this check box was moved in IE 9 to the context menu in the download manager:</p><img alt="A screen shot of the context menu" src="http://i.msdn.microsoft.com/dynimg/IC600823.png" title="A screen shot of the context menu" xmlns="" />
-        <p>Applications that register themselves to handle certain MIME types via COM (and not shell execute) can set <a href="http://msdn.microsoft.com/en-us/library/ie/bb762506(v=vs.85).aspx">FTA_OpenIsSafe</a> appropriately to bypass the acceptance prompt.</p>
-    </section>
-    <section>
-        <h3>Handing off downloads to applications</h3>
-        <p>With IE 10, it's possible for applications to register to download file types that they handle. This feature is called DirectInvoke. Application registration is simple and basically requires applications to declare that they can handle HTTP(s) URLs. To trigger DirectInvoke, servers need to send the <b>X-MS-InvokeApp: 1</b> HTTP response header, which directs IE 10 to hand off the URL to the default application for download. For more info, see <a href="http://msdn.microsoft.com/en-us/library/ie/jj215788(v=vs.85).aspx">Invoke applications directly in IE 10</a>.</p>
-    </section>
-    <section>
-        <h3>Getting the URL of the downloaded file</h3> Win32 applications can get the URL of the downloaded file in 2 ways:
-        <ul>
-            <li>Applications can include %U in their shell command as in HKEY_CLASSES_ROOT\Applications\&lt;application&gt;.exe: &lt;application command path&gt; /n "%1 %U"</li>
-            <li>If the application has <a href="http://go.microsoft.com/fwlink/li/?LinkId=391015">SupportedProtocols</a> and is set, the URL is part of command line parameter %1</li>
-        </ul>
-    </section>
+
 </section>
 <section>
     <section>
@@ -393,29 +244,40 @@ META TAG
 <section>
     <section>
         <h3>Enhanced protected mode (EPM) may be enabled on the desktop</h3>
-        <li>Enhanced protected mode (EPM) refers to a collection of security improvements:</li>
         <ul>
             <li>64-bit tab processes, which make memory-based security measures more effective.</li>
             <li>Access restrictions on personal and machine configuration resources.</li>
             <li>Access restrictions to corporate and other local resources.</li>
         </ul>
     </section>
+    <section>
+        <p>To learn more about EPM and how to support it, see:</p>
+        <ul>
+            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=257809">IE DevTeam blog: Introducing enhanced protected mode</a>
+            </li>
+            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=257817">IEInternals blog: Understanding enhanced protected mode</a>
+            </li>
+            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=282663">IEInternals blog: Enhanced protected mode and local files</a>
+            </li>
+        </ul>
+    </section>
 </section>
 <section>
     <section>
-        <h3>Interoperable (HTML5) quirks mode</h3>
+        <h3>Interoperable (HTML5) quirks mode - IE10+</h3>
         <ul>
-            <li>Applies to IE 10 and later.</li>
-            <li>Affects IE5 (quirks) mode and <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
+
+            <li>In IE 10, Quirks mode now exposes the same set of APIs and behavior as standards mode with limited exceptions as defined in HTML5 and related W3C specifications.</li>
+            <li>These changes can impact quirks mode pages written exclusively for Windows IE or that use browser sniffing to alter their behavior in IE. </li>
+            <li>A page using legacy features worked as intended in Windows IE 9, but no longer works in IE 10.</li>
+            <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
         </ul>
-        <li>In IE 10, we've modified the default behavior of quirks mode to improve support for industry standards, such as HTML5, and to increase interoperability with other browsers. Quirks mode now exposes the same set of APIs and behavior as standards mode with limited exceptions as defined in HTML5 and related W3C specifications.</li>
-        <li>These changes can impact quirks mode pages written exclusively for Windows IE or that use browser sniffing to alter their behavior in IE. </li>
-        <li>A page using legacy features worked as intended in Windows IE 9, but no longer works in IE 10.</li>
-        <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9"&gt;</code></pre>
     </section>
     <section>
-        <li>The following example shows a webpage that uses an element behavior, a legacy feature that is <a href="http://msdn.microsoft.com/en-us/library/ie/hh801216(v=vs.85).aspx">no longer supported</a> in IE 10 standards mode:</li>
-        <pre><code>&lt;html&gt;
+        <ul>
+
+            <li>The following example shows a webpage that uses an element behavior, a legacy feature that is <a href="http://msdn.microsoft.com/en-us/library/ie/hh801216(v=vs.85).aspx">no longer supported</a> in IE 10 standards mode:</li>
+            <pre><code>&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Legacy Quirks Page&lt;/title&gt;
   &lt;/head&gt;
@@ -424,18 +286,10 @@ META TAG
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <li>Because Quirks mode has been modified, this example no longer displays correctly. This can be fixed by enabling legacy Quirks mode:</li>
-        <pre><code>&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Legacy Quirks Page&lt;/title&gt;
-    &lt;meta http-equiv="X-UA-Compatible" content="IE=5"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div style="left:expression(document.body.clientWidth/2)"&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        <li>For best results, webpages that currently depend on legacy features should be changed to use modern features defined by widely supported standards.</li>
+            <li>Because Quirks mode has been modified, this example no longer displays correctly. This can be fixed by enabling legacy Quirks mode:</li>
+            <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=5"&gt;</code></pre>
+            <li>For best results, webpages that currently depend on legacy features should be changed to use modern features defined by widely supported standards.</li>
+        </ul>
     </section>
 </section>
 <section>
@@ -458,139 +312,72 @@ META TAG
     </section>
     <section>
         <h3>ActiveX and plugin minor changes</h3>
-        <li>Here are some of the minor changes related to Microsoft ActiveX controls, plug-ins, Browser Helper Objects (BHOs), and other browser add-ons:</li>
         <ul>
+            <li>For <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> elements, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533559(v=vs.85).aspx">classid</a> attribute is ignored when the object is loading Flash. For other add-ons, the attribute behaves the same as in earlier versions of the browser.</li>
             <li>
-                <li>For <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> elements, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533559(v=vs.85).aspx">classid</a> attribute is ignored when the object is loading Flash. For other add-ons, the attribute behaves the same as in earlier versions of the browser.</li>
-            </li>
-            <li>
-                <li>
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535245(v=vs.85).aspx">embed</a> elements now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> attribute mime types over mime types registered with an ActiveX control's binary.</li>
-            </li>
-            <li>
-                <li>Setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533702(v=vs.85).aspx">data</a> property of an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element after setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> property no longer triggers an exception.</li>
-            </li>
+                <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535245(v=vs.85).aspx">embed</a> elements now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> attribute mime types over mime types registered with an ActiveX control's binary.</li>
+            <li>Setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533702(v=vs.85).aspx">data</a> property of an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element after setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> property no longer triggers an exception.</li>
         </ul>
     </section>
     <section>
         <h3>CSS and layout minor changes </h3>
-        <li>Here are some of the minor changes related to CSS and layout:</li>
         <ul>
-            <li>
-                <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, simple selectors now support <a href="http://msdn.microsoft.com/en-us/library/ie/cc848866(v=vs.85).aspx">:hover</a> rules that specifically identify targets.</li>
-            </li>
-            <li>
-                <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, trailing whitespace no longer affects the width or visible container of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element.</li>
-            </li>
-            <li>
-                <li>Invalid <a href="http://msdn.microsoft.com/en-us/library/ie/ms530746(v=vs.85).aspx">@charset</a> declarations (such as those containing angle brackets) no longer invalidate an entire CSS file.</li>
-            </li>
-            <li>
-                <li>Starting with IE11 edge mode, table column widths are assigned as percentages of the total width requested.</li>
-            </li>
-            <li>
-                <li>Starting with IE11 edge mode, vertical clipping is more consistent with popular browsers for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> elements.</li>
-            </li>
-            <li>
-                <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms531162(v=vs.85).aspx">textAlign</a> CSS property now supports the inherit keyword.</li>
-            </li>
-            <li>
-                <li>When the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533069(v=vs.85).aspx">align</a> attribute is set to "center" on a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element, this no longer inherits into child tables of the div.</li>
-            </li>
+            <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, simple selectors now support <a href="http://msdn.microsoft.com/en-us/library/ie/cc848866(v=vs.85).aspx">:hover</a> rules that specifically identify targets.</li>
+            <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, trailing whitespace no longer affects the width or visible container of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element.</li>
+            <li>Invalid <a href="http://msdn.microsoft.com/en-us/library/ie/ms530746(v=vs.85).aspx">@charset</a> declarations (such as those containing angle brackets) no longer invalidate an entire CSS file.</li>
+            <li>Starting with IE11 edge mode, table column widths are assigned as percentages of the total width requested.</li>
+            <li>Starting with IE11 edge mode, vertical clipping is more consistent with popular browsers for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> elements.</li>
+            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms531162(v=vs.85).aspx">textAlign</a> CSS property now supports the inherit keyword.</li>
+            <li>When the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533069(v=vs.85).aspx">align</a> attribute is set to "center" on a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element, this no longer inherits into child tables of the div.</li>
         </ul>
     </section>
     <section>
         <h3>Graphics and image handling minor changes</h3>
-        <li>Here are some of the minor changes related to graphics and images:</li>
         <ul>
-            <li>
-                <li>DOM Methods for attributes (<a href="http://msdn.microsoft.com/en-us/library/ie/cc304121(v=vs.85).aspx">hasAttribute</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536429(v=vs.85).aspx">getAttribute</a>) no longer return true for the <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> properties of images.</li>
-            </li>
-            <li>
-                <li>Images and object elements no longer display placeholder frames when <a href="http://msdn.microsoft.com/en-us/library/ie/dd347029(v=vs.85).aspx">src</a> is blank.</li>
-            </li>
-            <li>
-                <li>Images will no longer generate exceptions when <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> are set to zero (0).</li>
-            </li>
-            <li>
-                <li>Non-progressive JPEG compressed images whose components span multiple scans now decode properly.</li>
-            </li>
+            <li>DOM Methods for attributes (<a href="http://msdn.microsoft.com/en-us/library/ie/cc304121(v=vs.85).aspx">hasAttribute</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536429(v=vs.85).aspx">getAttribute</a>) no longer return true for the <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> properties of images.</li>
+            <li>Images and object elements no longer display placeholder frames when <a href="http://msdn.microsoft.com/en-us/library/ie/dd347029(v=vs.85).aspx">src</a> is blank.</li>
+            <li>Images will no longer generate exceptions when <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> are set to zero (0).</li>
+            <li>Non-progressive JPEG compressed images whose components span multiple scans now decode properly.</li>
         </ul>
     </section>
     <section>
         <h3>Form minor changes</h3>
-        <li>Here are some minor changes to HTML forms and how they're handled:</li>
         <ul>
-            <li>
-                <li>IE11 no longer beeps when you press Enter on an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> field when a form doesn't contain a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535840(v=vs.85).aspx">input type=submit</a> element.</li>
-            </li>
-            <li>
-                <li>Pressing ESC twice now clears just the current field of a form, rather than the entire form.</li>
-            </li>
-            <li>
-                <li>Input events now fire consistently when you select items in a <a href="http://msdn.microsoft.com/en-us/library/ie/hh772925(v=vs.85).aspx">datalist</a> element.</li>
-            </li>
-            <li>
-                <li>Click events no longer propagate from the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535845(v=vs.85).aspx">label</a> element to interactive child elements (such as <a href="http://msdn.microsoft.com/en-us/library/ie/ms535173(v=vs.85).aspx">a</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms535263(v=vs.85).aspx">input type=file</a>, and so on).</li>
-            </li>
-            <li>
-                <li>When forms contain multiple input elements, Enter now generated a key event for the input element with focus, rather than automatically submitting the form.</li>
-            </li>
+            <li>IE11 no longer beeps when you press Enter on an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> field when a form doesn't contain a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535840(v=vs.85).aspx">input type=submit</a> element.</li>
+            <li>Pressing ESC twice now clears just the current field of a form, rather than the entire form.</li>
+            <li>Input events now fire consistently when you select items in a <a href="http://msdn.microsoft.com/en-us/library/ie/hh772925(v=vs.85).aspx">datalist</a> element.</li>
+            <li>Click events no longer propagate from the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535845(v=vs.85).aspx">label</a> element to interactive child elements (such as <a href="http://msdn.microsoft.com/en-us/library/ie/ms535173(v=vs.85).aspx">a</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms535263(v=vs.85).aspx">input type=file</a>, and so on).</li>
+            <li>When forms contain multiple input elements, Enter now generated a key event for the input element with focus, rather than automatically submitting the form.</li>
         </ul>
     </section>
     <section>
         <h3>HTML and DOM minor changes</h3>
-        <li>Here are some of the minor changes related to HTML parsing and the DOM:</li>
         <ul>
+            <li>Calling <a href="http://msdn.microsoft.com/en-us/library/ie/hh441214.aspx">insertBefore</a> with undefined (or null) as the second parameter no longer throws an exception.</li>
+            <li>If you use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> to create an img element bound to a cache image, the width of the new element will correspond to the width of the cached image.</li>
+            <li>Script elements with external resources should no longer execute during <a href="http://msdn.microsoft.com/en-us/library/ie/ms535934(v=vs.85).aspx">appendChild</a>.</li>
+            <li>Starting with IE11 edge mode, initial frame navigation is a synchronous operation.</li>
+            <li>Starting with IE11 edge mode, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533782(v=vs.85).aspx">hidden</a> attribute is now consistent with other browsers.</li>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/hh772344(v=vs.85).aspx">document.readyState</a> property no longer changes to "interactive" before the document is fully parsed.</li>
+            <li>The language property is now supported as an alias for the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534713(v=vs.85).aspx">navigator.userLanguage</a> property.</li>
+            <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=324509">date.toString</a> method now returns localized values consistent with other popular browsers.</li>
+            <li>The value "x-gbk" is now supported as an alias for the "gbk" value supported by the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533553(v=vs.85).aspx">charset</a> attribute.</li>
+            <li>Unquoted attributes are now applied to elements when specified as the last item within the element (this is not recommended usage).</li>
+        </ul>
+    </section>
+    <section>
+        <ul>
+            <li>When a document request uses an XML MIME type, an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535155(v=vs.85).aspx">XMLDocument</a> is returned for the following: documents created using <a href="http://msdn.microsoft.com/en-us/library/ie/ff975455(v=vs.85).aspx">implementation.createDocument</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ff975278(v=vs.85).aspx">DOMParser.parseFromString</a>, and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535157(v=vs.85).aspx">XMLHttpRequest</a>. All other MIME types return <a href="http://msdn.microsoft.com/en-us/library/ie/ms535862(v=vs.85).aspx">document</a> objects.</li>
+            <li>When creating an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element, the getVariable method is available when the object is created, rather than when it is instantiated.</li>
+            <li>Window objects associated with frames are no longer affected by <a href="http://msdn.microsoft.com/en-us/library/ie/ms536626(v=vs.85).aspx">moveTo</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536618(v=vs.85).aspx">moveBy</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536723(v=vs.85).aspx">resizeTo</a>, or <a href="http://msdn.microsoft.com/en-us/library/ie/ms536722(v=vs.85).aspx">resizeBy</a>.</li>
+            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536347(v=vs.85).aspx">window.blur</a> method no longer causes a window to go behind other browser windows.</li>
+            <li>You can now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536400(v=vs.85).aspx">createTextNode</a> to directly add text nodes to <a href="http://msdn.microsoft.com/en-us/library/ie/ff975124(v=vs.85).aspx">XMLSerializer</a>.</li>
             <li>
-                <li>Calling <a href="http://msdn.microsoft.com/en-us/library/ie/hh441214.aspx">insertBefore</a> with undefined (or null) as the second parameter no longer throws an exception.</li>
-            </li>
-            <li>
-                <li>If you use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> to create an img element bound to a cache image, the width of the new element will correspond to the width of the cached image.</li>
-            </li>
-            <li>
-                <li>Script elements with external resources should no longer execute during <a href="http://msdn.microsoft.com/en-us/library/ie/ms535934(v=vs.85).aspx">appendChild</a>.</li>
-            </li>
-            <li>
-                <li>Starting with IE11 edge mode, initial frame navigation is a synchronous operation.</li>
-            </li>
-            <li>
-                <li>Starting with IE11 edge mode, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533782(v=vs.85).aspx">hidden</a> attribute is now consistent with other browsers.</li>
-            </li>
-            <li>
-                <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/hh772344(v=vs.85).aspx">document.readyState</a> property no longer changes to "interactive" before the document is fully parsed.</li>
-            </li>
-            <li>
-                <li>The language property is now supported as an alias for the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534713(v=vs.85).aspx">navigator.userLanguage</a> property.</li>
-            </li>
-            <li>
-                <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=324509">date.toString</a> method now returns localized values consistent with other popular browsers.</li>
-            </li>
-            <li>
-                <li>The value "x-gbk" is now supported as an alias for the "gbk" value supported by the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533553(v=vs.85).aspx">charset</a> attribute.</li>
-            </li>
-            <li>
-                <li>Unquoted attributes are now applied to elements when specified as the last item within the element (this is not recommended usage).</li>
-            </li>
-            <li>
-                <li>When a document request uses an XML MIME type, an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535155(v=vs.85).aspx">XMLDocument</a> is returned for the following: documents created using <a href="http://msdn.microsoft.com/en-us/library/ie/ff975455(v=vs.85).aspx">implementation.createDocument</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ff975278(v=vs.85).aspx">DOMParser.parseFromString</a>, and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535157(v=vs.85).aspx">XMLHttpRequest</a>. All other MIME types return <a href="http://msdn.microsoft.com/en-us/library/ie/ms535862(v=vs.85).aspx">document</a> objects.</li>
-            </li>
-            <li>
-                <li>When creating an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element, the getVariable method is available when the object is created, rather than when it is instantiated.</li>
-            </li>
-            <li>
-                <li>Window objects associated with frames are no longer affected by <a href="http://msdn.microsoft.com/en-us/library/ie/ms536626(v=vs.85).aspx">moveTo</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536618(v=vs.85).aspx">moveBy</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536723(v=vs.85).aspx">resizeTo</a>, or <a href="http://msdn.microsoft.com/en-us/library/ie/ms536722(v=vs.85).aspx">resizeBy</a>.</li>
-            </li>
-            <li>
-                <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536347(v=vs.85).aspx">window.blur</a> method no longer causes a window to go behind other browser windows.</li>
-            </li>
-            <li>
-                <li>You can now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536400(v=vs.85).aspx">createTextNode</a> to directly add text nodes to <a href="http://msdn.microsoft.com/en-us/library/ie/ff975124(v=vs.85).aspx">XMLSerializer</a>.</li>
-            </li>
-            <li>
-                <li>
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> elements no longer support an <a href="http://msdn.microsoft.com/en-us/library/ie/ms536957(v=vs.85).aspx">onreadystatechange</a> property. As a workaround, you can use <a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a> to register a "readystatechange" event.</li>
-            </li>
+                <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> elements no longer support an <a href="http://msdn.microsoft.com/en-us/library/ie/ms536957(v=vs.85).aspx">onreadystatechange</a> property. As a workaround, you can use <a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a> to register a "readystatechange" event.</li>
         </ul>
     </section>
 </section>
@@ -622,11 +409,7 @@ META TAG
 <section>
     <section>
         <h3>Understanding the Compatibility view list - IE9+</h3>
-        <li>Compatibility View allows content designed for older web browsers to render well in newer versions of IE. The Compatibility View (CV) List automatically displays the content of websites in Compatibility View without further interaction.</li>
-    </section>
-    <section>
-        <h3>Why is a site added to the CV List?</h3>
-        <li>We only add a site to the Compatibility View List when the site:</li>
+
         <ul>
             <li>Is designed to run in an older version of IE</li>
             <li>Doesn't run well in Edge mode.</li>
@@ -635,60 +418,43 @@ META TAG
         <a href="https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml">https://iecvlist.microsoft.com/IE11/1379465767093/iecompatviewlist.xml</a>
     </section>
     <section>
-        <h3>Updating the CV List</h3>
-        <li>The CV List is an XML file on "Microsoft.com". We can update the list monthly, which means we can accommodate site developer requests to remove updated sites. Users automatically get updates.</li>
+        <h3>Updating the CV List</h3> The CV List is an XML file on "Microsoft.com". We can update the list monthly, which means we can accommodate site developer requests to remove updated sites. Users automatically get updates.
     </section>
 </section>
 <section>
     <section>
-        <h3>User-agent string changes</h3>
+        <h3>User-agent string changes - IE9+</h3>
         <ul>
-            <li>Applies to IE 9 and later.</li>
-            <li>Affects IE9 Standards mode and later, including <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>.</li>
-        </ul>
-        In this article
-        <ul>
-            <li><a href="#edge">User-agent string for IE Edge document mode</a>
-            </li>
             <li><a href="#ie11">User-agent string changes for IE 11</a>
             </li>
             <li><a href="#legacy">User-agent changes in earlier versions</a>
             </li>
-            <li><a href="#related_topics">Related topics</a>
-            </li>
         </ul>
-        <li>Each release of IE updates the user-agent string; here's what's changed recently.</li>
-        <li> Sites that rely on the user-agent string should be updated to modern techniques, such as <a href="http://msdn.microsoft.com/en-us/library/ie/ff986088(v=vs.85).aspx">feature detection</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/jj583806(v=vs.85).aspx">adaptive layout</a>, and other <a href="http://msdn.microsoft.com/en-us/library/ie/gg130949(v=vs.85).aspx">modern practices</a>.</li>
     </section>
+
     <section>
-        <h3>User-agent string for IE Edge document mode</h3>
-        <li><a href="http://go.microsoft.com/fwlink/li/?LinkID=519011">IE Edge mode</a> in <a href="http://go.microsoft.com/fwlink/li/?LinkID=519081">Windows Developer Preview</a> and <a href="http://blogs.msdn.com/b/ie/archive/2014/11/02/announcing-remoteie-test-the-latest-ie-on-windows-mac-os-x-ios-and-android.aspx">RemoteIE</a> builds is a new "living" document mode designed for maximum interoperability with other modern browsers and contemporary web content. It has the following user-agent string:</li>
-        <pre><code>Mozilla/5.0 (Windows NT 6.4; WOW64)
- AppleWebKit/537.36 (KHTML, like Gecko)
- Chrome/36.0.1985.143 Safari/537.36 Edge/12.0</code></pre>
-        <li>Developers preparing for Windows 10 should note that the Windows NT value in the UA string will change from 6.4 to 10.0 with the new release. If you have code that depends on the version number, we advise that you update to allow for the new value.</li>
-    </section>
-    <section>
-        <h3>User-agent string changes for IE 11</h3>
-        <li>For many websites, some of the most visible changes to IE 11 involve the user-agent string. Here's what's reported for IE11 on Windows 8.1:</li>
+        <h3>User-agent string changes for IE 11</h3> For many websites, some of the most visible changes to IE 11 involve the user-agent string. Here's what's reported for IE11 on Windows 8.1:
         <pre><code>Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko</code></pre>
-        <li>If you compare the IE11 user agent string to the values reported by <a href="http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx">earlier versions</a> of IE, you'll find the following differences:</li>
+    </section>
+    <section>
+
+        If you compare the IE11 user agent string to the values reported by <a href="http://msdn.microsoft.com/en-us/library/ie/ms537503(v=vs.85).aspx">earlier versions</a> of IE, you'll find the following differences:
         <ul>
             <li>The compatible ("compatible") and browser ("MSIE") tokens have been removed.</li>
             <li>The "like Gecko" token has been added (for consistency with other browsers).</li>
             <li>The version of the browser is now reported by a new revision ("rv") token.</li>
         </ul>
-        <li>These changes help prevent IE11 from being (incorrectly) identified as an earlier version. </li>
     </section>
     <section>
-        <h3>User-agent changes in earlier versions</h3>
-        <li>For IE 10, the following changes were made to the user agent string:</li>
+        <h3>User-agent changes in earlier versions</h3> For IE 10, the following changes were made to the user agent string:
         <ul>
             <li>The value of the Version token ("MSIE") was changed to "10.0".</li>
             <li>The value of the Trident token ("Trident") became "6.0".</li>
             <li>For Windows 8, the value of the Platform token ("Windows NT") was changed to "6.2".</li>
         </ul>
-        <li>IE 9, reflected the following changes to the user agent string:</li>
+    </section>
+    <section>
+        IE 9, reflected the following changes to the user agent string:
         <ul>
             <li>The application token became "Mozilla/5.0".</li>
             <li>The version token was updated to "MSIE 9.0".</li>
@@ -704,23 +470,17 @@ META TAG
 </section>
 <section>
     <section>
-        <h3>Checkbox and radio button layout defaults - IE11</h3>
-        <li>To provide better consistency with other browsers, the default values for a number of layout properties have changed for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535262(v=vs.85).aspx">checkbox</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535838(v=vs.85).aspx">radio button</a> controls in <a href="http://msdn.microsoft.com/en-us/library/ie/dn384051(v=vs.85).aspx">IE11 edge mode</a>.</li>
-        <li>The default values for <a href="http://msdn.microsoft.com/en-us/library/ie/ms530799(v=vs.85).aspx">margin</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms530830(v=vs.85).aspx">padding</a>, and <a href="http://msdn.microsoft.com/en-us/library/ie/dd183522(v=vs.85).aspx">box-sizing</a> are being updated for the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535262(v=vs.85).aspx">checkbox</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535838(v=vs.85).aspx">radio button</a> input types in IE11 mode. </li>
+        <h3>Checkbox and radio button layout defaults - IE11</h3> To provide better consistency with other browsers, the default values for a number of layout properties have changed for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535262(v=vs.85).aspx">checkbox</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535838(v=vs.85).aspx">radio button</a> controls in <a href="http://msdn.microsoft.com/en-us/library/ie/dn384051(v=vs.85).aspx">IE11 edge mode</a>.
+
         <ul>
+            <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530830(v=vs.85).aspx">padding</a> is now 0px.</li>
+            <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530799(v=vs.85).aspx">margin</a> is now 3px, except for <a href="http://msdn.microsoft.com/en-us/library/ie/ms530804(v=vs.85).aspx">marginLeft</a> which is now 4px. </li>
             <li>
-                <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530830(v=vs.85).aspx">padding</a> is now 0px.</li>
-            </li>
-            <li>
-                <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530799(v=vs.85).aspx">margin</a> is now 3px, except for <a href="http://msdn.microsoft.com/en-us/library/ie/ms530804(v=vs.85).aspx">marginLeft</a> which is now 4px. </li>
-            </li>
-            <li>
-                <li>
-                    <a href="http://msdn.microsoft.com/en-us/library/ie/dd183522(v=vs.85).aspx">box-sizing</a> is set to "border-box".</li>
-            </li>
+                <a href="http://msdn.microsoft.com/en-us/library/ie/dd183522(v=vs.85).aspx">box-sizing</a> is set to "border-box".</li>
         </ul>
-        <li>For older document modes, the previous defaults are used. </li>
-        <li>Affected webpages should use CSS rules to override the default values:</li>
+    </section>
+    <section>
+        Affected webpages should use CSS rules to override the default values:
         <pre><code>input[type="checkbox"], input[type="radio'] {
     box-sizing: content-box;
     margin: 0;
@@ -730,141 +490,23 @@ META TAG
 </section>
 <section>
     <section>
-        <h3>Default font changes - IE11</h3>
-        <li>We are updating the Document Object Model (DOM) default fonts and UI fonts for Windows Store apps using JavaScript for several languages, as defined in the table below. This means that certain webpages and web apps that depended on IE's old default fonts may look different. Although their overall appearance should be improved, this change could confuse certain tests that depend on a specific look for certain scripts. You can mitigate the effect of this change by specifying a particular font instead of relying on old default fonts, and by updating your tests to expect the new font values.</li>
-    </section>
-</section>
-<section>
-    <section>
         <h3>Flexible box ("Flexbox") layout updates - IE11</h3>
         <ul>
-            <li>When released in August 2012, IE 10 introduced support for the W3C CSS Flexible Box ("Flexbox") Layout module. Because the specification was still in flux, flexbox support was provided through vendor prefixes. </li>
-            <li>In September 2012, the CSS Flexible Box ("Flexbox") Layout module was published as a W3C Candidate Recommendation, incorporating some changes in certain aspects of the specification. IE11 updates flexbox support with these changes, which include renamed properties, renamed property values, and more. Moving forward, use the new, unprefixed names (and values) and update existing sites accordingly. </li>
+            <li>In September 2012, the <a href="http://msdn.microsoft.com/en-us/library/ie/hh673531(v=vs.85).aspx">CSS Flexible Box ("Flexbox")</a> Layout module was published as a W3C Candidate Recommendation, incorporating some changes in certain aspects of the specification. IE11 updates flexbox support with these changes, which include renamed properties, renamed property values, and more. Moving forward, use the new, unprefixed names (and values) and update existing sites accordingly. </li>
         </ul>
+        <a href="http://css-tricks.com/snippets/css/a-guide-to-flexbox/">http://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
     </section>
 </section>
 <section>
     <section>
-        <h3>Font sizing for Thai and East Asian text - IE9+</h3>
-        <li>Thai and East Asian text may look smaller in Windows IE 9 than in Windows IE 8 and earlier releases.</li>
-        <li>
-            In IE 8, Thai and East Asian text could be rendered at a larger font size than specified when:</li>
+        <h3>Font sizing for Thai and East Asian text - IE9+</h3> Thai and East Asian text may look smaller in Windows IE 9 than in Windows IE 8 and earlier releases.
+        <br> In IE 8, Thai and East Asian text could be rendered at a larger font size than specified when:
         <ul>
             <li>The specified font size was 9pt or smaller</li>
             <li>The specified font family did not support Thai or East Asian characters such as Arial</li>
         </ul>
     </section>
 </section>
-<!-- <section>
-                <section>
-                    <h3>Rounded corners and legacy gradient filters - IE9+</h3>
-                    <ul>
-                        <li>When you use <a href="http://msdn.microsoft.com/en-us/library/ie/ms532853(v=vs.85).aspx">legacy gradient filters</a> to fill elements that have had their corners rounded using the <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> property, the gradient bleeds past the border of the element. Here's how to prevent this from happening.</li>
-                        <li>Consider this scenario: You create a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element and apply a gradient fill to it using the legacy <a href="http://msdn.microsoft.com/en-us/library/ie/ms532997(v=vs.85).aspx">Gradient Filter</a>. You then apply the <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> property to it, creating rounded corners.</li>
-                        <li>You might see that the gradient ignores the rounded corners of the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element and "bleeds" outside of it to the original boundaries of the element. </li>
-                    </ul>
-                    <li>This behavior can be observed starting with Windows IE 9 when the document mode is IE9 Standards mode.</li>
-                    <li>There are two ways to work around this issue.</li>
-                    <li>First, you can wrap the element (with the gradient background) in a container element, round the container element's corners using the <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> property, and set the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530824(v=vs.85).aspx">overflow</a> property to "hidden". (For an example, see the <a href="#example">Example</a> section of this topic.) While this renders the element as you would expect, it also requires that you add a wrapper element to every element that exhibits this problem. It also continues to rely on a legacy Cascading Style Sheets (CSS) filter, which doesn't offer the performance improvements of more modern solutions. Therefore, this solution might not be ideal.</li>
-                    <li>The better workaround is to use a Scalable Vector Graphics (SVG) background to fill the element with a gradient. Instead of using a <a href="http://msdn.microsoft.com/en-us/library/ie/ms530752(v=vs.85).aspx">filter</a> property on the element, use the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> property and set it to a SVG <a href="http://msdn.microsoft.com/en-us/library/ie/ff972078(v=vs.85).aspx">linearGradient</a> or <a href="http://msdn.microsoft.com/en-us/library/ie/ff972115(v=vs.85).aspx">radialGradient</a> element. After this initial declaration, add background-image property declarations set to a CSS gradient, using the appropriate browser vendor prefix for each browser you want to support. For an example, see the <a href="#example">Example</a> section of this topic.</li>
-                    <li>Tip:To easily and automatically create gradients in SVG or CSS, try the <a href="http://go.microsoft.com/fwlink/li/?LinkId=268350">SVG Background Gradient Maker</a> and the <a href="http://go.microsoft.com/fwlink/li/?LinkID=215548">CSS Background Gradient Maker</a> on the <a href="http://go.microsoft.com/fwlink/li/?LinkID=196941">IE Test Drive</a>.</li>
-                    <li>This code example includes an element that illustrates the problems described in <a href="#symptoms">Symptoms</a>.</li>
-                    <pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta content="IE=EmulateIE9" http-equiv="X-UA-Compatible"&gt;
-&lt;style type="text/css"&gt;
-#test1 {
-  margin: 10px;
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 50%;
-  filter: progid:DXImageTransform.Microsoft.gradient( 
-    startColorstr='#0065a4',endColorstr='#a0cf67',GradientType=0 );
-  background-image: -moz-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Older Firefox */
-  background-image: -o-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Opera */
-  background-image: -webkit-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Chrome, Safari */
-  background-image: linear-gradient(to bottom, #0065A4 0%, #A0CF67 100%); /* Firefox, IE10 */
-}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="test1"&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <li>This image shows how this code is displayed in IE 10 in IE9 Standards mode. It appears identically in IE 9 (also in IE9 Standards mode).</li><img alt="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" src="http://i.msdn.microsoft.com/dynimg/IC629579.png" title="Screen shot of an element with a gradient applied to it that bleeds outside the element's borders" xmlns="" />
-                    <li>This next example uses the <a href="#resolution">first workaround</a> for this issue. A new wrapper element has been added (mask), the sizing and <a href="http://msdn.microsoft.com/en-us/library/ie/jj127319(v=vs.85).aspx">border-radius</a> properties have been moved to the wrapper element, and its <a href="http://msdn.microsoft.com/en-us/library/ie/ms530824(v=vs.85).aspx">overflow</a> property has been set to "hidden".</li>
-                    <pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta content="IE=EmulateIE9" http-equiv="X-UA-Compatible"&gt;
-&lt;style type="text/css"&gt;
-#mask {
-  margin: 10px;
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 50%;
-  overflow: hidden;
-}
-#test {
-  width: 100%;
-  height: 100%;
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0065a4',endColorstr='#a0cf67',GradientType=0 );
-  background-image: -moz-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Older Firefox */
-  background-image: -o-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Opera */
-  background-image: -webkit-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Chrome, Safari */
-  background-image: linear-gradient(to bottom, #0065A4 0%, #A0CF67 100%); /* Firefox, IE10 */
-}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;div id="mask"&gt;
-  &lt;div id="test"&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <li>The <a href="#resolution">preferred solution</a> is shown in the next example. Notice that the only change we've made is to remove the CSS filter declaration and add a new <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> declaration set to the URL of a SVG file.</li>
-                    <li>Note:You don't have to create a separate SVG file to make this work; you can embed the SVG in your HTML page. We've chosen to create a new file to make this demonstration easier to follow.</li>
-                    <pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta content="IE=EmulateIE9" http-equiv="X-UA-Compatible"&gt;
-&lt;style type="text/css"&gt;
-#test {
-  margin: 10px;
-  width: 200px; 
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 50%;
-  background-image: url('./background.svg'); /* IE9 */
-  background-image: -moz-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Older Firefox */
-  background-image: -o-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Opera */
-  background-image: -webkit-linear-gradient(top, #0065A4 0%, #A0CF67 100%); /* Chrome, Safari */
-  background-image: linear-gradient(to bottom, #0065A4 0%, #A0CF67 100%); /* Firefox, IE10 */
-}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="test"&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <li>The SVG file is very simple. Inside the <a href="http://msdn.microsoft.com/en-us/library/ie/ff972122(v=vs.85).aspx">svg</a> element are two elements: the <a href="http://msdn.microsoft.com/en-us/library/ie/ff972078(v=vs.85).aspx">linearGradient</a> element specifies the linear gradient, and the <a href="http://msdn.microsoft.com/en-us/library/ie/ff972117(v=vs.85).aspx">rect</a> element makes the gradient fill the page (or, as in this case, the element that this file provides the background for).</li>
-                    <a>XML</a>
-                    <pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none"&gt;
-  &lt;linearGradient id="g791" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="0%" y2="100%"&gt;
-    &lt;stop stop-color="#0065A4" offset="0"/&gt;
-    &lt;stop stop-color="#A0CF67" offset="1"/&gt;
-  &lt;/linearGradient&gt;
-  &lt;rect x="0" y="0" width="1" height="1" fill="url(#g791)" /&gt;
-&lt;/svg&gt;</code></pre>
-                    <li>Because IE 9 doesn't support the <a href="http://msdn.microsoft.com/en-us/library/ie/hh771876(v=vs.85).aspx">gradient functions</a>, it picks up on the <a href="http://msdn.microsoft.com/en-us/library/ie/ms530717(v=vs.85).aspx">background-image</a> declaration set to the URL of our SVG file and ignores all the subsequent gradient declarations. Other browsers, including IE 10, pick up on the last declaration that they support. This means the browser will pass over the first background-image declaration in favor of the one set to whichever prefixed gradient function they support. IE 10 supports the <a href="http://msdn.microsoft.com/en-us/library/ie/jj152126(v=vs.85).aspx">linear-gradient</a> function with no vendor prefix, which is specified in the last declaration.</li>
-                    <li>Both solutions produce an identical output, shown here:</li><img alt="Screen shot of an element with a gradient applied to it that is now contained within the element's borders" src="http://i.msdn.microsoft.com/dynimg/IC629580.png" title="Screen shot of an element with a gradient applied to it that is now contained within the element's borders" xmlns="" />
-                </section>
-            </section> -->
 <section>
     <section>
         <h3>Stylesheet titles are read-only - IE9+</h3>
@@ -872,34 +514,6 @@ META TAG
             <li>In IE8 Standards mode and below you can change the value of a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title. In IE9 Standards mode mode the write command will be ignored and the original value will remain.</li>
             <li>The value of a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title is read-only IE8 mode but not in later document modes.</li>
             <li>If you have to change a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title, you can do so by changing the title attribute on the <a href="http://go.microsoft.com/fwlink/li/?LinkID=219782">link</a> element or <a href="http://go.microsoft.com/fwlink/li/?LinkID=190913">style</a> element that contains the <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a>.</li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Text layout and natural metrics - IE9+</h3>
-        <ul>
-            <li>For text layout in IE9 Standards mode (and later), Windows IE 9 uses natural metrics instead of the Windows Graphics Device Interface (GDI) metrics that other Windows browsers use.GDI metrics align text to pixel boundaries, but natural metrics use inter-pixel spacing to create more accurately rendered and readable text.</li>
-            <li>Page layouts that are written for earlier document modes might display incorrectly in IE 9. The most common error is unexpected text wrapping, which can cover elements that are below the wrapped text. This error is most likely when a text box does not include extra horizontal space or when the size of the text box is connected to another element on the page, such as a graphic.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Do</h3>
-        <ul>
-            <li>Set a text box's size to a specific number of pixels.</li>
-            <li>Include extra space in your text boxes and avoid tight spaces.</li>
-            <li>Use non-statically sized text boxes.</li>
-            <li>Include extra space in bounding areas that depend on other page elements.</li>
-            <li>Make sure your page can accommodate text wrapping if you permit users to change the page font size.</li>
-            <li>Test your webpages in all common browsers. If you see a text wrapping issue, adjust the page to make sure the page appropriately renders the text.</li>
-            <li>If you designed a webpage for a previous mode and you do not want to update it to use natural metrics, set the page to display in that mode even when users view it in IE 9.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Do  not</h3>
-        <ul>
-            <li>Depend on font sizes to render the same way across browsers.</li>
-            <li>Use static-sized text boxes.</li>
         </ul>
     </section>
 </section>
@@ -913,37 +527,116 @@ META TAG
         <h3>AutoComplete event handling - IE11</h3>
     </section>
     <section>
-        <h3>AutoComplete event support and firing order</h3>
-        <li>IE11 updated two AutoComplete experiences:</li>
+        <h3>Tap and select event support</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Event support by version</td>
+                    <td>IE11</td>
+                    <td>Internet Explorer&nbsp;10 and earlier</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536934(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">focus event</strong></a>
+                    </td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536912(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">change event</strong></a>
+                    </td>
+                    <td>Yes (IE9 mode and later)</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536909(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">blur event</strong></a>
+                    </td>
+                    <td>Yes </td>
+                    <td>Yes </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/gg592978(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">input event</strong></a>
+                    </td>
+                    <td>Yes (IE9 mode and later)</td>
+                    <td>Yes (IE10 mode only)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">propertychange event</strong></a>
+                    </td>
+                    <td>Yes (IE10 mode and earlier)</td>
+                    <td>Yes (all document modes)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h3>Credential autofill event support</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Event support by version</td>
+                    <td>IE11</td>
+                    <td>Internet Explorer&nbsp;10 and earlier</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536934(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">focus event</strong></a>
+                    </td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536912(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">change event</strong></a>
+                    </td>
+                    <td>Yes (ie9 mode and later)</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536909(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">blur event</strong></a>
+                    </td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/gg592978(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">input event</strong></a>
+                    </td>
+                    <td>Yes (IE9 mode and later)</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx"><strong xmlns="http://www.w3.org/1999/xhtml">propertychange event</strong></a>
+                    </td>
+                    <td>Yes (IE10 mode and earlier)</td>
+                    <td>Yes (all supported document modes)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        For security reasons, credential autofill is supported only when all of the following conditions are true:
         <ul>
             <li>
-                The user experience associated with touch input and input boxes with multiple saved values (also called "tap and select").
-                <li>
-                    <li>The handling of credentials associated with login forms (also called "credential autofill").</li>
-                    <li>For security reasons, credential autofill is supported only when all of the following conditions are true:</li>
-                    <ul>
-                        <li>
-                            <li>The site hosting the login form is secure; that is, it is served using the HTTPS protocol.</li>
-                        </li>
-                        <li>
-                            <li>The login form is not hosted in a frame that is different from the parent domain.</li>
-                        </li>
-                        <li>
-                            <li>The user has not enabled the display of mixed content.</li>
-                        </li>
-                    </ul>
-                </li>
+                The site hosting the login form is secure; that is, it is served using the HTTPS protocol.
+            </li>
+            <li>The login form is not hosted in a frame that is different from the parent domain.</li>
+            <li>The user has not enabled the display of mixed content.</li>
         </ul>
     </section>
     <section>
-        <h3>Impact and recommendations</h3>
-        <li>Sites that follow different practices may encounter difficulties. For example: </li>
+        <h3>Impact and recommendations</h3> Sites that follow different practices may encounter difficulties. For example:
         <ul>
             <li>Sites that rely on the proprietary <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956(v=vs.85).aspx">propertychange event</a> may not function as expected when viewed with IE11. </li>
             <li>Sites that rely on keyboard navigation events will also fail when viewed with IE11.</li>
             <li>Sites that perform browser sniffing may not function as expected when viewed with IE11.</li>
         </ul>
-        <li>In each of these cases, we recommend updating the site to reflect <a href="http://msdn.microsoft.com/en-us/library/ie/gg130949(v=vs.85).aspx">best practices</a> and standards-based techniques.</li>
     </section>
 </section>
 <section>

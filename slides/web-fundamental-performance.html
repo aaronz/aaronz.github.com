@@ -40,11 +40,14 @@ links:
       &lt;/body&gt;
     &lt;/html&gt;</code></pre>
     <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/performance/critical-rendering-path/basic_dom.html">Try full sample</a>
+        <p>Let’s start, with the simplest possible case: a plain HTML page with some text and a single image. What does the browser need to do to process this simple page?</p>
     </section>
     <section>
-        <p>Let’s start, with the simplest possible case: a plain HTML page with some text and a single image. What does the browser need to do to process this simple page?</p>
         <p><img alt="DOM construction process" src="images/full-process.png" />
         </p>
+    </section>
+    <section>
+        <ol><li><strong>Conversion:</strong> the browser reads the raw bytes of the HTML off the disk or network and translates them to individual characters based on specified encoding of the file (e.g. UTF-8).</li><li><strong>Tokenizing:</strong> the browser converts strings of characters into distinct tokens specified by the <a href="http://www.w3.org/TR/html5/">W3C HTML5 standard</a> - e.g. “&lt;html&gt;”, “&lt;body&gt;” and other strings within the “angle brackets”. Each token has a special meaning and a set of rules.</li><li><strong>Lexing:</strong> the emitted tokens are converted into “objects” which define their properties and rules.</li><li><strong>DOM construction:</strong> Finally, because the HTML markup defines relationships between different tags (some tags are contained within tags) the created objects are linked in a tree data structure that also captures the parent-child relationships defined in the original markup: <em>HTML</em> object is a parent of the <em>body</em> object, the <em>body</em> is a parent of the <em>paragraph</em> object, and so on.</li></ol>
     </section>
     <section>
         <p><img alt="DOM tree" src="images/dom-tree.png" />

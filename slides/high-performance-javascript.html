@@ -2,7 +2,7 @@
 layout: slide 
 title: High Performance JavaScript
 description:  JavaScript Performance Best Practices
-link:
+links:
 - http://developer.nokia.com/community/wiki/JavaScript_Performance_Best_Practices
 ---
 
@@ -346,17 +346,21 @@ EventUtil.removeHandler(btn, "click", handler);</code></pre>
         </ul>
     </section>
     <section>
+    <h4>Example</h4>
         <pre><code>var book = {    
                 title: "High Performance JavaScript",    
                 publisher: "Yahoo! Press" 
                 };
 alert(book.toString());   //"[object Object]"
 </code></pre>
-        <img src="images/prototypes.png" alt="javascript prototypes">
+        <img class="fragment" src="images/prototypes.png" alt="javascript prototypes">
     </section>
     <section>
         <h3>Prototype Chains</h3>
         <p>The prototype of an object determines the type or types of which it is an instance. By default, all objects are instances of Object and inherit all of the basic methods, such as toString().</p>
+        </section>
+        <section>
+        <h3>Example</h3>
         <pre><code>function Book(title, publisher){    
                     this.title = title;    
                     this.publisher = publisher; }
@@ -369,7 +373,7 @@ alert(book1 instanceof Book);   //true alert(book1 instanceof Object); //true
 book1.sayTitle();         //"High Performance JavaScript" 
 alert(book1.toString());  //"[object Object]" 
                     </code></pre>
-        <img src="images/prototype-chain.png" alt="prototype chain">
+        <img class="fragment" src="images/prototype-chain.png" alt="prototype chain">
     </section>
 </section>
 <section>
@@ -515,17 +519,7 @@ car.type = "sedan"</code></pre>
         <a href="http://jsperf.com/object-constructor">Js Perf Demo</a>
 
     </section>
-    <section>
-        <h3> Maximize object resolution speed and minimize scope chain</h3>
-        <ul>
-            <li> Inefficient way:</li>
-        </ul><pre><code>var url = location.href;</code></pre>
-
-        <ul>
-            <li> Efficient one:</li>
-        </ul><pre><code>var url = window.location.href;</code></pre>
-        <a href="http://jsperf.com/maximize-object-resolution">Js Perf Demo</a>
-    </section>
+    
     <section>
         <h3> Try to keep script comments to a minimum/ Avoid long variable names</h3>
         <p>Keep script comments to a minimun or avoid them altogether, especially inside functions, loops and arrays. Comments unnecessarily slow down script execution and increase file size. For example,</p>
@@ -554,21 +548,17 @@ var name="somename";
         </ul>
     </section>
     <section>
-        <p>Slow:</p><pre><code>function doSomething(text) {
-    var divs = document.getElementsByTagName('div'),
-        text = ['foo', /* ... n ... */, 'bar'];
-    for (var i = 0, l = divs.length; i &lt; l; i++) {
-        divs[i].innerHTML = text[i];
-    }
-}</code></pre>
-        <p>Faster:</p><pre><code>function doSomethingFaster(text) {
-    var doc = document,
-        divs = doc.getElementsByTagName('div'),
-        text = ['foo', /* ... n ... */, 'bar'];
-    for (var i = 0, l = divs.length; i &lt; l; i++) {
-        divs[i].innerHTML = text[i];
-    }
-}</code></pre>
+        <p>Slow:</p><pre><code>  var btn1 = document.getElementById("btn1");
+  var btn3 = document.getElementById("btn3");
+  var btn5 = document.getElementById("btn5");
+  var btn7 = document.getElementById("btn7");
+  var btn9 = document.getElementById("btn9");</code></pre>
+        <p>Faster:</p><pre><code>var doc = document;
+  var btn1 = doc.getElementById("btn1");
+  var btn3 = doc.getElementById("btn3");
+  var btn5 = doc.getElementById("btn5");
+  var btn7 = doc.getElementById("btn7");
+  var btn9 = doc.getElementById("btn9");</code></pre>
 
         <a href="http://jsperf.com/localvarcache/3">Js Perf Demo</a>
     </section>
@@ -616,8 +606,6 @@ for (var i=0; i&lt;1000; i++) {
         <p>Better way is to to cache the length of the array:</p><pre><code>for (var i = 0, len = arr.length; i &lt; len; i++) {
     // do something
 }</code></pre>
-        <p> In General we should avoid sending the interpreter out to do unnecessary work once it has already done it once, eg: figuring out the scope chain or the function evaulation values of an expression used more than once.</p>
-        <p style="color:orange">Storing/caching values to variable only makes sense if those values are used repetatively or more than once, otherwise we are creating overhead again for declaring a variable, assigning values and then just using only once, so keep in mind</p>
         <a href="http://jsperf.com/cache-array-length">Js Perf Demo</a>
     </section>
 </section>
@@ -693,17 +681,9 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
         </ul>
     </section>
     <section>
-        <h3> Load scripts without blocking parallel downloads </h3>
-        <ul>
-            <li>Multiple scripts can be loaded in parallel without blocking using techniques such as via normal script src, XHR eval, XHR injection, script in iframe, script DOM element, script defer and document.write script tag.</li>
-            <li>Depending on your specific constraints (resources in the same/different domain, need to preserve script loading order, need to show browser loading indicator) you can do an informed decision by checking the decision tree in the following presentation (slide 26).</li>
-        </ul>
-    </section>
-    <section>
         <h3> Couple asynchronous scripts </h3>
         <ul>
             <li>If you have inline script which depend on the script you have multiple options: hardcoded callback, window.onload, timer, degrading script tags and script onload.</li>
-            <li>See slide 35 onwards for details:</li>
         </ul>
     </section>
     <section>
@@ -1217,14 +1197,12 @@ window.onresize = someObject.resizeHandler;</code></pre>
             <li>Separate container and content</li>
             <li>Extend objects by applying multiple classes to an element</li>
             <li>Use reset and fonts from YUI</li>
-            <li>Source: <a href="http://www.slideshare.net/stubbornella/object-oriented-css" rel="nofollow">Object Oriented CSS</a>
             </li>
         </ul>
     </section>
     <section>
         <h4> Change CSS classes near the edges of the DOM tree </h4>
         <p>To limit the scope of the reflow to as few nodes as possible you should avoid changing a class on wrapper (or body) element(s) which affects the display of many child nodes. Additionally, that may result in re-resolving style on the entire document and for a large DOM that could lock up the browser for a while.</p>
-        <p>Source:</p>
         <ul>
             <li><a href="http://www.shauninman.com/archive/2008/05/05/css_qualified_selectors#comment_3942" rel="nofollow">Dave Hyatt on CSS Selectors</a>
             </li>
@@ -1253,12 +1231,6 @@ window.onresize = someObject.resizeHandler;</code></pre>
             <li>Avoid alpha transparency (IE does not support)</li>
             <li>Change gradient color every 2-3 pixels</li>
         </ul>
-        <p>Source:</p>
-        <ul>
-            <li>Design Fast Websites <a href="http://www.slideshare.net/stubbornella/designing-fast-websites-presentation" rel="nofollow">slides</a> and <a href="http://video.yahoo.com/" rel="nofollow">presentation</a>
-            </li>
-        </ul>
-
     </section>
 </section>
 <section>

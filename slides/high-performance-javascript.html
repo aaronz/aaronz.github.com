@@ -1,10 +1,11 @@
 ---
 layout: slide 
-title: High Performance JavaScript
-description:  JavaScript Performance Best Practices
-links:
-- http://developer.nokia.com/community/wiki/JavaScript_Performance_Best_Practices
+title: High Performance JavaScript 
+description: JavaScript Performance Best Practices 
+links: 
+- http://developer.nokia.com/community/wiki/JavaScript_Performance_Best_Practices 
 ---
+
 
 <section id="agenda">
     <h2>agenda</h2>
@@ -18,8 +19,6 @@ links:
         <li><a href="#loading">Loading Performance</a>
         </li>
         <li><a href="#dom">Document Object Model</a>
-        </li>
-        <li><a href="#communication">Client Server Communication</a>
         </li>
         <li><a href="#animation">Animation</a>
         </li>
@@ -38,22 +37,53 @@ links:
     <section>
         <h3>JavaScript History</h3>
         <ul>
-            <li>Beginnings at Netscape</li>
-            <li>Adoption by Microsoft</li>
-            <li>Standardization</li>
+            <li>1995 - Beginnings at Netscape - Netscape Navigator</li>
+            <li>1996 - Adoption by Microsoft - Internet Explorer 3</li>
+            <li>1997 - Standardization - ECMA-262</li>
             <li>Later developments</li>
         </ul>
     </section>
     <section>
-        <h3>Features</h3>
+        <h3>Example Script</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+ 
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Minimal Example&lt;/title&gt;
+ 
+&lt;h1 id=&quot;header&quot;&gt;This is JavaScript&lt;/h1&gt;
+ 
+&lt;script&gt;
+    document.body.appendChild(document.createTextNode(&#39;Hello World!&#39;));
+ 
+    var h1 = document.getElementById(&#39;header&#39;); // holds a reference to the &lt;h1&gt; tag
+    h1 = document.getElementsByTagName(&#39;h1&#39;)[0]; // accessing the same &lt;h1&gt; element
+&lt;/script&gt;
+ 
+&lt;noscript&gt;Your browser either does not support JavaScript, or has it turned off.&lt;/noscript&gt;</code></pre>
+    </section>
+    <section>
+        <h3>JavaScript Syntax</h3>
+        <a href="http://en.wikipedia.org/wiki/JavaScript_syntax">http://en.wikipedia.org/wiki/JavaScript_syntax</a>
+    </section>
+    <section>
+        <h3>JavaScript Engines</h3>
         <ul>
-            <li>Imperative and structured</li>
-            <li>Dynamic</li>
-            <li>Functional</li>
-            <li>Prototype-based</li>
-            <li>Implicit and explicit delegation</li>
-            <li>Vendor-specific extensions</li>
+            <li><a href="http://en.wikipedia.org/wiki/SpiderMonkey_(JavaScript_engine)" title="SpiderMonkey (JavaScript engine)" class="mw-redirect">Spidermonkey</a>, the first-ever JavaScript engine, which powered <a href="http://en.wikipedia.org/wiki/Netscape_Navigator" title="Netscape Navigator">Netscape Navigator</a> and today powers <a href="http://en.wikipedia.org/wiki/Firefox" title="Firefox">Firefox</a>
+            </li>
+            <li><a href="http://en.wikipedia.org/wiki/V8_(JavaScript_engine)" title="V8 (JavaScript engine)">V8</a> - open source, developed by Google in Denmark, part of Google Chrome</li>
+            <li><a href="http://en.wikipedia.org/wiki/WebKit#JavaScriptCore" title="WebKit">JavaScriptCore</a> - open source, marketed as Nitro and developed by <a href="http://en.wikipedia.org/wiki/Apple_Inc." title="Apple Inc.">Apple</a> for <a href="http://en.wikipedia.org/wiki/Safari_(web_browser)" title="Safari (web browser)">Safari</a>
+            </li>
+            <li><a href="http://en.wikipedia.org/wiki/KJS_(KDE)" title="KJS (KDE)" class="mw-redirect">KJS</a> - KDE's ECMAScript/JavaScript engine originally developed by <a href="http://en.wikipedia.org/wiki/Harri_Porten" title="Harri Porten">Harri Porten</a> for the KDE project's Konqueror web browser</li>
+            <li><a href="http://en.wikipedia.org/wiki/Chakra_(JavaScript_engine)" title="Chakra (JavaScript engine)" class="mw-redirect">Chakra</a>, for <a href="http://en.wikipedia.org/wiki/Internet_Explorer_9" title="Internet Explorer 9">Internet Explorer 9</a><sup id="cite_ref-16" class="reference"><a href="#cite_note-16"><span>[</span>16<span>]</span></a></sup>
+            </li>
         </ul>
+    </section>
+    <section>
+        <h3>JavaScript Libraries</h3>
+        <p><a href="http://en.wikipedia.org/wiki/List_of_JavaScript_libraries">http://en.wikipedia.org/wiki/List_of_JavaScript_libraries</a>
+        </p>
+        <p><a href="http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks">http://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks</a>
+        </p>
     </section>
     <section>
         <h3>Major Components</h3>
@@ -155,6 +185,9 @@ alert(obj2.name); //"Nicholas"</code></pre>
             <li>If the value is primitive, then it acts just like a primitive variable copy</li>
             <li>if the value is a reference, it acts just like a reference variable copy</li>
         </ul>
+    </section>
+    <section>
+        <h4>Primitive</h4>
         <pre><code>function addTen(num) {
 num += 10;
 return num;
@@ -166,6 +199,7 @@ alert(result); //30</code></pre>
 
     </section>
     <section>
+        <h4>Reference</h4>
         <pre><code>function setName(obj) {
 obj.name = "Nicholas";
 }
@@ -346,7 +380,7 @@ EventUtil.removeHandler(btn, "click", handler);</code></pre>
         </ul>
     </section>
     <section>
-    <h4>Example</h4>
+        <h4>Example</h4>
         <pre><code>var book = {    
                 title: "High Performance JavaScript",    
                 publisher: "Yahoo! Press" 
@@ -358,9 +392,9 @@ alert(book.toString());   //"[object Object]"
     <section>
         <h3>Prototype Chains</h3>
         <p>The prototype of an object determines the type or types of which it is an instance. By default, all objects are instances of Object and inherit all of the basic methods, such as toString().</p>
-        </section>
-        <section>
-        <h3>Example</h3>
+    </section>
+    <section>
+        <h4>Example</h4>
         <pre><code>function Book(title, publisher){    
                     this.title = title;    
                     this.publisher = publisher; }
@@ -490,19 +524,7 @@ arr.push(val);</code></pre>
 arr[arr.length] = val;</code></pre>
         <a href="http://jsperf.com/primitive-operations">Js Perf Demo</a>
     </section>
-    <section>
-        <h3> Pass functions, not strings, to setTimeout() and setInterval() </h3>
-        <ul>
-            <li>If you pass a string into setTimeout() or setInterval() the string will be evaluated the same way as with eval which is slow.</li>
-            <li>Wrap your code into an anonymous function instead so that it can be interpreted and optimized during compilation.</li>
-        </ul>
-        <p>Slow:</p><pre><code>setInterval('doSomethingPeriodically()', 1000);
-setTimeOut('doSomethingAfterFiveSeconds()', 5000);</code></pre>
-        <p>Faster:</p><pre><code>setInterval(doSomethingPeriodically, 1000);
-setTimeOut(doSomethingAfterFiveSeconds, 5000);</code></pre>
-        <p>This is true for IE8-, it is not true for most recent version of browsers.</p>
-        <a href="http://jsperf.com/settimeout">Js Perf Demo</a>
-    </section>
+
     <section>
         <h3> Avoid unnecessary DOM references in objects</h3>
         <ul>
@@ -518,25 +540,6 @@ car.type = "sedan"</code></pre>
 }</code></pre>
         <a href="http://jsperf.com/object-constructor">Js Perf Demo</a>
 
-    </section>
-    
-    <section>
-        <h3> Try to keep script comments to a minimum/ Avoid long variable names</h3>
-        <p>Keep script comments to a minimun or avoid them altogether, especially inside functions, loops and arrays. Comments unnecessarily slow down script execution and increase file size. For example,</p>
-        <ul>
-            <li> Bad Idea :</li>
-        </ul><pre><code>function someFunction()
-{
-var person_full_name="somename"; /* stores the full name*/
- 
-}</code></pre>
-        <ul>
-            <li> Better way:</li>
-        </ul><pre><code>function someFunction()
-{
-var name="somename";
-}</code></pre>
-        <a href="http://jsperf.com/comments">Js Perf Demo</a>
     </section>
     <section>
         <h3> Store local references to out-of-scope variables</h3>
@@ -595,18 +598,6 @@ for (var i=0; i&lt;1000; i++) {
   y += math_sind; 
 }</code></pre>
         <a href="http://jsperf.com/cache-values-to-variable">Js Perf Demo</a>
-    </section>
-    <section>
-        <h4>Caching/Storing array length when used in loops</h4>
-        <p>Bad Approach:</p>
-        <p>The length of the array arr is recalculated every time the loop iterates.</p><pre><code>for (var i = 0; i &lt; arr.length; i++) {
-    // do something
-}</code></pre>
-        <p>Better Approach:</p>
-        <p>Better way is to to cache the length of the array:</p><pre><code>for (var i = 0, len = arr.length; i &lt; len; i++) {
-    // do something
-}</code></pre>
-        <a href="http://jsperf.com/cache-array-length">Js Perf Demo</a>
     </section>
 </section>
 <section>
@@ -681,34 +672,12 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
         </ul>
     </section>
     <section>
-        <h3> Couple asynchronous scripts </h3>
-        <ul>
-            <li>If you have inline script which depend on the script you have multiple options: hardcoded callback, window.onload, timer, degrading script tags and script onload.</li>
-        </ul>
-    </section>
-    <section>
         <h3> Move inline scripts above stylesheets </h3>
         <ul>
             <li>Browsers download stylesheets in parallel with other resources that follow unless the stylesheet is followed by an inline script.</li>
             <li>Workaround is to either avoid inline scripts or move them above stylesheets or below other resources (e.g. images, scripts) and use &lt;link&gt;, not @import.</li>
             <li><a href="http://stevesouders.com/cuzillion/?ex=10021" rel="nofollow">Live demo</a>
             </li>
-        </ul>
-    </section>
-    <section>
-        <h3> Use iframes sparingly </h3>
-        <ul>
-            <li>Parent's onload doesn't fire until iframe and all its components are downloaded.</li>
-            <li>Workaround for Safari and Chrome is to set iframe src in JavaScript.</li>
-            <li>Scripts and stylesheets also block iframe from loading.
-                <ul>
-                    <li>In IE and FF stylesheets in the parent block the iframe or its resources</li>
-                </ul>
-            </li>
-            <li>iframe shares connection pool with parent, typically 2 connections per host.</li>
-        </ul>
-        <ul>
-            <li>In IE and FF stylesheets in the parent block the iframe or its resources</li>
         </ul>
     </section>
 </section>
@@ -788,19 +757,6 @@ for (var i = 0; i &lt; list.length; i++) {
 original.parentNode.replaceChild(clone, original);</code></pre>
     </section>
     <section>
-        <h4> Use HTML templates and innerHTML </h4>
-        <ul>
-            <li>One way to implement a templating system is to populate template content based on a light-weight JavaScript object acting as a date model. </li>
-        </ul><pre><code>&lt;nowiki&gt;
-var model = { title: 'My Test Page'; },
-    template = [];
-template.push('&lt;h1&gt;' + model.title + '&lt;h1&gt;');
-template.push('&lt;div&gt;Another Test Element&lt;div&gt;');
-document.getElementById(containerId).innerHTML = template.join(''); 
-// alternatively you can use concat() -- see string concatenation test results
-&lt;/nowiki&gt;</code></pre>
-    </section>
-    <section>
         <h4> Modify an invisible element </h4>
         <ul>
             <li>If the display property of an element is set to none it will not be repainted.</li>
@@ -862,19 +818,6 @@ elem.setAttribute('style', elemStyle);</code></pre>
 
     </section>
     <section>
-        <h4> CSS class name vs. style property changing </h4>
-        <p>Changing the class name of an element is a nice way to use JavaScript to dynamically change elements. Performance varies from browser to browser, but generally it is faster to change an element's visual appearance directly via the Javascript style attribute, rather than to change a class name on that element.</p>
-        <p>Slow: </p><pre><code>div.active { border: 1px solid red; }</code></pre>
-        <p>Faster (for a one element):</p><pre><code>var container = document.getElementById('container');
-container.style.border = '1px solid red';</code></pre>
-    </section>
-    <section>
-        <p>The above method appears to be more efficient when changing a specific number of items. Sometimes a single class name change is effective however. If you need to change all elements under a given container for example, it is more efficient to change the class name of a parent container which holds the affected elements and let CSS do what it does best.</p>
-        <p>Faster (if multiple child elements of a container need to be changed): </p>
-        <pre><code>#container.active div { border: 1px solid red; }</code></pre>
-        <p>Depending on the specific case at hand you should use the method which gives you the best performance (without sacrificing too much of the separation of concerns benefits of externally defined CSS).</p>
-    </section>
-    <section>
         <h3> Avoid traversing large number of nodes </h3>
         <ul>
             <li>Always try to use inbuilt methods and collections of the DOM to narrow down the search to smallest number of nodes possible.</li>
@@ -917,101 +860,6 @@ for (var i = 0; i &lt; temp.length; i++) {
     temp[i].appendChild(document.createTextNode(i)); // perform modifications on static list instead of live NodeList
 }
 temp = null;</code></pre>
-    </section>
-    <section>
-        <h3> Cache DOM values into variables </h3>
-        <ul>
-            <li>Cache frequently accessed DOM values into variables.</li>
-        </ul>
-        <p>Slow:</p><pre><code>document.getElementById('elem').propertyOne = 'value of first property';
-document.getElementById('elem').propertyTwo = 'value of second property';
-document.getElementById('elem').propertyThree = 'value of third property';</code></pre>
-        <p>Faster:</p><pre><code>var elem = document.getElementById('elem').propertyOne = 'value of first property';
-elem.propertyTwo = 'value of second property';
-elem.propertyThree = 'value of third property'</code></pre>
-    </section>
-    <section>
-        <h3> Remove references to documents that have been closed</h3>
-        <ul>
-            <li>If a reference to frame, iframe or object is stored in a global variable or a property, clear it by setting it to null or deleting it.</li>
-            <li>For example, a popup window that is closed and has a reference to global variable, will be kept in memory although the document itself is no longer loaded, if it is not deleted manually.</li>
-        </ul>
-    </section>
-    <section>
-        <p>Slow:</p><pre><code>var frame = parent.frames['frameId'].document,
-    container = frame.getElementById('contentId'),
-    content = frame.createElement('div');
-content.appendChild(frame.createTextNode('Some content'));
-container.appendChild(content);</code></pre>
-        <p>Faster:</p><pre><code>var frame = parent.frames['frameId'].document,
-    container = frame.getElementById('contentId'),
-    content = frame.createElement('div');
-content.appendChild(frame.createTextNode('Some content'));
-container.appendChild(content);
-// nullify references to frame
-frame = null;
-container = null;
-content = null;</code></pre>
-    </section>
-</section>
-<section>
-    <section id="communication">
-        <h2> Client-server communication </h2>
-    </section>
-    <section>
-        <h3> Set timeouts to XMLHttpRequests </h3>
-        <ul>
-            <li>Browsers will timeout XHR requests after some time, but sometimes it is beneficial to abort the connection under script control. This can be done by adding timeouts to XHR calls using setTimeout().</li>
-        </ul><pre><code>var xhr = new XMLHttpRequest ();
-xhr.open('GET', url, false);
-xhr.onreadystatechange = function () {
-    if (this.readyState == 4) {                    
-        clearTimeout(timeout);
-        // do something with response data
-    }
-}
-var timeout = setTimeout( 
-    function () {
-        xhr.abort();
-        // call error callback
-    },
-    60*1000 // timeout after a minute
-);
-xhr.send();</code></pre>
-    </section>
-    <section>
-        <h3> Consider using a custom data exchange format for large datasets, as an alternative to XML and JSON</h3>
-        <ul>
-            <li>Depending on the browser, its version and OS, the performance difference between XML or JSON parsing and traversing may be very significant. </li>
-            <li>Using a custom string-based data format (think CSV) over XML and JSON is efficient in terms of transferred bytes and parse time with large datasets.</li>
-            <li>Using JavaScript’s String and RegExp methods one can match the speed of JSON executed natively with as little overhead to the file size as possible.</li>
-        </ul>
-    </section>
-    <section>
-        <p>Equivalent using custom data format and String and RegExp methods:</p><pre><code>that.contacts = o.responseText.split("\\c");
- 
-for (var n = 0, len = that.contacts.length, contactSplit; n &lt; len; n++) {
- 
-   contactSplit = that.contacts[n].split("\\a");
- 
-   that.contacts[n] = {};
-   that.contacts[n].n = contactSplit[0];
-   that.contacts[n].e = contactSplit[1];
-   that.contacts[n].u = contactSplit[2];
-   that.contacts[n].r = contactSplit[3];
-   that.contacts[n].s = contactSplit[4];
-   that.contacts[n].f = contactSplit[5];
-   that.contacts[n].a = contactSplit[6];
-   that.contacts[n].d = contactSplit[7];
-   that.contacts[n].y = contactSplit[8];
-}</code></pre>
-        <p>Sources:</p>
-        <ul>
-            <li><a href="http://code.flickr.com/blog/2009/03/18/building-fast-client-side-searches/" rel="nofollow">Building Fast Client-side Searches </a>
-            </li>
-            <li><a href="http://ejohn.org/blog/native-json-support-is-required/" rel="nofollow">Native JSON Support is Required</a>
-            </li>
-        </ul>
     </section>
 </section>
 <section>
@@ -1201,7 +1049,7 @@ window.onresize = someObject.resizeHandler;</code></pre>
         </ul>
     </section>
     <section>
-        <h4> Change CSS classes near the edges of the DOM tree </h4>
+        <h3> Change CSS classes near the edges of the DOM tree </h3>
         <p>To limit the scope of the reflow to as few nodes as possible you should avoid changing a class on wrapper (or body) element(s) which affects the display of many child nodes. Additionally, that may result in re-resolving style on the entire document and for a large DOM that could lock up the browser for a while.</p>
         <ul>
             <li><a href="http://www.shauninman.com/archive/2008/05/05/css_qualified_selectors#comment_3942" rel="nofollow">Dave Hyatt on CSS Selectors</a>
@@ -1209,8 +1057,7 @@ window.onresize = someObject.resizeHandler;</code></pre>
         </ul>
     </section>
     <section>
-        <h4> Avoid tables for layout or use table-layout: fixed</h4>
-        <p>Avoid tables for layout. As if you needed another reason to avoid them, tables often require multiple passes before the layout is completely established because they are one of the rare cases where elements can affect the display of other elements that came before them on the DOM. Imagine a cell at the end of the table with very wide content that causes the column to be completely resized. This is why tables are not rendered progressively in all browsers and yet another reason why they are a bad idea for layout.</p>
+        <h3> Avoid tables for layout or use table-layout: fixed</h3>
         <p>It is recommended to use a fixed layout ( table-layout: fixed) for data tables to allow a more efficient layout algorithm. This will allow the table to render row by row according to the CSS 2.1 specification.</p>
         <p>Source:</p>
         <ul>
@@ -1508,49 +1355,7 @@ $.ajax({
             </li>
         </ul>
     </section>
-    <section>
-        <h3>Ajax</h3>
-        <ul>
-            <li>
-                Try to specify the <em>dataType</em> setting so it's easier to know what kind of data you are working with. (See Ajax Template example below)
-            </li>
-            <li>
-                Use Delegated event handlers for attaching events to content loaded using Ajax. Delegated events have the advantage that they can process events from descendant elements that are added to the document at a later time (example Ajax). <a href="http://api.jquery.com/on/#direct-and-delegated-events" rel="nofollow">More Info</a>
-                <pre><code>$("#parent-container").on("click", "a", delegatedClickHandlerForAjax);</code></pre>
-            </li>
-        </ul>
-    </section>
-    <section>
-        <h3>Ajax</h3>
-        <ul>
-            <li>
-                Use Promise interface: <a href="http://www.htmlgoodies.com/beyond/javascript/making-promises-with-jquery-deferred.html" rel="nofollow">More Examples</a>
-                <pre><code>$.ajax({ ... }).then(successHandler, failureHandler);
- 
-// OR
-var jqxhr = $.ajax({ ... });
-jqxhr.done(successHandler);
-jqxhr.fail(failureHandler);</code></pre>
-            </li>
-            <li>
-                Sample Ajax Template: <a href="https://api.jquery.com/jQuery.ajax/" rel="nofollow">More Info</a>
-                <pre><code>var jqxhr = $.ajax({
-    url: url,
-    type: "GET", // default is GET but you can use other verbs based on your needs.
-    cache: true, // default is true, but false for dataType 'script' and 'jsonp', so set it on need basis.
-    data: {}, // add your request parameters in the data object.
-    dataType: "json", // specify the dataType for future reference
-    jsonp: "callback", // only specify this to match the name of callback parameter your API is expecting for JSONP requests.
-    statusCode: { // if you want to handle specific error codes, use the status code mapping settings.
-        404: handler404,
-        500: handler500
-    }
-});
-jqxhr.done(successHandler);
-jqxhr.fail(failureHandler);</code></pre>
-            </li>
-        </ul>
-    </section>
+
     <section>
         <h3>Effects and Animations</h3>
         <ul>

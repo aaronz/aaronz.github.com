@@ -695,14 +695,13 @@ links:
     </section>
     <section>
         <h2 id="optimize-javascript-use">Optimize JavaScript Use</h2>
-        <p>JavaScript resources are parser blocking by default unless marked as <em>async</em> or added via a special JavaScript snippet. Parser blocking JavaScript forces the browser to wait for the CSSOM and pauses construction of the DOM, which in turn can significantly delay the time to first render.</p>
     </section>
     <section>
-        <h2>Prefer async JavaScript resources</h2>
+        <h3>Prefer async JavaScript resources</h3>
         <p>Async resources unblock the document parser and allow the browser to avoid blocking on CSSOM prior to executing the script. Often, if the script can be made async, it also means it is not essential for the first render - consider loading async scripts after the initial render.</p>
     </section>
     <section>
-        <h2>Avoid synchronous server calls</h2>
+        <h3>Avoid synchronous server calls</h3>
         <p>Use the <code>navigator.sendBeacon()</code> method to limit data sent by XMLHttpRequests in <code>unload</code> handlers. Because many browsers require such requests to be synchronous, they can slow page transitions, sometimes noticeably. The following code shows how to use <code>navigator.sendBeacon()</code> to send data to the server in the <code>pagehide</code> handler instead of in the <code>unload</code> handler.</p><pre><code>&lt;script&gt;
   function() {
     window.addEventListener('pagehide', logData, false);
@@ -715,27 +714,26 @@ links:
 &lt;/script&gt;</code></pre>
     </section>
     <section>
-        <h2>Defer parsing JavaScript</h2>
+        <h3>Defer parsing JavaScript</h3>
         <p>Any non-essential scripts that are not critical to constructing the visible content for the initial render should be deferred to minimize the amount of work the browser has to perform to render the page.</p>
     </section>
     <section>
-        <h2>Avoid long running JavaScript</h2>
+        <h3>Avoid long running JavaScript</h3>
         <p>Long running JavaScript blocks the browser from constructing the DOM, CSSOM, and rendering the page. As a result, any initialization logic and functionality that is non-essential for the first render should be deferred until later. If a long initialization sequence needs to be run, consider splitting it into several stages to allow the browser to process other events in between.</p>
     </section>
     <section>
         <h2 id="optimize-css-use">Optimize CSS Use</h2>
-        <p>CSS is required to construct the render tree and JavaScript will often block on CSS during initial construction of the page. You should ensure that any non-essential CSS is marked as non-critical (e.g. print and other media queries), and that the amount of critical CSS and the time to deliver it is as small as possible.</p>
     </section>
     <section>
-        <h2>Put CSS in the document head</h2>
+        <h3>Put CSS in the document head</h3>
         <p>All CSS resources should be specified as early as possible within the HTML document such that the browser can discover the <code>&lt;link&gt;</code> tags and dispatch the request for the CSS as soon as possible.</p>
     </section>
     <section>
-        <h2>Avoid CSS imports</h2>
+        <h3>Avoid CSS imports</h3>
         <p>CSS import (@import) directive enables one stylesheet to import rules from another stylesheet file. However, these directives should be avoided because they introduce additional roundtrips into the critical path: the imported CSS resources are discovered only after the CSS stylesheet with the @import rule itself has been received and parsed.</p>
     </section>
     <section>
-        <h2>Inline render-blocking CSS</h2>
+        <h3>Inline render-blocking CSS</h3>
         <p>For best performance, you may want to consider inlining the critical CSS directly into the HTML document. This eliminates additional roundtrips in the critical path and if done correctly can be used to deliver a "one roundtrip" critical path length where only the HTML is a blocking resource.</p>
     </section>
 </section>

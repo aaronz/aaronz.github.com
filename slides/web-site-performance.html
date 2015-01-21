@@ -70,7 +70,7 @@ links:
         <h3>Combine files</h3>
         <p>Combined files are a way to reduce the number of HTTP requests by combining all scripts into a single script, and similarly combining all CSS into a single stylesheet.</p>
         <ul>
-            <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor/</a>
+            <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>
             </li>
             <li><a href="https://developers.google.com/closure/compiler/?csw=1">Closure Compiler</a>
             </li>
@@ -140,8 +140,7 @@ width: 50px;
     </section>
     <section>
         <h3>Guideline</h3>
-        <p class="fragment shrink">When the client's DNS cache is empty (for both the browser and the operating system), the number of DNS lookups is equal to the number of unique hostnames in the web page. This includes the hostnames used in the page's URL, images, script files, stylesheets, Flash objects, etc. <b>Reducing the number of unique hostnames reduces the number of DNS lookups.</b> </p>
-        <p class="fragment shrink">Reducing the number of unique hostnames has the potential to reduce the amount of parallel downloading that takes place in the page. Avoiding DNS lookups cuts response times, but reducing parallel downloads may increase response times.</p>
+        <p class="fragment shrink"><b>Reducing the number of unique hostnames reduces the number of DNS lookups.</b> </p>
         <p class="fragment highlight-blue"> <b>The guideline is to split these components across at least two but no more than four hostnames.</b> This results in a good compromise between reducing DNS lookups and allowing a high degree of parallel downloads.</p>
     </section>
 </section>

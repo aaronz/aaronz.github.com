@@ -39,7 +39,7 @@ links:
     <section>
         <h2>Avoid 'full site' labels</h2>
         <p>If you provide a link on a page to a separate desktop experience, use terms like 'desktop' instead of 'full' to avoid confusion between what's available between the sites.</p>
-        <p>When <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> saw an option for "full site" vs "mobile site", they assumed the mobile site was condensed and chose the full site instead. One participant preferred the desktop site because it had "so much more information" - even though the mobile and desktop sites had the same content.</p>
+        <div class="clear g-wide--pull-1"><div class="g--half"><figure class="fluid"><img src="images/fullsite-good.png" srcset="images/fullsite-good.png 1x, images/fullsite-good-2x.png 2x" alt="Page with PC Site link"><figcaption>Page with link to PC site.</figcaption></figure></div><div class="g--half g--last"></div></div>
     </section>
 </section>
 <section>
@@ -74,7 +74,6 @@ links:
     <section>
         <h2>Make It Easy To Get To The Home Page</h2>
         <p>When mobile users navigate through your site, they want an easy way to get back to your initial homepage.</p>
-        <p>Users expect tapping the logo at the top of a page to take them back to the homepage, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> became frustrated if it didn’t work.</p>
         <figure><img src="images/hpnav-hp-good.png" srcset="images/hpnav-hp-good.png 1x, images/hpnav-hp-good-2x.png 2x" alt="Clicking the logo returns users to the home page.">
             <figcaption>Clicking the logo in the upper left corner returns users to the home page.</figcaption>
         </figure>
@@ -119,6 +118,7 @@ links:
     </section>
     <section>
         <p>Pages optimized for a variety of devices must include a meta viewport element in the head of the document. A meta viewport tag gives the browser instructions on how to control the page's dimensions and scaling.</p>
+        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
         <ul>
             <li>Use meta viewport tag to control the width and scaling of the browsers viewport.</li>
             <li>Include <code>width=device-width</code> to match the screen's width in device independent pixels.</li>
@@ -127,11 +127,6 @@ links:
         </ul>
     </section>
     <section>
-        <p>In order to attempt to provide the best experience, mobile browsers will render the page at a desktop screen width (usually about 980px, though this varies across devices), and then try to make the content look better by increasing font sizes and scaling the content to fit the screen. For users, this means that font sizes may appear inconsistently and they have to double-tap or pinch-to-zoom in order to be able to see and interact with the content.</p><pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
-    </section>
-    <section>
-        <p>Using the meta viewport value <code>width=device-width</code> instructs the page to match the screen’s width in device independent pixels. This allows the page to reflow content to match different screen sizes, whether rendered on a small mobile phone or a large desktop monitor.</p>
-        <p>Some browsers will keep the page’s width constant when rotating to landscape mode, and zoom rather than reflow to fill the screen. Adding the attribute <code>initial-scale=1</code> instructs browsers to establish a 1:1 relationship between CSS pixels and device independent pixels regardless of device orientation, and allows the page to take advantage of the full landscape width.</p>
         <div class="clear">
             <div class="g--half">
                 <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp-no.html"><img src="images/no-vp.png" class="smaller-img" srcset="images/no-vp.png 1x, images/no-vp-2x.png 2x" alt="Page without a viewport set"> See example</a>
@@ -140,12 +135,6 @@ links:
                 <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/vp.html"><img src="images/vp.png" class="smaller-img" srcset="images/vp.png 1x, images/vp-2x.png 2x" alt="Page with a viewport set"> See example</a>
             </div>
         </div>
-    </section>
-    <section>
-        <p>Remember</p>
-        <ul>
-            <li>Use a comma to separate attributes to ensure older browsers can properly parse the attributes.</li>
-        </ul>
     </section>
     <section>
         <h2 id="ensure-an-accessible-viewport">Ensure an accessible viewport</h2>

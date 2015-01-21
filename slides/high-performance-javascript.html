@@ -621,9 +621,11 @@ for (var i=0; i&lt;1000; i++) {
     </section>
     <section>
         <h3> Gzip JavaScript and CSS resources </h3>
-        <p>Below is a simple configuration to gzip not only JavaScript and CSS but also HTML, XML and JSON. To accomplish this, the following must be set in the Apache .htaccess:</p>
-        <p>AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/json</p>
-
+        <p>Below is a simple configuration to gzip not only JavaScript and CSS but also HTML, XML and JSON. To accomplish this,</p>
+        <ul>
+            <li>IIS: <a href="https://technet.microsoft.com/en-us/library/cc754668(v=WS.10).aspx">Enable static compression in IIS</a></li>
+            <li>Apache: <code>AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/json</code></li>
+        </ul>
     </section>
     <section>
         <h3> Use YUI Compressor or JSMin to compress the code</h3>
@@ -752,34 +754,6 @@ elem.firstChild.style.marginleft = (elem.offsetWidth / 20) + 'px';</code></pre>
     elemWidth = elem.offsetWidth;
 elem.style.fontSize = (elemWidth / 10) + 'px';
 elem.firstChild.style.marginleft = (elemWidth / 20) + 'px';</code></pre>
-    </section>
-    <section>
-        <h4> Make multiple predefined style changes at once using className </h4>
-        <ul>
-            <li>As with DOM manipulation, several style changes can be done at the same time.</li>
-            <li>Instead if you set the styles one by one, multiple reflows and repaints can be triggered.</li>
-        </ul>
-        <p>Slow:</p><pre><code>var elem = document.getElementById('styled');
-elem.style.background = 'blue';
-elem.style.color = 'white';
- 
-Faster: 
-&lt;code html4strict&gt;
-&lt;style type="text/css"&gt;
-div { background: white; color: black; }
-div.active { background: blue; color: white; }
-&lt;/style&gt;
-...</code></pre><pre><code>var elem = document.getElementById('styled').className = 'active';</code></pre>
-    </section>
-    <section>
-        <h4> Make multiple dynamic style changes at once using setAttribute </h4>
-        <ul>
-            <li>For dynamic animation, using predefined styles does not work. In this case setAttribute object can be used (for IE, use style.cssText property)</li>
-        </ul>
-        <p>Faster:</p><pre><code>var elem = document.getElementById('styled');
-elemStyle = 'background: blue; color: white;';
-elem.setAttribute('style', elemStyle);</code></pre>
-
     </section>
     <section>
         <h3> Avoid traversing large number of nodes </h3>

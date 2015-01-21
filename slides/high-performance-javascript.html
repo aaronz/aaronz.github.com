@@ -615,11 +615,8 @@ for (var i=0; i&lt;1000; i++) {
     </section>
     <section>
         <h3> Add an Expires or a Cache-Control HTTP header </h3>
-        <p>Using Apache the Expires HTTP header and the max-age directive of the Cache-Control HTTP header in server responses can be configures in .htaccess. The syntax is as follows:</p>
-        <ul>
-            <li>ExpiresDefault "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*" ExpiresByType type/encoding "&lt;base&gt; [plus] {&lt;num&gt; &lt;type&gt;}*"</li>
-            <li>Example: ExpiresActive On ExpiresByType image/png "access plus 1 year"</li>
-        </ul>
+        <p>The best request is a request that does not need to communicate with the server: a local copy of the response allows us to eliminate all network latency and avoid data charges for the data transfer.</p>
+        <img src="images/http-cache-decision-tree.png" class="center" alt="Cache decision tree">
 
     </section>
     <section>
@@ -642,7 +639,7 @@ for (var i=0; i&lt;1000; i++) {
             <li>Concatenate multiple scripts into one. However, consider that some mobile browsers have limits in how big resources they keep in cache.</li>
             <li>Always aim for the smallest code size prior to minification and re-factor to increase re-usable code, consider all resources: HTML, JavaScript, CSS, images, JSON loaded using XHR.</li>
             <li>Minimize the number of resources per host to enable more efficient parallel loading of resources</li>
-            <li>Serve your content from different hosts to overcode HTTP/1.1 limitation of parallel loading of two resources per host.</li>
+            <li>Serve your content from different hosts to overcode HTTP/1.1 limitation of <a href="http://www.browserscope.org/?category=network&v=top">parallel loading per host</a>.</li>
         </ul>
     </section>
 </section>

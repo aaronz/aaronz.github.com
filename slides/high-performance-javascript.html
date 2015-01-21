@@ -671,15 +671,6 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
             <li>Serve your content from different hosts to overcode HTTP/1.1 limitation of parallel loading of two resources per host.</li>
         </ul>
     </section>
-    <section>
-        <h3> Move inline scripts above stylesheets </h3>
-        <ul>
-            <li>Browsers download stylesheets in parallel with other resources that follow unless the stylesheet is followed by an inline script.</li>
-            <li>Workaround is to either avoid inline scripts or move them above stylesheets or below other resources (e.g. images, scripts) and use &lt;link&gt;, not @import.</li>
-            <li><a href="http://stevesouders.com/cuzillion/?ex=10021" rel="nofollow">Live demo</a>
-            </li>
-        </ul>
-    </section>
 </section>
 <section>
     <section id="dom">
@@ -691,7 +682,9 @@ loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.');
         <ul>
             <li>The size of DOM slows down all the operation related to it such as reflowing, traversal and DOM manipulation.</li>
             <li>The most effective way to make programs faster is to make n smaller means that the DOM should be as small as possible at all times.</li>
-            <li>Minimize n, you can track the number of elements in a page by:
+            <li>Minimize n, you can track the number of elements in a page by:</li>
+            <pre><code>document.getElementsByTagName('*').length</code></pre>
+        </ul>
     </section>
     <section>
         <h3> Use document fragment templates for re-usability </h3>

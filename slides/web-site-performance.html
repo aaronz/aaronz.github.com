@@ -169,7 +169,6 @@ Content-Type: text/html</code></pre>
     <section>
         <h3>Guidelines</h3>
         <ul>
-
             <li>Alternatives for this use of redirects include using <code>Alias</code> and <code>URL Rewrite</code> if the two code paths are hosted on the same server. </li>
             <li>If a domain name change is the cause of using redirects, an alternative is to create a CNAME (a DNS record that creates an alias pointing from one domain name to another) in combination with <code>Alias</code> or <code>URL Rewrite</code>.</li>
         </ul>
@@ -218,12 +217,6 @@ Content-Type: text/html</code></pre>
         </ul>
     </section>
     <section>
-        <h3>Tools to help you out in your effort</h3>
-        <p>
-            <a data-rapid_p="64" href="https://developer.yahoo.com/yui/imageloader/">YUI Image Loader</a> allows you to delay images below the fold and the <a data-rapid_p="65" href="https://developer.yahoo.com/yui/get/">YUI Get utility</a> is an easy way to include JS and CSS on the fly. For an example in the wild take a look at <a data-rapid_p="66" href="http://www.yahoo.com">Yahoo! Home Page</a> with Firebug's Net Panel turned on.
-        </p>
-    </section>
-    <section>
         <p>
             The idea of <b>progressive enhancement</b> tells us that JavaScript, when supported, can improve the user experience but <b>you have to make sure the page works even without JavaScript</b>. So after you've made sure the page works fine, you can enhance it with some post-loaded scripts that give you more bells and whistles such as drag and drop and animations.
         </p>
@@ -260,13 +253,9 @@ Content-Type: text/html</code></pre>
             <code>document.getElementsByTagName('*').length</code>
         </p>
         <img src="images/dom-element-number.png" alt="dom element number">
-        <a href="http://httparchive.org/interesting.php">HttpArchive</a>
+        <a href="http://httparchive.org/interesting.php#numDomElements">HttpArchive</a>
     </section>
-    <section>
-        <p>
-            And how many DOM elements are too many? Check other similar pages that have good markup. For example the <a data-rapid_p="71" href="http://www.yahoo.com">Yahoo! Home Page</a> is a pretty busy page and still under 700 elements (HTML tags).
-        </p>
-    </section>
+   
 </section>
 <section>
     <section>
@@ -287,7 +276,8 @@ Content-Type: text/html</code></pre>
         <div class="fragment">
 
             <img src="images/iframe-performance.png" alt="iframe performance">
-            <a href="http://stevesouders.com/efws/costofelements.php">http://stevesouders.com/efws/costofelements.php</a>
+            <p><a href="http://stevesouders.com/efws/costofelements.php">http://stevesouders.com/efws/costofelements.php</a></p>
+            <p><a href="http://httparchive.org/interesting.php#numiframes">HTTP Archive</a></p>
         </div>
     </section>
     <section>
@@ -320,6 +310,7 @@ Content-Type: text/html</code></pre>
             HTTP requests are expensive so making an HTTP request and getting a useless response (i.e. 404 Not Found) is totally unnecessary and will slow down the user experience without any benefit.
         </p>
         <img src="images/404-error.png" alt="404">
+        <p><a href="http://httparchive.org/interesting.php#errors">HTTP Archive</a></p>
     </section>
     <section>
         <p>
@@ -397,6 +388,8 @@ X-XSS-Protection    1; mode=block</code></pre>
             <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client.</p>
             <pre><code>Content-Encoding: gzip</code></pre>
         </ul>
+    </section>
+    <section>
         <img class="fragment" src="images/without-gzip.jpg" alt="without gzip support">
         <img class="fragment" src="images/gzip.jpg" alt="with gzip support">
     </section>

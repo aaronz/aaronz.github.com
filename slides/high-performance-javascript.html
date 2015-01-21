@@ -606,7 +606,7 @@ for (var i=0; i&lt;1000; i++) {
     </section>
     <section>
         <h3> Load scripts without blocking for faster startup</h3>
-        <ol><li>The location of the script in the document is significant.</li><li>DOM construction is paused when a script tag is encountered and until the script has finished executing.</li><li>JavaScript can query and modify the DOM and CSSOM.</li><li>JavaScript execution is delayed until the CSSOM is ready.</li></ol>
+        <ul><li>The location of the script in the document is significant.</li><li>DOM construction is paused when a script tag is encountered and until the script has finished executing.</li><li>JavaScript can query and modify the DOM and CSSOM.</li><li>JavaScript execution is delayed until the CSSOM is ready.</li></ul>
     </section>
     <section>
         <p>Slow:</p><pre><code>&lt;script src="my-script-file.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
@@ -658,6 +658,7 @@ for (var i=0; i&lt;1000; i++) {
             <li>Minimize n, you can track the number of elements in a page by:</li>
             <pre><code>document.getElementsByTagName('*').length</code></pre>
         </ul>
+        <a href="http://httparchive.org/interesting.php">Http Archive</a>
     </section>
     <section>
         <h3> Use document fragment templates for re-usability </h3>

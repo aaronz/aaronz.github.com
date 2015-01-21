@@ -382,10 +382,7 @@ X-XSS-Protection    1; mode=block</code></pre>
         </ul>
     </section>
     <section>
-        <p>Browsers (and proxies) use a cache to reduce the number and size of HTTP requests, making web pages load faster. A web server uses the Expires header in the HTTP response to tell the client how long a component can be cached. This is a far future Expires header, telling the browser that this response won't be stale until April 15, 2016. </p>
-        <pre><code>Expires: Thu, 15 Apr 2016 20:00:00 GMT</code></pre>
-
-        <p class="fragment highlight-blue">Keep in mind, if you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
+        <p>If you use a far future Expires header you have to change the component's filename whenever the component changes. We often make this step part of the build process: a version number is embedded in the component's filename, for example, <code>script_2.0.6.js</code>.</p>
     </section>
 </section>
 <section>
@@ -398,7 +395,7 @@ X-XSS-Protection    1; mode=block</code></pre>
             <p>If the web server sees this header in the request, it may compress the response using one of the methods listed by the client.</p>
             <pre><code>Content-Encoding: gzip</code></pre>
         </ul>
-        <img class="fragment" src="images/without-gzip.jpg" alt="without gzip support">
+        <img src="images/without-gzip.jpg" alt="without gzip support">
         <img class="fragment" src="images/gzip.jpg" alt="with gzip support">
     </section>
     <section>
@@ -605,7 +602,7 @@ HTTP/1.1 304 Not Modified</code></pre>
             One of the previous best practices states that CSS should be at the top in order to allow for progressive rendering.
         </p>
         <p>
-            In IE <code>@import</code> behaves the <b>same as using <code>&lt;link&gt;</code> at the bottom of the page</b>, so it's best not to use it.
+            <code>@import</code> will only trigger the resource download until the @import is parsed, so it adds additional critical round trips.
         </p>
     </section>
 </section>
@@ -799,6 +796,7 @@ HTTP/1.1 304 Not Modified</code></pre>
     <section>
         <h3>Image weight for top 10 websites</h3>
         <img src="images\image-weight-for-top10-websites.png" alt="images weight">
+        <p><a href="http://httparchive.org/interesting.php#reqImg">HTTP Archive</a></p>
     </section>
 </section>
 <section>

@@ -605,39 +605,13 @@ for (var i=0; i&lt;1000; i++) {
         <h2>Loading performance</h2>
     </section>
     <section>
-        <h3> Load scripts without blocking for faster startup and to show a splash screen</h3>
-        <ul>
-            <li>When &lt;script&gt; tags are found in the HTML document the referenced script resources are downloaded and executed before the rendering engine can continue to download other resources which effectively blocks the rendering of the page below the tag. To avoid this blocking behaviour a script tag can be created via a mechanism known as a dynamic script tag injection.</li>
-            <li>This mechanism allows the rendering engine to immediately render and display the initial view (aka the splash screen) defined in HTML while the JavaScript resources are still being loaded and executed which leads to better user experience.</li>
-        </ul>
+        <h3> Load scripts without blocking for faster startup</h3>
+        <ol><li>The location of the script in the document is significant.</li><li>DOM construction is paused when a script tag is encountered and until the script has finished executing.</li><li>JavaScript can query and modify the DOM and CSSOM.</li><li>JavaScript execution is delayed until the CSSOM is ready.</li></ol>
     </section>
     <section>
-        <p>Slow:</p><pre><code>&lt;div id="splash"/&gt;
-&lt;script src="my-script-file.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
+        <p>Slow:</p><pre><code>&lt;script src="my-script-file.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
         <p>Faster:</p>
-        <pre><code>&lt;div id="splash"/&gt;
-function loadScript(src, callback) {
-    var head = document.getElementsByTagName('head')[0],
-        script = document.createElement('script');
-    done = false;
-    script.setAttribute('src', src);
-    script.setAttribute('type', 'text/javascript');
-    script.setAttribute('charset', 'utf-8');
-    script.onload = script.onreadstatechange = function() {
-        if (!done &amp;&amp; (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
-            done = true;
-            script.onload = script.onreadystatechange = null;
-                if (callback) {
-                    callback();
-                }
-            }
-    }
-    head.insertBefore(script, head.firstChild);
-}
- 
-// load the my-script-file.js and display an alert dialog once the script has been loaded
-loadScript('my-script-file.js', function() { alert('my-script-file.js loaded.'); });
-</code></pre>
+        <pre><code>&lt;script src="my-script-file.js" async type="text/javascript"&gt;&lt;/script&gt;</code></pre>
     </section>
     <section>
         <h3> Add an Expires or a Cache-Control HTTP header </h3>

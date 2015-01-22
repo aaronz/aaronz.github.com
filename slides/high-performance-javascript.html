@@ -236,12 +236,7 @@ alert(colors instanceof Array); //is the variable colors an Array?
 alert(pattern instanceof RegExp); //is the variable pattern a RegExp?</code></pre>
     </section>
     <section>
-        <h3>Execution Context</h3>
-        <p>The execution context of a variable or function defines what other data it has access to, as well as how it should behave. Execution context is the envionment / scope the current code is being evaluated in</p>
-        <img src="images/execution-context-scope-chain.png" alt="execution context scope chain">
-    </section>
-    <section>
-        <h3>Scope</h3>
+        <h3>Scope Chain</h3>
         <p>When code is executed in a context, a scope chain of variable objects is created. The purpose of the scope chain is to provide ordered access to all variables and functions that an execution context has access to.</p>
         <pre><code>var color = "blue";
 function changeColor(){
@@ -651,7 +646,6 @@ for (var i=0; i&lt;1000; i++) {
     </section>
     <section>
         <h3> Minimize the size of the DOM </h3>
-        <p>Slow DOM performance can be traced back into the following three main causes:</p>
         <ul>
             <li>The size of DOM slows down all the operation related to it such as reflowing, traversal and DOM manipulation.</li>
             <li>The most effective way to make programs faster is to make n smaller means that the DOM should be as small as possible at all times.</li>
@@ -663,9 +657,10 @@ for (var i=0; i&lt;1000; i++) {
     <section>
         <h3> Use document fragment templates for re-usability </h3>
         <ul>
-            <li>Dynamically inserting and updating elements into the DOM is expensive. An efficient way to tackle this is to use HTML templates which can be cloned and re-used for re-usable parts of the DOM such as dialogs and other UI widgets.</li>
-            <li>In practice the approach is to modify, clone and append all nodes in JavaScript without touching the live DOM and append the completed document fragment to the DOM at once. One can do this with DOM API or alternatively construct a string representation of the HTML fragment to append based on a string template and push that into the DOM with a one innerHTML assignment. On both cases the rendering engine does not have to reflow and repaint the layout multiple times. Next we introduce some techniques to achieve this behavior.</li>
+            <li>Modify, clone and append all nodes in JavaScript without touching the live DOM and append the completed document fragment to the DOM at once.</li> 
+            <li>Construct a string representation of the HTML fragment to append based on a string template and push that into the DOM with a one innerHTML assignment. </li>
         </ul>
+        <p>On both cases the rendering engine does not have to reflow and repaint the layout multiple times. Next we introduce some techniques to achieve this behavior.</p>
     </section>
     <section>
         <h3> Minimize the number of reflows and repaints </h3>
@@ -745,8 +740,6 @@ elem.style.display = 'block';</code></pre>
         <ul>
             <li>Determining dimensions or location of elements via getComputedStyle, offsetWidth, scrollWidth and clientWidth properties will force reflow.</li>
             <li>If you take the measurements repeatedly, consider taking them only once.</li>
-            <li>This issue is the main cause of slowness in WebKit according to <a href="http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/#comment-13157" rel="nofollow">Dave Hyatt</a>
-            </li>
         </ul>
         <p>Slow:</p><pre><code>var elem = document.getElementById('animated');
 elem.style.fontSize = (elem.offsetWidth / 10) + 'px';
@@ -810,10 +803,6 @@ temp = null;</code></pre>
         <ul>
             <li>Animation without hardware support is slow. Try to avoid excessive use of animations which do not bring any real usability value. At least give users an opportunity to disable animations.</li>
         </ul>
-    </section>
-    <section>
-        <h3> Use scrollTo() to animate scrolling </h3>
-        <p>Using native scrolling via scrollTo() performs significantly better as it does not trigger reflow.</p>
     </section>
     <section>
         <h3> Absolutely or fixed position animated elements </h3>

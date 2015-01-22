@@ -957,22 +957,6 @@ window.onresize = someObject.resizeHandler;</code></pre>
         <h2> Styling </h2>
     </section>
     <section>
-        <h3> Optimize CSS </h3>
-        <ul>
-            <li>Create a component library</li>
-            <li>Use consistent semantic styles</li>
-            <li>Design modules to be transparent on the inside</li>
-            <li>Be flexible</li>
-            <li>Learn to love grids</li>
-            <li>Minimize selectors</li>
-            <li>Separate structure and skin</li>
-            <li>Separate container and content</li>
-            <li>Extend objects by applying multiple classes to an element</li>
-            <li>Use reset and fonts from YUI</li>
-            </li>
-        </ul>
-    </section>
-    <section>
         <h3> Change CSS classes near the edges of the DOM tree </h3>
         <p>To limit the scope of the reflow to as few nodes as possible you should avoid changing a class on wrapper (or body) element(s) which affects the display of many child nodes. Additionally, that may result in re-resolving style on the entire document and for a large DOM that could lock up the browser for a while.</p>
         <ul>
@@ -984,20 +968,6 @@ window.onresize = someObject.resizeHandler;</code></pre>
         <h3> Avoid tables for layout or use table-layout: fixed</h3>
         <p>It is recommended to use a fixed layout ( table-layout: fixed) for data tables to allow a more efficient layout algorithm. This will allow the table to render row by row according to the CSS 2.1 specification.</p>
         <a href="http://www.w3schools.com/cssref/playit.asp?filename=playcss_table-layout&preval=fixed">W3Schools Test</a>
-    </section>
-    <section>
-        <h3> Optimize images </h3>
-        <ul>
-            <li>Combine similar colors</li>
-            <li>Avoid whitespace in sprites, use CSS instead</li>
-            <li>Horizontal is better than vertical</li>
-            <li>Limit the number of colors</li>
-            <li>First optimize individual images, next sprites in it</li>
-            <li>Reduce anti-aliased pixels via size and alignment</li>
-            <li>Avoid diagonal gradients due to increased image size</li>
-            <li>Avoid alpha transparency (IE does not support)</li>
-            <li>Change gradient color every 2-3 pixels</li>
-        </ul>
     </section>
 </section>
 <section>

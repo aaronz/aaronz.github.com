@@ -862,7 +862,7 @@ function animateSecond(arg) {};</code></pre>
         <ul>
             <li>Assigning event handlers to individual objects can add up quickly and is expensive if you create a lots of new elements dynamically to which event handlers need to be bound.</li>
             <li>This becomes especially interesting if you assign multiple event listeners (e.g. click and blur to a one element. In case of 100 elements that would mean 200 event handlers.</li>
-            <li>Using DOM Level 2 event model all events propagate toward the document object which is highest up in the hierarchy. This means that one can bind event listeners to document which invokes a controller and passes the event object to it. The controller is responsible for inspecting the internals of the event and dispatching to appropriate logic.</li>
+            <li>Using DOM Level 2 event model all events propagate toward the document object which is highest up in the hierarchy. This means that one can bind event listeners to document which invokes a controller and passes the event object to it. </li>
         </ul>
     </section>
     <section>
@@ -871,16 +871,12 @@ for (var i, l = elems.length; i++; i &lt; l) {
     elems[i].onclick = function() {};
     elems[i].onblur = function() {};
 }</code></pre>
-        <p>Faster:</p><pre><code>//HTML
-&lt;button id="doSomething"&gt;Click me to do something&lt;/button&gt; // you can add more of elements without the need to worry about binding event handlers
- 
-// JS
+        <p>Faster:</p><pre><code>&lt;button id="button1"&gt;Click me to do something&lt;/button&gt;
+&lt;button id="button2"&gt;Click me to do something&lt;/button&gt;
 document.addEventListener('click', function(event) { eventController(event); }, false);
-document.addEventListener('blue', function(event) { eventController(event); }, false);
- 
+document.addEventListener('blur', function(event) { eventController(event); }, false);
 function eventController(event) {
-   // inspect the event object internals and do something wise
-   if (event.target.id === 'doSomething') {
+   if (event.target.id === 'button1') {
       doSomething();   
    }
 }
@@ -987,11 +983,7 @@ window.onresize = someObject.resizeHandler;</code></pre>
     <section>
         <h3> Avoid tables for layout or use table-layout: fixed</h3>
         <p>It is recommended to use a fixed layout ( table-layout: fixed) for data tables to allow a more efficient layout algorithm. This will allow the table to render row by row according to the CSS 2.1 specification.</p>
-        <p>Source:</p>
-        <ul>
-            <li><a href="http://www.stubbornella.org/content/2009/03/27/reflows-repaints-css-performance-making-your-javascript-slow/" rel="nofollow">Reflows &amp; Repaints: CSS Performance making your JavaScript slow</a>
-            </li>
-        </ul>
+        <a href="http://www.w3schools.com/cssref/playit.asp?filename=playcss_table-layout&preval=fixed">W3Schools Test</a>
     </section>
     <section>
         <h3> Optimize images </h3>

@@ -101,7 +101,6 @@ links:
     <section>
         <h2>Keep users in a single browser window</h2>
         <p>Switching between windows on a smartphone can be troublesome, and raises the risk that visitors might not find their way back to your site.</p>
-        <p>Try to keep users in one place by avoiding calls-to-action that launch new windows.</p>
         <figure><img src="images/sw-single-browser-good.png" srcset="images/sw-single-browser-good.png 1x, images/sw-single-browser-good-2x.png 2x" alt="Macy's keeps their users on their site by providing coupons.">
             <figcaption>Macy's keeps their users on their site by providing coupons.</figcaption>
         </figure>
@@ -119,6 +118,8 @@ links:
     <section>
         <p>Pages optimized for a variety of devices must include a meta viewport element in the head of the document. A meta viewport tag gives the browser instructions on how to control the page's dimensions and scaling.</p>
         <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+    </section>
+    <section>
         <ul>
             <li>Use meta viewport tag to control the width and scaling of the browsers viewport.</li>
             <li>Include <code>width=device-width</code> to match the screen's width in device independent pixels.</li>
@@ -149,8 +150,6 @@ links:
             <li><code>user-scalable</code>
             </li>
         </ul>
-    </section>
-    <section>
         <p>When set, these can disable the user’s ability to zoom the viewport, potentially causing accessibility issues.</p>
     </section>
 </section>
@@ -160,6 +159,8 @@ links:
     </section>
     <section>
         <p>On both desktop and mobile devices, users are used to scrolling websites vertically but not horizontally, and forcing the user to scroll horizontally or to zoom out in order to see the whole page results in a poor user experience.</p>
+    </section>
+    <section>
         <ul>
             <li>Do not use large fixed width elements.</li>
             <li>Content should not rely on a particular viewport width to render well.</li>
@@ -167,7 +168,6 @@ links:
         </ul>
     </section>
     <section>
-        <p>When developing a mobile site with a <code>meta viewport</code> tag, it’s easy to accidentally create page content that doesn’t quite fit within the specified viewport. For example, an image that is displayed at a width wider than the viewport can cause the viewport to scroll horizontally. You should adjust this content to fit within the width of the viewport, so that the user does not need to scroll horizontally.</p>
         <p>Since screen dimensions and width in CSS pixels vary widely between devices (e.g. between phones and tablets, and even between different phones), content should not rely on a particular viewport width to render well.</p>
         <p>Setting large absolute CSS widths for page elements (such as the example below), will cause the <code>div</code> to be too wide for the viewport on a narrower device (e.g. a device with a width of 320 CSS pixels, such as an iPhone). Instead, consider using relative width values, such as <code>width: 100%</code>. Similarly, beware of using large absolute positioning values that may cause the element to fall outside the viewport on small screens.</p>
     </section>
@@ -187,7 +187,6 @@ links:
         <h2>Use CSS media queries for responsiveness</h2>
     </section>
     <section>
-        <p>Media queries are simple filters that can be applied to CSS styles. They make it easy to change styles based on the characteristics of the device rendering the content, including the display type, width, height, orientation and even resolution.</p>
         <ul>
             <li>Media queries can be used to apply styles based on device characteristics.</li>
             <li>Use <code>min-width</code> over <code>min-device-width</code> to ensure the broadest experience.</li>
@@ -202,9 +201,6 @@ links:
   /* print style sheets go here */
 }
 @import url(print.css) print;</code></pre>
-    </section>
-    <section>
-        <p>The logic that applies to media queries is not mutually exclusive and any filter that meets that criteria the resulting CSS block will be applied using the standard rules of precedence in CSS.</p>
     </section>
     <section>
         <h2 id="apply-media-queries-based-on-viewport-size">Apply media queries based on viewport size</h2>

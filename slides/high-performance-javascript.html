@@ -652,14 +652,6 @@ for (var i=0; i&lt;1000; i++) {
         <a href="http://httparchive.org/interesting.php">Http Archive</a>
     </section>
     <section>
-        <h3> Use document fragment templates for re-usability </h3>
-        <ul>
-            <li>Modify, clone and append all nodes in JavaScript without touching the live DOM and append the completed document fragment to the DOM at once.</li> 
-            <li>Construct a string representation of the HTML fragment to append based on a string template and push that into the DOM with a one innerHTML assignment. </li>
-        </ul>
-        <p>On both cases the rendering engine does not have to reflow and repaint the layout multiple times. Next we introduce some techniques to achieve this behavior.</p>
-    </section>
-    <section>
         <h3> Minimize the number of reflows and repaints </h3>
         <ul>
             <li>Operation that trigger reflows should be used sparsely.</li>

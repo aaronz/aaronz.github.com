@@ -71,7 +71,7 @@ links:
             <li><a href="http://en.wikipedia.org/wiki/WebKit#JavaScriptCore" title="WebKit">JavaScriptCore</a> - open source, marketed as Nitro and developed by <a href="http://en.wikipedia.org/wiki/Apple_Inc." title="Apple Inc.">Apple</a> for <a href="http://en.wikipedia.org/wiki/Safari_(web_browser)" title="Safari (web browser)">Safari</a>
             </li>
             <li><a href="http://en.wikipedia.org/wiki/KJS_(KDE)" title="KJS (KDE)" class="mw-redirect">KJS</a> - KDE's ECMAScript/JavaScript engine originally developed by <a href="http://en.wikipedia.org/wiki/Harri_Porten" title="Harri Porten">Harri Porten</a> for the KDE project's Konqueror web browser</li>
-            <li><a href="http://en.wikipedia.org/wiki/Chakra_(JavaScript_engine)" title="Chakra (JavaScript engine)" class="mw-redirect">Chakra</a>, for <a href="http://en.wikipedia.org/wiki/Internet_Explorer_9" title="Internet Explorer 9">Internet Explorer 9</a><sup id="cite_ref-16" class="reference"><a href="#cite_note-16"><span>[</span>16<span>]</span></a></sup>
+            <li><a href="http://en.wikipedia.org/wiki/Chakra_(JavaScript_engine)" title="Chakra (JavaScript engine)" class="mw-redirect">Chakra</a>, for <a href="http://en.wikipedia.org/wiki/Internet_Explorer_9" title="Internet Explorer 9">Internet Explorer 9</a><sup id="cite_ref-16" class="reference"><a href="#cite_note-16"><span></a></sup>
             </li>
         </ul>
     </section>
@@ -419,7 +419,7 @@ addMethod(myObj, 'methodName', 'this.localVar=foo');</code></pre>
         <p>Faster:</p><pre><code>function addMethod(object, property, func) {
     object[property] = func;
 }
-addMethod(myObj, 'methodName', function () { 'this.localVar=foo'; });</code></pre>
+addMethod(myObj, 'methodName', function () { this.localVar=foo; });</code></pre>
         <a href="http://jsperf.com/function-constructor">Js Perf Demo</a>
     </section>
     <section>

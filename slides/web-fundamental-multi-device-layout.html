@@ -114,18 +114,16 @@ links:
 <section>
     <section>
         <h3>Set the viewport</h3>
-    </section>
-    <section>
-        <p>Pages optimized for a variety of devices must include a meta viewport element in the head of the document. A meta viewport tag gives the browser instructions on how to control the page's dimensions and scaling.</p>
-        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
-    </section>
-    <section>
         <ul>
             <li>Use meta viewport tag to control the width and scaling of the browsers viewport.</li>
             <li>Include <code>width=device-width</code> to match the screen's width in device independent pixels.</li>
             <li>Include <code>initial-scale=1</code> to establish a 1:1 relationship between CSS pixels and device independent pixels.</li>
             <li>Ensure your page is accessible by not disabling user scaling.</li>
         </ul>
+    </section>
+    <section>
+    <p>Using the meta viewport value width=device-width instructs the page to match the screen’s width in device independent pixels. This allows the page to reflow content to match different screen sizes, whether rendered on a small mobile phone or a large desktop monitor.</p>
+        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
     </section>
     <section>
         <div class="clear">
@@ -156,20 +154,11 @@ links:
 <section>
     <section>
         <h3>Size content to the viewport</h3>
-    </section>
-    <section>
-        <p>On both desktop and mobile devices, users are used to scrolling websites vertically but not horizontally, and forcing the user to scroll horizontally or to zoom out in order to see the whole page results in a poor user experience.</p>
-    </section>
-    <section>
         <ul>
             <li>Do not use large fixed width elements.</li>
             <li>Content should not rely on a particular viewport width to render well.</li>
             <li>Use CSS media queries to apply different styling for small and large screens.</li>
         </ul>
-    </section>
-    <section>
-        <p>Since screen dimensions and width in CSS pixels vary widely between devices (e.g. between phones and tablets, and even between different phones), content should not rely on a particular viewport width to render well.</p>
-        <p>Setting large absolute CSS widths for page elements (such as the example below), will cause the <code>div</code> to be too wide for the viewport on a narrower device (e.g. a device with a width of 320 CSS pixels, such as an iPhone). Instead, consider using relative width values, such as <code>width: 100%</code>. Similarly, beware of using large absolute positioning values that may cause the element to fall outside the viewport on small screens.</p>
     </section>
     <section>
         <div class="clear">
@@ -185,8 +174,6 @@ links:
 <section>
     <section>
         <h3>Use CSS media queries for responsiveness</h3>
-    </section>
-    <section>
         <ul>
             <li>Media queries can be used to apply styles based on device characteristics.</li>
             <li>Use <code>min-width</code> over <code>min-device-width</code> to ensure the broadest experience.</li>
@@ -197,20 +184,21 @@ links:
         <p>For example, you could place all styles necessary for printing inside a print media query:</p><pre><code>&lt;link rel="stylesheet" href="print.css" media="print"&gt;</code></pre>
     </section>
     <section>
-        <p>In addition to using the <code>media</code> attribute in the stylesheet link, there are two other ways to apply media queries that can be embedded in a CSS file: <code>@media</code> and <code>@import</code>. For performance reasons, either of the first two methods are recommended over the <code>@import</code> syntax (see <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/page-speed-rules-and-recommendations.html">Avoid CSS imports</a>).</p><pre><code>@media print {
-  /* print style sheets go here */
-}
-@import url(print.css) print;</code></pre>
-    </section>
-    <section>
-        <h2 id="apply-media-queries-based-on-viewport-size">Apply media queries based on viewport size</h3>
+        <h3>Apply media queries based on viewport size</h3>
         <p>Media queries enable us to create a responsive experience, where specific styles are applied to small screens, large screens and anywhere in between. The media query syntax allows for the creation of rules that can be applied depending on device characteristics.</p><pre><code>@media (query) {
   /* CSS Rules used when query matches */
 }</code></pre>
     </section>
     <section>
         <p>While there are several different items we can query on, the ones used most often for responsive web design are <code>min-width</code>, <code>max-width</code>, <code>min-height</code> and <code>max-height</code>.</p>
-        <p>Let’s take a look an example:</p><pre><code>    &lt;link rel="stylesheet" media="(max-width: 640px)" href="max-640px.css"&gt;
+        <table class="table-2"><colgroup><col span="1"><col span="1"></colgroup><thead><tr><th data-th="attribute">attribute</th><th data-th="Result">Result</th></tr></thead><tbody><tr><td data-th="attribute"><code>min-width</code></td><td data-th="Result">Rules applied for any browser width over the value defined in the query.</td></tr><tr><td data-th="attribute"><code>max-width</code></td><td data-th="Result">Rules applied for any browser width below the value defined in the query.</td></tr><tr><td data-th="attribute"><code>min-height</code></td><td data-th="Result">Rules applied for any browser height over the value defined in the query.</td></tr><tr><td data-th="attribute"><code>max-height</code></td><td data-th="Result">Rules applied for any browser height below the value defined in the query.</td></tr><tr><td data-th="attribute"><code>orientation=portrait</code></td><td data-th="Result">Rules applied for any browser where the height is greater than or equal to the width.</td></tr><tr><td data-th="attribute"><code>orientation=landscape</code></td><td data-th="Result">Rules for any browser where the width is greater than the height.</td></tr></tbody></table>
+        </section>
+        <section>
+        <p>Let’s take a look an example:</p>
+<figure><a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/media-queries.html"><img src="images/mq.png" class="center" srcset="images/mq.png 1x, images/mq-2x.png 2x" alt="Preview of a page using media queries to change properties as it is resized."></a></figure>
+        </section>
+        <section>
+        <pre><code>    &lt;link rel="stylesheet" media="(max-width: 640px)" href="max-640px.css"&gt;
     &lt;link rel="stylesheet" media="(min-width: 640px)" href="min-640px.css"&gt;
     &lt;link rel="stylesheet" media="(orientation: portrait)" href="portrait.css"&gt;
     &lt;link rel="stylesheet" media="(orientation: landscape)" href="landscape.css"&gt;
@@ -224,6 +212,7 @@ links:
         }
       }
     &lt;/style&gt;</code></pre>
+    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-fundamentals/media-queries.html">Try full sample</a>
     </section>
     <section>
         <ul>

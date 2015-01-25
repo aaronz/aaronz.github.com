@@ -363,15 +363,18 @@ links:
 <section>
     <section>
         <h3>Mostly fluid</h3>
-        <p>The mostly fluid pattern consists primarily of a fluid grid. On large or medium screens, it usually remains the same size, simply adjusting the margins on wider screens.</p>
-        <p>On smaller screens, the fluid grid causes the main content to reflow, while columns are stacked vertically. One major advantage of this pattern is that it usually only requires one breakpoint between small screens and large screens.</p>
+        <p>The mostly fluid pattern consists primarily of a fluid grid. </p>
+        <ul>
+        <li>On large or medium screens, it usually remains the same size, simply adjusting the margins on wider screens.</li>
+        <li>On smaller screens, the fluid grid causes the main content to reflow, while columns are stacked vertically.</li>            
+        </ul>
+        </section>
+        <section>
         <p>
             <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/mostly-fluid.html"><img src="images/mostly-fluid.svg"> Try it</img>
             </a>
         </p>
-    </section>
-    <section>
-        <p>In the smallest view, each content <code>div</code> is stacked vertically. Once the screen width hits 600px, the primary content <code>div</code> remains at <code>width: 100%</code>, while the secondary <code>div</code>’s are shown as two columns below the primary <code>div</code>. Beyond 800px, the container <code>div</code> becomes fixed width and is centered on the screen.</p>
+        <p>One major advantage of this pattern is that it usually only requires one breakpoint between small screens and large screens.</p>
     </section>
     <section>
         <p>Sites using this pattern include:</p>
@@ -430,9 +433,6 @@ links:
         </p>
     </section>
     <section>
-        <p>Like the mostly fluid sample, content is stacked vertically in the smallest view, but as the screen expands beyond 600px, the primary and secondary content <code>div</code>’s take the full width of the screen. The order of the <code>div</code>’s is set using the order CSS property. At 800px all three content <code>div</code>’s are shown, using the full screen width.</p>
-    </section>
-    <section>
         <p>Sites using this pattern include:</p>
         <ul>
             <li><a href="http://modernizr.com/">Modernizr</a>
@@ -481,15 +481,11 @@ links:
 <section>
     <section>
         <h3>Layout shifter</h3>
-        <p>The layout shifter pattern is the most responsive pattern, with multiple breakpoints across several screen widths.</p>
         <p>Key to this layout is the way content moves about, instead of reflowing and dropping below other columns. Due to the significant differences between each major breakpoint, it is more complex to maintain and likely involves changes within elements, not just overall content layout.</p>
         <p>
             <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/layout-shifter.html"><img src="images/layout-shifter.svg"> Try it</img>
             </a>
         </p>
-    </section>
-    <section>
-        <p>This simplified example shows the layout shifter pattern, on smaller screens content is stacked vertically, but changes significantly as the screen becomes larger, with a left <code>div</code> and two stacked <code>div</code>’s on the right.</p>
     </section>
     <section>
         <p>Sites using this pattern include:</p>
@@ -540,9 +536,6 @@ links:
         </p>
     </section>
     <section>
-        <p>As its name implies, little changes with this sample as the screen size changes. As the screen width gets larger, so do the font size and padding.</p>
-    </section>
-    <section>
         <p>Sites using this pattern include:</p>
         <ul>
             <li><a href="http://shinydemos.com/">Opera’s Shiny Demos</a>
@@ -580,10 +573,6 @@ links:
             <a href="http://googlesamples.github.io/web-fundamentals/samples/layouts/rwd-patterns/off-canvas.html"><img src="images/off-canvas.svg"> Try it</img>
             </a>
         </p>
-    </section>
-    <section>
-        <p>Rather than stacking content vertically, this sample hides two of the content <code>div</code>s off screen by using a <code>transform: translate(-250px, 0)</code>. JavaScript is used to show the divs by adding an open class to the element to make visible. As the screen gets wider, the off-screen positioning is removed from the elements and they’re shown within the visible viewport.</p>
-        <p>Note in this sample, Safari for iOS 6 and Android Browser do not support the <code>flex-flow: row nowrap</code> feature of <code>flexbox</code>, so we’ve had to fallback to absolute positioning.</p>
     </section>
     <section>
         <p>Sites using this pattern include:</p>

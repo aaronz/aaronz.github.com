@@ -6,8 +6,9 @@ links:
 - https://github.com/google/WebFundamentals
 ---
 
-
 <link rel="stylesheet" href="css/slide.css">
+
+
 <section id="agenda">
     <h3>agenda</h3>
     <ul>
@@ -234,18 +235,24 @@ links:
     <section>
         <h3>Minimize repeated actions and fields</h3>
         <p>Make sure your forms have no repeated actions, only as many fields as necessary, and take advantage of <a href="https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs.html#use-metadata-to-enable-auto-complete">autofill</a>, so that users can easily complete forms with pre-populated data.</p>
-        <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms"><figcaption>On the Progressive.com website, users are asked first for their ZIP code, which is then pre-populated into the next part of the form.</figcaption></figure>
+        <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+            <figcaption>On the Progressive.com website, users are asked first for their ZIP code, which is then pre-populated into the next part of the form.</figcaption>
+        </figure>
     </section>
     <section>
         <h3>Show users how far along they are</h3>
         <p>Progress bars and menus should accurately convey overall progress through multi-step forms and processes.</p>
         <p>If you place a disproportionately complex form in an earlier step, users are more likely to abandon your site before they go through the entire process.</p>
-        <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms"><figcaption>Use clearly-labeled progress bars to help users get through multi-part forms.</figcaption></figure>
+        <figure><img src="images/forms-multipart-good.png" srcset="images/forms-multipart-good.png 1x, images/forms-multipart-good-2x.png 2x" alt="Show progression in multi-part forms">
+            <figcaption>Use clearly-labeled progress bars to help users get through multi-part forms.</figcaption>
+        </figure>
     </section>
     <section>
         <h3>Provide visual calendars when selecting dates</h3>
         <p>Users often need more context when scheduling appointments and travel dates, to make things easier and prevent them from leaving your site to check their calendar app, provide a visual calendar with clear labeling for selecting start and end dates.</p>
-        <figure><img src="images/forms-calendar-good.png" srcset="images/forms-calendar-good.png 1x, images/forms-calendar-good-2x.png 2x" alt="Hotel website with easy to use calendar"><figcaption>Hotel booking website with easy to use calendar widget for picking dates.</figcaption></figure>
+        <figure><img src="images/forms-calendar-good.png" srcset="images/forms-calendar-good.png 1x, images/forms-calendar-good-2x.png 2x" alt="Hotel website with easy to use calendar">
+            <figcaption>Hotel booking website with easy to use calendar widget for picking dates.</figcaption>
+        </figure>
     </section>
 </section>
 <section>
@@ -368,7 +375,7 @@ links:
         </ul>
     </section>
     <section>
-    <h3>The importance of labels</h3>
+        <h3>The importance of labels</h3>
         <ul>
 
             <li>The <code>label</code> element provides direction to the user, telling them what information is needed in a form element. Each <code>label</code> is associated with an input element by placing it inside the <code>label</code> element, or by using the "<code>for</code>" attribute. </li>
@@ -377,14 +384,14 @@ links:
         <pre><code>    &lt;label for="frmAddressS"&gt;Address&lt;/label&gt;
     &lt;input type="text" name="ship-address" required id="frmAddressS"
       placeholder="123 Any Street" autocomplete="shipping street-address"&gt;</code></pre>
-      <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
     </section>
     <section>
         <h3>Label sizing and placement</h3>
-            <p>Labels and inputs should be large enough to be easy to press.</p>
+        <p>Labels and inputs should be large enough to be easy to press.</p>
     </section>
     <section>
-    <h3>Use placeholders</h3>
+        <h3>Use placeholders</h3>
         <p>The placeholder attribute provides a hint to the user about what’s expected in the input, typically by displaying the value as light text until the the user starts typing in the element.</p>
         <p>
             <input placeholder="MM-YYYY" />
@@ -392,7 +399,7 @@ links:
 
     </section>
     <section>
-    <h3>Use metadata to enable auto-complete</h3>
+        <h3>Use metadata to enable auto-complete</h3>
         <p>Browsers use many heuristics to determine which fields they can <a href="https://support.google.com/chrome/answer/142893">auto-populate</a> <a href="https://support.google.com/chrome/answer/142893">based on previously specified data by the user</a>, and you can give hints to the browser by providing both the name attribute and the autocomplete attribute on each input element.</p>
         <p>For example, to hint to the browser that it should auto-complete the form with the users name, email address and phone number, you should use:</p><pre><code>    &lt;label for="frmNameA"&gt;Name&lt;/label&gt;
     &lt;input type="text" name="name" id="frmNameA"
@@ -407,15 +414,60 @@ links:
     &lt;label for="frmPhoneNumA"&gt;Phone&lt;/label&gt;
     &lt;input type="tel" name="phone" id="frmPhoneNumA"
       placeholder="+1-555-555-1212" required autocomplete="tel"&gt;</code></pre>
-<a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
 
     </section>
     <section>
         <h3>Recommended input name and autocomplete attribute values</h3>
-        <table class="table-3 autocompletes"><thead><tr><th data-th="Content type">Content type</th><th data-th="name attribute"><code>name</code> attribute</th><th data-th="autocomplete attribute"><code>autocomplete</code> attribute</th></tr></thead><tbody><tr><td data-th="Content type">Name</td><td data-th="name attribute"><code>name</code> <code>fname</code> <code>mname</code> <code>lname</code></td><td data-th="autocomplete attribute"><code>name</code></td></tr><tr><td data-th="Content type">Email</td><td data-th="name attribute"><code>email</code></td><td data-th="autocomplete attribute"><code>email</code></td></tr><tr><td data-th="Content type">Address</td><td data-th="name attribute"><code>address</code> <code>city</code> <code>region</code> <code>province</code> <code>state</code> <code>zip</code> <code>zip2</code> <code>postal</code> <code>country</code></td><td data-th="autocomplete attribute"><code>street-address</code> <code>locality</code> <code>region</code> <code>postal-code</code> <code>country</code></td></tr><tr><td data-th="Content type">Phone</td><td data-th="name attribute"><code>phone</code> <code>mobile</code> <code>country-code</code> <code>area-code</code> <code>exchange</code> <code>suffix</code> <code>ext</code></td><td data-th="autocomplete attribute"><code>tel</code></td></tr><tr><td data-th="Content type">Credit Card</td><td data-th="name attribute"><code>ccname</code> <code>cardnumber</code> <code>cvc</code> <code>ccmonth</code> <code>ccyear</code> <code>exp-date</code> <code>card-type</code></td><td data-th="autocomplete attribute"><code>cc-name</code> <code>cc-number</code> <code>cc-csc</code> <code>cc-exp-month</code> <code>cc-exp-year</code> <code>cc-exp</code> <code>cc-type</code></td></tr></tbody></table>
+        <table class="table-3 autocompletes">
+            <thead>
+                <tr>
+                    <th data-th="Content type">Content type</th>
+                    <th data-th="name attribute"><code>name</code> attribute</th>
+                    <th data-th="autocomplete attribute"><code>autocomplete</code> attribute</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Content type">Name</td>
+                    <td data-th="name attribute"><code>name</code> <code>fname</code> <code>mname</code> <code>lname</code>
+                    </td>
+                    <td data-th="autocomplete attribute"><code>name</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Content type">Email</td>
+                    <td data-th="name attribute"><code>email</code>
+                    </td>
+                    <td data-th="autocomplete attribute"><code>email</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Content type">Address</td>
+                    <td data-th="name attribute"><code>address</code> <code>city</code> <code>region</code> <code>province</code> <code>state</code> <code>zip</code> <code>zip2</code> <code>postal</code> <code>country</code>
+                    </td>
+                    <td data-th="autocomplete attribute"><code>street-address</code> <code>locality</code> <code>region</code> <code>postal-code</code> <code>country</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Content type">Phone</td>
+                    <td data-th="name attribute"><code>phone</code> <code>mobile</code> <code>country-code</code> <code>area-code</code> <code>exchange</code> <code>suffix</code> <code>ext</code>
+                    </td>
+                    <td data-th="autocomplete attribute"><code>tel</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Content type">Credit Card</td>
+                    <td data-th="name attribute"><code>ccname</code> <code>cardnumber</code> <code>cvc</code> <code>ccmonth</code> <code>ccyear</code> <code>exp-date</code> <code>card-type</code>
+                    </td>
+                    <td data-th="autocomplete attribute"><code>cc-name</code> <code>cc-number</code> <code>cc-csc</code> <code>cc-exp-month</code> <code>cc-exp-year</code> <code>cc-exp</code> <code>cc-type</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section>
-    <h3>The <code>autofocus</code> attribute</h3>
+        <h3>The <code>autofocus</code> attribute</h3>
         <p>Be careful using the autofocus attribute because it will steal keyboard focus and potentially preventing the backspace character from being used for navigation.</p><pre><code>&lt;input type="text" autofocus ...&gt;</code></pre>
     </section>
 </section>
@@ -429,27 +481,67 @@ links:
         </ul>
     </section>
     <section>
-    <h3>The pattern attribute</h3>
+        <h3>The pattern attribute</h3>
         <p>The <code>pattern</code> attribute specifies a <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expression</a> used to validate an input field. For example, to validate a US Zip code (5 digits, sometimes followed by a dash and an additional 4 digits), we would set the <code>pattern</code> like this:</p><pre><code>&lt;input type="text" pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
     </section>
     <section>
         <h3>Common regular expression patterns</h3>
-        <table class="table-2 tc-heavyright"><thead><tr><th data-th="Description">Description</th><th data-th="Regular expression">Regular expression</th></tr></thead><tbody><tr><td data-th="Description">Postal address</td><td data-th="Regular expression"><code>[a-zA-Z\d\s\-\,\#\.\+]+</code></td></tr><tr><td data-th="Description">Zip Code (US)</td><td data-th="Regular expression"><code>^\d{5,6}(?:[-\s]\d{4})?$</code></td></tr><tr><td data-th="Description">IP Address (IPv4)</td><td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code></td></tr><tr><td data-th="Description">IP Address (IPv6)</td><td data-th="Regular expression"><code>^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code></td></tr><tr><td data-th="Description">IP Address (both)</td><td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$</code></td></tr><tr><td data-th="Description">Credit Card Number</td><td data-th="Regular expression"><code>^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$</code></td></tr><tr><td data-th="Description">Social Security Number</td><td data-th="Regular expression"><code>^\d{3}-\d{2}-\d{4}$</code></td></tr><tr><td data-th="Description">North American Phone Number</td><td data-th="Regular expression"><code>^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$</code></td></tr></tbody></table>
+        <table class="table-2 tc-heavyright">
+            <thead>
+                <tr>
+                    <th data-th="Description">Description</th>
+                    <th data-th="Regular expression">Regular expression</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Description">Postal address</td>
+                    <td data-th="Regular expression"><code>[a-zA-Z\d\s\-\,\#\.\+]+</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Description">Zip Code (US)</td>
+                    <td data-th="Regular expression"><code>^\d{5,6}(?:[-\s]\d{4})?$</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Description">IP Address (IPv4)</td>
+                    <td data-th="Regular expression"><code>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td data-th="Description">Credit Card Number</td>
+                    <td data-th="Regular expression"><code>^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Description">Social Security Number</td>
+                    <td data-th="Regular expression"><code>^\d{3}-\d{2}-\d{4}$</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-th="Description">North American Phone Number</td>
+                    <td data-th="Regular expression"><code>^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section>
-    <h3>The required attribute</h3>
+        <h3>The required attribute</h3>
         <p>If the <code>required</code> attribute is present, then the field must contain a value before the form can be submitted. For example, to make the zip code required, we’d simply add the required attribute:</p><pre><code>&lt;input type="text" required pattern="^\d{5,6}(?:[-\s]\d{4})?$" ...&gt;</code></pre>
     </section>
     <section>
-    <h3>The min, max and step attributes</h3>
+        <h3>The min, max and step attributes</h3>
         <p>For numeric input types like number or range as well as date/time inputs, you can specify the minimum and maximum values, as well as how much they should each increment/decrement when adjusted by the slider or spinners. For example, a shoe size input would set a minumum size of 1 and a maximum size 13, with a step of 0.5</p><pre><code>&lt;input type="number" min="1" max="13" step="0.5" ...&gt;</code></pre>
     </section>
     <section>
-    <h3>The maxlength attribute</h3>
+        <h3>The maxlength attribute</h3>
         <p>The <code>maxlength</code> attribute can be used to specify the maximum length of an input or textbox and is useful when you want to limit the length of information that the user can provide. For example, if you want to limit a filename to 12 characters, you can use the following.</p><pre><code>&lt;input type="text" id="83filename" maxlength="12" ...&gt;</code></pre>
     </section>
     <section>
-    <h3>The novalidate attribute</h3>
+        <h3>The novalidate attribute</h3>
         <p>In some cases, you may want to allow the user to submit the form even if it contains invalid input. To do this, add the <code>novalidate</code> attribute to the form element, or individual input fields. In this case, all pseudo classes and JavaScript APIs will still allow you to check if the form validates.</p><pre><code>&lt;form role="form" novalidate&gt;
   &lt;label for="inpEmail"&gt;Email address&lt;/label&gt;
   &lt;input type="email" ...&gt;
@@ -462,12 +554,41 @@ links:
         </ul>
     </section>
     <section>
-    <h3>Use JavaScript for more complex real-time validation</h3>
+        <h3>Use JavaScript for more complex real-time validation</h3>
         <p>When the built-in validation plus regular expressions aren’t enough, you can use the <a href="http://dev.w3.org/html5/spec-preview/constraints.html#constraint-validation">Constraint Validation API</a>, a powerful tool for handling custom validation. The API allows you to do things like set a custom error, check whether an element is valid, and determine the reason that an element is invalid:</p>
-        <table class="table-2 tc-heavyright"><thead><tr><th data-th="API">API</th><th data-th="Description">Description</th></tr></thead><tbody><tr><td data-th="API"><code>setCustomValidity()</code></td><td data-th="Description">Sets a custom validation message and the <code>customError</code> property of the <code>ValidityState</code> object to <code>true</code>.</td></tr><tr><td data-th="API"><code>validationMessage</code></td><td data-th="Description">Returns a string with the reason the input failed the validation test.</td></tr><tr><td data-th="API"><code>checkValidity()</code></td><td data-th="Description">Returns <code>true</code> if the element satisfies all of its constraints, and <code>false</code> otherwise.</td></tr><tr><td data-th="API"><code>validity</code></td><td data-th="Description">Returns a <code>ValidityState</code> object representing the validity states of the element.</td></tr></tbody></table>
+        <table class="table-2 tc-heavyright">
+            <thead>
+                <tr>
+                    <th data-th="API">API</th>
+                    <th data-th="Description">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="API"><code>setCustomValidity()</code>
+                    </td>
+                    <td data-th="Description">Sets a custom validation message and the <code>customError</code> property of the <code>ValidityState</code> object to <code>true</code>.</td>
+                </tr>
+                <tr>
+                    <td data-th="API"><code>validationMessage</code>
+                    </td>
+                    <td data-th="Description">Returns a string with the reason the input failed the validation test.</td>
+                </tr>
+                <tr>
+                    <td data-th="API"><code>checkValidity()</code>
+                    </td>
+                    <td data-th="Description">Returns <code>true</code> if the element satisfies all of its constraints, and <code>false</code> otherwise.</td>
+                </tr>
+                <tr>
+                    <td data-th="API"><code>validity</code>
+                    </td>
+                    <td data-th="Description">Returns a <code>ValidityState</code> object representing the validity states of the element.</td>
+                </tr>
+            </tbody>
+        </table>
 
-        </section>
-        <section>
+    </section>
+    <section>
         <h3>Set custom validation messages</h3>
         <p>If a field fails validation, use <code>setCustomValidity()</code> to mark the field invalid and explain why the field didn’t validate. For example, a sign up form might ask the user to confirm their email address by entering it twice. Use the blur event on the second input to validate the two inputs and set the appropriate response. For example:</p><pre><code>    if (input.value != primaryEmail) {
       // the provided value doesn't match the primary email address
@@ -477,10 +598,10 @@ links:
       // input is valid -- reset the error message
       input.setCustomValidity('');
     }</code></pre>
-    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
     </section>
     <section>
-    <h3>Prevent form submission on invalid forms</h3>
+        <h3>Prevent form submission on invalid forms</h3>
         <p>Because not all browsers will prevent the user from submitting the form if there is invalid data, you should catch the submit event, and use the <code>checkValidity()</code> on the form element to determine if the form is valid. For example:</p><pre><code>    form.addEventListener("submit", function(evt) {
       if (form.checkValidity() === false) {
         evt.preventDefault();
@@ -494,14 +615,53 @@ links:
         return false;
       }
     });</code></pre>
-    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
     </section>
     <section>
-    <h3>Show feedback in real-time</h3>
+        <h3>Show feedback in real-time</h3>
         <p>It’s helpful to provide a visual indication on each field that indicates whether the user has completed the form properly before they’ve submitted the form. HTML5 also introduces a number of new pseudo-classes that can be used to style inputs based on their value or attributes.</p>
-        <table class="table-2 tc-heavyright"><thead><tr><th data-th="Pseudo-class">Pseudo-class</th><th data-th="Use">Use</th></tr></thead><tbody><tr><td data-th="Pseudo-class"><code>:valid</code></td><td data-th="Use">Explicitly sets the style for an input to be used when the value meets all of the validation requirements.</td></tr><tr><td data-th="Pseudo-class"><code>:invalid</code></td><td data-th="Use">Explicitly sets the style for an input to be used when the value does not meet all of the validation requirements.</td></tr><tr><td data-th="Pseudo-class"><code>:required</code></td><td data-th="Use">Explicitly sets the style for an input element that has the required attribute set.</td></tr><tr><td data-th="Pseudo-class"><code>:optional</code></td><td data-th="Use">Explicitly sets the style for an input element that does not have the required attribute set.</td></tr><tr><td data-th="Pseudo-class"><code>:in-range</code></td><td data-th="Use">Explicitly sets the style for a number input element where the value is in range.</td></tr><tr><td data-th="Pseudo-class"><code>:out-of-range</code></td><td data-th="Use">Explicitly sets the style for a number input element where the value is out of range.</td></tr></tbody></table>
-        </section>
-        <section>
+        <table class="table-2 tc-heavyright">
+            <thead>
+                <tr>
+                    <th data-th="Pseudo-class">Pseudo-class</th>
+                    <th data-th="Use">Use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:valid</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for an input to be used when the value meets all of the validation requirements.</td>
+                </tr>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:invalid</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for an input to be used when the value does not meet all of the validation requirements.</td>
+                </tr>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:required</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for an input element that has the required attribute set.</td>
+                </tr>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:optional</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for an input element that does not have the required attribute set.</td>
+                </tr>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:in-range</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for a number input element where the value is in range.</td>
+                </tr>
+                <tr>
+                    <td data-th="Pseudo-class"><code>:out-of-range</code>
+                    </td>
+                    <td data-th="Use">Explicitly sets the style for a number input element where the value is out of range.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
         <p>Validation happens immediately which means that when the page is loaded, fields may be marked as invalid, even though the user hasn’t had a chance to fill them in yet. It also means that as the user types, and it’s possible they’ll see the invalid style while typing. To prevent this, you can combine the CSS with JavaScript to only show invalid styling when the user has visited the field.</p>
         <pre><code>    input.dirty:not(:focus):invalid {
       background-color: #FFD9D9;
@@ -509,7 +669,7 @@ links:
     input.dirty:not(:focus):valid {
       background-color: #D9FFD9;
     }</code></pre>
-    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
     </section>
     <section><pre><code>    var inputs = document.getElementsByTagName("input");
     var inputs_len = inputs.length;
@@ -523,7 +683,9 @@ links:
       input.addEventListener("invalid", addDirtyClass);
       input.addEventListener("valid", addDirtyClass);
     }</code></pre>
-<a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/input/form/order.html">Try full sample</a>
+        </section>
+        <section>
         <p>Important</p>
         <ul>
             <li>You should show the user all of the issues on the form at once, rather than showing them one at a time.</li>
@@ -604,34 +766,95 @@ links:
       &lt;source media="(min-width: 450px)" srcset="head-small.jpg, head-small-2x.jpg 2x"&gt;
       &lt;img src="head-fb.jpg" srcset="head-fb-2x.jpg 2x" &gt;
     &lt;/picture&gt;</code></pre>
-    <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/media.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/media.html">Try full sample</a>
     </section>
     <section>
-    <h3>Relative sized images</h3>
+        <h3>Relative sized images</h3>
         <p>Instead of supplying fixed image sizes and densities, the size of each supplied image can be specified by adding a width descriptor along with the size of the image element, allowing the browser to automatically calculate the effective pixel density and choose the best image to download.</p><pre><code>    &lt;img src="lighthouse-200.jpg" sizes="50vw"
          srcset="lighthouse-100.jpg 100w, lighthouse-200.jpg 200w,
                  lighthouse-400.jpg 400w, lighthouse-800.jpg 800w,
                  lighthouse-1000.jpg 1000w, lighthouse-1400.jpg 1400w,
                  lighthouse-1800.jpg 1800w"&gt;</code></pre>
-                 <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/sizes.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/sizes.html">Try full sample</a>
     </section>
     <section>
-        <table class="table-4"><colgroup><col span="1"><col span="1"><col span="1"><col span="1"></colgroup><thead><tr><th data-th="Browser width">Browser width</th><th data-th="Device pixel ratio">Device pixel ratio</th><th data-th="Image used">Image used</th><th data-th="Effective resolution">Effective resolution</th></tr></thead><tbody><tr><td data-th="Browser width">400px</td><td data-th="Device pixel ratio">1</td><td data-th="Image used"><code>200.png</code></td><td data-th="Effective resolution">1x</td></tr><tr><td data-th="Browser width">400px</td><td data-th="Device pixel ratio">2</td><td data-th="Image used"><code>400.png</code></td><td data-th="Effective resolution">2x</td></tr><tr><td data-th="Browser width">320px</td><td data-th="Device pixel ratio">2</td><td data-th="Image used"><code>400.png</code></td><td data-th="Effective resolution">2.5x</td></tr><tr><td data-th="Browser width">600px</td><td data-th="Device pixel ratio">2</td><td data-th="Image used"><code>800.png</code></td><td data-th="Effective resolution">2.67x</td></tr><tr><td data-th="Browser width">640px</td><td data-th="Device pixel ratio">3</td><td data-th="Image used"><code>1000.png</code></td><td data-th="Effective resolution">3.125x</td></tr><tr><td data-th="Browser width">1100px</td><td data-th="Device pixel ratio">1</td><td data-th="Image used"><code>1400.png</code></td><td data-th="Effective resolution">1.27x</td></tr></tbody></table>
+        <table class="table-4">
+            <colgroup>
+                <col span="1">
+                    <col span="1">
+                        <col span="1">
+                            <col span="1">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th data-th="Browser width">Browser width</th>
+                    <th data-th="Device pixel ratio">Device pixel ratio</th>
+                    <th data-th="Image used">Image used</th>
+                    <th data-th="Effective resolution">Effective resolution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Browser width">400px</td>
+                    <td data-th="Device pixel ratio">1</td>
+                    <td data-th="Image used"><code>200.png</code>
+                    </td>
+                    <td data-th="Effective resolution">1x</td>
+                </tr>
+                <tr>
+                    <td data-th="Browser width">400px</td>
+                    <td data-th="Device pixel ratio">2</td>
+                    <td data-th="Image used"><code>400.png</code>
+                    </td>
+                    <td data-th="Effective resolution">2x</td>
+                </tr>
+                <tr>
+                    <td data-th="Browser width">320px</td>
+                    <td data-th="Device pixel ratio">2</td>
+                    <td data-th="Image used"><code>400.png</code>
+                    </td>
+                    <td data-th="Effective resolution">2.5x</td>
+                </tr>
+                <tr>
+                    <td data-th="Browser width">600px</td>
+                    <td data-th="Device pixel ratio">2</td>
+                    <td data-th="Image used"><code>800.png</code>
+                    </td>
+                    <td data-th="Effective resolution">2.67x</td>
+                </tr>
+                <tr>
+                    <td data-th="Browser width">640px</td>
+                    <td data-th="Device pixel ratio">3</td>
+                    <td data-th="Image used"><code>1000.png</code>
+                    </td>
+                    <td data-th="Effective resolution">3.125x</td>
+                </tr>
+                <tr>
+                    <td data-th="Browser width">1100px</td>
+                    <td data-th="Device pixel ratio">1</td>
+                    <td data-th="Image used"><code>1400.png</code>
+                    </td>
+                    <td data-th="Effective resolution">1.27x</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
     <section>
-    <h3>Account for breakpoints in responsive images</h3>
+        <h3>Account for breakpoints in responsive images</h3>
         <p>In many cases, the size or image may change depending on the site’s layout breakpoints. For example, on a small screen, you might want the image to span the full width of the viewport, while on larger screens, it should only take a small proportion.</p><pre><code>    &lt;img src="400.png"
          sizes="(min-width: 600px) 25vw, (min-width: 500px) 50vw, 100vw"
          srcset="100.png 100w, 200.png 200w, 400.png 400w,
                  800.png 800w, 1600.png 1600w, 2000.png 2000w"&gt;</code></pre>
-                 <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/breakpoints.html">Try full sample</a>
+        <a class="highlight-module__cta button--primary" href="http://googlesamples.github.io/web-fundamentals/samples/media/images/breakpoints.html">Try full sample</a>
     </section>
 </section>
 <section>
     <section>
         <h3>Make product images expandable</h3>
         <p>Customers want to see what they’re buying. On retail sites, users expect to be able to view high resolution closeups of products to get a better look at details, and <a href="https://developers.google.com/web/fundamentals/principles/research-study.html">study participants</a> got frustrated if they weren’t able to.</p>
-        <figure><img src="images/sw-make-images-expandable-good.png" srcset="images/sw-make-images-expandable-good.png 1x, images/sw-make-images-expandable-good-2x.png 2x" alt="J. Crews website with expandable product image"><figcaption>J. Crew's website with expandable product image.</figcaption></figure>
+        <figure><img src="images/sw-make-images-expandable-good.png" srcset="images/sw-make-images-expandable-good.png 1x, images/sw-make-images-expandable-good-2x.png 2x" alt="J. Crews website with expandable product image">
+            <figcaption>J. Crew's website with expandable product image.</figcaption>
+        </figure>
         <p>A good example of tappable, expandable images is provided by the J. Crew site.
             <br>An disappearing overlay indicates that an image is tappable, providing a zoomed in image with fine detail visible.</br>
         </p>
@@ -672,15 +895,28 @@ links:
     <section>
         <h3>Avoid 'full site' labels</h3>
         <p>If you provide a link on a page to a separate desktop experience, use terms like 'desktop' instead of 'full' to avoid confusion between what's available between the sites.</p>
-        <figure class="fluid"><img src="images/fullsite-good.png" srcset="images/fullsite-good.png 1x, images/fullsite-good-2x.png 2x" alt="Page with PC Site link"><figcaption>Page with link to PC site.</figcaption></figure>
+        <figure class="fluid"><img src="images/fullsite-good.png" srcset="images/fullsite-good.png 1x, images/fullsite-good-2x.png 2x" alt="Page with PC Site link">
+            <figcaption>Page with link to PC site.</figcaption>
+        </figure>
     </section>
 </section>
 <section>
-    
+
     <section>
         <h3>Always request access to location on a user gesture</h3>
         <p>Make sure users understand why you’re asking for their location, and what the benefit to them will be. Asking for it immediately on the homepage as the site loads results in a poor user experience.</p>
-        <div class="clear g-wide--pull-1"><div class="g--half"><figure class="fluid"><img src="images/sw-navigation-bad.png" srcset="images/sw-navigation-bad.png 1x, images/sw-navigation-bad-2x.png 2x" alt=""><figcaption>Asking for it immediately on the homepage as the site loads results in a poor user experience.</figcaption></figure></div><div class="g--half g--last"><figure class="fluid"><img src="images/sw-navigation-good.png" srcset="images/sw-navigation-good.png 1x, images/sw-navigation-good-2x.png 2x" alt=""><figcaption>Always request access to location on a user gesture.</figcaption></figure></div></div>
+        <div class="clear g-wide--pull-1">
+            <div class="g--half">
+                <figure class="fluid"><img src="images/sw-navigation-bad.png" srcset="images/sw-navigation-bad.png 1x, images/sw-navigation-bad-2x.png 2x" alt="">
+                    <figcaption>Asking for it immediately on the homepage as the site loads results in a poor user experience.</figcaption>
+                </figure>
+            </div>
+            <div class="g--half g--last">
+                <figure class="fluid"><img src="images/sw-navigation-good.png" srcset="images/sw-navigation-good.png 1x, images/sw-navigation-good-2x.png 2x" alt="">
+                    <figcaption>Always request access to location on a user gesture.</figcaption>
+                </figure>
+            </div>
+        </div>
     </section>
-    
+
 </section>

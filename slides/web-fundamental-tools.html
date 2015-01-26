@@ -98,62 +98,7 @@ links:
         </p>
     </section>
 </section>
-<section>
-    <section>
-        <h2>Set Up Command Line Shortcuts</h2>
-        <ul>
-            <li>Make the command line work for you; create aliases that are easy to remember and fast to type.</li>
-            <li>Give Github dotfiles a try to save, share and sync up your command line shortcuts.</li>
-        </ul>
-    </section>
-    <section>
-        <h2 id="how-to-set-them-up">How to Set Them Up</h2>
-        <p>The easiest way create command-line shortcuts is to add aliases for common commands to your bashrc file. On Mac or Linux:</p>
-        <pre><code> open -a 'Sublime Text' ~/.bashrc</code></pre>
-        <p>Add a new alias, for example:</p><pre><code> alias master='git checkout master'</code></pre>
 
-        <p>Anytime you are in a directory with a git repo, you can run the command <code>master</code> and it will checkout the master branch for you.</p>
-        <p>Note: See these instructions for <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms682057(v=vs.85).aspx">setting up Windows aliases</a>.</p>
-    </section>
-    <section>
-        <h2 id="shortcuts-we-recommend">Shortcuts We Recommend</h2>
-        <p>These are a few commands that you may find useful.</p>
-        <table class="table-2 tc-heavyright">
-            <colgroup>
-                <col span="1">
-                    <col span="1">
-            </colgroup>
-            <thead>
-                <tr>
-                    <th data-th="Command">Command</th>
-                    <th data-th="Alias">Alias</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-th="Command">Open your editor</td>
-                    <td data-th="Alias"><code>alias st='open -a "Sublime Text"'</code>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Command">Launch a server</td>
-                    <td data-th="Alias"><code>alias server="python -m SimpleHTTPServer"</code>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-th="Command">Go to a directory you commonly work in</td>
-                    <td data-th="Alias"><code>alias p="cd ~/projects"</code>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <h2 id="save-share-and-sync-your-shortcuts">Save, Share and Sync Your Shortcuts</h2>
-        <p>Store your shortcuts and dot files on Github. The major gain with this is your shortcuts can be shared across devices and they are always backed up.</p>
-        <p>Github even created a <a href="http://dotfiles.github.io/">dedicated page for dotfiles</a> and quite a few of the Chrome Team have forked <a href="https://github.com/mathiasbynens/dotfiles">Mathias Bynens’ dotfiles</a>.</p>
-    </section>
-</section>
 <section>
     <section>
         <h2>Set Up Browser Extensions</h2>
@@ -194,7 +139,7 @@ links:
     <section>
         <h2 id="what-is-a-build-process">What Is a Build Process</h2>
         <p>A build process is a set of tasks which run over your projects files, compiling and testing code during development and used to create the deployment version of your site. Your build process shouldn’t be a set of tasks you run at the end of your development workflow.</p>
-        <p>The most popular tools for implementing a build process are <a href="http://gulpjs.com/">Gulp</a> and <a href="http://gruntjs.com/">Grunt</a>, both of which are command line tools. If you have no experience of either, use Gulp, we use it for <a href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a> and recommend you do the same.</p>
+        <p>The most popular tools for implementing a build process are <a href="http://gulpjs.com/">Gulp</a> and <a href="http://gruntjs.com/">Grunt</a>, both of which are command line tools. </p>
     </section>
     <section>
         <h2 id="what-tasks-should-be-in-a-build-process">What Tasks Should be in a Build Process</h2>
@@ -343,7 +288,6 @@ links:
     <section>
         <h3>Never Leave Your Text Editor with Live Reloading</h3>
         <p>Live reloading updates your site in your browser each time your make a change. After using it once, you won’t be able to live without it.</p>
-        <p>Web Starter Kit uses browser-sync for Live Reload support.</p>
         <table class="table-2 tc-heavyright">
             <colgroup>
                 <col span="1">
@@ -415,11 +359,6 @@ links:
         <h2 id="using-devtools-for-mobile-browsers">Using DevTools for Mobile Browsers</h2>
         <p>You can use Chrome DevTools with Chrome for Android by setting up your device for development and then visiting <code>chrome://inspect</code>. <a href="https://developer.chrome.com/devtools/docs/remote-debugging">Check out our Chrome docs</a> on how to set all of this up.</p>
         <p><img alt="Chrome Inspect Demo" src="images/chrome-inspect-devtools.png" />
-        </p>
-    </section>
-    <section>
-        <p>To debug Safari for iOS, follow these steps:</p>
-        <p><img alt="Safari iOS Debugging Menu" src="images/ios-safari-debugging.png" />
         </p>
     </section>
     <section>
@@ -519,23 +458,6 @@ chmod u+x ./chromium-android-installer/\*.sh
     </section>
     <section>
         <p><img alt="Firefox Icon on Android Emulator" src="images/ff-on-android-emulator.png" />
-        </p>
-    </section>
-    <section>
-        <h2 id="ios-simulator">iOS Simulator</h2>
-        <p>The iOS simulator for Mac OS X comes with XCode, which you can <a href="https://itunes.apple.com/us/app/xcode/id497799835?ls=1&amp;mt=12">install from the App Store</a>.</p>
-        <p>To use the iOS Simulator, open XCode, in the top menu go to <code>XCode &gt; Open Developer Tool</code> and select <code>iOS Simulator</code>.</p>
-        <p><img alt="Xcode Menu for iOS Simulator" src="images/xcode-ios-simulator.png" />
-        </p>
-    </section>
-    <section>
-        <p>Once the simulator is open you can fire up Safari and you’re good to go.</p>
-        <p><img alt="iOS Simulator Screenshot" src="images/ios-simulator.png" />
-        </p>
-    </section>
-    <section>
-        <p><strong>Tip</strong>
-            <br>To avoid having to open XCode every time you want to use the iOS Simulator, open the iOS simulator once, as above, then right click the iOS Simulator icon in your dock and select <code>Keep in Dock</code>. Just click this icon whenever you need it.</br>
         </p>
     </section>
     <section>

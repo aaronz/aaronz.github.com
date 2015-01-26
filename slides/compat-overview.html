@@ -326,12 +326,15 @@ and clearing rules</h3>
     </section>
     <section>
         <h3>Understand the backward-compatibility limits of HTML5 tags</h3>
-        <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags. Using plain div elements and classes is often a safer course of action for those cases.</p>
+        <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. <b>Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags.</b> Using plain div elements and classes is often a safer course of action for those cases.</p>
         <a href="http://slides.html5rocks.com/#semantic-tags-1">Html5 semantic tags</a>
     </section>
     <section>
         <h3>Know and use the CSS cascade rules</h3>
-        <p><a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank" target="_blank">Simple id and class selectors</a> are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</p>
+        <ul>            
+            <li><a href="http://www.w3.org/TR/CSS21/cascade.html" target="_blank" target="_blank">Simple id and class selectors</a> are useful, but using them exclusively means the markup gets messier and less reusable with unnecessary ids and classes. </li>
+            <li>Using tag, descendant, child, sibling, and attribute selectors in combination with a small number of ids and classes can keep both the markup and CSS simpler and more general. Avoid the use of the "!important" rule at all costs.</li>
+        </ul>
     </section>
     <section>
         <h3>Consider a CSS Reset</h3>
@@ -345,11 +348,11 @@ and clearing rules</h3>
     </section>
     <section>
         <h3>Always prefer feature detection over browser detection</h3>
-        <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. For example, one browser-sniffing library expected the major version to be only a single digit, so it reported Firefox 15 as Firefox 1 and IE 10 as IE 11 It is more reliable to <a href="http://msdn.microsoft.com/en-us/magazine/hh475813.aspx" target="_blank" target="_blank">detect the feature or problem directly</a>, and use that as the decision criteria for code branches. We recommend <a href="http://modernizr.com/" target="_blank" target="_blank">Modernizr</a> as the easiest way to implement feature detection.</p>
+        <p>The userAgent string is a poor indicator of whether a particular feature (or bug) is present. To compound the problem, much of the code that interprets userAgent does so incorrectly. We recommend <a href="http://modernizr.com/" target="_blank" target="_blank">Modernizr</a> as the easiest way to implement feature detection.</p>
     </section>
     <section>
         <h3>Use a JavaScript library for DOM interactions</h3>
-        <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work. Trying to find and work around all these inconsistencies yourself is a waste of time and likely to create bugs.</p>
+        <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work.</p>
         <img src="images/mind-the-gap.jpg" alt="mind the gap">
     </section>
 </section>

@@ -282,6 +282,7 @@ and clearing rules</h3>
             <li>
                 By focusing on stable standards, you're ensuring that your customers will be able to have the experience they're expecting and your site will be more maintainable.</li>
         </ul>
+        <img src="images/web-standards.jpg" alt="web standard">
     </section>
     <section>
         <h3>Use IE Compat Inspector to help migrate your site to standard-based code</h3>
@@ -294,6 +295,7 @@ and clearing rules</h3>
             <li>If you absolutely need to provide the same experience across all browsers, polyfills and shims offer code and markup that can help mimic standards-based APIs and functionality.</li>
             <li>The key thing to remember is that you need to properly vet the code to ensure it meets your use-case and that you can support it going forward.</li>
         </ul>
+        <a href="http://html5please.com/">http://html5please.com/</a>
     </section>
     <section>
         <h3>Test in multiple browsers while developing</h3>
@@ -302,14 +304,17 @@ and clearing rules</h3>
                 An occasional multi-browser sanity checkpoint during development can ensure that serious cross-browser issues don't crop up at the last minute or worse yet, after it's all public.</li>
             <li>Be sure to look in each browser's console like the F12 Dev Tools in IE to see if any error or warning messages appear.</li>
         </ul>
+        <a href="http://www.browserstack.com/responsive">http://www.browserstack.com/responsive</a>
     </section>
     <section>
         <h3>Use a build process with tools to check for errors and minify files</h3>
         <p>A good set of build tools such as <a href="http://validator.w3.org/" target="_blank" target="_blank">HTML validators</a>, <a href="http://jigsaw.w3.org/css-validator/" target="_blank" target="_blank">CSS validators</a>, <a href="https://github.com/mishoo/UglifyJS" target="_blank" target="_blank">Uglify</a>, and <a href="https://github.com/jshint/jshint/" target="_blank" target="_blank">JSHint</a>, or <a href="http://gruntjs.com/" target="_blank" target="_blank">GruntJS</a> can find latent problems, enforce project code standards, and reduce file size to improve performance.</p>
+        <img src="images\gulp_vs_grunt.png" alt="gulp vs grunt">
     </section>
     <section>
         <h3>Always use a standards-based doctype to avoid Quirks Mode</h3>
         <p><a href="http://msdn.microsoft.com/en-us/hh779632.aspx" target="_blank" target="_blank">Start</a> with &lt;!DOCTYPE html&gt;. The modern web has no place for Quirks Mode, which was designed so that mid-1990s web pages would be usable in turn-of-the-century "modern" browsers like IE6 and Firefox 2. Most web pages today end up in Quirks Mode accidentally because of an invalid doctype or extraneous text before the doctype. This can cause strange layout issues that are hard to debug.</p>
+        <img src="images/standards-quirks.jpg" alt="images">
     </section>
     <section>
         <h3>Learn when to use X-UA-Compatible</h3>
@@ -322,14 +327,7 @@ and clearing rules</h3>
     <section>
         <h3>Understand the backward-compatibility limits of HTML5 tags</h3>
         <p>New HTML5 tags like section, header, and footer improve the semantics of markup, but require a special "shiv" script to run in Internet Explorer 6, 7, and 8 or they won't be recognized. Pages that need to work with these legacy browsers even when scripts are disabled cannot use the new HTML5 tags. Using plain div elements and classes is often a safer course of action for those cases.</p>
-    </section>
-    <section>
-        <h3>Avoid inline JavaScript tags in HTML markup</h3>
-        <p>As with external script references, an inline script requires the browser to stop parsing HTML and can also prevent parallel downloading of other resources on the page. This can seriously slow the initial load of the page and give the user a dreaded "blank-page" experience. Script sprinkled around the markup is also more difficult to maintain.</p>
-    </section>
-    <section>
-        <h3>Do not use inline JavaScript events inside HTML markup</h3>
-        <p>An example would be &lt;button onclick="validate()"&gt;Validate&lt;/button&gt;. This practice breaks the clean separation that should exist between markup, presentation, and behavior. Also, if scripts load at the bottom of the file, it is possible for a user to interact with the page and trigger an event that attempts to call a script that isn't loaded yet ¨C causing an error.</p>
+        <a href="http://slides.html5rocks.com/#semantic-tags-1">Html5 semantic tags</a>
     </section>
     <section>
         <h3>Know and use the CSS cascade rules</h3>
@@ -343,10 +341,7 @@ and clearing rules</h3>
     <section>
         <h3>Fully prefix vendor-specific CSS properties to future-proof them</h3>
         <p>As new draft standards progress, browser vendors sometimes get a jump on the standard by adding support via prefixed properties. To ensure that the CSS continues to work in the future, use all the vendor-prefixed names and the non-prefixed name as well. <a href="http://blogs.msdn.com/b/ie/archive/2011/10/28/a-best-practice-for-programming-with-vendor-prefixes.aspx" target="_blank" target="_blank">This blog post</a> provides a plain-JavaScript alternative.</p>
-    </section>
-    <section>
-        <h3>Solve compatibility problems with valid CSS rules, not CSS parser hacks</h3>
-        <p>CSS parser hacks are unreliable because browsers can be updated causing these hacks to fail. Instead try <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank" target="_blank">adding version-specific classes</a> to the html or body tag that can be used in stylesheet rules. <a href="http://msdn.microsoft.com/en-us/library/ms537512(v=vs.85).aspx" target="_blank" target="_blank">Conditional comments</a> can also be used to include a browser-specific CSS file only in the versions that need it.</p>
+        <img src="images/vendor_specific_prefix.png" alt="vendor prefix">
     </section>
     <section>
         <h3>Always prefer feature detection over browser detection</h3>
@@ -355,17 +350,6 @@ and clearing rules</h3>
     <section>
         <h3>Use a JavaScript library for DOM interactions</h3>
         <p>Whenever your JavaScript needs to work with elements on your page, it's best to use a library like jQuery, Prototype, or MooTools. These libraries are used by many thousands of developers, and they take most of the inconsistencies between browsers' interpretation of JavaScript, deal with those internally, and give you a consistent set of commands that just work. Trying to find and work around all these inconsistencies yourself is a waste of time and likely to create bugs.</p>
-    </section>
-    <section>
-        <h3>Run as little script as possible when the document is ready</h3>
-        <p><a href="http://www.elijahmanor.com/2012/10/dont-initialize-all-things-in.html" target="_blank" target="_blank">Techniques</a> such as jQuery's $(document).ready() make it easy to run script as soon as the HTML on the page is loaded, which is usually the earliest possible moment it can be safely run. However, running a lot of complex script at this point can make the page appear sluggish and prevent the user from interacting with it immediately. Often the initialization for things like a tooltip or dialog can be delayed until the item actually needs to be displayed, with no noticeable stutter.</p>
-    </section>
-    <section>
-        <h3>Start AJAX requests as early as possible if they're critical for user interaction with the page</h3>
-        <p>Since an AJAX request can take a long time, there's <a href="http://alexsexton.com/blog/2010/01/dont-let-document-ready-slow-you-down/" target="_blank" target="_blank">no need to wait for the HTML page</a> to be ready before starting it. Instead, place the $(document).ready() call inside the AJAX completion function.</p>
-    </section>
-    <section>
-        <h3>Delay-load non-essential scripts</h3>
-        <p>Everyone wants their page to be popular on social networks, but social network scripts tend to be large and can cause sluggish response for the user. Waiting until the page has loaded before <a href="http://www.aaronpeters.nl/blog/why-loading-third-party-scripts-async-is-not-good-enough" target="_blank" target="_blank">requesting these scripts</a> can make the page responsive sooner. Even better, rethink whether these buttons are necessary at all, and whether they improve your page's overall experience.</p>
+        <img src="images/mind-the-gap.jpg" alt="mind the gap">
     </section>
 </section>

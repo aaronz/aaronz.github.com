@@ -9,65 +9,11 @@ links:
 <section id="agenda">
     <h2>Content</h2>
     <ul>
-        <li><a href="#issues">Cross Browser Issues</a>
+        <li><a href="#concepts">Cross browser concepts</a>
         </li>
-        <li><a href="#concepts">Cross Browser Concepts</a>
-        </li>
-        <li><a href="#guideline">Cross Browser Best Practices</a>
+        <li><a href="#guideline">Cross browser best practices</a>
         </li>
     </ul>
-</section>
-<section>
-    <section id="issues">
-        <h2>Cross Browser Issues</h2>
-    </section>
-
-    <section>
-        <h3>Challenges</h3>
-        <p>
-            <ul>
-                <li>Many different browsers</li>
-                <li class="fragment">Many different versions</li>
-                <li class="fragment">New version releases frequently</li>
-            </ul>
-        </p>
-    </section>
-    <section>
-        <h3>Issues</h3>
-        <p>
-            <ul>
-                <li>Layout Issue
-
-                <ul>
-                    <li>Html/CSS</li>
-                    <li>Html5/CSS3</li>
-                </ul></li>
-                <li class="fragment">Function Issue
-
-                <ul>
-                    <li>DOM</li>
-                    <li>JavaScript Core</li>
-                    <li>BOM</li>
-                    <li>Addon/ActiveX</li>
-                </ul></li>
-                <li class="fragment">Performance Issue
-
-                <ul>
-                    <li>Render Engine</li>
-                    <li>Script Engine</li>
-                    <li>Network</li>
-                </ul></li>
-            </ul>
-        </p>
-    </section>
-    <section>
-        <h3>Feature Categories</h3>
-        <ul>
-            <li>Interoperable and stable - Supported in all the latest browsers; not likely to change in the future</li>
-            <li>Legacy - Replaced by interoperable features; May be removed in the future</li>
-            <li>New - Supported in some browsers; Inconsistent implementations</li>
-        </ul>
-    </section>
 </section>
 <section>
     <section id="concepts">
@@ -147,10 +93,45 @@ links:
         <img src="images/browser-detection.png" />
     </section>
     <section>
+        <p>Sample Code</p>
+        <pre><code>functiongetInternetExplorerVersion()
+  // Returns the version of Internet Explorer or a -1 for other browsers.
+  {
+    var rv = -1;
+    if(navigator.appName == 'Microsoft Internet Explorer')
+    {
+      var ua = navigator.userAgent;
+      varre  = newRegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+      if(re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+    }
+    return rv;
+  }
+  functiononLoad()
+  {
+    var version = GetInternetExplorerVersion()
+    if (version <= 7 && version > -1)
+    {
+      // Code to run in Internet Explorer 7 or earlier.
+    }
+  }
+        </code></pre>
+    </section>
+    <section>
         <h3>Feature Detection</h3>
 
         <p>Feature detection (also feature testing) is a technique used in web development for handling differences between runtime environments (typically web browsers or user agents), by programmatically testing for clues that the environment may or may not offer certain functionality. </p>
         <img src="images/feature-detection.png" />
+    </section>
+    <section>
+        <p>Sample Code</p>
+        <pre><code>if(window.addEventListener) {
+    // Browser supports "addEventListener"
+    window.addEventListener("load", myFunction, false);
+  } else if(window.attachEvent) {
+    // Browser supports "attachEvent"
+    window.attachEvent("onload", myFunction);
+  }</code></pre>
     </section>
     <section>
         <h3>Graceful degradation</h3>
@@ -168,13 +149,13 @@ links:
         <ul>
             <li>In practical terms, its easiest to break the concept of PE into different layers, each one building on the previous to improve the experience of interacting with the website. </li>
         </ul>
+        <a href="http://en.wikipedia.org/wiki/Progressive_enhancement">http://en.wikipedia.org/wiki/Progressive_enhancement</a>
     </section>
     <section>
         <h3>Core CSS Concept</h3>
     </section>
     <section>
-        <h3>CSS
-Selectors</h3>
+        <h3>CSS Selectors</h3>
         <ul>
             <li><a href="http://www.w3.org/TR/CSS2/selector.html" target="_blank">http://www.w3.org/TR/CSS2/selector.html</a>
             </li>
@@ -216,8 +197,7 @@ Selectors</h3>
         </ul>
     </section>
     <section>
-        <h3>CSS box
-model rule</h3>
+        <h3>CSS box model rule</h3>
         <ul>
             <li>
                 Block-level elements are essentially rectangular

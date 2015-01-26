@@ -367,7 +367,6 @@ links:
 <section>
     <section>
         <h3>Use DevTools Emulation</h3>
-        <p>Browser emulation is great for testing a sites responsiveness, but they don’t emulate differences in API, CSS support and certain behaviors that you’d see on a mobile browser. Test your site on browsers running on real devices to be certain everything behaves as expected.</p>
         <ul>
             <li>Quickly test your site’s responsiveness and support for mobile APIs using DevTools emulation.</li>
         </ul>
@@ -375,6 +374,9 @@ links:
     <section>
         <h3>Chrome DevTools Emulation</h3>
         <p>You can activate device emulation by following these four steps:</p>
+        <ol><li>With Chrome DevTools open, click the arrow icon with three horizontal lines</li><li>Click the mobile device in the top left.</li><li>Select the <code>Emulation</code> tab at the bottom.</li><li>Then select the device you want to test against from the drop down.</li></ol>
+        </section>
+        <section>
         <p><img alt="Chrome DevTools Emulation Guide" src="images/chrome-devtools-emulation.png" />
         </p>
     </section>
@@ -388,6 +390,7 @@ links:
         <h3>IE Device Emulation</h3>
         <p>IE11 has a feature where you can <a href="http://msdn.microsoft.com/en-gb/library/ie/dn255001(v=vs.85).aspx">change the viewport to match a Windows Phone</a> as well as view your site on older versions of IE.</p>
         <p>To change the emulated browser, do the following:</p>
+        <ol><li>Select the emulation tab.</li><li>Click the drop down labelled <strong>Browser profile</strong> and select your device.</li></ol>
         <p><img alt="IE Device Emulation" src="images/ie-device-emulation.png" />
         </p>
     </section>
@@ -401,8 +404,6 @@ links:
         <h3>Android Emulator</h3>
         <p>The Android emulator comes with the Android SDK which you need to <a href="http://developer.android.com/sdk/installing/studio.html">download from here</a>.</p>
         <p>Start by opening Android Studio and go to <code>Tools &gt; Android &gt; AVD Manager (Android Virtual Device Manager)</code>. AVD is the place where you set up the emulators you’d like to use.</p>
-        <p><img alt="Android Virtual Device (AVD) Manager Menu" src="images/android-emulator-adv-manager.png" />
-        </p>
     </section>
     <section>
         <p>To start off, you’ll have no emulators set-up so click <code>Create</code> and we’ll get set-up to emulate a Nexus 5.</p>

@@ -13,8 +13,6 @@ links:
         </li>
         <li><a href="#browser">Browser features and compatibility changes</a>
         </li>
-        <li><a href="#layout">CSS and layout compatibility changes</a>
-        </li>
         <li><a href="#dom">HTML and DOM compatibility changes</a>
         </li>
         <li><a href="#javascript">JavaScript compatibility changes</a>
@@ -51,7 +49,7 @@ links:
     </section>
     <section>
         <p>
-            If your site depvers a premium experience with a plug-in, use the following fallback:</p>
+            If your site delivers a premium experience with a plug-in, use the following fallback:</p>
         <pre><code>&lt;object width="640" height="360" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"&gt;
     &lt;param name="SRC" value="http://ie.microsoft.com/testdrive/IEBlog/Common/player.swf?file=video.mp4"&gt;
     &lt;video id="video1" width="640" height="360" controls&gt;
@@ -117,19 +115,12 @@ if(plugin) {
     // Contoso control is not installed or disabled
   }
 }</code></pre>
-            <li>Note:As this example shows, IE11 still supports the <a href="http://msdn.microsoft.com/en-us/library/ie/ff974676(v=vs.85).aspx">ActiveXObject</a> object type and you can use it to instantiate ActiveX controls. However, it isno longer supported as a property of the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535873(v=vs.85).aspx">window</a> object.</li>
+            <p>Not supported</p>
+            <pre><code>this.isIEBrowser = false;
+if (window.ActiveXObject){
+    this.isIEBrowser = true;
+}</code></pre>
         </ul>
-    </section>
-    <section>
-        <ul>
-            <li>Plugins might not report information in the <a href="http://msdn.microsoft.com/en-us/library/ie/hh767310.aspx">navigator</a> properties.</li>
-            <li>To support the new properties, plugins need to update the Registry when installed:</li>
-            <ol>
-                <li>Under <code>HKLM\SOFTWARE\Microsoft\IE\NavigatorPluginsList</code> create a key using the name to be reported by the <a href="http://msdn.microsoft.com/en-us/library/ie/dn384065(v=vs.85).aspx">plugins</a> property.</li>
-                <li>Create subkeys for each custom MIME type supported by the plugin, using the MIME type value as the name of the subkey. </li>
-                <li>For 64-bit environments, add the same Registry entries to <code>HKLM\SOFTWARE\Wow6432\Microsoft\IE\NavigatorPluginsList</code>.</li>
-                <li>Verify that unique MIME types are properly registered with the device loading the webpage, as well as the server hosting the webpage.</li>
-            </ol>
     </section>
 
 </section>
@@ -152,82 +143,19 @@ if(plugin) {
         <p>When you install your ActiveX control (including toolbars and browser helper objects), follow these steps to ensure your control supports enhanced protected mode:</p>
         <ol>
             <li>Install 32-bit and 64-bit binaries.</li>
-            <li>Register the ActiveX control as one that is compatible with AppContainers. To do this, you register your control with the CAT_ID AppContainerCompatible ({59fb2056-d625-48d0-a944-1a85b5ab2640}) <a href="http://go.microsoft.com/fwlink/li/?LinkId=389164">COM component category</a>. Here's one way to do this from C++:
-            </li>
+            <li>Register the ActiveX control as one that is compatible with AppContainers.</li>
             <pre><code>DEFINE_GUID(CATID_AppContainerCompatible, 
 0x59fb2056,0xd625,0x48d0,0xa9,0x44,0x1a,0x85,0xb5,0xab,0x26,0x40);</code></pre>
         </ol>
     </section>
-    <section>
-        <h3>Updating ActiveX control code to support EPM</h3>
-        <ul>
-            <li>Use process monitoring utilities or an attached debugger to pinpoint the authorization failure and map that back to a specific statement in your code, which will help you determine the next step of your investigation.</li>
-            <li>If your control works when EPM is disabled, this may mean that you're trying to access a resource that doesn't support the IE AppContainer. In some cases, you can resolve the issue by updating the security access control list (SACL) of the resource to include the security ID (SID) of the IE AppContainer. </li>
-            <li>In other cases, you might need to modify your code to request additional access privileges when you attempt to open an object handle.</li>
-        </ul>
-    </section>
+    
 </section>
 <section>
     <section id="browser">
         <h3>Browser features and compatibility changes</h3>
     </section>
 </section>
-<section>
-    <section>
-        <h3>ASP.NET fails to detect IE - IE9+</h3>
-        <p>When ASP.NET does not correctly recognize IE, it responds with a "_doPostBack is undefined JavaScript" error. </p>
-        <p>
-            Hotfix is provided to update the ASP.NET <a href="http://go.microsoft.com/fwlink/li/?LinkID=245711">browser definition files</a>.
-        </p>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Customizing the download experience - IE10+</h3>
-        <p>Downloading files is a very common activity, and in Internet Explorer 10 we made several improvements in the file download experience and integrated the SmartScreen Application reputation check to help users make better trust decisions.</p>
-    </section>
-    <section>
-        <h3>Content-disposition header</h3>
-        <ul>
-            <li>To force the browser to <a href="http://go.microsoft.com/fwlink/li/?LinkID=256551">treat a specific file as a download</a>, send a <a href="http://go.microsoft.com/fwlink/li/?LinkID=256552">content-disposition header</a> with the <code>attachment</code> token. This is useful as some applications installed on the user's machine can register themselves to handle certain MIME types and bypass Windows IE download experience.</li>
-            <li>With the content-disposition header set to <code>attachment</code>, IE download experience offers the user the choice to open or save:</li><img alt="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" src="http://i.msdn.microsoft.com/dynimg/IC600818.png" title="A screen shot of the download notification bar that asks a user if they want to open or save an mp3 file" xmlns="" />
-        </ul>
-    </section>
-    <section>
-        <h3>TriggerFileDownload</h3>
-        <p>We added a <a href="http://msdn.microsoft.com/en-us/library/gg593105(v=vs.85).aspx">new function</a> in Windows IE 9 that lets browser add-ons trigger the file download experience in IE 9. When this API is invoked, the user sees the download notification bar as shown previously</p>
-        <pre><code>void TriggerFileDownload (string URL)</code></pre>
-    </section>
-    <section>
-        <h3>The <code>NoOpen</code> Directive</h3>
-        <p>To prevent users from opening a file immediately (and potentially losing track of the downloaded file) developers can specify the <code>NoOpen</code> directive. This way the user won't accidentally open the file and lose it in the Temporary Internet Files folder.</p>
-        <ul>
-            <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkID=256567">X-Download-Options</a> HTTP response header (supported by Windows IE 8 and later).</li>
-            <li>The download options meta tag <code>&lt;meta name="DownloadOptions" content="noopen"&gt;</code> (supported by Microsoft IE 6 and later).</li>
-        </ul>
-        <img alt="A screen shot of the download acceptance bar that asks the user if they want to save the document" src="http://i.msdn.microsoft.com/dynimg/IC600819.png" title="A screen shot of the download acceptance bar that asks the user if they want to save the document" xmlns="" />
-    </section>
-    <section>
-        <h3>Resuming downloads</h3>
-        <p>IE follows HTTP standards for resuming downloads. Resumption works both on HTTP and HTTPS. Here are some general best practices for resuming downloads:</p>
-        <ul>
-            <li>Send HTTP headers that permit caching.</li>
-            <li>Include the <code>Accept-Ranges</code> header with the token bytes.</li>
-            <li>Include a strong <a href="Http://go.microsoft.com/fwlink/li/?LinkID=258308">ETAG validator</a> on HTTP/1.1 responses.</li>
-            <li>Include a Last-Modified header for HTTP/1.0 responses - refer to section 14.29 of <a href="http://go.microsoft.com/fwlink/li/?LinkID=256573">RFC 2626</a>. This header is optional for HTTP/1.1 responses.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Signing files</h3>
-        <ul>
 
-            <li>Developers are strongly encouraged to sign their applications using <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>. </li>
-            <li>If an application is digitally signed with <a href="http://msdn.microsoft.com/en-us/library/ie/ms537359(v=vs.85).aspx">Authenticode</a>, <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> can take the digital certificate's reputation into account when determining the file's reputation. This is especially useful for new files that aren't yet commonly downloaded.</li>
-            <li>If an application isn't signed, and the user has <a href="http://go.microsoft.com/fwlink/li/?LinkId=257919">SmartScreen's Application Reputation</a> disabled (or the check fails for any reason), the download notification will show the following warning:</li><img alt="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " src="http://i.msdn.microsoft.com/dynimg/IC600821.png" title="A screen shot showing a warning message, which indicates the publisher of the file download can't be verified " xmlns="" />
-        </ul>
-    </section>
-
-</section>
 <section>
     <section>
         <h3>Document modes are deprecated - IE11</h3>
@@ -243,27 +171,7 @@ if(plugin) {
         </ul>
     </section>
 </section>
-<section>
-    <section>
-        <h3>Enhanced protected mode (EPM) may be enabled on the desktop</h3>
-        <ul>
-            <li>64-bit tab processes, which make memory-based security measures more effective.</li>
-            <li>Access restrictions on personal and machine configuration resources.</li>
-            <li>Access restrictions to corporate and other local resources.</li>
-        </ul>
-    </section>
-    <section>
-        <p>To learn more about EPM and how to support it, see:</p>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=257809">IE DevTeam blog: Introducing enhanced protected mode</a>
-            </li>
-            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=257817">IEInternals blog: Understanding enhanced protected mode</a>
-            </li>
-            <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=282663">IEInternals blog: Enhanced protected mode and local files</a>
-            </li>
-        </ul>
-    </section>
-</section>
+
 <section>
     <section>
         <h3>Interoperable (HTML5) quirks mode - IE10+</h3>
@@ -291,95 +199,6 @@ if(plugin) {
             <li>Because Quirks mode has been modified, this example no longer displays correctly. This can be fixed by enabling legacy Quirks mode:</li>
             <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=5"&gt;</code></pre>
             <li>For best results, webpages that currently depend on legacy features should be changed to use modern features defined by widely supported standards.</li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Minor compatibility changes in IE11</h3>
-        <ul>
-        </ul>
-        <ul>
-            <li><a href="#activex_and_plugin_minor_changes">ActiveX and plugin minor changes</a>
-            </li>
-            <li><a href="#css_and_layout_minor_changes_">CSS and layout minor changes </a>
-            </li>
-            <li><a href="#graphics_and_image_handling_minor_changes">Graphics and image handling minor changes</a>
-            </li>
-            <li><a href="#form_minor_changes">Form minor changes</a>
-            </li>
-            <li><a href="#html_and_dom_minor_changes">HTML and DOM minor changes</a>
-            </li>
-        </ul>
-    </section>
-    <section>
-        <h3>ActiveX and plugin minor changes</h3>
-        <ul>
-            <li>For <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> elements, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533559(v=vs.85).aspx">classid</a> attribute is ignored when the object is loading Flash. For other add-ons, the attribute behaves the same as in earlier versions of the browser.</li>
-            <li>
-                <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535245(v=vs.85).aspx">embed</a> elements now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> attribute mime types over mime types registered with an ActiveX control's binary.</li>
-            <li>Setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533702(v=vs.85).aspx">data</a> property of an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element after setting the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534698(v=vs.85).aspx">type</a> property no longer triggers an exception.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>CSS and layout minor changes </h3>
-        <ul>
-            <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, simple selectors now support <a href="http://msdn.microsoft.com/en-us/library/ie/cc848866(v=vs.85).aspx">:hover</a> rules that specifically identify targets.</li>
-            <li>In <a href="http://msdn.microsoft.com/en-us/library/ie/hh673550(v=vs.85).aspx">interoperable quirks mode</a>, trailing whitespace no longer affects the width or visible container of a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element.</li>
-            <li>Invalid <a href="http://msdn.microsoft.com/en-us/library/ie/ms530746(v=vs.85).aspx">@charset</a> declarations (such as those containing angle brackets) no longer invalidate an entire CSS file.</li>
-            <li>Starting with IE11 edge mode, table column widths are assigned as percentages of the total width requested.</li>
-            <li>Starting with IE11 edge mode, vertical clipping is more consistent with popular browsers for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> elements.</li>
-            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms531162(v=vs.85).aspx">textAlign</a> CSS property now supports the inherit keyword.</li>
-            <li>When the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533069(v=vs.85).aspx">align</a> attribute is set to "center" on a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535240(v=vs.85).aspx">div</a> element, this no longer inherits into child tables of the div.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Graphics and image handling minor changes</h3>
-        <ul>
-            <li>DOM Methods for attributes (<a href="http://msdn.microsoft.com/en-us/library/ie/cc304121(v=vs.85).aspx">hasAttribute</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536429(v=vs.85).aspx">getAttribute</a>) no longer return true for the <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> properties of images.</li>
-            <li>Images and object elements no longer display placeholder frames when <a href="http://msdn.microsoft.com/en-us/library/ie/dd347029(v=vs.85).aspx">src</a> is blank.</li>
-            <li>Images will no longer generate exceptions when <a href="http://msdn.microsoft.com/en-us/library/ie/ms530765(v=vs.85).aspx">height</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/hh773371(v=vs.85).aspx">width</a> are set to zero (0).</li>
-            <li>Non-progressive JPEG compressed images whose components span multiple scans now decode properly.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Form minor changes</h3>
-        <ul>
-            <li>IE11 no longer beeps when you press Enter on an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535841(v=vs.85).aspx">input type=text</a> field when a form doesn't contain a <a href="http://msdn.microsoft.com/en-us/library/ie/ms535840(v=vs.85).aspx">input type=submit</a> element.</li>
-            <li>Pressing ESC twice now clears just the current field of a form, rather than the entire form.</li>
-            <li>Input events now fire consistently when you select items in a <a href="http://msdn.microsoft.com/en-us/library/ie/hh772925(v=vs.85).aspx">datalist</a> element.</li>
-            <li>Click events no longer propagate from the <a href="http://msdn.microsoft.com/en-us/library/ie/ms535845(v=vs.85).aspx">label</a> element to interactive child elements (such as <a href="http://msdn.microsoft.com/en-us/library/ie/ms535173(v=vs.85).aspx">a</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms535263(v=vs.85).aspx">input type=file</a>, and so on).</li>
-            <li>When forms contain multiple input elements, Enter now generated a key event for the input element with focus, rather than automatically submitting the form.</li>
-        </ul>
-    </section>
-    <section>
-        <h3>HTML and DOM minor changes</h3>
-        <ul>
-            <li>Calling <a href="http://msdn.microsoft.com/en-us/library/ie/hh441214.aspx">insertBefore</a> with undefined (or null) as the second parameter no longer throws an exception.</li>
-            <li>If you use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536389(v=vs.85).aspx">createElement</a> to create an img element bound to a cache image, the width of the new element will correspond to the width of the cached image.</li>
-            <li>Script elements with external resources should no longer execute during <a href="http://msdn.microsoft.com/en-us/library/ie/ms535934(v=vs.85).aspx">appendChild</a>.</li>
-            <li>Starting with IE11 edge mode, initial frame navigation is a synchronous operation.</li>
-            <li>Starting with IE11 edge mode, the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533782(v=vs.85).aspx">hidden</a> attribute is now consistent with other browsers.</li>
-        </ul>
-    </section>
-    <section>
-        <ul>
-            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/hh772344(v=vs.85).aspx">document.readyState</a> property no longer changes to "interactive" before the document is fully parsed.</li>
-            <li>The language property is now supported as an alias for the <a href="http://msdn.microsoft.com/en-us/library/ie/ms534713(v=vs.85).aspx">navigator.userLanguage</a> property.</li>
-            <li>The <a href="http://go.microsoft.com/fwlink/li/?LinkId=324509">date.toString</a> method now returns localized values consistent with other popular browsers.</li>
-            <li>The value "x-gbk" is now supported as an alias for the "gbk" value supported by the <a href="http://msdn.microsoft.com/en-us/library/ie/ms533553(v=vs.85).aspx">charset</a> attribute.</li>
-            <li>Unquoted attributes are now applied to elements when specified as the last item within the element (this is not recommended usage).</li>
-        </ul>
-    </section>
-    <section>
-        <ul>
-            <li>When a document request uses an XML MIME type, an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535155(v=vs.85).aspx">XMLDocument</a> is returned for the following: documents created using <a href="http://msdn.microsoft.com/en-us/library/ie/ff975455(v=vs.85).aspx">implementation.createDocument</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ff975278(v=vs.85).aspx">DOMParser.parseFromString</a>, and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535157(v=vs.85).aspx">XMLHttpRequest</a>. All other MIME types return <a href="http://msdn.microsoft.com/en-us/library/ie/ms535862(v=vs.85).aspx">document</a> objects.</li>
-            <li>When creating an <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">object</a> element, the getVariable method is available when the object is created, rather than when it is instantiated.</li>
-            <li>Window objects associated with frames are no longer affected by <a href="http://msdn.microsoft.com/en-us/library/ie/ms536626(v=vs.85).aspx">moveTo</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536618(v=vs.85).aspx">moveBy</a>, <a href="http://msdn.microsoft.com/en-us/library/ie/ms536723(v=vs.85).aspx">resizeTo</a>, or <a href="http://msdn.microsoft.com/en-us/library/ie/ms536722(v=vs.85).aspx">resizeBy</a>.</li>
-            <li>The <a href="http://msdn.microsoft.com/en-us/library/ie/ms536347(v=vs.85).aspx">window.blur</a> method no longer causes a window to go behind other browser windows.</li>
-            <li>You can now use <a href="http://msdn.microsoft.com/en-us/library/ie/ms536400(v=vs.85).aspx">createTextNode</a> to directly add text nodes to <a href="http://msdn.microsoft.com/en-us/library/ie/ff975124(v=vs.85).aspx">XMLSerializer</a>.</li>
-            <li>
-                <a href="http://msdn.microsoft.com/en-us/library/ie/ms535859(v=vs.85).aspx">Object</a> elements no longer support an <a href="http://msdn.microsoft.com/en-us/library/ie/ms536957(v=vs.85).aspx">onreadystatechange</a> property. As a workaround, you can use <a href="http://msdn.microsoft.com/en-us/library/ie/ff975245(v=vs.85).aspx">addEventListener</a> to register a "readystatechange" event.</li>
         </ul>
     </section>
 </section>
@@ -426,12 +245,6 @@ if(plugin) {
 <section>
     <section>
         <h3>User-agent string changes - IE9+</h3>
-        <ul>
-            <li><a href="#ie11">User-agent string changes for IE 11</a>
-            </li>
-            <li><a href="#legacy">User-agent changes in earlier versions</a>
-            </li>
-        </ul>
     </section>
 
     <section>
@@ -462,60 +275,6 @@ if(plugin) {
             <li>The version token was updated to "MSIE 9.0".</li>
             <li>The Trident token updated to "Trident/5.0".</li>
             <li>The user-agent string was modified to exclude tokens describing tools, add-ons, and other optional software. </li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3 id="layout">CSS and layout compatibility changes</h3>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Checkbox and radio button layout defaults - IE11</h3> To provide better consistency with other browsers, the default values for a number of layout properties have changed for <a href="http://msdn.microsoft.com/en-us/library/ie/ms535262(v=vs.85).aspx">checkbox</a> and <a href="http://msdn.microsoft.com/en-us/library/ie/ms535838(v=vs.85).aspx">radio button</a> controls in <a href="http://msdn.microsoft.com/en-us/library/ie/dn384051(v=vs.85).aspx">IE11 edge mode</a>.
-
-        <ul>
-            <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530830(v=vs.85).aspx">padding</a> is now 0px.</li>
-            <li>The default <a href="http://msdn.microsoft.com/en-us/library/ie/ms530799(v=vs.85).aspx">margin</a> is now 3px, except for <a href="http://msdn.microsoft.com/en-us/library/ie/ms530804(v=vs.85).aspx">marginLeft</a> which is now 4px. </li>
-            <li>
-                <a href="http://msdn.microsoft.com/en-us/library/ie/dd183522(v=vs.85).aspx">box-sizing</a> is set to "border-box".</li>
-        </ul>
-    </section>
-    <section>
-        Affected webpages should use CSS rules to override the default values:
-        <pre><code>input[type="checkbox"], input[type="radio'] {
-    box-sizing: content-box;
-    margin: 0;
-    padding: 3px;
-}</code></pre>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Flexible box ("Flexbox") layout updates - IE11</h3>
-        <ul>
-            <li>In September 2012, the <a href="http://msdn.microsoft.com/en-us/library/ie/hh673531(v=vs.85).aspx">CSS Flexible Box ("Flexbox")</a> Layout module was published as a W3C Candidate Recommendation, incorporating some changes in certain aspects of the specification. IE11 updates flexbox support with these changes, which include renamed properties, renamed property values, and more. Moving forward, use the new, unprefixed names (and values) and update existing sites accordingly. </li>
-        </ul>
-        <a href="http://css-tricks.com/snippets/css/a-guide-to-flexbox/">http://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Font sizing for Thai and East Asian text - IE9+</h3> Thai and East Asian text may look smaller in Windows IE 9 than in Windows IE 8 and earlier releases.
-        <br> In IE 8, Thai and East Asian text could be rendered at a larger font size than specified when:
-        <ul>
-            <li>The specified font size was 9pt or smaller</li>
-            <li>The specified font family did not support Thai or East Asian characters such as Arial</li>
-        </ul>
-    </section>
-</section>
-<section>
-    <section>
-        <h3>Stylesheet titles are read-only - IE9+</h3>
-        <ul>
-            <li>In IE8 Standards mode and below you can change the value of a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title. In IE9 Standards mode mode the write command will be ignored and the original value will remain.</li>
-            <li>The value of a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title is read-only IE8 mode but not in later document modes.</li>
-            <li>If you have to change a <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a> object's title, you can do so by changing the title attribute on the <a href="http://go.microsoft.com/fwlink/li/?LinkID=219782">link</a> element or <a href="http://go.microsoft.com/fwlink/li/?LinkID=190913">style</a> element that contains the <a href="http://go.microsoft.com/fwlink/li/?LinkID=239584">styleSheet</a>.</li>
         </ul>
     </section>
 </section>

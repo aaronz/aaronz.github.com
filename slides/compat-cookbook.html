@@ -281,7 +281,37 @@ elm.setAttribute("id","myDiv");</code></pre>
 parent.innerHTML="&lt;div id='myDiv'&gt;&lt;/div&gt;";
 var elm=parent.firstChild;</code></pre>
         </ul>
+        <a href="http://www.browserwork.com/slides/compat-dom.html#/2/1">http://www.browserwork.com/slides/compat-dom.html#/2/1</a>
     </section>
+</section>
+<section>
+    <h3>getElementById</h3>
+    <p>If there is more than one element with <code>id="test"</code>, the method selects the first in the document. All others are ignored.</p>
+    <ul>
+                    <li>IE7 and lower also return the element with <code>name="test"</code>.</li>
+                </ul>
+    <a href="http://www.browserwork.com/slides/compat-dom.html#/3/1">http://www.browserwork.com/slides/compat-dom.html#/3/1</a>
+</section>
+<section>
+    <h3>getElementsByClassName</h3>
+    <p>The <code>childNodes</code> nodeList consists of all child nodes of the element, including (empty) text nodes and comment nodes.</p>
+    <ul>
+                    <li>IE8 and lower do not count empty text nodes. Thus, <code>childNodes</code> really contains the nodeList that <code>children</code>
+                    </li>
+                </ul>
+    <a href="http://www.browserwork.com/slides/compat-dom.html#/3/2">http://www.browserwork.com/slides/compat-dom.html#/3/2</a>
+</section>
+<section>
+    <h3>childNodes[]/firstChild/lastChild/nextSibling/previousSibling</h3>
+    <a href="http://www.browserwork.com/slides/compat-dom.html#/5/1">http://www.browserwork.com/slides/compat-dom.html#/5/1</a>
+</section>
+<section>
+    <h3>children[]</h3>
+    <p>Where <code>childNodes</code> holds all child nodes, <code>children</code> only holds those that are element nodes (HTML tags).</p>
+    <ul>
+                    <li>IE8 and lower incorrectly count comment nodes, too.</li>
+                </ul>
+    <a href="http://www.browserwork.com/slides/compat-dom.html#/6/2">http://www.browserwork.com/slides/compat-dom.html#/6/2</a>
 </section>
 <section>
     <section>

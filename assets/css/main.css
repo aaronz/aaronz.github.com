@@ -45,7 +45,7 @@ h3{
 
 .section:nth-child(2n){
   padding:40px 0 20px;
-  background:#ffeecc
+  background:#ffeebb
 }
 
 .featured > h3 > a{
@@ -69,7 +69,7 @@ h3{
 }
 
 .asset-footer{
-    background-color: #ffeecc;
+    background-color: #ffeebb;
     margin-top: 1em;
     padding: 1.5em;
     border-radius: 20px;
@@ -180,7 +180,7 @@ h3{
 }
 
 .pagination{
-  background-color:#ffeecc;
+  background-color:#ffeebb;
   padding: 10px;
   border-radius: 10px;
   overflow: hidden;

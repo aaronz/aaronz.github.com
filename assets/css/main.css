@@ -115,7 +115,7 @@ h3{
     width: 100%;
     max-width: 100%;
   }
-  .grid-12-8{
+  .grid-10-5{
     width: 100%;
   }
   .intro-photo{
@@ -127,8 +127,8 @@ h3{
   .wrapper {
     width: 750px;
   }
-  .grid-12-8{
-    width:67%;
+  .grid-10-5{
+    width:50%;
   }  
   .intro{
     display:inline-block;
@@ -144,16 +144,16 @@ h3{
   .wrapper {
     width: 970px;
   }
-  .grid-12-8{
-    width:67%;
+  .grid-10-5{
+    width:50%;
   }
 }
 @media (min-width: 1200px) {
   .wrapper {
     width: 1170px;
   }
-  .grid-12-8{
-    width:67%;
+  .grid-10-5{
+    width:50%;
   }
 }
 

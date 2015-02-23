@@ -183,6 +183,15 @@ h3{
   background-color:#ffeecc;
   padding: 10px;
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.previous-post{
+  float:left;
+}
+
+.next-post{
+  float:right;
 }
 
 .posts li{

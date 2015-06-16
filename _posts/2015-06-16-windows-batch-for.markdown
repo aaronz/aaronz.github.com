@@ -8,7 +8,7 @@ categories: Batch
 最近总是要通过一系列的命令抓些数据进行本地测试，数据的抓取过程繁琐而重复，于是想通过一个简单的脚本代替。脚本语言多种多言，python, powershell, vbs, 这次尝试了下古老的windows batch。
 于是发现windows batch里面有很多有趣的命令和用法。
 
-![batch](/assets/images/posts/batch.jpeg)
+![batch](/assets/images/posts/batch.jpg)
 
 <!--more-->
 

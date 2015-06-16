@@ -8,6 +8,7 @@ categories: Batch
 最近总是要通过一系列的命令抓些数据进行本地测试，数据的抓取过程繁琐而重复，于是想通过一个简单的脚本代替。脚本语言多种多言，python, powershell, vbs, 这次尝试了下古老的windows batch。
 于是发现windows batch里面有很多有趣的命令和用法。
 
+![batch](/assets/images/posts/batch.jpeg)
 
 <!--more-->
 
@@ -74,9 +75,9 @@ weather.txt文件内容如下
 
 {% highlight text %}
 
- January,Snowy,02 
- February,Rainy,15 
- March,Sunny,25 
+January,Snowy,02 
+February,Rainy,15 
+March,Sunny,25 
  
 {% endhighlight %}
 
@@ -86,10 +87,11 @@ for /f "tokens=1,3 delims=," %%G in (weather.txt) do @echo %%G %%H
 - 同时因为制订了tokens=1,3，结果将会掠过坐标为2的snowy 
 - 赋值变量%%G作为起始变量，%%H作为第二个变量，最终输出结果如下 
 
+{% highlight text %}
 January 02 
 Febuary 15 
 March 25 
-
+{% endhighlight %}
 
 
 

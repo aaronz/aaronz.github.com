@@ -9,7 +9,7 @@ categories: Data-Structures
 
 AVL树是其每个节点的左子树和右子树高度最多差1的二叉查找树。因为它的发明者是Adelson-Velsky和Landis，所以叫AVL树。
 
-[AVL Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/AVL_Tree_Rebalancing.svg/350px-AVL_Tree_Rebalancing.svg.png)
+![AVL Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/AVL_Tree_Rebalancing.svg/350px-AVL_Tree_Rebalancing.svg.png)
 <!--more-->
 
 #基本操作
@@ -32,7 +32,7 @@ AVL树是其每个节点的左子树和右子树高度最多差1的二叉查找�
 AVL树的基本操作一般涉及运作同在不平衡的二叉查找树所运作的同样的算法。但是要进行预先或随后做一次或多次所谓的"AVL旋转"。
 以下图表以四列表示四种情况，每行表示在该种情况下要进行的操作。在左左和右右的情况下，只需要进行一次旋转操作；在左右和右左的情况下，需要进行两次旋转操作。
 
-[旋转操作](https://upload.wikimedia.org/wikipedia/commons/c/c7/Tree_Rebalancing.png)
+![旋转操作](https://upload.wikimedia.org/wikipedia/commons/c/c7/Tree_Rebalancing.png)
 
 {%highlight c%}
 AvlTree Insert(ElementType x, AvlTree t){

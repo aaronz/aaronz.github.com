@@ -5,8 +5,6 @@ date:   2015-10-21 00:00:00
 categories: Data-Structures
 ---
 
-#基本属性
-
 AVL树是其每个节点的左子树和右子树高度最多差1的二叉查找树。因为它的发明者是Adelson-Velsky和Landis，所以叫AVL树。
 
 ![AVL Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/AVL_Tree_Rebalancing.svg/350px-AVL_Tree_Rebalancing.svg.png)

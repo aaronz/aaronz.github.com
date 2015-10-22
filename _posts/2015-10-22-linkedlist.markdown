@@ -10,16 +10,53 @@ categories: Data-Structures
 链表Linked list是一种常见的基础数据结构是一种线性表但是并不会按线性的顺序存储数据而是在每一个节点里存到下一个节点的指针(Pointer)。由于不必须按顺序存储链表在插入的时候可以达到O(1)的复杂度比另一种线性表顺序表快得多但是查找一个节点或者访问特定编号的节点则需要O(n)的时间而顺序表相应的时间复杂度分别是O(logn)和O(1)。
 链表允许插入和移除表上任意位置上的节点但是不允许随机存取。链表有很多种不同的类型:单向链表,双向链表以及循环链表。
 
+* 单链表
 ![single](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/408px-Singly-linked-list.svg.png)
 
+* 双向链表
 ![double](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/610px-Doubly-linked-list.svg.png)
 
+* 循环链表
 ![circular](https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Circularly-linked-list.svg/350px-Circularly-linked-list.svg.png)
 
 <!--more-->
 
 
 #操作实现
+
+[Chrome中的完整实现](https://code.google.com/p/chromium/codesearch#chromium/src/base/containers/linked_list.h&q=linked_list&sq=package:chromium&type=cs&l=5)
+
+{% highlight c %}
+// Questions and Answers:
+//
+// Q. Should I use std::list or base::LinkedList?
+//
+// A. The main reason to use base::LinkedList over std::list is
+//    performance. If you don't care about the performance differences
+//    then use an STL container, as it makes for better code readability.
+//
+//    Comparing the performance of base::LinkedList<T> to std::list<T*>:
+//
+//    * Erasing an element of type T* from base::LinkedList<T> is
+//      an O(1) operation. Whereas for std::list<T*> it is O(n).
+//      That is because with std::list<T*> you must obtain an
+//      iterator to the T* element before you can call erase(iterator).
+//
+//    * Insertion operations with base::LinkedList<T> never require
+//      heap allocations.
+//
+// Q. How does base::LinkedList implementation differ from std::list?
+//
+// A. Doubly-linked lists are made up of nodes that contain "next" and
+//    "previous" pointers that reference other nodes in the list.
+//
+//    With base::LinkedList<T>, the type being inserted already reserves
+//    space for the "next" and "previous" pointers (base::LinkNode<T>*).
+//    Whereas with std::list<T> the type can be anything, so the implementation
+//    needs to glue on the "next" and "previous" pointers using
+//    some internal node type.
+{% endhighlight %}
+
 
 以下代码摘自Linux内核2.6.21.5源码(部分)展示了链表的另一种实现思路未采用ANSI C标准采用GNU C标准遵从GPL版权许可。
 

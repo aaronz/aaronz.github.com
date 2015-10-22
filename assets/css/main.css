@@ -53,7 +53,7 @@ h3{
 }
 
 .excerpt img{
-  border-radius: 30px;
+  /*border-radius: 30px;*/
   display: inline-block;
   max-width: 35%;
   opacity: 0.85;
@@ -96,7 +96,7 @@ h3{
 }
 
 .post img{
-  border-radius: 15px;
+  /*border-radius: 15px;*/
 }
 
 .post li{

@@ -7,12 +7,17 @@ categories: Data-Structures
 
 优先队列中的每个元素都有各自的优先级，优先级最高的元素最先得到服务；优先级相同的元素按照其在优先队列中的顺序得到服务。优先队列往往用堆来实现。
 
-* 若堆的元素个数为 N，则高度不超过 [log N] + 1。
-* 优先队列可以用数组表示。在这种情况下，节点 N 的父节点在 N/2 处，左子节点在 N*2 处，右子节点在 N*2+1 处。
+堆的实现通过构造二叉堆（binary heap），实为二叉树的一种；由于其应用的普遍性，当不加限定时，均指该数据结构的这种实现。这种数据结构具有以下性质。
+* 任意节点小于（或大于）它的所有后裔，最小元（或最大元）在堆的根上（堆序性）。
+* 堆总是一棵完全树。即除了最底层，其他层的节点都被元素填满，且最底层尽可能地从左到右填入。
 
-![priority queue](http://algs4.cs.princeton.edu/24pq/images/heap-ops.png)
+
+![priority queue](http://algs4.cs.princeton.edu/24pq/images/heap.png)
 
 <!--more-->
+
+堆实际上是一棵完全二叉树，它可以按照层次关系存放在数组中，其在数组中的表示如下，
+![priority queue array representation](http://algs4.cs.princeton.edu/24pq/images/heap-representations.png)
 
 #基础操作
 
@@ -33,62 +38,45 @@ categories: Data-Structures
 
 #操作实现
 
-下面是用C实现的插入和删除操作。
+* 将元素X插入堆中，找到空闲位置，建立一个空穴，若满足堆序性（英文：heap order），则插入完成；否则将父节点元素装入空穴，删除该父节点元素，完成空穴上移。直至满足堆序性。这种策略叫做上滤（percolate up）。
+
+![swim](http://algs4.cs.princeton.edu/24pq/images/swim.png)
 
 {% highlight c %}
 
-void priq_push(pri_queue q, void *data, int pri)
-{
-  q_elem_t *b;
-  int n, m;
- 
-  if (q->n >= q->alloc) {
-    q->alloc *= 2;
-    b = q->buf = realloc(q->buf, sizeof(q_elem_t) * q->alloc);
-  } else
-    b = q->buf;
- 
-  n = q->n++;
-  /* append at end, then up heap */
-  while ((m = n / 2) && pri < b[m].pri) {
-    b[n] = b[m];
-    n = m;
-  }
-  b[n].data = data;
-  b[n].pri = pri;
-}
- 
-/* remove top item. returns 0 if empty. *pri can be null. */
-void * priq_pop(pri_queue q, int *pri)
-{
-  void *out;
-  if (q->n == 1) return 0;
- 
-  q_elem_t *b = q->buf;
- 
-  out = b[1].data;
-  if (pri) *pri = b[1].pri;
- 
-  /* pull last item to top, then down heap. */
-  --q->n;
- 
-  int n = 1, m;
-  while ((m = n * 2) < q->n) {
-    if (m + 1 < q->n && b[m].pri > b[m + 1].pri) m++;
- 
-    if (b[q->n].pri <= b[m].pri) break;
-    b[n] = b[m];
-    n = m;
-  }
- 
-  b[n] = b[q->n];
-  if (q->n < q->alloc / 2 && q->n >= 16)
-    q->buf = realloc(q->buf, (q->alloc /= 2) * sizeof(b[0]));
- 
-  return out;
+private void swim(int k) {
+   while (k > 1 && less(k/2, k)) {
+      exch(k, k/2);
+      k = k/2;
+   }
 }
 
 {% endhighlight %}
+
+* 删除最小元，即二叉树的根或父节点。删除该节点元素后，队列最后一个元素必须移动到堆得某个位置，使得堆仍然满足堆序性质。这种向下替换元素的过程叫作下滤。
+
+![sink](http://algs4.cs.princeton.edu/24pq/images/sink.png)
+
+{% highlight c %}
+
+private void sink(int k) {
+   while (2*k <= N) {
+      int j = 2*k;
+      if (j < N && less(j, j+1)) j++;
+      if (!less(k, j)) break;
+      exch(k, j);
+      k = j;
+   }
+}
+
+{% endhighlight %}
+
+* Insert. We add the new item at the end of the array, increment the size of the heap, and then swim up through the heap with that item to restore the heap condition. 
+
+* Remove the maximum. We take the largest item off the top, put the item from the end of the heap at the top, decrement the size of the heap, and then sink down through the heap with that item to restore the heap condition. 
+
+![insert & remove](http://algs4.cs.princeton.edu/24pq/images/heap-ops.png)
+
 
 #应用
 

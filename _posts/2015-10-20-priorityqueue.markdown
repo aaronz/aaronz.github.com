@@ -16,7 +16,8 @@ categories: Data-Structures
 
 <!--more-->
 
-堆实际上是一棵完全二叉树，它可以按照层次关系存放在数组中，其在数组中的表示如下，
+由于堆实际上是一棵近似完全二叉树，它可以按照层次关系存放在数组中，其在数组中的表示如下，
+
 ![priority queue array representation](http://algs4.cs.princeton.edu/24pq/images/heap-representations.png)
 
 #基础操作

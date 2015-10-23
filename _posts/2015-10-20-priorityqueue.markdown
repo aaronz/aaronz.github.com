@@ -18,17 +18,17 @@ categories: Data-Structures
 
 优先队列起码支持下述操作：
 
-*插入带优先级的元素（insert_with_priority）
-*取出具有最高优先级的元素（pull_highest_priority_element）
-*查看最高优先级的元素（peek）：O(1)时间复杂度。
+* 插入带优先级的元素（insert_with_priority） 
+* 取出具有最高优先级的元素（pull_highest_priority_element） 
+* 查看最高优先级的元素（peek）：O(1)时间复杂度。 
 
 其它可选的操作：
 
-*检查优先级高的一批元素
-*清空优先队列
-*批插入一批元素
-*合并多个优先队列
-*调整一个元素的优先级
+* 检查优先级高的一批元素
+* 清空优先队列
+* 批插入一批元素
+* 合并多个优先队列
+* 调整一个元素的优先级
 
 
 #操作实现

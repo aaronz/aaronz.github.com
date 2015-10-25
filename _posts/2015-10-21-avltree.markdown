@@ -93,3 +93,4 @@ Position DoubleRotateWithLeft(Position k3){
 #参考
 
 [https://en.wikipedia.org/wiki/AVL_tree](https://en.wikipedia.org/wiki/AVL_tree)
+[Data Strutures and Algorithm Analysis in C](http://www.amazon.com/Data-Structures-Algorithm-Analysis-2nd/dp/0201498405/ref=sr_1_1?s=books&ie=UTF8&qid=1445764160&sr=1-1&keywords=data+structures+and+algorithms+analysis+in+c)

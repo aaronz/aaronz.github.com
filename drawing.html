@@ -6,25 +6,29 @@ title: Drawing
 <script src="/assets/js/jssor.slider.mini.js"></script>
 <script>
     jQuery(document).ready(function ($) {
-        var options = { $AutoPlay: true };
+        var options = { 
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $ChanceToShow: 2
+            } };
         var jssor_slider1 = new $JssorSlider$('slider_container', options);
     });
 </script>
 <div class="section">
     <div class="wrapper">
         <div id="home">
-            <div id="slider_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 600px;">
+            <div id="slider_container" style="position: relative; width: 800px; height: 800px;">
                 <!-- Slides Container -->
                 <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">                   
-                    <div><img u="image" src="drawing/20160117_xiaowangzi.jpg"/></div>
-                    <div><img u="image" src="drawing/20160118_xiaowangzi.jpg"/></div>
-                    <div><img u="image" src="drawing/20160123_onepiece.jpg"/></div>
-                    <div><img u="image" src="drawing/20160123_xiaoxin.jpg"/></div>
-                    <div><img u="image" src="drawing/20160124_luffy.jpg"/></div>
-                    <div><img u="image" src="drawing/20160124_monsterhunter.jpg"/></div>
-                    <div><img u="image" src="drawing/20160124_onepiece.jpg"/></div>
-                    <div><img u="image" src="drawing/20160125_jingling.jpg"/></div>
-                    <div><img u="image" src="drawing/20160126_monsterhunter.jpg"/></div>
+                    <div><img u="image" src="drawing/20160117_xiaowangzi.jpg"/><img u="thumb" src="drawing/20160117_xiaowangzi.jpg" /></div>
+                    <div><img u="image" src="drawing/20160118_xiaowangzi.jpg"/><img u="thumb" src="drawing/20160118_xiaowangzi.jpg" /></div>
+                    <div><img u="image" src="drawing/20160123_onepiece.jpg"/><img u="thumb" src="drawing/20160123_onepiece.jpg" /></div>
+                    <div><img u="image" src="drawing/20160123_xiaoxin.jpg"/><img u="thumb" src="drawing/20160123_xiaoxin.jpg" /></div>
+                    <div><img u="image" src="drawing/20160124_luffy.jpg"/><img u="thumb" src="drawing/20160124_luffy.jpg" /></div>
+                    <div><img u="image" src="drawing/20160124_monsterhunter.jpg"/><img u="thumb" src="drawing/20160124_monsterhunter.jpg" /></div>
+                    <div><img u="image" src="drawing/20160124_onepiece.jpg"/><img u="thumb" src="drawing/20160124_onepiece.jpg" /></div>
+                    <div><img u="image" src="drawing/20160125_jingling.jpg"/><img u="thumb" src="drawing/20160125_jingling.jpg" /></div>
+                    <div><img u="image" src="drawing/20160126_monsterhunter.jpg"/><img u="thumb" src="drawing/20160126_monsterhunter.jpg" /></div>
                 </div>
             </div>
         </div>

@@ -244,8 +244,13 @@ h3{
   margin-right:4rem;
 }
 
+.image-list ul{
+  margin-top:0;
+}
+
 .image-gallary{
   display:inline-block;
+  border: 10px solid;
 }
 
 .latest-posts{

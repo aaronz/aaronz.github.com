@@ -50,7 +50,7 @@ h3{
 .excerpt img{
   /*border-radius: 30px;*/
   display: inline-block;
-  max-width: 35%;
+  max-width: 45%;
   opacity: 0.85;
   filter: alpha(opacity=85);
 }
@@ -207,6 +207,7 @@ h3{
   color:#111111;
   font-weight: bold;
   font-size: 1.75rem;
+  margin-top:3em;
 }
 
 .site-description {
@@ -246,4 +247,13 @@ h3{
 
 .image-gallary{
   display:inline-block;
+}
+
+.latest-posts{
+  padding-left: 2em;
+  border-left:3px solid black;
+}
+
+.header{
+  margin-bottom:3em;
 }

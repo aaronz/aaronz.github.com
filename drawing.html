@@ -14,7 +14,7 @@ title: Drawing
             {% for file in site.static_files %}
                         {%if file.path contains '/drawing' and file.path contains '.jpg' %}
                         {% unless file.path contains '-thumb' %}
-                        <li><a href="{{file.path}}">{{file.modified_time}} - {{file.path | replace: '/drawing/', ''}}</a></li>
+                        <li><a href="{{file.path}}">{{file.modified_time | date: '%Y %B %d' }} - {{file.path | replace: '/drawing/', ''}}</a></li>
                         {% endunless %}
                         {% endif %}
             {% endfor %}

@@ -7,10 +7,8 @@ title: Tests
     <div id="home">
         <h3 class="text-muted">测试页面</h3>
         <ul class="posts">
-            {% for file in site.static_files %}
-                    {%if file.path contains '/tests/' and file.path contains '.htm' %}
-                    <li><a href="{{file.path}}">{{file.modified_time | date: '%Y %B %d' }} - {{file.path}}</a></li>
-                    {% endif %}
+            {% for test in site.tests %}
+                <li><a href="{{test.url}}">{{test.date | date:"%Y-%m-%d"}} - {{test.title}}</a></li>
             {% endfor %}
         </ul>
     </div>

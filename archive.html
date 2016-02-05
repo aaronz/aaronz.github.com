@@ -2,18 +2,16 @@
 layout: default
 title: 日志归档
 ---
-<div class="section">
-    <div class="wrapper">
-        <div id="home">
-          <h3 class="text-muted">日志归档</h3>
-          <ul class="posts">
-            {% for post in site.posts %}
-                <li class="listing-item">
-                <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                </li>
-            {% endfor %}
-          </ul>
-        </div>
+<div class="wrapper">
+    <div id="home">
+      <h3 class="text-muted">日志归档</h3>
+      <ul class="posts">
+        {% for post in site.posts %}
+            <li class="listing-item">
+            <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+            <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+      </ul>
     </div>
 </div>

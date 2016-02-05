@@ -7,72 +7,70 @@ title: Drawing
 <script src="/assets/js/jssor.slider.mini.js"></script>
 <script src="/assets/js/slides.js"></script>
 <link rel="stylesheet" href="/assets/css/slides.css">
-<div class="section">
-    <div class="wrapper">
-    <div class="image-list">
-        <ul>
-            {% for file in site.static_files %}
-                        {%if file.path contains '/drawing' and file.path contains '.jpg' %}
-                        {% unless file.path contains '-thumb' %}
-                        <li><a href="{{file.path}}">{{file.modified_time | date: '%Y %B %d' }} - {{file.path | replace: '/drawing/', ''}}</a></li>
-                        {% endunless %}
-                        {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-        <div class="image-gallary">
-            <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 624px; height: 832px; overflow: hidden; visibility: hidden; background-color: #24262e; ">
-                <!-- Loading Screen -->
-                <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-                    <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-                    <div style="position:absolute;display:block;background:url('drawing/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-                </div>
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 624px; height: 832px;">
-                    {% for file in site.static_files %}
-                        {%if file.path contains '/drawing' and file.path contains '.jpg' %}
-                        {% unless file.path contains '-thumb' %}
-                        <div><img u="image" src="{{ file.path }}" /><img u="thumb" src="{{ file.path | replace : '.jpg','-thumb.jpg' }}" /></div>
-                        {% endunless %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <!-- Thumbnail Navigator -->
-                <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:624px;height:100px;" data-autocenter="1">
-                    <!-- Thumbnail Item Skin Begin -->
-                    <div data-u="slides" style="cursor: default;">
-                        <div data-u="prototype" class="p">
-                            <div class="w">
-                                <div data-u="thumbnailtemplate" class="t"></div>
-                            </div>
-                            <div class="c"></div>
+<div class="wrapper">
+<div class="image-list">
+    <ul>
+        {% for file in site.static_files %}
+                    {%if file.path contains '/drawing' and file.path contains '.jpg' %}
+                    {% unless file.path contains '-thumb' %}
+                    <li><a href="{{file.path}}">{{file.modified_time | date: '%Y %B %d' }} - {{file.path | replace: '/drawing/', ''}}</a></li>
+                    {% endunless %}
+                    {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+    <div class="image-gallary">
+        <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 624px; height: 832px; overflow: hidden; visibility: hidden; background-color: #24262e; ">
+            <!-- Loading Screen -->
+            <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                <div style="position:absolute;display:block;background:url('drawing/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+            </div>
+            <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 624px; height: 832px;">
+                {% for file in site.static_files %}
+                    {%if file.path contains '/drawing' and file.path contains '.jpg' %}
+                    {% unless file.path contains '-thumb' %}
+                    <div><img u="image" src="{{ file.path }}" /><img u="thumb" src="{{ file.path | replace : '.jpg','-thumb.jpg' }}" /></div>
+                    {% endunless %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <!-- Thumbnail Navigator -->
+            <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:624px;height:100px;" data-autocenter="1">
+                <!-- Thumbnail Item Skin Begin -->
+                <div data-u="slides" style="cursor: default;">
+                    <div data-u="prototype" class="p">
+                        <div class="w">
+                            <div data-u="thumbnailtemplate" class="t"></div>
                         </div>
+                        <div class="c"></div>
                     </div>
-                    <!-- Thumbnail Item Skin End -->
                 </div>
-                <!-- Arrow Navigator -->
-                <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
-                <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
+                <!-- Thumbnail Item Skin End -->
             </div>
-            <div>
-
-            </div>
+            <!-- Arrow Navigator -->
+            <span data-u="arrowleft" class="jssora05l" style="top:400px;left:8px;width:40px;height:40px;"></span>
+            <span data-u="arrowright" class="jssora05r" style="top:400px;right:8px;width:40px;height:40px;"></span>
         </div>
-        <div id="comment">
-          <div id="disqus_thread"></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                var disqus_shortname = 'browserwork'; // required: replace example with your forum shortname
+        <div>
 
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-            
         </div>
+    </div>
+    <div id="comment">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'browserwork'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
     </div>
 </div>

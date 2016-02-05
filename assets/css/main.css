@@ -261,3 +261,12 @@ h3{
 .header{
   margin-bottom:3em;
 }
+
+.tool-list{
+  vertical-align: top;
+}
+.tool-list div{
+  display: inline-block;
+  margin-right:3em;
+  vertical-align: top;
+}

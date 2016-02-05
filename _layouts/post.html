@@ -11,11 +11,7 @@ layout: default
         {% endif %}
     </nav>
     <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date | date_to_string }} <span class='st_facebook' displayText='Facebook'></span>
-<span class='st_twitter' displayText='Tweet'></span>
-<span class='st_linkedin' displayText='LinkedIn'></span>
-<span class='st_googleplus' displayText='Google +'></span>
-<span class='st_sina' displayText='Sina'></span></p>
+    <p class="meta">{{ page.date | date_to_string }}</p>
 
     <div class="post">
     {{ content }}
@@ -53,5 +49,3 @@ layout: default
         
     </div>
 </div>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "9008aa65-65f6-4390-b087-7ca47d9025b6", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>

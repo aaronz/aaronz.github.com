@@ -9,7 +9,18 @@ title: Drawing
 <link rel="stylesheet" href="/assets/css/slides.css">
 <div class="section">
     <div class="wrapper">
-        <div id="home">
+    <div class="image-list">
+        <ul>
+            {% for file in site.static_files %}
+                        {%if file.path contains '/drawing' and file.path contains '.jpg' %}
+                        {% unless file.path contains '-thumb' %}
+                        <li><a href="{{file.path}}">{{file.modified_time}} - {{file.path | replace: '/drawing/', ''}}</a></li>
+                        {% endunless %}
+                        {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+        <div class="image-gallary">
             <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 624px; height: 832px; overflow: hidden; visibility: hidden; background-color: #24262e; ">
                 <!-- Loading Screen -->
                 <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">

@@ -29,7 +29,7 @@ title: Drawing
             <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 624px; height: 832px;">
                 {% assign counter = 0 %}
                 {% for file in site.static_files %}
-                    {%if if counter < 7 and file.path contains '/drawing' and file.path contains '.jpg' %}
+                    {%if counter < 7 and file.path contains '/drawing' and file.path contains '.jpg' %}
                         {% unless file.path contains '-thumb' %}
                             <div><img u="image" src="{{ file.path }}" /><img u="thumb" src="{{ file.path | replace : '.jpg','-thumb.jpg' }}" /></div>
                             {% assign counter = counter | plus:1 %}

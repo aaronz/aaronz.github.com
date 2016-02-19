@@ -75,18 +75,65 @@ Google的扩展性堪称世界之最。我们都知道Google的搜索准确，�
 
 # 在BigTable中存储结构化数据  
 
-
+- BigTable是一个高容错性、自我管理的大型存储系统，可以支持TB级内存和PB级的外存，可以支持每秒百万读写操作。  
+- BigTable在GFS的基础上构建了一个分布式哈希机制，BigTable不是一个关系型数据库，也不支持类SQL语句查询。  
+- BigTable提供了根据Key访问结构化数据的机制。GFS存储模糊数据，而各种应用通常需要结构化数据，这个时候BigTable就会派上用场。  
+- 商用数据库无法扩展到类似横跨上千台服务器的级别。  
+- 谷歌通过控制底层存储系统得到更多的系统控制权，并且可以根据自己的需求对系统进行改进。例如他们需要一些跨数据中心的功能也可以将这些功能集成其中。  
+- 系统支持运行时的主机添加和减少。  
+- 每个数据都可以存储在一个可以通过Row Key, Column Key或者时间戳访问的单元中。  
+- 每个Row都存储在一个多个tablets中，每个tablet由一系列64KB的数据块组成，被称作SSTable。  
+- BigTable有三种类型的服务器：  
+	- 主服务器分配tablets和tablets服务器，负责追踪tablets的位置并分发任务。  
+	- Tablets服务器处理tablets的读写请求，他负责拆分大小超过限制(通常100MB-200MB)的tablets。当一个Tablets服务器失败，则会有100个tablet服务器每个获取一个tablet然后系统就恢复了。  
+	- Lock服务器提供了分布式的lock服务。需要锁的操作如写表可以通过该服务请求锁。  
+- Tablets尽量被缓存于RAM中。  
 
 #硬件环境
 
+- 当你有很多主机时如何搭建一个节能的系统？  
+- 使用便宜的硬件在其上搭建应用来合理的处理回收。
+- 使用低容错性的硬件价格要远低于高容错性硬件的价格(差距可高达33倍)。必须在地容错性的硬件上构建高容错性的系统和应用。  
+- 使用Linux，普通的主板，普通的存储配置。
+- 需要巨大的电力供应以及冷却系统的支持。  
+- 同时使用自己的数据中心和第三方协作的方式。  
 
-#Web服务器
+#其他  
 
+- 快速发布变更，不要等待QA。  
+- 构建库是构建应用的主要方式。  
+- 将一些应用发布成服务，例如爬虫服务。  
+- 构建应用版本的基础设施从而支持快速发布而不用担心出错。  
 
-#数据服务  
+#未来方向  
 
+- 支持地理分布式集群。  
+- 为所有的数据创建全局命名空间。目前数据是按照集群区分。  
+- 使数据迁移和计算更高程度的自动化。  
+- 解决大规模数据复制和网络分区时的一致性问题。  
 
 #新技能get  
 
+- 基础架构可以使你具备非凡的竞争力。  
+- 跨数据中心应用仍然是一个没有解决的问题。  
+- Hadoop值得关注。  
+- 初级程序员也可以利用平台搭建分布式应用是一个非常巨大的优势。  
+- 协同工作不是空谈。所有的系统都使用统一的组件，这样每个组件的提高都会带来整个组织效率的提升。  
+- 构建自我管理的系统, 不能依赖于关闭系统来进行升级或添加删除节点。  
+- 创建Darwinian的基础架构，并行执行耗时操作然后选择最快完成的。  
+- 不要忽略学术。其中很多蕴含着巨大生产力的技术。  
+- 考虑压缩平衡计算和IO。  
+
 
 #参考文章  
+
+- [Google Architecture](http://highscalability.com/google-architecture)  
+- [Video: Building Large Systems at Google](http://video.google.com/videoplay?docid=-5699448884004201579)  
+- [Google Lab: The Google File System](http://labs.google.com/papers/gfs.html)  
+- [Google Lab: MapReduce: Simplified Data Processing on Large Clusters](http://labs.google.com/papers/mapreduce.html)  
+- [Google Lab: BigTable.](http://labs.google.com/papers/bigtable.html)  
+- [Video: BigTable: A Distributed Structured Storage System.](http://video.google.com/videoplay?docid=7278544055668715642)  
+- [Google Lab: The Chubby Lock Service for Loosely-Coupled Distributed Systems.](http://labs.google.com/papers/chubby.html)  
+- [How Google Works by David Carr in Baseline Magazine.](http://www.baselinemag.com/article2/0,1540,1985514,00.asp)  
+- [Google Lab: Interpreting the Data: Parallel Analysis with Sawzall.](http://labs.google.com/papers/sawzall.html)  
+- [Dare Obasonjo's Notes on the scalability conference.](http://www.25hoursaday.com/weblog/2007/06/25/GoogleScalabilityConferenceTripReportMapReduceBigTableAndOtherDistributedSystemAbstractionsForHandlingLargeDatasets.aspx)  

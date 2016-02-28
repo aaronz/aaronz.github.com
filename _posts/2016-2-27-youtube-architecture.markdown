@@ -11,10 +11,7 @@ YouTube以令人难以置信增涨速度达到了目前视频日播放超亿次�
 
 <!--more-->
 
-## 信息源  
-
-1.	Google视频
-平台
+## 平台
 1.	Apache
 2.	Python
 3.	Linux (SuSe)
@@ -33,13 +30,17 @@ YouTube以令人难以置信增涨速度达到了目前视频日播放超亿次�
 
 ## 应对快速增涨的秘诀
 
+{% highlight c %}
+
 while (true)
 { 
-identify_and_fix_bottlenecks();
-drink();
-sleep();
-notice_new_bottleneck();
+	identify_and_fix_bottlenecks();
+	drink();
+	sleep();
+	notice_new_bottleneck();
 }
+
+{% endhighlight %}
 
 此循环每天执行很多次。
 
@@ -50,9 +51,9 @@ notice_new_bottleneck();
 3.	请求经Python应用服务器路由后处理。
 4.	应用服务器与各种数据库及其他信息源通话，从而取得所有数据并格式化html页面。
 5.	通常可通过添加更多的机器来扩展web层。
-6.	通常瓶颈并不在Python的 web代码，大部分时间都阻塞在RPC上。
+6.	通常瓶颈并不在Python的web代码，大部分时间都阻塞在RPC上。
 7.	使用Python能做到快速灵活的开发和部署。鉴于他们所面对的竞争，这是关键一环。
-8.	页面服务时间 通常少于100毫秒。
+8.	页面服务时间通常少于100毫秒。
 9.	使用psyco，一种Python到C的动态编译器，该编译器使用一种JIT编译方法来优化内层循环。
 10.	对于加密之类的高度处理器密集行为则使用C扩展。
 11.	对于渲染成本较高的块使用预生成并缓存的HTML。
@@ -152,4 +153,7 @@ notice_new_bottleneck();
 - 硬件：内存、RAID
 7.	团队为赢。组建一支良好的、理解整个系统及系统内层的跨专业团队。找到会装打印机、装机器、搭网络……的人。只要团队好，一切皆有可能。
 
+## 参考
 
+1. [Youtube Architecture](http://highscalability.com/youtube-architecture)
+2.	[Google Video](https://www.youtube.com/watch?v=w5WVu624fY8)

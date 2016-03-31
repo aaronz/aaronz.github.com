@@ -11,12 +11,5 @@ title: Tests
                 <li><a href="{{test.url}}">{{test.date | date:'%Y %B %d'}} - {{test.title}}</a></li>
             {% endfor %}
         </ul>
-        <ul>
-        	{% for file in site.static_files %}
-                {%if file.path contains '/tests/' and file.path contains '.html' %}
-                    <li><a href="{{file.path}}">{{file.modified_time | date: '%Y %B %d' }} - {{file.path}}</a></li>
-                {% endif %}
-        	{% endfor %}
-        </ul>
     </div>
 </div>

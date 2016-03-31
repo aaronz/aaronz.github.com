@@ -6,4 +6,5 @@ excerpt_separator: <!--more-->
 production_url: http://www.browserwork.com
 gems: [jekyll-paginate]
 collections:
-- tests
+  tests:
+    output: true

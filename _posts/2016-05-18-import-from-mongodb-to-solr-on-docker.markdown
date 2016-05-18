@@ -7,6 +7,10 @@ categories: Tools
 
 最近遇到一个需求是要通过solr将mongodb中的数据index，提供搜索的支持。原始数据是mongodb的一个导出文件，要自己搭建solr和mongodb的环境将数据导入。为了避免环境配置的麻烦，于是采用了docker image来完成这项工作。
 
+![solr](../assets/images/posts/solr.png)
+
+<!--more-->
+
 # docker环境准备
 首先是准备docker环境。我使用的是ubuntu 14.04。然后通过下面脚本安装docker。
 [https://github.com/aaronz/vm_setup/blob/master/tools/ubuntu/install_docker.sh](https://github.com/aaronz/vm_setup/blob/master/tools/ubuntu/install_docker.sh)

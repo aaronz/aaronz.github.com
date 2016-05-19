@@ -2,7 +2,7 @@
 layout: post
 title:  "docker实战：mongodb数据导入solr"
 date:   2016-05-18 00:00:00
-categories: Tools
+categories: Docker
 ---
 
 最近遇到一个需求是要通过solr将mongodb中的数据index，提供搜索的支持。原始数据是mongodb的一个导出文件，要自己搭建solr和mongodb的环境将数据导入。为了避免环境配置的麻烦，于是采用了docker image来完成这项工作。

@@ -7,6 +7,8 @@ categories: jekyll
 
 越来越多的技术博客开始使用jekyll来生成静态网站文件了。如果每次文章更新都需要手动去编译markdown到静态文件就太烦了，本文介绍一种常用的自动化编译方法。使用github的webhooks和jekyll-hook来协同完成。
 
+![jekyll](../assets/images/posts/jekyll.png)
+
 <!--more-->
 
 

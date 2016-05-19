@@ -41,6 +41,7 @@ docker安装成功之后就可以从dockerhub上拉取各种image为我所用。
     docker run -p 27017:27107 --name my_mongo -v /home/admin:/home/hostadmin -d mongo --replSet "rs0"
 
 这里用到的几个参数
+
  - -p 指定container和host暴露的端口对应关系
  - -v 指定container和host文件目录的映射关系，这里将host的/home/admin目录映射给container中的/home/hostadmin,后续只需要将备份的数据放在host的/home/admin下面，在container里面就可以访问到。
  - -d 指定执行完命令后detach
@@ -59,6 +60,51 @@ docker安装成功之后就可以从dockerhub上拉取各种image为我所用。
 
     rs.initiate() # 初始化
     rs.conf()     # 校验配置
+
+这里有个小地方需要注意下，rs.initiate()初始化出来的config中host会是当前container的id，但是这个id会给后面的导入带来问题，
+
+    rs0:PRIMARY> d = rs.conf()
+    {
+            "_id" : "rs0",
+            "version" : 1,
+            "protocolVersion" : NumberLong(1),
+            "members" : [
+                    {
+                            "_id" : 0,
+                            "host" : "5db041bbb6c2:27017", # 这个需要改掉成为localhost:27017
+                            "arbiterOnly" : false,
+                            "buildIndexes" : true,
+                            "hidden" : false,
+                            "priority" : 1,
+                            "tags" : {
+
+                            },
+                            "slaveDelay" : NumberLong(0),
+                            "votes" : 1
+                    }
+            ],
+            "settings" : {
+                    "chainingAllowed" : true,
+                    "heartbeatIntervalMillis" : 2000,
+                    "heartbeatTimeoutSecs" : 10,
+                    "electionTimeoutMillis" : 10000,
+                    "getLastErrorModes" : {
+
+                    },
+                    "getLastErrorDefaults" : {
+                            "w" : 1,
+                            "wtimeout" : 0
+                    },
+                    "replicaSetId" : ObjectId("573db8cf0db981406084ffba")
+            }
+    }
+
+改法如下
+
+    cfg = rs.config();
+    cfg.members[0].host = "localhost:27017";
+    rs.reconfig(cfg);
+
 
 退出mongo shell然后导入数据。
 

@@ -38,7 +38,7 @@ categories: Docker
 # 安装mongodb
 docker安装成功之后就可以从dockerhub上拉取各种image为我所用。先来个mongodb的offical包运行起来。
 
-    docker run -p 27017:27107 --name my_mongo -v /home/admin:/home/hostadmin -d mongo --replSet "rs0"
+    docker run -p 27017:27017 --name my_mongo -v /home/admin:/home/hostadmin -d mongo --replSet "rs0"
 
 这里用到的几个参数
 

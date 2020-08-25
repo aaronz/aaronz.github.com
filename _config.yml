@@ -8,3 +8,4 @@ gems: [jekyll-paginate]
 collections:
   tests:
     output: true
+theme: jekyll-theme-architect
